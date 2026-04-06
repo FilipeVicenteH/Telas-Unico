@@ -1,0 +1,3978 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    
+    <!-- SEO e Metadados -->
+    <title>Taxas e Tarifas | Gestão Financeira - Atmos Admin Panel</title>
+    <meta name="description" content="Configure e gerencie taxas, tarifas e impostos do seu negócio com facilidade e segurança.">
+    <meta name="keywords" content="taxas, tarifas, impostos, financeiro, gestão, pagamentos">
+    <meta name="author" content="Atmos Admin">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="../assets/img/logo.png"/>
+    <link rel="icon" href="../assets/img/logo.png" type="image/png" sizes="16x16">
+    <link rel="apple-touch-icon" href="../assets/img/logo.png">
+    
+    <!-- Progress Bar -->
+    <link rel="stylesheet" href="../assets/vendor/pace/pace.css">
+    <script src="../assets/vendor/pace/pace.min.js"></script>
+    
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" type="text/css" href="../assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/vendor/jquery-scrollbar/jquery.scrollbar.css">
+    <link rel="stylesheet" href="../assets/vendor/select2/css/select2.min.css">
+    <link rel="stylesheet" href="../assets/vendor/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" href="../assets/vendor/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="../assets/vendor/timepicker/bootstrap-timepicker.min.css">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/fonts/jost/jost.css">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" type="text/css" href="../assets/fonts/materialdesignicons/materialdesignicons.min.css">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" type="text/css" href="../assets/css/atmos.min.css">
+    
+    <style>
+:root {
+    --atmos-primary: #687ae8;
+    --atmos-secondary: #95aac9;
+    --atmos-success: #0c9;
+    --atmos-info: #19b5fe;
+    --atmos-warning: #f7bc06;
+    --atmos-danger: #f2545b;
+    --atmos-light: #f9fbfd;
+    --atmos-dark: #28304e;
+    --atmos-gray: #95aac9;
+    --atmos-gray-dark: #262e4b;
+    --atmos-white: #fff;
+    --atmos-border-radius: 8px;
+    --atmos-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    --atmos-transition: all 0.3s ease;
+}
+
+@media (max-width: 480px) {
+    .card { margin-bottom: 0.75rem; border-radius: var(--atmos-border-radius); }
+    .card-body { padding: 0.75rem; }
+    .card-body h1 { font-size: 1.25rem !important; }
+    .card-body p { font-size: 0.8rem !important; }
+    .btn { font-size: 0.75rem !important; padding: 0.375rem 0.5rem !important; margin-bottom: 0.25rem; }
+    .table-responsive { font-size: 0.7rem; }
+    .table th, .table td { padding: 0.375rem 0.25rem; font-size: 0.7rem; }
+    .btn-sm { font-size: 0.65rem !important; padding: 0.25rem 0.5rem !important; }
+    .form-control { font-size: 0.75rem; padding: 0.375rem 0.5rem; }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .container-fluid { padding: 1.25rem; }
+    .card { margin-bottom: 1.5rem; border-radius: var(--atmos-border-radius); box-shadow: var(--atmos-shadow); }
+    .card-body { padding: 1.5rem; }
+    .card-body h1 { font-size: 1.6rem !important; font-weight: 700 !important; margin-bottom: 0.5rem !important; }
+    .card-body .text-muted.small { font-size: 0.9rem !important; }
+    .card-body .mdi-36px { font-size: 2.5rem !important; }
+    .btn { font-size: 0.9rem !important; padding: 0.6rem 1rem !important; min-height: 40px !important; font-weight: 600 !important; }
+    .btn i { font-size: 1rem !important; }
+    .table-responsive { font-size: 0.85rem; border-radius: var(--atmos-border-radius); overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .table th, .table td { padding: 0.75rem 0.5rem; font-size: 0.85rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .table th { font-size: 0.8rem; font-weight: 600; background: var(--atmos-light) !important; }
+    .btn-sm { font-size: 0.8rem !important; padding: 0.4rem 0.8rem !important; min-height: 32px !important; }
+    .table td .font-weight-bold { font-size: 0.8rem !important; }
+    .table td .h6 { font-size: 0.85rem !important; }
+    .card h4 { font-size: 1.3rem !important; font-weight: 700 !important; margin-bottom: 1rem !important; }
+    .card h5 { font-size: 1.2rem !important; font-weight: 600 !important; margin-bottom: 0.75rem !important; }
+    .card h6 { font-size: 1.1rem !important; font-weight: 600 !important; margin-bottom: 0.5rem !important; }
+    .form-label { font-size: 0.9rem !important; font-weight: 600 !important; margin-bottom: 0.5rem !important; }
+    .form-control { font-size: 0.9rem !important; padding: 0.6rem 0.8rem !important; height: 42px !important; border-radius: 6px !important; }
+    .form-control-sm { font-size: 0.85rem !important; padding: 0.5rem 0.7rem !important; height: 36px !important; }
+    .badge { font-size: 0.75rem !important; padding: 0.4rem 0.8rem !important; }
+    .small, .text-muted { font-size: 0.8rem !important; }
+    .mdi { font-size: 1rem !important; }
+    .mdi-24px { font-size: 1.25rem !important; }
+    .mdi-36px { font-size: 2.5rem !important; }
+    .progress-steps { margin-bottom: 1.5rem !important; }
+    .step-item { margin-right: 1.5rem !important; margin-bottom: 1rem !important; }
+    .step-marker { width: 40px !important; height: 40px !important; font-size: 1rem !important; font-weight: 700 !important; }
+    .step-title { font-size: 0.9rem !important; font-weight: 600 !important; margin-top: 0.5rem !important; }
+    .step-connector { height: 2px !important; top: 20px !important; }
+    #modalParcelas .modal-dialog { margin: 1rem; max-width: calc(100% - 2rem); }
+    #modalParcelas .form-control { font-size: 0.9rem !important; height: 42px !important; padding: 0.6rem 0.8rem !important; }
+    #modalParcelas .input-group-text { font-size: 0.9rem !important; height: 42px !important; padding: 0.6rem 0.8rem !important; }
+    #modalParcelas .table { font-size: 0.85rem !important; }
+    #modalParcelas .table th, #modalParcelas .table td { padding: 0.75rem 0.5rem !important; font-size: 0.85rem !important; }
+    #modalParcelas .badge { font-size: 0.75rem !important; padding: 0.4rem 0.8rem !important; }
+    #modalParcelas .btn { font-size: 0.85rem !important; padding: 0.5rem 1rem !important; min-height: 38px !important; }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+    .card { margin-bottom: 1.25rem; border-radius: var(--atmos-border-radius); }
+    .card-body h1 { font-size: 1.5rem !important; }
+    .btn { font-size: 0.85rem !important; padding: 0.5rem 0.875rem !important; }
+    .table-responsive { font-size: 0.8rem; }
+    .table th, .table td { padding: 0.6rem 0.5rem; font-size: 0.8rem; }
+    .btn-sm { font-size: 0.75rem !important; padding: 0.35rem 0.7rem !important; }
+    .table td .font-weight-bold { font-size: 0.75rem !important; }
+}
+
+@media (min-width: 993px) and (max-width: 1199px) {
+    .card { margin-bottom: 1.5rem; border-radius: var(--atmos-border-radius); }
+    .card-body h1 { font-size: 1.6rem !important; }
+    .btn { font-size: 0.9rem !important; padding: 0.6rem 1rem !important; }
+    .table-responsive { font-size: 0.85rem; }
+    .table th, .table td { padding: 0.75rem 0.5rem; font-size: 0.85rem; }
+    .btn-sm { font-size: 0.8rem !important; padding: 0.4rem 0.8rem !important; }
+    .d-flex.flex-column.flex-md-row { flex-direction: column !important; }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .card { margin-bottom: 1.5rem; border-radius: var(--atmos-border-radius); }
+    .card-body h1 { font-size: 1.75rem !important; }
+    .btn { font-size: 0.85rem !important; padding: 0.5rem 1rem !important; }
+    .table-responsive { font-size: 0.9rem; }
+    .table th, .table td { padding: 0.75rem 0.5rem; font-size: 0.9rem; }
+    .btn-sm { font-size: 0.75rem !important; padding: 0.35rem 0.7rem !important; }
+    
+    .table td .font-weight-bold { font-size: 0.85rem !important; }
+}
+
+@media (min-width: 1400px) and (max-width: 1599px) {
+    .card { margin-bottom: 1.75rem; border-radius: var(--atmos-border-radius); }
+    .card-body h1 { font-size: 1.9rem !important; }
+    .btn { font-size: 0.9rem !important; padding: 0.6rem 1.2rem !important; }
+    .table-responsive { font-size: 0.95rem; }
+    .table th, .table td { padding: 0.75rem 0.625rem; font-size: 0.95rem; }
+    .btn-sm { font-size: 0.8rem !important; padding: 0.4rem 0.8rem !important; }
+    .table td .font-weight-bold { font-size: 0.9rem !important; }
+}
+
+@media (min-width: 1600px) {
+    .card { margin-bottom: 2rem; border-radius: var(--atmos-border-radius); }
+    .card-body h1 { font-size: 2rem !important; }
+    .btn { font-size: 0.9rem !important; padding: 0.6rem 1.2rem !important; }
+    .table-responsive { font-size: 0.95rem; }
+    .table th, .table td { padding: 0.875rem 0.75rem; font-size: 0.95rem; }
+    .btn-sm { font-size: 0.8rem !important; padding: 0.4rem 0.8rem !important; }
+    .table td .font-weight-bold { font-size: 0.9rem !important; }
+}
+
+@media (min-width: 1800px) and (max-width: 1919px) {
+    .card { margin-bottom: 2rem; border-radius: var(--atmos-border-radius); }
+    .card-body h1 { font-size: 1.8rem !important; }
+    .btn { font-size: 0.85rem !important; padding: 0.5rem 1rem !important; }
+    .table-responsive { font-size: 0.9rem; }
+    .table th, .table td { padding: 0.75rem 0.625rem; font-size: 0.9rem; }
+    .btn-sm { font-size: 0.75rem !important; padding: 0.35rem 0.7rem !important; }
+    .table td .font-weight-bold { font-size: 0.85rem !important; }
+}
+
+@media (min-width: 1920px) {
+    .container-fluid { padding: 2rem; max-width: 1800px; margin: 0 auto; }
+    .card { margin-bottom: 2.5rem; border-radius: var(--atmos-border-radius); }
+    .card-body { padding: 2rem !important; }
+    .card-body h1 { font-size: 2.2rem !important; font-weight: 700 !important; }
+    .card-body .text-muted.small { font-size: 1.1rem !important; margin-top: 0.5rem !important; }
+    .card-body .mdi-36px { font-size: 3rem !important; }
+    .btn { font-size: 1rem !important; padding: 12px 24px !important; min-height: 48px !important; font-weight: 600 !important; }
+    .btn i { font-size: 1.1rem !important; }
+    .table-responsive { font-size: 1rem; }
+    .table th, .table td { padding: 16px 12px; font-size: 1rem; }
+    .btn-sm { font-size: 0.9rem !important; padding: 8px 16px !important; min-height: 36px !important; }
+    .table td .font-weight-bold { font-size: 1rem !important; }
+    .card h4 { font-size: 1.5rem !important; font-weight: 700 !important; margin-bottom: 1.5rem !important; }
+    .card h5 { font-size: 1.3rem !important; font-weight: 600 !important; margin-bottom: 1.25rem !important; }
+    .card h6 { font-size: 1.2rem !important; font-weight: 600 !important; margin-bottom: 1rem !important; }
+    .form-label { font-size: 1rem !important; font-weight: 600 !important; margin-bottom: 0.75rem !important; }
+    .form-control { font-size: 1rem !important; padding: 12px 16px !important; height: 48px !important; }
+    .form-control-sm { font-size: 0.95rem !important; padding: 10px 14px !important; height: 42px !important; }
+    .badge { font-size: 0.9rem !important; padding: 8px 12px !important; }
+    .small, .text-muted { font-size: 0.95rem !important; }
+    .mdi { font-size: 1.1rem !important; }
+    .mdi-24px { font-size: 1.5rem !important; }
+    .mdi-36px { font-size: 2.25rem !important; }
+    .progress-steps { margin-bottom: 2rem !important; }
+    .step-item { margin-right: 2rem !important; }
+    .step-marker { width: 50px !important; height: 50px !important; font-size: 1.2rem !important; font-weight: 700 !important; }
+    .step-title { font-size: 1.1rem !important; font-weight: 600 !important; margin-top: 0.75rem !important; }
+    .step-connector { height: 3px !important; top: 25px !important; }
+    #modalParcelas .modal-dialog { max-width: 1400px !important; }
+    #modalParcelas .form-control { font-size: 1rem !important; height: 48px !important; padding: 12px 16px !important; }
+    #modalParcelas .input-group-text { font-size: 1rem !important; height: 48px !important; padding: 12px 16px !important; }
+    #modalParcelas .table { font-size: 1rem !important; }
+    #modalParcelas .table th, #modalParcelas .table td { padding: 16px 12px !important; font-size: 1rem !important; }
+    #modalParcelas .badge { font-size: 0.9rem !important; padding: 8px 12px !important; }
+    #modalParcelas .btn { font-size: 0.95rem !important; padding: 10px 20px !important; min-height: 42px !important; }
+}
+@media (max-width: 768px) {
+    .card-body .d-flex.flex-column.flex-md-row { text-align: center; }
+    .card-body .d-flex.flex-column.flex-md-row > div:first-child { margin-bottom: 1rem; }
+    .card-body .d-flex.flex-wrap { justify-content: center; }
+    .table th, .table td { padding: 0.75rem 0.5rem; font-size: 0.85rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .table th { font-size: 0.8rem; font-weight: 600; background: var(--atmos-light) !important; }
+    .table td .d-flex.flex-column { align-items: center; text-align: center; }
+    .table td .d-flex.flex-wrap { justify-content: center; }
+    .form-group { margin-bottom: 1rem; }
+    .form-control { margin-bottom: 0.5rem; }
+    .row .col-12 { margin-bottom: 0.5rem; }
+}
+
+@media (max-width: 576px) {
+    .card-body { padding: 0.5rem; }
+    .card-body h1 { font-size: 1.1rem !important; }
+    .btn { font-size: 0.7rem !important; padding: 0.3rem 0.4rem !important; }
+    .btn-sm { font-size: 0.6rem !important; padding: 0.2rem 0.4rem !important; }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+    .card-body { padding: 0.75rem; }
+    .table th, .table td { padding: 0.375rem 0.25rem; }
+    .btn { padding: 0.4rem 0.8rem !important; font-size: 0.8rem !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn, .badge, .card { transition: none !important; }
+}
+
+@media (prefers-contrast: high) {
+    .badge { border: 2px solid currentColor !important; }
+    .btn { border-width: 2px !important; }
+}
+
+@media (min-width: 1200px) {
+    .admin-content .container-fluid .row .col-xl-10 { max-width: 90%; margin: 0 auto; }
+}
+
+.btn-action {
+    min-height: 36px; min-width: 36px; border-radius: 6px; font-weight: 600; font-size: 13px;
+    padding: 8px 16px; margin: 2px; transition: var(--atmos-transition); display: inline-flex;
+    align-items: center; justify-content: center; text-decoration: none; border: 2px solid transparent;
+    position: relative; overflow: hidden;
+}
+.btn-action:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+.btn-action:active { transform: translateY(0); }
+
+.form-control-enhanced {
+    height: 40px; border: 2px solid #e9ecef; border-radius: 6px; transition: var(--atmos-transition);
+    font-size: 14px; background-color: var(--atmos-white); position: relative;
+}
+.form-control-enhanced:focus { border-color: var(--atmos-primary); box-shadow: 0 0 0 3px rgba(104,122,232,0.1); outline: none; background-color: var(--atmos-white); }
+.form-control-enhanced:hover { border-color: var(--atmos-primary); }
+
+.table-enhanced {
+    margin-bottom: 0; background-color: transparent; border-radius: var(--atmos-border-radius);
+    overflow: hidden; box-shadow: var(--atmos-shadow);
+}
+.table-enhanced thead th {
+    background-color: var(--atmos-light); border-bottom: 2px solid #dee2e6; font-weight: 600;
+    color: #495057; padding: 12px 16px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;
+}
+.table-enhanced tbody td { padding: 12px 16px; border-bottom: 1px solid #f1f3f4; vertical-align: middle; font-size: 14px; }
+.table-enhanced tbody tr:hover { background-color: rgba(104,122,232,0.02); }
+.table-enhanced tbody tr:last-child td { border-bottom: none; }
+
+@media (max-width: 767px) {
+    .btn-action { width: 100%; margin: 2px 0; justify-content: center; }
+    .table-enhanced thead th, .table-enhanced tbody td { padding: 8px 6px; font-size: 12px; }
+    .form-control-enhanced { font-size: 12px; }
+    .btn-sm { width: 100%; min-width: auto; font-size: 11px; padding: 4px 8px; }
+}
+
+@media (max-width: 575px) {
+    .table-enhanced thead th, .table-enhanced tbody td { padding: 6px 4px; font-size: 11px; }
+    .form-control-enhanced { height: 36px; font-size: 11px; }
+}
+
+.admin-content {
+    padding: 1rem; min-height: calc(100vh - 60px); background-color: var(--atmos-light);
+}
+.admin-content .container-fluid { max-width: 1400px; margin: 0 auto; padding: 0 15px; }
+.admin-content .page-title { margin-bottom: 1.5rem; font-size: 1.75rem; font-weight: 600; color: #2c3e50; }
+.admin-content .card { box-shadow: var(--atmos-shadow); border: none; border-radius: var(--atmos-border-radius); margin-bottom: 1.5rem; }
+.admin-content .card-header { background-color: var(--atmos-white); border-bottom: 1px solid #e9ecef; padding: 1rem 1.5rem; border-radius: var(--atmos-border-radius) var(--atmos-border-radius) 0 0 !important; }
+.admin-content .card-body { padding: 1.5rem; }
+.admin-content .card-footer { background-color: var(--atmos-light); border-top: 1px solid #e9ecef; padding: 1rem 1.5rem; border-radius: 0 0 var(--atmos-border-radius) var(--atmos-border-radius); }
+.admin-content .btn { padding: 0.4rem 0.8rem; font-size: 0.85rem; line-height: 1.2; border-radius: 0.25rem; }
+.admin-content .btn-sm { padding: 0.25rem 0.5rem; font-size: 0.75rem; }
+.admin-content .btn-lg { padding: 0.5rem 1rem; font-size: 0.9rem; }
+.admin-content .btn-outline-primary, .admin-content .btn-outline-secondary, .admin-content .btn-outline-success, .admin-content .btn-outline-danger { padding: 0.35rem 0.7rem; font-size: 0.8rem; }
+.admin-content .btn .mdi { margin-right: 0.25rem; font-size: 0.9em; }
+.admin-content .dropdown-toggle::after { margin-left: 0.25rem; font-size: 0.7rem; }
+.admin-content .form-control { font-size: 0.85rem; padding: 0.4rem 0.75rem; line-height: 1.4; border-radius: 0.25rem; }
+.admin-content .form-control:focus { box-shadow: 0 0 0 2px rgba(104,122,232,0.25); }
+.admin-content .form-label { font-size: 0.8rem; font-weight: 600; margin-bottom: 0.5rem; color: #495057; }
+.admin-content .table { font-size: 0.85rem; }
+.admin-content .table th { font-size: 0.8rem; font-weight: 600; padding: 0.75rem 0.5rem; border-bottom-width: 2px; }
+.admin-content .table td { padding: 0.75rem 0.5rem; vertical-align: middle; }
+.admin-content .badge { font-size: 0.7rem; font-weight: 500; padding: 0.3rem 0.5rem; }
+
+.page-loading { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999; }
+.page-loading .spinner { width: 40px; height: 40px; border: 4px solid #f3f3f3; border-top: 4px solid var(--atmos-primary); border-radius: 50%; animation: spin 1s linear infinite; }
+.loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(255,255,255,0.8); z-index: 9998; display: none; }
+.btn-loading .spinner-border { width: 1rem; height: 1rem; margin: -10px 0 0 -10px; border: 2px solid #f3f3f3; border-top: 2px solid var(--atmos-primary); border-radius: 50%; animation: spin 1s linear infinite; }
+
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+.notification-enter { animation: slideInRight 0.3s ease-out; }
+@keyframes slideInRight { from { opacity: 0; transform: translateX(100%); } to { opacity: 1; transform: translateX(0); } }
+.bg-primary-light { background-color: rgba(104,122,232,0.05) !important; }
+.transaction-row { transition: all 0.2s ease; border-left: 3px solid transparent; }
+.transaction-row:hover { background-color: rgba(104,122,232,0.02) !important; border-left-color: var(--atmos-primary); }
+.table th { background-color: var(--atmos-light); border-bottom: 2px solid #dee2e6; font-weight: 600; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.5px; }
+.table td { border-bottom: 1px solid #f1f3f4; vertical-align: middle; }
+.table tbody tr:last-child td { border-bottom: none; }
+.badge { font-size: 0.7rem; font-weight: 500; padding: 0.4em 0.6em; }
+.badge-pill { border-radius: 50px; }
+.badge-lg { font-size: 0.75rem; font-weight: 600; padding: 0.5rem 0.75rem; border-radius: 0.375rem; transition: all 0.15s ease-in-out; }
+.badge-lg:hover { transform: translateY(-1px); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+.btn { border-radius: 0.375rem; font-weight: 500; transition: all 0.15s ease-in-out; }
+.btn-sm { padding: 0.375rem 0.75rem; font-size: 0.875rem; line-height: 1.5; }
+.btn-xs { padding: 0.25rem 0.5rem; font-size: 0.75rem; line-height: 1.4; border-radius: 0.25rem; }
+.text-danger { color: var(--atmos-danger) !important;
+}
+
+.text-success { color: var(--atmos-success) !important; }
+.btn-outline-primary:hover { transform: translateY(-1px); box-shadow: 0 2px 4px rgba(104,122,232,0.2); }
+.btn-outline-secondary:hover { transform: translateY(-1px); box-shadow: 0 2px 4px rgba(108,117,125,0.2); }
+
+@media (max-width: 576px) {
+    .table th, .table td { padding: 0.5rem 0.25rem; font-size: 0.8rem; }
+    .badge { font-size: 0.65rem; padding: 0.3em 0.5em; }
+    .btn-sm { padding: 0.25rem 0.5rem; font-size: 0.75rem; }
+}
+
+.daterangepicker {
+    font-family: "Jost", sans-serif !important; border-radius: var(--atmos-border-radius) !important;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1) !important; border: 1px solid #e9ecef !important;
+    padding: 12px !important; background: var(--atmos-white) !important;
+}
+.daterangepicker .drp-calendar { margin: 0 6px !important; }
+.daterangepicker .calendar-table th {
+    background-color: var(--atmos-light) !important; color: #495057 !important; font-weight: 600 !important;
+    font-size: 11px !important; padding: 6px 2px !important; border: none !important;
+    text-transform: uppercase !important; letter-spacing: 0.5px !important;
+}
+.daterangepicker .calendar-table td { border: none !important; font-size: 12px !important; padding: 6px 2px !important; transition: all 0.2s ease !important; }
+.form-label { font-weight: 600 !important; color: #495057 !important; font-size: 13px !important; margin-bottom: 8px !important; display: flex !important; align-items: center !important; }
+.form-label .mdi { margin-right: 6px !important; color: var(--atmos-primary) !important; font-size: 14px !important; }
+.form-control { border: 1px solid #e9ecef !important; border-radius: 6px !important; padding: 8px 12px !important; font-size: 13px !important; transition: var(--atmos-transition) !important; background-color: var(--atmos-white) !important; }
+.form-control:focus { border-color: var(--atmos-primary) !important; box-shadow: 0 0 0 3px rgba(104,122,232,0.1) !important; outline: none !important; }
+
+.form-control:hover { border-color: var(--atmos-primary) !important; }
+.btn { border-radius: 6px !important; font-weight: 600 !important; font-size: 13px !important; padding: 8px 16px !important; transition: var(--atmos-transition) !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; }
+.btn .mdi { margin-right: 4px !important; font-size: 14px !important; }
+.btn:hover { transform: translateY(-1px) !important; box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important; }
+.btn-primary { background: var(--atmos-primary) !important; border: none !important; box-shadow: 0 2px 8px rgba(104,122,232,0.25) !important; }
+.btn-primary:hover { background: #5a6fd8 !important; box-shadow: 0 6px 16px rgba(104,122,232,0.35) !important; }
+.btn-outline-secondary { border: 1px solid #6c757d !important; color: #6c757d !important; background: transparent !important; }
+.btn-outline-secondary:hover { background: #6c757d !important; border-color: #6c757d !important; color: white !important;
+}
+
+.card { border: none !important; border-radius: var(--atmos-border-radius) !important; box-shadow: var(--atmos-shadow) !important; transition: var(--atmos-transition) !important; background: var(--atmos-white) !important; }
+.card:hover { box-shadow: 0 5px 20px rgba(0,0,0,0.12) !important; transform: translateY(-2px) !important; }
+.card-header { background: var(--atmos-white) !important; border-bottom: 1px solid #f1f3f4 !important; padding: 20px 24px !important; border-radius: var(--atmos-border-radius) var(--atmos-border-radius) 0 0 !important; }
+.card-body { padding: 24px !important; }
+.card-footer { background: var(--atmos-light) !important; border-top: 1px solid #f1f3f4 !important; padding: 16px 24px !important; border-radius: 0 0 var(--atmos-border-radius) var(--atmos-border-radius) !important; }
+.badge { padding: 6px 12px !important; font-size: 11px !important; font-weight: 600 !important; border-radius: 50px !important; text-transform: uppercase !important; letter-spacing: 0.5px !important; }
+.badge-success { background: var(--atmos-success) !important; color: var(--atmos-white) !important; border: none !important; }
+
+.badge-primary { background: var(--atmos-primary) !important; color: var(--atmos-white) !important; border: none !important; }
+.badge-warning { background: var(--atmos-warning) !important; color: #212529 !important; border: none !important; }
+.table { border-radius: var(--atmos-border-radius) !important; overflow: hidden !important; box-shadow: 0 2px 10px rgba(0,0,0,0.05) !important; }
+.table thead th { background: var(--atmos-light) !important; border: none !important; font-weight: 600 !important; font-size: 12px !important; text-transform: uppercase !important; letter-spacing: 0.5px !important; color: #495057 !important; padding: 16px 12px !important; }
+.table tbody td { border: none !important; border-bottom: 1px solid #f8f9fa !important; padding: 16px 12px !important; font-size: 13px !important; vertical-align: middle !important; }
+.table tbody tr:hover { background-color: rgba(104,122,232,0.02) !important; }
+.table tbody tr:last-child td { border-bottom: none !important; }
+.select2-container--default .select2-selection--single { height: 40px !important; border: 1px solid #e9ecef !important; border-radius: 6px !important; }
+.select2-container--default .select2-selection--single .select2-selection__rendered { line-height: 38px !important; padding-left: 12px !important; font-size: 13px !important; }
+
+body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #343a40; }
+h1, h2, h3, h4, h5, h6 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 600; line-height: 1.3; margin-bottom: 1rem; }
+
+@media (min-width: 1400px) { .admin-content .container-fluid .row .col-xxl-9 { max-width: 85%; margin: 0 auto; } }
+@media (min-width: 1600px) { .admin-content .container-fluid .row .col-xxl-9 { max-width: 80%; margin: 0 auto; } }
+
+.spinner { width: 16px; height: 16px; border: 2px solid transparent; border-top: 2px solid currentColor; border-radius: 50%; animation: spin 1s linear infinite; margin-left: 0.5rem; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+.currency-hint { font-size: 0.75rem; color: #6c757d;
+            margin-top: 0.25rem;
+            font-style: italic;
+            opacity: 0.8;
+        }
+
+        .form-select {
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=UTF-8,<svg viewBox="0 0 24 24" fill="%236c757d" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 16px;
+            padding-right: 3rem;
+        }
+
+        .btn:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn:disabled::before {
+            display: none;
+        }
+
+        *:focus {
+            outline: 2px solid #007bff;
+            outline-offset: 2px;
+        }
+
+        .text-muted {
+            color: #495057 !important;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: #007bff;
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            border-radius: 0.375rem;
+            z-index: 1000;
+        }
+
+        .skip-link:focus {
+            top: 6px;
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+        }
+
+        .step-indicator {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: white;
+            margin-right: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-indicator::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .step-indicator:hover::before {
+            left: 100%;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --light-color: #2d3748;
+                --dark-color: #e2e8f0;
+            }
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+
+        .border-gradient {
+            border: 2px solid;
+            border-image: linear-gradient(135deg, #007bff 0%, #0056b3 100%) 1;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        
+        .progress-steps {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #e9ecef;
+            margin-bottom: 1.5rem !important;
+        }
+
+        .step-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            flex: 1;
+            text-align: center;
+        }
+
+        .step-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            right: -50%;
+            height: 2px;
+            background: #e9ecef;
+            z-index: 0;
+        }
+
+        .step-item.active:not(:last-child)::after,
+        .step-item.completed:not(:last-child)::after {
+            background: #007bff;
+        }
+
+        .step-marker {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .step-item.active .step-marker {
+            background: #007bff;
+            color: white;
+            box-shadow: 0 4px 14px 0 rgba(102, 126, 234, 0.39);
+        }
+
+        .step-item.completed .step-marker {
+            background: #28a745;
+            color: white;
+        }
+
+        .step-text {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #6c757d;
+            margin-top: 0.25rem;
+        }
+
+        .step-item.active .step-text {
+            color: #007bff;
+            font-weight: 600;
+        }
+
+        .step-item.completed .step-text {
+            color: #28a745;
+            font-weight: 600;
+        }
+
+        .form-section {
+            position: relative;
+        }
+
+        .section-header {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-actions .btn {
+            min-height: 32px;
+        }
+
+        .progress-indicator .progress {
+            border-radius: 10px;
+            background-color: rgba(102, 126, 234, 0.1);
+        }
+
+        .progress-indicator .progress-bar {
+            border-radius: 10px;
+            transition: width 0.6s ease;
+        }
+
+        .form-label.required::after {
+            content: ' *';
+            color: #dc3545;
+        }
+
+        .input-group .form-control:focus {
+            border-color: #007bff;
+            box-shadow: none;
+        }
+
+        .input-group .form-control:focus ~ .input-group-append .input-group-text {
+            border-color: #007bff;
+            background: #007bff;
+            color: white;
+        }
+
+        .form-control.is-valid {
+            border-color: #28a745;
+        }
+
+        .form-control.is-invalid {
+            border-color: #dc3545;
+        }
+
+        .invalid-feedback {
+            display: block;
+            font-size: 0.75rem;
+            color: #dc3545;
+            margin-top: 0.25rem;
+        }
+
+        .tooltip-inner {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 0.75rem;
+            padding: 0.5rem 1rem;
+        }
+
+        .payment-method-card {
+            border: 2px solid #e9ecef;
+            transition: all 0.2s ease-in-out;
+            height: 100%;
+        }
+
+        .payment-method-card:hover {
+            border-color: #007bff;
+            transform: translateY(-2px);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        }
+
+        .payment-method-card .card-header {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        @media (max-width: 768px) {
+            .progress-steps .d-flex {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .step-item {
+                margin-bottom: 1rem;
+                min-width: 80px;
+            }
+
+            .step-item:not(:last-child)::after {
+                display: none;
+            }
+
+            .step-marker {
+                width: 32px;
+                height: 32px;
+            }
+
+            .step-text {
+                font-size: 0.65rem;
+            }
+        }
+
+        .floating-label {
+            position: relative;
+        }
+
+        .floating-label .form-control:focus + .form-label,
+        .floating-label .form-control:not(:placeholder-shown) + .form-label {
+            top: -8px;
+            left: 12px;
+            font-size: 0.75rem;
+            background: white;
+            padding: 0 4px;
+            color: #007bff;
+        }
+
+        @keyframes checkmark {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .success-checkmark {
+            animation: checkmark 0.5s ease-in-out;
+        }
+
+        .btn-loading {
+            position: relative;
+            pointer-events: none;
+        }
+
+        .btn-loading .btn-text {
+            opacity: 0;
+        }
+
+        .btn-loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -8px 0 0 -8px;
+            width: 16px;
+            height: 16px;
+            border: 2px solid transparent;
+            border-top: 2px solid currentColor;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @media (max-width: 320px) {
+            .card-body {
+                padding: 0.75rem !important;
+            }
+            
+            .h3 {
+                font-size: 1.2rem !important;
+            }
+            
+            .btn {
+                padding: 0.4rem 0.6rem !important;
+                font-size: 0.8rem !important;
+            }
+            
+            .form-control {
+                font-size: 13px !important;
+                padding: 0.4rem !important;
+            }
+            
+            .col-lg-4 {
+                margin-bottom: 0.75rem !important;
+            }
+            
+            .d-flex.flex-wrap .btn {
+                margin-bottom: 0.4rem !important;
+                width: 100% !important;
+            }
+            
+            .progress-indicator {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+            }
+            
+            .progress {
+                width: 100% !important;
+                margin-top: 0.4rem !important;
+            }
+            
+            .select-hint {
+                display: none !important;
+            }
+            
+            .form-text {
+                font-size: 0.7rem !important;
+                line-height: 1.2 !important;
+                white-space: nowrap !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+            }
+            
+             .bg-primary.rounded-circle, .bg-success.rounded-circle, .bg-warning.rounded-circle { display: none !important; }
+            
+            .d-flex.align-items-center .bg-primary.rounded-circle,
+            .d-flex.align-items-center .bg-success.rounded-circle,
+            .d-flex.align-items-center .bg-warning.rounded-circle {
+                margin-right: 0.5rem !important;
+                margin-bottom: 0 !important;
+            }
+        }
+        
+        @media (min-width: 321px) and (max-width: 375px) {
+            .card-body {
+                padding: 1rem !important;
+            }
+            
+            .h3 {
+                font-size: 1.4rem !important;
+            }
+            
+            .btn {
+                padding: 0.5rem 0.75rem !important;
+                font-size: 0.875rem !important;
+            }
+            
+            .form-control {
+                font-size: 14px !important;
+                padding: 0.5rem !important;
+            }
+            
+            .col-lg-4 {
+                margin-bottom: 1rem !important;
+            }
+            
+            .d-flex.flex-wrap .btn {
+                margin-bottom: 0.5rem !important;
+                width: 100% !important;
+            }
+            
+            .progress-indicator {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+            }
+            
+            .progress {
+                width: 100% !important;
+                margin-top: 0.5rem !important;
+            }
+            
+            .select-hint {
+                display: none !important;
+            }
+            
+            .form-text {
+                font-size: 0.75rem !important;
+                line-height: 1.3 !important;
+                white-space: nowrap !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+            }
+            
+             .bg-primary.rounded-circle, .bg-success.rounded-circle, .bg-warning.rounded-circle { display: none !important; }
+            
+            .d-flex.align-items-center .bg-primary.rounded-circle,
+            .d-flex.align-items-center .bg-success.rounded-circle,
+            .d-flex.align-items-center .bg-warning.rounded-circle {
+                margin-right: 0.6rem !important;
+                margin-bottom: 0 !important;
+            }
+        }
+        
+        @media (min-width: 376px) and (max-width: 425px) {
+            .container-fluid {
+                padding: 1rem;
+            }
+            
+            .card {
+                margin-bottom: 1.25rem;
+                border-radius: 8px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            }
+            
+            .card-body {
+                padding: 1.25rem !important;
+            }
+            
+            .card-body h1 {
+                font-size: 1.5rem !important;
+                font-weight: 700 !important;
+                margin-bottom: 0.5rem !important;
+            }
+            
+            .card-body .text-muted.small {
+                font-size: 0.85rem !important;
+            }
+            
+            .card-body .mdi-36px {
+                font-size: 2rem !important;
+            }
+            
+            .btn {
+                font-size: 0.85rem !important;
+                padding: 0.5rem 0.875rem !important;
+                min-height: 38px !important;
+                font-weight: 600 !important;
+            }
+            
+            .btn i {
+                font-size: 0.9rem !important;
+            }
+            
+            .table-responsive {
+                font-size: 0.8rem;
+                border-radius: 6px;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .table th,
+            .table td {
+                padding: 0.5rem 0.25rem !important;
+                font-size: 0.8rem !important;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            
+            .table th {
+                font-size: 0.75rem;
+                font-weight: 600;
+                background: #f8f9fa !important;
+            }
+            
+            .btn-sm {
+                font-size: 0.7rem !important;
+                padding: 0.3rem 0.6rem !important;
+                min-height: 28px !important;
+            }
+            
+            .table td .font-weight-bold {
+                font-size: 0.75rem !important;
+            }
+            
+            .table td .h6 {
+                font-size: 0.8rem !important;
+            }
+            
+            .card h4 {
+                font-size: 1.2rem !important;
+                font-weight: 700 !important;
+                margin-bottom: 0.75rem !important;
+            }
+            
+            .card h5 {
+                font-size: 1.1rem !important;
+                font-weight: 600 !important;
+                margin-bottom: 0.5rem !important;
+            }
+            
+            .card h6 {
+                font-size: 1rem !important;
+                font-weight: 600 !important;
+                margin-bottom: 0.4rem !important;
+            }
+            
+            .form-label {
+                font-size: 0.85rem !important;
+                font-weight: 600 !important;
+                margin-bottom: 0.4rem !important;
+            }
+            
+            .form-control {
+                font-size: 0.85rem !important;
+                padding: 0.5rem 0.7rem !important;
+                height: 38px !important;
+                border-radius: 6px !important;
+            }
+            
+            .form-control-sm {
+                font-size: 0.8rem !important;
+                padding: 0.4rem 0.6rem !important;
+                height: 32px !important;
+            }
+            
+            .badge {
+                font-size: 0.7rem !important;
+                padding: 0.3em 0.6em !important;
+            }
+            
+            .small,
+            .text-muted {
+                font-size: 0.75rem !important;
+            }
+            
+            .mdi {
+                font-size: 0.9rem !important;
+            }
+            
+            .mdi-24px {
+                font-size: 1.1rem !important;
+            }
+            
+            .mdi-36px {
+                font-size: 2rem !important;
+            }
+            
+            .progress-steps {
+                margin-bottom: 1.25rem !important;
+            }
+            
+            .step-item {
+                margin-right: 1rem !important;
+                margin-bottom: 0.75rem !important;
+                min-width: 70px;
+            }
+            
+            .step-marker {
+                width: 32px !important;
+                height: 32px !important;
+                font-size: 0.85rem !important;
+                font-weight: 700 !important;
+            }
+            
+            .step-title {
+                font-size: 0.75rem !important;
+                font-weight: 600 !important;
+                margin-top: 0.25rem !important;
+            }
+            
+            .step-connector {
+                height: 2px !important;
+                top: 16px !important;
+            }
+            
+            #modalParcelas .modal-dialog {
+                margin: 0.5rem;
+                max-width: calc(100% - 1rem);
+            }
+            
+            #modalParcelas .form-control {
+                font-size: 0.85rem !important;
+                height: 38px !important;
+                padding: 0.5rem 0.7rem !important;
+            }
+            
+            #modalParcelas .input-group-text {
+                font-size: 0.85rem !important;
+                height: 38px !important;
+                padding: 0.5rem 0.7rem !important;
+            }
+            
+            #modalParcelas .table {
+                font-size: 0.8rem !important;
+            }
+            
+            #modalParcelas .table th,
+            #modalParcelas .table td {
+                padding: 0.5rem 0.25rem !important;
+                font-size: 0.8rem !important;
+            }
+            
+            #modalParcelas .badge {
+                font-size: 0.7rem !important;
+                padding: 0.3em 0.6em !important;
+            }
+            
+            #modalParcelas .btn {
+                font-size: 0.8rem !important;
+                padding: 0.4rem 0.8rem !important;
+                min-height: 34px !important;
+            }
+            
+            .dropdown-menu {
+                min-width: 150px !important;
+                font-size: 0.8rem;
+            }
+            
+            .dropdown-item {
+                padding: 0.5rem 0.75rem !important;
+                font-size: 0.8rem;
+            }
+            
+            .col-lg-4 {
+                margin-bottom: 1.25rem !important;
+            }
+            
+            .d-flex.flex-wrap .btn {
+                margin-right: 0.5rem !important;
+                margin-bottom: 0.5rem !important;
+            }
+            
+            .progress-indicator {
+                flex-direction: row !important;
+                align-items: center !important;
+            }
+            
+            .progress {
+                width: 100px !important;
+            }
+            
+            .select-hint {
+                display: none !important;
+            }
+            
+            .form-text {
+                font-size: 0.8rem !important;
+                line-height: 1.4 !important;
+                white-space: nowrap !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+            }
+            
+             #guidanceCard .text-muted.small { font-size: 0.7rem !important; line-height: 1.3 !important; white-space: normal !important; overflow: visible !important; text-overflow: unset !important; max-width: calc(100% - 60px) !important; }
+             #guidanceCard .d-flex.align-items-center { flex-wrap: wrap !important; align-items: flex-start !important; }
+             #guidanceCard .btn-sm { margin-top: 0.25rem !important; margin-left: 0 !important; align-self: flex-end !important; }
+             .card-header .d-flex.justify-content-between { flex-direction: column !important; align-items: flex-start !important; }
+             .card-header .d-flex.align-items-center:first-child { margin-bottom: 0.75rem !important; width: 100% !important; }
+             .card-header .d-flex.align-items-center:last-child { width: 100% !important; justify-content: center !important; }
+             .card-header h2 { font-size: 1.1rem !important; line-height: 1.2 !important; margin-bottom: 0.25rem !important; }
+             .card-header .text-muted { font-size: 0.7rem !important; line-height: 1.3 !important; }
+             .card-header .mdi { font-size: 1.2rem !important; margin-right: 0.75rem !important; }
+             .progress-indicator { flex-direction: column !important; align-items: center !important; gap: 0.5rem !important; }
+             .progress-indicator .progress { width: 100% !important; max-width: 200px !important; height: 6px !important; }
+             .progress-indicator small { font-size: 0.7rem !important; margin: 0 !important; }
+             .bg-primary.rounded-circle, .bg-success.rounded-circle, .bg-warning.rounded-circle { display: none !important; }
+            
+            .d-flex.align-items-center .bg-primary.rounded-circle,
+            .d-flex.align-items-center .bg-success.rounded-circle,
+            .d-flex.align-items-center .bg-warning.rounded-circle {
+                margin-right: 0.7rem !important;
+                margin-bottom: 0 !important;
+            }
+        }
+        
+        @media (min-width: 426px) and (max-width: 768px) {
+            .container-fluid {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+            
+            .card {
+                border-radius: 8px !important;
+                box-shadow: 0 2px 12px rgba(0,0,0,0.08) !important;
+            }
+            
+            .card-body {
+                padding: 1.3rem !important;
+            }
+            
+            .card-body.py-4 {
+                padding: 1.2rem 1.3rem !important;
+            }
+            
+            .card-body.py-4 .h3 {
+                font-size: 1.5rem !important;
+                margin-bottom: 0.8rem !important;
+                font-weight: 700 !important;
+                color: #2c3e50 !important;
+            }
+            
+            .card-body.py-4 .text-muted.small {
+                font-size: 0.9rem !important;
+                line-height: 1.4 !important;
+                color: #6c757d !important;
+            }
+            
+            .card-body.py-4 .btn {
+                font-size: 0.8rem !important;
+                padding: 0.5rem 1rem !important;
+                margin-bottom: 0.5rem !important;
+                border-radius: 5px !important;
+                font-weight: 600 !important;
+            }
+            
+            .card-body.py-4 .d-flex.flex-wrap .btn {
+                font-size: 0.75rem !important;
+                padding: 0.4rem 0.8rem !important;
+                margin-right: 0.5rem !important;
+                margin-bottom: 0.5rem !important;
+            }
+            
+            .h3 {
+                font-size: 1.6rem !important;
+                margin-bottom: 1rem !important;
+                font-weight: 700 !important;
+                color: #2c3e50 !important;
+            }
+            
+            .h4 {
+                font-size: 1.3rem !important;
+                margin-bottom: 0.8rem !important;
+                font-weight: 600 !important;
+                color: #34495e !important;
+            }
+            
+            .h5 {
+                font-size: 1.1rem !important;
+                margin-bottom: 0.7rem !important;
+                font-weight: 600 !important;
+                color: #34495e !important;
+            }
+            
+            .progress-steps {
+                padding: 1.2rem 0 !important;
+                margin-bottom: 1.2rem !important;
+            }
+            
+            .progress-steps .d-flex {
+                flex-wrap: nowrap !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+            }
+            
+            .step-item {
+                flex: 1 !important;
+                margin-bottom: 0 !important;
+                min-width: auto !important;
+                position: relative !important;
+            }
+            
+            .step-item:not(:last-child)::after {
+                display: block !important;
+                content: '' !important;
+                position: absolute !important;
+                top: 20px !important;
+                left: 60% !important;
+                right: -40% !important;
+                height: 2px !important;
+                background: #e9ecef !important;
+                z-index: 0 !important;
+            }
+            
+            .step-item.active:not(:last-child)::after,
+            .step-item.completed:not(:last-child)::after {
+                background: #007bff !important;
+            }
+            
+            .step-marker {
+                width: 40px !important;
+                height: 40px !important;
+                border-radius: 50% !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                margin: 0 auto 0.5rem !important;
+                font-size: 1rem !important;
+                font-weight: 600 !important;
+            }
+            
+            .step-text {
+                font-size: 0.8rem !important;
+                font-weight: 500 !important;
+                color: #495057 !important;
+                line-height: 1.2 !important;
+            }
+            
+            .step-item.active .step-marker {
+                background: #007bff !important;
+                color: white !important;
+            }
+            
+            .step-item.completed .step-marker {
+                background: #28a745 !important;
+                color: white !important;
+            }
+            
+            .step-item.completed .step-text {
+                color: #28a745 !important;
+                font-weight: 600 !important;
+            }
+            
+            .mdi {
+                font-size: 1.1em !important;
+                vertical-align: middle !important;
+            }
+            
+            .card-body.py-4 .mdi {
+                font-size: 1.2em !important;
+                margin-right: 0.5rem !important;
+            }
+            
+            .btn .mdi {
+                font-size: 1em !important;
+                margin-right: 0.3rem !important;
+            }
+            
+            .bg-primary.rounded-circle,
+            .bg-success.rounded-circle,
+            .bg-warning.rounded-circle {
+                width: 32px !important;
+                height: 32px !important;
+                font-size: 0.9rem !important;
+                font-weight: 700 !important;
+                box-shadow: 0 2px 6px rgba(0,0,0,0.15) !important;
+                transition: all 0.3s ease !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                margin-right: 0.8rem !important;
+            }
+            
+            .bg-primary.rounded-circle:hover,
+            .bg-success.rounded-circle:hover,
+            .bg-warning.rounded-circle:hover {
+                transform: scale(1.05) !important;
+                box-shadow: 0 3px 8px rgba(0,0,0,0.2) !important;
+            }
+            
+            .bg-primary.rounded-circle span,
+            .bg-success.rounded-circle span,
+            .bg-warning.rounded-circle span {
+                font-size: 0.9rem !important;
+                font-weight: 700 !important;
+                text-shadow: 0 1px 2px rgba(0,0,0,0.2) !important;
+                line-height: 1 !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            
+            .d-flex.align-items-center .bg-primary.rounded-circle,
+            .d-flex.align-items-center .bg-success.rounded-circle,
+            .d-flex.align-items-center .bg-warning.rounded-circle {
+                margin-right: 0.8rem !important;
+                margin-bottom: 0 !important;
+            }
+            
+            .form-control {
+                font-size: 0.85rem !important;
+                padding: 0.6rem 0.7rem !important;
+                border-radius: 4px !important;
+                border: 1px solid #e9ecef !important;
+            }
+            
+            .form-control:focus {
+                border-color: #007bff !important;
+                box-shadow: 0 0 0 0.1rem rgba(0, 123, 255, 0.25) !important;
+            }
+            
+            .form-label {
+                font-size: 0.85rem !important;
+                font-weight: 600 !important;
+                margin-bottom: 0.3rem !important;
+                color: #495057 !important;
+            }
+            
+            .form-text {
+                font-size: 0.75rem !important;
+                line-height: 1.3 !important;
+                margin-top: 0.25rem !important;
+                white-space: nowrap !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+            }
+            
+            .btn {
+                padding: 0.5rem 1rem !important;
+                font-size: 0.8rem !important;
+                border-radius: 4px !important;
+                transition: all 0.3s ease !important;
+            }
+            
+            .btn:hover {
+                transform: translateY(-1px) !important;
+            }
+            
+            .btn-primary {
+                background: linear-gradient(135deg, #007bff 0%, #0056b3 100%) !important;
+                border: none !important;
+            }
+            
+            .btn-success {
+                background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%) !important;
+                border: none !important;
+            }
+            
+            .btn-warning {
+                background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%) !important;
+                border: none !important;
+                color: #212529 !important;
+            }
+            
+            .btn-danger {
+                background: linear-gradient(135deg, #dc3545 0%, #c82333 100%) !important;
+                border: none !important;
+            }
+            
+            .col-lg-4 {
+                margin-bottom: 1.2rem !important;
+            }
+            
+            .card.mb-3 {
+                margin-bottom: 1.2rem !important;
+                border-radius: 6px !important;
+                transition: all 0.3s ease !important;
+            }
+            
+            .card.mb-3:hover {
+                transform: translateY(-1px) !important;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+            }
+            
+            .card-body {
+                padding: 1.1rem !important;
+            }
+            
+            .d-flex.flex-wrap .btn {
+                margin-right: 0.5rem !important;
+                margin-bottom: 0.5rem !important;
+                font-size: 0.75rem !important;
+                padding: 0.4rem 0.8rem !important;
+            }
+            
+            .progress {
+                width: 100px !important;
+                height: 5px !important;
+                border-radius: 2px !important;
+                background-color: #e9ecef !important;
+            }
+            
+            .progress-bar {
+                border-radius: 2px !important;
+                transition: width 0.6s ease !important;
+            }
+            
+            .select-wrapper {
+                margin-bottom: 0.6rem !important;
+            }
+            
+            .select-enhanced {
+                font-size: 0.85rem !important;
+                padding: 0.6rem 2rem 0.6rem 0.7rem !important;
+            }
+            
+            .select-arrow {
+                font-size: 12px !important;
+                right: 8px !important;
+            }
+            
+            .select-hint {
+                display: none !important;
+            }
+            
+            .tooltip {
+                font-size: 0.7rem !important;
+            }
+            
+            .mdi {
+                font-size: 0.9em !important;
+            }
+            
+            .mb-4 {
+                margin-bottom: 1.2rem !important;
+            }
+            
+            .mb-3 {
+                margin-bottom: 1rem !important;
+            }
+            
+            .mt-3 {
+                margin-top: 1rem !important;
+            }
+            
+            .py-3 {
+                padding-top: 1rem !important;
+                padding-bottom: 1rem !important;
+            }
+            
+            .form-text.text-muted.d-flex.align-items-center.mt-1 {
+                font-size: 0.65rem !important;
+                line-height: 1.2 !important;
+            }
+            
+            .form-text.text-muted.d-flex.align-items-center.mt-1 .mdi {
+                font-size: 0.7rem !important;
+                margin-right: 0.2rem !important;
+            }
+            
+            .form-text.text-muted.d-flex.align-items-center.mt-1 span {
+                font-size: 0.65rem !important;
+                margin-left: 0.25rem !important;
+            }
+            
+            .form-text.text-muted.d-flex.align-items-center.mt-1 strong {
+                font-size: 0.65rem !important;
+            }
+            
+            .row {
+                margin-left: -0.5rem !important;
+                margin-right: -0.5rem !important;
+            }
+            
+            .col-lg-4 {
+                padding-left: 0.5rem !important;
+                padding-right: 0.5rem !important;
+            }
+            
+            .card.mb-4 {
+                margin-bottom: 1.5rem !important;
+            }
+            
+            .form-control {
+                min-height: 44px !important;
+            }
+            
+            .btn {
+                min-height: 44px !important;
+            }
+        }
+        
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .container-fluid {
+                padding-left: 1.5rem !important;
+                padding-right: 1.5rem !important;
+            }
+            
+            .card {
+                border-radius: 10px !important;
+                box-shadow: 0 3px 15px rgba(0,0,0,0.08) !important;
+            }
+            
+            .card-body {
+                padding: 1.8rem !important;
+            }
+            
+            .card-body.py-4 {
+                padding: 1.5rem 1.8rem !important;
+            }
+            
+            .card-body.py-4 .h3 {
+                font-size: 1.4rem !important;
+                margin-bottom: 0.8rem !important;
+            }
+            
+            .card-body.py-4 .text-muted.small {
+                font-size: 0.85rem !important;
+                line-height: 1.3 !important;
+            }
+            
+            .card-body.py-4 .btn {
+                font-size: 0.8rem !important;
+                padding: 0.5rem 1rem !important;
+                margin-bottom: 0.5rem !important;
+                border-radius: 5px !important;
+            }
+            
+            .card-body.py-4 .d-flex.flex-wrap .btn {
+                font-size: 0.75rem !important;
+                padding: 0.4rem 0.8rem !important;
+                margin-right: 0.5rem !important;
+                margin-bottom: 0.5rem !important;
+            }
+            
+            .h3 {
+                font-size: 1.5rem !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            .h4 {
+                font-size: 1.2rem !important;
+                margin-bottom: 0.8rem !important;
+            }
+            
+            .h5 {
+                font-size: 1.1rem !important;
+                margin-bottom: 0.7rem !important;
+            }
+            
+            .form-control {
+                font-size: 0.9rem !important;
+                padding: 0.7rem 0.8rem !important;
+                border-radius: 5px !important;
+                border: 1px solid #e9ecef !important;
+            }
+            
+            .form-control:focus {
+                border-color: #007bff !important;
+                box-shadow: 0 0 0 0.15rem rgba(0, 123, 255, 0.25) !important;
+            }
+            
+            .form-label {
+                font-size: 0.9rem !important;
+                font-weight: 600 !important;
+                margin-bottom: 0.4rem !important;
+                color: #495057 !important;
+            }
+            
+            .form-text {
+                font-size: 0.8rem !important;
+                line-height: 1.3 !important;
+                margin-top: 0.3rem !important;
+                white-space: nowrap !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+            }
+            
+            .btn {
+                padding: 0.6rem 1.2rem !important;
+                font-size: 0.85rem !important;
+                border-radius: 5px !important;
+                transition: all 0.3s ease !important;
+            }
+            
+            .btn:hover {
+                transform: translateY(-1px) !important;
+            }
+            
+            .btn-primary {
+                background: linear-gradient(135deg, #007bff 0%, #0056b3 100%) !important;
+                border: none !important;
+            }
+            
+            .btn-success {
+                background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%) !important;
+                border: none !important;
+            }
+            
+            .btn-warning {
+                background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%) !important;
+                border: none !important;
+                color: #212529 !important;
+            }
+            
+            .btn-danger {
+                background: linear-gradient(135deg, #dc3545 0%, #c82333 100%) !important;
+                border: none !important;
+            }
+            
+            .col-lg-4 {
+                margin-bottom: 1.5rem !important;
+            }
+            
+            .card.mb-3 {
+                margin-bottom: 1.5rem !important;
+                border-radius: 7px !important;
+                transition: all 0.3s ease !important;
+            }
+            
+            .card.mb-3:hover {
+                transform: translateY(-2px) !important;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1) !important;
+            }
+            
+            .card-body {
+                padding: 1.3rem !important;
+            }
+            
+            .d-flex.flex-wrap .btn {
+                margin-right: 0.6rem !important;
+                margin-bottom: 0.6rem !important;
+                font-size: 0.8rem !important;
+                padding: 0.5rem 0.9rem !important;
+            }
+            
+            .progress {
+                width: 120px !important;
+                height: 6px !important;
+                border-radius: 3px !important;
+                background-color: #e9ecef !important;
+            }
+            
+            .progress-bar {
+                border-radius: 3px !important;
+                transition: width 0.6s ease !important;
+            }
+            
+            .select-wrapper {
+                margin-bottom: 0.8rem !important;
+            }
+            
+            .select-enhanced {
+                font-size: 0.9rem !important;
+                padding: 0.7rem 2.2rem 0.7rem 0.8rem !important;
+            }
+            
+            .select-arrow {
+                font-size: 13px !important;
+                right: 9px !important;
+            }
+            
+            .select-hint {
+                display: none !important;
+            }
+            
+            .tooltip {
+                font-size: 0.75rem !important;
+            }
+            
+            .mdi {
+                font-size: 1em !important;
+            }
+            
+            .mb-4 {
+                margin-bottom: 1.5rem !important;
+            }
+            
+            .mb-3 {
+                margin-bottom: 1.2rem !important;
+            }
+            
+            .mt-3 {
+                margin-top: 1.2rem !important;
+            }
+            
+            .py-3 {
+                padding-top: 1.2rem !important;
+                padding-bottom: 1.2rem !important;
+            }
+            
+            .form-text.text-muted.d-flex.align-items-center.mt-1 {
+                font-size: 0.7rem !important;
+                line-height: 1.2 !important;
+            }
+            
+            .form-text.text-muted.d-flex.align-items-center.mt-1 .mdi {
+                font-size: 0.75rem !important;
+                margin-right: 0.25rem !important;
+            }
+            
+            .form-text.text-muted.d-flex.align-items-center.mt-1 span {
+                font-size: 0.7rem !important;
+                margin-left: 0.3rem !important;
+            }
+            
+            .form-text.text-muted.d-flex.align-items-center.mt-1 strong {
+                font-size: 0.7rem !important;
+            }
+        }
+        
+        @media (min-width: 1025px) and (max-width: 1440px) {
+            .card-body {
+                padding: 2.5rem !important;
+            }
+            
+            .h3 {
+                font-size: 1.4rem !important;
+            }
+            
+            .btn {
+                padding: 0.5rem 1rem !important;
+                font-size: 0.85rem !important;
+            }
+            
+            .form-control {
+                font-size: 16px !important;
+                padding: 0.9rem !important;
+            }
+            
+            .col-lg-4 {
+                margin-bottom: 2.5rem !important;
+            }
+            
+            .d-flex.flex-wrap .btn {
+                margin-right: 0.5rem !important;
+                margin-bottom: 0.5rem !important;
+            }
+            
+            .progress {
+                width: 160px !important;
+            }
+            
+            .card-body.py-4 .h3 {
+                font-size: 1.2rem !important;
+            }
+            
+            .card-body.py-4 .btn {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+            }
+            
+            .card-body.py-4 .d-flex.flex-wrap .btn {
+                margin-right: 0.4rem !important;
+                margin-bottom: 0.4rem !important;
+            }
+            
+            .card-body.py-4 .text-muted.small {
+                font-size: 0.75rem !important;
+            }
+        }
+
+        @media (min-width: 1440px) {
+            .container-fluid {
+                padding-left: 2rem !important;
+                padding-right: 2rem !important;
+            }
+            
+            .card {
+                border-radius: 12px !important;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.08) !important;
+            }
+            
+            .card-body {
+                padding: 2.5rem !important;
+            }
+            
+            .card-body.py-4 {
+                padding: 2rem 2.5rem !important;
+            }
+            
+            .card-body.py-4 .h3 {
+                font-size: 1.3rem !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            .card-body.py-4 .text-muted.small {
+                font-size: 0.8rem !important;
+                line-height: 1.4 !important;
+            }
+            
+            .card-body.py-4 .btn {
+                font-size: 0.75rem !important;
+                padding: 0.4rem 0.8rem !important;
+                margin-bottom: 0 !important;
+                border-radius: 6px !important;
+            }
+            
+            .card-body.py-4 .d-flex.flex-wrap .btn {
+                font-size: 0.7rem !important;
+                padding: 0.35rem 0.7rem !important;
+                margin-right: 0.4rem !important;
+                margin-bottom: 0 !important;
+            }
+            
+            .d-flex.flex-wrap .btn {
+                flex: 1 !important;
+                min-width: 0 !important;
+                font-size: 0.65rem !important;
+                padding: 0.3rem 0.5rem !important;
+                margin-right: 0.5rem !important;
+                margin-bottom: 0 !important;
+            }
+            
+            .d-flex.flex-wrap .btn:last-child {
+                margin-right: 0 !important;
+            }
+            
+            .d-flex.flex-wrap .btn .mdi {
+                font-size: 0.7rem !important;
+                margin-right: 0.25rem !important;
+            }
+            
+            .d-flex.flex-wrap .btn span {
+                font-size: 0.65rem !important;
+            }
+            
+            .h4 {
+                font-size: 1.1rem !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            .h5 {
+                font-size: 1rem !important;
+                margin-bottom: 0.8rem !important;
+            }
+            
+            .form-control {
+                font-size: 0.9rem !important;
+                padding: 0.7rem 0.9rem !important;
+                border-radius: 6px !important;
+                border: 1px solid #e9ecef !important;
+            }
+            
+            .form-control:focus {
+                border-color: #007bff !important;
+                box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25) !important;
+            }
+            
+            .form-label {
+                font-size: 0.9rem !important;
+                font-weight: 600 !important;
+                margin-bottom: 0.5rem !important;
+                color: #495057 !important;
+            }
+            
+            .form-text {
+                font-size: 0.8rem !important;
+                line-height: 1.4 !important;
+                margin-top: 0.4rem !important;
+            }
+            
+            .col-lg-4 {
+                margin-bottom: 1.5rem !important;
+            }
+            
+            .card.mb-3 {
+                margin-bottom: 1.5rem !important;
+                border-radius: 8px !important;
+                transition: all 0.3s ease !important;
+            }
+            
+            .card.mb-3:hover {
+                transform: translateY(-2px) !important;
+                box-shadow: 0 6px 25px rgba(0,0,0,0.1) !important;
+            }
+            
+            .card-body {
+                padding: 1.5rem !important;
+            }
+            
+            .btn {
+                font-size: 0.85rem !important;
+                padding: 0.5rem 1rem !important;
+                border-radius: 6px !important;
+                transition: all 0.3s ease !important;
+            }
+            
+            .btn:hover {
+                transform: translateY(-1px) !important;
+            }
+            
+            .btn-primary {
+                background: linear-gradient(135deg, #007bff 0%, #0056b3 100%) !important;
+                border: none !important;
+            }
+            
+            .btn-success {
+                background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%) !important;
+                border: none !important;
+            }
+            
+            .btn-warning {
+                background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%) !important;
+                border: none !important;
+                color: #212529 !important;
+            }
+            
+            .btn-danger {
+                background: linear-gradient(135deg, #dc3545 0%, #c82333 100%) !important;
+                border: none !important;
+            }
+            
+            .progress {
+                height: 8px !important;
+                border-radius: 4px !important;
+                background-color: #e9ecef !important;
+            }
+            
+            .progress-bar {
+                border-radius: 4px !important;
+                transition: width 0.6s ease !important;
+            }
+            
+            .select-enhanced {
+                font-size: 0.9rem !important;
+                padding: 0.7rem 2.5rem 0.7rem 0.9rem !important;
+            }
+            
+            .select-arrow {
+                font-size: 14px !important;
+                right: 10px !important;
+            }
+            
+            .select-hint {
+                font-size: 0.75rem !important;
+                padding: 6px 10px !important;
+            }
+            
+            .tooltip {
+                font-size: 0.8rem !important;
+            }
+            
+            .mdi {
+                font-size: 1.1em !important;
+            }
+            
+            .mb-4 {
+                margin-bottom: 2rem !important;
+            }
+            
+            .mb-3 {
+                margin-bottom: 1.5rem !important;
+            }
+            
+            .mt-3 {
+                margin-top: 1.5rem !important;
+            }
+            
+            .py-3 {
+                padding-top: 1.5rem !important;
+                padding-bottom: 1.5rem !important;
+            }
+            
+            .form-text.text-muted.d-flex.align-items-center.mt-1 {
+                font-size: 0.7rem !important;
+                line-height: 1.2 !important;
+                white-space: nowrap !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+            }
+            
+            .form-text.text-muted.d-flex.align-items-center.mt-1 .mdi {
+                font-size: 0.8rem !important;
+                margin-right: 0.3rem !important;
+            }
+            
+            .form-text.text-muted.d-flex.align-items-center.mt-1 span {
+                font-size: 0.7rem !important;
+                margin-left: 0.4rem !important;
+            }
+            
+            .form-text.text-muted.d-flex.align-items-center.mt-1 strong {
+                font-size: 0.7rem !important;
+            }
+        }
+
+        .select-wrapper {
+            position: relative;
+        }
+
+        .select-enhanced {
+            appearance: none !important;
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            background-image: none !important;
+            padding-right: 40px !important;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .select-enhanced:hover {
+            border-color: #007bff !important;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .select-enhanced:focus {
+            border-color: #007bff !important;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+            outline: none;
+        }
+
+        .select-arrow {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            color: #6c757d;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+
+        .select-wrapper:hover .select-arrow {
+            color: #007bff;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .select-enhanced:focus + .select-arrow {
+            color: #007bff;
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+        .select-hint {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 1px solid #dee2e6;
+            border-radius: 0 0 6px 6px;
+            padding: 8px 12px;
+            font-size: 11px;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            z-index: 3;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .select-wrapper:hover .select-hint {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .select-enhanced:focus + .select-arrow + .select-hint {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .select-enhanced::after {
+            content: '4 opções disponíveis';
+            position: absolute;
+            right: 45px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 10px;
+            color: #6c757d;
+            opacity: 0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .select-wrapper:hover .select-enhanced::after {
+            opacity: 1;
+        }
+
+        @keyframes selectPulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 123, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0); }
+        }
+
+        .select-enhanced.attention {
+            animation: selectPulse 2s infinite;
+        }
+
+        @media (max-width: 768px) {
+            .select-hint {
+                font-size: 10px;
+                padding: 6px 8px;
+            }
+            
+            .select-enhanced::after {
+                display: none;
+            }
+        }
+        
+        #modalParcelas .btn-primary {
+            background: #687ae8 !important;
+            border-color: #687ae8 !important;
+            color: #fff !important;
+            background-image: none !important;
+        }
+        
+        #modalParcelas .btn-primary:hover {
+            background: #5a6fd8 !important;
+            border-color: #5a6fd8 !important;
+        }
+        
+        #modalParcelas .btn-outline-secondary {
+            color: #95aac9 !important;
+            border-color: #95aac9 !important;
+            background: transparent !important;
+            background-image: none !important;
+        }
+        
+        #modalParcelas .btn-outline-secondary:hover {
+            background: #95aac9 !important;
+            color: #fff !important;
+        }
+        
+        #modalParcelas .btn-secondary {
+            background: #95aac9 !important;
+            border-color: #95aac9 !important;
+            color: #fff !important;
+            background-image: none !important;
+        }
+        
+        #modalParcelas .btn-secondary:hover {
+            background: #7a8bb8 !important;
+            border-color: #7a8bb8 !important;
+        }
+        
+        #modalParcelas .btn-outline-primary {
+            color: #687ae8 !important;
+            border-color: #687ae8 !important;
+            background: transparent !important;
+            background-image: none !important;
+        }
+        
+        #modalParcelas .btn-outline-primary:hover {
+            background: #687ae8 !important;
+            color: #fff !important;
+        }
+        
+        #modalParcelas .badge-success {
+            background: #0c9 !important;
+            color: #fff !important;
+            border: none !important;
+            background-image: none !important;
+        }
+        
+        #modalParcelas .badge-warning {
+            background: #f7bc06 !important;
+            color: #fff !important;
+            border: none !important;
+            background-image: none !important;
+        }
+        
+        #modalParcelas .badge-info {
+            background: #19b5fe !important;
+            color: #fff !important;
+            border: none !important;
+            background-image: none !important;
+        }
+        
+        .card-body .btn-primary {
+            background: #687ae8 !important;
+            border-color: #687ae8 !important;
+            color: #fff !important;
+            background-image: none !important;
+        }
+        
+        .card-body .btn-primary:hover {
+            background: #5a6fd8 !important;
+            border-color: #5a6fd8 !important;
+        }
+        
+        .card-body .btn-success {
+            background: #0c9 !important;
+            border-color: #0c9 !important;
+            color: #fff !important;
+            background-image: none !important;
+        }
+        
+        .card-body .btn-success:hover {
+            background: #0ab !important;
+            border-color: #0ab !important;
+        }
+        
+        .card-body .btn-light {
+            background: #f8f9fa !important;
+            border-color: #dee2e6 !important;
+            color: #495057 !important;
+            background-image: none !important;
+        }
+        
+        .card-body .btn-light:hover {
+            background: #e9ecef !important;
+            border-color: #ced4da !important;
+            color: #343a40 !important;
+        }
+        
+        #modalParcelas .form-control:focus {
+            border-color: #687ae8 !important;
+            box-shadow: 0 0 0 0.2rem rgba(104, 122, 232, 0.25) !important;
+            background: #fff !important;
+        }
+        
+        #modalParcelas .form-control:hover {
+            border-color: #adb5bd !important;
+        }
+        
+        #modalParcelas .input-group-text {
+            background: #f8f9fa !important;
+            border-color: #ced4da !important;
+            color: #6c757d !important;
+        }
+        
+        #modalParcelas .table td {
+            vertical-align: middle !important;
+        }
+        
+        #modalParcelas .table tbody tr:hover {
+            background-color: #f8f9fa !important;
+        }
+        
+        #modalParcelas .badge {
+            font-weight: 500 !important;
+            letter-spacing: 0.3px !important;
+        }
+        
+        #modalParcelas .btn {
+            transition: all 0.2s ease-in-out !important;
+        }
+        
+        #modalParcelas .btn:hover {
+            transform: translateY(-1px) !important;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+        }
+    </style>
+</head>
+<body class="sidebar-pinned">
+<aside class="admin-sidebar">
+    <div class="admin-sidebar-brand">
+        <img class="admin-brand-logo" src="../assets/img/logo.svg" width="40" alt="atmos Logo">
+        <span class="admin-brand-content"><a href="index.html">  atmos</a></span>
+        <div class="ml-auto">
+            <a href="#" class="admin-pin-sidebar btn-ghost btn btn-rounded-circle"></a>
+            <a href="#" class="admin-close-sidebar"></a>
+        </div>
+    </div>
+    <div class="admin-sidebar-wrapper js-scrollbar">
+        <ul class="menu">
+            <li class="menu-item active">
+                <a href="#" class="menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Link
+                                                </span>
+                                            </span>
+                    <span class="menu-icon">
+                                                   <span class="icon-badge badge-success badge badge-pill">1</span>
+
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+
+            </li>
+
+            <li class="menu-item ">
+                <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu level 1
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                                <span class="menu-info">Contains submenu</span>
+                                            </span>
+                    <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+
+
+                </ul>
+            </li>
+
+            <li class="menu-item ">
+                <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu Level 2
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                                <span class="menu-info">Contains submenu</span>
+                                            </span>
+                    <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu Level 1.1
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li class="menu-item">
+                                <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 2.1 </span>
+                                            </span>
+                                    <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                                </a>
+                            </li>
+
+                </ul>
+            </li>
+
+        </ul>
+            </li>
+        </ul>
+    </div>
+
+</aside>
+
+
+<main class="admin-main">
+    <!--site header begins-->
+<header class="admin-header">
+            <a href="#" class="sidebar-toggle" data-toggleclass="sidebar-open" data-target="body"></a>
+
+            <nav class="mr-auto my-auto">
+        <ul class="nav align-items-center">
+            <li class="nav-item">
+                        <a class="nav-link" data-target="#siteSearchModal" data-toggle="modal" href="#">
+                            <i class="mdi mdi-magnify mdi-24px align-middle"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+            <nav class="ml-auto">
+        <ul class="nav align-items-center">
+            <li class="nav-item">
+                <div class="dropdown">
+                            <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="mdi mdi-24px mdi-bell-outline"></i>
+                        <span class="notification-counter"></span>
+                    </a>
+                    <div class="dropdown-menu notification-container dropdown-menu-right">
+                                <div class="d-flex p-all-15 bg-white justify-content-between border-bottom">
+                            <a href="#!" class="mdi mdi-18px mdi-settings text-muted"></a>
+                                    <span class="h5 m-0">Notificações</span>
+                            <a href="#!" class="mdi mdi-18px mdi-notification-clear-all text-muted"></a>
+                        </div>
+                        <div class="notification-events bg-gray-300">
+                                    <div class="text-overline m-b-5">hoje</div>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body">
+                                                <i class="mdi mdi-circle text-success"></i> Sistema operacional.
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="avatar avatar-sm avatar-online">
+                                <span class="avatar-title rounded-circle bg-dark">A</span>
+                    </div>
+                </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="#">Adicionar Conta</a>
+                            <a class="dropdown-item" href="#">Redefinir Senha</a>
+                            <a class="dropdown-item" href="#">Ajuda</a>
+                    <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Sair</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</header>
+    <!--site header ends -->
+
+    <!-- Skip Navigation Link para Acessibilidade -->
+
+    <section class="admin-content">
+        <!-- BEGIN PlACE PAGE CONTENT HERE -->
+        <div class="container-fluid">
+            <!-- Wrapper com margens laterais  -->
+            <div class="row justify-content-center">
+                <div class="col-12 col-xl-10 col-xxl-9">
+            
+                    <!-- Navigation -->
+                    <nav aria-label="Breadcrumb" class="mb-4">
+                        <ol class="breadcrumb bg-transparent p-0">
+                            <li class="breadcrumb-item">
+                                <a href="#" class="text-decoration-none">
+                                    <i class="mdi mdi-home mr-1"></i>Início
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="#" class="text-decoration-none">Financeiro</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Taxas e Tarifas</li>
+                        </ol>
+                    </nav>
+
+                    <!-- Cabeçalho principal -->
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body d-flex flex-column flex-md-row justify-content-between align-items-center py-4">
+                            <div class="d-flex align-items-center mb-3 mb-md-0">
+                                <i class="mdi mdi-percent text-primary mdi-36px mr-3"></i>
+                                <div>
+                                    <h1 class="h3 mb-0 text-dark font-weight-bold">Gestão de Taxas e Tarifas</h1>
+                                    <p class="text-muted mb-0 small">Configure e gerencie taxas, tarifas e impostos do seu negócio</p>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-wrap">
+                                <button class="btn btn-primary mr-2 px-3 px-md-4 mb-2" data-toggle="modal" data-target="#slideLeftModal" style="background: #687ae8 !important; border-color: #687ae8 !important; color: #fff !important; background-image: none !important;">
+                                    <i class="mdi mdi-help-circle-outline mr-1 mr-md-2"></i><span class="d-none d-sm-inline">Como Usar</span>
+                                </button>
+                                <button class="btn btn-success mr-2 px-3 px-md-4 mb-2" onclick="limparFormulario()" style="background: #0c9 !important; border-color: #0c9 !important; color: #fff !important; background-image: none !important;">
+                                    <i class="mdi mdi-refresh mr-1 mr-md-2"></i><span class="d-none d-sm-inline">Limpar Formulário</span>
+                                </button>
+                                <button class="btn btn-light px-3 px-md-4 border mb-2" onclick="salvarConfiguracoes()" style="background: #f8f9fa !important; border-color: #dee2e6 !important; color: #495057 !important; background-image: none !important;">
+                                    <i class="mdi mdi-content-save mr-1 mr-md-2"></i><span class="d-none d-sm-inline">Salvar Configurações</span>
+                                </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                    <!-- Sistema de Alertas -->
+                    <div class="alerts-container" id="alertsContainer" role="alert" aria-live="polite">
+                        <!-- Success Alert -->
+                        <div id="successAlert" class="alert alert-success d-none mb-4 animate-fade-in" role="alert">
+                        <div class="d-flex align-items-center">
+                                <i class="mdi mdi-check-circle mdi-24px mr-3" aria-hidden="true"></i>
+                                <div class="flex-grow-1">
+                                    <h6 class="alert-heading mb-1">Configurações Salvas!</h6>
+                                    <p class="mb-0">As alterações foram aplicadas imediatamente e já estão em vigor.</p>
+                            </div>
+                                <button type="button" class="btn btn-outline-success btn-sm ml-3" 
+                                        onclick="this.closest('.alert').classList.add('d-none')"
+                                        aria-label="Fechar alerta">
+                                    <i class="mdi mdi-close"></i>
+                                </button>
+                        </div>
+                    </div>
+                                
+                        <!-- Info Alert -->
+                        <div id="infoAlert" class="alert alert-info d-none mb-4 animate-fade-in" role="alert">
+                            <div class="d-flex align-items-center">
+                                <i class="mdi mdi-information mdi-24px mr-3" aria-hidden="true"></i>
+                                <div class="flex-grow-1">
+                                    <h6 class="alert-heading mb-1">Informação Importante</h6>
+                                    <p class="mb-0" id="infoAlertText">Mensagem informativa será exibida aqui.</p>
+                        </div>
+                                <button type="button" class="btn btn-outline-info btn-sm ml-3" 
+                                        onclick="this.closest('.alert').classList.add('d-none')"
+                                        aria-label="Fechar alerta">
+                                    <i class="mdi mdi-close"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card de Orientações  -->
+                    <div class="card mb-4 shadow-sm" id="guidanceCard">
+                        <div class="card-body py-3">
+                            <div class="d-flex align-items-center">
+                                <i class="mdi mdi-lightbulb-outline text-warning mr-2"></i>
+                                <span class="text-muted small">
+                                    Configure suas taxas e tarifas. O sistema calcula automaticamente os valores baseado nas configurações inseridas.
+                                </span>
+                                <button type="button" class="btn btn-sm btn-outline-secondary ml-auto" onclick="fecharNotificacao()" data-toggle="tooltip" title="Fechar notificação" style="padding: 2px 6px; font-size: 10px;">
+                                    <i class="mdi mdi-close" style="font-size: 12px;"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                    <!-- Formulário Principal  -->
+                    <main class="card mb-4 card-hover animate-fade-in" id="main-content" role="main" aria-labelledby="form-titulo">
+                    <div class="card-header bg-light" style="border-radius: 12px 12px 0 0; border-bottom: 1px solid #e9ecef;">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center">
+                                <i class="mdi mdi-settings text-primary mr-3"></i>
+                                <div>
+                                    <h2 id="form-titulo" class="h5 mb-0 font-weight-bold text-dark">Configurações de Taxas e Tarifas</h2>
+                                    <small class="text-muted">Preencha apenas os campos necessários para seu negócio</small>
+                        </div>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <div class="progress-indicator d-flex align-items-center mr-3">
+                                        <small class="text-muted mr-2">Progresso:</small>
+                                    <div class="progress" style="width: 120px; height: 8px; border-radius: 4px;">
+                                            <div class="progress-bar bg-primary" 
+                                                 role="progressbar" 
+                                             style="width: 0%; border-radius: 4px;" 
+                                                 id="formProgress"
+                                                 aria-valuenow="0" 
+                                                 aria-valuemin="0" 
+                                                 aria-valuemax="100"
+                                                 aria-label="Progresso do preenchimento do formulário">
+                                            </div>
+                                        </div>
+                                    <small class="text-muted ml-2 font-weight-bold" id="progressText">0%</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card-body p-4">
+                            <form id="tarifaForm" novalidate role="form" aria-labelledby="form-titulo">
+
+                                <!-- Seção 1: Taxas Básicas -->
+                                <div class="card mb-4 shadow-sm" style="border-radius: 12px; border: 1px solid #e9ecef;">
+                                    <div class="card-header bg-light" style="border-radius: 12px 12px 0 0; border-bottom: 1px solid #e9ecef;">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="d-flex align-items-center">
+                                                <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center mr-3" style="width: 36px; height: 36px;">
+                                                    <span class="text-white font-weight-bold">1</span>
+                                        </div>
+                                                <div>
+                                                    <h3 id="taxas-basicas-titulo" class="h6 mb-0 font-weight-bold text-dark">Taxas Básicas</h3>
+                                                    <small class="text-muted">Configure as taxas percentuais aplicadas sobre suas vendas</small>
+                                        </div>
+                                            </div>
+                                            <button type="button" class="btn btn-outline-primary btn-sm" 
+                                                    onclick="preencherRecomendados('basicas')"
+                                                    data-toggle="tooltip" 
+                                                    title="Preencher com valores recomendados">
+                                                <i class="mdi mdi-auto-fix mr-1"></i>
+                                                <span class="d-none d-sm-inline">Sugerir</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-body py-4">
+                                        
+                                    <div class="row">
+                                        <div class="col-lg-6 mb-4">
+                                            <div class="form-group">
+                                                <label for="taxaVendaConcluida" class="form-label required">
+                                                    <i class="mdi mdi-percent mr-2 text-primary" aria-hidden="true"></i>
+                                                    Taxa por venda concluída
+                                                    <span class="required text-danger" aria-label="Campo obrigatório">*</span>
+                                                </label>
+                                                <div class="input-group">
+                                                    <input type="number" 
+                                                           step="0.01" 
+                                                           placeholder="Ex: 3.50" 
+                                                           id="taxaVendaConcluida" 
+                                                           class="form-control" 
+                                                           min="0" 
+                                                           max="100" 
+                                                           aria-describedby="taxaVendaHelp taxaVendaError"
+                                                           data-field="taxaVendaConcluida">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">%</span>
+                                                    </div>
+                                                </div>
+                                                <div class="invalid-feedback" id="taxaVendaError" role="alert"></div>
+                                                <small id="taxaVendaHelp" class="form-text text-muted">
+                                                    <i class="mdi mdi-lightbulb-outline mr-1" aria-hidden="true"></i>
+                                                    Recomendado: 2% a 5% do valor da venda (taxa típica: 3.5%)
+                                                </small>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-lg-6 mb-4">
+                                            <div class="form-group">
+                                                <label for="tarifaCartao" class="form-label">
+                                                    <i class="mdi mdi-credit-card mr-2 text-primary" aria-hidden="true"></i>
+                                                    Taxa de processamento - Cartão
+                                                </label>
+                                                <div class="input-group">
+                                                    <input type="number" 
+                                                           step="0.01" 
+                                                           placeholder="Ex: 2.99" 
+                                                           id="tarifaCartao" 
+                                                           class="form-control" 
+                                                           min="0" 
+                                                           max="100" 
+                                                           aria-describedby="tarifaCartaoHelp"
+                                                           data-field="tarifaCartao">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text">%</span>
+                                                    </div>
+                                                </div>
+                                                <small id="tarifaCartaoHelp" class="form-text text-muted">
+                                                    <i class="mdi mdi-information-outline mr-1" aria-hidden="true"></i>
+                                                    Taxa cobrada pelas operadoras (Mercado Pago: 2.99%, PagSeguro: 3.19%)
+                                                </small>
+                                   <div class="mt-3">
+                                       <button type="button" class="btn btn-outline-primary btn-sm" onclick="cadastrarParcelas()" data-toggle="tooltip" title="Configurar parcelas do cartão">
+                                           <i class="mdi mdi-credit-card-multiple mr-1"></i>
+                                           Cadastrar Parcelas
+                                       </button>
+                                                </div>
+                                                </div>
+                                            </div>
+                               </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Seção 2: Métodos de Pagamento -->
+                                <div class="card mb-4 shadow-sm" style="border-radius: 12px; border: 1px solid #e9ecef;">
+                                    <div class="card-header bg-light" style="border-radius: 12px 12px 0 0; border-bottom: 1px solid #e9ecef;">
+                                        <div class="d-flex align-items-center">
+                                            <div class="bg-success rounded-circle d-flex align-items-center justify-content-center mr-3" style="width: 36px; height: 36px;">
+                                                <span class="text-white font-weight-bold">2</span>
+                                            </div>
+                                        <div>
+                                                <h6 class="mb-0 font-weight-bold text-dark">Métodos de Pagamento</h6>
+                                                <small class="text-muted">Configure tarifas específicas para cada método</small>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="card-body py-4">
+                                        
+                                    <div class="row">
+                               <div class="col-lg-4 col-md-6 mb-4">
+                                       <div class="card h-100 border-0 shadow-sm" style="border-radius: 8px;">
+                                           <div class="card-header bg-light border-0" style="border-radius: 8px 8px 0 0;">
+                                           <div class="d-flex align-items-center">
+                                                   <i class="mdi mdi-qrcode text-info mr-2"></i>
+                                               <h6 class="mb-0 font-weight-bold text-dark">PIX</h6>
+                                           </div>
+                                       </div>
+                                       <div class="card-body">
+                                           <div class="form-group">
+                                                   <label class="form-label font-weight-bold text-dark d-flex align-items-center mb-2" style="font-size: 13px;">
+                                                       <i class="mdi mdi-percent mr-1 text-primary"></i>
+                                                   Tarifa por PIX
+                                               </label>
+                                               <div class="input-group">
+                                                       <input type="number" step="0.01" placeholder="0.00" id="tarifaPix" 
+                                                              class="form-control" min="0" max="100" style="height: 40px; border: 2px solid #e9ecef; border-radius: 6px; font-size: 13px; padding: 8px 12px;">
+                                                   <div class="input-group-append">
+                                                           <span class="input-group-text bg-light" style="border: 2px solid #e9ecef; border-left: none; border-radius: 0 6px 6px 0;">%</span>
+                                                   </div>
+                                               </div>
+                                                   <small class="form-text text-muted d-flex align-items-center mt-1">
+                                                       <i class="mdi mdi-information-outline mr-1"></i>
+                                                   Geralmente menor que cartão (0.5% a 2%)
+                                                   </small>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+                                   
+                                        <div class="col-lg-4 col-md-6 mb-4">
+                                                <div class="card h-100 border-0 shadow-sm" style="border-radius: 8px;">
+                                                    <div class="card-header bg-light border-0" style="border-radius: 8px 8px 0 0;">
+                                                    <div class="d-flex align-items-center">
+                                                            <i class="mdi mdi-file-document text-warning mr-2"></i>
+                                                        <h6 class="mb-0 font-weight-bold text-dark">Boleto Bancário</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="form-group mb-3">
+                                                            <label class="form-label font-weight-bold text-dark d-flex align-items-center mb-2" style="font-size: 13px;">
+                                                                <i class="mdi mdi-currency-usd mr-1 text-primary"></i>
+                                                            Tarifa por boleto
+                                                        </label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                    <span class="input-group-text bg-light" style="border: 2px solid #e9ecef; border-right: none; border-radius: 6px 0 0 6px;">R$</span>
+                                                            </div>
+                                                                <input type="number" step="0.01" placeholder="0.00" id="tarifaBoleto" 
+                                                                       class="form-control" min="0" style="height: 40px; border: 2px solid #e9ecef; border-left: none; border-radius: 0 6px 6px 0; font-size: 13px; padding: 8px 12px;">
+                                                        </div>
+                                                            <div id="tarifaBoletoHint" class="currency-hint"></div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                            <label class="form-label font-weight-bold text-dark d-flex align-items-center mb-2" style="font-size: 13px;">
+                                                                <i class="mdi mdi-calendar mr-1 text-primary"></i>
+                                                            Dias para vencimento
+                                                        </label>
+                                                        <div class="input-group">
+                                                                <input type="number" placeholder="3" id="diasVencimento" 
+                                                                       class="form-control" min="1" max="30" style="height: 40px; border: 2px solid #e9ecef; border-radius: 6px; font-size: 13px; padding: 8px 12px;">
+                                                            <div class="input-group-append">
+                                                                    <span class="input-group-text bg-light" style="border: 2px solid #e9ecef; border-left: none; border-radius: 0 6px 6px 0;">dias</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                            
+                                        <div class="col-lg-4 col-md-6 mb-4">
+                                                <div class="card h-100 border-0 shadow-sm" style="border-radius: 8px;">
+                                                    <div class="card-header bg-light border-0" style="border-radius: 8px 8px 0 0;">
+                                                    <div class="d-flex align-items-center">
+                                                            <i class="mdi mdi-cash text-primary mr-2"></i>
+                                                        <h6 class="mb-0 font-weight-bold text-dark">Pedidos</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="form-group mb-3">
+                                                            <label class="form-label font-weight-bold text-dark d-flex align-items-center mb-2" style="font-size: 13px;">
+                                                                <i class="mdi mdi-currency-usd mr-1 text-primary"></i>
+                                                            Tarifa por pedido (R$)
+                                                        </label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                    <span class="input-group-text bg-light" style="border: 2px solid #e9ecef; border-right: none; border-radius: 6px 0 0 6px;">R$</span>
+                                                            </div>
+                                                                <input type="number" step="0.01" placeholder="0.00" id="tarifaPedidoReal" 
+                                                                       class="form-control" min="0" style="height: 40px; border: 2px solid #e9ecef; border-left: none; border-radius: 0 6px 6px 0; font-size: 13px; padding: 8px 12px;">
+                                                        </div>
+                                                            <div id="tarifaPedidoRealHint" class="currency-hint"></div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                            <label class="form-label font-weight-bold text-dark d-flex align-items-center mb-2" style="font-size: 13px;">
+                                                                <i class="mdi mdi-credit-card mr-1 text-primary"></i>
+                                                            Tarifa por pedido (Cartão)
+                                                        </label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                    <span class="input-group-text bg-light" style="border: 2px solid #e9ecef; border-right: none; border-radius: 6px 0 0 6px;">R$</span>
+                                                            </div>
+                                                                <input type="number" step="0.01" placeholder="0.00" id="tarifaPedidoCartao" 
+                                                                       class="form-control" min="0" style="height: 40px; border: 2px solid #e9ecef; border-left: none; border-radius: 0 6px 6px 0; font-size: 13px; padding: 8px 12px;">
+                                                        </div>
+                                                            <div id="tarifaPedidoCartaoHint" class="currency-hint"></div>
+                                           </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Seção 3: Impostos -->
+                        <div class="card mb-4 shadow-sm" style="border-radius: 12px; border: 1px solid #e9ecef;">
+                            <div class="card-header bg-light" style="border-radius: 12px 12px 0 0; border-bottom: 1px solid #e9ecef;">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-warning rounded-circle d-flex align-items-center justify-content-center mr-3" style="width: 36px; height: 36px;">
+                                                <span class="text-white font-weight-bold">3</span>
+                                            </div>
+                                                <div>
+                                        <h6 class="mb-0 font-weight-bold text-dark">Configuração de Impostos</h6>
+                                                <small class="text-muted">Configure os impostos aplicados sobre o faturamento</small>
+                                            </div>
+                                        </div>
+                            </div>
+                            <div class="card-body py-4">
+                                        
+                                        <div class="row">
+                                            <div class="col-lg-6 mb-4">
+                                                <div class="form-group">
+                                                    <label class="form-label font-weight-bold text-dark d-flex align-items-center mb-2" style="font-size: 13px;">
+                                                        <i class="mdi mdi-file-document-outline mr-1 text-primary"></i>
+                                                        Tipo de imposto
+                                                        <span class="text-danger ml-1">*</span>
+                                                    </label>
+                                                    <div class="select-wrapper position-relative">
+                                                        <select id="tipoImposto" class="form-control select-enhanced" style="height: 40px; border: 2px solid #e9ecef; border-radius: 6px; font-size: 13px; padding: 8px 12px; appearance: none; background-image: none; cursor: pointer; transition: all 0.3s ease;">
+                                                        <option value="opcao1">Opção 1 (% sob Faturamento - Custo do Produto)</option>
+                                                        <option value="opcao2">Opção 2 (% sob Faturamento)</option>
+                                                        <option value="opcao3">Opção 3 (% sob Faturamento - Custo do produto - Ads)</option>
+                                                        <option value="opcao4">Opção 4 (% sob Lucro)</option>
+                                                    </select>
+                                                        <div class="select-arrow">
+                                                            <i class="mdi mdi-chevron-down"></i>
+                                                        </div>
+                                                        <div class="select-hint">
+                                                            <i class="mdi mdi-information-outline mr-1"></i>
+                                                            <small class="text-muted">Clique para ver todas as opções</small>
+                                                        </div>
+                                                    </div>
+                                                    <small class="form-text text-muted d-flex align-items-center mt-1">
+                                                        <i class="mdi mdi-information-outline mr-1"></i>
+                                                        Selecione a base de cálculo do imposto
+                                                         <span class="text-primary ml-2 font-weight-bold">• Opção mais comum: Opção 1</span>
+                                                    </small>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-lg-6 mb-4">
+                                                <div class="form-group">
+                                                    <label class="form-label font-weight-bold text-dark d-flex align-items-center mb-2" style="font-size: 13px;">
+                                                        <i class="mdi mdi-percent mr-1 text-primary"></i>
+                                                        Percentual de imposto
+                                                        <span class="text-danger ml-1">*</span>
+                                                    </label>
+                                                    <div class="input-group">
+                                                        <input type="number" step="0.01" placeholder="0.00" id="percentualImposto" 
+                                                               class="form-control" min="0" max="100" style="height: 40px; border: 2px solid #e9ecef; border-radius: 6px; font-size: 13px; padding: 8px 12px;">
+                                                        <div class="input-group-append">
+                                                            <span class="input-group-text bg-light" style="border: 2px solid #e9ecef; border-left: none; border-radius: 0 6px 6px 0;">%</span>
+                                                        </div>
+                                                    </div>
+                                                    <small class="form-text text-muted d-flex align-items-center mt-1">
+                                                        <i class="mdi mdi-alert-circle mr-1"></i>
+                                                       <strong>Importante:</strong> &nbsp;Consulte um contador para valores corretos
+                                                       <span class="text-success ml-2 font-weight-bold">• Média: 6% a 15%</span>
+                                                    </small>
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Resumo das Configurações -->
+                                <div class="card shadow-sm" style="border-radius: 12px; border: 1px solid #e9ecef;">
+                                    <div class="card-header bg-light" style="border-radius: 12px 12px 0 0; border-bottom: 1px solid #e9ecef;">
+                                            <div class="d-flex align-items-center">
+                                                <i class="mdi mdi-chart-line text-primary mr-2"></i>
+                                                <h6 class="mb-0 font-weight-bold text-dark">Resumo das Configurações</h6>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <h6 class="text-muted font-weight-bold mb-3 d-flex align-items-center">
+                                                        <i class="mdi mdi-percent mr-2 text-primary"></i>
+                                                        Taxas Percentuais
+                                                    </h6>
+                                                    <div class="list-group list-group-flush">
+                                                        <div class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 py-2">
+                                                            <span class="font-weight-bold text-dark">Taxa de Venda:</span>
+                                                            <span class="badge badge-primary" id="summaryTaxaVenda" style="font-size: 12px; padding: 8px 12px;">0.00%</span>
+                                                        </div>
+                                                        <div class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 py-2">
+                                                            <span class="font-weight-bold text-dark">Tarifa Cartão:</span>
+                                                            <span class="badge badge-primary" id="summaryTarifaCartao" style="font-size: 12px; padding: 8px 12px;">0.00%</span>
+                                                        </div>
+                                                        <div class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 py-2">
+                                                            <span class="font-weight-bold text-dark">Tarifa PIX:</span>
+                                                            <span class="badge badge-primary" id="summaryTarifaPix" style="font-size: 12px; padding: 8px 12px;">0.00%</span>
+                                                        </div>
+                                                        <div class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 py-2">
+                                                            <span class="font-weight-bold text-dark">Imposto:</span>
+                                                            <span class="badge badge-primary" id="summaryImposto" style="font-size: 12px; padding: 8px 12px;">0.00%</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="col-md-6">
+                                                    <h6 class="text-muted font-weight-bold mb-3 d-flex align-items-center">
+                                                        <i class="mdi mdi-currency-usd mr-2 text-success"></i>
+                                                        Tarifas Fixas (R$)
+                                                    </h6>
+                                                    <div class="list-group list-group-flush">
+                                                        <div class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 py-2">
+                                                            <span class="font-weight-bold text-dark">Tarifa Boleto:</span>
+                                                            <span class="badge badge-success" id="summaryTarifaBoleto" style="font-size: 12px; padding: 8px 12px;">R$ 0,00</span>
+                                                        </div>
+                                                        <div class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 py-2">
+                                                            <span class="font-weight-bold text-dark">Tarifa Pedido:</span>
+                                                            <span class="badge badge-success" id="summaryTarifaPedido" style="font-size: 12px; padding: 8px 12px;">R$ 0,00</span>
+                                                        </div>
+                                                        <div class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 py-2">
+                                                            <span class="font-weight-bold text-dark">Tarifa Pedido Cartão:</span>
+                                                            <span class="badge badge-success" id="summaryTarifaPedidoCartao" style="font-size: 12px; padding: 8px 12px;">R$ 0,00</span>
+                                                        </div>
+                                                        <div class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 py-2">
+                                                            <span class="font-weight-bold text-dark">Vencimento Boleto:</span>
+                                                            <span class="badge badge-secondary" id="summaryDiasVencimento" style="font-size: 12px; padding: 8px 12px;">3 dias</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="mt-4 p-3 bg-white rounded border" style="border-radius: 8px;">
+                                                <div class="d-flex align-items-center">
+                                                    <i class="mdi mdi-information text-info mr-2"></i>
+                                                    <small class="text-muted mb-0">
+                                                        <strong>Lembre-se:</strong> Todas as configurações são opcionais. 
+                                                        Você pode salvar o formulário mesmo com campos vazios e configurá-los posteriormente.
+                                                    </small>
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END PLACE PAGE CONTENT HERE -->
+    </section>
+</main>
+
+
+    <!-- Modal de Busca -->
+    <div class="modal modal-slide-left fade" id="siteSearchModal" tabindex="-1" role="dialog" aria-labelledby="siteSearchModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body p-all-0" id="site-search">
+                <button type="button" class="close light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                    <div class="form-dark bg-dark text-white p-t-60 p-b-20 bg-dots">
+                        <h3 class="text-uppercase text-center fw-300">Buscar</h3>
+                    <div class="container-fluid">
+                        <div class="col-md-10 p-t-10 m-auto">
+                                <input type="search" placeholder="Buscar algo..." class="search form-control form-control-lg">
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="bg-dark text-muted container-fluid p-b-10 text-center text-overline">
+                            resultados
+                    </div>
+                        <div class="list-group list">
+                            <div class="list-group-item d-flex align-items-center">
+                            <div class="m-r-20">
+                                    <div class="avatar avatar-sm">
+                                        <div class="avatar-title bg-primary rounded">
+                                            <i class="mdi mdi-24px mdi-percent"></i>
+                            </div>
+                            </div>
+                            </div>
+                            <div class="">
+                                    <div class="name">Taxas e Tarifas</div>
+                                    <div class="text-muted">Configurações de pagamento</div>
+                            </div>
+                        </div>
+                            </div>
+                            </div>
+                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+    <!-- Scripts -->
+<script src="../assets/vendor/jquery/jquery.min.js"></script>
+<script src="../assets/vendor/jquery-ui/jquery-ui.min.js"></script>
+<script src="../assets/vendor/popper/popper.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/vendor/select2/js/select2.full.min.js"></script>
+<script src="../assets/vendor/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+<script src="../assets/vendor/listjs/listjs.min.js"></script>
+<script src="../assets/vendor/moment/moment.min.js"></script>
+<script src="../assets/vendor/daterangepicker/daterangepicker.js"></script>
+<script src="../assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="../assets/vendor/bootstrap-notify/bootstrap-notify.min.js"></script>
+<script src="../assets/js/atmos.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    // Sistema de Gerenciamento
+    const AppState = {
+        formData: {
+        taxaVendaConcluida: '',
+        tarifaCartao: '',
+        tarifaBoleto: '',
+        tarifaPix: '',
+        tarifaPedidoReal: '',
+        tarifaPedidoCartao: '',
+            diasVencimento: '3',
+        tipoImposto: 'opcao1',
+        percentualImposto: ''
+        },
+        isLoading: false,
+        currentStep: 1,
+        totalSteps: 4,
+        validationErrors: {},
+        originalData: null
+    };
+
+    const AppConfig = {
+        debounceDelay: 300,
+        autoSaveInterval: 30000,
+        validationRules: {
+            taxaVendaConcluida: { required: true, min: 0, max: 100 },
+            tarifaCartao: { required: false, min: 0, max: 100 },
+            tarifaBoleto: { required: false, min: 0, max: 10000 },
+            tarifaPix: { required: false, min: 0, max: 100 },
+            tarifaPedidoReal: { required: false, min: 0, max: 10000 },
+            tarifaPedidoCartao: { required: false, min: 0, max: 10000 },
+            diasVencimento: { required: false, min: 1, max: 90 },
+            percentualImposto: { required: false, min: 0, max: 100 }
+        },
+        recommendedValues: {
+            basicas: {
+                taxaVendaConcluida: '3.50',
+                tarifaCartao: '2.99'
+            },
+            pagamentos: {
+                tarifaBoleto: '3.50',
+                tarifaPix: '0.99',
+                tarifaPedidoReal: '2.00',
+                tarifaPedidoCartao: '3.00',
+                diasVencimento: '3'
+            },
+            impostos: {
+                percentualImposto: '6.00'
+            }
+        }
+    };
+
+    const form = document.getElementById('tarifaForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const submitText = document.getElementById('submitText');
+    const submitSpinner = document.getElementById('submitSpinner');
+    const successAlert = document.getElementById('successAlert');
+        const clearBtn = document.getElementById('clearBtn');
+
+    // Utilitários
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
+    function formatCurrency(value) {
+        if (!value || isNaN(value)) return 'R$ 0,00';
+        return new Intl.NumberFormat('pt-BR', {
+            style: 'currency',
+            currency: 'BRL',
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        }).format(parseFloat(value));
+    }
+
+    function formatPercentage(value) {
+        if (!value || isNaN(value)) return '0,00%';
+        return new Intl.NumberFormat('pt-BR', {
+            style: 'percent',
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        }).format(parseFloat(value) / 100);
+    }
+
+    function validateField(fieldName, value) {
+        const rules = AppConfig.validationRules[fieldName];
+        if (!rules) return { valid: true };
+
+        const numValue = parseFloat(value);
+        const errors = [];
+
+        if (rules.required && (!value || value.trim() === '')) {
+            errors.push('Este campo é obrigatório');
+        }
+
+        if (value && !isNaN(numValue)) {
+            if (rules.min !== undefined && numValue < rules.min) {
+                errors.push(`Valor mínimo: ${rules.min}`);
+            }
+            if (rules.max !== undefined && numValue > rules.max) {
+                errors.push(`Valor máximo: ${rules.max}`);
+            }
+        } else if (value && isNaN(numValue)) {
+            errors.push('Digite um valor numérico válido');
+        }
+
+        return {
+            valid: errors.length === 0,
+            errors: errors
+        };
+    }
+
+    function updateCurrencyHints() {
+        const boletoValue = document.getElementById('tarifaBoleto').value;
+        const pedidoRealValue = document.getElementById('tarifaPedidoReal').value;
+        const pedidoCartaoValue = document.getElementById('tarifaPedidoCartao').value;
+
+            document.getElementById('tarifaBoletoHint').textContent = 
+                boletoValue ? `Valor: ${formatCurrency(boletoValue)}` : '';
+            document.getElementById('tarifaPedidoRealHint').textContent = 
+                pedidoRealValue ? `Valor: ${formatCurrency(pedidoRealValue)}` : '';
+            document.getElementById('tarifaPedidoCartaoHint').textContent = 
+                pedidoCartaoValue ? `Valor: ${formatCurrency(pedidoCartaoValue)}` : '';
+    }
+
+    function updateSummary() {
+        const taxaVenda = document.getElementById('taxaVendaConcluida').value || '0.00';
+        const tarifaCartao = document.getElementById('tarifaCartao').value || '0.00';
+        const tarifaPix = document.getElementById('tarifaPix').value || '0.00';
+        const tarifaBoleto = document.getElementById('tarifaBoleto').value || '0.00';
+        const tarifaPedidoReal = document.getElementById('tarifaPedidoReal').value || '0.00';
+        const tarifaPedidoCartao = document.getElementById('tarifaPedidoCartao').value || '0.00';
+        const percentualImposto = document.getElementById('percentualImposto').value || '0.00';
+        const diasVencimento = document.getElementById('diasVencimento').value || '3';
+
+        document.getElementById('summaryTaxaVenda').textContent = `${parseFloat(taxaVenda).toFixed(2)}%`;
+        document.getElementById('summaryTarifaCartao').textContent = `${parseFloat(tarifaCartao).toFixed(2)}%`;
+        document.getElementById('summaryTarifaPix').textContent = `${parseFloat(tarifaPix).toFixed(2)}%`;
+        document.getElementById('summaryTarifaBoleto').textContent = formatCurrency(tarifaBoleto);
+        document.getElementById('summaryTarifaPedido').textContent = formatCurrency(tarifaPedidoReal);
+        document.getElementById('summaryTarifaPedidoCartao').textContent = formatCurrency(tarifaPedidoCartao);
+        document.getElementById('summaryImposto').textContent = `${parseFloat(percentualImposto).toFixed(2)}%`;
+        document.getElementById('summaryDiasVencimento').textContent = `${diasVencimento} dias`;
+    }
+
+    // Interface
+    function updateProgress() {
+        const totalFields = Object.keys(AppState.formData).length;
+        const filledFields = Object.values(AppState.formData).filter(value => value && value.trim() !== '').length;
+        const percentage = Math.round((filledFields / totalFields) * 100);
+        
+        const progressBar = document.getElementById('formProgress');
+        const progressText = document.getElementById('progressText');
+        
+        if (progressBar && progressText) {
+            progressBar.style.width = `${percentage}%`;
+            progressBar.setAttribute('aria-valuenow', percentage);
+            progressText.textContent = `${percentage}%`;
+        }
+    }
+
+    function showSuccess(message = 'Configurações salvas com sucesso!') {
+        const alert = document.getElementById('successAlert');
+        if (alert) {
+            alert.classList.remove('d-none');
+            alert.classList.add('animate-fade-in');
+            
+        setTimeout(() => {
+                alert.classList.add('d-none');
+        }, 5000);
+        }
+
+        Swal.fire({
+            icon: 'success',
+            title: 'Sucesso!',
+            text: message,
+            confirmButtonColor: '#667eea',
+            timer: 3000,
+            timerProgressBar: true,
+            showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+            }
+        });
+    }
+
+    function showInfo(message) {
+        const alert = document.getElementById('infoAlert');
+        const alertText = document.getElementById('infoAlertText');
+        
+        if (alert && alertText) {
+            alertText.textContent = message;
+            alert.classList.remove('d-none');
+            alert.classList.add('animate-fade-in');
+        }
+    }
+
+    function validateInput(input) {
+        const fieldName = input.getAttribute('data-field');
+        const value = input.value;
+        const validation = validateField(fieldName, value);
+        
+        const errorElement = document.getElementById(`${fieldName}Error`) || 
+                           input.parentElement.parentElement.querySelector('.invalid-feedback');
+        
+        if (validation.valid) {
+            input.classList.remove('is-invalid');
+            input.classList.add('is-valid');
+            if (errorElement) {
+                errorElement.textContent = '';
+                errorElement.style.display = 'none';
+            }
+            delete AppState.validationErrors[fieldName];
+        } else {
+            input.classList.remove('is-valid');
+            input.classList.add('is-invalid');
+            if (errorElement) {
+                errorElement.textContent = validation.errors[0];
+                errorElement.style.display = 'block';
+            }
+            AppState.validationErrors[fieldName] = validation.errors;
+        }
+    }
+
+    function validateForm() {
+        const formElement = document.getElementById('taxasForm') || document.getElementById('tarifaForm') || document.querySelector('form');
+        if (!formElement) return true;
+        
+        const inputs = formElement.querySelectorAll('input[type="number"]');
+        let isValid = true;
+
+        inputs.forEach(input => {
+                const value = parseFloat(input.value);
+                if (value < 0) {
+                    input.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    input.classList.remove('is-invalid');
+            }
+        });
+
+        return isValid;
+    }
+
+    document.querySelectorAll('input, select').forEach(input => {
+        input.addEventListener('input', (e) => {
+            const fieldId = e.target.id;
+            if (fieldId && AppState.formData.hasOwnProperty(fieldId)) {
+                AppState.formData[fieldId] = e.target.value;
+            }
+            
+            if (['tarifaBoleto', 'tarifaPedidoReal', 'tarifaPedidoCartao'].includes(fieldId)) {
+                updateCurrencyHints();
+            }
+                
+                updateSummary();
+
+                if (e.target.type === 'number') {
+                    const value = parseFloat(e.target.value);
+                    if (value < 0) {
+                        e.target.classList.add('is-invalid');
+                    } else {
+                        e.target.classList.remove('is-invalid');
+                    }
+                }
+        });
+    });
+
+    if (form) {
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        if (!validateForm()) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Erro de Validação',
+                    text: 'Por favor, verifique os valores inseridos. Não são permitidos valores negativos.',
+                confirmButtonColor: '#7367f0'
+            });
+            return;
+        }
+
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const submitText = submitBtn?.querySelector('.btn-text');
+            const submitSpinner = submitBtn?.querySelector('.spinner-border');
+
+            AppState.isLoading = true;
+            if (submitBtn) submitBtn.disabled = true;
+            if (submitText) submitText.textContent = 'Salvando...';
+            if (submitSpinner) submitSpinner.classList.remove('d-none');
+
+        try {
+                await new Promise(resolve => setTimeout(resolve, 2000));
+            
+                console.log('Dados do formulário:', AppState.formData);
+                
+            showSuccess();
+            
+            Swal.fire({
+                icon: 'success',
+                title: 'Sucesso!',
+                text: 'Configurações salvas com sucesso!',
+                confirmButtonColor: '#7367f0',
+                timer: 3000,
+                timerProgressBar: true
+            });
+            
+        } catch (error) {
+            console.error('Erro ao salvar:', error);
+            Swal.fire({
+                icon: 'error',
+                    title: 'Erro',
+                text: 'Ocorreu um erro ao salvar as configurações. Tente novamente.',
+                confirmButtonColor: '#7367f0'
+            });
+        } finally {
+                AppState.isLoading = false;
+                if (submitBtn) submitBtn.disabled = false;
+                if (submitText) submitText.textContent = 'Salvar Configurações';
+                if (submitSpinner) submitSpinner.classList.add('d-none');
+            }
+        });
+    }
+
+    
+    function preencherRecomendados(secao) {
+        const valores = AppConfig.recommendedValues[secao];
+        if (!valores) return;
+
+        Swal.fire({
+            title: 'Aplicar Valores Recomendados?',
+            text: `Isso preencherá os campos com valores típicos do mercado para ${secao}.`,
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#667eea',
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: 'Sim, aplicar!',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Object.keys(valores).forEach(campo => {
+                    const input = document.getElementById(campo);
+                    if (input) {
+                        input.value = valores[campo];
+                        AppState.formData[campo] = valores[campo];
+                        
+                        validateInput(input);
+                        
+                        input.dispatchEvent(new Event('input', { bubbles: true }));
+                    }
+                });
+                
+                showInfo(`Valores recomendados aplicados para ${secao}!`);
+                updateProgress();
+                updateSummary();
+            }
+        });
+    }
+
+    async function salvarConfiguracoes() {
+        const isValid = validateForm();
+        
+        if (!isValid) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Erro de Validação',
+                text: 'Por favor, corrija os erros no formulário antes de salvar.',
+                confirmButtonColor: '#667eea'
+            });
+            return;
+        }
+
+        if (!hasChanges()) {
+            showInfo('Não há alterações para salvar.');
+            return;
+        }
+
+        setLoadingState(true);
+
+        try {
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            
+            AppState.originalData = { ...AppState.formData };
+            
+            showSuccess('Configurações salvas e aplicadas com sucesso!');
+            
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'save_taxes_config', {
+                    event_category: 'engagement',
+                    event_label: 'taxes_and_fees'
+                });
+            }
+            
+        } catch (error) {
+            console.error('Erro ao salvar:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Erro',
+                text: 'Ocorreu um erro ao salvar as configurações. Tente novamente.',
+                confirmButtonColor: '#667eea'
+            });
+        } finally {
+            setLoadingState(false);
+        }
+    }
+
+    function hasChanges() {
+        if (!AppState.originalData) return true;
+        
+        return Object.keys(AppState.formData).some(key => 
+            AppState.formData[key] !== AppState.originalData[key]
+        );
+    }
+
+    function setLoadingState(isLoading) {
+        AppState.isLoading = isLoading;
+        const saveButton = document.querySelector('[onclick="salvarConfiguracoes()"]');
+        const saveSpinner = document.getElementById('saveSpinner');
+        
+        if (saveButton) {
+            if (isLoading) {
+                saveButton.disabled = true;
+                saveButton.classList.add('btn-loading');
+                if (saveSpinner) saveSpinner.classList.remove('d-none');
+                saveButton.innerHTML = `
+                    <i class="mdi mdi-loading mdi-spin mr-2"></i>
+                    <span class="d-none d-md-inline">Salvando...</span>
+                `;
+            } else {
+                saveButton.disabled = false;
+                saveButton.classList.remove('btn-loading');
+                if (saveSpinner) saveSpinner.classList.add('d-none');
+                saveButton.innerHTML = `
+                    <i class="mdi mdi-content-save mr-2"></i>
+                    <span class="d-none d-md-inline">Salvar</span>
+                `;
+            }
+        }
+    }
+
+    function toggleGuide() {
+        const guideContent = document.getElementById('guideContent');
+        const toggleIcon = document.getElementById('guideToggleIcon');
+        
+        if (guideContent && toggleIcon) {
+            if (guideContent.style.display === 'none') {
+                guideContent.style.display = 'block';
+                toggleIcon.classList.remove('mdi-chevron-down');
+                toggleIcon.classList.add('mdi-chevron-up');
+            } else {
+                guideContent.style.display = 'none';
+                toggleIcon.classList.remove('mdi-chevron-up');
+                toggleIcon.classList.add('mdi-chevron-down');
+            }
+        }
+    }
+
+    // Função para mostrar ajuda
+    function showHelp() {
+        Swal.fire({
+            title: 'Central de Ajuda',
+            html: `
+                <div class="text-left">
+                    <h6 class="text-primary mb-3"><i class="mdi mdi-help-circle mr-2"></i>Como usar esta tela:</h6>
+                    
+                    <div class="mb-3">
+                        <strong>1. Taxas Básicas:</strong>
+                        <ul class="text-muted small">
+                            <li>Configure a taxa principal sobre vendas (obrigatório)</li>
+                            <li>Defina taxa de processamento de cartões</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <strong>2. Métodos de Pagamento:</strong>
+                        <ul class="text-muted small">
+                            <li>Configure tarifas específicas por método</li>
+                            <li>Ajuste prazo de vencimento para boletos</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <strong>3. Impostos:</strong>
+                        <ul class="text-muted small">
+                            <li>Selecione a base de cálculo dos impostos</li>
+                            <li>Consulte sempre um contador profissional</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="alert alert-info mt-3">
+                        <i class="mdi mdi-lightbulb mr-2"></i>
+                        <small><strong>Dica:</strong> Use o botão "Sugerir valores" para preencher automaticamente com valores de mercado.</small>
+                    </div>
+                </div>
+            `,
+            confirmButtonColor: '#667eea',
+            confirmButtonText: 'Entendi!',
+            width: '500px'
+        });
+    }
+
+  function cadastrarParcelas() {
+      const modalHtml = `
+          <div class="modal fade" id="modalParcelas" tabindex="-1" role="dialog" aria-hidden="true">
+              <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                  <div class="modal-content" style="border-radius: 8px; border: 1px solid #dee2e6;">
+                      <div class="modal-header" style="border-bottom: 1px solid #dee2e6; background: #f8f9fa;">
+                          <h5 class="modal-title d-flex align-items-center" style="font-weight: 600; color: #495057;">
+                              <i class="mdi mdi-credit-card-multiple mr-2 text-primary"></i>
+                              Configuração de Parcelas do Cartão
+                          </h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                      <div class="modal-body p-4">
+                          <!-- Seção de Configurações -->
+                          <div class="mb-4">
+                              <h6 class="font-weight-bold text-dark mb-3 d-flex align-items-center">
+                                  <i class="mdi mdi-cog mr-2 text-primary"></i>
+                                  Configurações Básicas
+                              </h6>
+                              <form method="post" name="formParcelas">
+                                   <div class="row">
+                                       <div class="col-md-4">
+                                           <div class="form-group mb-3">
+                                               <label for="tarifa-padrao" class="form-label font-weight-bold text-dark mb-2" style="font-size: 13px;">
+                                                   Tarifa Padrão (%)
+                                               </label>
+                                               <div class="input-group">
+                                                   <input type="number" id="tarifa-padrao" name="taxa" placeholder="0,00" step="0.01" onchange="gerarTabelaParcelas()" class="form-control text-center" style="height: 40px; border: 1px solid #ced4da; border-radius: 4px 0 0 4px; font-size: 13px; font-weight: 500;">
+                                                   <div class="input-group-append">
+                                                       <span class="input-group-text bg-light border-left-0" style="height: 40px; border: 1px solid #ced4da; border-left: none; border-radius: 0 4px 4px 0; font-weight: 600; color: #6c757d; font-size: 13px;">%</span>
+                                                   </div>
+                                               </div>
+                                               <small class="text-muted">Taxa base para pagamento à vista</small>
+                                           </div>
+                                       </div>
+                                       
+                                       <div class="col-md-4">
+                                           <div class="form-group mb-3">
+                                               <label for="parcelas-com-juros" class="form-label font-weight-bold text-dark mb-2" style="font-size: 13px;">
+                                                   Parcelas com Juros
+                                               </label>
+                                               <select id="parcelas-com-juros" class="form-control text-center" onchange="gerarTabelaParcelas()" style="height: 40px; border: 1px solid #ced4da; border-radius: 4px; font-size: 13px; font-weight: 500;">        
+                                                   <option value="1">1x (À vista)</option>
+                                                   <option value="2">2x</option>
+                                                   <option value="3" selected="">3x</option>
+                                                   <option value="4">4x</option>
+                                                   <option value="5">5x</option>
+                                                   <option value="6">6x</option>
+                                                   <option value="7">7x</option>
+                                                   <option value="8">8x</option>
+                                                   <option value="9">9x</option>
+                                                   <option value="10">10x</option>
+                                                   <option value="11">11x</option>
+                                                   <option value="12">12x</option>
+                                               </select>
+                                               <small class="text-muted">Até quantas parcelas aplicar juros</small>
+                                           </div>
+                                       </div>
+
+                                       <div class="col-md-4">
+                                           <div class="form-group mb-3">
+                                               <label for="acrescimo-juros" class="form-label font-weight-bold text-dark mb-2" style="font-size: 13px;">
+                                                   Acréscimo por Parcela (%)
+                                               </label>
+                                               <div class="input-group">
+                                                   <input type="number" id="acrescimo-juros" placeholder="0,00" step="0.01" onchange="gerarTabelaParcelas()" class="form-control text-center" style="height: 40px; border: 1px solid #ced4da; border-radius: 4px 0 0 4px; font-size: 13px; font-weight: 500;">
+                                                   <div class="input-group-append">
+                                                       <span class="input-group-text bg-light border-left-0" style="height: 40px; border: 1px solid #ced4da; border-left: none; border-radius: 0 4px 4px 0; font-weight: 600; color: #6c757d; font-size: 13px;">%</span>
+                                                   </div>
+                                               </div>
+                                               <small class="text-muted">Juros adicionais por parcela</small>
+                                           </div>
+                                       </div>
+                                   </div>
+                                  
+                                  <div class="d-flex justify-content-end gap-2">
+                                      <button onclick="salvarParcelas()" type="button" class="btn btn-primary" style="min-height: 36px; border-radius: 4px; font-weight: 500; font-size: 13px; padding: 8px 20px; background: #687ae8 !important; border-color: #687ae8 !important; color: #fff !important; background-image: none !important;">
+                                          <i class="mdi mdi-content-save mr-1"></i>Salvar Configurações
+                                      </button>
+                                      <button onclick="limparParcelas()" type="button" class="btn btn-outline-secondary" style="min-height: 36px; border-radius: 4px; font-weight: 500; font-size: 13px; padding: 8px 20px; color: #95aac9 !important; border-color: #95aac9 !important; background: transparent !important; background-image: none !important;">
+                                          <i class="mdi mdi-refresh mr-1"></i>Limpar
+                                      </button>
+                                  </div>
+                              </form>
+                          </div>
+
+                          <!-- Seção da Tabela -->
+                          <div>
+                              <div class="d-flex justify-content-between align-items-center mb-3">
+                                  <h6 class="font-weight-bold text-dark mb-0 d-flex align-items-center">
+                                      <i class="mdi mdi-table mr-2 text-primary"></i>
+                                      Tabela de Parcelas
+                                  </h6>
+                                  <div class="d-flex gap-3">
+                                      <div class="text-center">
+                                          <div class="text-muted small">Total</div>
+                                          <strong style="color: #687ae8;" id="contador-parcelas">12</strong>
+                                      </div>
+                                      <div class="text-center">
+                                          <div class="text-muted small">Com Juros</div>
+                                          <strong style="color: #f7bc06;" id="contador-juros">3</strong>
+                                      </div>
+                                      <div class="text-center">
+                                          <div class="text-muted small">À Vista</div>
+                                          <strong style="color: #0c9;" id="contador-vista">1</strong>
+                                      </div>
+                                  </div>
+                              </div>
+                              
+                              <div class="table-responsive" style="border: 1px solid #e9ecef; border-radius: 4px;">
+                                  <input type="hidden" id="parcelas" name="parcelas">
+                                  <table class="table table-hover mb-0" style="font-size: 13px;">
+                                      <thead style="background: #f8f9fa;">
+                                          <tr>
+                                              <th class="py-3 px-3 font-weight-bold text-dark text-center" style="width: 20%;">
+                                                  Parcela
+                                              </th>          
+                                              <th class="py-3 px-3 font-weight-bold text-dark text-center" style="width: 40%;">
+                                                  Taxa (%)
+                                              </th>
+                                              <th class="py-3 px-3 font-weight-bold text-dark text-center" style="width: 25%;">
+                                                  Status
+                                              </th>
+                                              <th class="py-3 px-3 font-weight-bold text-dark text-center" style="width: 15%;">
+                                                  Ações
+                                              </th>
+                                          </tr>
+                                      </thead>
+                                      <tbody id="tabela-parcelas">
+                                          <!-- Tabela será gerada dinamicamente -->
+                                      </tbody>
+                                  </table>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="modal-footer" style="border-top: 1px solid #e9ecef; background: #f8f9fa;">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal" style="border-radius: 4px; font-weight: 500; background: #95aac9 !important; border-color: #95aac9 !important; color: #fff !important; background-image: none !important;">
+                              <i class="mdi mdi-close mr-1"></i>Fechar
+                          </button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      `;
+      
+      const existingModal = document.getElementById('modalParcelas');
+      if (existingModal) {
+          existingModal.remove();
+      }
+      
+      document.body.insertAdjacentHTML('beforeend', modalHtml);
+      
+      $('#modalParcelas').modal('show');
+      
+      gerarTabelaParcelas();
+  }
+
+  function gerarTabelaParcelas() {
+      const tabelaParcelas = document.getElementById('tabela-parcelas');
+      const tarifaPadraoInput = document.getElementById('tarifa-padrao');
+      const parcelasComJuros = document.getElementById('parcelas-com-juros');
+      const acrescimoJurosInput = document.getElementById('acrescimo-juros');
+      const parcelamentoMaximo = 12;
+
+      if (!tabelaParcelas) return;
+
+      tabelaParcelas.innerHTML = '';
+      const tarifaPadrao = parseFloat(tarifaPadraoInput.value) || 0;
+      const acrescimoJuros = parseFloat(acrescimoJurosInput.value) || 0;
+      const comJurosAte = parseInt(parcelasComJuros.value);
+
+      let jurosAtual = tarifaPadrao;
+      let contadorJuros = 0;
+      let contadorVista = 0;
+
+      for (let i = 1; i <= parcelamentoMaximo; i++) {
+          const linha = document.createElement('tr');
+          let jurosParcela;
+          let statusClass = '';
+          let statusText = '';
+          let statusIcon = '';
+
+          if (i === 1) {
+              jurosParcela = tarifaPadrao;
+              statusClass = 'badge-success';
+              statusText = 'À Vista';
+              statusIcon = 'mdi-cash';
+              contadorVista++;
+          } else if (i > comJurosAte) {
+              jurosParcela = tarifaPadrao;
+              statusClass = 'badge-info';
+              statusText = 'Sem Juros';
+              statusIcon = 'mdi-cash-multiple';
+          } else {
+              jurosParcela = jurosAtual + acrescimoJuros;
+              jurosAtual = jurosParcela;
+              statusClass = 'badge-warning';
+              statusText = 'Com Juros';
+              statusIcon = 'mdi-trending-up';
+              contadorJuros++;
+          }
+
+           linha.innerHTML = `
+               <td class="text-center align-middle py-2 px-3">
+                   <span class="badge badge-light font-weight-bold" style="font-size: 12px; padding: 6px 12px; border-radius: 4px; background: #f8f9fa !important; color: #495057 !important; border: 1px solid #dee2e6 !important;">${i}x</span>
+               </td>
+               <td class="text-center align-middle py-2 px-3">
+                   <div class="d-flex justify-content-center">
+                       <div class="input-group" style="max-width: 120px;">
+                           <input type="number" value="${jurosParcela.toFixed(2)}" 
+                                  class="form-control parcelas text-center" 
+                                  id="idparcela${i}" step="0.01" 
+                                  style="border: 1px solid #ced4da; border-radius: 4px 0 0 4px; font-size: 12px; height: 34px; font-weight: 500;" />
+                           <div class="input-group-append">
+                               <span class="input-group-text bg-light border-left-0" style="font-size: 11px; height: 34px; border: 1px solid #ced4da; border-left: none; border-radius: 0 4px 4px 0; font-weight: 600; color: #6c757d;">%</span>
+                           </div>
+                       </div>
+                   </div>
+               </td>
+               <td class="text-center align-middle py-2 px-3">
+                   <span class="badge ${statusClass}" style="font-size: 11px; padding: 4px 8px; border-radius: 4px; background: ${statusClass === 'badge-success' ? '#0c9' : statusClass === 'badge-info' ? '#19b5fe' : '#f7bc06'} !important; color: #fff !important; border: none !important; background-image: none !important;">
+                       <i class="mdi ${statusIcon} mr-1" style="font-size: 12px;"></i>${statusText}
+                   </span>
+               </td>
+               <td class="text-center align-middle py-2 px-3">
+                   <button type="button" class="btn btn-sm btn-outline-primary" onclick="editarParcela(${i})" style="font-size: 11px; padding: 4px 8px; border-radius: 4px; color: #687ae8 !important; border-color: #687ae8 !important; background: transparent !important; background-image: none !important;">
+                       <i class="mdi mdi-pencil" style="font-size: 12px;"></i>
+                   </button>
+               </td>
+           `;
+
+          tabelaParcelas.appendChild(linha);
+      }
+
+      const contadorParcelas = document.getElementById('contador-parcelas');
+      const contadorJurosEl = document.getElementById('contador-juros');
+      const contadorVistaEl = document.getElementById('contador-vista');
+      
+      if (contadorParcelas) contadorParcelas.textContent = parcelamentoMaximo;
+      if (contadorJurosEl) contadorJurosEl.textContent = contadorJuros;
+      if (contadorVistaEl) contadorVistaEl.textContent = contadorVista;
+  }
+
+  function editarParcela(numeroParcela) {
+      const input = document.getElementById(`idparcela${numeroParcela}`);
+      if (input) {
+          input.focus();
+          input.select();
+      }
+  }
+
+  function salvarParcelas() {
+      let dados = '';
+      
+      $(".parcelas").each(function(i, e) {
+          dados = dados + $(this).val() + '#';
+      });
+      
+      document.getElementById("parcelas").value = dados;
+      
+      $('#modalParcelas').modal('hide');
+      
+      Swal.fire({
+          title: 'Sucesso!',
+          text: 'Parcelas do cartão configuradas com sucesso!',
+          icon: 'success',
+          timer: 2000,
+          showConfirmButton: false
+      });
+  }
+
+  function limparParcelas() {
+      const tarifaPadraoInput = document.getElementById('tarifa-padrao');
+      const acrescimoJurosInput = document.getElementById('acrescimo-juros');
+      const infoMessage = document.getElementById('info-message');
+      
+      if (tarifaPadraoInput) tarifaPadraoInput.value = '';
+      if (acrescimoJurosInput) acrescimoJurosInput.value = '';
+      if (infoMessage) infoMessage.textContent = "";
+      
+      gerarTabelaParcelas();
+  }
+
+  function fecharNotificacao() {
+      const guidanceCard = document.getElementById('guidanceCard');
+      if (guidanceCard) {
+          guidanceCard.style.transition = 'all 0.3s ease';
+          guidanceCard.style.opacity = '0';
+          guidanceCard.style.transform = 'translateY(-10px)';
+          
+          setTimeout(() => {
+              guidanceCard.style.display = 'none';
+          }, 300);
+      }
+  }
+
+    function limparFormulario() {
+        Swal.fire({
+            title: 'Limpar Formulário',
+            text: 'Tem certeza que deseja limpar todos os campos?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#7367f0',
+            cancelButtonColor: '#6c757d',
+                confirmButtonText: 'Sim, limpar!',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                form.reset();
+                formData = {
+                    taxaVendaConcluida: '',
+                    tarifaCartao: '',
+                    tarifaBoleto: '',
+                    tarifaPix: '',
+                    tarifaPedidoReal: '',
+                    tarifaPedidoCartao: '',
+                    diasVencimento: '',
+                    tipoImposto: 'opcao1',
+                    percentualImposto: ''
+                };
+                    updateCurrencyHints();
+                    
+                    form.querySelectorAll('.is-invalid').forEach(input => {
+                        input.classList.remove('is-invalid');
+                    });
+                
+                Swal.fire({
+                    icon: 'success',
+                        title: 'Formulário Limpo!',
+                        text: 'Todos os campos foram resetados.',
+                    confirmButtonColor: '#7367f0',
+                    timer: 2000,
+                    timerProgressBar: true
+                });
+            }
+        });
+    }
+
+    const debouncedInputHandler = debounce((e) => {
+        const fieldName = e.target.getAttribute('data-field');
+        if (fieldName) {
+            AppState.formData[fieldName] = e.target.value;
+            
+            validateInput(e.target);
+            
+            if (['tarifaBoleto', 'tarifaPedidoReal', 'tarifaPedidoCartao'].includes(fieldName)) {
+                updateCurrencyHints();
+            }
+            
+            updateProgress();
+            updateSummary();
+        }
+    }, AppConfig.debounceDelay);
+
+    function initializeApp() {
+        document.querySelectorAll('input[data-field], select[data-field]').forEach(input => {
+            input.addEventListener('input', debouncedInputHandler);
+            input.addEventListener('blur', (e) => validateInput(e.target));
+        });
+
+        if (typeof $('[data-toggle="tooltip"]').tooltip === 'function') {
+            $('[data-toggle="tooltip"]').tooltip();
+        }
+
+        const tipoImpostoSelect = document.getElementById('tipoImposto');
+        if (tipoImpostoSelect) {
+            tipoImpostoSelect.value = 'opcao1';
+            AppState.formData.tipoImposto = 'opcao1';
+        }
+
+        AppState.originalData = { ...AppState.formData };
+
+    updateCurrencyHints();
+        updateSummary();
+        updateProgress();
+
+        console.log('Aplicação Taxas e Tarifas inicializada com sucesso!');
+    }
+
+    function initializeAnimations() {
+    const cards = document.querySelectorAll('.card');
+    cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+                
+        setTimeout(() => {
+                card.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+            }, index * 150);
+        });
+    }
+
+    function startAutoSave() {
+        setInterval(() => {
+            if (hasChanges() && Object.keys(AppState.validationErrors).length === 0) {
+                console.log('Auto-save would trigger here...');
+            }
+        }, AppConfig.autoSaveInterval);
+    }
+
+    window.addEventListener('beforeunload', function(e) {
+        if (hasChanges() && !AppState.isLoading) {
+            e.preventDefault();
+            e.returnValue = 'Você tem alterações não salvas. Deseja realmente sair?';
+            return 'Você tem alterações não salvas. Deseja realmente sair?';
+        }
+    });
+
+    function initializeSelectAnimations() {
+        const selectElement = document.getElementById('tipoImposto');
+        const selectWrapper = selectElement.closest('.select-wrapper');
+        
+        if (selectElement && selectWrapper) {
+            let attentionTimeout = setTimeout(() => {
+                if (!selectElement.classList.contains('user-interacted')) {
+                    selectElement.classList.add('attention');
+                    
+                    setTimeout(() => {
+                        selectElement.classList.remove('attention');
+                    }, 10000);
+                }
+            }, 3000);
+
+            selectElement.addEventListener('click', function() {
+                clearTimeout(attentionTimeout);
+                this.classList.remove('attention');
+                this.classList.add('user-interacted');
+            });
+
+            selectElement.addEventListener('change', function() {
+                clearTimeout(attentionTimeout);
+                this.classList.remove('attention');
+                this.classList.add('user-interacted');
+            });
+
+            selectWrapper.addEventListener('mouseenter', function() {
+                selectElement.classList.remove('attention');
+            });
+        }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        initializeApp();
+        initializeAnimations();
+        initializeSelectAnimations();
+        console.log('Sistema de Taxas e Tarifas v2.0 carregado');
+        console.log('Estado inicial:', AppState);
+    });
+
+</script>
+</body>
+</html>

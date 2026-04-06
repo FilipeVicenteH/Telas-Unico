@@ -1,0 +1,3047 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" name="viewport">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>Mensagens SMS - Atmos Admin Panel</title>
+    <link rel="icon" type="image/x-icon" href="../assets/img/logo.png" />
+    <link rel="icon" href="../assets/img/logo.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="../assets/vendor/pace/pace.css">
+    <script src="../assets/vendor/pace/pace.min.js"></script>
+    <!--vendors-->
+    <link rel="stylesheet" type="text/css" href="../assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/vendor/jquery-scrollbar/jquery.scrollbar.css">
+    <link rel="stylesheet" href="../assets/vendor/select2/css/select2.min.css">
+    <link rel="stylesheet" href="../assets/vendor/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" href="../assets/vendor/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="../assets/vendor/timepicker/bootstrap-timepicker.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Hind+Vadodara:400,500,600" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/fonts/jost/jost.css">
+    <!--Material Icons-->
+    <link rel="stylesheet" type="text/css" href="../assets/fonts/materialdesignicons/materialdesignicons.min.css">
+    <!--Bootstrap + atmos Admin CSS-->
+    <link rel="stylesheet" type="text/css" href="../assets/css/atmos.min.css">
+    <!-- Additional library for page -->
+    <style>
+        body {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+            min-height: 100vh;
+        }
+
+        .admin-main {
+            background: transparent;
+        }
+
+        .category-tabs-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e9ecef;
+            margin-bottom: 1.5rem;
+        }
+
+        .category-tabs {
+            display: flex;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding: 0.5rem;
+        }
+
+        .category-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .category-tab {
+            background: transparent;
+            border: 1px solid #e9ecef;
+            padding: 0.75rem 1.25rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #6c757d;
+            cursor: pointer;
+            transition: all 0.15s ease-in-out;
+            border-radius: 6px;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            min-width: fit-content;
+            margin-right: 0.5rem;
+        }
+
+        .category-tab:hover {
+            background: #f8f9fa;
+            color: #667eea;
+            border-color: #667eea;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .category-tab.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+            font-weight: 600;
+        }
+
+        .tab-badge {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            min-width: 18px;
+            text-align: center;
+        }
+
+        .category-tab:not(.active) .tab-badge {
+            background: #f8f9fa;
+            color: #343a40;
+        }
+
+        .toggle-btn {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+            border: 1px solid #dee2e6 !important;
+            color: #6c757d !important;
+            font-weight: 500 !important;
+            font-size: 0.75rem !important;
+            padding: 0.5rem 0.75rem !important;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .toggle-btn:hover {
+            background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%) !important;
+            border-color: #667eea !important;
+            color: #667eea !important;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .toggle-btn:active {
+            transform: translateY(0);
+        }
+
+        .toggle-btn i {
+            transition: transform 0.3s ease;
+            font-size: 0.8rem;
+        }
+
+        .toggle-btn.expanded i {
+            transform: rotate(180deg);
+        }
+
+        .more-categories {
+            display: none;
+            width: 100%;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .more-categories.show {
+            display: flex;
+            opacity: 1;
+            max-height: 100px;
+        }
+
+        .more-categories .category-tab {
+            margin-right: 0;
+        }
+
+        .messages-container {
+            min-height: 400px;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-radius: 20px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .messages-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            pointer-events: none;
+        }
+
+        .category-content {
+            display: none;
+            animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .category-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .category-header {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .category-header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .category-header-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex: 1;
+        }
+
+        .category-header .header-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .category-header-info h4 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin: 0 0 0.25rem 0;
+        }
+
+        .category-header-info p {
+            color: #6c757d;
+            font-size: 0.875rem;
+            margin: 0;
+        }
+
+        .category-header .btn-back {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.875rem;
+            padding: 0.5rem 1rem;
+            transition: all 0.2s ease;
+            color: #495057;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .category-header .btn-back:hover {
+            background: #e9ecef;
+            border-color: #adb5bd;
+            color: #495057;
+        }
+
+        .category-header .btn-back i {
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 768px) {
+            .category-header {
+                padding: 1rem;
+            }
+
+            .category-header-top {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .category-header-content {
+                width: 100%;
+            }
+
+            .category-header-info h4 {
+                font-size: 1.25rem;
+            }
+        }
+
+        .category-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .category-card {
+            background: linear-gradient(135deg, #ffffff 0%, #fafbfc 100%);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: left;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #667eea);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .category-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .category-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transform: translateY(-4px);
+            border-color: rgba(102, 126, 234, 0.2);
+        }
+
+        .category-card-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .category-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, currentColor, transparent);
+            opacity: 0.1;
+            border-radius: 12px;
+        }
+
+        .category-card:hover .category-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .category-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .category-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a202c;
+            line-height: 1.4;
+            margin: 0 0 0.5rem 0;
+            letter-spacing: -0.025em;
+        }
+
+        .category-description {
+            font-size: 0.875rem;
+            color: #64748b;
+            margin: 0;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .category-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            margin-top: auto;
+        }
+
+        .category-count {
+            background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+            color: #475569;
+            padding: 0.375rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.025em;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .category-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .category-actions .btn {
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.8rem;
+            padding: 0.5rem 1rem;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            background: rgba(102, 126, 234, 0.05);
+            color: #667eea;
+        }
+
+        .category-actions .btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .messages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .message-card {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 1.25rem;
+            transition: all 0.15s ease-in-out;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .message-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            border-color: #667eea;
+        }
+
+        .message-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: #667eea;
+        }
+
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+
+        .message-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #343a40;
+            line-height: 1.4;
+            margin: 0;
+            flex: 1;
+            margin-right: 0.75rem;
+        }
+
+        .message-seq {
+            background: #f8f9fa;
+            color: #343a40;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .message-preview {
+            font-size: 0.8rem;
+            line-height: 1.5;
+            color: #6c757d;
+            margin-bottom: 0.75rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .message-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 0.75rem;
+            border-top: 1px solid #f1f3f4;
+        }
+
+        .message-timing {
+            background: rgba(23, 162, 184, 0.1);
+            color: #17a2b8;
+            padding: 0.2rem 0.6rem;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .message-actions {
+            display: flex;
+            gap: 0.25rem;
+        }
+
+        .btn-message-action {
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.75rem;
+            border: 1px solid #667eea;
+            background: white;
+            color: #667eea;
+            transition: all 0.15s ease-in-out;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.2rem;
+        }
+
+        .btn-message-action:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            text-decoration: none;
+        }
+
+        @media (max-width: 320px) {
+            .container-fluid {
+                padding: 0.5rem;
+            }
+
+            .card {
+                margin-bottom: 0.75rem;
+                border-radius: 8px;
+            }
+
+            .card-body {
+                padding: 0.75rem;
+            }
+
+            .card-body h1 {
+                font-size: 1.25rem !important;
+            }
+
+            .card-body h5 {
+                font-size: 0.9rem !important;
+            }
+
+            .btn {
+                font-size: 0.75rem !important;
+                padding: 0.375rem 0.5rem !important;
+                margin-bottom: 0.25rem;
+            }
+
+            .category-header {
+                padding: 0.6rem;
+                margin-bottom: 0.6rem;
+            }
+
+            .category-header-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.4rem;
+            }
+
+            .category-header-info {
+                gap: 0.3rem;
+            }
+
+            .category-header .header-icon {
+                width: 24px;
+                height: 24px;
+                font-size: 0.8rem;
+            }
+
+            .category-header-info h4 {
+                font-size: 0.9rem;
+            }
+
+            .category-header-info p {
+                font-size: 0.6rem;
+            }
+
+            .category-header .btn-back {
+                font-size: 0.6rem;
+                padding: 0.2rem 0.4rem;
+                align-self: flex-end;
+                white-space: normal;
+                max-width: 100%;
+                text-align: center;
+                line-height: 1.1;
+                min-height: 28px;
+                border-radius: 4px;
+                word-wrap: break-word;
+                flex-direction: row;
+                gap: 0.2rem;
+            }
+
+            .category-header .btn-back i {
+                font-size: 0.55rem;
+                margin-right: 0.1rem;
+            }
+
+            .category-tabs {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .category-tab {
+                margin-right: 0;
+                margin-bottom: 0.25rem;
+            }
+
+            .category-cards-grid {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+
+            .messages-grid {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+
+            .message-card {
+                padding: 0.75rem;
+            }
+
+            .message-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .message-footer {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.75rem;
+            }
+
+            .message-actions {
+                justify-content: center;
+            }
+        }
+
+        @media (min-width: 321px) and (max-width: 375px) {
+            .container-fluid {
+                padding: 0.75rem;
+            }
+
+            .card-body {
+                padding: 1rem;
+            }
+
+            .card-body h1 {
+                font-size: 1.4rem !important;
+            }
+
+            .card-body h5 {
+                font-size: 1rem !important;
+            }
+
+            .btn {
+                font-size: 0.8rem !important;
+                padding: 0.5rem 0.75rem !important;
+            }
+
+            .category-tabs {
+                flex-wrap: wrap;
+                gap: 0.25rem;
+                justify-content: flex-start;
+            }
+
+            .category-tab {
+                padding: 0.35rem 0.5rem;
+                font-size: 0.65rem;
+                margin-right: 0.15rem;
+                margin-bottom: 0.15rem;
+                min-width: auto;
+                flex: 0 0 auto;
+                border-radius: 5px;
+                white-space: nowrap;
+            }
+
+            .toggle-btn {
+                padding: 0.3rem 0.45rem !important;
+                font-size: 0.6rem !important;
+            }
+
+            .toggle-btn i {
+                font-size: 0.6rem;
+            }
+
+            .more-categories {
+                margin-top: 0.25rem;
+                gap: 0.15rem;
+            }
+
+            .tab-badge {
+                font-size: 0.55rem;
+                padding: 0.08rem 0.25rem;
+                min-width: 10px;
+            }
+
+            .card {
+                margin-bottom: 0.6rem;
+                border-radius: 6px;
+            }
+
+            .card-header {
+                padding: 0.5rem 0.7rem;
+                border-radius: 6px 6px 0 0;
+            }
+
+            .card-header h5 {
+                font-size: 0.85rem !important;
+                margin-bottom: 0 !important;
+            }
+
+            .card-header h5 i {
+                font-size: 0.75rem;
+                margin-right: 0.3rem;
+            }
+
+            .card-body.py-3 {
+                padding-top: 0.5rem !important;
+                padding-bottom: 0.5rem !important;
+            }
+
+            .category-tab,
+            .toggle-btn {
+                min-height: 32px;
+                touch-action: manipulation;
+            }
+
+            .btn {
+                min-height: 30px;
+                touch-action: manipulation;
+            }
+
+            .category-header {
+                padding: 0.7rem;
+                margin-bottom: 0.7rem;
+            }
+
+            .category-header-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .category-header-info {
+                gap: 0.4rem;
+            }
+
+            .category-header .header-icon {
+                width: 28px;
+                height: 28px;
+                font-size: 0.9rem;
+            }
+
+            .category-header-info h4 {
+                font-size: 1rem;
+            }
+
+            .category-header-info p {
+                font-size: 0.65rem;
+            }
+
+            .category-header .btn-back {
+                font-size: 0.65rem;
+                padding: 0.25rem 0.5rem;
+                align-self: flex-end;
+                white-space: normal;
+                max-width: 100%;
+                text-align: center;
+                line-height: 1.1;
+                min-height: 30px;
+                border-radius: 5px;
+                word-wrap: break-word;
+                flex-direction: row;
+                gap: 0.25rem;
+            }
+
+            .category-header .btn-back i {
+                font-size: 0.6rem;
+                margin-right: 0.15rem;
+            }
+
+            .category-cards-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .messages-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+        @media (min-width: 376px) and (max-width: 425px) {
+            .container-fluid {
+                padding: 1rem;
+            }
+
+            .card-body h1 {
+                font-size: 1.5rem !important;
+            }
+
+            .card-body h5 {
+                font-size: 1.1rem !important;
+            }
+
+            .btn {
+                font-size: 0.85rem !important;
+                padding: 0.5rem 0.875rem !important;
+            }
+
+            .category-tabs {
+                flex-wrap: wrap;
+                gap: 0.3rem;
+                justify-content: flex-start;
+            }
+
+            .category-tab {
+                padding: 0.4rem 0.6rem;
+                font-size: 0.7rem;
+                margin-right: 0.2rem;
+                margin-bottom: 0.2rem;
+                min-width: auto;
+                flex: 0 0 auto;
+                border-radius: 6px;
+                white-space: nowrap;
+            }
+
+            .toggle-btn {
+                padding: 0.35rem 0.5rem !important;
+                font-size: 0.65rem !important;
+            }
+
+            .toggle-btn i {
+                font-size: 0.65rem;
+            }
+
+            .more-categories {
+                margin-top: 0.3rem;
+                gap: 0.2rem;
+            }
+
+            .tab-badge {
+                font-size: 0.6rem;
+                padding: 0.1rem 0.3rem;
+                min-width: 12px;
+            }
+
+            .card {
+                margin-bottom: 0.75rem;
+                border-radius: 8px;
+            }
+
+            .card-header {
+                padding: 0.6rem 0.8rem;
+                border-radius: 8px 8px 0 0;
+            }
+
+            .card-header h5 {
+                font-size: 0.9rem !important;
+                margin-bottom: 0 !important;
+            }
+
+            .card-header h5 i {
+                font-size: 0.8rem;
+                margin-right: 0.4rem;
+            }
+
+            .card-body {
+                padding: 0.8rem;
+            }
+
+            .card-body.py-3 {
+                padding-top: 0.6rem !important;
+                padding-bottom: 0.6rem !important;
+            }
+
+            .category-cards-grid {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+
+            .messages-grid {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+
+            .messages-container {
+                padding: 1rem;
+                border-radius: 8px;
+            }
+
+            .category-header {
+                padding: 0.8rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .category-header-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.6rem;
+            }
+
+            .category-header-info {
+                gap: 0.5rem;
+            }
+
+            .category-header .header-icon {
+                width: 32px;
+                height: 32px;
+                font-size: 1rem;
+            }
+
+            .category-header-info h4 {
+                font-size: 1.1rem;
+            }
+
+            .category-header-info p {
+                font-size: 0.7rem;
+            }
+
+            .category-header .btn-back {
+                font-size: 0.7rem;
+                padding: 0.3rem 0.6rem;
+                align-self: flex-end;
+                white-space: normal;
+                max-width: 100%;
+                text-align: center;
+                line-height: 1.2;
+                min-height: 32px;
+                border-radius: 6px;
+                word-wrap: break-word;
+                flex-direction: row;
+                gap: 0.3rem;
+            }
+
+            .category-header .btn-back i {
+                font-size: 0.65rem;
+                margin-right: 0.2rem;
+            }
+
+            .category-card {
+                padding: 0.8rem;
+            }
+
+            .category-card-header {
+                margin-bottom: 0.5rem;
+            }
+
+            .category-icon {
+                width: 28px;
+                height: 28px;
+                font-size: 0.9rem;
+            }
+
+            .category-title {
+                font-size: 0.85rem;
+                font-weight: 600;
+            }
+
+            .category-description {
+                font-size: 0.7rem;
+                line-height: 1.2;
+            }
+
+            .category-stats {
+                margin-top: 0.5rem;
+            }
+
+            .category-count {
+                font-size: 0.7rem;
+            }
+
+            .category-actions .btn {
+                font-size: 0.65rem;
+                padding: 0.2rem 0.4rem;
+            }
+
+            .font-weight-semibold {
+                font-size: 0.8rem !important;
+                margin-bottom: 0.5rem !important;
+            }
+
+            .message-card {
+                padding: 0.7rem;
+            }
+
+            .message-header {
+                margin-bottom: 0.4rem;
+            }
+
+            .message-title {
+                font-size: 0.8rem;
+            }
+
+            .message-meta {
+                font-size: 0.65rem;
+            }
+
+            .message-content {
+                font-size: 0.75rem;
+                line-height: 1.2;
+            }
+
+            .message-actions .btn {
+                font-size: 0.65rem;
+                padding: 0.2rem 0.4rem;
+            }
+
+            .mr-2 {
+                margin-right: 0.3rem !important;
+            }
+
+            .mb-0 {
+                margin-bottom: 0 !important;
+            }
+
+            .py-3 {
+                padding-top: 0.6rem !important;
+                padding-bottom: 0.6rem !important;
+            }
+
+            .category-tab,
+            .toggle-btn {
+                min-height: 36px;
+                touch-action: manipulation;
+            }
+
+            .btn {
+                min-height: 32px;
+                touch-action: manipulation;
+            }
+        }
+
+        @media (min-width: 426px) and (max-width: 768px) {
+            .container-fluid {
+                padding: 1.25rem;
+            }
+
+            .card-body h1 {
+                font-size: 1.6rem !important;
+            }
+
+            .card-body h5 {
+                font-size: 1.2rem !important;
+            }
+
+            .btn {
+                font-size: 0.9rem !important;
+                padding: 0.6rem 1rem !important;
+            }
+
+            .category-tabs {
+                flex-wrap: wrap;
+                gap: 0.4rem;
+                justify-content: flex-start;
+            }
+
+            .category-tab {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.75rem;
+                margin-right: 0.3rem;
+                margin-bottom: 0.3rem;
+                min-width: auto;
+                flex: 0 0 auto;
+                border-radius: 6px;
+            }
+
+            .toggle-btn {
+                padding: 0.4rem 0.6rem !important;
+                font-size: 0.7rem !important;
+            }
+
+            .toggle-btn i {
+                font-size: 0.7rem;
+            }
+
+            .more-categories {
+                margin-top: 0.4rem;
+                gap: 0.3rem;
+            }
+
+            .tab-badge {
+                font-size: 0.65rem;
+                padding: 0.15rem 0.35rem;
+                min-width: 14px;
+            }
+
+            .card {
+                margin-bottom: 1rem;
+            }
+
+            .card-header {
+                padding: 0.75rem 1rem;
+            }
+
+            .card-header h5 {
+                font-size: 1rem !important;
+            }
+
+            .card-body {
+                padding: 1rem;
+            }
+
+            .card-body.py-3 {
+                padding-top: 0.75rem !important;
+                padding-bottom: 0.75rem !important;
+            }
+
+            .category-cards-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1rem;
+            }
+
+            .messages-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 1rem;
+            }
+
+            .messages-container {
+                padding: 1.25rem;
+                border-radius: 12px;
+            }
+
+            .category-header {
+                padding: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .category-header-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+
+            .category-header-info {
+                gap: 0.6rem;
+            }
+
+            .category-header .header-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 1.1rem;
+            }
+
+            .category-header-info h4 {
+                font-size: 1.2rem;
+            }
+
+            .category-header-info p {
+                font-size: 0.75rem;
+            }
+
+            .category-header .btn-back {
+                font-size: 0.75rem;
+                padding: 0.35rem 0.7rem;
+                align-self: flex-end;
+            }
+
+            .category-card {
+                padding: 1rem;
+            }
+
+            .category-card-header {
+                margin-bottom: 0.6rem;
+            }
+
+            .category-icon {
+                width: 32px;
+                height: 32px;
+                font-size: 1rem;
+            }
+
+            .category-title {
+                font-size: 0.9rem;
+                font-weight: 600;
+            }
+
+            .category-description {
+                font-size: 0.75rem;
+                line-height: 1.3;
+            }
+
+            .category-stats {
+                margin-top: 0.6rem;
+            }
+
+            .category-count {
+                font-size: 0.75rem;
+            }
+
+            .category-actions .btn {
+                font-size: 0.7rem;
+                padding: 0.25rem 0.5rem;
+            }
+
+            .font-weight-semibold {
+                font-size: 0.85rem !important;
+                margin-bottom: 0.6rem !important;
+            }
+
+            .message-card {
+                padding: 0.8rem;
+            }
+
+            .message-header {
+                margin-bottom: 0.5rem;
+            }
+
+            .message-title {
+                font-size: 0.85rem;
+            }
+
+            .message-meta {
+                font-size: 0.7rem;
+            }
+
+            .message-content {
+                font-size: 0.8rem;
+                line-height: 1.3;
+            }
+
+            .message-actions .btn {
+                font-size: 0.7rem;
+                padding: 0.25rem 0.5rem;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .container-fluid {
+                padding: 1.5rem;
+                max-width: 100%;
+            }
+
+            .card-body h1 {
+                font-size: 1.75rem !important;
+            }
+
+            .card-body h5 {
+                font-size: 1.3rem !important;
+            }
+
+            .btn {
+                font-size: 0.85rem !important;
+                padding: 0.5rem 1rem !important;
+            }
+
+            .category-tabs {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                justify-content: flex-start;
+            }
+
+            .category-tab {
+                padding: 0.6rem 1rem;
+                font-size: 0.8rem;
+                margin-right: 0.4rem;
+                margin-bottom: 0.4rem;
+                min-width: auto;
+                flex: 0 0 auto;
+            }
+
+            .toggle-btn {
+                padding: 0.4rem 0.7rem !important;
+                font-size: 0.7rem !important;
+            }
+
+            .toggle-btn i {
+                font-size: 0.75rem;
+            }
+
+            .more-categories {
+                margin-top: 0.5rem;
+                gap: 0.4rem;
+            }
+
+            .category-cards-grid {
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+                gap: 1rem;
+            }
+
+            .messages-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 1rem;
+            }
+
+            .category-card {
+                padding: 1.25rem;
+            }
+
+            .message-card {
+                padding: 1rem;
+            }
+
+            .message-header {
+                margin-bottom: 0.75rem;
+            }
+
+            .message-content {
+                font-size: 0.9rem;
+                line-height: 1.5;
+            }
+
+            .card-header {
+                padding: 1rem 1.25rem;
+            }
+
+            .card-body {
+                padding: 1.25rem;
+            }
+
+            .tab-badge {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.4rem;
+                min-width: 16px;
+            }
+
+            .messages-container {
+                padding: 1.5rem;
+                border-radius: 16px;
+            }
+
+            .category-header {
+                padding: 1.25rem;
+                margin-bottom: 1.25rem;
+            }
+
+            .category-header-content {
+                gap: 0.75rem;
+            }
+
+            .category-header-info {
+                gap: 0.75rem;
+            }
+
+            .category-header .header-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.25rem;
+            }
+
+            .category-header-info h4 {
+                font-size: 1.3rem;
+            }
+
+            .category-header-info p {
+                font-size: 0.8rem;
+            }
+
+            .category-header .btn-back {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .category-card {
+                padding: 1.1rem;
+            }
+
+            .category-card-header {
+                margin-bottom: 0.75rem;
+            }
+
+            .category-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 1.1rem;
+            }
+
+            .category-title {
+                font-size: 0.95rem;
+                font-weight: 600;
+            }
+
+            .category-description {
+                font-size: 0.8rem;
+                line-height: 1.4;
+            }
+
+            .category-stats {
+                margin-top: 0.75rem;
+            }
+
+            .category-count {
+                font-size: 0.8rem;
+            }
+
+            .category-actions .btn {
+                font-size: 0.75rem;
+                padding: 0.3rem 0.6rem;
+            }
+
+            .font-weight-semibold {
+                font-size: 0.9rem !important;
+                margin-bottom: 0.75rem !important;
+            }
+
+            .col-lg-4 {
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+
+            .col-md-6 {
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+
+            .messages-grid {
+                gap: 0.75rem;
+            }
+
+            .message-card {
+                padding: 0.9rem;
+            }
+
+            .message-header {
+                margin-bottom: 0.6rem;
+            }
+
+            .message-title {
+                font-size: 0.9rem;
+            }
+
+            .message-meta {
+                font-size: 0.75rem;
+            }
+
+            .message-content {
+                font-size: 0.85rem;
+                line-height: 1.4;
+            }
+
+            .message-actions .btn {
+                font-size: 0.75rem;
+                padding: 0.3rem 0.6rem;
+            }
+        }
+
+        @media (min-width: 1025px) and (max-width: 1440px) {
+            .container-fluid {
+                padding: 2rem;
+            }
+
+            .card-body h1 {
+                font-size: 1.9rem !important;
+            }
+
+            .card-body h5 {
+                font-size: 1.4rem !important;
+            }
+
+            .btn {
+                font-size: 0.9rem !important;
+                padding: 0.6rem 1.2rem !important;
+            }
+
+            .category-cards-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 1.25rem;
+            }
+
+            .messages-grid {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                gap: 1.25rem;
+            }
+        }
+
+        @media (min-width: 1441px) {
+            .container-fluid {
+                padding: 2.5rem;
+                max-width: 1600px;
+                margin: 0 auto;
+            }
+
+            .card-body h1 {
+                font-size: 2rem !important;
+            }
+
+            .card-body h5 {
+                font-size: 1.5rem !important;
+            }
+
+            .btn {
+                font-size: 0.9rem !important;
+                padding: 0.6rem 1.2rem !important;
+            }
+
+            .category-cards-grid {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .messages-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+
+        .card {
+            border-radius: 12px;
+            border: 1px solid #e9ecef;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .btn {
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.15s ease-in-out;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .category-card:focus,
+        .category-tab:focus,
+        .btn:focus {
+            outline: 2px solid #667eea;
+            outline-offset: 2px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .btn,
+            .card,
+            .category-card,
+            .message-card {
+                transition: none !important;
+            }
+
+            .fade-in {
+                animation: none !important;
+            }
+        }
+
+        @media (prefers-contrast: high) {
+            .btn {
+                border-width: 2px !important;
+            }
+
+            .category-card,
+            .message-card {
+                border-width: 2px !important;
+            }
+        }
+    </style>
+</head>
+<!--body with default sidebar pinned -->
+
+<body class="sidebar-pinned">
+    <!--sidebar Begins-->
+    <aside class="admin-sidebar">
+        <div class="admin-sidebar-brand">
+            <!-- begin sidebar branding-->
+            <img class="admin-brand-logo" src="../assets/img/logo.svg" width="40" alt="atmos Logo">
+            <span class="admin-brand-content"><a href="index.html"> atmos</a></span>
+            <!-- end sidebar branding-->
+            <div class="ml-auto">
+                <!-- sidebar pin-->
+                <a href="#" class="admin-pin-sidebar btn-ghost btn btn-rounded-circle"></a>
+                <!-- sidebar close for mobile device-->
+                <a href="#" class="admin-close-sidebar"></a>
+            </div>
+        </div>
+        <div class="admin-sidebar-wrapper js-scrollbar">
+            <!-- Menu List Begins-->
+            <ul class="menu">
+                <!--list item begins-->
+                <li class="menu-item active">
+                    <a href="#" class="menu-link">
+                        <span class="menu-label">
+                            <span class="menu-name">Link
+                            </span>
+                        </span>
+                        <span class="menu-icon">
+                            <span class="icon-badge badge-success badge badge-pill">1</span>
+
+                            <i class="icon-placeholder mdi mdi-link-variant "></i>
+                        </span>
+                    </a>
+
+                </li>
+                <!--list item ends-->
+
+                <!--list item begins-->
+                <li class="menu-item ">
+                    <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                            <span class="menu-name">Menu level 1
+                                <span class="menu-arrow"></span>
+                            </span>
+                            <span class="menu-info">Contains submenu</span>
+                        </span>
+                        <span class="menu-icon">
+                            <i class="icon-placeholder mdi mdi-link-variant "></i>
+                        </span>
+                    </a>
+                    <!--submenu-->
+                    <ul class="sub-menu">
+                        <li class="menu-item">
+                            <a href="#" class=" menu-link">
+                                <span class="menu-label">
+                                    <span class="menu-name">Menu Level 1.1</span>
+                                </span>
+                                <span class="menu-icon">
+                                    <i class="icon-placeholder  ">
+                                        L
+                                    </i>
+                                </span>
+                            </a>
+
+                        </li>
+                        <li class="menu-item">
+                            <a href="#" class=" menu-link">
+                                <span class="menu-label">
+                                    <span class="menu-name">Menu Level 1.1</span>
+                                </span>
+                                <span class="menu-icon">
+                                    <i class="icon-placeholder  ">
+                                        L
+                                    </i>
+                                </span>
+                            </a>
+
+                        </li>
+
+
+                    </ul>
+                </li>
+                <!--list item ends-->
+
+                <!--list item begins-->
+                <li class="menu-item ">
+                    <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                            <span class="menu-name">Menu Level 2
+                                <span class="menu-arrow"></span>
+                            </span>
+                            <span class="menu-info">Contains submenu</span>
+                        </span>
+                        <span class="menu-icon">
+                            <i class="icon-placeholder mdi mdi-link-variant "></i>
+                        </span>
+                    </a>
+                    <!--submenu-->
+                    <ul class="sub-menu">
+                        <li class="menu-item">
+                            <a href="#" class=" menu-link">
+                                <span class="menu-label">
+                                    <span class="menu-name">Menu Level 1.1</span>
+                                </span>
+                                <span class="menu-icon">
+                                    <i class="icon-placeholder  ">
+                                        L
+                                    </i>
+                                </span>
+                            </a>
+
+                        </li>
+                        <li class="menu-item">
+                            <a href="#" class="open-dropdown menu-link">
+                                <span class="menu-label">
+                                    <span class="menu-name">Menu Level 1.1
+                                        <span class="menu-arrow"></span>
+                                    </span>
+                                </span>
+                                <span class="menu-icon">
+                                    <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                </span>
+                            </a>
+                            <!--submenu-->
+                            <ul class="sub-menu">
+                                <li class="menu-item">
+                                    <a href="#" class=" menu-link">
+                                        <span class="menu-label">
+                                            <span class="menu-name">Menu Level 2.1 </span>
+                                        </span>
+                                        <span class="menu-icon">
+                                            <i class="icon-placeholder  ">
+                                                L
+                                            </i>
+                                        </span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                    </ul>
+                </li>
+                <!--list item ends-->
+            </ul>
+            <!-- Menu List Ends-->
+        </div>
+
+    </aside>
+    <!--sidebar Ends-->
+
+
+    <main class="admin-main">
+
+        <!--site header begins-->
+        <header class="admin-header">
+
+            <a href="#" class="sidebar-toggle" data-toggleclass="sidebar-open" data-target="body"> </a>
+
+            <nav class=" mr-auto my-auto">
+                <ul class="nav align-items-center">
+
+                    <li class="nav-item">
+                        <a class="nav-link  " data-target="#siteSearchModal" data-toggle="modal" href="#">
+                            <i class=" mdi mdi-magnify mdi-24px align-middle"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <nav class=" ml-auto">
+                <ul class="nav align-items-center">
+
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false"> <i class="mdi mdi-24px mdi-bell-outline"></i>
+                                <span class="notification-counter"></span>
+                            </a>
+
+                            <div class="dropdown-menu notification-container dropdown-menu-right">
+                                <div class="d-flex p-all-15 bg-white justify-content-between border-bottom ">
+                                    <a href="#!" class="mdi mdi-18px mdi-settings text-muted"></a>
+                                    <span class="h5 m-0">Notifications</span>
+                                    <a href="#!" class="mdi mdi-18px mdi-notification-clear-all text-muted"></a>
+                                </div>
+                                <div class="notification-events bg-gray-300">
+                                    <div class="text-overline m-b-5">today</div>
+                                    <a href="#" class="d-block m-b-10">
+                                        <div class="card">
+                                            <div class="card-body"> <i class="mdi mdi-circle text-success"></i> All
+                                                systems operational.</div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="d-block m-b-10">
+                                        <div class="card">
+                                            <div class="card-body"> <i class="mdi mdi-upload-multiple "></i> File upload
+                                                successful.</div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="d-block m-b-10">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <i class="mdi mdi-cancel text-danger"></i> Your holiday has been denied
+                                            </div>
+                                        </div>
+                                    </a>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <div class="avatar avatar-sm avatar-online">
+                                <span class="avatar-title rounded-circle bg-dark">V</span>
+
+                            </div>
+                        </a>
+                        <div class="dropdown-menu  dropdown-menu-right">
+                            <a class="dropdown-item" href="#"> Add Account
+                            </a>
+                            <a class="dropdown-item" href="#"> Reset Password</a>
+                            <a class="dropdown-item" href="#"> Help </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#"> Logout</a>
+                        </div>
+                    </li>
+
+                </ul>
+
+            </nav>
+        </header>
+        <!--site header ends -->
+        <section class="admin-content">
+            <!-- BEGIN PlACE PAGE CONTENT HERE -->
+            <!--  container or container-fluid as per your need           -->
+            <div class="container">
+
+                <!-- margens laterais  -->
+                <div class="row justify-content-center">
+                    <div class="col-12 col-xl-10 col-xxl-9">
+                        <div class="card mb-4 shadow-sm">
+                            <div
+                                class="card-body d-flex flex-column flex-md-row justify-content-between align-items-center py-4">
+                                <div class="d-flex align-items-center mb-3 mb-md-0">
+                                    <i class="mdi mdi-message-text text-primary mdi-36px mr-3"></i>
+                                    <div>
+                                        <h1 class="h3 mb-0 text-dark font-weight-bold">Mensagens SMS</h1>
+                                        <p class="text-muted mb-0 small">Gerencie suas mensagens automáticas de SMS
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-wrap">
+                                    <button type="button" class="btn btn-outline-primary mr-2 px-3 px-md-4 mb-2"
+                                        onclick="window.open('mensagens-exportar.asp')">
+                                        <i class="mdi mdi-export-variant mr-1 mr-md-2"></i>
+                                        <span class="d-none d-sm-inline">Exportar</span>
+                                    </button>
+                                    <a href="config-msg-edit.asp?c=w" class="btn btn-success mr-2 px-3 px-md-4 mb-2">
+                                        <i class="mdi mdi-comment-plus-outline mr-1 mr-md-2"></i>
+                                        <span class="d-none d-sm-inline">Nova Mensagem</span>
+                                    </a>
+                                    <button type="button" class="btn btn-outline-secondary px-3 px-md-4 mb-2"
+                                        onclick="fn_modal_grande('templates-padrao.asp?t=Whatsapp')">
+                                        <i class="mdi mdi-content-copy mr-1 mr-md-2"></i>
+                                        <span class="d-none d-sm-inline">Templates</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Categoria Tabs  -->
+                        <div class="card mb-4 shadow-sm">
+                            <div class="card-header bg-light">
+                                <h5 class="mb-0 d-flex align-items-center" style="font-weight: 600; color: #495057;">
+                                    <i class="mdi mdi-filter-variant mr-2"></i>
+                                    Categorias de Mensagens
+                                </h5>
+                            </div>
+                            <div class="card-body py-3">
+                                <div class="category-tabs">
+                                    <button class="category-tab active" onclick="showCategory('all')"
+                                        data-category="all">
+                                        <i class="mdi mdi-view-grid mr-2"></i>
+                                        Todas as Categorias
+                                        <span class="tab-badge">51</span>
+                                    </button>
+                                    <button class="category-tab" onclick="showCategory('vendas')"
+                                        data-category="vendas">
+                                        <i class="mdi mdi-cart mr-2"></i>
+                                        Vendas
+                                        <span class="tab-badge">3</span>
+                                    </button>
+                                    <button class="category-tab" onclick="showCategory('pagamentos')"
+                                        data-category="pagamentos">
+                                        <i class="mdi mdi-credit-card mr-2"></i>
+                                        Pagamentos
+                                        <span class="tab-badge">18</span>
+                                    </button>
+                                    <button class="category-tab" onclick="showCategory('rastreio')"
+                                        data-category="rastreio">
+                                        <i class="mdi mdi-truck mr-2"></i>
+                                        Rastreio
+                                        <span class="tab-badge">24</span>
+                                    </button>
+
+                                    <button class="category-tab toggle-btn" id="toggle-categories"
+                                        onclick="toggleMoreCategories()">
+                                        <i class="mdi mdi-chevron-down mr-2" id="toggle-icon"></i>
+                                        <span id="toggle-text">Mostrar Mais</span>
+                                    </button>
+                                </div>
+
+                                <div id="more-categories" class="more-categories">
+                                    <button class="category-tab" onclick="showCategory('pos-venda')"
+                                        data-category="pos-venda">
+                                        <i class="mdi mdi-check-circle mr-2"></i>
+                                        Pós-Venda
+                                        <span class="tab-badge">3</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Messages Container -->
+                        <div class="messages-container">
+                            <!-- All Categories View -->
+                            <div id="category-all" class="category-content active">
+                                <div class="row" id="categoryCards">
+                                </div>
+                            </div>
+                            <div id="category-vendas" class="category-content">
+                                <div class="category-header">
+                                    <div class="category-header-content">
+                                        <div class="category-header-info">
+                                            <div class="header-icon text-success">
+                                                <i class="mdi mdi-cart-outline"></i>
+                                            </div>
+                                            <div>
+                                                <h4>Vendas</h4>
+                                                <p>Mensagens relacionadas ao processo de vendas</p>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-back" onclick="showCategory('all')">
+                                            <i class="mdi mdi-arrow-left"></i>
+                                            Voltar
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="messages-grid row" id="messages-vendas">
+                                </div>
+                            </div>
+
+                            <div id="category-pagamentos" class="category-content">
+                                <div class="category-header">
+                                    <div class="category-header-content">
+                                        <div class="category-header-info">
+                                            <div class="header-icon text-warning">
+                                                <i class="mdi mdi-credit-card"></i>
+                                            </div>
+                                            <div>
+                                                <h4>Pagamentos</h4>
+                                                <p>Mensagens relacionadas a pagamentos e cobrança</p>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-back" onclick="showCategory('all')">
+                                            <i class="mdi mdi-arrow-left"></i>
+                                            Voltar
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="messages-grid row" id="messages-pagamentos">
+                                </div>
+                            </div>
+
+                            <div id="category-pos-venda" class="category-content">
+                                <div class="category-header">
+                                    <div class="category-header-content">
+                                        <div class="category-header-info">
+                                            <div class="header-icon text-info">
+                                                <i class="mdi mdi-headset"></i>
+                                            </div>
+                                            <div>
+                                                <h4>Pós-Venda</h4>
+                                                <p>Mensagens de acompanhamento pós-compra</p>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-back" onclick="showCategory('all')">
+                                            <i class="mdi mdi-arrow-left"></i>
+                                            Voltar
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="messages-grid row" id="messages-pos-venda">
+                                </div>
+                            </div>
+
+                            <div id="category-rastreio" class="category-content">
+                                <div class="category-header">
+                                    <div class="category-header-content">
+                                        <div class="category-header-info">
+                                            <div class="header-icon text-primary">
+                                                <i class="mdi mdi-truck"></i>
+                                            </div>
+                                            <div>
+                                                <h4>Rastreio</h4>
+                                                <p>Mensagens de acompanhamento de entrega</p>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-back" onclick="showCategory('all')">
+                                            <i class="mdi mdi-arrow-left"></i>
+                                            Voltar
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="messages-grid row" id="messages-rastreio">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END PLACE PAGE CONTENT HERE -->
+        </section>
+    </main>
+
+
+    <div class="modal modal-slide-left  fade" id="siteSearchModal" tabindex="-1" role="dialog"
+        aria-labelledby="siteSearchModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body p-all-0" id="site-search">
+                    <button type="button" class="close light" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="form-dark bg-dark text-white p-t-60 p-b-20 bg-dots">
+                        <h3 class="text-uppercase    text-center  fw-300 "> Search</h3>
+
+                        <div class="container-fluid">
+                            <div class="col-md-10 p-t-10 m-auto">
+                                <input type="search" placeholder="Search Something"
+                                    class=" search form-control form-control-lg">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="bg-dark text-muted container-fluid p-b-10 text-center text-overline">
+                            results
+                        </div>
+                        <div class="list-group list  ">
+
+
+                            <div class="list-group-item d-flex  align-items-center">
+                                <div class="m-r-20">
+                                    <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"
+                                            src="../assets/img/users/user-3.jpg" alt="user-image"></div>
+                                </div>
+                                <div class="">
+                                    <div class="name">Eric Chen</div>
+                                    <div class="text-muted">Developer</div>
+                                </div>
+
+
+                            </div>
+                            <div class="list-group-item d-flex  align-items-center">
+                                <div class="m-r-20">
+                                    <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"
+                                            src="../assets/img/users/user-4.jpg" alt="user-image"></div>
+                                </div>
+                                <div class="">
+                                    <div class="name">Sean Valdez</div>
+                                    <div class="text-muted">Marketing</div>
+                                </div>
+
+
+                            </div>
+                            <div class="list-group-item d-flex  align-items-center">
+                                <div class="m-r-20">
+                                    <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"
+                                            src="../assets/img/users/user-8.jpg" alt="user-image"></div>
+                                </div>
+                                <div class="">
+                                    <div class="name">Marie Arnold</div>
+                                    <div class="text-muted">Developer</div>
+                                </div>
+
+
+                            </div>
+                            <div class="list-group-item d-flex  align-items-center">
+                                <div class="m-r-20">
+                                    <div class="avatar avatar-sm ">
+                                        <div class="avatar-title bg-dark rounded"><i
+                                                class="mdi mdi-24px mdi-file-pdf"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <div class="name">SRS Document</div>
+                                    <div class="text-muted">25.5 Mb</div>
+                                </div>
+
+
+                            </div>
+                            <div class="list-group-item d-flex  align-items-center">
+                                <div class="m-r-20">
+                                    <div class="avatar avatar-sm ">
+                                        <div class="avatar-title bg-dark rounded"><i
+                                                class="mdi mdi-24px mdi-file-document-box"></i></div>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <div class="name">Design Guide.pdf</div>
+                                    <div class="text-muted">9 Mb</div>
+                                </div>
+
+
+                            </div>
+                            <div class="list-group-item d-flex  align-items-center">
+                                <div class="m-r-20">
+                                    <div class="avatar avatar-sm ">
+                                        <div class="avatar avatar-sm  ">
+                                            <div class="avatar-title bg-primary rounded"><i
+                                                    class="mdi mdi-24px mdi-code-braces"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <div class="name">response.json</div>
+                                    <div class="text-muted">15 Kb</div>
+                                </div>
+
+
+                            </div>
+                            <div class="list-group-item d-flex  align-items-center">
+                                <div class="m-r-20">
+                                    <div class="avatar avatar-sm ">
+                                        <div class="avatar avatar-sm ">
+                                            <div class="avatar-title bg-info rounded"><i
+                                                    class="mdi mdi-24px mdi-file-excel"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <div class="name">June Accounts.xls</div>
+                                    <div class="text-muted">6 Mb</div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../assets/vendor/jquery/jquery.min.js"></script>
+    <script src="../assets/vendor/jquery-ui/jquery-ui.min.js"></script>
+    <script src="../assets/vendor/popper/popper.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/vendor/select2/js/select2.full.min.js"></script>
+    <script src="../assets/vendor/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+    <script src="../assets/vendor/listjs/listjs.min.js"></script>
+    <script src="../assets/vendor/moment/moment.min.js"></script>
+    <script src="../assets/vendor/daterangepicker/daterangepicker.js"></script>
+    <script src="../assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="../assets/vendor/bootstrap-notify/bootstrap-notify.min.js"></script>
+    <script src="../assets/js/atmos.min.js"></script>
+    <!--page specific scripts for demo-->
+
+    <script>
+        const messagesData = {
+            'vendas': {
+                'Carrinho Abandonado': [
+                    {
+                        seq: 1,
+                        title: 'Carrinho - Sua compra já está reservada',
+                        preview: 'Olá *[nome_cliente]*, tudo bem? Parabéns! A sua compra já está reservada, aproveite o *preço promocional* enquanto durar o estoque!',
+                        timing: 'após 1 min',
+                        editUrl: 'config-msg-edit.asp?v=3986596&c=w&origem='
+                    },
+                    {
+                        seq: 2,
+                        title: 'Carrinho - Última chance de aproveitar',
+                        preview: 'Oi *[nome_cliente]*! Vi que você deixou alguns itens no carrinho. Esta é sua *última chance* de aproveitar o desconto especial!',
+                        timing: 'após 30 min',
+                        editUrl: 'config-msg-edit.asp?v=3986597&c=w&origem='
+                    },
+                    {
+                        seq: 3,
+                        title: 'Carrinho - Oferta especial para você',
+                        preview: 'Olá *[nome_cliente]*! Preparei uma *oferta especial* só para você finalizar sua compra. Não perca essa oportunidade!',
+                        timing: 'após 2 horas',
+                        editUrl: 'config-msg-edit.asp?v=3986598&c=w&origem='
+                    }
+                ]
+            },
+            'pagamentos': {
+                'PIX': [
+                    {
+                        seq: 1,
+                        title: 'PIX - 1ª mensagem',
+                        preview: 'Olá *[nome_cliente]*, parabéns você fez uma ótima compra! O produto *[nome_produto]* é excelente!',
+                        timing: 'após 2 min',
+                        editUrl: 'config-msg-edit.asp?v=3986656&c=w&origem='
+                    },
+                    {
+                        seq: 2,
+                        title: 'PIX - Instruções de pagamento',
+                        preview: 'Oi *[nome_cliente]*! Aqui estão as instruções para pagar via PIX. Escaneie o QR Code ou copie a chave PIX.',
+                        timing: 'após 5 min',
+                        editUrl: 'config-msg-edit.asp?v=3986657&c=w&origem='
+                    },
+                    {
+                        seq: 3,
+                        title: 'PIX - Confirmação de pagamento',
+                        preview: 'Olá *[nome_cliente]*! Recebemos seu pagamento via PIX. Seu pedido está sendo processado!',
+                        timing: 'após 10 min',
+                        editUrl: 'config-msg-edit.asp?v=3986658&c=w&origem='
+                    }
+                ],
+                'PIX Vencido': [
+                    {
+                        seq: 1,
+                        title: 'PIX Vencido - Verifiquei que seu pagamento ainda não foi feito',
+                        preview: 'Oi *[nome_cliente]* tudo bem? Verifiquei que seu pagamento ainda não foi feito, ficou com alguma dúvida na hora de pagar?',
+                        timing: 'após 1 min',
+                        editUrl: 'config-msg-edit.asp?v=3986659&c=w&origem='
+                    },
+                    {
+                        seq: 2,
+                        title: 'PIX Vencido - Lembrete urgente',
+                        preview: 'Olá *[nome_cliente]*! Seu PIX venceu e precisamos da confirmação do pagamento para processar seu pedido.',
+                        timing: 'após 1 hora',
+                        editUrl: 'config-msg-edit.asp?v=3986660&c=w&origem='
+                    },
+                    {
+                        seq: 3,
+                        title: 'PIX Vencido - Última tentativa',
+                        preview: 'Oi *[nome_cliente]*! Esta é nossa última tentativa de contato. Seu PIX venceu e pode cancelar seu pedido.',
+                        timing: 'após 24 horas',
+                        editUrl: 'config-msg-edit.asp?v=3986661&c=w&origem='
+                    }
+                ],
+                'Cartões Pendentes': [
+                    {
+                        seq: 1,
+                        title: 'Compra recusada',
+                        preview: 'Olá [nome_cliente], infelizmente a sua compra do item [nome_produto], não foi aprovada! Mas não se preocupe, temos algumas opções para você finalizar a compra.',
+                        timing: 'após 5 min',
+                        editUrl: 'config-msg-edit.asp?v=3986635&c=w&origem='
+                    },
+                    {
+                        seq: 2,
+                        title: 'Cartão - Tentar novamente',
+                        preview: 'Oi *[nome_cliente]*! Seu cartão foi recusado, mas você pode tentar novamente ou usar outro método de pagamento.',
+                        timing: 'após 30 min',
+                        editUrl: 'config-msg-edit.asp?v=3986636&c=w&origem='
+                    },
+                    {
+                        seq: 3,
+                        title: 'Cartão - Alternativas de pagamento',
+                        preview: 'Olá *[nome_cliente]*! Oferecemos PIX e boleto como alternativas. Qual você prefere para finalizar sua compra?',
+                        timing: 'após 2 horas',
+                        editUrl: 'config-msg-edit.asp?v=3986637&c=w&origem='
+                    }
+                ],
+                'Boleto Pendente': [
+                    {
+                        seq: 1,
+                        title: 'Boleto Pendente - Parabéns, você fez uma ótima compra!',
+                        preview: 'Olá *[nome_cliente]*, parabéns, você fez uma ótima compra! O produto *[nome_produto]* é maravilhoso!',
+                        timing: 'após 5 min',
+                        editUrl: 'config-msg-edit.asp?v=3986592&c=w&origem='
+                    },
+                    {
+                        seq: 2,
+                        title: 'Boleto - Instruções de pagamento',
+                        preview: 'Oi *[nome_cliente]*! Seu boleto está pronto. Você pode pagar em qualquer banco ou lotérica até o vencimento.',
+                        timing: 'após 1 hora',
+                        editUrl: 'config-msg-edit.asp?v=3986593&c=w&origem='
+                    },
+                    {
+                        seq: 3,
+                        title: 'Boleto - Lembrete de pagamento',
+                        preview: 'Olá *[nome_cliente]*! Não esqueça de pagar seu boleto para garantir que seu pedido seja processado rapidamente!',
+                        timing: 'após 6 horas',
+                        editUrl: 'config-msg-edit.asp?v=3986594&c=w&origem='
+                    }
+                ],
+                'Boleto Vencendo': [
+                    {
+                        seq: 1,
+                        title: 'Boleto vencendo - Aproveite ainda hoje para pagar',
+                        preview: '[nome_cliente], seu boleto está vencendo! Aproveite ainda hoje para pagar e não perder o *valor promocional*!',
+                        timing: '3 dias às 9h',
+                        editUrl: 'config-msg-edit.asp?v=3986641&c=w&origem='
+                    },
+                    {
+                        seq: 2,
+                        title: 'Boleto vencendo - Últimas horas',
+                        preview: 'Oi *[nome_cliente]*! Seu boleto vence hoje! São as últimas horas para pagar e garantir seu pedido.',
+                        timing: '1 dia às 18h',
+                        editUrl: 'config-msg-edit.asp?v=3986642&c=w&origem='
+                    },
+                    {
+                        seq: 3,
+                        title: 'Boleto vencendo - Urgente',
+                        preview: 'Olá *[nome_cliente]*! URGENTE: Seu boleto vence em poucas horas. Pague agora para não perder sua compra!',
+                        timing: '1 dia às 20h',
+                        editUrl: 'config-msg-edit.asp?v=3986643&c=w&origem='
+                    }
+                ],
+                'Boleto Vencido': [
+                    {
+                        seq: 1,
+                        title: 'Boleto vencido - cupom de Desconto',
+                        preview: 'Olá [nome_cliente], tudo bem? O boleto da compra do produto [nome_produto], venceu hoje! Mas não se preocupe, gerei um cupom de 5% de Desconto.',
+                        timing: '4 dias 9h',
+                        editUrl: 'config-msg-edit.asp?v=3986638&c=w&origem='
+                    },
+                    {
+                        seq: 2,
+                        title: 'Boleto vencido - Segunda chance',
+                        preview: 'Oi *[nome_cliente]*! Seu boleto venceu, mas você ainda pode pagar com desconto especial. Não perca essa oportunidade!',
+                        timing: '5 dias às 10h',
+                        editUrl: 'config-msg-edit.asp?v=3986639&c=w&origem='
+                    },
+                    {
+                        seq: 3,
+                        title: 'Boleto vencido - Última chance',
+                        preview: 'Olá *[nome_cliente]*! Esta é sua última chance de pagar o boleto vencido. Após isso, seu pedido será cancelado.',
+                        timing: '7 dias às 9h',
+                        editUrl: 'config-msg-edit.asp?v=3986640&c=w&origem='
+                    }
+                ]
+            },
+            'pos-venda': {
+                'Pós Vendas - Pagamento Aprovado': [
+                    {
+                        seq: 1,
+                        title: 'Pagamento Aprovado',
+                        preview: 'Olá [nome_cliente], parabéns pela compra! O seu pagamento foi aprovado e já estamos preparando o seu pedido.',
+                        timing: 'Enviado automaticamente',
+                        editUrl: 'config-msg-edit.asp?v=3986602&c=w&origem='
+                    },
+                    {
+                        seq: 2,
+                        title: 'Pós-Venda - Preparação do pedido',
+                        preview: 'Oi *[nome_cliente]*! Seu pedido está sendo preparado com muito cuidado. Em breve você receberá o código de rastreio!',
+                        timing: 'após 2 horas',
+                        editUrl: 'config-msg-edit.asp?v=3986603&c=w&origem='
+                    },
+                    {
+                        seq: 3,
+                        title: 'Pós-Venda - Confirmação de envio',
+                        preview: 'Olá *[nome_cliente]*! Seu pedido foi enviado! Você pode acompanhar o rastreamento pelo código que enviamos.',
+                        timing: 'após 24 horas',
+                        editUrl: 'config-msg-edit.asp?v=3986604&c=w&origem='
+                    }
+                ]
+            },
+            'rastreio': {
+                'Rastreio - Postado': [
+                    {
+                        seq: 1,
+                        title: 'Código de Rastreio',
+                        preview: 'Olá *[nome_cliente]*! Sua compra *[numero_pedido]* já foi postada e está a caminho! Código de rastreio: *[codigo_rastreio]*',
+                        timing: 'após 2 min',
+                        editUrl: 'config-msg-edit.asp?v=3986644&c=w&origem='
+                    },
+                    {
+                        seq: 2,
+                        title: 'Rastreio - Confirmação de postagem',
+                        preview: 'Oi *[nome_cliente]*! Confirmamos que seu pedido foi postado nos Correios. Agora é só aguardar a entrega!',
+                        timing: 'após 1 hora',
+                        editUrl: 'config-msg-edit.asp?v=3986645&c=w&origem='
+                    },
+                    {
+                        seq: 3,
+                        title: 'Rastreio - Acompanhamento',
+                        preview: 'Olá *[nome_cliente]*! Use o código *[codigo_rastreio]* para acompanhar seu pedido no site dos Correios.',
+                        timing: 'após 4 horas',
+                        editUrl: 'config-msg-edit.asp?v=3986646&c=w&origem='
+                    }
+                ],
+                'Rastreio - Saiu para entrega': [
+                    {
+                        seq: 1,
+                        title: 'Saiu para entrega',
+                        preview: 'Olá *[nome_cliente]*! O seu pedido *[numero_pedido]* saiu para entrega! Aguarde no endereço de entrega: *[endereco_cliente]*',
+                        timing: 'após 1 min',
+                        editUrl: 'config-msg-edit.asp?v=3986691&c=w&origem='
+                    },
+                    {
+                        seq: 2,
+                        title: 'Entrega - Preparação',
+                        preview: 'Oi *[nome_cliente]*! Seu pedido saiu para entrega! Fique atento ao telefone para receber a ligação do entregador.',
+                        timing: 'após 30 min',
+                        editUrl: 'config-msg-edit.asp?v=3986692&c=w&origem='
+                    },
+                    {
+                        seq: 3,
+                        title: 'Entrega - Lembrete',
+                        preview: 'Olá *[nome_cliente]*! Lembre-se de estar no endereço de entrega. Seu pedido está chegando!',
+                        timing: 'após 2 horas',
+                        editUrl: 'config-msg-edit.asp?v=3986693&c=w&origem='
+                    }
+                ],
+                'Rastreio - Entregue': [
+                    {
+                        seq: 1,
+                        title: 'Compra Entregue',
+                        preview: 'Oi [nome_cliente], como vai? Vi que já seu recebeu sua compra [nome_produto], fico feliz por isso espero que tenha gostado!',
+                        timing: 'após 2 min',
+                        editUrl: 'config-msg-edit.asp?v=3986637&c=w&origem='
+                    },
+                    {
+                        seq: 2,
+                        title: 'Entrega Confirmada',
+                        preview: 'Olá *[nome_cliente]*! Confirmamos que seu pedido foi entregue com sucesso. Esperamos que tenha gostado!',
+                        timing: 'após 1 hora',
+                        editUrl: 'config-msg-edit.asp?v=3986638&c=w&origem='
+                    },
+                    {
+                        seq: 3,
+                        title: 'Avaliação do Produto',
+                        preview: 'Oi *[nome_cliente]*! Que tal avaliar o produto que você recebeu? Sua opinião é muito importante para nós!',
+                        timing: 'após 24 horas',
+                        editUrl: 'config-msg-edit.asp?v=3986639&c=w&origem='
+                    }
+                ],
+                'Rastreio - Compra à retirar': [
+                    {
+                        seq: 1,
+                        title: 'Retirar Correios - Compra à retirar',
+                        preview: 'Olá [nome_cliente], sua compra já chegou e está aguardando retirada no CORREIOS. Para retirar apresente o seu documento e informe o código de rastreio [codigo_rastreio].',
+                        timing: 'após 5 min',
+                        editUrl: 'config-msg-edit.asp?v=3986633&c=w&origem='
+                    },
+                    {
+                        seq: 2,
+                        title: 'Retirada - Lembrete',
+                        preview: 'Oi *[nome_cliente]*! Lembre-se de retirar sua compra nos Correios. Você tem 7 dias para retirar!',
+                        timing: 'após 1 dia',
+                        editUrl: 'config-msg-edit.asp?v=3986634&c=w&origem='
+                    },
+                    {
+                        seq: 3,
+                        title: 'Retirada - Última chance',
+                        preview: 'Olá *[nome_cliente]*! Última chance de retirar sua compra nos Correios. Após o prazo, será devolvida!',
+                        timing: 'após 5 dias',
+                        editUrl: 'config-msg-edit.asp?v=3986635&c=w&origem='
+                    }
+                ],
+                'Rastreio - Compra atrasada': [
+                    {
+                        seq: 1,
+                        title: 'Compra Atrasada',
+                        preview: 'Olá [nome_cliente], tudo bem? A sua compra [numero_pedido] está atrasada devido ao CORREIOS, mas não se preocupe, você irá receber em breve o seu maravilhoso pacote!',
+                        timing: 'após 2 min',
+                        editUrl: 'config-msg-edit.asp?v=3986634&c=w&origem='
+                    },
+                    {
+                        seq: 2,
+                        title: 'Atraso - Investigação',
+                        preview: 'Oi *[nome_cliente]*! Estamos investigando o atraso do seu pedido com os Correios. Em breve teremos mais informações!',
+                        timing: 'após 1 dia',
+                        editUrl: 'config-msg-edit.asp?v=3986635&c=w&origem='
+                    },
+                    {
+                        seq: 3,
+                        title: 'Atraso - Solução',
+                        preview: 'Olá *[nome_cliente]*! Encontramos a causa do atraso e já estamos resolvendo. Seu pedido chegará em breve!',
+                        timing: 'após 3 dias',
+                        editUrl: 'config-msg-edit.asp?v=3986636&c=w&origem='
+                    }
+                ],
+                'Rastreio - Falha na entrega': [
+                    {
+                        seq: 1,
+                        title: 'Falha na entrega',
+                        preview: 'Olá *[nome_cliente]*! Viemos informar que o seu pedido *[numero_pedido]* teve uma *falha na tentativa de entrega*. Veja o motivo no link de rastreio abaixo.',
+                        timing: 'após 1 min',
+                        editUrl: 'config-msg-edit.asp?v=3986692&c=w&origem='
+                    },
+                    {
+                        seq: 2,
+                        title: 'Falha - Nova tentativa',
+                        preview: 'Oi *[nome_cliente]*! Agendamos uma nova tentativa de entrega para seu pedido. Fique atento ao telefone!',
+                        timing: 'após 1 dia',
+                        editUrl: 'config-msg-edit.asp?v=3986693&c=w&origem='
+                    },
+                    {
+                        seq: 3,
+                        title: 'Falha - Alternativas',
+                        preview: 'Olá *[nome_cliente]*! Se não conseguir receber em casa, você pode retirar nos Correios ou agendar nova entrega.',
+                        timing: 'após 2 dias',
+                        editUrl: 'config-msg-edit.asp?v=3986694&c=w&origem='
+                    }
+                ],
+                'Rastreio - Taxado': [
+                    {
+                        seq: 1,
+                        title: 'Compra taxada',
+                        preview: 'Olá [nome_cliente], tudo bem? Gostaríamos de informar que sua compra em nosso site está parada nos Correios, mas fique tranquilo (a), estamos trabalhando para resolver a situação o mais rápido possível.',
+                        timing: 'após 2 min',
+                        editUrl: 'config-msg-edit.asp?v=3986667&c=w&origem='
+                    },
+                    {
+                        seq: 2,
+                        title: 'Taxação - Documentação',
+                        preview: 'Oi *[nome_cliente]*! Para resolver a taxação, precisamos de alguns documentos. Entre em contato conosco!',
+                        timing: 'após 1 dia',
+                        editUrl: 'config-msg-edit.asp?v=3986668&c=w&origem='
+                    },
+                    {
+                        seq: 3,
+                        title: 'Taxação - Resolução',
+                        preview: 'Olá *[nome_cliente]*! Resolvemos a questão da taxação. Seu pedido será liberado em breve!',
+                        timing: 'após 3 dias',
+                        editUrl: 'config-msg-edit.asp?v=3986669&c=w&origem='
+                    }
+                ],
+                'Rastreio - Atenção': [
+                    {
+                        seq: 1,
+                        title: 'Atenção: Possível problema na entrega',
+                        preview: 'Caro cliente, tudo bem? A entrega da sua encomenda [nome_produto] com o [codigo_rastreio] pode ter tido problema. Me responda aqui, para mais informações.',
+                        timing: 'após 5 min',
+                        editUrl: 'config-msg-edit.asp?v=3986640&c=w&origem='
+                    },
+                    {
+                        seq: 2,
+                        title: 'Atenção - Investigação',
+                        preview: 'Oi *[nome_cliente]*! Estamos investigando o possível problema com seu pedido. Em breve teremos uma resposta!',
+                        timing: 'após 2 horas',
+                        editUrl: 'config-msg-edit.asp?v=3986641&c=w&origem='
+                    },
+                    {
+                        seq: 3,
+                        title: 'Atenção - Solução',
+                        preview: 'Olá *[nome_cliente]*! Identificamos e resolvemos o problema. Seu pedido está sendo processado normalmente!',
+                        timing: 'após 1 dia',
+                        editUrl: 'config-msg-edit.asp?v=3986642&c=w&origem='
+                    }
+                ]
+            }
+        };
+
+        // Categoria de icones and cores
+        const categoryConfig = {
+            'Carrinho Abandonado': { icon: 'mdi-cart', color: 'success' },
+            'PIX': { icon: 'mdi-credit-card', color: 'warning' },
+            'PIX Vencido': { icon: 'mdi-alert-circle', color: 'danger' },
+            'Cartões Pendentes': { icon: 'mdi-credit-card-off', color: 'primary' },
+            'Boleto Pendente': { icon: 'mdi-file-document', color: 'secondary' },
+            'Boleto Vencendo': { icon: 'mdi-clock-alert', color: 'danger' },
+            'Boleto Vencido': { icon: 'mdi-file-document-outline', color: 'info' },
+            'Pós Vendas - Pagamento Aprovado': { icon: 'mdi-check-circle', color: 'success' },
+            'Rastreio - Postado': { icon: 'mdi-truck', color: 'warning' },
+            'Rastreio - Saiu para entrega': { icon: 'mdi-truck-delivery', color: 'warning' },
+            'Rastreio - Entregue': { icon: 'mdi-package-variant', color: 'primary' },
+            'Rastreio - Compra à retirar': { icon: 'mdi-store', color: 'primary' },
+            'Rastreio - Compra atrasada': { icon: 'mdi-clock-outline', color: 'success' },
+            'Rastreio - Falha na entrega': { icon: 'mdi-alert', color: 'danger' },
+            'Rastreio - Taxado': { icon: 'mdi-cash', color: 'secondary' },
+            'Rastreio - Atenção': { icon: 'mdi-information', color: 'info' }
+        };
+
+        document.addEventListener('DOMContentLoaded', function () {
+            initializeCategoryCards();
+            updateCategoryCounts();
+            showCategory('all');
+        });
+
+        function updateCategoryCounts() {
+            let totalMessages = 0;
+            Object.keys(messagesData).forEach(groupKey => {
+                const group = messagesData[groupKey];
+                Object.keys(group).forEach(subCategoryName => {
+                    totalMessages += group[subCategoryName].length;
+                });
+            });
+
+            const allTabBadge = document.querySelector('[data-category="all"] .tab-badge');
+            if (allTabBadge) {
+                allTabBadge.textContent = totalMessages;
+            }
+
+            Object.keys(messagesData).forEach(groupKey => {
+                const group = messagesData[groupKey];
+                let groupMessageCount = 0;
+
+                Object.keys(group).forEach(subCategoryName => {
+                    groupMessageCount += group[subCategoryName].length;
+                });
+
+                const categoryTabBadge = document.querySelector(`[data-category="${groupKey}"] .tab-badge`);
+                if (categoryTabBadge) {
+                    categoryTabBadge.textContent = groupMessageCount;
+                }
+            });
+        }
+
+        function initializeCategoryCards() {
+            const categoryCards = document.getElementById('categoryCards');
+            categoryCards.innerHTML = '';
+
+            Object.keys(messagesData).forEach(groupKey => {
+                const group = messagesData[groupKey];
+                const groupTitle = getGroupTitle(groupKey);
+
+                const groupHeader = document.createElement('div');
+                groupHeader.className = 'col-12 mb-3';
+                groupHeader.innerHTML = `<h5 class="font-weight-semibold text-muted text-uppercase letter-spacing-1 mb-3">${groupTitle}</h5>`;
+                categoryCards.appendChild(groupHeader);
+
+                Object.keys(group).forEach(categoryName => {
+                    const messages = group[categoryName];
+                    const config = categoryConfig[categoryName];
+                    const messageCount = messages.length;
+
+                    const categoryCard = document.createElement('div');
+                    categoryCard.className = 'col-lg-4 col-md-6 col-sm-12 mb-3';
+                    categoryCard.innerHTML = `
+                <div class="category-card" onclick="showSubCategory('${groupKey}', '${categoryName}')">
+                    <div class="category-card-header">
+                        <div class="category-icon text-${config.color}">
+                            <i class="mdi ${config.icon}"></i>
+                        </div>
+                        <div class="category-info">
+                            <div class="category-title">${categoryName}</div>
+                            <div class="category-description">${getCategoryDescription(categoryName)}</div>
+                        </div>
+                    </div>
+                    <div class="category-stats">
+                        <div class="category-count">${messageCount} mensagem${messageCount > 1 ? 's' : ''}</div>
+                        <div class="category-actions">
+                            <button class="btn btn-sm btn-outline-primary" onclick="event.stopPropagation(); showSubCategory('${groupKey}', '${categoryName}')">
+                                <i class="mdi mdi-eye"></i> Ver
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+                    categoryCards.appendChild(categoryCard);
+                });
+            });
+        }
+
+        function showCategory(categoryKey) {
+            document.querySelectorAll('.category-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            document.querySelectorAll('.category-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            const clickedTab = document.querySelector(`[data-category="${categoryKey}"]`);
+            if (clickedTab) {
+                clickedTab.classList.add('active');
+            }
+
+            if (categoryKey === 'all') {
+                document.getElementById('category-all').classList.add('active');
+                initializeCategoryCards();
+            } else {
+                showAllMessagesFromCategory(categoryKey);
+            }
+        }
+
+        function showAllMessagesFromCategory(categoryKey) {
+            const group = messagesData[categoryKey];
+            if (!group) return;
+
+            let messagesContainer = document.getElementById(`messages-${categoryKey}`);
+            if (!messagesContainer) {
+                const categoryContent = document.getElementById(`category-${categoryKey}`);
+                if (categoryContent) {
+                    messagesContainer = document.createElement('div');
+                    messagesContainer.id = `messages-${categoryKey}`;
+                    messagesContainer.className = 'messages-grid row';
+                    categoryContent.appendChild(messagesContainer);
+                }
+            }
+
+            if (messagesContainer) {
+                messagesContainer.innerHTML = '';
+
+                Object.keys(group).forEach(subCategoryName => {
+                    const messages = group[subCategoryName];
+                    const config = categoryConfig[subCategoryName];
+
+                    messages.forEach((message, index) => {
+                        const messageCard = createMessageCard(message, subCategoryName, config, index);
+                        messagesContainer.appendChild(messageCard);
+                    });
+                });
+
+                const categoryContent = document.getElementById(`category-${categoryKey}`);
+                if (categoryContent) {
+                    categoryContent.classList.add('active');
+                }
+            }
+        }
+
+        function showSubCategoryCards(categoryKey) {
+            const messagesGrid = document.getElementById(`messages-${categoryKey}`);
+            if (!messagesGrid) return;
+
+            messagesGrid.innerHTML = '';
+
+            const group = messagesData[categoryKey];
+            if (!group) return;
+
+            Object.keys(group).forEach(subCategoryName => {
+                const messages = group[subCategoryName];
+                const config = categoryConfig[subCategoryName];
+                const messageCount = messages.length;
+
+                const subCategoryCard = document.createElement('div');
+                subCategoryCard.className = 'col-lg-4 col-md-6 col-sm-12 mb-3';
+                subCategoryCard.innerHTML = `
+                    <div class="category-card" onclick="showSubCategory('${categoryKey}', '${subCategoryName}')">
+                        <div class="category-card-header">
+                            <div class="category-icon text-${config.color}">
+                                <i class="mdi ${config.icon}"></i>
+                            </div>
+                            <div class="category-info">
+                                <div class="category-title">${subCategoryName}</div>
+                                <div class="category-description">${getCategoryDescription(subCategoryName)}</div>
+                            </div>
+                        </div>
+                        <div class="category-stats">
+                            <div class="category-count">${messageCount} mensagem${messageCount > 1 ? 's' : ''}</div>
+                            <div class="category-actions">
+                                <button class="btn btn-sm btn-outline-primary" onclick="event.stopPropagation(); showSubCategory('${categoryKey}', '${subCategoryName}')">
+                                    <i class="mdi mdi-eye"></i> Ver
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                messagesGrid.appendChild(subCategoryCard);
+            });
+        }
+
+        function showSubCategory(groupKey, subCategoryName) {
+            document.querySelectorAll('.category-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            document.querySelectorAll('.category-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            let subCategoryContent = document.getElementById(`subcategory-${subCategoryName.replace(/\s+/g, '-').toLowerCase()}`);
+            if (!subCategoryContent) {
+                subCategoryContent = createSubCategoryContent(groupKey, subCategoryName);
+            }
+
+            subCategoryContent.classList.add('active');
+
+            const groupTab = document.querySelector(`[data-category="${groupKey}"]`);
+            if (groupTab) {
+                groupTab.classList.add('active');
+            }
+
+            populateSubCategoryMessages(groupKey, subCategoryName);
+        }
+
+        function createSubCategoryContent(groupKey, subCategoryName) {
+            const config = categoryConfig[subCategoryName];
+            const groupTitle = getGroupTitle(groupKey);
+
+            const subCategoryContent = document.createElement('div');
+            subCategoryContent.id = `subcategory-${subCategoryName.replace(/\s+/g, '-').toLowerCase()}`;
+            subCategoryContent.className = 'category-content';
+
+            subCategoryContent.innerHTML = `
+                <div class="category-header">
+                    <div class="category-header-content">
+                        <div class="category-header-info">
+                            <div class="header-icon text-${config.color}">
+                                <i class="mdi ${config.icon}"></i>
+                            </div>
+                            <div>
+                                <h4>${subCategoryName}</h4>
+                                <p>${getCategoryDescription(subCategoryName)}</p>
+                            </div>
+                        </div>
+                        <button class="btn btn-back" onclick="showCategory('all')">
+                            <i class="mdi mdi-arrow-left"></i>
+                            Voltar
+                        </button>
+                    </div>
+                </div>
+                <div class="messages-grid" id="messages-${subCategoryName.replace(/\s+/g, '-').toLowerCase()}">
+                    <!-- Messages will be populated by JavaScript -->
+                </div>
+            `;
+
+            const messagesContainer = document.querySelector('.messages-container');
+            messagesContainer.appendChild(subCategoryContent);
+
+            return subCategoryContent;
+        }
+
+        function populateSubCategoryMessages(groupKey, subCategoryName) {
+            const messagesGrid = document.getElementById(`messages-${subCategoryName.replace(/\s+/g, '-').toLowerCase()}`);
+            if (!messagesGrid) return;
+
+            messagesGrid.innerHTML = '';
+
+            const group = messagesData[groupKey];
+            if (!group || !group[subCategoryName]) return;
+
+            const messages = group[subCategoryName];
+            const config = categoryConfig[subCategoryName];
+
+            messages.forEach((message, index) => {
+                const messageCard = createMessageCard(message, subCategoryName, config, index);
+                messagesGrid.appendChild(messageCard);
+            });
+        }
+
+        function populateMessages(categoryKey) {
+            const messagesGrid = document.getElementById(`messages-${categoryKey}`);
+            if (!messagesGrid) return;
+
+            messagesGrid.innerHTML = '';
+
+            const group = messagesData[categoryKey];
+            if (!group) return;
+
+            Object.keys(group).forEach(categoryName => {
+                const messages = group[categoryName];
+                const config = categoryConfig[categoryName];
+
+                messages.forEach((message, index) => {
+                    const messageCard = createMessageCard(message, categoryName, config, index);
+                    messagesGrid.appendChild(messageCard);
+                });
+            });
+        }
+
+        function createMessageCard(message, categoryName, config, index) {
+            const card = document.createElement('div');
+            card.className = 'message-card fade-in';
+            card.style.animationDelay = `${index * 0.1}s`;
+
+            const statusColor = getStatusColor(message.timing);
+
+            card.innerHTML = `
+        <div class="message-header">
+            <h6 class="message-title">${message.title}</h6>
+            <span class="message-seq">${message.seq}</span>
+        </div>
+        
+        <div class="message-preview">
+            ${message.preview}
+        </div>
+        
+        <div class="message-footer">
+            <span class="message-timing" style="background: ${statusColor.background}; color: ${statusColor.color};">
+                <i class="mdi mdi-clock-outline me-1"></i>
+                ${message.timing}
+            </span>
+            
+            <div class="message-actions">
+                <a href="${message.editUrl}" class="btn-message-action" title="Editar mensagem">
+                    <i class="mdi mdi-pencil"></i>
+                    Editar
+                </a>
+                <button class="btn-message-action" onclick="duplicateMessage('${categoryName}', ${index})" title="Duplicar mensagem">
+                    <i class="mdi mdi-content-copy"></i>
+                    Duplicar
+                </button>
+            </div>
+        </div>
+    `;
+
+            return card;
+        }
+
+        function getStatusColor(timing) {
+            if (timing.includes('automaticamente') || timing.includes('Enviado')) {
+                return { background: 'rgba(40, 167, 69, 0.1)', color: '#28a745' };
+            } else if (timing.includes('min')) {
+                return { background: 'rgba(255, 193, 7, 0.1)', color: '#ffc107' };
+            } else if (timing.includes('hora') || timing.includes('dia')) {
+                return { background: 'rgba(23, 162, 184, 0.1)', color: '#17a2b8' };
+            } else {
+                return { background: 'rgba(108, 117, 125, 0.1)', color: '#6c757d' };
+            }
+        }
+
+        function getGroupTitle(groupKey) {
+            const titles = {
+                'vendas': 'Vendas',
+                'pagamentos': 'Pagamentos',
+                'pos-venda': 'Pós-Venda',
+                'rastreio': 'Rastreio'
+            };
+            return titles[groupKey] || groupKey;
+        }
+
+        function getCategoryDescription(categoryName) {
+            const descriptions = {
+                'Carrinho Abandonado': 'Mensagens para recuperar carrinhos abandonados',
+                'PIX': 'Mensagens de confirmação e código PIX',
+                'PIX Vencido': 'Mensagens para PIX não pagos',
+                'Cartões Pendentes': 'Mensagens para compras recusadas',
+                'Boleto Pendente': 'Mensagens de confirmação de boleto',
+                'Boleto Vencendo': 'Alertas de vencimento de boleto',
+                'Boleto Vencido': 'Mensagens pós-vencimento com cupom',
+                'Pós Vendas - Pagamento Aprovado': 'Confirmação de pagamento aprovado',
+                'Rastreio - Postado': 'Notificação de postagem',
+                'Rastreio - Saiu para entrega': 'Notificação de saída para entrega',
+                'Rastreio - Entregue': 'Confirmação de entrega',
+                'Rastreio - Compra à retirar': 'Instruções para retirada nos Correios',
+                'Rastreio - Compra atrasada': 'Notificação de atraso',
+                'Rastreio - Falha na entrega': 'Notificação de falha na entrega',
+                'Rastreio - Taxado': 'Notificação de taxação',
+                'Rastreio - Atenção': 'Alerta de possível problema'
+            };
+            return descriptions[categoryName] || 'Mensagens da categoria';
+        }
+
+        function duplicateMessage(categoryName, messageIndex) {
+            let message = null;
+            Object.keys(messagesData).forEach(groupKey => {
+                const group = messagesData[groupKey];
+                if (group[categoryName] && group[categoryName][messageIndex]) {
+                    message = group[categoryName][messageIndex];
+                }
+            });
+
+            if (message) {
+                const duplicateUrl = `${message.editUrl}&duplicate=true`;
+                window.open(duplicateUrl, '_blank');
+            }
+        }
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                showCategory('all');
+            }
+        });
+
+        function addLoadingState(element) {
+            element.classList.add('loading');
+            setTimeout(() => {
+                element.classList.remove('loading');
+            }, 1000);
+        }
+
+        document.addEventListener('click', function (e) {
+            if (e.target.closest('.category-card')) {
+                const card = e.target.closest('.category-card');
+                addLoadingState(card);
+            }
+        });
+
+        function toggleMoreCategories() {
+            const moreCategories = document.getElementById('more-categories');
+            const toggleBtn = document.getElementById('toggle-categories');
+            const toggleIcon = document.getElementById('toggle-icon');
+            const toggleText = document.getElementById('toggle-text');
+
+            if (!moreCategories.classList.contains('show')) {
+                moreCategories.classList.add('show');
+                toggleIcon.classList.add('expanded');
+                toggleText.textContent = 'Mostrar Menos';
+                toggleBtn.classList.add('expanded');
+            } else {
+                moreCategories.classList.remove('show');
+                toggleIcon.classList.remove('expanded');
+                toggleText.textContent = 'Mostrar Mais';
+                toggleBtn.classList.remove('expanded');
+            }
+        }
+    </script>
+
+</body>
+
+</html>

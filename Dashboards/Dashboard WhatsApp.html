@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" name="viewport">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Atmos Admin Panel- Bootstrap 4 Based Admin Panel</title>
+<link rel="icon" type="image/x-icon" href="../assets/img/logo.png"/>
+<link rel="icon" href="../assets/img/logo.png" type="image/png" sizes="16x16">
+<link rel="stylesheet" href="../assets/vendor/pace/pace.css">
+<script src="../assets/vendor/pace/pace.min.js"></script>
+<!--vendors-->
+<link rel="stylesheet" type="text/css" href="../assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
+<link rel="stylesheet" type="text/css" href="../assets/vendor/jquery-scrollbar/jquery.scrollbar.css">
+<link rel="stylesheet" href="../assets/vendor/select2/css/select2.min.css">
+<link rel="stylesheet" href="../assets/vendor/jquery-ui/jquery-ui.min.css">
+<link rel="stylesheet" href="../assets/vendor/daterangepicker/daterangepicker.css">
+<link rel="stylesheet" href="../assets/vendor/timepicker/bootstrap-timepicker.min.css">
+<link href="https://fonts.googleapis.com/css?family=Hind+Vadodara:400,500,600" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts/jost/jost.css">
+<!--Material Icons-->
+<link rel="stylesheet" type="text/css" href="../assets/fonts/materialdesignicons/materialdesignicons.min.css">
+<!--Bootstrap + atmos Admin CSS-->
+<link rel="stylesheet" type="text/css" href="../assets/css/atmos.min.css">
+<!-- Additional library for page -->
+</head>
+<!--body with default sidebar pinned -->
+<body class="sidebar-pinned">
+<!--sidebar Begins-->
+<aside class="admin-sidebar">
+    <div class="admin-sidebar-brand">
+        <!-- begin sidebar branding-->
+        <img class="admin-brand-logo" src="../assets/img/logo.svg" width="40" alt="atmos Logo">
+        <span class="admin-brand-content"><a href="index.html">  atmos</a></span>
+        <!-- end sidebar branding-->
+        <div class="ml-auto">
+            <!-- sidebar pin-->
+            <a href="#" class="admin-pin-sidebar btn-ghost btn btn-rounded-circle"></a>
+            <!-- sidebar close for mobile device-->
+            <a href="#" class="admin-close-sidebar"></a>
+        </div>
+    </div>
+    <div class="admin-sidebar-wrapper js-scrollbar">
+        <!-- Menu List Begins-->
+        <ul class="menu">
+            <!--list item begins-->
+            <li class="menu-item active">
+                <a href="#" class="menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Link
+                                                </span>
+                                            </span>
+                    <span class="menu-icon">
+                                                   <span class="icon-badge badge-success badge badge-pill">1</span>
+
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+
+            </li>
+            <!--list item ends-->
+
+            <!--list item begins-->
+            <li class="menu-item ">
+                <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu level 1
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                                <span class="menu-info">Contains submenu</span>
+                                            </span>
+                    <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+                <!--submenu-->
+                <ul class="sub-menu">
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+
+
+                </ul>
+            </li>
+            <!--list item ends-->
+
+            <!--list item begins-->
+            <li class="menu-item ">
+                <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu Level 2
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                                <span class="menu-info">Contains submenu</span>
+                                            </span>
+                    <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+                <!--submenu-->
+                <ul class="sub-menu">
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu Level 1.1
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                        </a>
+                        <!--submenu-->
+                        <ul class="sub-menu">
+                            <li class="menu-item">
+                                <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 2.1 </span>
+                                            </span>
+                                    <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+            <!--list item ends-->
+        </ul>
+        <!-- Menu List Ends-->
+    </div>
+
+</aside>
+<!--sidebar Ends-->
+
+
+<main class="admin-main">
+
+    <!--site header begins-->
+<header class="admin-header">
+
+    <a href="#" class="sidebar-toggle" data-toggleclass="sidebar-open" data-target="body"> </a>
+
+    <nav class=" mr-auto my-auto">
+        <ul class="nav align-items-center">
+
+            <li class="nav-item">
+                <a class="nav-link  " data-target="#siteSearchModal" data-toggle="modal" href="#">
+                    <i class=" mdi mdi-magnify mdi-24px align-middle"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <nav class=" ml-auto">
+        <ul class="nav align-items-center">
+
+            <li class="nav-item">
+                <div class="dropdown">
+                    <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-24px mdi-bell-outline"></i>
+                        <span class="notification-counter"></span>
+                    </a>
+
+                    <div class="dropdown-menu notification-container dropdown-menu-right">
+                        <div class="d-flex p-all-15 bg-white justify-content-between border-bottom ">
+                            <a href="#!" class="mdi mdi-18px mdi-settings text-muted"></a>
+                            <span class="h5 m-0">Notifications</span>
+                            <a href="#!" class="mdi mdi-18px mdi-notification-clear-all text-muted"></a>
+                        </div>
+                        <div class="notification-events bg-gray-300">
+                            <div class="text-overline m-b-5">today</div>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body"> <i class="mdi mdi-circle text-success"></i> All systems operational.</div>
+                                </div>
+                            </a>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body"> <i class="mdi mdi-upload-multiple "></i> File upload successful.</div>
+                                </div>
+                            </a>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <i class="mdi mdi-cancel text-danger"></i> Your holiday has been denied
+                                    </div>
+                                </div>
+                            </a>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item dropdown ">
+                <a class="nav-link dropdown-toggle" href="#"   role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    <div class="avatar avatar-sm avatar-online">
+                        <span class="avatar-title rounded-circle bg-dark">V</span>
+
+                    </div>
+                </a>
+                <div class="dropdown-menu  dropdown-menu-right"   >
+                    <a class="dropdown-item" href="#">  Add Account
+                    </a>
+                    <a class="dropdown-item" href="#">  Reset Password</a>
+                    <a class="dropdown-item" href="#">  Help </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"> Logout</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </nav>
+</header>
+<!--site header ends -->    <section class="admin-content">
+        <div class="container-fluid pb-5">
+            <!-- Header Simplificado -->
+            <div class="row mb-4 mt-5">
+                <div class="col-12">
+                    <div class="card bg-gradient-primary border-0 shadow-sm text-white">
+                        <div class="card-body py-4 px-4">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <div class="avatar avatar-lg bg-white bg-opacity-20 mr-3 d-flex align-items-center justify-content-center" style="width: 56px; height: 56px; border-radius: 16px;">
+                                        <i class="mdi mdi-whatsapp text-white" style="font-size: 2.5rem;"></i>
+                                    </div>
+                                    <div>
+                                        <h1 class="h2 mb-1 text-white font-weight-bold">Dashboard WhatsApp</h1>
+                                        <p class="mb-0 text-white-50">Gerencie suas mensagens e automações</p>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="h3 mb-1 text-white font-weight-bold">0</div>
+                                    <small class="text-white-50">mensagens hoje</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filtros de Tempo Simplificados -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card bg-white border-0 shadow-sm">
+                        <div class="card-body py-3">
+                            <div class="d-flex justify-content-between align-items-center flex-wrap">
+                                <h6 class="mb-0 text-muted font-weight-medium">Período:</h6>
+                                <div class="btn-group btn-group-sm" role="group" id="timeFilterGroup">
+                                    <button class="btn btn-primary" data-value="hoje">Hoje</button>
+                                    <button class="btn btn-outline-primary" data-value="7dias">7 dias</button>
+                                    <button class="btn btn-outline-primary" data-value="30dias">30 dias</button>
+                                    <button class="btn btn-outline-primary" data-value="90dias">90 dias</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Status Geral -->
+                <div class="col-md-8 mb-4">
+                    <div class="card bg-white h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h5 class="card-title m-0 font-weight-bold text-dark">
+                                    <i class="mdi mdi-chart-line text-primary mr-2"></i>
+                                    Estatísticas de Envio
+                                </h5>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" id="dropdownPeriod" data-toggle="dropdown">
+                                        <span id="dropdownPeriodLabel">Este mês</span>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right shadow-sm">
+                                        <a class="dropdown-item active" href="#" data-value="este-mes">Este mês</a>
+                                        <a class="dropdown-item" href="#" data-value="ultimos-30-dias">Últimos 30 dias</a>
+                                        <a class="dropdown-item" href="#" data-value="ultimos-90-dias">Últimos 90 dias</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="text-center mb-4">
+                                        <h2 class="display-4 mb-2 font-weight-bold text-primary">0</h2>
+                                        <p class="text-muted mb-0">Total de Mensagens Enviadas</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <div class="d-flex justify-content-between mb-1">
+                                            <span class="text-dark font-weight-medium">Manual</span>
+                                            <span class="badge badge-primary">0</span>
+                                        </div>
+                                        <div class="progress mb-3" style="height: 8px;">
+                                            <div class="progress-bar bg-primary" style="width: 50%;"></div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="d-flex justify-content-between mb-1">
+                                            <span class="text-dark font-weight-medium">Automação</span>
+                                            <span class="badge badge-success">0</span>
+                                        </div>
+                                        <div class="progress" style="height: 8px;">
+                                            <div class="progress-bar bg-success" style="width: 50%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Status do Sistema -->
+                <div class="col-md-4 mb-4">
+                    <div class="card bg-white h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h5 class="card-title m-0 font-weight-bold text-dark">
+                                    <i class="mdi mdi-cog text-success mr-2"></i>
+                                    Status do Sistema
+                                </h5>
+                                <button class="btn btn-sm btn-outline-success">Configurar</button>
+                            </div>
+                            
+                            <div class="space-y-3">
+                                <div class="d-flex align-items-center justify-content-between p-3 bg-light rounded">
+                                    <div class="d-flex align-items-center">
+                                        <i class="mdi mdi-whatsapp text-danger mr-2"></i>
+                                        <span class="font-weight-medium">WhatsApp</span>
+                                    </div>
+                                    <span class="badge badge-danger">Desconectado</span>
+                                </div>
+                                
+                                <div class="d-flex align-items-center justify-content-between p-3 bg-light rounded">
+                                    <div class="d-flex align-items-center">
+                                        <i class="mdi mdi-robot text-danger mr-2"></i>
+                                        <span class="font-weight-medium">Automação</span>
+                                    </div>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="autoSwitch">
+                                        <label class="custom-control-label" for="autoSwitch"></label>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex align-items-center justify-content-between p-3 bg-light rounded">
+                                    <div class="d-flex align-items-center">
+                                        <i class="mdi mdi-credit-card text-success mr-2"></i>
+                                        <span class="font-weight-medium">Saldo</span>
+                                    </div>
+                                    <span class="badge badge-success">Ilimitado</span>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4 pt-3 border-top">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">Última verificação: 10:45</small>
+                                    <a href="#" class="text-primary small">Ver logs</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Categorias de Mensagens -->
+                <div class="col-md-6 mb-4">
+                    <div class="card bg-white h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h5 class="card-title m-0 font-weight-bold text-dark">
+                                    <i class="mdi mdi-tag-multiple text-primary mr-2"></i>
+                                    Categorias
+                                </h5>
+                                <button class="btn btn-sm btn-outline-primary">Ver todas</button>
+                            </div>
+                            
+                            <div class="space-y-3">
+                                <div class="d-flex justify-content-between align-items-center py-2">
+                                    <div class="d-flex align-items-center">
+                                        <span class="d-inline-block w-3 h-3 bg-success rounded-circle mr-2"></span>
+                                        <span class="font-weight-medium">Boleto</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="font-weight-bold text-dark">30%</span>
+                                        <small class="text-muted d-block">120 envios</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between align-items-center py-2">
+                                    <div class="d-flex align-items-center">
+                                        <span class="d-inline-block w-3 h-3 bg-warning rounded-circle mr-2"></span>
+                                        <span class="font-weight-medium">Pix</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="font-weight-bold text-dark">25%</span>
+                                        <small class="text-muted d-block">100 envios</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between align-items-center py-2">
+                                    <div class="d-flex align-items-center">
+                                        <span class="d-inline-block w-3 h-3 bg-primary rounded-circle mr-2"></span>
+                                        <span class="font-weight-medium">Carrinho</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="font-weight-bold text-dark">20%</span>
+                                        <small class="text-muted d-block">80 envios</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between align-items-center py-2">
+                                    <div class="d-flex align-items-center">
+                                        <span class="d-inline-block w-3 h-3 bg-dark rounded-circle mr-2"></span>
+                                        <span class="font-weight-medium">Outros</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="font-weight-bold text-dark">25%</span>
+                                        <small class="text-muted d-block">100 envios</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4 pt-3 border-top text-center">
+                                <span class="badge badge-light px-3 py-2">Total: 400 envios</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ações Rápidas -->
+                <div class="col-md-6 mb-4">
+                    <div class="card bg-white h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h5 class="card-title m-0 font-weight-bold text-dark">
+                                    <i class="mdi mdi-send text-primary mr-2"></i>
+                                    Envio Rápido
+                                </h5>
+                                <button class="btn btn-sm btn-primary">
+                                    <i class="mdi mdi-plus mr-1"></i>Nova
+                                </button>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-6 mb-3">
+                                    <button class="btn btn-outline-secondary w-100 py-3 position-relative">
+                                        <div class="text-center">
+                                            <i class="mdi mdi-credit-card-outline d-block mb-1"></i>
+                                            <small class="font-weight-medium">BOLETO</small>
+                                        </div>
+                                    </button>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <button class="btn btn-outline-secondary w-100 py-3 position-relative">
+                                        <span class="position-absolute bg-danger rounded-circle" style="top: 8px; right: 8px; width: 8px; height: 8px;"></span>
+                                        <div class="text-center">
+                                            <i class="mdi mdi-currency-usd-circle-outline d-block mb-1"></i>
+                                            <small class="font-weight-medium">PIX</small>
+                                        </div>
+                                    </button>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <button class="btn btn-outline-secondary w-100 py-3">
+                                        <div class="text-center">
+                                            <i class="mdi mdi-cart-outline d-block mb-1"></i>
+                                            <small class="font-weight-medium">CARRINHO</small>
+                                        </div>
+                                    </button>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <button class="btn btn-outline-secondary w-100 py-3 position-relative">
+                                        <span class="position-absolute bg-danger rounded-circle" style="top: 8px; right: 8px; width: 8px; height: 8px;"></span>
+                                        <div class="text-center">
+                                            <i class="mdi mdi-truck-delivery-outline d-block mb-1"></i>
+                                            <small class="font-weight-medium">ENTREGA</small>
+                                        </div>
+                                    </button>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <button class="btn btn-outline-secondary w-100 py-3">
+                                        <div class="text-center">
+                                            <i class="mdi mdi-package-variant-closed d-block mb-1"></i>
+                                            <small class="font-weight-medium">POSTADO</small>
+                                        </div>
+                                    </button>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <button class="btn btn-outline-secondary w-100 py-3 position-relative">
+                                        <span class="position-absolute bg-danger rounded-circle" style="top: 8px; right: 8px; width: 8px; height: 8px;"></span>
+                                        <div class="text-center">
+                                            <i class="mdi mdi-alert-circle-outline d-block mb-1"></i>
+                                            <small class="font-weight-medium">URGENTE</small>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Últimos Envios Simplificado -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card bg-white border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h5 class="card-title m-0 font-weight-bold text-dark">
+                                    <i class="mdi mdi-history text-primary mr-2"></i>
+                                    Atividade Recente
+                                </h5>
+                                <button class="btn btn-sm btn-outline-primary">
+                                    <i class="mdi mdi-download-outline mr-1"></i>Exportar
+                                </button>
+                            </div>
+                            
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item px-0 py-3 d-flex align-items-center">
+                                    <div class="avatar avatar-sm bg-primary-light mr-3 d-flex align-items-center justify-content-center rounded">
+                                        <i class="mdi mdi-receipt text-primary"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <span class="font-weight-medium text-dark">Boleto Pendente enviado</span>
+                                                <small class="text-muted d-block">Pedido #8009 • Manual</small>
+                                            </div>
+                                            <div class="text-right">
+                                                <small class="text-muted">09/06/2025 11:46</small>
+                                                <span class="badge badge-success ml-2">Entregue</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="list-group-item px-0 py-3 d-flex align-items-center">
+                                    <div class="avatar avatar-sm bg-warning-light mr-3 d-flex align-items-center justify-content-center rounded">
+                                        <i class="mdi mdi-currency-usd text-warning"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <span class="font-weight-medium text-dark">Pix Vencendo enviado</span>
+                                                <small class="text-muted d-block">Pedido #8008 • Automação</small>
+                                            </div>
+                                            <div class="text-right">
+                                                <small class="text-muted">05/06/2025 13:04</small>
+                                                <span class="badge badge-warning ml-2">Pendente</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="list-group-item px-0 py-3 d-flex align-items-center border-bottom-0">
+                                    <div class="avatar avatar-sm bg-info-light mr-3 d-flex align-items-center justify-content-center rounded">
+                                        <i class="mdi mdi-cart text-info"></i>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <span class="font-weight-medium text-dark">Carrinho Abandonado enviado</span>
+                                                <small class="text-muted d-block">Pedido #8007 • Automação</small>
+                                            </div>
+                                            <div class="text-right">
+                                                <small class="text-muted">05/06/2025 12:59</small>
+                                                <span class="badge badge-info ml-2">Lido</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center mt-3 pt-3 border-top">
+                                <button class="btn btn-outline-primary btn-sm">Ver todos os envios</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Templates de Mensagem Simplificado -->
+            <div class="row mb-5">
+                <div class="col-12">
+                    <div class="card bg-white border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h5 class="card-title m-0 font-weight-bold text-dark">
+                                    <i class="mdi mdi-message-text-outline text-primary mr-2"></i>
+                                    Templates de Mensagem
+                                </h5>
+                                <button class="btn btn-primary btn-sm">
+                                    <i class="mdi mdi-plus mr-1"></i>Novo Template
+                                </button>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <div class="card border">
+                                        <div class="card-body p-3">
+                                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                                <span class="badge badge-success">Boleto</span>
+                                                <button class="btn btn-sm btn-outline-danger" title="Excluir">
+                                                    <i class="mdi mdi-delete"></i>
+                                                </button>
+                                            </div>
+                                            <h6 class="card-title mb-1">Boleto 2º Lembrete</h6>
+                                            <small class="text-muted">0 envios • 0% conversão</small>
+                                            <div class="mt-2">
+                                                <div class="progress" style="height: 4px;">
+                                                    <div class="progress-bar bg-success" style="width: 0%;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-4 mb-3">
+                                    <div class="card border-dashed border-2 h-100">
+                                        <div class="card-body p-3 d-flex align-items-center justify-content-center">
+                                            <div class="text-center text-muted">
+                                                <i class="mdi mdi-plus-circle mb-2" style="font-size: 2rem;"></i>
+                                                <p class="mb-0 small">Criar novo template</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+</main>
+
+
+<div class="modal modal-slide-left  fade" id="siteSearchModal" tabindex="-1" role="dialog" aria-labelledby="siteSearchModal"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body p-all-0" id="site-search">
+                <button type="button" class="close light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="form-dark bg-dark text-white p-t-60 p-b-20 bg-dots" >
+                    <h3 class="text-uppercase    text-center  fw-300 "> Search</h3>
+
+                    <div class="container-fluid">
+                        <div class="col-md-10 p-t-10 m-auto">
+                            <input type="search" placeholder="Search Something"
+                                   class=" search form-control form-control-lg">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="bg-dark text-muted container-fluid p-b-10 text-center text-overline">
+                        results
+                    </div>
+                    <div class="list-group list  ">
+
+
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"   src="../assets/img/users/user-3.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Eric Chen</div>
+                                <div class="text-muted">Developer</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"
+                                                                    src="../assets/img/users/user-4.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Sean Valdez</div>
+                                <div class="text-muted">Marketing</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"
+                                                                    src="../assets/img/users/user-8.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Marie Arnold</div>
+                                <div class="text-muted">Developer</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar-title bg-dark rounded"><i class="mdi mdi-24px mdi-file-pdf"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">SRS Document</div>
+                                <div class="text-muted">25.5 Mb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar-title bg-dark rounded"><i
+                                                class="mdi mdi-24px mdi-file-document-box"></i></div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">Design Guide.pdf</div>
+                                <div class="text-muted">9 Mb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar avatar-sm ">
+                                        <div class="avatar-title bg-primary rounded"><i
+                                                    class="mdi mdi-24px mdi-code-braces"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">response.json</div>
+                                <div class="text-muted">15 Kb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar avatar-sm ">
+                                        <div class="avatar-title bg-info rounded"><i
+                                                    class="mdi mdi-24px mdi-file-excel"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">June Accounts.xls</div>
+                                <div class="text-muted">6 Mb</div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="../assets/vendor/jquery/jquery.min.js"></script>
+<script src="../assets/vendor/jquery-ui/jquery-ui.min.js"></script>
+<script src="../assets/vendor/popper/popper.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/vendor/select2/js/select2.full.min.js"></script>
+<script src="../assets/vendor/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+<script src="../assets/vendor/listjs/listjs.min.js"></script>
+<script src="../assets/vendor/moment/moment.min.js"></script>
+<script src="../assets/vendor/daterangepicker/daterangepicker.js"></script>
+<script src="../assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="../assets/vendor/bootstrap-notify/bootstrap-notify.min.js"></script>
+<script src="../assets/js/atmos.min.js"></script>
+<!--page specific scripts for demo-->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const group = document.getElementById('timeFilterGroup');
+        if (group) {
+            group.addEventListener('click', function(e) {
+                if (e.target.tagName === 'BUTTON') {
+                    Array.from(group.children).forEach(btn => {
+                        btn.classList.remove('btn-primary');
+                        btn.classList.add('btn-light');
+                    });
+                    e.target.classList.remove('btn-light');
+                    e.target.classList.add('btn-primary');
+                }
+            });
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var dropdown = document.getElementById('dropdownPeriod');
+        var dropdownLabel = document.getElementById('dropdownPeriodLabel');
+        var dropdownMenu = dropdown.nextElementSibling;
+        var items = dropdownMenu.querySelectorAll('.dropdown-item');
+
+        items.forEach(function(item) {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                items.forEach(function(i) { i.classList.remove('active'); });
+                this.classList.add('active');
+                dropdownLabel.textContent = this.textContent;
+            });
+        });
+    });
+</script>
+
+<style>
+.message-btn {
+    background-color: #f8f9fa !important;
+    border-color: #e9ecef !important;
+    transition: all 0.2s ease;
+    min-height: 50px !important;
+}
+
+.message-btn:hover {
+    background-color: #e9ecef !important;
+    border-color: #dee2e6 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+}
+
+.message-btn:focus {
+    box-shadow: 0 0 0 0.2rem rgba(93, 120, 255, 0.25) !important;
+    border-color: #5d78ff !important;
+}
+
+.notification-badge {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.message-btn:hover .notification-badge {
+    transform: scale(1.1);
+    box-shadow: 0 3px 8px rgba(220, 53, 69, 0.5), 0 0 0 3px #ffffff !important;
+}
+
+.notification-badge:hover {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 2px 6px rgba(220, 53, 69, 0.4), 0 0 0 2px #ffffff, 0 0 0 0px rgba(220, 53, 69, 0.7);
+    }
+    70% {
+        box-shadow: 0 2px 6px rgba(220, 53, 69, 0.4), 0 0 0 2px #ffffff, 0 0 0 6px rgba(220, 53, 69, 0);
+    }
+    100% {
+        box-shadow: 0 2px 6px rgba(220, 53, 69, 0.4), 0 0 0 2px #ffffff, 0 0 0 0px rgba(220, 53, 69, 0);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 1680px) {
+  .admin-content .card-body, .admin-content .card-header, .admin-content .card-footer {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+@media (max-width: 1440px) {
+  .admin-content .card-body, .admin-content .card-header, .admin-content .card-footer {
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+  }
+}
+@media (max-width: 1024px) {
+  /* Cards em 2 colunas */
+  .admin-content .row > .col-md-4 {
+    flex: 0 0 48%;
+    max-width: 48%;
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-bottom: 1.5rem;
+  }
+  .admin-content .row > .col-md-4:nth-child(3) {
+    flex: 0 0 98%;
+    max-width: 98%;
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-bottom: 1.5rem;
+  }
+  .admin-content .row {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .admin-content .d-flex.flex-wrap {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  .admin-content .btn-group.btn-group-sm.flex-wrap {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 0.5rem;
+  }
+}
+@media (max-width: 767.98px) {
+  .admin-content .row > [class^="col-"],
+  .admin-content .row > [class*=" col-"] {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 1.2rem;
+  }
+  .admin-content .d-flex.justify-content-between.align-items.center.flex-wrap {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.5rem;
+  }
+  .admin-content .card-body, .admin-content .card-header, .admin-content .card-footer {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .admin-content .message-grid .row > [class^="col-"],
+  .admin-content .message-grid .row > [class*=" col-"] {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+@media (max-width: 375px) {
+  .admin-content .card-body, .admin-content .card-header, .admin-content .card-footer {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  .admin-content .message-grid .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .admin-content .message-grid .row > [class^="col-"],
+  .admin-content .message-grid .row > [class*=" col-"] {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .manual-auto-card-flex {
+    min-height: 100px !important;
+  }
+  #manualAutoPieChart {
+    width: 54px !important;
+    height: 54px !important;
+  }
+  .manual-auto-center {
+    width: 28px !important;
+    height: 28px !important;
+    top: 13px !important;
+    left: 13px !important;
+  }
+  .manual-auto-center h6 {
+    font-size: 0.7rem !important;
+    line-height: 1.1 !important;
+  }
+  .manual-auto-center small {
+    font-size: 0.45rem !important;
+    line-height: 1 !important;
+  }
+}
+@media (max-width: 340px) {
+  .admin-content .card-body, .admin-content .card-header, .admin-content .card-footer {
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+  }
+  #manualAutoPieChart {
+    width: 44px !important;
+    height: 44px !important;
+  }
+  .manual-auto-center {
+    width: 20px !important;
+    height: 20px !important;
+    top: 12px !important;
+    left: 12px !important;
+  }
+  .manual-auto-center h6 {
+    font-size: 0.55rem !important;
+  }
+  .manual-auto-center small {
+    font-size: 0.35rem !important;
+  }
+}
+@media (max-width: 480px) {
+  .admin-content .btn-group.btn-group-sm.flex-wrap button {
+    min-width: 90px;
+    margin-bottom: 0.3rem;
+  }
+  .admin-content .message-grid .row {
+    flex-direction: column;
+  }
+  .admin-content .message-grid .row > [class^="col-"],
+  .admin-content .message-grid .row > [class*=" col-"] {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}
+/* Responsividade Manual x Automação */
+@media (max-width: 1024px) {
+  #manualAutoPieChart {
+    width: 110px !important;
+    height: 110px !important;
+  }
+  .manual-auto-center {
+    width: 62px !important;
+    height: 62px !important;
+    top: 24px !important;
+    left: 24px !important;
+  }
+}
+@media (max-width: 767.98px) {
+  .manual-auto-card-flex {
+    flex-direction: column !important;
+    align-items: center !important;
+    min-height: unset !important;
+    margin-top: 0 !important;
+  }
+  #manualAutoPieChart {
+    width: 90px !important;
+    height: 90px !important;
+  }
+  .manual-auto-center {
+    width: 48px !important;
+    height: 48px !important;
+    top: 21px !important;
+    left: 21px !important;
+  }
+  .manual-auto-legend {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0 !important;
+    flex-direction: row !important;
+    justify-content: space-around !important;
+    width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  #manualAutoPieChart {
+    width: 70px !important;
+    height: 70px !important;
+  }
+  .manual-auto-center {
+    width: 36px !important;
+    height: 36px !important;
+    top: 16px !important;
+    left: 16px !important;
+  }
+}
+.manual-auto-center h6 {
+  font-size: 1.3rem;
+}
+.manual-auto-center small {
+  font-size: 0.85rem;
+}
+
+@media (max-width: 1024px) {
+  .manual-auto-center h6 { font-size: 1.05rem; }
+  .manual-auto-center small { font-size: 0.7rem; }
+}
+@media (max-width: 767.98px) {
+  .manual-auto-center h6 { font-size: 0.95rem; }
+  .manual-auto-center small { font-size: 0.65rem; }
+}
+@media (max-width: 480px) {
+  .manual-auto-center h6 { font-size: 0.8rem; }
+  .manual-auto-center small { font-size: 0.55rem; }
+}
+
+.manual-auto-center .text-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.manual-auto-center small {
+  white-space: nowrap;
+}
+
+@media (max-width: 375px) {
+  .manual-auto-center small::after {
+    content: 'msgs';
+  }
+  .manual-auto-center small {
+    color: transparent !important;
+    position: relative;
+  }
+  .manual-auto-center small::after {
+    color: #6c757d !important;
+    position: absolute;
+    left: 0; right: 0; top: 0; bottom: 0;
+    margin: auto;
+    width: max-content;
+    height: max-content;
+  }
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const manual = 50;
+        const auto = 50;
+        const total = manual + auto;
+        document.getElementById('pieChartTotal').textContent = total;
+        const ctx = document.getElementById('manualAutoPieChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Manual', 'Automação'],
+                datasets: [{
+                    data: [manual, auto],
+                    backgroundColor: ['#5d78ff', '#2ecc71'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                cutout: '62%',
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.label || '';
+                                const value = context.parsed;
+                                const percent = total ? ((value / total) * 100).toFixed(1) : 0;
+                                return `${label}: ${value} (${percent}%)`;
+                            }
+                        }
+                    }
+                },
+                responsive: false,
+                maintainAspectRatio: false
+            }
+        });
+        document.getElementById('manualValue').textContent = manual;
+        document.getElementById('autoValue').textContent = auto;
+        document.getElementById('manualPercent').textContent = total ? ((manual / total) * 100).toFixed(0) + '%' : '0%';
+        document.getElementById('autoPercent').textContent = total ? ((auto / total) * 100).toFixed(0) + '%' : '0%';
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,3284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" name="viewport">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Atmos Admin Panel- Bootstrap 4 Based Admin Panel</title>
+<link rel="icon" type="image/x-icon" href="../assets/img/logo.png"/>
+<link rel="icon" href="../assets/img/logo.png" type="image/png" sizes="16x16">
+<link rel="stylesheet" href="../assets/vendor/pace/pace.css">
+<script src="../assets/vendor/pace/pace.min.js"></script>
+<!--vendors-->
+<link rel="stylesheet" type="text/css" href="../assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
+<link rel="stylesheet" type="text/css" href="../assets/vendor/jquery-scrollbar/jquery.scrollbar.css">
+<link rel="stylesheet" href="../assets/vendor/select2/css/select2.min.css">
+<link rel="stylesheet" href="../assets/vendor/jquery-ui/jquery-ui.min.css">
+<link rel="stylesheet" href="../assets/vendor/daterangepicker/daterangepicker.css">
+<link rel="stylesheet" href="../assets/vendor/timepicker/bootstrap-timepicker.min.css">
+<link href="https://fonts.googleapis.com/css?family=Hind+Vadodara:400,500,600" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts/jost/jost.css">
+<!--Material Icons-->
+<link rel="stylesheet" type="text/css" href="../assets/fonts/materialdesignicons/materialdesignicons.min.css">
+<!--Bootstrap + atmos Admin CSS-->
+<link rel="stylesheet" type="text/css" href="../assets/css/atmos.min.css">
+<!-- Additional library for page -->
+</head>
+<!--body with default sidebar pinned -->
+<body class="sidebar-pinned">
+<!--sidebar Begins-->
+<aside class="admin-sidebar">
+    <div class="admin-sidebar-brand">
+        <!-- begin sidebar branding-->
+        <img class="admin-brand-logo" src="../assets/img/logo.svg" width="40" alt="atmos Logo">
+        <span class="admin-brand-content"><a href="index.html">  atmos</a></span>
+        <!-- end sidebar branding-->
+        <div class="ml-auto">
+            <!-- sidebar pin-->
+            <a href="#" class="admin-pin-sidebar btn-ghost btn btn-rounded-circle"></a>
+            <!-- sidebar close for mobile device-->
+            <a href="#" class="admin-close-sidebar"></a>
+        </div>
+    </div>
+    <div class="admin-sidebar-wrapper js-scrollbar">
+        <!-- Menu List Begins-->
+        <ul class="menu">
+            <!--list item begins-->
+            <li class="menu-item active">
+                <a href="#" class="menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Link
+                                                </span>
+                                            </span>
+                    <span class="menu-icon">
+                                                   <span class="icon-badge badge-success badge badge-pill">1</span>
+
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+
+            </li>
+            <!--list item ends-->
+
+            <!--list item begins-->
+            <li class="menu-item ">
+                <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu level 1
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                                <span class="menu-info">Contains submenu</span>
+                                            </span>
+                    <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+                <!--submenu-->
+                <ul class="sub-menu">
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+
+
+                </ul>
+            </li>
+            <!--list item ends-->
+
+            <!--list item begins-->
+            <li class="menu-item ">
+                <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu Level 2
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                                <span class="menu-info">Contains submenu</span>
+                                            </span>
+                    <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+                <!--submenu-->
+                <ul class="sub-menu">
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu Level 1.1
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                        </a>
+                        <!--submenu-->
+                        <ul class="sub-menu">
+                            <li class="menu-item">
+                                <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 2.1 </span>
+                                            </span>
+                                    <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+            <!--list item ends-->
+        </ul>
+        <!-- Menu List Ends-->
+    </div>
+
+</aside>
+<!--sidebar Ends-->
+
+
+<main class="admin-main">
+
+    <!--site header begins-->
+<header class="admin-header">
+
+    <a href="#" class="sidebar-toggle" data-toggleclass="sidebar-open" data-target="body"> </a>
+
+    <nav class=" mr-auto my-auto">
+        <ul class="nav align-items-center">
+
+            <li class="nav-item">
+                <a class="nav-link  " data-target="#siteSearchModal" data-toggle="modal" href="#">
+                    <i class=" mdi mdi-magnify mdi-24px align-middle"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <nav class=" ml-auto">
+        <ul class="nav align-items-center">
+
+            <li class="nav-item">
+                <div class="dropdown">
+                    <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-24px mdi-bell-outline"></i>
+                        <span class="notification-counter"></span>
+                    </a>
+
+                    <div class="dropdown-menu notification-container dropdown-menu-right">
+                        <div class="d-flex p-all-15 bg-white justify-content-between border-bottom ">
+                            <a href="#!" class="mdi mdi-18px mdi-settings text-muted"></a>
+                            <span class="h5 m-0">Notifications</span>
+                            <a href="#!" class="mdi mdi-18px mdi-notification-clear-all text-muted"></a>
+                        </div>
+                        <div class="notification-events bg-gray-300">
+                            <div class="text-overline m-b-5">today</div>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body"> <i class="mdi mdi-circle text-success"></i> All systems operational.</div>
+                                </div>
+                            </a>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body"> <i class="mdi mdi-upload-multiple "></i> File upload successful.</div>
+                                </div>
+                            </a>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <i class="mdi mdi-cancel text-danger"></i> Your holiday has been denied
+                                    </div>
+                                </div>
+                            </a>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item dropdown ">
+                <a class="nav-link dropdown-toggle" href="#"   role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    <div class="avatar avatar-sm avatar-online">
+                        <span class="avatar-title rounded-circle bg-dark">V</span>
+
+                    </div>
+                </a>
+                <div class="dropdown-menu  dropdown-menu-right"   >
+                    <a class="dropdown-item" href="#">  Add Account
+                    </a>
+                    <a class="dropdown-item" href="#">  Reset Password</a>
+                    <a class="dropdown-item" href="#">  Help </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"> Logout</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </nav>
+</header>
+<!--site header ends -->    <section class="admin-content pt-5">
+        <!-- BEGIN PlACE PAGE CONTENT HERE -->
+        <div class="container-fluid">
+            <!-- Cabeçalho principal -->
+            <div class="card mb-4  shadow-sm">
+                <div class="card-body d-flex flex-column flex-md-row justify-content-between align-items-center py-4">
+                    <div class="d-flex align-items-center mb-3 mb-md-0">
+                        <i class="mdi mdi-whatsapp text-success mdi-36px mr-3"></i>
+                        <h1 class="h3 mb-0 text-dark font-weight-bold">Envios de WhatsApp</h1>
+                    </div>
+                    <div class="d-flex flex-wrap header-buttons-container">
+                        <button class="btn btn-primary mr-2 px-2 px-sm-3 px-md-4 mb-2 header-btn">
+                            <i class="mdi mdi-help-circle-outline mr-1 mr-md-2"></i><span class="d-none d-sm-inline">Tutorial</span>
+                        </button>
+                        <button class="btn btn-success mr-2 px-2 px-sm-3 px-md-4 mb-2 header-btn">
+                            <i class="mdi mdi-plus mr-1 mr-md-2"></i><span class="d-none d-sm-inline">Nova Mensagem</span>
+                        </button>
+                        <button class="btn btn-light px-2 px-sm-3 px-md-4 border mb-2 header-btn">
+                            <i class="mdi mdi-cog mr-1 mr-md-2 config-icon"></i>
+                            <i class="mdi mdi-arrow-left mr-1 mr-md-2 back-icon d-none"></i>
+                            <span class="d-none d-sm-inline">Configurações</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sistema de Categorias -->
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body py-4">
+                    <div class="row">
+                        <!-- Categoria Principal: Todos -->
+                        <div class="col-12 col-md-6 col-lg-3 mb-3">
+                            <div class="category-card h-100">
+                                <button class="btn btn-primary btn-block text-left category-main" data-category="todos">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="d-flex align-items-center">
+                                            <i class="mdi mdi-view-grid mr-3 text-white" style="font-size: 1.2rem;"></i>
+                                            <div>
+                                                <h6 class="mb-0 text-white font-weight-bold">Todos</h6>
+                                                <small class="text-white-50">Visualizar todos os pedidos</small>
+                                            </div>
+                                        </div>
+                                        <span class="badge badge-light">156</span>
+                                    </div>
+                        </button>
+                            </div>
+                        </div>
+
+                        <!-- Categoria Principal: Boleto -->
+                        <div class="col-12 col-md-6 col-lg-3 mb-3">
+                            <div class="category-card h-100">
+                                <button class="btn btn-outline-primary btn-block text-left category-main" data-category="boleto" data-toggle="collapse" data-target="#subcategorias-boleto">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="d-flex align-items-center">
+                                            <i class="mdi mdi-receipt mr-3 text-primary" style="font-size: 1.2rem;"></i>
+                                            <div>
+                                                <h6 class="mb-0 text-primary font-weight-bold">Boleto</h6>
+                                                <small class="text-muted">Categorias de Boleto</small>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <span class="badge badge-primary mr-2">35</span>
+                                            <i class="mdi mdi-chevron-down text-primary"></i>
+                                        </div>
+                                    </div>
+                        </button>
+                                <!-- Subcategorias do Boleto -->
+                                <div class="collapse mt-2" id="subcategorias-boleto">
+                                    <div class="subcategory-container">
+                                        <button class="btn btn-sm btn-outline-primary btn-block mb-1 text-left">
+                                            <i class="mdi mdi-receipt mr-2"></i>Boleto
+                                            <span class="badge badge-primary ml-2">35</span>
+                        </button>
+                                        <button class="btn btn-sm btn-outline-warning btn-block mb-1 text-left">
+                                            <i class="mdi mdi-clock-alert mr-2"></i>Vencendo
+                                            <span class="badge badge-warning ml-2">5</span>
+                        </button>
+                                        <button class="btn btn-sm btn-outline-danger btn-block text-left">
+                                            <i class="mdi mdi-clock-out mr-2"></i>Vencido
+                                            <span class="badge badge-danger ml-2">2</span>
+                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Categoria Principal: Carrinho -->
+                        <div class="col-12 col-md-6 col-lg-3 mb-3">
+                            <div class="category-card h-100">
+                                <button class="btn btn-outline-info btn-block text-left category-main" data-category="carrinho">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="d-flex align-items-center">
+                                            <i class="mdi mdi-cart mr-3 text-info" style="font-size: 1.2rem;"></i>
+                                            <div>
+                                                <h6 class="mb-0 text-info font-weight-bold">Carrinho</h6>
+                                                <small class="text-muted">Pedidos no carrinho</small>
+                                            </div>
+                                        </div>
+                                        <span class="badge badge-info">13</span>
+                                    </div>
+                        </button>
+                            </div>
+                        </div>
+
+                        <!-- Categoria Principal: Pix -->
+                        <div class="col-12 col-md-6 col-lg-3 mb-3">
+                            <div class="category-card h-100">
+                                <button class="btn btn-outline-success btn-block text-left category-main" data-category="pix" data-toggle="collapse" data-target="#subcategorias-pix">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="d-flex align-items-center">
+                                            <i class="mdi mdi-qrcode mr-3 text-success" style="font-size: 1.2rem;"></i>
+                                            <div>
+                                                <h6 class="mb-0 text-success font-weight-bold">Pix</h6>
+                                                <small class="text-muted">Categorias de Pix</small>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <span class="badge badge-success mr-2">28</span>
+                                            <i class="mdi mdi-chevron-down text-success"></i>
+                                        </div>
+                                    </div>
+                        </button>
+                                <!-- Subcategorias do Pix -->
+                                <div class="collapse mt-2" id="subcategorias-pix">
+                                    <div class="subcategory-container">
+                                        <button class="btn btn-sm btn-outline-success btn-block mb-1 text-left">
+                                            <i class="mdi mdi-qrcode mr-2"></i>Pix
+                                            <span class="badge badge-success ml-2">28</span>
+                        </button>
+                                        <button class="btn btn-sm btn-outline-danger btn-block text-left">
+                                            <i class="mdi mdi-qrcode-edit mr-2"></i>Pix Vencido
+                                            <span class="badge badge-danger ml-2">3</span>
+                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Categoria Principal: Cartão Pendente -->
+                        <div class="col-12 col-md-6 col-lg-3 mb-3">
+                            <div class="category-card h-100">
+                                <button class="btn btn-outline-warning btn-block text-left category-main" data-category="cartao">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="d-flex align-items-center">
+                                            <i class="mdi mdi-credit-card mr-3 text-warning" style="font-size: 1.2rem;"></i>
+                                            <div>
+                                                <h6 class="mb-0 text-warning font-weight-bold">Cartão Pendente</h6>
+                                                <small class="text-muted">Pagamentos pendentes</small>
+                                            </div>
+                                        </div>
+                                        <span class="badge badge-warning">3</span>
+                                    </div>
+                        </button>
+                            </div>
+                        </div>
+
+                        <!-- Categoria Principal: Pós Venda -->
+                        <div class="col-12 col-md-6 col-lg-3 mb-3">
+                            <div class="category-card h-100">
+                                <button class="btn btn-outline-secondary btn-block text-left category-main" data-category="pos-venda">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="d-flex align-items-center">
+                                            <i class="mdi mdi-truck-delivery mr-3 text-secondary" style="font-size: 1.2rem;"></i>
+                                            <div>
+                                                <h6 class="mb-0 text-secondary font-weight-bold">Pós Venda</h6>
+                                                <small class="text-muted">Atendimento pós-venda</small>
+                                            </div>
+                                        </div>
+                                        <span class="badge badge-secondary">15</span>
+                                    </div>
+                        </button>
+                            </div>
+                        </div>
+
+                        <!-- Categoria Principal: Postado -->
+                        <div class="col-12 col-md-6 col-lg-3 mb-3">
+                            <div class="category-card h-100">
+                                <button class="btn btn-outline-dark btn-block text-left category-main" data-category="postado" data-toggle="collapse" data-target="#subcategorias-postado">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="d-flex align-items-center">
+                                            <i class="mdi mdi-package-variant mr-3 text-dark" style="font-size: 1.2rem;"></i>
+                                            <div>
+                                                <h6 class="mb-0 text-dark font-weight-bold">Rastreio</h6>
+                                                <small class="text-muted">Categorias de Rastreio</small>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <span class="badge badge-dark mr-2">33</span>
+                                            <i class="mdi mdi-chevron-down text-dark"></i>
+                                        </div>
+                                    </div>
+                        </button>
+                                <!-- Subcategorias do Postado -->
+                                <div class="collapse mt-2" id="subcategorias-postado">
+                                    <div class="subcategory-container">
+                                        <button class="btn btn-sm btn-outline-dark btn-block mb-1 text-left">
+                                            <i class="mdi mdi-package-variant mr-2"></i>Postado
+                                            <span class="badge badge-dark ml-2">33</span>
+                        </button>
+                                        <button class="btn btn-sm btn-outline-info btn-block mb-1 text-left">
+                                            <i class="mdi mdi-store mr-2"></i>Retirada
+                        </button>
+                                        <button class="btn btn-sm btn-outline-secondary btn-block mb-1 text-left">
+                                            <i class="mdi mdi-cash-multiple mr-2"></i>Taxado
+                                            <span class="badge badge-secondary ml-2">2</span>
+                        </button>
+                                        <button class="btn btn-sm btn-outline-primary btn-block mb-1 text-left">
+                                            <i class="mdi mdi-truck mr-2"></i>Saiu Entrega
+                        </button>
+                                        <button class="btn btn-sm btn-outline-danger btn-block mb-1 text-left">
+                                            <i class="mdi mdi-truck-alert mr-2"></i>Falha Entrega
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-warning btn-block mb-1 text-left">
+                                            <i class="mdi mdi-alert mr-2"></i>Atenção
+                                            <span class="badge badge-warning ml-2">30</span>
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-warning btn-block mb-1 text-left">
+                                            <i class="mdi mdi-clock-alert mr-2"></i>Atrasado
+                                            <span class="badge badge-warning ml-2">42</span>
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-success btn-block text-left">
+                                            <i class="mdi mdi-check-circle mr-2"></i>Entregue
+                                            <span class="badge badge-success ml-2">22</span>
+                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Barra de pesquisa -->
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body py-4">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 col-lg-2 mb-3">
+                            <div class="form-group mb-0">
+                                <div class="input-group input-group-seamless">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-light border-right-0"><i class="mdi mdi-pound text-primary"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control border-left-0 pl-0" placeholder="Pedido">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-lg-2 mb-3">
+                            <div class="form-group mb-0">
+                                <div class="input-group input-group-seamless">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-light border-right-0"><i class="mdi mdi-package-variant text-primary"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control border-left-0 pl-0" placeholder="Produto">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-lg-2 mb-3">
+                            <div class="form-group mb-0">
+                                <div class="input-group input-group-seamless">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-light border-right-0"><i class="mdi mdi-account text-primary"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control border-left-0 pl-0" placeholder="Cliente">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-lg-2 mb-3">
+                            <div class="form-group mb-0">
+                                <div class="input-group input-group-seamless">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-light border-right-0"><i class="mdi mdi-phone text-primary"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control border-left-0 pl-0" placeholder="Telefone">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-lg-2 mb-3">
+                            <div class="form-group mb-0">
+                                <div class="input-group input-group-seamless">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-light border-right-0"><i class="mdi mdi-card-text text-primary"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control border-left-0 pl-0" placeholder="CPF">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-lg-2 mb-3">
+                            <div class="form-group mb-0">
+                                <div class="input-group input-group-seamless">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-light border-right-0"><i class="mdi mdi-email text-primary"></i></span>
+                                    </div>
+                                    <input type="email" class="form-control border-left-0 pl-0" placeholder="Email">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-12 col-sm-6 col-lg-3 mb-3">
+                            <div class="form-group mb-0">
+                                <select class="form-control custom-select">
+                                    <option>Data de...</option>
+                                    <option>Data de pedido</option>
+                                    <option>Data de pagamento</option>
+                                    <option>Data de envio</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!--Data -->
+                        <div class="col-md">
+                            <div class="form-group mb-0">
+                                <div class="input-group input-group-seamless">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-light border-right-0"><i class="mdi mdi-calendar text-primary"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control input-date border-left-0 pl-0" id="dataInicial" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="form-group mb-0">
+                                <div class="input-group input-group-seamless">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-light border-right-0"><i class="mdi mdi-calendar-check text-primary"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control input-date border-left-0 pl-0" id="dataFinal" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-lg-3 mb-3">
+                            <div class="form-group mb-0">
+                                <select class="form-control custom-select">
+                                    <option>Pagamento...</option>
+                                    <option>Boleto</option>
+                                    <option>Cartão</option>
+                                    <option>Pix</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-lg-2 mb-3">
+                            <div class="form-group mb-0">
+                                <button class="btn btn-primary btn-block font-weight-bold">
+                                    <i class="mdi mdi-magnify mr-2"></i> Buscar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Filtros Avançados -->
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <button class="btn btn-outline-primary btn-sm rounded-pill shadow-sm" data-toggle="collapse" href="#filtrosAvancados" aria-expanded="false" aria-controls="filtrosAvancados">
+                                <i class="mdi mdi-filter-variant mr-1"></i>
+                                Filtros Avançados
+                                <i class="mdi mdi-chevron-down ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                                <div id="filtrosAvancados" class="collapse">
+                                    <div class="card-body bg-white py-3">
+                                        <div class="row">
+                                            <div class="col-12 col-sm-6 col-lg-3 mb-3">
+                                                <div class="form-group mb-0">
+                                                    <select class="form-control custom-select">
+                                                        <option>Status de mensagem...</option>
+                                                        <option>Mensagem enviada</option>
+                                                        <option>Mensagem não enviada</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-6 col-lg-2 mb-3">
+                                                <div class="form-group mb-0">
+                                                    <div class="input-group input-group-seamless">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text bg-light border-right-0"><i class="mdi mdi-tag-outline text-primary"></i></span>
+                                                        </div>
+                                                        <input type="text" class="form-control border-left-0 pl-0" placeholder="Etiqueta">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-6 col-lg-2 mb-3">
+                                                <div class="form-group mb-0">
+                                                    <div class="input-group input-group-seamless">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text bg-light border-right-0"><i class="mdi mdi-ticket-percent text-primary"></i></span>
+                                                        </div>
+                                                        <input type="text" class="form-control border-left-0 pl-0" placeholder="Cupom">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-6 col-lg-3 mb-3">
+                                                <div class="custom-control custom-checkbox d-flex align-items-center h-100">
+                                                    <input type="checkbox" class="custom-control-input" id="semMensagens">
+                                                    <label class="custom-control-label font-weight-medium" for="semMensagens">Apenas pedidos sem mensagens</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-6 col-lg-2 mb-3">
+                                                <div class="form-group mb-0">
+                                                    <select class="form-control custom-select">
+                                                        <option value="10" selected>10 por página</option>
+                                                        <option value="5">5 por página</option>
+                                                        <option value="25">25 por página</option>
+                                                        <option value="50">50 por página</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mensagens -->
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body py-4">
+                    <div class="row">
+                        <div class="col-md-8 col-lg-10 mb-3 mb-md-0">
+                            <select class="form-control">
+                                <option disabled selected>Mensagem...</option>
+                                <option>Confirmação de pedido</option>
+                                <option>Aviso de pagamento</option>
+                                <option>Informação de envio</option>
+                                <option>Lembrete de pagamento</option>
+                                <option>Agradecimento</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 col-lg-2">
+                            <button class="btn btn-success btn-block">
+                                <i class="mdi mdi-whatsapp mr-2"></i> ENVIAR
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <div class="d-flex flex-wrap">
+                                <div class="d-flex align-items-center mr-4 mb-2">
+                                    <div style="width: 16px; height: 16px; background-color: #e7f5ff; border: 1px solid #74c0fc; border-radius: 3px;" class="mr-2"></div>
+                                    <span class="text-muted">último pedido do cliente</span>
+                                </div>
+                                <div class="d-flex align-items-center mr-4 mb-2">
+                                    <div style="width: 16px; height: 16px; background-color: #fff9db; border: 1px solid #ffe066; border-radius: 3px;" class="mr-2"></div>
+                                    <span class="text-muted">cliente tem pedido mais recente</span>
+                                </div>
+                                <div class="d-flex align-items-center mb-2">
+                                    <div style="width: 16px; height: 16px; background-color: #fff4e6; border: 1px solid #ffa94d; border-radius: 3px;" class="mr-2"></div>
+                                    <span class="text-muted">cliente tem pedido pago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+            <!-- Tabela de pedidos -->
+            <div class="card shadow-sm">
+                <div class="card-body py-4">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="thead-light">
+                                    <th class="border-0 text-center align-top">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="selectAllCheckbox" onchange="toggleAllCheckboxes()">
+                                            <label class="custom-control-label" for="selectAllCheckbox"></label>
+                                        </div>
+                                    </th>
+                                    <th class="border-0 text-center">Pedido</th>
+                                    <th class="border-0 text-center">Produto</th>
+                                    <th class="border-0 text-center">Ações</th>
+                                    <th class="border-0 text-center">Nome</th>
+                                    <th class="border-0 text-center">Compra</th>
+                                    <th class="border-0 text-center">Etiqueta</th>
+                                    <th class="border-0 text-center">Rastreio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+
+                                <tr>
+                                    <td class="text-center align-middle">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="checkbox-1" onchange="updateSelectAllState()">
+                                            <label class="custom-control-label" for="checkbox-1"></label>
+                                        </div>
+                                    </td>
+                                    <td class="font-weight-bold align-middle text-center" style="min-width: 160px;">
+                                        <div class="d-flex flex-column align-items-center">
+                                            <div class="d-flex align-items-center justify-content-center">
+                                                <span class="font-weight-bold">#12345</span>
+                                            </div>
+                                            <small class="text-muted mt-1 text-center">
+                                                <i class="mdi mdi-clock-outline mr-1"></i>há 15 dias
+                                            </small>
+                                        </div>
+                                    </td>
+                                    <td class="align-middle text-left" style="min-width: 240px;">
+                                        <div class="d-flex align-items-center product-layout-responsive">
+                                            <div class="avatar-group mr-3">
+                                                <div class="avatar avatar-sm">
+                                                    <img src="../Media_Imagens/teste.jpg" alt="Produto 1" class="avatar-img rounded-circle">
+                                                </div>
+                                                <div class="avatar avatar-sm">
+                                                    <img src="../Media_Imagens/teste.jpg" alt="Produto 2" class="avatar-img rounded-circle">
+                                                </div>
+                                                <div class="avatar avatar-sm">
+                                                    <img src="../Media_Imagens/teste.jpg" alt="Produto 3" class="avatar-img rounded-circle">
+                                                </div>
+                                                <div class="avatar avatar-sm">
+                                                    <span class="avatar-title rounded-circle bg-primary">+2</span>
+                                                </div>
+                                            </div>
+                                            <div class="product-info">
+                                                <span class="font-weight-medium">Camiseta Básica Preta</span>
+                                                <small class="d-block text-muted">Vestuário Casual + 4 produtos</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="align-middle text-center" style="min-width: 200px;">
+                                        <div class="d-flex flex-wrap justify-content-center" style="max-width: 200px;">
+                                            <button class="btn btn-success mr-1 mb-1" style="flex: 0 0 calc(25% - 8px); min-width: 40px;">
+                                                <i class="mdi mdi-whatsapp"></i>
+                                            </button>
+                                            <button class="btn btn-success mr-1 mb-1" style="flex: 0 0 calc(25% - 8px); min-width: 40px;">
+                                                <i class="mdi mdi-whatsapp"></i>
+                                            </button>
+                                            <button class="btn btn-success mr-1 mb-1" style="flex: 0 0 calc(25% - 8px); min-width: 40px;">
+                                                <i class="mdi mdi-whatsapp"></i>
+                                            </button>
+                                            <button class="btn btn-success mr-1 mb-1" style="flex: 0 0 calc(25% - 8px); min-width: 40px;">
+                                                <i class="mdi mdi-whatsapp"></i>
+                                            </button>
+                                            <button class="btn btn-success mr-1 mb-1" style="flex: 0 0 calc(25% - 8px); min-width: 40px;">
+                                                <i class="mdi mdi-whatsapp"></i>
+                                            </button>
+                                            <button class="btn btn-success position-relative mb-1 mr-2" style="flex: 0 0 calc(25% - 8px); min-width: 40px;">
+                                                <i class="mdi mdi-whatsapp"></i>
+                                                <span class="badge badge-danger position-absolute" style="top: -5px; right: -5px;">1</span>
+                                            </button>
+                                            <button class="btn btn-success position-relative mb-1 mr-2" style="flex: 0 0 calc(25% - 8px); min-width: 40px;">
+                                                <i class="mdi mdi-whatsapp"></i>
+                                                <span class="badge badge-danger position-absolute" style="top: -5px; right: -5px;">1</span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                    <td style="min-width: 220px;">
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar avatar-sm mr-2">
+                                                <span class="avatar-title rounded-circle bg-dark">MS</span>
+                                            </div>
+                                            <div>
+                                                <div class="font-weight-bold">Maria Silva</div>
+                                                <div class="d-flex align-items-center">
+                                                    <small class="text-muted mr-2">maria@gmail.com</small>
+                                                    <div class="d-flex">
+                                                        <a href="https://web.whatsapp.com/send?phone=11966152956" target="_blank" class="btn btn-sm btn-outline-success mr-1 py-0 px-1" title="Abrir WhatsApp Web">
+                                                            <i class="mdi mdi-web mdi-14px"></i>
+                                                        </a>
+                                                        <button class="btn btn-sm btn-outline-secondary py-0 px-1" title="Bloquear cliente">
+                                                            <i class="mdi mdi-lock mdi-14px"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <small class="text-muted">
+                                                    <span id="telefone-exibicao-1">11966152956</span>
+                                                    <a href="#" class="ml-1" onclick="editarTelefone(event, 1)">
+                                                        <i class="mdi mdi-pencil"></i>
+                                                    </a>
+                                                </small>
+                                                <div id="telefone-edicao-1" class="d-none">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="text" class="form-control form-control-sm mr-2" value="11966152956">
+                                                        <button class="btn btn-sm btn-primary mr-1" onclick="salvarTelefone(event, 1)">Salvar</button>
+                                                        <button class="btn btn-sm btn-secondary" onclick="cancelarEdicao(event, 1)">Cancelar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    
+                                    <td class="font-weight-bold align-middle text-center">
+                                        R$ 149,90
+                                    </td>
+                                    <td class="align-middle text-center">
+                                        <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#etiquetasModal" data-pedido-id="1" onclick="openEtiquetasModal(1)">
+                                            <i class="mdi mdi-tag"></i>
+                                            <span class="ml-1">Etiquetas</span>
+                                        </button>
+                                    </td>  
+                                    <td class="align-middle text-center" style="min-width: 150px;">
+                                        <div class="d-flex flex-column align-items-center">
+                                            <div class="mb-2">
+                                                <small class="text-muted d-block">26/03/2025 00:30:00</small>
+                                                <small class="text-muted d-block">Vencimento</small>
+                                                <small class="font-weight-medium text-primary d-block">NM843874387BR</small>
+                                            </div>
+                                        <button class="btn btn-sm btn-light border" data-toggle="collapse" data-target="#detalhes-pedido-1" aria-expanded="false" aria-controls="detalhes-pedido-1" title="Expandir detalhes">
+                                            <i class="mdi mdi-chevron-down"></i>
+                                            <span class="ml-1">Detalhes</span>
+                                        </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                                <!-- Detalhes primeiro pedido -->
+                                <tr class="collapse bg-light" id="detalhes-pedido-1">
+                                    <td colspan="6" class="p-0">
+                                        <div class="p-3">
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <h6 class="font-weight-bold mb-2">Endereço de Entrega</h6>
+                                                    <p class="mb-1">Rua Alameda dos Anjos, 456</p>
+                                                    <p class="mb-1">Jardim América</p>
+                                                    <p class="mb-0">São Paulo/SP - CEP 04532-000</p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <h6 class="font-weight-bold mb-2">Status de Rastreamento</h6>
+                                                    <div class="timeline small mb-0">
+                                                        <div class="timeline-item d-flex">
+                                                            <div class="timeline-icon mr-2">
+                                                                <span class="badge badge-dot badge-primary"></span>
+                                                            </div>
+                                                            <div class="timeline-content">
+                                                                <p class="mb-0 font-weight-medium">Pedido enviado</p>
+                                                                <small class="text-muted">05/04/2023 - 11:23</small>
+                                                                <p class="text-muted mt-1 mb-0 small">Objeto postado e a caminho do destino. Previsão de entrega: 10/04/2023.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div>
+                                                            <span class="badge badge-success">Pago</span>
+                                                            <span class="badge badge-primary ml-2">Enviado</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!-- Segundo pedido -->
+                                <tr class="bg-light">
+                                    <td class="text-center align-middle">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="checkbox-2" onchange="updateSelectAllState()">
+                                            <label class="custom-control-label" for="checkbox-2"></label>
+                                        </div>
+                                    </td>
+                                    <td class="font-weight-bold align-middle text-center" style="min-width: 160px;">
+                                        <div class="d-flex flex-column align-items-center">
+                                            <div class="d-flex align-items-center justify-content-center">
+                                                <span class="font-weight-bold">#12346</span>
+                                            </div>
+                                            <small class="text-muted mt-1 text-center">
+                                                <i class="mdi mdi-clock-outline mr-1"></i>há 30 dias
+                                            </small>
+                                        </div>
+                                    </td>
+                                    <td class="align-middle text-center" style="min-width: 240px;">
+                                        <div class="d-flex align-items-center justify-content-center product-layout-responsive">
+                                            <div class="product-image-container mr-3">
+                                                <img src="../Media_Imagens/teste.jpg" alt="x" class="product-image" style="width: 50px; height: 50px; max-width: 100%; object-fit: cover; border-radius: 50%; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid #f8f9fa; background-color: #ffffff;">
+                                            </div>
+                                            <div class="product-info text-left">
+                                                <span class="font-weight-medium" style="display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 21ch;">Calendário Contagem Regressiva + Brinquedos Surpresa Dinossauros</span>
+                                                <small class="d-block text-muted">Calçado Esportivo</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="align-middle text-center" style="min-width: 120px;">
+                                        <div class="d-flex justify-content-center">
+                                            <button class="btn btn-success mr-1">
+                                                <i class="mdi mdi-whatsapp"></i>
+                                            </button>
+                                            <button class="btn btn-success position-relative">
+                                                <i class="mdi mdi-whatsapp"></i>
+                                                <span class="badge badge-danger position-absolute" style="top: -5px; right: -5px;">1</span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                    <td style="min-width: 220px;">
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar avatar-sm mr-2">
+                                                <span class="avatar-title rounded-circle bg-dark">JO</span>
+                                            </div>
+                                            <div>
+                                                <div class="font-weight-bold">João Oliveira</div>
+                                                <div class="d-flex align-items-center">
+                                                    <small class="text-muted mr-2">joao@gmail.com</small>
+                                                    <div class="d-flex">
+                                                        <a href="https://web.whatsapp.com/send?phone=11987654321" target="_blank" class="btn btn-sm btn-outline-success mr-1 py-0 px-1" title="Abrir WhatsApp Web">
+                                                            <i class="mdi mdi-web mdi-14px"></i>
+                                                        </a>
+                                                        <button class="btn btn-sm btn-outline-secondary py-0 px-1" title="Bloquear cliente">
+                                                            <i class="mdi mdi-lock mdi-14px"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <small class="text-muted">
+                                                    <span id="telefone-exibicao-2">11987654321</span>
+                                                    <a href="#" class="ml-1" onclick="editarTelefone(event, 2)">
+                                                        <i class="mdi mdi-pencil"></i>
+                                                    </a>
+                                                </small>
+                                                <div id="telefone-edicao-2" class="d-none">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="text" class="form-control form-control-sm mr-2" value="11987654321">
+                                                        <button class="btn btn-sm btn-primary mr-1" onclick="salvarTelefone(event, 2)">Salvar</button>
+                                                        <button class="btn btn-sm btn-secondary" onclick="cancelarEdicao(event, 2)">Cancelar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    
+                                    <td class="font-weight-bold align-middle text-center">
+                                        R$ 149,90
+                                    </td>
+                                    <td class="align-middle text-center">
+                                        <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#etiquetasModal" data-pedido-id="1" onclick="openEtiquetasModal(1)">
+                                            <i class="mdi mdi-tag"></i>
+                                            <span class="ml-1">Etiquetas</span>
+                                        </button>
+                                    </td>  
+                                    <td class="align-middle text-center" style="min-width: 150px;">
+                                        <div class="d-flex flex-column align-items-center">
+                                            <div class="mb-2">
+                                                <small class="text-muted d-block">26/03/2025 00:30:00</small>
+                                                <small class="text-muted d-block">Vencimento</small>
+                                                <small class="font-weight-medium text-primary d-block">NM843874387BR</small>
+                                            </div>
+                                        <button class="btn btn-sm btn-light border" data-toggle="collapse" data-target="#detalhes-pedido-2" aria-expanded="false" aria-controls="detalhes-pedido-2" title="Expandir detalhes">
+                                            <i class="mdi mdi-chevron-down"></i>
+                                            <span class="ml-1">Detalhes</span>
+                                        </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                                <!-- Detalhes do segundo pedido -->
+                                <tr class="collapse bg-light" id="detalhes-pedido-2">
+                                    <td colspan="6" class="p-0">
+                                        <div class="p-3">
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <h6 class="font-weight-bold mb-2">Endereço de Entrega</h6>
+                                                    <p class="mb-1">Avenida Brasil, 789 - Bloco B</p>
+                                                    <p class="mb-1">Bairro Centro</p>
+                                                    <p class="mb-0">Rio de Janeiro/RJ - CEP 20040-007</p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <h6 class="font-weight-bold mb-2">Status de Rastreamento</h6>
+                                                    <div class="timeline small mb-0">
+                                                        <div class="timeline-item d-flex">
+                                                            <div class="timeline-icon mr-2">
+                                                                <span class="badge badge-dot badge-warning"></span>
+                                                            </div>
+                                                            <div class="timeline-content">
+                                                                <p class="mb-0 font-weight-medium">Aguardando pagamento</p>
+                                                                <small class="text-muted">10/04/2023 - 09:12</small>
+                                                                <p class="text-muted mt-1 mb-0 small">Pedido gerado e aguardando confirmação de pagamento para iniciar separação.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div>
+                                                            <span class="badge badge-warning">Pendente</span>
+                                                            <span class="badge badge-secondary ml-2">Aguardando</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!-- Terceiro pedido -->
+                                <tr>
+                                    <td class="text-center align-middle">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="checkbox-3" onchange="updateSelectAllState()">
+                                            <label class="custom-control-label" for="checkbox-3"></label>
+                                        </div>
+                                    </td>
+                                    <td class="font-weight-bold align-middle text-center" style="min-width: 160px;">
+                                        <div class="d-flex flex-column align-items-center">
+                                            <div class="d-flex align-items-center justify-content-center">
+                                                <span class="font-weight-bold">#12347</span>
+                                            </div>
+                                            <small class="text-muted mt-1 text-center">
+                                                <i class="mdi mdi-clock-outline mr-1"></i>há 3 dias
+                                            </small>
+                                        </div>
+                                    </td>
+                                    <td class="align-middle text-center" style="min-width: 240px;">
+                                        <div class="d-flex align-items-center justify-content-center product-layout-responsive">
+                                            <div class="product-image-container mr-3">
+                                                <img src="../Media_Imagens/teste.jpg" alt="x" class="product-image" style="width: 50px; height: 50px; max-width: 100%; object-fit: cover; border-radius: 50%; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border: 1px solid #f8f9fa; background-color: #ffffff;">
+                                            </div>
+                                            <div class="product-info text-left">
+                                                <span class="font-weight-medium" style="display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 21ch;">Relógio Inteligente Preto</span>
+                                                <small class="d-block text-muted">Smartwatch Premium</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="align-middle text-center" style="min-width: 120px;">
+                                        <div class="d-flex justify-content-center">
+                                            <button class="btn btn-success mr-1">
+                                                <i class="mdi mdi-whatsapp"></i>
+                                            </button>
+                                            <button class="btn btn-success position-relative">
+                                                <i class="mdi mdi-whatsapp"></i>
+                                                <span class="badge badge-danger position-absolute" style="top: -5px; right: -5px;">1</span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                    <td style="min-width: 220px;">
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar avatar-sm mr-2">
+                                                <span class="avatar-title rounded-circle bg-dark">AS</span>
+                                            </div>
+                                            <div>
+                                                <div class="font-weight-bold">Ana Souza</div>
+                                                <div class="d-flex align-items-center">
+                                                    <small class="text-muted mr-2">ana@gmail.com</small>
+                                                    <div class="d-flex">
+                                                        <a href="https://web.whatsapp.com/send?phone=xxxxxxx" target="_blank" class="btn btn-sm btn-outline-success mr-1 py-0 px-1" title="Abrir WhatsApp Web">
+                                                            <i class="mdi mdi-web mdi-14px"></i>
+                                                        </a>
+                                                        <button class="btn btn-sm btn-outline-secondary py-0 px-1" title="Bloquear cliente">
+                                                            <i class="mdi mdi-lock mdi-14px"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <small class="text-muted">
+                                                    <span id="telefone-exibicao-3">11944332211</span>
+                                                    <a href="#" class="ml-1" onclick="editarTelefone(event, 3)">
+                                                        <i class="mdi mdi-pencil"></i>
+                                                    </a>
+                                                </small>
+                                                <div id="telefone-edicao-3" class="d-none">
+                                                    <div class="d-flex align-items-center">
+                                                        <input type="text" class="form-control form-control-sm mr-2" value="11944332211">
+                                                        <button class="btn btn-sm btn-primary mr-1" onclick="salvarTelefone(event, 3)">Salvar</button>
+                                                        <button class="btn btn-sm btn-secondary" onclick="cancelarEdicao(event, 3)">Cancelar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="font-weight-bold align-middle text-center">
+                                        R$ 215,00
+                                    </td>
+                                    <td class="align-middle text-center">
+                                        <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#etiquetasModal" data-pedido-id="1" onclick="openEtiquetasModal(1)">
+                                            <i class="mdi mdi-tag"></i>
+                                            <span class="ml-1">Etiquetas</span>
+                                        </button>
+                                    </td>  
+                                    <td class="align-middle text-center" style="min-width: 150px;">
+                                        <div class="d-flex flex-column align-items-center">
+                                            <div class="mb-2">
+                                                <small class="text-muted d-block">26/03/2025 00:30:00</small>
+                                                <small class="text-muted d-block">Vencimento</small>
+                                                <small class="font-weight-medium text-primary d-block">NM843874387BR</small>
+                                            </div>
+                                        <button class="btn btn-sm btn-light border" data-toggle="collapse" data-target="#detalhes-pedido-3" aria-expanded="false" aria-controls="detalhes-pedido-3" title="Expandir detalhes">
+                                            <i class="mdi mdi-chevron-down"></i>
+                                            <span class="ml-1">Detalhes</span>
+                                        </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                                <!-- Detalhes do terceiro pedido -->
+                                <tr class="collapse bg-light" id="detalhes-pedido-3">
+                                    <td colspan="6" class="p-0">
+                                        <div class="p-3">
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <h6 class="font-weight-bold mb-2">Endereço de Entrega</h6>
+                                                    <p class="mb-1">Rua das Flores, 123 - Apto 45</p>
+                                                    <p class="mb-1">Jardim Primavera</p>
+                                                    <p class="mb-0">São Paulo/SP - CEP 01234-567</p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <h6 class="font-weight-bold mb-2">Status de Rastreamento</h6>
+                                                    <div class="timeline small mb-0">
+                                                        <div class="timeline-item d-flex">
+                                                            <div class="timeline-icon mr-2">
+                                                                <span class="badge badge-dot badge-danger"></span>
+                                                            </div>
+                                                            <div class="timeline-content">
+                                                                <p class="mb-0 font-weight-medium">Entrega não realizada</p>
+                                                                <small class="text-muted">12/04/2023 - 16:45</small>
+                                                                <p class="text-muted mt-1 mb-0 small">Destinatário ausente. Será feita nova tentativa de entrega.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <div>
+                                                            <span class="badge badge-success">Pago</span>
+                                                            <span class="badge badge-danger ml-2">Falha na entrega</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Paginas -->
+                    <div class="d-flex justify-content-between align-items-center mt-4">
+                        <div>
+                            <p class="text-muted mb-0">Mostrando 1 a 3 de 97 resultados</p>
+                        </div>
+                        <nav>
+                            <ul class="pagination mb-0">
+                                <li class="page-item">
+                                    <a class="page-link" href="#"><i class="mdi mdi-chevron-left"></i></a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
+                                <li class="page-item"><a class="page-link" href="#">10</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#"><i class="mdi mdi-chevron-right"></i></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END PLACE PAGE CONTENT HERE -->
+    </section>
+</main>
+
+
+<div class="modal modal-slide-left  fade" id="siteSearchModal" tabindex="-1" role="dialog" aria-labelledby="siteSearchModal"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body p-all-0" id="site-search">
+                <button type="button" class="close light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="form-dark bg-dark text-white p-t-60 p-b-20 bg-dots" >
+                    <h3 class="text-uppercase    text-center  fw-300 "> Search</h3>
+
+                    <div class="container-fluid">
+                        <div class="col-md-10 p-t-10 m-auto">
+                            <input type="search" placeholder="Search Something"
+                                   class=" search form-control form-control-lg">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="bg-dark text-muted container-fluid p-b-10 text-center text-overline">
+                        results
+                    </div>
+                    <div class="list-group list  ">
+
+
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"   src="../assets/img/users/user-3.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Eric Chen</div>
+                                <div class="text-muted">Developer</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"
+                                                                    src="../assets/img/users/user-4.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Sean Valdez</div>
+                                <div class="text-muted">Marketing</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"
+                                                                    src="../assets/img/users/user-8.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Marie Arnold</div>
+                                <div class="text-muted">Developer</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar-title bg-dark rounded"><i class="mdi mdi-24px mdi-file-pdf"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">SRS Document</div>
+                                <div class="text-muted">25.5 Mb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar-title bg-dark rounded"><i
+                                                class="mdi mdi-24px mdi-file-document-box"></i></div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">Design Guide.pdf</div>
+                                <div class="text-muted">9 Mb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar avatar-sm  ">
+                                        <div class="avatar-title bg-primary rounded"><i
+                                                    class="mdi mdi-24px mdi-code-braces"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">response.json</div>
+                                <div class="text-muted">15 Kb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar avatar-sm ">
+                                        <div class="avatar-title bg-info rounded"><i
+                                                    class="mdi mdi-24px mdi-file-excel"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">June Accounts.xls</div>
+                                <div class="text-muted">6 Mb</div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="../assets/vendor/jquery/jquery.min.js"></script>
+<script src="../assets/vendor/jquery-ui/jquery-ui.min.js"></script>
+<script src="../assets/vendor/popper/popper.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/vendor/select2/js/select2.full.min.js"></script>
+<script src="../assets/vendor/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+<script src="../assets/vendor/listjs/listjs.min.js"></script>
+<script src="../assets/vendor/moment/moment.min.js"></script>
+<script src="../assets/vendor/daterangepicker/daterangepicker.js"></script>
+<script src="../assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="../assets/vendor/bootstrap-notify/bootstrap-notify.min.js"></script>
+<script src="../assets/js/atmos.min.js"></script>
+
+<!-- SweetAlert2 Alertas -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!--page specific scripts for demo-->
+<script>
+    function editarTelefone(event, id) {
+        event.preventDefault();
+        document.getElementById('telefone-exibicao-' + id).parentElement.classList.add('d-none');
+        document.getElementById('telefone-edicao-' + id).classList.remove('d-none');
+    }
+
+    function salvarTelefone(event, id) {
+        event.preventDefault();
+        const novoTelefone = document.getElementById('telefone-edicao-' + id).querySelector('input').value;
+        document.getElementById('telefone-exibicao-' + id).textContent = novoTelefone;
+        document.getElementById('telefone-exibicao-' + id).parentElement.classList.remove('d-none');
+        document.getElementById('telefone-edicao-' + id).classList.add('d-none');
+    }
+
+    function cancelarEdicao(event, id) {
+        event.preventDefault();
+        document.getElementById('telefone-exibicao-' + id).parentElement.classList.remove('d-none');
+        document.getElementById('telefone-edicao-' + id).classList.add('d-none');
+    }
+
+    // Função para selecionar/deselecionar todos os checkboxes
+    function toggleAllCheckboxes() {
+        const selectAllCheckbox = document.getElementById('selectAllCheckbox');
+        const checkboxes = document.querySelectorAll('input[type="checkbox"][id^="checkbox-"]');
+        
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = selectAllCheckbox.checked;
+        });
+    }
+
+    // Função "Selecionar Todos"
+    function updateSelectAllState() {
+        const selectAllCheckbox = document.getElementById('selectAllCheckbox');
+        const checkboxes = document.querySelectorAll('input[type="checkbox"][id^="checkbox-"]');
+        const checkedCheckboxes = document.querySelectorAll('input[type="checkbox"][id^="checkbox-"]:checked');
+        
+        if (checkedCheckboxes.length === 0) {
+            selectAllCheckbox.indeterminate = false;
+            selectAllCheckbox.checked = false;
+        } else if (checkedCheckboxes.length === checkboxes.length) {
+            selectAllCheckbox.indeterminate = false;
+            selectAllCheckbox.checked = true;
+        } else {
+            selectAllCheckbox.indeterminate = true;
+        }
+    }
+</script>
+
+<!-- Campos  Data -->
+<script>
+$(document).ready(function() {
+    // Data atual
+    function formatarDataAtual() {
+        var data = new Date();
+        var dia = data.getDate().toString().padStart(2, '0');
+        var mes = (data.getMonth() + 1).toString().padStart(2, '0');
+        var ano = data.getFullYear();
+        return dia + '/' + mes + '/' + ano;
+    }
+
+    // placeholder
+    var dataAtual = formatarDataAtual();
+    $('#dataInicial, #dataFinal').attr('placeholder', dataAtual);
+
+    //calendario
+    $('.input-date').datepicker({
+        format: 'dd/mm/yyyy',
+        autoclose: true,
+        todayHighlight: true,
+        language: 'pt-BR',
+        orientation: 'bottom auto',
+        templates: {
+            leftArrow: '<i class="mdi mdi-chevron-left"></i>',
+            rightArrow: '<i class="mdi mdi-chevron-right"></i>'
+        }
+    }).on('show', function() {
+        $('.datepicker-dropdown').addClass('shadow-sm');
+    });
+
+    $('[data-toggle="tooltip"]').tooltip();
+
+    // Style
+    $('<style>'+
+      '.input-date { background-color: transparent !important; height: calc(1.5em + 0.75rem + 2px); }'+
+      '.datepicker { font-family: "Jost", sans-serif; border-radius: 4px; }'+
+      '.datepicker table tr td.active { background-color: #7367f0 !important; background-image: none !important; }'+
+      '.datepicker-dropdown { margin-top: 0; padding: 10px; border-radius: 5px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }'+
+      '.datepicker table { font-size: 13px; }'+
+      '</style>').appendTo('head');
+
+    $('.btn[data-toggle="collapse"]').click(function() {
+        $(this).find('.mdi-chevron-down').toggleClass('rotate-180');
+    });
+
+    $('<style>.rotate-180 { transform: rotate(180deg); transition: transform 0.3s; }</style>').appendTo('head');
+    
+    // Sistema de Etiquetas 
+    window.tags = [];
+    window.defaultColor = 'blue';
+    window.currentEditingTag = null;
+    window.currentPedidoId = null;
+    
+    // Inicializar cor 
+    $(document).ready(function() {
+        $('.color-option').removeClass('selected');
+        $('.color-option[onclick*="blue"]').addClass('selected');
+    });
+    
+    window.colorClasses = {
+        blue: 'tag-blue',
+        green: 'tag-green', 
+        red: 'tag-red',
+        orange: 'tag-orange',
+        purple: 'tag-purple',
+        teal: 'tag-teal',
+        indigo: 'tag-indigo',
+        pink: 'tag-pink'
+    };
+    
+    // Sistema de Etiquetas
+    window.openEtiquetasModal = function(pedidoId) {
+        console.log('Abrindo modal para pedido:', pedidoId);
+        window.currentPedidoId = pedidoId;
+        
+        // modal 
+        const modal = $('#etiquetasModal');
+        console.log('Modal encontrado:', modal.length > 0);
+        
+        if (modal.length === 0) {
+            console.error('Modal não encontrado!');
+            return;
+        }
+        
+        // Atualizar o ID do pedido
+        $('#pedidoId').text(pedidoId);
+        
+        // Carregar etiquetas existentes
+        window.loadTagsForPedido(pedidoId);
+        
+        // Abrir o modal
+        try {
+            modal.modal('show');
+            console.log('Modal aberto com sucesso');
+        } catch (error) {
+            console.error('Erro ao abrir modal:', error);
+            modal.show();
+            modal.addClass('show');
+            $('body').addClass('modal-open');
+        }
+    };
+    
+    // Eventos  Modal
+    $('#etiquetasModal').on('shown.bs.modal', function() {
+        $('#tagInput').focus();
+        console.log('Modal de etiquetas aberto');
+    });
+    
+    $('#tagInput').on('keypress', function(e) {
+        console.log('Tecla pressionada:', e.key);
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            console.log('Enter pressionado, chamando addTag');
+            window.addTag();
+        }
+    });
+    
+    $('#tagInput').on('input', function() {
+        console.log('Input detectado, valor:', $(this).val());
+        const button = $(this).next().find('button');
+        if ($(this).val().trim()) {
+            button.addClass('pulse-animation');
+        } else {
+            button.removeClass('pulse-animation');
+        }
+    });
+    
+    window.setDefaultColor = function(color) {
+        window.defaultColor = color;
+        
+        $('.color-option').removeClass('selected');
+        
+        $(event.target).addClass('selected');
+        
+        showFeedback(`Cor padrão alterada para ${window.getColorName(color)}`, 'info');
+    };
+    
+    window.getColorValue = function(colorName) {
+        const colors = {
+            blue: '#4e73df',
+            green: '#1cc88a', 
+            red: '#e74a3b',
+            orange: '#f6c23e',
+            purple: '#6f42c1',
+            teal: '#36b9cc',
+            indigo: '#5a5c69',
+            pink: '#e83e8c'
+        };
+        return colors[colorName];
+    };
+    
+    window.getColorName = function(colorKey) {
+        const names = {
+            blue: 'Azul',
+            green: 'Verde', 
+            red: 'Vermelho',
+            orange: 'Laranja',
+            purple: 'Roxo',
+            teal: 'Verde-água',
+            indigo: 'Índigo',
+            pink: 'Rosa'
+        };
+        return names[colorKey];
+    };
+    
+    window.addTag = function() {
+        console.log('Função addTag chamada');
+        const input = $('#tagInput');
+        console.log('Input encontrado:', input.length > 0);
+        
+        if (input.length === 0) {
+            console.error('Campo de input não encontrado!');
+            showFeedback('Erro: Campo de input não encontrado', 'danger');
+            return;
+        }
+        
+        const tagText = input.val().trim();
+        console.log('Texto da etiqueta:', tagText);
+        
+        if (!tagText) {
+            showFeedback('Por favor, digite uma etiqueta válida', 'warning');
+            return;
+        }
+        
+        if (window.tags.some(tag => tag.text === tagText)) {
+            showFeedback('Esta etiqueta já foi adicionada', 'warning');
+            input.focus();
+            return;
+        }
+        
+        if (window.tags.length >= 15) {
+            showFeedback('Máximo de 15 etiquetas permitidas', 'warning');
+            return;
+        }
+        
+        const newTag = {
+            text: tagText,
+            color: window.defaultColor,
+            id: Date.now()
+        };
+        
+        console.log('Nova etiqueta:', newTag);
+        window.tags.push(newTag);
+        
+        input.val('');
+        input.focus();
+        window.updateTagDisplay();
+        showFeedback(`Etiqueta "${tagText}" adicionada!`, 'success');
+    };
+    
+    window.removeTag = function(id) {
+        const tagIndex = window.tags.findIndex(tag => tag.id === id);
+        if (tagIndex !== -1) {
+            const removedTag = window.tags[tagIndex];
+            window.tags.splice(tagIndex, 1);
+            updateTagDisplay();
+            showFeedback(`Etiqueta "${removedTag.text}" removida`, 'info');
+        }
+    };
+    
+    window.openColorPicker = function(id, tagText) {
+        window.currentEditingTag = id;
+        $('#currentTagName').text(tagText);
+        
+        $('#colorModal').modal('show');
+    };
+    
+    window.changeTagColor = function(newColor) {
+        if (window.currentEditingTag) {
+            const tagIndex = window.tags.findIndex(tag => tag.id === window.currentEditingTag);
+            if (tagIndex !== -1) {
+                const oldColor = window.getColorName(window.tags[tagIndex].color);
+                window.tags[tagIndex].color = newColor;
+                updateTagDisplay();
+                showFeedback(`Cor alterada de ${oldColor} para ${window.getColorName(newColor)}`, 'success');
+            }
+        }
+        
+        $('#colorModal').modal('hide');
+        window.currentEditingTag = null;
+    };
+    
+    window.updateTagDisplay = function() {
+        const container = $('#tagContainer');
+        const tagCount = $('#tagCount');
+        
+        tagCount.text(window.tags.length);
+        
+        if (window.tags.length === 0) {
+            container.removeClass('has-tags');
+            container.html(`
+                <div class="empty-state text-center py-5">
+                    <i class="mdi mdi-tag-outline text-muted" style="font-size: 3rem;"></i>
+                    <h6 class="text-muted mt-3">Nenhuma etiqueta adicionada</h6>
+                    <p class="text-muted mb-0">Comece adicionando etiquetas para organizar seu pedido</p>
+                </div>
+            `);
+        } else {
+            container.addClass('has-tags');
+            container.html(window.tags.map(tag => `
+                <span class="tag-item ${window.colorClasses[tag.color]}" 
+                      ondblclick="window.openColorPicker(${tag.id}, '${tag.text}')"
+                      oncontextmenu="window.showTagContextMenu(event, ${tag.id}, '${tag.text}')"
+                      title="Clique duplo para trocar cor • Clique direito para mais opções">
+                    <i class="mdi mdi-tag"></i>
+                    ${tag.text}
+                    <button class="tag-remove" onclick="window.removeTag(${tag.id})" title="Remover etiqueta">
+                        <i class="mdi mdi-close"></i>
+                    </button>
+                </span>
+            `).join(''));
+        }
+    };
+    
+    window.clearAllTags = function() {
+        if (window.tags.length === 0) {
+            showFeedback('Não há etiquetas para remover', 'info');
+            return;
+        }
+        
+        Swal.fire({
+            title: 'Remover todas as etiquetas?',
+            text: `Esta ação irá remover ${window.tags.length} etiqueta(s) permanentemente.`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#e74a3b',
+            cancelButtonColor: '#858796',
+            confirmButtonText: 'Sim, remover todas',
+            cancelButtonText: 'Cancelar',
+            reverseButtons: true,
+            customClass: {
+                popup: 'swal2-modal-atmos',
+                confirmButton: 'swal2-danger',
+                cancelButton: 'swal2-cancel'
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.tags = [];
+                window.updateTagDisplay();
+                showFeedback('Todas as etiquetas foram removidas', 'success');
+            }
+        });
+    };
+    
+    window.saveTags = function() {
+        if (window.tags.length === 0) {
+            showFeedback('Adicione pelo menos uma etiqueta antes de salvar', 'warning');
+            return;
+        }
+        
+        const saveButton = $(event.target);
+        const originalContent = saveButton.html();
+        saveButton.html('<i class="mdi mdi-loading mdi-spin me-2"></i>Salvando...');
+        saveButton.prop('disabled', true);
+        
+        // SweetAlert2
+        Swal.fire({
+            title: 'Salvando etiquetas...',
+            html: 'Aguarde enquanto salvamos suas etiquetas',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            showConfirmButton: false,
+            customClass: {
+                popup: 'swal2-modal-atmos'
+            },
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
+        
+        setTimeout(() => {
+            saveButton.html(originalContent);
+            saveButton.prop('disabled', false);
+            
+            window.saveTagsForPedido(window.currentPedidoId, window.tags);
+            window.updateTagsDisplayInTable(window.currentPedidoId, window.tags);
+            
+            // Fechar loading  sucesso
+            Swal.fire({
+                icon: 'success',
+                title: 'Etiquetas salvas!',
+                text: `${window.tags.length} etiqueta(s) foram salvas com sucesso para o pedido #${window.currentPedidoId}`,
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#1cc88a',
+                timer: 2000,
+                timerProgressBar: true,
+                customClass: {
+                    popup: 'swal2-modal-atmos',
+                    confirmButton: 'swal2-confirm'
+                }
+            });
+            
+            setTimeout(() => {
+                $('#etiquetasModal').modal('hide');
+            }, 1000);
+            
+            console.log('Etiquetas salvas:', window.tags);
+        }, 1500);
+    };
+    
+    function showFeedback(message, type = 'success') {
+        // Configurações SweetAlert2 
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 4000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        });
+        
+        // Configurações por tipo
+        let icon, title;
+        switch(type) {
+            case 'success':
+                icon = 'success';
+                title = 'Sucesso';
+                break;
+            case 'warning':
+                icon = 'warning';
+                title = 'Atenção';
+                break;
+            case 'error':
+            case 'danger':
+                icon = 'error';
+                title = 'Erro';
+                break;
+            case 'info':
+                icon = 'info';
+                title = 'Informação';
+                break;
+            default:
+                icon = 'success';
+                title = 'Sucesso';
+        }
+        
+        Toast.fire({
+            icon: icon,
+            title: message,
+            customClass: {
+                popup: 'swal2-toast-atmos',
+                title: 'swal2-toast-title-atmos'
+            }
+        });
+    }
+    
+    window.loadTagsForPedido = function(pedidoId) {
+        const savedTags = localStorage.getItem(`tags_pedido_${pedidoId}`);
+        if (savedTags) {
+            window.tags = JSON.parse(savedTags);
+            window.updateTagDisplay();
+        } else {
+            window.tags = [];
+            window.updateTagDisplay();
+        }
+    };
+    
+    window.saveTagsForPedido = function(pedidoId, tagsData) {
+        localStorage.setItem(`tags_pedido_${pedidoId}`, JSON.stringify(tagsData));
+    };
+    
+    window.updateTagsDisplayInTable = function(pedidoId, tagsData) {
+        const cell = $(`[data-pedido-id="${pedidoId}"]`).closest('td');
+        
+        if (tagsData.length === 0) {
+            cell.html(`
+                <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#etiquetasModal" data-pedido-id="${pedidoId}">
+                    <i class="mdi mdi-tag"></i>
+                    <span class="ml-1">Etiquetas</span>
+                </button>
+            `);
+        } else {
+            const tagsHtml = tagsData.map(tag => `
+                <span class="tag-item ${window.colorClasses[tag.color]}" title="${tag.text}">
+                    <i class="mdi mdi-tag"></i>
+                    ${tag.text}
+                    <button class="tag-remove" onclick="window.removeTagFromTable(${pedidoId}, ${tag.id})" title="Remover etiqueta">
+                        <i class="mdi mdi-close"></i>
+                    </button>
+                </span>
+                `).join('');
+            
+            cell.html(`
+                <div class="tags-display">
+                    ${tagsHtml}
+                    <button type="button" class="btn btn-sm btn-outline-primary ml-2" data-toggle="modal" data-target="#etiquetasModal" data-pedido-id="${pedidoId}">
+                        <i class="mdi mdi-plus"></i>
+                    </button>
+                </div>
+            `);
+        }
+    };
+    
+    window.removeTagFromTable = function(pedidoId, tagId) {
+        const savedTags = localStorage.getItem(`tags_pedido_${pedidoId}`);
+        if (savedTags) {
+            let tagsData = JSON.parse(savedTags);
+            const tagIndex = tagsData.findIndex(tag => tag.id === tagId);
+            if (tagIndex !== -1) {
+                tagsData.splice(tagIndex, 1);
+                window.saveTagsForPedido(pedidoId, tagsData);
+                window.updateTagsDisplayInTable(pedidoId, tagsData);
+                showFeedback('Etiqueta removida', 'info');
+            }
+        }
+    };
+    
+    window.exportTags = function() {
+        if (window.tags.length === 0) {
+            showFeedback('Não há etiquetas para exportar', 'warning');
+            return;
+        }
+        
+        // Mostrar loading
+        Swal.fire({
+            title: 'Exportando etiquetas...',
+            html: 'Preparando arquivo para download',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            showConfirmButton: false,
+            customClass: {
+                popup: 'swal2-modal-atmos'
+            },
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
+        
+        setTimeout(() => {
+            const exportData = {
+                etiquetas: window.tags,
+                total: window.tags.length,
+                dataExportacao: new Date().toLocaleString('pt-BR'),
+                corPadrao: window.defaultColor
+            };
+            
+            const dataStr = JSON.stringify(exportData, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(dataBlob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `etiquetas_pedido_${Date.now()}.json`;
+            link.click();
+            
+            URL.revokeObjectURL(url);
+            
+            // Fechar loading sucesso
+            Swal.fire({
+                icon: 'success',
+                title: 'Exportação concluída!',
+                text: `Arquivo com ${window.tags.length} etiqueta(s) foi baixado com sucesso.`,
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#1cc88a',
+                timer: 3000,
+                timerProgressBar: true,
+                customClass: {
+                    popup: 'swal2-modal-atmos',
+                    confirmButton: 'swal2-confirm'
+                }
+            });
+        }, 1000);
+    };
+    
+    window.importTags = function() {
+        Swal.fire({
+            title: 'Importar etiquetas',
+            text: 'Selecione um arquivo JSON para importar suas etiquetas',
+            icon: 'info',
+            input: 'file',
+            inputAttributes: {
+                accept: '.json',
+                'aria-label': 'Arquivo JSON para importar'
+            },
+            showCancelButton: true,
+            confirmButtonText: 'Importar',
+            cancelButtonText: 'Cancelar',
+            confirmButtonColor: '#1cc88a',
+            cancelButtonColor: '#858796',
+            showLoaderOnConfirm: true,
+            customClass: {
+                popup: 'swal2-modal-atmos',
+                confirmButton: 'swal2-confirm',
+                cancelButton: 'swal2-cancel'
+            },
+            preConfirm: (file) => {
+                if (!file) {
+                    Swal.showValidationMessage('Por favor, selecione um arquivo');
+                    return false;
+                }
+                
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        try {
+                            const data = JSON.parse(e.target.result);
+                            if (data.etiquetas && Array.isArray(data.etiquetas)) {
+                                resolve(data);
+                            } else {
+                                reject('Arquivo inválido: formato não reconhecido');
+                            }
+                        } catch (error) {
+                            reject('Erro ao ler arquivo: formato inválido');
+                        }
+                    };
+                    reader.onerror = () => reject('Erro ao ler arquivo');
+                    reader.readAsText(file);
+                });
+            },
+            allowOutsideClick: () => !Swal.isLoading()
+        }).then((result) => {
+            if (result.isConfirmed && result.value) {
+                const data = result.value;
+                window.tags = data.etiquetas;
+                if (data.corPadrao) {
+                    window.setDefaultColor(data.corPadrao);
+                }
+                window.updateTagDisplay();
+                
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Importação concluída!',
+                    text: `${data.etiquetas.length} etiqueta(s) foram importadas com sucesso.`,
+                    confirmButtonText: 'OK',
+                    confirmButtonColor: '#1cc88a',
+                    timer: 3000,
+                    timerProgressBar: true,
+                    customClass: {
+                        popup: 'swal2-modal-atmos',
+                        confirmButton: 'swal2-confirm'
+                    }
+                });
+            }
+        }).catch((error) => {
+            Swal.fire({
+                icon: 'error',
+                title: 'Erro na importação',
+                text: error,
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#e74a3b',
+                customClass: {
+                    popup: 'swal2-modal-atmos',
+                    confirmButton: 'swal2-danger'
+                }
+            });
+        });
+    };
+    
+    window.showTagContextMenu = function(e, id, tagText) {
+        e.preventDefault();
+        
+        $('.context-menu').remove();
+        
+        const menu = $(`
+            <div class="context-menu position-absolute bg-white border rounded shadow-lg p-2" 
+                 style="left: ${e.pageX}px; top: ${e.pageY}px; z-index: 9999; min-width: 150px;">
+                <button class="btn btn-sm btn-light w-100 text-start mb-1" onclick="window.openColorPicker(${id}, '${tagText}')">
+                    <i class="mdi mdi-palette me-2"></i>Trocar cor
+                </button>
+                <button class="btn btn-sm btn-light w-100 text-start mb-1" onclick="window.duplicateTag(${id})">
+                    <i class="mdi mdi-content-copy me-2"></i>Duplicar
+                </button>
+                <button class="btn btn-sm btn-danger w-100 text-start" onclick="window.removeTag(${id})">
+                    <i class="mdi mdi-delete me-2"></i>Remover
+                </button>
+            </div>
+        `);
+        
+        $('body').append(menu);
+        
+        setTimeout(() => {
+            $(document).one('click', function() {
+                menu.remove();
+            });
+        }, 100);
+    };
+    
+    window.duplicateTag = function(id) {
+        const tagToDuplicate = window.tags.find(tag => tag.id === id);
+        if (tagToDuplicate) {
+            const newTag = {
+                text: tagToDuplicate.text + ' (cópia)',
+                color: tagToDuplicate.color,
+                id: Date.now()
+            };
+            window.tags.push(newTag);
+            window.updateTagDisplay();
+            showFeedback(`Etiqueta "${tagToDuplicate.text}" duplicada!`, 'success');
+        }
+    };
+    
+    // Inicializar  etiquetas
+    window.updateTagDisplay();
+});
+</script>
+
+<style>
+.category-card {
+    transition: all ease .2s;
+    border-radius: .25rem;
+}
+
+.category-card:hover {
+    transform: translateY(-1px);
+}
+
+.category-main {
+    border-radius: .25rem !important;
+    border: 1px solid rgba(0, 0, 0, .125) !important;
+    transition: all ease .2s !important;
+    position: relative;
+    font-weight: 500;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
+    padding: 0.75rem 1rem !important;
+}
+
+.category-main:hover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+    transform: translateY(-1px);
+}
+
+.category-main:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25) !important;
+}
+
+.subcategory-container {
+    background-color: #f8f9fa;
+    border-radius: .25rem;
+    padding: .75rem;
+    border: 1px solid rgba(0, 0, 0, .125);
+    margin-top: .5rem;
+}
+
+.subcategory-container .btn {
+    border-radius: .25rem !important;
+    font-size: .875rem;
+    font-weight: 500;
+    transition: all ease .2s;
+    border: 1px solid transparent;
+    background-color: #fff;
+    color: #495057;
+}
+
+.subcategory-container .btn:hover {
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+    transform: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .12);
+}
+
+.collapse {
+    transition: all ease .2s;
+}
+
+.badge {
+    font-size: .75rem;
+    font-weight: 500;
+    padding: .25em .4em;
+    border-radius: .25rem;
+}
+
+/* Responsividade  */
+@media (max-width: 768px) {
+    .category-main {
+        padding: .75rem !important;
+    }
+    
+    .category-main h6 {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+    
+    .category-main small {
+        font-size: .875rem;
+        color: #6c757d;
+    }
+    
+    .subcategory-container {
+        margin-top: .5rem;
+        padding: .5rem;
+    }
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+    color: #fff !important;
+}
+
+.btn-outline-primary {
+    color: #007bff;
+    border-color: #007bff;
+    background-color: transparent;
+}
+
+.btn-outline-primary:hover {
+    background-color: #007bff !important;
+    border-color: #007bff !important;
+    color: #fff !important;
+}
+
+.btn-outline-primary:hover h6,
+.btn-outline-primary:hover small,
+.btn-outline-primary:hover i {
+    color: #fff !important;
+}
+
+.btn-outline-success {
+    color: #28a745;
+    border-color: #28a745;
+    background-color: transparent;
+}
+
+.btn-outline-success:hover {
+    background-color: #28a745 !important;
+    border-color: #28a745 !important;
+    color: #fff !important;
+}
+
+.btn-outline-success:hover h6,
+.btn-outline-success:hover small,
+.btn-outline-success:hover i {
+    color: #fff !important;
+}
+
+.btn-outline-warning {
+    color: #ffc107;
+    border-color: #ffc107;
+    background-color: transparent;
+}
+
+.btn-outline-warning:hover {
+    background-color: #ffc107 !important;
+    border-color: #e0a800 !important;
+    color: #212529 !important;
+}
+
+.btn-outline-warning:hover h6,
+.btn-outline-warning:hover small,
+.btn-outline-warning:hover i {
+    color: #212529 !important;
+}
+
+.btn-outline-info {
+    color: #17a2b8;
+    border-color: #17a2b8;
+    background-color: transparent;
+}
+
+.btn-outline-info:hover {
+    background-color: #17a2b8 !important;
+    border-color: #17a2b8 !important;
+    color: #fff !important;
+}
+
+.btn-outline-info:hover h6,
+.btn-outline-info:hover small,
+.btn-outline-info:hover i {
+    color: #fff !important;
+}
+
+.btn-outline-secondary {
+    color: #6c757d;
+    border-color: #6c757d;
+    background-color: transparent;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #6c757d !important;
+    border-color: #6c757d !important;
+    color: #fff !important;
+}
+
+.btn-outline-secondary:hover h6,
+.btn-outline-secondary:hover small,
+.btn-outline-secondary:hover i {
+    color: #fff !important;
+}
+
+.btn-outline-dark {
+    color: #343a40;
+    border-color: #343a40;
+    background-color: transparent;
+}
+
+.btn-outline-dark:hover {
+    background-color: #343a40 !important;
+    border-color: #343a40 !important;
+    color: #fff !important;
+}
+
+.btn-outline-dark:hover h6,
+.btn-outline-dark:hover small,
+.btn-outline-dark:hover i {
+    color: #fff !important;
+}
+
+.category-main i {
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.category-main h6 {
+    font-size: 0.9rem;
+    margin-bottom: 0.1rem;
+}
+
+.category-main small {
+    font-size: 0.75rem;
+}
+
+.subcategory-container .btn-outline-warning:hover {
+    background-color: #ffc107 !important;
+    border-color: #ffc107 !important;
+    color: #212529 !important;
+}
+
+.subcategory-container .btn-outline-warning:hover i {
+    color: #212529 !important;
+}
+
+.subcategory-container .btn-outline-danger:hover {
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+    color: #fff !important;
+}
+
+.subcategory-container .btn-outline-danger:hover i {
+    color: #fff !important;
+}
+
+.subcategory-container .btn-outline-info:hover {
+    background-color: #17a2b8 !important;
+    border-color: #17a2b8 !important;
+    color: #fff !important;
+}
+
+.subcategory-container .btn-outline-info:hover i {
+    color: #fff !important;
+}
+
+.subcategory-container .btn-outline-primary:hover {
+    background-color: #007bff !important;
+    border-color: #007bff !important;
+    color: #fff !important;
+}
+
+.subcategory-container .btn-outline-primary:hover i {
+    color: #fff !important;
+}
+
+.subcategory-container .btn-outline-secondary:hover {
+    background-color: #6c757d !important;
+    border-color: #6c757d !important;
+    color: #fff !important;
+}
+
+.subcategory-container .btn-outline-secondary:hover i {
+    color: #fff !important;
+}
+
+.subcategory-container .btn-outline-success:hover {
+    background-color: #28a745 !important;
+    border-color: #28a745 !important;
+    color: #fff !important;
+}
+
+.subcategory-container .btn-outline-success:hover i {
+    color: #fff !important;
+}
+</style>
+
+<style>
+    /* Sistema Etiquetas */
+    .tag-container {
+        min-height: 200px;
+        border: 1px solid #e3e6f0;
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        background: #fff;
+        transition: all 0.2s ease-in-out;
+        max-height: 400px;
+        overflow-y: auto;
+        position: relative;
+        box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+    }
+    
+    .tag-container.has-tags {
+        border-color: #4e73df;
+        background: #fff;
+        box-shadow: 0 0.15rem 1.75rem 0 rgba(78, 115, 223, 0.15);
+    }
+    
+    .tag-item {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        margin: 0.25rem;
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+        gap: 0.5rem;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        position: relative;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        border: 1px solid transparent;
+        line-height: 1.2;
+    }
+    
+    .tag-item:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    }
+    
+    .tag-remove {
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 0.75rem;
+        color: inherit;
+        transition: all 0.2s ease-in-out;
+        margin-left: 0.5rem;
+        opacity: 0.8;
+    }
+    
+    .tag-remove:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    
+    .color-picker-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+    }
+    
+    .color-option {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        border: 3px solid transparent;
+        position: relative;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    }
+    
+    .color-option:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
+    }
+    
+    .color-option.selected {
+        transform: scale(1.1);
+        box-shadow: 0 0.375rem 0.75rem rgba(0, 0, 0, 0.2);
+        border-color: #fff !important;
+        border-width: 4px !important;
+        position: relative;
+    }
+    
+    /* Indicador de seleção */
+    .color-option.selected::after {
+        content: '✓';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #fff;
+        color: #333;
+        font-size: 11px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        width: 16px;
+        height: 16px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        z-index: 2;
+    }
+    
+    /* Efeito */
+    .color-option.selected {
+        animation: colorGlow 2s ease-in-out infinite;
+    }
+    
+    @keyframes colorGlow {
+        0%, 100% {
+            box-shadow: 0 0.375rem 0.75rem rgba(0, 0, 0, 0.2);
+        }
+        50% {
+            box-shadow: 0 0.375rem 0.75rem rgba(0, 0, 0, 0.2), 0 0 0 4px rgba(255, 255, 255, 0.3);
+        }
+    }
+    
+    /* Cores das etiquetas */
+    .tag-blue { 
+        background: #4e73df; 
+        color: white; 
+        border-color: #4e73df;
+    }
+    .tag-green { 
+        background: #1cc88a; 
+        color: white; 
+        border-color: #1cc88a;
+    }
+    .tag-red { 
+        background: #e74a3b; 
+        color: white; 
+        border-color: #e74a3b;
+    }
+    .tag-orange { 
+        background: #f6c23e; 
+        color: white; 
+        border-color: #f6c23e;
+    }
+    .tag-purple { 
+        background: #6f42c1; 
+        color: white; 
+        border-color: #6f42c1;
+    }
+    .tag-teal { 
+        background: #36b9cc; 
+        color: white; 
+        border-color: #36b9cc;
+    }
+    .tag-indigo { 
+        background: #5a5c69; 
+        color: white; 
+        border-color: #5a5c69;
+    }
+    .tag-pink { 
+        background: #e83e8c; 
+        color: white; 
+        border-color: #e83e8c;
+    }
+    
+    .empty-state {
+        text-align: center;
+        color: #858796;
+        padding: 2rem 1rem;
+    }
+    
+    .empty-state i {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        opacity: 0.4;
+        color: #d1d3e2;
+    }
+    
+    .empty-state h6 {
+        color: #5a5c69;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+    
+    .empty-state p {
+        color: #858796;
+        font-size: 0.875rem;
+        margin: 0;
+    }
+    
+    /* Animações */
+    .tag-item {
+        animation: fadeInUp 0.3s ease-out;
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* etiquetas na tabela */
+    .tags-display {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25rem;
+        align-items: center;
+    }
+    
+    .tags-display .tag-item {
+        margin: 0;
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+    }
+    
+    .tags-display .tag-remove {
+        width: 16px;
+        height: 16px;
+        font-size: 0.625rem;
+        margin-left: 0.25rem;
+    }
+    
+    /* cores */
+    .modal-content {
+        border: none;
+        border-radius: 0.75rem;
+        box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+    }
+    
+    .modal-header {
+        border-bottom: 1px solid #e3e6f0;
+        background: #f8f9fc;
+        border-radius: 0.75rem 0.75rem 0 0;
+    }
+    
+    .modal-footer {
+        border-top: 1px solid #e3e6f0;
+        background: #f8f9fc;
+        border-radius: 0 0 0.75rem 0.75rem;
+    }
+    
+    /* etiquetas */
+    .form-control:focus {
+        border-color: #bac8f3;
+        box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25);
+    }
+    
+    /* botões */
+    .btn-primary {
+        background-color: #4e73df;
+        border-color: #4e73df;
+    }
+    
+    .btn-primary:hover {
+        background-color: #2e59d9;
+        border-color: #2653d4;
+    }
+    
+    .btn-success {
+        background-color: #1cc88a;
+        border-color: #1cc88a;
+    }
+    
+    .btn-success:hover {
+        background-color: #17a673;
+        border-color: #169b6b;
+    }
+    
+    .btn-outline-primary {
+        color: #4e73df;
+        border-color: #4e73df;
+    }
+    
+    .btn-outline-primary:hover {
+        background-color: #4e73df;
+        border-color: #4e73df;
+    }
+    
+    /* SweetAlert2 */
+    .swal2-toast-atmos {
+        border-radius: 0.75rem !important;
+        box-shadow: 0 0.5rem 2rem rgba(62, 70, 118, 0.12) !important;
+        border: 1px solid rgba(104, 122, 232, 0.1) !important;
+        font-family: 'Hind Vadodara', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+        background: linear-gradient(135deg, #f4f7fc 0%, #ffffff 100%) !important;
+        color: #3e4676 !important;
+        padding: 1rem 1.25rem !important;
+        min-width: 320px !important;
+        backdrop-filter: blur(10px) !important;
+        border-left: 4px solid #687ae8 !important;
+    }
+    
+    .swal2-toast-atmos.swal2-toast-success {
+        border-left-color: #28c76f !important;
+        background: linear-gradient(135deg, #f4f7fc 0%, #f0f9f4 100%) !important;
+    }
+    
+    .swal2-toast-atmos.swal2-toast-warning {
+        border-left-color: #f7bc06 !important;
+        background: linear-gradient(135deg, #f4f7fc 0%, #fefbf0 100%) !important;
+    }
+    
+    .swal2-toast-atmos.swal2-toast-error {
+        border-left-color: #f2545b !important;
+        background: linear-gradient(135deg, #f4f7fc 0%, #fef0f0 100%) !important;
+    }
+    
+    .swal2-toast-atmos.swal2-toast-info {
+        border-left-color: #19b5fe !important;
+        background: linear-gradient(135deg, #f4f7fc 0%, #f0f9fc 100%) !important;
+    }
+    
+    .swal2-toast-title-atmos {
+        font-family: 'Hind Vadodara', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+        font-size: 0.9rem !important;
+        font-weight: 600 !important;
+        color: #3e4676 !important;
+        margin: 0 !important;
+        line-height: 1.4 !important;
+        letter-spacing: 0.025em !important;
+    }
+    
+    .swal2-toast-atmos .swal2-timer-progress-bar {
+        background: linear-gradient(90deg, #687ae8 0%, #9e95f5 100%) !important;
+        border-radius: 0 0 0.75rem 0.75rem !important;
+        height: 3px !important;
+        margin: 0 -1.25rem -1rem -1.25rem !important;
+    }
+    
+    .swal2-toast-atmos .swal2-icon {
+        border: none !important;
+        margin: 0 0.75rem 0 0 !important;
+        width: 1.75rem !important;
+        height: 1.75rem !important;
+        position: relative !important;
+    }
+    
+    .swal2-toast-atmos .swal2-icon::before {
+        content: '' !important;
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: 1.75rem !important;
+        height: 1.75rem !important;
+        border-radius: 50% !important;
+        background: currentColor !important;
+        opacity: 0.1 !important;
+    }
+    
+    .swal2-toast-atmos .swal2-icon.swal2-success {
+        color: #28c76f !important;
+    }
+    
+    .swal2-toast-atmos .swal2-icon.swal2-warning {
+        color: #f7bc06 !important;
+    }
+    
+    .swal2-toast-atmos .swal2-icon.swal2-error {
+        color: #f2545b !important;
+    }
+    
+    .swal2-toast-atmos .swal2-icon.swal2-info {
+        color: #19b5fe !important;
+    }
+    
+    .swal2-toast-atmos .swal2-html-container {
+        font-family: 'Hind Vadodara', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+        margin: 0.25rem 0 0 0 !important;
+        font-size: 0.875rem !important;
+        color: #6c757d !important;
+        line-height: 1.5 !important;
+    }
+    
+    /* SweetAlert2 */
+    .swal2-modal-atmos {
+        border-radius: 0.75rem !important;
+        box-shadow: 0 1rem 3rem rgba(62, 70, 118, 0.15) !important;
+        border: 1px solid rgba(104, 122, 232, 0.1) !important;
+        font-family: 'Hind Vadodara', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+        background: linear-gradient(135deg, #ffffff 0%, #f4f7fc 100%) !important;
+        overflow: hidden !important;
+    }
+    
+    .swal2-modal-atmos::before {
+        content: '' !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 4px !important;
+        background: linear-gradient(90deg, #687ae8 0%, #9e95f5 100%) !important;
+    }
+    
+    .swal2-modal-atmos .swal2-title {
+        font-family: 'Hind Vadodara', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+        color: #3e4676 !important;
+        font-weight: 600 !important;
+        font-size: 1.25rem !important;
+        margin-bottom: 0.75rem !important;
+        line-height: 1.3 !important;
+    }
+    
+    .swal2-modal-atmos .swal2-html-container {
+        font-family: 'Hind Vadodara', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+        color: #6c757d !important;
+        font-size: 0.9rem !important;
+        line-height: 1.5 !important;
+        margin: 1rem 0 !important;
+    }
+    
+    .swal2-modal-atmos .swal2-confirm {
+        background: linear-gradient(135deg, #687ae8 0%, #9e95f5 100%) !important;
+        border: none !important;
+        border-radius: 0.375rem !important;
+        font-family: 'Hind Vadodara', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+        font-weight: 500 !important;
+        padding: 0.5rem 1.5rem !important;
+        font-size: 0.875rem !important;
+        text-transform: none !important;
+        letter-spacing: 0.25px !important;
+        transition: all 0.2s ease-in-out !important;
+        box-shadow: 0 0.125rem 0.5rem rgba(104, 122, 232, 0.25) !important;
+    }
+    
+    .swal2-modal-atmos .swal2-confirm:hover {
+        background: linear-gradient(135deg, #5a6fd8 0%, #8a82e8 100%) !important;
+        transform: translateY(-1px) !important;
+        box-shadow: 0 0.25rem 0.75rem rgba(104, 122, 232, 0.35) !important;
+    }
+    
+    .swal2-modal-atmos .swal2-cancel {
+        background: linear-gradient(135deg, #95aac9 0%, #b8c5d9 100%) !important;
+        border: none !important;
+        border-radius: 0.375rem !important;
+        font-family: 'Hind Vadodara', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+        font-weight: 500 !important;
+        padding: 0.5rem 1.5rem !important;
+        font-size: 0.875rem !important;
+        text-transform: none !important;
+        letter-spacing: 0.25px !important;
+        transition: all 0.2s ease-in-out !important;
+        box-shadow: 0 0.125rem 0.5rem rgba(149, 170, 201, 0.25) !important;
+    }
+    
+    .swal2-modal-atmos .swal2-cancel:hover {
+        background: linear-gradient(135deg, #8a9bb8 0%, #a8b7cc 100%) !important;
+        transform: translateY(-1px) !important;
+        box-shadow: 0 0.25rem 0.75rem rgba(149, 170, 201, 0.35) !important;
+    }
+    
+    .swal2-modal-atmos .swal2-danger {
+        background: linear-gradient(135deg, #f2545b 0%, #ff6b73 100%) !important;
+        border: none !important;
+        border-radius: 0.375rem !important;
+        font-family: 'Hind Vadodara', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+        font-weight: 500 !important;
+        padding: 0.5rem 1.5rem !important;
+        font-size: 0.875rem !important;
+        text-transform: none !important;
+        letter-spacing: 0.25px !important;
+        transition: all 0.2s ease-in-out !important;
+        box-shadow: 0 0.125rem 0.5rem rgba(242, 84, 91, 0.25) !important;
+    }
+    
+    .swal2-modal-atmos .swal2-danger:hover {
+        background: linear-gradient(135deg, #e04a52 0%, #f55a62 100%) !important;
+        transform: translateY(-1px) !important;
+        box-shadow: 0 0.25rem 0.75rem rgba(242, 84, 91, 0.35) !important;
+    }
+    
+    /* Animações */
+    .swal2-toast-atmos {
+        animation: slideInRight 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+    }
+    
+    @keyframes slideInRight {
+        from {
+            opacity: 0;
+            transform: translateX(100%) scale(0.8);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+        }
+    }
+    
+    /* loading */
+    .swal2-modal-atmos .swal2-loading {
+        border: 3px solid #e3e6f0 !important;
+        border-top: 3px solid #4e73df !important;
+        border-radius: 50% !important;
+        width: 3rem !important;
+        height: 3rem !important;
+        animation: spin 1s linear infinite !important;
+    }
+    
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    
+    /* inputs */
+    .swal2-modal-atmos .swal2-input {
+        border: 2px solid #e3e6f0 !important;
+        border-radius: 0.5rem !important;
+        padding: 0.75rem 1rem !important;
+        font-size: 0.9rem !important;
+        transition: all 0.3s ease !important;
+        background: #fff !important;
+    }
+    
+    .swal2-modal-atmos .swal2-input:focus {
+        border-color: #4e73df !important;
+        box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25) !important;
+        outline: none !important;
+    }
+    
+    /* validação */
+    .swal2-modal-atmos .swal2-validation-message {
+        color: #e74a3b !important;
+        font-size: 0.875rem !important;
+        font-weight: 500 !important;
+        margin-top: 0.5rem !important;
+    }
+</style>
+
+<!-- Modal de Etiquetas -->
+<div class="modal fade" id="etiquetasModal" tabindex="-1" aria-labelledby="etiquetasModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="etiquetasModalLabel">
+                    <i class="mdi mdi-tag-multiple"></i>
+                    Sistema de Etiquetas - Pedido #<span id="pedidoId">12345</span>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-header bg-light">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h6 class="mb-0 font-weight-bold">
+                                        <i class="mdi mdi-plus-circle me-2 text-primary"></i>
+                                        Adicionar Etiqueta
+                                    </h6>
+                                    <span class="badge badge-primary badge-pill" id="tagCount">0</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group mb-0">
+                                    <div class="input-group input-group-lg">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text bg-white border-right-0">
+                                                <i class="mdi mdi-tag text-muted"></i>
+                                            </span>
+                                        </div>
+                                        <input type="text" class="form-control border-left-0" id="tagInput" 
+                                               placeholder="Digite o nome da etiqueta e pressione Enter..." 
+                                               maxlength="50">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary px-4" type="button" onclick="window.addTag()" id="addTagBtn">
+                                                <i class="mdi mdi-plus me-1"></i>
+                                                Adicionar
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <small class="form-text text-muted">
+                                        <i class="mdi mdi-information me-1"></i>
+                                        Máximo 50 caracteres • Clique duplo nas etiquetas para trocar cor
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card border-0 shadow-sm mt-4">
+                            <div class="card-header bg-light">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h6 class="mb-0 font-weight-bold">
+                                        <i class="mdi mdi-tag-multiple me-2 text-success"></i>
+                                        Etiquetas Ativas
+                                    </h6>
+                                    <div class="btn-group btn-group-sm">
+                                        <button type="button" class="btn btn-outline-primary" onclick="exportTags()" title="Exportar etiquetas">
+                                            <i class="mdi mdi-download"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary" onclick="importTags()" title="Importar etiquetas">
+                                            <i class="mdi mdi-upload"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-danger" onclick="clearAllTags()" title="Limpar todas">
+                                            <i class="mdi mdi-delete-sweep"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div id="tagContainer" class="tag-container">
+                                    <div class="empty-state text-center py-5">
+                                        <i class="mdi mdi-tag-outline text-muted" style="font-size: 3rem;"></i>
+                                        <h6 class="text-muted mt-3">Nenhuma etiqueta adicionada</h6>
+                                        <p class="text-muted mb-0">Comece adicionando etiquetas para organizar seu pedido</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-header bg-light">
+                                <h6 class="mb-0 font-weight-bold">
+                                    <i class="mdi mdi-palette me-2 text-warning"></i>
+                                    Cor Padrão
+                                </h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="color-picker-grid">
+                                    <div class="color-option" style="background: #4e73df;" onclick="window.setDefaultColor('blue')" title="Azul"></div>
+                                    <div class="color-option" style="background: #1cc88a;" onclick="window.setDefaultColor('green')" title="Verde"></div>
+                                    <div class="color-option" style="background: #e74a3b;" onclick="window.setDefaultColor('red')" title="Vermelho"></div>
+                                    <div class="color-option" style="background: #f6c23e;" onclick="window.setDefaultColor('orange')" title="Laranja"></div>
+                                    <div class="color-option" style="background: #6f42c1;" onclick="window.setDefaultColor('purple')" title="Roxo"></div>
+                                    <div class="color-option" style="background: #36b9cc;" onclick="window.setDefaultColor('teal')" title="Verde-água"></div>
+                                    <div class="color-option" style="background: #5a5c69;" onclick="window.setDefaultColor('indigo')" title="Índigo"></div>
+                                    <div class="color-option" style="background: #e83e8c;" onclick="window.setDefaultColor('pink')" title="Rosa"></div>
+                                </div>
+                                <small class="form-text text-muted mt-2">
+                                    <i class="mdi mdi-information me-1"></i>
+                                    Clique para definir a cor padrão para novas etiquetas
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer bg-light">
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">
+                    <i class="mdi mdi-close me-2"></i>
+                    Cancelar
+                </button>
+                <button type="button" class="btn btn-success" onclick="window.saveTags()">
+                    <i class="mdi mdi-content-save me-2"></i>
+                    Salvar Etiquetas
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de seleção de cor -->
+<div class="modal fade" id="colorModal" tabindex="-1" aria-labelledby="colorModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="colorModalLabel">
+                    <i class="mdi mdi-palette me-2"></i>
+                    Escolher cor da etiqueta
+                </h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <p class="mb-3">Escolha uma nova cor para: <strong id="currentTagName"></strong></p>
+                <div class="d-flex gap-2 flex-wrap justify-content-center">
+                    <div class="color-option" style="background: #4e73df;" onclick="window.changeTagColor('blue')" title="Azul"></div>
+                    <div class="color-option" style="background: #1cc88a;" onclick="window.changeTagColor('green')" title="Verde"></div>
+                    <div class="color-option" style="background: #e74a3b;" onclick="window.changeTagColor('red')" title="Vermelho"></div>
+                    <div class="color-option" style="background: #f6c23e;" onclick="window.changeTagColor('orange')" title="Laranja"></div>
+                    <div class="color-option" style="background: #6f42c1;" onclick="window.changeTagColor('purple')" title="Roxo"></div>
+                    <div class="color-option" style="background: #36b9cc;" onclick="window.changeTagColor('teal')" title="Verde-água"></div>
+                    <div class="color-option" style="background: #5a5c69;" onclick="window.changeTagColor('indigo')" title="Índigo"></div>
+                    <div class="color-option" style="background: #e83e8c;" onclick="window.changeTagColor('pink')" title="Rosa"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Layout responsivo */
+    @media (max-width: 1440px) {
+        .product-layout-responsive {
+            flex-direction: column !important;
+            align-items: center !important;
+        }
+        
+        .product-layout-responsive .product-image-container,
+        .product-layout-responsive .avatar-group {
+            margin-right: 0 !important;
+            margin-bottom: 0.5rem !important;
+        }
+        
+        .product-layout-responsive .product-info {
+            text-align: center !important;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .product-layout-responsive {
+            flex-direction: column !important;
+            align-items: center !important;
+        }
+        
+        .product-layout-responsive .product-image-container,
+        .product-layout-responsive .avatar-group {
+            margin-right: 0 !important;
+            margin-bottom: 0.5rem !important;
+        }
+        
+        .product-layout-responsive .product-info {
+            text-align: center !important;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .product-layout-responsive {
+            flex-direction: column !important;
+            align-items: center !important;
+        }
+        
+        .product-layout-responsive .product-image-container,
+        .product-layout-responsive .avatar-group {
+            margin-right: 0 !important;
+            margin-bottom: 0.5rem !important;
+        }
+        
+        .product-layout-responsive .product-info {
+            text-align: center !important;
+        }
+    }
+
+    @media (max-width: 425px) {
+        .product-layout-responsive {
+            flex-direction: column !important;
+            align-items: center !important;
+        }
+        
+        .product-layout-responsive .product-image-container,
+        .product-layout-responsive .avatar-group {
+            margin-right: 0 !important;
+            margin-bottom: 0.5rem !important;
+        }
+        
+        .product-layout-responsive .product-info {
+            text-align: center !important;
+        }
+    }
+
+    @media (max-width: 375px) {
+        .product-layout-responsive {
+            flex-direction: column !important;
+            align-items: center !important;
+        }
+        
+        .product-layout-responsive .product-image-container,
+        .product-layout-responsive .avatar-group {
+            margin-right: 0 !important;
+            margin-bottom: 0.5rem !important;
+        }
+        
+        .product-layout-responsive .product-info {
+            text-align: center !important;
+        }
+    }
+
+    @media (max-width: 420px) {
+        .product-layout-responsive {
+            flex-direction: column !important;
+            align-items: center !important;
+        }
+        
+        .product-layout-responsive .product-image-container,
+        .product-layout-responsive .avatar-group {
+            margin-right: 0 !important;
+            margin-bottom: 0.5rem !important;
+        }
+        
+        .product-layout-responsive .product-info {
+            text-align: center !important;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .header-buttons-container {
+            justify-content: center !important;
+            width: 100% !important;
+        }
+        
+        .header-btn {
+            flex: 1 !important;
+            min-width: 0 !important;
+            max-width: calc(33.333% - 0.5rem) !important;
+            font-size: 0.75rem !important;
+            padding: 0.375rem 0.25rem !important;
+        }
+        
+        .header-btn i {
+            font-size: 0.875rem !important;
+            margin-right: 0.25rem !important;
+        }
+        
+        .header-btn span {
+            display: none !important;
+        }
+    }
+
+    @media (max-width: 425px) {
+        .config-icon {
+            display: none !important;
+        }
+        
+        .back-icon {
+            display: inline !important;
+        }
+    }
+
+    @media (max-width: 375px) {
+        .config-icon {
+            display: none !important;
+        }
+        
+        .back-icon {
+            display: inline !important;
+        }
+    }
+
+    @media (max-width: 320px) {
+        .config-icon {
+            display: none !important;
+        }
+        
+        .back-icon {
+            display: inline !important;
+        }
+    }
+
+    @media (min-width: 577px) and (max-width: 768px) {
+        .header-buttons-container {
+            justify-content: center !important;
+        }
+        
+        .header-btn {
+            flex: 1 !important;
+            min-width: 0 !important;
+            max-width: calc(33.333% - 0.5rem) !important;
+            font-size: 0.8rem !important;
+        }
+        
+        .header-btn i {
+            margin-right: 0.5rem !important;
+        }
+    }
+
+    @media (min-width: 769px) and (max-width: 992px) {
+        .header-buttons-container {
+            justify-content: flex-end !important;
+            flex-wrap: nowrap !important;
+        }
+        
+        .header-btn {
+            font-size: 0.875rem !important;
+            flex-shrink: 0 !important;
+            white-space: nowrap !important;
+        }
+    }
+
+    @media (min-width: 993px) and (max-width: 1024px) {
+        .header-buttons-container {
+            justify-content: flex-end !important;
+            flex-wrap: nowrap !important;
+        }
+        
+        .header-btn {
+            font-size: 0.875rem !important;
+            flex-shrink: 0 !important;
+            white-space: nowrap !important;
+        }
+    }
+
+    @media (min-width: 993px) {
+        .header-buttons-container {
+            justify-content: flex-end !important;
+        }
+        
+        .header-btn {
+            font-size: 0.9rem !important;
+        }
+    }
+
+    .header-btn {
+        transition: all 0.2s ease-in-out !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    .header-btn:hover {
+        transform: translateY(-1px) !important;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15) !important;
+    }
+
+    .header-btn:active {
+        transform: translateY(0) !important;
+    }
+</style>
+
+</body>
+</html>

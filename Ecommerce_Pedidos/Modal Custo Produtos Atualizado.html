@@ -1,0 +1,2293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" name="viewport">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Atmos Admin Panel- Bootstrap 4 Based Admin Panel</title>
+<link rel="icon" type="image/x-icon" href="../assets/img/logo.png"/>
+<link rel="icon" href="../assets/img/logo.png" type="image/png" sizes="16x16">
+<link rel="stylesheet" href="../assets/vendor/pace/pace.css">
+<script src="../assets/vendor/pace/pace.min.js"></script>
+<!--vendors-->
+<link rel="stylesheet" type="text/css" href="../assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
+<link rel="stylesheet" type="text/css" href="../assets/vendor/jquery-scrollbar/jquery.scrollbar.css">
+<link rel="stylesheet" href="../assets/vendor/select2/css/select2.min.css">
+<link rel="stylesheet" href="../assets/vendor/jquery-ui/jquery-ui.min.css">
+<link rel="stylesheet" href="../assets/vendor/daterangepicker/daterangepicker.css">
+<link rel="stylesheet" href="../assets/vendor/timepicker/bootstrap-timepicker.min.css">
+<link href="https://fonts.googleapis.com/css?family=Hind+Vadodara:400,500,600" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts/jost/jost.css">
+<!--Material Icons-->
+<link rel="stylesheet" type="text/css" href="../assets/fonts/materialdesignicons/materialdesignicons.min.css">
+<!--Bootstrap + atmos Admin CSS-->
+<link rel="stylesheet" type="text/css" href="../assets/css/atmos.min.css">
+<!-- Additional library for page -->
+
+                    <style>
+                        .bg-gradient-primary-to-secondary {
+                            background: linear-gradient(45deg, #7367f0, #9e95f5);
+                        }
+                        
+                        .opacity-8 {
+                            opacity: 0.8 !important;
+                        }
+                        
+                        .hover-opacity-10:hover {
+                            opacity: 1 !important;
+                        }
+                        
+                        .btn-translucent-light {
+                            background-color: rgba(255, 255, 255, 0.2);
+                            color: #fff;
+                            border: none;
+                            backdrop-filter: blur(3px);
+                            -webkit-backdrop-filter: blur(3px);
+                            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                            transition: all 0.2s ease;
+                        }
+                        
+                        .btn-translucent-light:hover, 
+                        .btn-translucent-light:focus {
+                            background-color: rgba(255, 255, 255, 0.25);
+                            color: #fff;
+                            transform: translateY(-1px);
+                            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+                        }
+                        
+                        .btn-translucent-light:active {
+                            transform: translateY(0);
+                            background-color: rgba(255, 255, 255, 0.3);
+                            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                        }
+                        
+                        .btn-icon {
+                            width: 32px;
+                            height: 32px;
+                            padding: 0;
+                            display: inline-flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+                        
+                        .btn-icon.btn-sm {
+                            width: 28px;
+                            height: 28px;
+                        }
+                        
+                        .modal-icon-wrapper {
+                            width: 48px;
+                            height: 48px;
+                            transition: transform 0.2s ease;
+                        }
+                        
+                        .modal-header:hover .modal-icon-wrapper {
+                            transform: scale(1.05);
+                        }
+                        
+                        .card-icon-wrapper {
+                            width: 50px;
+                            height: 50px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+                        
+                        .card-header-icon {
+                            width: 30px;
+                            height: 30px;
+                        }
+                        
+                        .card-hover-optimized {
+                            position: relative;
+                            border-left: 0px solid transparent !important;
+                            transition: transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1), box-shadow 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+                            will-change: transform, box-shadow;
+                        }
+                        
+                        .card-hover-optimized:before {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            height: 100%;
+                            width: 3px;
+                            transform: scaleY(0);
+                            transform-origin: center;
+                            transition: transform 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+                            will-change: transform;
+                        }
+                        
+                        .card-primary:before {
+                            background-color: #7367f0;
+                        }
+                        
+                        .card-success:before {
+                            background-color: #28c76f;
+                        }
+                        
+                        .card-info:before {
+                            background-color: #00cfe8;
+                        }
+                        
+                        .card-hover-optimized:hover {
+                            transform: translateY(-2px);
+                            box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.08);
+                        }
+                        
+                        .card-hover-optimized:hover:before {
+                            transform: scaleY(1);
+                        }
+                        
+                        .card-hover-primary:hover {
+                            border-left: 3px solid #7367f0 !important;
+                        }
+                        
+                        .card-hover-success:hover {
+                            border-left: 3px solid #28c76f !important;
+                        }
+                        
+                        .card-hover-info:hover {
+                            border-left: 3px solid #00cfe8 !important;
+                        }
+                        
+                        .input-group-seamless .form-control:focus {
+                            border-color: #7367f0;
+                            box-shadow: 0 0 0 0.2rem rgba(115, 103, 240, 0.15);
+                        }
+                        
+                        .btn-pulse {
+                            position: relative;
+                            overflow: hidden;
+                        }
+                        
+                        .btn-pulse:after {
+                            content: "";
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            border-radius: inherit;
+                            background-color: inherit;
+                            opacity: 0.6;
+                            z-index: -1;
+                            pointer-events: none;
+                            transform: scale(1);
+                            will-change: transform, opacity;
+                            animation: pulseOptimized 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+                        }
+                        
+                        @keyframes pulseOptimized {
+                            0% {
+                                transform: scale(1);
+                                opacity: 0.6;
+                            }
+                            70% {
+                                transform: scale(1.05);
+                                opacity: 0;
+                            }
+                            100% {
+                                transform: scale(1.1);
+                                opacity: 0;
+                            }
+                        }
+                        
+                        .history-row {
+                            transition: background-color 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+                        }
+                        
+                        .history-row:hover {
+                            background-color: rgba(245, 247, 250, 0.5);
+                        }
+                        
+                        .action-buttons .btn {
+                            opacity: 1;
+                            width: 26px;
+                            height: 26px;
+                            transition: transform 0.15s cubic-bezier(0.215, 0.61, 0.355, 1), 
+                                        background-color 0.15s cubic-bezier(0.215, 0.61, 0.355, 1);
+                            will-change: transform;
+                        }
+                        
+                        .action-buttons .btn:hover {
+                            transform: scale(1.08);
+                        }
+                        
+                        .badge-icon {
+                            transition: transform 0.15s cubic-bezier(0.215, 0.61, 0.355, 1);
+                            will-change: transform;
+                        }
+                        
+                        .history-row:hover .badge-icon {
+                            transform: scale(1.05);
+                        }
+                        
+                        .history-table th, .history-table td {
+                            white-space: nowrap;
+                            font-size: 0.9rem;
+                        }
+                        
+                        .history-table .small {
+                            font-size: 0.8rem;
+                        }
+                        
+                        .periodo-date-line {
+                            font-size: 0.8rem;
+                        }
+                        
+                        .data-table tbody tr {
+                            transition: all 0.2s ease;
+                        }
+                        
+                        .data-table tbody tr:hover {
+                            background-color: rgba(115, 103, 240, 0.04);
+                        }
+                        
+                        .hover-shadow-sm:hover {
+                            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+                        }
+                        
+                        .avatar-md {
+                            width: 42px;
+                            height: 42px;
+                        }
+                        
+                        .btn-group .btn-icon {
+                            border-radius: 4px;
+                            transition: all 0.2s;
+                        }
+                        
+                        .btn-group .btn-icon:hover {
+                            background-color: #f8f9fa;
+                        }
+                        
+                        .history-table th {
+                            font-size: 0.72rem;
+                            letter-spacing: 0.4px;
+                        }
+                        
+                        .total-value-container {
+                            display: inline-block;
+                            min-width: 85px;
+                            text-align: center;
+                        }
+                        
+                        .quantity-badge {
+                            display: inline-block;
+                        }
+                        
+                        .produto-nome-span {
+                            display: inline-block;
+                            vertical-align: middle;
+                            max-width: 800px; 
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+                        
+                        /* Responsividade */
+                        @media (max-width: 1680px) {
+                            .produto-nome-span {
+                                max-width: 600px;
+                            }
+                        }
+                        
+                        @media (max-width: 1440px) {
+                            .produto-nome-span {
+                                max-width: 500px;
+                            }
+                            
+                            .history-table th[style*="width"] {
+                                width: auto !important;
+                            }
+                            
+                            .history-table th {
+                                white-space: nowrap;
+                            }
+                            
+                            .history-table .periodo-date-line {
+                                flex-wrap: wrap;
+                                justify-content: center;
+                            }
+                            
+                            .periodo-dates {
+                                max-width: 150px;
+                            }
+                        }
+                        
+                        @media (max-width: 1024px) {
+                            .produto-nome-span {
+                                max-width: 350px;
+                            }
+                            
+                            .modal-header .modal-icon-wrapper {
+                                width: 42px;
+                                height: 42px;
+                            }
+                            
+                            .modal-header .modal-icon-wrapper i {
+                                font-size: 20px;
+                            }
+                            
+                            .history-table th[style*="width"] {
+                                width: auto !important;
+                            }
+                            
+                            .history-table th, .history-table td {
+                                padding: 0.6rem 0.4rem;
+                            }
+                            
+                            .badge-icon.bg-light {
+                                width: 26px;
+                                height: 26px;
+                            }
+                            
+                            .badge-icon i {
+                                font-size: 14px !important;
+                            }
+                            
+                            .total-value-container {
+                                min-width: 75px;
+                            }
+                            
+                            .periodo-dates {
+                                max-width: 130px;
+                            }
+                            
+                            .history-table .periodo-date-line {
+                                flex-wrap: wrap;
+                                justify-content: center;
+                            }
+                        }
+                        
+                        @media (max-width: 767px) {
+                            .produto-nome-span {
+                                max-width: 250px;
+                            }
+                            
+                            .modal-body .p-4 {
+                                padding: 1rem !important;
+                            }
+                            
+                            .card-body.p-4 {
+                                padding: 1rem !important;
+                            }
+                            
+                            .card-header-icon {
+                                width: 26px;
+                                height: 26px;
+                            }
+                            
+                            .card-header .d-flex.justify-content-between {
+                                flex-direction: column;
+                                align-items: flex-start !important;
+                            }
+                            
+                            .card-header .d-flex.justify-content-between > div:last-child {
+                                margin-top: 1rem;
+                                width: 100%;
+                                display: flex;
+                                flex-wrap: wrap;
+                            }
+                            
+                            .card-header .btn-sm {
+                                margin-bottom: 0.5rem;
+                                flex: 1 1 auto;
+                            }
+                            
+                            .history-table th, .history-table td {
+                                padding: 0.5rem 0.3rem;
+                            }
+                            
+                            .history-table th {
+                                font-size: 0.7rem;
+                            }
+                        }
+                        
+                        @media (max-width: 575px) {
+                            .history-table th:nth-child(7), 
+                            .history-table td:nth-child(7) {
+                                display: none; 
+                            }
+                            
+                            .badge-icon.bg-light {
+                                width: 24px;
+                                height: 24px;
+                            }
+                            
+                            .badge-icon i {
+                                font-size: 12px !important;
+                            }
+                            
+                            .total-value-container {
+                                min-width: 65px;
+                                padding: 0.15rem !important;
+                            }
+                            
+                            .history-table td:first-child {
+                                padding-left: 0.5rem !important;
+                            }
+                            
+                            .history-table td:first-child .text-uppercase {
+                                display: none;
+                            }
+                        }
+                        
+                        @media (max-width: 375px) {
+                            .produto-nome-span {
+                                max-width: 180px;
+                            }
+                            
+                            .modal-header .modal-icon-wrapper {
+                                width: 36px;
+                                height: 36px;
+                                margin-right: 0.5rem;
+                            }
+                            
+                            .modal-header .modal-icon-wrapper i {
+                                font-size: 18px;
+                            }
+                            
+                            .modal-body .p-4 {
+                                padding: 0.75rem !important;
+                            }
+                            
+                            .card-body.p-4 {
+                                padding: 0.75rem !important;
+                            }
+                            
+                            .history-table th, 
+                            .history-table td {
+                                padding: 0.4rem 0.2rem;
+                            }
+                            
+                            .card-header .d-flex:first-child .ml-3 {
+                                display: none; 
+                            }
+                            
+                            .total-value-container {
+                                min-width: 60px;
+                            }
+                        }
+                        
+                        @media (max-width: 320px) {
+                            .produto-nome-span {
+                                max-width: 150px;
+                            }
+                            
+                            .modal-header .modal-icon-wrapper {
+                                width: 32px;
+                                height: 32px;
+                            }
+                            
+                            .modal-header .modal-icon-wrapper i {
+                                font-size: 16px;
+                            }
+                            
+                            .modal-body .p-4 {
+                                padding: 0.5rem !important;
+                            }
+                            
+                            .card-body.p-4 {
+                                padding: 0.5rem !important;
+                            }
+                            
+                            .history-table th, 
+                            .history-table td {
+                                padding: 0.3rem 0.15rem;
+                            }
+                            
+                            .badge-icon.bg-light {
+                                width: 20px;
+                                height: 20px;
+                                min-width: 20px;
+                            }
+                            
+                            .badge-icon i {
+                                font-size: 10px !important;
+                            }
+                            
+                            .total-value-container {
+                                min-width: 55px;
+                            }
+                            
+                            .action-buttons .btn {
+                                width: 22px;
+                                height: 22px;
+                            }
+                            
+                            .action-buttons .btn i {
+                                font-size: 10px !important;
+                            }
+                        }
+                        
+                        .history-table-wrapper {
+                            width: 100%;
+                            overflow-x: auto;
+                            -webkit-overflow-scrolling: touch;
+                            scrollbar-width: thin;
+                        }
+                        
+                        .history-table-wrapper::-webkit-scrollbar {
+                            height: 6px;
+                        }
+                        
+                        .history-table-wrapper::-webkit-scrollbar-track {
+                            background: #f1f1f1;
+                            border-radius: 3px;
+                        }
+                        
+                        .history-table-wrapper::-webkit-scrollbar-thumb {
+                            background: rgba(115, 103, 240, 0.3);
+                            border-radius: 3px;
+                        }
+                        
+                        .history-table-wrapper::-webkit-scrollbar-thumb:hover {
+                            background: rgba(115, 103, 240, 0.5);
+                        }
+                        
+                        /* ETaxa Remessa Conforme */
+                        .form-check-input:checked {
+                            background-color: #7367f0;
+                            border-color: #7367f0;
+                        }
+                        
+                        .form-check:hover {
+                            background-color: #f8f9ff;
+                            transition: all 0.2s ease;
+                        }
+                        
+                        .form-check input[type="radio"]:checked + label {
+                            color: #7367f0;
+                        }
+                        
+                        .cursor-pointer {
+                            cursor: pointer;
+                        }
+                        
+                        .custom-switch-primary .custom-control-input:checked ~ .custom-control-label::before {
+                            background-color: #7367f0;
+                            border-color: #7367f0;
+                        }
+                        
+                        .custom-switch-primary .custom-control-input:checked ~ .custom-control-label::after {
+                            background-color: #fff;
+                        }
+                        
+                        .custom-switch-primary .custom-control-input:focus ~ .custom-control-label::before {
+                            box-shadow: 0 0 0 0.2rem rgba(115, 103, 240, 0.25);
+                        }
+                        
+                        .modal {
+                            overflow: auto !important;
+                        }
+                        
+                        .modal-body {
+                            overflow: auto !important;
+                        }
+                        
+                        body.modal-open {
+                            overflow: hidden !important;
+                        }
+                        
+                        .modal-backdrop + .modal-backdrop {
+                            z-index: 1040;
+                        }
+                        
+                        .should-reopen {
+                        }
+                        
+
+                        
+                        /* Telas grandes */
+                        @media (min-width: 1681px) {
+                            .history-table th, .history-table td {
+                                padding: 0.9rem 0.75rem;
+                            }
+                            
+                            .history-table th {
+                                font-size: 0.78rem;
+                            }
+                            
+                            .badge-icon.bg-light {
+                                width: 32px;
+                                height: 32px;
+                            }
+                            
+                            .badge-icon i {
+                                font-size: 17px !important;
+                            }
+                            
+                            .total-value-container {
+                                min-width: 130px;
+                                padding: 0.4rem !important;
+                            }
+                            
+                            .periodo-container {
+                                padding: 0.2rem 0;
+                            }
+                            
+                            .periodo-date-line {
+                                font-size: 0.9rem;
+                            }
+                            
+                            .action-buttons .btn {
+                                width: 36px;
+                                height: 36px;
+                            }
+                            
+                            .action-buttons .btn i {
+                                font-size: 18px !important;
+                            }
+                        }
+                    </style>
+
+
+
+</head>
+<!--body with default sidebar pinned -->
+<body class="sidebar-pinned">
+<!--sidebar Begins-->
+<aside class="admin-sidebar">
+    <div class="admin-sidebar-brand">
+        <!-- begin sidebar branding-->
+        <img class="admin-brand-logo" src="../assets/img/logo.svg" width="40" alt="atmos Logo">
+        <span class="admin-brand-content"><a href="index.html">  atmos</a></span>
+        <!-- end sidebar branding-->
+        <div class="ml-auto">
+            <!-- sidebar pin-->
+            <a href="#" class="admin-pin-sidebar btn-ghost btn btn-rounded-circle"></a>
+            <!-- sidebar close for mobile device-->
+            <a href="#" class="admin-close-sidebar"></a>
+        </div>
+    </div>
+    <div class="admin-sidebar-wrapper js-scrollbar">
+        <!-- Menu List Begins-->
+        <ul class="menu">
+            <!--list item begins-->
+            <li class="menu-item active">
+                <a href="#" class="menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Link
+                                                </span>
+                                            </span>
+                    <span class="menu-icon">
+                                                   <span class="icon-badge badge-success badge badge-pill">1</span>
+
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+
+            </li>
+            <!--list item ends-->
+
+            <!--list item begins-->
+            <li class="menu-item ">
+                <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu level 1
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                                <span class="menu-info">Contains submenu</span>
+                                            </span>
+                    <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+                <!--submenu-->
+                <ul class="sub-menu">
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+
+
+                </ul>
+            </li>
+            <!--list item ends-->
+
+            <!--list item begins-->
+            <li class="menu-item ">
+                <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu Level 2
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                                <span class="menu-info">Contains submenu</span>
+                                            </span>
+                    <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+                <!--submenu-->
+                <ul class="sub-menu">
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu Level 1.1
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                        </a>
+                        <!--submenu-->
+                        <ul class="sub-menu">
+                            <li class="menu-item">
+                                <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 2.1 </span>
+                                            </span>
+                                    <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+            <!--list item ends-->
+        </ul>
+        <!-- Menu List Ends-->
+    </div>
+
+</aside>
+<!--sidebar Ends-->
+
+
+<main class="admin-main">
+
+    <!--site header begins-->
+<header class="admin-header">
+
+    <a href="#" class="sidebar-toggle" data-toggleclass="sidebar-open" data-target="body"> </a>
+
+    <nav class=" mr-auto my-auto">
+        <ul class="nav align-items-center">
+
+            <li class="nav-item">
+                <a class="nav-link  " data-target="#siteSearchModal" data-toggle="modal" href="#">
+                    <i class=" mdi mdi-magnify mdi-24px align-middle"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <nav class=" ml-auto">
+        <ul class="nav align-items-center">
+
+            <li class="nav-item">
+                <div class="dropdown">
+                    <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-24px mdi-bell-outline"></i>
+                        <span class="notification-counter"></span>
+                    </a>
+
+                    <div class="dropdown-menu notification-container dropdown-menu-right">
+                        <div class="d-flex p-all-15 bg-white justify-content-between border-bottom ">
+                            <a href="#!" class="mdi mdi-18px mdi-settings text-muted"></a>
+                            <span class="h5 m-0">Notifications</span>
+                            <a href="#!" class="mdi mdi-18px mdi-notification-clear-all text-muted"></a>
+                        </div>
+                        <div class="notification-events bg-gray-300">
+                            <div class="text-overline m-b-5">today</div>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body"> <i class="mdi mdi-circle text-success"></i> All systems operational.</div>
+                                </div>
+                            </a>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body"> <i class="mdi mdi-upload-multiple "></i> File upload successful.</div>
+                                </div>
+                            </a>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <i class="mdi mdi-cancel text-danger"></i> Your holiday has been denied
+                                    </div>
+                                </div>
+                            </a>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item dropdown ">
+                <a class="nav-link dropdown-toggle" href="#"   role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    <div class="avatar avatar-sm avatar-online">
+                        <span class="avatar-title rounded-circle bg-dark">V</span>
+
+                    </div>
+                </a>
+                <div class="dropdown-menu  dropdown-menu-right"   >
+                    <a class="dropdown-item" href="#">  Add Account
+                    </a>
+                    <a class="dropdown-item" href="#">  Reset Password</a>
+                    <a class="dropdown-item" href="#">  Help </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"> Logout</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </nav>
+</header>
+<!--site header ends -->    <section class="admin-content">
+        <!-- BEGIN PlACE PAGE CONTENT HERE -->
+        <!--  container or container-fluid as per your need           -->
+        <!-- END PLACE PAGE CONTENT HERE -->
+
+        <div class="container-fluid py-4">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <button type="button" class="btn btn-primary d-flex align-items-center shadow-sm" data-toggle="modal" data-target="#custoProdutoModal">
+                        <i class="mdi mdi-currency-usd mr-2"></i> Abrir Custo do Produto
+                    </button>
+                    
+                    <div class="modal fade" id="custoProdutoModal" tabindex="-1" role="dialog" aria-labelledby="custoProdutoModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl" role="document">
+                            <div class="modal-content border-0 shadow-lg">
+                                <div class="modal-header py-3" style="background: linear-gradient(45deg, #5e50ee, #6610f2); border-bottom: 0;">
+                                    <div class="d-flex align-items-center">
+                                        <div class="modal-icon-wrapper rounded-circle bg-white mr-3 d-flex align-items-center justify-content-center shadow-sm" style="width: 48px; height: 48px;">
+                                            <i class="mdi mdi-currency-usd text-primary" style="font-size: 24px;"></i>
+                                        </div>
+                                        <div>
+                                            <h5 class="modal-title font-weight-bold text-white mb-0" id="custoProdutoModalLabel"style="cursor: pointer;" onclick="copyToClipboardAndNotify(this.querySelector('span').textContent)" title="Clique para copiar o ID"> 
+                                                Custo do Produto: <span class="ml-1 text-white-50 produto-nome-span">Relógio Inteligente com Bluetooth Sport Suporte a Chip Nano 4G com Camera para Android</span>
+                                            </h5>
+                                            <div class="d-flex align-items-center mt-1">
+                                                <span class="badge badge-pill badge-light font-weight-medium mr-2 d-flex align-items-center" style="cursor: pointer;" onclick="copyToClipboardAndNotify(this.querySelector('span').textContent)" title="Clique para copiar o ID">
+                                                    <i class="mdi mdi-barcode-scan text-primary mr-1" style="font-size: 12px;"></i>
+                                                    <span>857581240352</span>
+                                                </span>
+                                            <script>
+                                                function copyToClipboardAndNotify(text) {
+                                                    navigator.clipboard.writeText(text).then(function() {
+                                                        Swal.fire({
+                                                            icon: 'success',
+                                                            title: 'Sucesso!',
+                                                            text: 'ID copiado com sucesso!',
+                                                            toast: true,
+                                                            position: 'top-end',
+                                                            showConfirmButton: false,
+                                                            timer: 2000,
+                                                            timerProgressBar: true,
+                                                            background: '#fff',
+                                                            iconColor: '#28a745',
+                                                            customClass: {
+                                                                popup: 'swal2-toast-custom'
+                                                            }
+                                                        });
+                                                    }, function(err) {
+                                                        console.error('Erro ao copiar o texto: ', err);
+                                                    });
+                                                }
+                                            </script>
+                                                <span class="badge badge-pill badge-success font-weight-medium small">
+                                                    <i class="mdi mdi-check-circle-outline mr-1"></i>Ativo
+                                                </span>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <button type="button" class="btn btn-icon btn-sm btn-translucent-light rounded-circle" data-dismiss="modal" aria-label="Close" onclick="limparResiduosModal()" style="position: absolute; top: 13px; right: 13px;">
+                                        <i class="mdi mdi-close" style="font-size: 18px;"></i>
+                                    </button>
+                                </div>
+                                
+                                <div class="modal-body p-0">
+                                    <div class="p-4">
+                                        <form id="custoProdutoForm">
+                                                                                            <div class="card shadow-sm mb-4 border-0">
+                                                    <div class="card-header bg-light py-3 d-flex align-items-center">
+                                                        <span class="card-header-icon bg-primary text-white rounded-circle mr-2 d-flex align-items-center justify-content-center">
+                                                            <i class="mdi mdi-pencil-outline"></i>
+                                                        </span>
+                                                        <h6 class="mb-0 font-weight-bold">Informações de Custo</h6>
+                                                    </div>
+                                                    <div class="card-body p-4">
+                                                        <div class="row mb-4">
+                                                        <div class="col-md-3 mb-3">
+                                                            <label class="form-label text-muted small font-weight-bold">MOEDA</label>
+                                                            <div class="input-group input-group-seamless shadow-sm rounded">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text border-right-0 bg-transparent">
+                                                                        <i class="mdi mdi-currency-usd text-primary"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <select class="form-control border-left-0 pl-0 custom-select shadow-none" id="moeda" required>
+                                                                    <option value="USD" selected>Dólar (USD)</option>
+                                                                    <option value="BRL">Real (BRL)</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="col-md-3 mb-3">
+                                                            <label class="form-label text-muted small font-weight-bold">CUSTO</label>
+                                                            <div class="input-group input-group-seamless shadow-sm rounded">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text border-right-0 bg-transparent" id="simboloMoeda">$</span>
+                                                                </div>
+                                                                <input type="text" class="form-control border-left-0 pl-2 shadow-none valor-monetario" id="valorCusto" placeholder="0,00" required onkeyup="this.value=this.value.replace(/\D/g,'').replace(/(\d)(\d{2})$/,'$1,$2').replace(/(?=(\d{3})+(\D))\B/g,'.')">
+                                                            </div>
+                                                            <small class="form-text text-muted mt-1">Valor principal do produto</small>
+                                                        </div>
+                                                        
+                                                        <div class="col-md-3 mb-3">
+                                                            <label class="form-label text-muted small font-weight-bold">FRETE</label>
+                                                            <div class="input-group input-group-seamless shadow-sm rounded">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text border-right-0 bg-transparent" id="simboloFrete">$</span>
+                                                                </div>
+                                                                <input type="text" class="form-control border-left-0 pl-2 shadow-none valor-monetario" id="valorFrete" placeholder="0,00" onkeyup="this.value=this.value.replace(/\D/g,'').replace(/(\d)(\d{2})$/,'$1,$2').replace(/(?=(\d{3})+(\D))\B/g,'.')">
+                                                            </div>
+                                                            <small class="form-text text-muted mt-1">Custo de envio (opcional)</small>
+                                                        </div>
+                                                        
+                                                        <div class="col-md-3 mb-3">
+                                                            <label class="form-label text-muted small font-weight-bold">UNIDADES</label>
+                                                            <div class="input-group input-group-seamless shadow-sm rounded">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text border-right-0 bg-transparent">
+                                                                        <i class="mdi mdi-package-variant text-primary"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <input type="number" class="form-control border-left-0 pl-2 shadow-none" id="quantidadeUnidades" value="1" min="1" required>
+                                                            </div>
+                                                            <small class="form-text text-muted mt-1">Quantidade no pacote</small>
+                                                        </div>
+                                                                                                            </div>
+                                                        
+                                                        <div class="row mb-4">
+                                                        <div class="col-md-6 mb-3">
+                                                            <label class="form-label text-muted small font-weight-bold d-flex align-items-center">
+                                                                <i class="mdi mdi-tag-multiple text-primary mr-1" style="font-size: 16px;"></i> VARIANTES
+                                                            </label>
+                                                            <div class="input-group input-group-seamless shadow-sm rounded">
+                                                                <select class="form-control custom-select shadow-none" id="tipoVariante">
+                                                                    <option value="igual" selected>Custo igual para todas variantes</option>
+                                                                    <option value="diferente">Custos diferentes por variante</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="col-md-6 mb-3" id="varianteEspecificaContainer" style="display: none;">
+                                                            <label class="form-label text-muted small font-weight-bold d-flex align-items-center">
+                                                                <i class="mdi mdi-tag text-primary mr-1" style="font-size: 16px;"></i> SELECIONE A VARIANTE
+                                                            </label>
+                                                            <div class="input-group input-group-seamless shadow-sm rounded">
+                                                                <select class="form-control custom-select shadow-none" id="varianteEspecifica">
+                                                                    <option value="" class="text-truncate">Selecione...</option>
+                                                                    <option value="Kit 1UN" class="text-truncate">Kit 1UN</option>
+                                                                    <option value="Kit 2UN" class="text-truncate">Kit 2UN</option>
+                                                                    <option value="Kit 3UN" class="text-truncate">Relógio Inteligente com Bluetooth Sport Suporte a Chip Nano 4G com Camera para Android</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="bg-light p-3 rounded-lg mb-4">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="custom-control custom-switch custom-switch-primary">
+                                                                <input type="checkbox" class="custom-control-input" id="variacaoPreco">
+                                                                <label class="custom-control-label" for="variacaoPreco">
+                                                                    <span class="font-weight-medium">Período com variação de preço</span>
+                                                                </label>
+                                                            </div>
+                                                            <div class="ml-2">
+                                                                <span class="badge badge-primary-soft">
+                                                                    <i class="mdi mdi-information-outline"></i> Opcional
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div id="periodoContainer" class="pt-3 mt-2 border-top" style="display: none;">
+                                                            <div class="row">
+                                                                <div class="col-md-6 mb-2">
+                                                                    <label class="form-label text-muted small font-weight-bold d-flex align-items-center">
+                                                                        <i class="mdi mdi-calendar-start text-primary mr-1" style="font-size: 16px;"></i> DATA INICIAL
+                                                                    </label>
+                                                                    <div class="form-group mb-0">
+                                                                        <div class="input-group input-group-seamless shadow-sm">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text bg-light border-right-0"><i class="mdi mdi-calendar text-primary"></i></span>
+                                                                            </div>
+                                                                            <input type="text" class="form-control input-date datepicker-input border-left-0 pl-2" id="dataInicial" data-toggle="datepicker" placeholder="" autocomplete="off">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6 mb-2">
+                                                                    <label class="form-label text-muted small font-weight-bold d-flex align-items-center">
+                                                                        <i class="mdi mdi-calendar-end text-primary mr-1" style="font-size: 16px;"></i> DATA FINAL
+                                                                    </label>
+                                                                    <div class="form-group mb-0">
+                                                                        <div class="input-group input-group-seamless shadow-sm">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text bg-light border-right-0"><i class="mdi mdi-calendar-check text-primary"></i></span>
+                                                                            </div>
+                                                                            <input type="text" class="form-control input-date datepicker-input border-left-0 pl-2" id="dataFinal" data-toggle="datepicker" placeholder="" autocomplete="off">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                                                                        </div>
+                                                    
+                                                    <div class="card shadow-sm mb-4 border-0" style="opacity: 0.85;">
+                                                        <div class="card-header bg-light py-2 d-flex align-items-center">
+                                                            <span class="card-header-icon bg-info text-white rounded-circle mr-2 d-flex align-items-center justify-content-center" style="width: 24px; height: 24px;">
+                                                                <i class="mdi mdi-calculator" style="font-size: 14px;"></i>
+                                                            </span>
+                                                            <h6 class="mb-0 font-weight-medium text-muted small">
+                                                                Configuração de Remessa 
+                                                                <span class="badge badge-soft-secondary badge-pill ml-1" style="font-size: 10px;">Opcional</span>
+                                                            </h6>
+                                                        </div>
+                                                        <div class="card-body p-3">
+                                                            <div class="d-flex align-items-center gap-3 mb-3">
+                                                                <div class="custom-control custom-switch custom-switch-primary">
+                                                                    <input type="checkbox" class="custom-control-input" id="remessaConformeSwitch">
+                                                                    <label class="custom-control-label text-muted small" for="remessaConformeSwitch">
+                                                                        Remessa Conforme
+                                                                    </label>
+                                                                </div>
+                                                                
+                                                                <button type="button" class="btn btn-outline-primary btn-sm ml-3 shadow-sm" id="configurarBtn" data-toggle="modal" data-target="#taxaRemessaModal" data-dismiss="modal" disabled>
+                                                                    <i class="mdi mdi-cog mr-1"></i> Configurar Valor
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="d-flex justify-content-end mb-3">
+                                                        <button type="button" id="btnAdicionarCusto" class="btn btn-primary btn-pulse shadow-sm">
+                                                            <i class="mdi mdi-plus-circle mr-2"></i> Adicionar ao Histórico
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        
+                                        <div class="card shadow-sm border-0 mb-4">
+                                            <div class="card-header bg-white py-3 border-bottom border-light">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="avatar avatar-md bg-primary-soft rounded-circle mr-3 d-flex align-items-center justify-content-center">
+                                                            <i class="mdi mdi-history text-primary" style="font-size: 22px;"></i>
+                                                        </div>
+                                                        <div>
+                                                            <h6 class="mb-0 font-weight-bold">Histórico de Custo</h6>
+                                                            <p class="text-muted small mb-0">Registro completo de valores e períodos</p>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <button type="button" id="btnMostrarSemCusto" class="btn btn-sm btn-outline-secondary mr-2">
+                                                            <i class="mdi mdi-alert-circle-outline mr-1"></i> Mostrar produto/variante sem custo cadastrado
+                                                        </button>
+                                                        <button type="button" id="btnAtualizarHistorico" class="btn btn-sm btn-primary">
+                                                            <i class="mdi mdi-refresh mr-1"></i> Atualizar produto e variantes
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="card-body p-0">
+                                                <div class="history-table-wrapper">
+                                                    <table class="table table-borderless history-table mb-0" id="tabelaHistoricoCusto">
+                                                        <thead>
+                                                            <tr class="bg-light border-bottom">
+                                                                <th class="text-muted small text-uppercase font-weight-bold pl-4 py-3 text-center" style="width: 100px;">Origem</th>
+                                                                <th class="text-muted small text-uppercase font-weight-bold py-3 text-center" style="width: 150px;">Variante</th>
+                                                                <th class="text-muted small text-uppercase font-weight-bold py-3 text-center" style="width: 80px;">Qtde</th>
+                                                                <th class="text-muted small text-uppercase font-weight-bold py-3 text-right" style="width: 120px;">Custo</th>
+                                                                <th class="text-muted small text-uppercase font-weight-bold py-3 text-right" style="width: 120px;">Frete</th>
+                                                                <th class="text-muted small text-uppercase font-weight-bold py-3 text-center" style="width: 120px;">Total</th>
+                                                                <th class="text-muted small text-uppercase font-weight-bold py-3 text-center" style="width: 180px;">Período</th>
+                                                                <th class="text-muted small text-uppercase font-weight-bold py-3 text-center" style="width: 80px;">Ações</th>
+                                                            </tr>
+                                                        </thead>
+                                                        
+                                                        <tbody>
+                                                            <tr class="border-bottom border-light history-row">
+                                                                <td class="align-middle pl-4 py-3">
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div class="badge-icon bg-light rounded-circle d-flex align-items-center justify-content-center mr-2" style="width: 28px; height: 28px;">
+                                                                            <i class="mdi mdi-pencil-outline text-primary" style="font-size: 15px;"></i>
+                                                                        </div>
+                                                                        <span class="font-weight-medium text-uppercase small">Manual</span>
+                                                                    </div>
+                                                                </td>
+                                                                
+                                                                <td class="align-middle py-3 text-center">
+                                                                    <span class="badge badge-light py-1 px-2 text-truncate d-inline-block " style="max-width: 140px;">Padrão</span>
+                                                                </td>
+                                                                
+                                                                <td class="align-middle text-center py-3">
+                                                                    <div class="quantity-badge">
+                                                                        <span class="badge badge-pill badge-primary-soft text-primary font-weight-medium px-2 py-1">
+                                                                            2 UN
+                                                                        </span>
+                                                                    </div>
+                                                                </td>
+                                                                
+                                                                <td class="align-middle text-right py-3">
+                                                                    <div class="d-flex flex-column">
+                                                                        <span class="font-weight-medium text-primary">R$ 805,94</span>
+                                                                        <span class="text-muted small">Unitário</span>
+                                                                    </div>
+                                                                </td>
+                                                                
+                                                                <td class="align-middle text-right py-3">
+                                                                    <div class="d-flex flex-column">
+                                                                        <span class="text-muted">R$ 0,00</span>
+                                                                        <span class="text-muted small">-</span>
+                                                                    </div>
+                                                                </td>
+                                                                
+                                                                <td class="align-middle text-center py-3">
+                                                                    <div class="total-value-container p-2 rounded-lg bg-success-soft">
+                                                                        <span class="font-weight-bold text-success">R$ 805,94</span>
+                                                                    </div>
+                                                                </td>
+                                                                
+                                                                <td class="align-middle text-center py-3">
+                                                                    <div class="periodo-container d-flex align-items-center justify-content-center">
+                                                                        <div class="periodo-icon mr-1">
+                                                                            <div class="icon-bg bg-primary-soft rounded-circle d-flex align-items-center justify-content-center" style="width: 24px; height: 24px;">
+                                                                                <i class="mdi mdi-calendar-range text-primary" style="font-size: 12px;"></i>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="periodo-dates">
+                                                                            <div class="periodo-date-line d-flex align-items-center justify-content-center">
+                                                                                <span class="font-weight-medium small">30/05/2025</span>
+                                                                                <span class="periodo-separator mx-1 text-muted">-</span>
+                                                                                <span class="font-weight-medium small">30/05/2025</span>
+                                                                            </div>
+                                                                            <div class="periodo-status small mt-1 text-center">
+                                                                                <span class="badge badge-soft-primary badge-pill py-1 px-2" style="font-size: 10px;">Vigente</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                
+                                                                <td class="align-middle text-center py-3">
+                                                                    <div class="btn-group action-buttons">
+                                                                        <button type="button" class="btn btn-sm btn-icon btn-light rounded-circle shadow-sm delete-item" data-toggle="tooltip" title="Excluir registro">
+                                                                            <i class="mdi mdi-delete text-danger" style="font-size: 14px;"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="card-footer bg-white py-3 border-top border-light">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div class="small text-muted">
+                                                        <i class="mdi mdi-information-outline text-primary mr-1"></i> 
+                                                        Último item adicionado em 21/06/2023
+                                                    </div>
+                                                    <div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mb-4 mt-2">
+                                            <h6 class="text-muted text-uppercase small font-weight-bold mb-3">
+                                                <i class="mdi mdi-information-outline mr-1"></i> Informações Importantes
+                                            </h6>
+                                            <div class="row">
+                                                <div class="col-md-4 mb-3">
+                                                    <div class="card border-0 shadow-sm h-100 card-hover-optimized card-primary">
+                                                        <div class="card-body p-3">
+                                                            <div class="d-flex">
+                                                                <div class="card-icon-wrapper bg-primary-soft rounded-lg p-3 mr-3">
+                                                                    <i class="mdi mdi-tag-multiple text-primary" style="font-size: 24px;"></i>
+                                                                </div>
+                                                                <div>
+                                                                    <h6 class="font-weight-bold mb-2 text-primary">Variantes</h6>
+                                                                    <p class="small mb-0 text-muted">Para custos diferentes por variante (Kit 1UN, Kit 2UN).</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <div class="card border-0 shadow-sm h-100 card-hover-optimized card-success">
+                                                        <div class="card-body p-3">
+                                                            <div class="d-flex">
+                                                                <div class="card-icon-wrapper bg-success-soft rounded-lg p-3 mr-3">
+                                                                    <i class="mdi mdi-package-variant-closed text-success" style="font-size: 24px;"></i>
+                                                                </div>
+                                                                <div>
+                                                                    <h6 class="font-weight-bold mb-2 text-success">Kit</h6>
+                                                                    <p class="small mb-0 text-muted">Informe o custo total e a quantidade de unidades do kit.</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <div class="card border-0 shadow-sm h-100 card-hover-optimized card-info">
+                                                        <div class="card-body p-3">
+                                                            <div class="d-flex">
+                                                                <div class="card-icon-wrapper bg-info-soft rounded-lg p-3 mr-3">
+                                                                    <i class="mdi mdi-calendar-clock text-info" style="font-size: 24px;"></i>
+                                                                </div>
+                                                                <div>
+                                                                    <h6 class="font-weight-bold mb-2 text-info">Variação de preço</h6>
+                                                                    <p class="small mb-0 text-muted">Cadastre períodos para acompanhar variações de preço.</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="modal-footer bg-light py-3">
+                                        <div class="d-flex w-100 justify-content-between align-items-center">
+                                            <span class="small text-muted"><i class="mdi mdi-information-outline mr-1"></i> Alterações serão aplicadas após salvar</span>
+                                            <div>
+                                                <button type="button" class="btn btn-outline-secondary mr-2" data-dismiss="modal" onclick="limparResiduosModal()">
+                                                    <i class="mdi mdi-close-circle-outline mr-1"></i> Cancelar
+                                                </button>
+                                                <button type="button" class="btn btn-primary">
+                                                    <i class="mdi mdi-content-save-outline mr-1"></i> Salvar Alterações
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modal fade" id="taxaRemessaModal" tabindex="-1" aria-labelledby="taxaRemessaModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content shadow-lg border-0">
+                                <div class="modal-header border-0 pb-2" style="background: linear-gradient(45deg, #5e50ee, #6610f2);">
+                                    <div class="d-flex align-items-center">
+                                        <div class="modal-icon-wrapper rounded-circle bg-white mr-3 d-flex align-items-center justify-content-center shadow-sm" style="width: 48px; height: 48px;">
+                                            <i class="mdi mdi-calculator text-primary" style="font-size: 24px;"></i>
+                                        </div>
+                                        <div>
+                                            <h5 class="modal-title font-weight-bold text-white mb-1" id="taxaRemessaModalLabel">Taxa Remessa Conforme</h5>
+                                            <small class="text-white-50">Configure a taxa para cálculo de custo</small>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-icon btn-sm btn-translucent-light rounded-circle" data-dismiss="modal" aria-label="Close" onclick="limparResiduosModal()">
+                                        <i class="mdi mdi-close" style="font-size: 18px;"></i>
+                                    </button>
+                                </div>
+                                <div class="modal-body px-4 py-4">
+                                    <form id="taxaRemessaForm">
+                                        <div class="mb-4">
+                                            <label for="taxaInput" class="form-label text-muted small mb-3">
+                                                <i class="mdi mdi-percent text-primary mr-1"></i> % Taxa Remessa Conforme (usado no custo do produto)
+                                            </label>
+                                            <div class="input-group input-group-seamless shadow-sm rounded">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text border-right-0 bg-transparent">
+                                                        <i class="mdi mdi-calculator text-primary"></i>
+                                                    </span>
+                                                </div>
+                                                <input type="text" class="form-control border-left-0 pl-2 shadow-none" id="taxaInput" value="20,48" placeholder="Digite a taxa personalizada" oninput="formatarTaxa(this)" onblur="formatarTaxa(this)">
+                                                <span class="input-group-text border-left-0 bg-transparent">%</span>
+                                            </div>
+                                            <script>
+                                            function formatarTaxa(input) {
+                                                // Remove tudo que não for número ou vírgula/ponto
+                                                let valor = input.value.replace(/[^\d,\.]/g, '');
+                                                
+                                                // Converte vírgula para ponto para parseFloat
+                                                let numero = parseFloat(valor.replace(',', '.'));
+                                                
+                                                if (!isNaN(numero)) {
+                                                    // Limita a 5 dígitos antes da vírgula (99999,99)
+                                                    if (numero > 99999.99) {
+                                                        numero = 99999.99;
+                                                    }
+                                                    
+                                                    // Formata o número usando Intl.NumberFormat para português brasileiro
+                                                    const formatter = new Intl.NumberFormat('pt-BR', {
+                                                        minimumFractionDigits: 2,
+                                                        maximumFractionDigits: 2
+                                                    });
+                                                    input.value = formatter.format(numero);
+                                                }
+                                                
+                                                // Seleciona automaticamente a opção "Taxa Personalizada" quando o valor é modificado
+                                                document.getElementById('opcao3').checked = true;
+                                            }
+                                            </script>
+                                            <div class="form-text mt-2">
+                                                <small class="text-muted">
+                                                    <i class="mdi mdi-information-outline text-primary mr-1"></i>
+                                                    Você pode editar este valor ou usar as opções pré-definidas abaixo
+                                                </small>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mb-4">
+                                            <h6 class="fw-semibold mb-3 text-dark">
+                                                <i class="mdi mdi-auto-fix text-primary mr-1"></i> Adicionar taxa automaticamente:
+                                            </h6>
+                                            
+                                            <div class="form-check mb-3 p-3 border rounded-3 position-relative card-hover-optimized">
+                                                <input class="form-check-input position-absolute top-50 start-0 translate-middle-y ms-3" type="radio" name="taxaOptions" id="opcao1" value="50_abaixo" checked>
+                                                <label class="form-check-label ps-4 w-100 cursor-pointer" for="opcao1">
+                                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                                        <span class="text-dark font-weight-medium">Compras abaixo de $50</span>
+                                                        <span class="badge badge-primary badge-pill">20,48%</span>
+                                                    </div>
+                                                    <small class="text-muted">Usar taxa pré-definida de 20,48%</small>
+                                                </label>
+                                            </div>
+                                            
+                                            <div class="form-check mb-3 p-3 border rounded-3 position-relative card-hover-optimized">
+                                                <input class="form-check-input position-absolute top-50 start-0 translate-middle-y ms-3" type="radio" name="taxaOptions" id="opcao2" value="50_acima">
+                                                <label class="form-check-label ps-4 w-100 cursor-pointer" for="opcao2">
+                                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                                        <span class="text-dark font-weight-medium">Compras acima de $50</span>
+                                                        <span class="badge badge-primary badge-pill">92,77%</span>
+                                                    </div>
+                                                    <small class="text-muted">Usar taxa pré-definida de 92,77%</small>
+                                                </label>
+                                            </div>
+                                            
+                                            <div class="form-check p-3 border rounded-3 position-relative card-hover-optimized">
+                                                <input class="form-check-input position-absolute top-50 start-0 translate-middle-y ms-3" type="radio" name="taxaOptions" id="opcao3" value="personalizada">
+                                                <label class="form-check-label ps-4 w-100 cursor-pointer" for="opcao3">
+                                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                                        <span class="text-dark font-weight-medium">Taxa Personalizada</span>
+                                                        <span class="badge badge-secondary badge-pill">Custom</span>
+                                                    </div>
+                                                    <small class="text-muted">Usar o valor digitado no campo acima</small>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer border-0 pt-0 px-4 pb-4">
+                                    <button type="button" class="btn btn-light px-4 mr-2" data-toggle="modal" data-target="#custoProdutoModal" data-dismiss="modal">
+                                        <i class="mdi mdi-arrow-left mr-1"></i> Voltar
+                                    </button>
+                                    <button type="button" class="btn btn-primary px-4" id="salvarBtn">
+                                        <i class="mdi mdi-content-save mr-2"></i>Salvar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const moedaSelect = document.getElementById('moeda');
+                            const simboloMoeda = document.getElementById('simboloMoeda');
+                            const simboloFrete = document.getElementById('simboloFrete');
+                            const tipoVarianteSelect = document.getElementById('tipoVariante');
+                            const varianteContainer = document.getElementById('varianteEspecificaContainer');
+                            const variacaoPrecoCheck = document.getElementById('variacaoPreco');
+                            const periodoContainer = document.getElementById('periodoContainer');
+                            const btnAdicionarCusto = document.getElementById('btnAdicionarCusto');
+                            const tabelaHistorico = document.getElementById('tabelaHistoricoCusto').getElementsByTagName('tbody')[0];
+                            const btnAtualizarHistorico = document.getElementById('btnAtualizarHistorico');
+                            const btnMostrarSemCusto = document.getElementById('btnMostrarSemCusto');
+                            
+                            btnMostrarSemCusto.addEventListener('click', function() {
+                                if (this.dataset.processing === 'true') return;
+                                this.dataset.processing = 'true';
+                                
+                                Swal.fire({
+                                    title: 'Atenção',
+                                    text: 'Produto com custo cadastrado!',
+                                    icon: 'info',
+                                    confirmButtonColor: '#7367f0',
+                                    confirmButtonText: 'OK'
+                                });
+                                
+                                setTimeout(() => {
+                                    this.dataset.processing = 'false';
+                                }, 300);
+                            });
+                            
+                            const animationEnabled = window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
+                            
+                            function animateElement(element, className, duration = 800) {
+                                if (!animationEnabled) return; 
+                                
+                                requestAnimationFrame(() => {
+                                    element.classList.add(className);
+                                    setTimeout(() => {
+                                        element.classList.remove(className);
+                                    }, duration);
+                                });
+                            }
+                            
+                            const camposMonetarios = document.querySelectorAll('.valor-monetario');
+                            camposMonetarios.forEach(campo => {
+                                campo.addEventListener('input', function(e) {
+                                    let valor = this.value.replace(/[^\d]/g, '');
+                                    
+                                    if (valor.length === 0) {
+                                        this.value = '';
+                                        return;
+                                    }
+                                    
+                                    let centavos = parseInt(valor);
+                                    
+                                    let reais = centavos / 100;
+                                    
+                                    let valorFormatado = reais.toFixed(2);
+                                    
+                                    valorFormatado = valorFormatado.replace('.', ',');
+                                    
+                                    let partes = valorFormatado.split(',');
+                                    partes[0] = partes[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                                    
+                                    this.value = partes.join(',');
+                                });
+                            });
+                            
+                            function converterParaNumero(valorStr) {
+                                if (!valorStr) return 0;
+                                return parseFloat(valorStr.replace(/\./g, '').replace(',', '.'));
+                            }
+                            
+                            function formatarMoeda(valor, simbolo) {
+                                const valorFormatado = valor.toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                                return simbolo + " " + valorFormatado;
+                            }
+                            
+                            moedaSelect.addEventListener('change', function() {
+                                const simbolos = {
+                                    'USD': '$',
+                                    'BRL': 'R$'
+                                };
+                                
+                                const simbolo = simbolos[this.value] || '$';
+                                simboloMoeda.textContent = simbolo;
+                                simboloFrete.textContent = simbolo;
+                            });
+                            
+                            tipoVarianteSelect.addEventListener('change', function() {
+                                if (this.value === 'diferente') {
+                                    varianteContainer.style.display = 'block';
+                                    setTimeout(() => {
+                                        varianteContainer.style.opacity = '1';
+                                    }, 10);
+                                } else {
+                                    varianteContainer.style.opacity = '0';
+                                    setTimeout(() => {
+                                        varianteContainer.style.display = 'none';
+                                    }, 200);
+                                }
+                            });
+                            
+                            variacaoPrecoCheck.addEventListener('change', function() {
+                                if (this.checked) {
+                                    periodoContainer.style.display = 'block';
+                                    setTimeout(() => {
+                                        periodoContainer.style.opacity = '1';
+                                    }, 10);
+                                } else {
+                                    periodoContainer.style.opacity = '0';
+                                    setTimeout(() => {
+                                        periodoContainer.style.display = 'none';
+                                    }, 200);
+                                }
+                            });
+                            
+                            // Adiciona Elemento na Tabela
+                            btnAdicionarCusto.addEventListener('click', function() {
+                                if (this.dataset.processing === 'true') return;
+                                this.dataset.processing = 'true';
+                                
+                                const moeda = moedaSelect.options[moedaSelect.selectedIndex].value;
+                                const valorCustoStr = document.getElementById('valorCusto').value;
+                                const valorFreteStr = document.getElementById('valorFrete').value || '0,00';
+                                const quantidadeUnidades = document.getElementById('quantidadeUnidades').value;
+                                const tipoVariante = tipoVarianteSelect.value;
+                                
+                                const custoNum = converterParaNumero(valorCustoStr);
+                                const freteNum = converterParaNumero(valorFreteStr);
+                                const total = custoNum + freteNum;
+                                
+                                let variante = '-';
+                                if (tipoVariante === 'diferente') {
+                                    const varianteSelect = document.getElementById('varianteEspecifica');
+                                    variante = varianteSelect.options[varianteSelect.selectedIndex].text || '-';
+                                }
+                                
+                                let dataInicio = new Date().toLocaleDateString('pt-BR');
+                                let dataFim = new Date().toLocaleDateString('pt-BR');
+                                
+                                if (variacaoPrecoCheck.checked) {
+                                    const dataInicialInput = document.getElementById('dataInicial').value;
+                                    const dataFinalInput = document.getElementById('dataFinal').value;
+                                    
+                                    if (dataInicialInput) {
+                                        dataInicio = dataInicialInput;
+                                    }
+                                    
+                                    if (dataFinalInput) {
+                                        dataFim = dataFinalInput;
+                                    }
+                                }
+                                
+                                if (!valorCustoStr || custoNum <= 0) {
+                                    setTimeout(() => {
+                                        this.dataset.processing = 'false';
+                                    }, 300);
+                                    
+                                    Swal.fire({
+                                        title: 'Atenção',
+                                        text: 'Por favor, informe um valor de custo válido.',
+                                        icon: 'warning',
+                                        confirmButtonColor: '#7367f0'
+                                    });
+                                    return;
+                                }
+                                
+                                const simbolos = {
+                                    'USD': '$',
+                                    'BRL': 'R$'
+                                };
+                                
+                                let simbolo = simbolos[moeda];
+                                if (!simbolo) {
+                                    simbolo = moeda === 'BRL' ? 'R$' : '$';
+                                }
+                                
+                                const custoFormatado = formatarMoeda(custoNum, simbolo);
+                                const freteFormatado = formatarMoeda(freteNum, simbolo);
+                                const totalFormatado = formatarMoeda(total, simbolo);
+                                
+                                const newRow = document.createElement('tr');
+                                newRow.className = 'border-bottom border-light history-row';
+                                newRow.style.opacity = '0';
+                                newRow.style.transform = 'translateY(10px)';
+                                
+                                newRow.innerHTML = `
+                                    <!-- Inicial -->
+                                    <td class="align-middle pl-4 py-3">
+                                        <div class="d-flex align-items-center">
+                                            <div class="badge-icon bg-light rounded-circle d-flex align-items-center justify-content-center mr-2" style="width: 28px; height: 28px;">
+                                                <i class="mdi mdi-pencil-outline text-primary" style="font-size: 15px;"></i>
+                                            </div>
+                                            <span class="font-weight-medium text-uppercase small">Manual</span>
+                                        </div>
+                                    </td>
+                                    
+                                    <!-- Variante -->
+                                    <td class="align-middle py-3">
+                                        <span class="badge badge-light py-1 px-2 text-truncate d-inline-block" style="max-width: 140px;">${variante !== '-' ? variante : 'Padrão'}</span>
+                                    </td>
+                                    
+                                    <!-- Quantidade -->
+                                    <td class="align-middle text-center py-3">
+                                        <div class="quantity-badge">
+                                            <span class="badge badge-pill badge-primary-soft text-primary font-weight-medium px-2 py-1">
+                                                ${quantidadeUnidades} UN
+                                            </span>
+                                        </div>
+                                    </td>
+                                    
+                                    <!-- Custo -->
+                                    <td class="align-middle text-right py-3">
+                                        <div class="d-flex flex-column">
+                                            <span class="font-weight-medium text-primary">${custoFormatado}</span>
+                                            <span class="text-muted small">Unitário</span>
+                                        </div>
+                                    </td>
+                                    
+                                    <!--  Frete -->
+                                    <td class="align-middle text-right py-3">
+                                        <div class="d-flex flex-column">
+                                            <span class="text-muted">${freteFormatado}</span>
+                                            <span class="text-muted small">${freteNum > 0 ? 'Incluído' : '-'}</span>
+                                        </div>
+                                    </td>
+                                    
+                                    <!-- Total -->
+                                    <td class="align-middle text-right py-3">
+                                        <div class="total-value-container p-2 rounded-lg bg-success-soft">
+                                            <span class="font-weight-bold text-success">${totalFormatado}</span>
+                                        </div>
+                                    </td>
+                                    
+                                    <!-- Período -->
+                                    <td class="align-middle py-3">
+                                        <div class="periodo-container d-flex align-items-center">
+                                            <div class="periodo-icon mr-1">
+                                                <div class="icon-bg bg-primary-soft rounded-circle d-flex align-items-center justify-content-center" style="width: 24px; height: 24px;">
+                                                    <i class="mdi mdi-calendar-range text-primary" style="font-size: 12px;"></i>
+                                                </div>
+                                            </div>
+                                            <div class="periodo-dates">
+                                                <div class="periodo-date-line d-flex align-items-center">
+                                                    <span class="font-weight-medium small">${dataInicio}</span>
+                                                    <span class="periodo-separator mx-1 text-muted">-</span>
+                                                    <span class="font-weight-medium small">${dataFim}</span>
+                                                </div>
+                                                <div class="periodo-status small mt-1">
+                                                    <span class="badge badge-soft-primary badge-pill py-1 px-2" style="font-size: 10px;">Vigente</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    
+                                    <!-- Ações -->
+                                    <td class="align-middle text-center py-3">
+                                        <div class="btn-group action-buttons">
+                                            <button type="button" class="btn btn-sm btn-icon btn-light rounded-circle shadow-sm delete-item" data-toggle="tooltip" title="Excluir registro">
+                                                <i class="mdi mdi-delete text-danger" style="font-size: 14px;"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                `;
+                                
+                                tabelaHistorico.appendChild(newRow);
+                                
+                               
+                                requestAnimationFrame(() => {
+                                    void newRow.offsetWidth;
+                                    
+                                    newRow.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                                    newRow.style.opacity = '1';
+                                    newRow.style.transform = 'translateY(0)';
+                                });
+                                
+                                document.getElementById('valorCusto').value = '';
+                                document.getElementById('valorFrete').value = '';
+                                document.getElementById('quantidadeUnidades').value = '1';
+                                
+                                setTimeout(() => {
+                                    this.dataset.processing = 'false';
+                                }, 300);
+                                
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Custo adicionado com sucesso',
+                                    showConfirmButton: false,
+                                    timer: 1500,
+                                    backdrop: false,
+                                    toast: true
+                                });
+                            });
+                            
+                            document.addEventListener('click', function(e) {
+                                if (e.target.closest('.delete-item')) {
+                                    const button = e.target.closest('.delete-item');
+                                    const row = button.closest('tr');
+                                    
+                                    if (button.dataset.processing === 'true') return;
+                                    button.dataset.processing = 'true';
+                                    
+                                    Swal.fire({
+                                        title: 'Tem certeza?',
+                                        text: "Este registro será excluído permanentemente.",
+                                        icon: 'question',
+                                        showCancelButton: true,
+                                        confirmButtonColor: '#7367f0',
+                                        cancelButtonColor: '#82868b',
+                                        confirmButtonText: 'Sim, excluir',
+                                        cancelButtonText: 'Cancelar'
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            row.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                                            row.style.opacity = '0';
+                                            row.style.transform = 'translateY(-10px)';
+                                            
+                                            setTimeout(() => {
+                                            row.parentNode.removeChild(row);
+                                            
+                                            Swal.fire({
+                                                position: 'top-end',
+                                                icon: 'success',
+                                                title: 'Registro excluído com sucesso',
+                                                showConfirmButton: false,
+                                                timer: 1500,
+                                                backdrop: false,
+                                                toast: true
+                                            });
+                                            }, 300);
+                                        } else {
+                                            button.dataset.processing = 'false';
+                                        }
+                                    });
+                                }
+                            });
+                            
+                            btnAtualizarHistorico.addEventListener('click', function() {
+                                if (this.dataset.processing === 'true') return;
+                                this.dataset.processing = 'true';
+                                
+                                const icon = this.querySelector('i');
+                                
+                                icon.classList.add('mdi-spin');
+                                
+                                setTimeout(() => {
+                                    icon.classList.remove('mdi-spin');
+                                    
+                                    this.dataset.processing = 'false';
+                                    
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'Histórico atualizado',
+                                        showConfirmButton: false,
+                                        timer: 1500,
+                                        backdrop: false,
+                                        toast: true
+                                    });
+                                }, 800);
+                            });
+                            
+                            const style = document.createElement('style');
+                            style.textContent = `
+                                #varianteEspecificaContainer, #periodoContainer {
+                                    opacity: 0;
+                                    transition: opacity 0.2s ease;
+                                }
+                                #varianteEspecificaContainer.visible, #periodoContainer.visible {
+                                    opacity: 1;
+                                }
+                                
+                                /* Transições linhas novas */
+                                .history-row {
+                                    transition: opacity 0.3s ease, transform 0.3s ease;
+                                }
+                            `;
+                            document.head.appendChild(style);
+                            
+                            function formatarDataAtual() {
+                                var data = new Date();
+                                var dia = data.getDate().toString().padStart(2, '0');
+                                var mes = (data.getMonth() + 1).toString().padStart(2, '0');
+                                var ano = data.getFullYear();
+                                return dia + '/' + mes + '/' + ano;
+                            }
+
+                            function initDatepicker() {
+                                try {
+                                    $('.datepicker-input').datepicker('destroy');
+                                    
+                                    $('.datepicker-input').datepicker({
+                                        format: 'dd/mm/yyyy',
+                                        autoclose: true,
+                                        todayHighlight: true,
+                                        language: 'pt-BR',
+                                        orientation: 'bottom auto',
+                                        templates: {
+                                            leftArrow: '<i class="mdi mdi-chevron-left"></i>',
+                                            rightArrow: '<i class="mdi mdi-chevron-right"></i>'
+                                        }
+                                    }).on('show', function() {
+                                        $('.datepicker-dropdown').addClass('shadow-sm');
+                                    });
+                                } catch (e) {
+                                    console.error('Erro ao inicializar datepicker:', e);
+                                }
+                            }
+                            
+                            $('#custoProdutoModal').on('shown.bs.modal', function () {
+                                var dataAtual = formatarDataAtual();
+                                $('#dataInicial, #dataFinal').attr('placeholder', dataAtual);
+                                if (window.requestIdleCallback) {
+                                    requestIdleCallback(() => initDatepicker());
+                                } else {
+                                setTimeout(initDatepicker, 100);
+                                }
+                                
+                                $('.datepicker-input').off('click').on('click', function() {
+                                    $(this).datepicker('show');
+                                });
+                            });
+
+                            // CSS datepicker
+                            $('<style>'+
+                              '.input-date { background-color: transparent !important; height: calc(1.5em + 0.75rem + 2px); }'+
+                              '.datepicker { font-family: "Jost", sans-serif; border-radius: 4px; }'+
+                              '.datepicker table tr td.active { background-color: #7367f0 !important; background-image: none !important; }'+
+                              '.datepicker-dropdown { margin-top: 0; padding: 10px; border-radius: 5px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); z-index: 9999 !important; }'+
+                              '.datepicker table { font-size: 13px; }'+
+                              '</style>').appendTo('head');
+                            
+                            $('#variacaoPreco').on('change', function() {
+                                if ($(this).is(':checked')) {
+                                    $('#periodoContainer').show();
+                                    $('#periodoContainer').addClass('visible');
+                                    
+                                    if (window.requestIdleCallback) {
+                                        requestIdleCallback(() => initDatepicker());
+                                    } else {
+                                    setTimeout(initDatepicker, 200);
+                                    }
+                                } else {
+                                    $('#periodoContainer').removeClass('visible');
+                                    setTimeout(() => {
+                                    $('#periodoContainer').hide();
+                                    }, 200);
+                                }
+                            });
+                            
+                            $(document).ready(function() {
+                                if (window.requestIdleCallback) {
+                                    requestIdleCallback(() => {
+                                        prepararDatepicker();
+                                    });
+                                } else {
+                                setTimeout(function() {
+                                        prepararDatepicker();
+                                    }, 500);
+                                }
+                                    
+                                function prepararDatepicker() {
+                                    var dataAtual = formatarDataAtual();
+                                    $('#dataInicial, #dataFinal').attr('placeholder', dataAtual);
+                                    
+                                    try {
+                                        $('#dataInicial, #dataFinal').datepicker({
+                                            format: 'dd/mm/yyyy',
+                                            autoclose: true,
+                                            todayHighlight: true,
+                                            language: 'pt-BR',
+                                            orientation: 'bottom auto',
+                                            templates: {
+                                                leftArrow: '<i class="mdi mdi-chevron-left"></i>',
+                                                rightArrow: '<i class="mdi mdi-chevron-right"></i>'
+                                            }
+                                        });
+                                    } catch (e) {
+                                        console.error('Erro na inicialização direta:', e);
+                                    }
+                                }
+                            });
+
+                            // Verificar tamanho do nome do produto
+                            function verificarTamanhoProduto() {
+                                const produtoSpan = document.querySelector('.produto-nome-span');
+                                if (produtoSpan) {
+                                    const textoOriginal = produtoSpan.textContent.trim();
+                                    
+                                    let caracteresLimite = 150; 
+                                    
+                                    if (window.innerWidth <= 1440) {
+                                        caracteresLimite = 120;
+                                    }
+                                    
+                                    if (window.innerWidth <= 1024) {
+                                        caracteresLimite = 100;
+                                    }
+                                    
+                                    if (window.innerWidth <= 767) {
+                                        caracteresLimite = 80;
+                                    }
+                                    
+                                    if (window.innerWidth <= 375) {
+                                        caracteresLimite = 50;
+                                    }
+                                    
+                                    if (window.innerWidth <= 320) {
+                                        caracteresLimite = 30;
+                                    }
+                                    
+                                    if (textoOriginal.length > caracteresLimite) {
+                                        produtoSpan.setAttribute('title', textoOriginal);
+                                        produtoSpan.setAttribute('data-texto-completo', textoOriginal);
+                                        
+                                        const textoCortado = textoOriginal.substring(0, caracteresLimite) + "...";
+                                        produtoSpan.textContent = textoCortado;
+                                    } else {
+                                        produtoSpan.removeAttribute('title');
+                                        
+                                        if (produtoSpan.hasAttribute('data-texto-completo')) {
+                                            produtoSpan.textContent = textoOriginal;
+                                            produtoSpan.removeAttribute('data-texto-completo');
+                                        }
+                                    }
+                                }
+                            }
+                            
+                            window.addEventListener('resize', verificarTamanhoProduto);
+
+                            $('#custoProdutoModal').on('shown.bs.modal', function () {
+                                verificarTamanhoProduto();
+                            });
+
+                            verificarTamanhoProduto();
+                        });
+                        
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const remessaSwitch = document.getElementById('remessaConformeSwitch');
+                            const configurarBtn = document.getElementById('configurarBtn');
+                            const taxaInput = document.getElementById('taxaInput');
+                            const salvarBtn = document.getElementById('salvarBtn');
+                            const radioOptions = document.querySelectorAll('input[name="taxaOptions"]');
+                            
+                            function updateTaxaInput() {
+                                const selectedOption = document.querySelector('input[name="taxaOptions"]:checked');
+                                if (selectedOption) {
+                                    if (selectedOption.value === '50_abaixo') {
+                                        taxaInput.value = '20,48';
+                                    } else if (selectedOption.value === '50_acima') {
+                                        taxaInput.value = '92,77';
+                                    }
+                                    console.log('Taxa atualizada para:', taxaInput.value);
+                                }
+                            }
+                            
+                            radioOptions.forEach(radio => {
+                                radio.addEventListener('change', function() {
+                                    updateTaxaInput();
+                                    document.querySelectorAll('.form-check').forEach(check => {
+                                        check.classList.remove('border-primary', 'bg-light');
+                                    });
+                                    this.closest('.form-check').classList.add('border-primary', 'bg-light');
+                                });
+                            });
+                            
+                            document.getElementById('taxaRemessaModal').addEventListener('shown.bs.modal', function () {
+                                updateTaxaInput();
+                                const selectedRadio = document.querySelector('input[name="taxaOptions"]:checked');
+                                if (selectedRadio) {
+                                    selectedRadio.closest('.form-check').classList.add('border-primary', 'bg-light');
+                                }
+                            });
+                            
+                            updateTaxaInput();
+                            
+                            if (remessaSwitch) {
+                                remessaSwitch.addEventListener('change', function() {
+                                    configurarBtn.disabled = !this.checked;
+                                    if (this.checked) {
+                                        configurarBtn.classList.remove('btn-outline-primary');
+                                        configurarBtn.classList.add('btn-primary');
+                                    } else {
+                                        configurarBtn.classList.remove('btn-primary');
+                                        configurarBtn.classList.add('btn-outline-primary');
+                                    }
+                                });
+                            }
+                            
+                            if (salvarBtn) {
+                                salvarBtn.addEventListener('click', function() {
+                                                                    const taxaValue = taxaInput.value;
+                                const selectedOption = document.querySelector('input[name="taxaOptions"]:checked').value;
+                                
+                                console.log('Taxa:', taxaValue);
+                                console.log('Opção selecionada:', selectedOption);
+                                
+                                const originalText = this.innerHTML;
+                                    this.innerHTML = '<i class="mdi mdi-check mr-2"></i>Salvo!';
+                                    this.disabled = true;
+                                    
+                                    // Notificação de sucesso
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'Taxa configurada com sucesso',
+                                        showConfirmButton: false,
+                                        timer: 1500,
+                                        backdrop: false,
+                                        toast: true
+                                    });
+                                    
+                                    $('#custoProdutoModal').addClass('should-reopen');
+                                    
+                                    setTimeout(() => {
+                                        $('#taxaRemessaModal').modal('hide');
+                                        setTimeout(() => {
+                                            this.innerHTML = originalText;
+                                            this.disabled = false;
+                                        }, 200);
+                                    }, 1000);
+                                });
+                            }
+                            
+                            $(document).ready(function() {
+                                $('.modal').on('hidden.bs.modal', function () {
+                                    const anyOpen = $('.modal.show').length > 0;
+                                    
+                                    $('.modal-backdrop').each(function(index, element) {
+                                        if (!anyOpen || index < $('.modal-backdrop').length - 1) {
+                                            $(element).remove();
+                                        }
+                                    });
+                                    
+                                    if (anyOpen) {
+                                        $('body').addClass('modal-open');
+                                    } else {
+                                        $('body').removeClass('modal-open');
+                                        $('body').css('overflow', 'auto');
+                                        $('body').css('padding-right', '0');
+                                    }
+                                });
+                                
+                                $('.modal').on('shown.bs.modal', function () {
+                                    $('body').addClass('modal-open');
+                                });
+                                
+                                $('#taxaRemessaModal').on('hidden.bs.modal', function () {
+                                    if ($('#custoProdutoModal').hasClass('should-reopen')) {
+                                        $('#custoProdutoModal').removeClass('should-reopen');
+                                        setTimeout(() => {
+                                            $('#custoProdutoModal').modal('show');
+                                        }, 100);
+                                    }
+                                });
+                                
+                                $(document).on('click', '[data-target="#custoProdutoModal"]', function() {
+                                    $('#custoProdutoModal').addClass('should-reopen');
+                                });
+                                
+                                $('#custoProdutoModal').on('hidden.bs.modal', function () {
+                                    $(this).removeClass('should-reopen');
+                                });
+                                
+                                $(document).on('click', '[data-dismiss="modal"]', function() {
+                                    setTimeout(function() {
+                                        if ($('.modal:visible').length === 0) {
+                                            $('body').removeClass('modal-open');
+                                            $('body').css('overflow', 'auto');
+                                            $('body').css('padding-right', '0');
+                                            $('.modal-backdrop').remove();
+                                        }
+                                    }, 200);
+                                });
+                                
+                                window.limparResiduosModal = function() {
+                                    setTimeout(function() {
+                                        if ($('.modal:visible').length === 0) {
+                                            $('body').removeClass('modal-open');
+                                            $('body').css('overflow', 'auto');
+                                            $('body').css('padding-right', '0');
+                                            $('.modal-backdrop').remove();
+                                        }
+                                    }, 100);
+                                };
+                                
+                                $(document).ready(function() {
+                                    if ($('.modal:visible').length === 0) {
+                                        $('body').removeClass('modal-open');
+                                        $('body').css('padding-right', '0');
+                                        $('.modal-backdrop').remove();
+                                    }
+                                });
+                            });
+                        });
+                    </script>
+                    
+                    <!-- SweetAlert2 Alertas -->
+                    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+</main>
+
+
+<div class="modal modal-slide-left  fade" id="siteSearchModal" tabindex="-1" role="dialog" aria-labelledby="siteSearchModal"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body p-all-0" id="site-search">
+                <button type="button" class="close light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="form-dark bg-dark text-white p-t-60 p-b-20 bg-dots" >
+                    <h3 class="text-uppercase    text-center  fw-300 "> Search</h3>
+
+                    <div class="container-fluid">
+                        <div class="col-md-10 p-t-10 m-auto">
+                            <input type="search" placeholder="Search Something"
+                                   class=" search form-control form-control-lg">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="bg-dark text-muted container-fluid p-b-10 text-center text-overline">
+                        results
+                    </div>
+                    <div class="list-group list  ">
+
+
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"   src="../assets/img/users/user-3.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Eric Chen</div>
+                                <div class="text-muted">Developer</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"
+                                                                    src="../assets/img/users/user-4.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Sean Valdez</div>
+                                <div class="text-muted">Marketing</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"
+                                                                    src="../assets/img/users/user-8.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Marie Arnold</div>
+                                <div class="text-muted">Developer</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar-title bg-dark rounded"><i class="mdi mdi-24px mdi-file-pdf"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">SRS Document</div>
+                                <div class="text-muted">25.5 Mb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar-title bg-dark rounded"><i
+                                                class="mdi mdi-24px mdi-file-document-box"></i></div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">Design Guide.pdf</div>
+                                <div class="text-muted">9 Mb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar avatar-sm ">
+                                        <div class="avatar-title bg-primary rounded"><i
+                                                    class="mdi mdi-24px mdi-code-braces"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">response.json</div>
+                                <div class="text-muted">15 Kb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar avatar-sm ">
+                                        <div class="avatar-title bg-info rounded"><i
+                                                    class="mdi mdi-24px mdi-file-excel"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">June Accounts.xls</div>
+                                <div class="text-muted">6 Mb</div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="../assets/vendor/jquery/jquery.min.js"></script>
+<script src="../assets/vendor/jquery-ui/jquery-ui.min.js"></script>
+<script src="../assets/vendor/popper/popper.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/vendor/select2/js/select2.full.min.js"></script>
+<script src="../assets/vendor/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+<script src="../assets/vendor/listjs/listjs.min.js"></script>
+<script src="../assets/vendor/moment/moment.min.js"></script>
+<script src="../assets/vendor/daterangepicker/daterangepicker.js"></script>
+<script src="../assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="../assets/vendor/bootstrap-notify/bootstrap-notify.min.js"></script>
+<script src="../assets/js/atmos.min.js"></script>
+<!--page specific scripts for demo-->
+
+</body>
+</html>
+

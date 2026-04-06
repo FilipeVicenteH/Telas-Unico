@@ -1,0 +1,278 @@
+:root {
+  --primary: #7367f0;
+  --primary-soft: rgba(115, 103, 240, 0.12);
+  --success: #28c76f;
+  --success-soft: rgba(40, 199, 111, 0.12);
+  --info: #00cfe8;
+  --info-soft: rgba(0, 207, 232, 0.12);
+  --transition-ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+/* ===== BACKGROUNDS ===== */
+.bg-gradient-primary-to-secondary {
+  background: linear-gradient(45deg, var(--primary), #9e95f5);
+}
+
+.bg-primary-soft {
+  background-color: var(--primary-soft);
+}
+
+.bg-success-soft {
+  background-color: var(--success-soft);
+}
+
+.bg-info-soft {
+  background-color: var(--info-soft);
+}
+
+/* ===== BADGES ===== */
+.badge-primary-soft {
+  background-color: var(--primary-soft);
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.badge-soft-primary {
+  background-color: var(--primary-soft);
+  color: var(--primary);
+}
+
+.badge-success-soft {
+  background-color: var(--success-soft);
+  color: var(--success);
+}
+
+.badge-pill {
+  padding: 0.4em 0.8em;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.badge-pill:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== BUTTONS ===== */
+.btn-translucent-light {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border: none;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.btn-translucent-light:hover,
+.btn-translucent-light:focus {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.btn-translucent-light:active {
+  transform: translateY(0);
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-icon {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.btn-icon.btn-sm {
+  width: 28px;
+  height: 28px;
+}
+
+.btn-pulse {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-pulse:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background-color: inherit;
+  opacity: 0.6;
+  z-index: -1;
+  pointer-events: none;
+  transform: scale(1);
+  will-change: transform, opacity;
+  animation: pulseOptimized 1.5s var(--transition-ease) infinite;
+}
+
+@keyframes pulseOptimized {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+
+  70% {
+    transform: scale(1.05);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1.1);
+    opacity: 0;
+  }
+}
+
+/* ===== CARDS ===== */
+.card-hover-optimized {
+  position: relative;
+  border-left: 0px solid transparent !important;
+  transition: transform 0.2s var(--transition-ease), box-shadow 0.2s var(--transition-ease);
+  will-change: transform, box-shadow;
+}
+
+.card-hover-optimized:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 3px;
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: transform 0.2s var(--transition-ease);
+  will-change: transform;
+}
+
+.card-primary:before {
+  background-color: var(--primary);
+}
+
+.card-success:before {
+  background-color: var(--success);
+}
+
+.card-info:before {
+  background-color: var(--info);
+}
+
+.card-hover-optimized:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.08);
+}
+
+.card-hover-optimized:hover:before {
+  transform: scaleY(1);
+}
+
+.card-icon-wrapper {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-header-icon {
+  width: 30px;
+  height: 30px;
+}
+
+/* ===== MODAL ===== */
+.modal-content.shadow-lg {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+}
+
+.modal-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  transition: transform 0.2s ease;
+}
+
+.modal-header:hover .modal-icon-wrapper {
+  transform: scale(1.05);
+}
+
+/* ===== AVATARS ===== */
+.avatar-md {
+  width: 42px;
+  height: 42px;
+}
+
+/* ===== FORMS ===== */
+.input-group-seamless .form-control:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 0.2rem var(--primary-soft);
+}
+
+/* ===== UTILITY CLASSES ===== */
+.opacity-8 {
+  opacity: 0.8 !important;
+}
+
+.hover-opacity-10:hover {
+  opacity: 1 !important;
+}
+
+.hover-shadow-sm:hover {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.rounded-lg {
+  border-radius: 0.5rem !important;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+/* ===== TRANSITIONS GLOBAIS ===== */
+.card {
+  transition: transform 0.2s var(--transition-ease),
+    box-shadow 0.2s var(--transition-ease);
+  will-change: transform, box-shadow;
+}
+
+.btn {
+  transition: background-color 0.2s var(--transition-ease),
+    transform 0.15s var(--transition-ease);
+  will-change: transform;
+}
+
+.badge {
+  transition: transform 0.15s var(--transition-ease);
+}
+
+/* ===== SCROLLBAR  ===== */
+.custom-scrollbar {
+  scrollbar-width: thin;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--primary-soft);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(115, 103, 240, 0.5);
+}

@@ -1,0 +1,1947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" name="viewport">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Atmos Admin Panel- Bootstrap 4 Based Admin Panel</title>
+<link rel="icon" type="image/x-icon" href="../assets/img/logo.png"/>
+<link rel="icon" href="../assets/img/logo.png" type="image/png" sizes="16x16">
+<link rel="stylesheet" href="../assets/vendor/pace/pace.css">
+<script src="../assets/vendor/pace/pace.min.js"></script>
+<!--vendors-->
+<link rel="stylesheet" type="text/css" href="../assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
+<link rel="stylesheet" type="text/css" href="../assets/vendor/jquery-scrollbar/jquery.scrollbar.css">
+<link rel="stylesheet" href="../assets/vendor/select2/css/select2.min.css">
+<link rel="stylesheet" href="../assets/vendor/jquery-ui/jquery-ui.min.css">
+<link rel="stylesheet" href="../assets/vendor/daterangepicker/daterangepicker.css">
+<link rel="stylesheet" href="../assets/vendor/timepicker/bootstrap-timepicker.min.css">
+<link href="https://fonts.googleapis.com/css?family=Hind+Vadodara:400,500,600" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts/jost/jost.css">
+<!--Material Icons-->
+<link rel="stylesheet" type="text/css" href="../assets/fonts/materialdesignicons/materialdesignicons.min.css">
+<!--Bootstrap + atmos Admin CSS-->
+<link rel="stylesheet" type="text/css" href="../assets/css/atmos.min.css">
+<!-- Additional library for page -->
+
+
+        <style>
+            .badge-soft-success {
+                color: #28a745;
+                background-color: rgba(40, 167, 69, 0.1);
+            }
+            .badge-soft-danger {
+                color: #dc3545;
+                background-color: rgba(220, 53, 69, 0.1);
+            }
+            .badge-soft-info {
+                color: #17a2b8;
+                background-color: rgba(23, 162, 184, 0.1);
+            }
+            .badge-soft-primary {
+                color: #007bff;
+                background-color: rgba(0, 123, 255, 0.1);
+            }
+            .badge-soft-secondary {
+                color: #6c757d;
+                background-color: rgba(108, 117, 125, 0.1);
+            }
+            .card {
+                transition: all 0.3s ease;
+            }
+            .card:hover {
+                transform: translateY(-2px);
+            }
+            .btn:hover {
+                transform: translateY(-1px);
+            }
+            .table-hover tbody tr:hover {
+                background-color: rgba(0, 123, 255, 0.02);
+            }
+            .avatar {
+                transition: all 0.3s ease;
+            }
+            .avatar:hover {
+                transform: scale(1.05);
+            }
+            code {
+                background-color: #f8f9fa;
+                padding: 2px 6px;
+                border-radius: 3px;
+                font-size: 0.875em;
+            }
+
+   
+            @media (max-width: 375px) {
+
+                .container-fluid {
+                    padding-left: 10px;
+                    padding-right: 10px;
+                }
+
+                /* Cabeçalho */
+                .row.mb-4 .col-12 .d-flex {
+                    flex-direction: column;
+                    align-items: flex-start !important;
+                }
+
+                .row.mb-4 .col-12 .d-flex > div:first-child h2 {
+                    font-size: 1.25rem;
+                }
+
+                .row.mb-4 .col-12 .d-flex > div:first-child p {
+                    font-size: 0.8rem;
+                    margin-bottom: 1rem;
+                }
+
+                .row.mb-4 .col-12 .d-flex .d-flex {
+                    width: 100%;
+                    justify-content: space-between;
+                    margin-top: 1rem;
+                }
+
+                .row.mb-4 .col-12 .d-flex .d-flex .btn {
+                    font-size: 0.75rem;
+                    padding: 0.25rem 0.5rem;
+                }
+
+                /* Cartões de estatísticas */
+                .row.mb-4:not(.row.mb-4:first-child) .col-xl-3 {
+                    margin-bottom: 0.75rem;
+                }
+
+                .row.mb-4:not(.row.mb-4:first-child) .card .card-body {
+                    padding: 1rem 0.75rem;
+                }
+
+                .row.mb-4:not(.row.mb-4:first-child) .card .card-body h3 {
+                    font-size: 1.5rem;
+                }
+
+                .row.mb-4:not(.row.mb-4:first-child) .card .card-body small {
+                    font-size: 0.7rem;
+                }
+
+                .row.mb-4:not(.row.mb-4:first-child) .card .card-body i {
+                    font-size: 1.5rem !important;
+                }
+
+                /* cartão principal */
+                .card-header .d-flex {
+                    flex-direction: column;
+                    align-items: flex-start !important;
+                }
+
+                .card-header .d-flex .avatar {
+                    margin-bottom: 0.5rem;
+                    margin-right: 0 !important;
+                }
+
+                .card-header .d-flex .ml-auto {
+                    margin-left: 0 !important;
+                    margin-top: 0.75rem;
+                    align-self: stretch;
+                }
+
+                .card-header h4 {
+                    font-size: 1.1rem;
+                }
+
+                .card-header p {
+                    font-size: 0.75rem;
+                }
+
+                /* Guia de configuração */
+                .card.bg-light .row .col-md-6 {
+                    margin-bottom: 1.5rem;
+                }
+
+                .card.bg-light .d-flex {
+                    flex-direction: column;
+                    align-items: flex-start !important;
+                }
+
+                .card.bg-light .d-flex .rounded-circle {
+                    margin-bottom: 0.75rem;
+                    margin-right: 0 !important;
+                    align-self: flex-start;
+                }
+
+                .card.bg-light h6 {
+                    font-size: 0.9rem;
+                    margin-bottom: 0.5rem;
+                }
+
+                .card.bg-light p {
+                    font-size: 0.75rem;
+                    margin-bottom: 1rem;
+                }
+
+                .card.bg-light .btn {
+                    font-size: 0.75rem;
+                    padding: 0.25rem 0.5rem;
+                    margin-bottom: 0.5rem;
+                }
+
+                .card.bg-light .alert {
+                    font-size: 0.7rem;
+                    padding: 0.5rem;
+                    margin-top: 0.5rem;
+                }
+
+     
+                .card:not(.bg-light) .card-header .d-flex {
+                    flex-direction: column;
+                    align-items: flex-start !important;
+                }
+
+                .card:not(.bg-light) .card-header h5 {
+                    font-size: 1rem;
+                    margin-bottom: 0.25rem;
+                }
+
+                .card:not(.bg-light) .card-header p {
+                    font-size: 0.75rem;
+                }
+
+                .card:not(.bg-light) .row.align-items-center {
+                    flex-direction: column;
+                    align-items: flex-start !important;
+                }
+
+                .card:not(.bg-light) .col-md-8 {
+                    margin-bottom: 1rem;
+                }
+
+                .card:not(.bg-light) .col-md-4 {
+                    text-align: left !important;
+                }
+
+                .card:not(.bg-light) ol li {
+                    font-size: 0.8rem;
+                    margin-bottom: 0.75rem;
+                }
+
+                .card:not(.bg-light) .btn {
+                    font-size: 0.75rem;
+                    padding: 0.5rem 0.75rem;
+                    width: 100%;
+                }
+
+       
+                .table-responsive {
+                    font-size: 0.75rem;
+                }
+
+                .table th {
+                    font-size: 0.7rem;
+                    padding: 0.5rem 0.25rem;
+                }
+
+                .table td {
+                    padding: 0.75rem 0.25rem !important;
+                }
+
+                .table th:nth-child(4),
+                .table td:nth-child(4),
+                .table th:nth-child(6),
+                .table td:nth-child(6) {
+                    display: none;
+                }
+
+  
+                .table td .d-flex {
+                    flex-direction: column;
+                    align-items: flex-start !important;
+                }
+
+                .table td .avatar {
+                    margin-bottom: 0.5rem;
+                    margin-right: 0 !important;
+                }
+
+                .table td h6 {
+                    font-size: 0.8rem;
+                    margin-bottom: 0.25rem;
+                }
+
+                .table td p {
+                    font-size: 0.7rem;
+                    margin-bottom: 0.5rem;
+                }
+
+                .table td .badge {
+                    font-size: 0.65rem;
+                    margin-bottom: 0.25rem;
+                }
+
+                .table td .bg-light {
+                    padding: 0.5rem;
+                    font-size: 0.65rem;
+                }
+
+                .table td .btn {
+                    font-size: 0.65rem;
+                    padding: 0.25rem 0.5rem;
+                }
+
+                .table td code {
+                    font-size: 0.65rem;
+                    display: block;
+                    word-break: break-all;
+                }
+
+                .custom-control-label::before {
+                    width: 1.5rem;
+                    height: 0.8rem;
+                }
+
+                .custom-control-label::after {
+                    width: 0.7rem;
+                    height: 0.7rem;
+                }
+
+     
+                .badge {
+                    font-size: 0.65rem;
+                    padding: 0.2rem 0.4rem;
+                }
+
+             
+                .btn-sm {
+                    font-size: 0.7rem;
+                    padding: 0.2rem 0.4rem;
+                }
+
+        
+                .avatar-sm {
+                    width: 1.8rem;
+                    height: 1.8rem;
+                }
+
+      
+                .mdi-24px {
+                    font-size: 1.2rem !important;
+                }
+
+  
+                .card {
+                    margin-bottom: 1rem;
+                }
+
+                .card-body {
+                    padding: 1rem 0.75rem;
+                }
+
+                .card-header {
+                    padding: 0.75rem;
+                }
+
+     
+                .mb-4 {
+                    margin-bottom: 1rem !important;
+                }
+
+                .mb-5 {
+                    margin-bottom: 1.5rem !important;
+                }
+
+                .mr-2 {
+                    margin-right: 0.25rem !important;
+                }
+
+                .mr-3 {
+                    margin-right: 0.5rem !important;
+                }
+
+                .p-3 {
+                    padding: 0.5rem !important;
+                }
+
+  
+                .border-left {
+                    border-left: 4px solid !important;
+                }
+
+                .border-left-success {
+                    border-left-color: #28a745 !important;
+                }
+
+                .border-left-danger {
+                    border-left-color: #dc3545 !important;
+                }
+
+         
+                .avatar-md {
+                    width: 2.5rem;
+                    height: 2.5rem;
+                }
+
+          
+                code {
+                    word-break: break-all;
+                    font-size: 0.75rem;
+                }
+
+         
+                .card {
+                    transition: all 0.2s ease;
+                }
+
+        
+                .custom-switch {
+                    position: relative;
+                }
+
+         
+                .alert-warning {
+                    background-color: #fff3cd;
+                    border-color: #ffecb5;
+                    color: #856404;
+                }
+            }
+
+
+            @media (max-width: 320px) {
+  
+                .container-fluid {
+                    padding-left: 5px;
+                    padding-right: 5px;
+                }
+
+          
+                .row.mb-4 .col-12 .d-flex > div:first-child h2 {
+                    font-size: 1.1rem;
+                }
+
+                .row.mb-4 .col-12 .d-flex > div:first-child p {
+                    font-size: 0.75rem;
+                }
+
+           
+                .row.mb-4:not(.row.mb-4:first-child) .card .card-body {
+                    padding: 0.75rem 0.5rem;
+                }
+
+                .row.mb-4:not(.row.mb-4:first-child) .card .card-body h3 {
+                    font-size: 1.25rem;
+                }
+
+  
+                .btn {
+                    font-size: 0.7rem;
+                    padding: 0.2rem 0.4rem;
+                }
+
+         
+                .table th:nth-child(3),
+                .table td:nth-child(3),
+                .table th:nth-child(5),
+                .table td:nth-child(5) {
+                    display: none;
+                }
+
+          
+                .table-responsive {
+                    font-size: 0.7rem;
+                }
+
+                .table th {
+                    font-size: 0.65rem;
+                    padding: 0.4rem 0.2rem;
+                }
+
+                .table td {
+                    padding: 0.5rem 0.2rem !important;
+                }
+
+     
+                .card-body {
+                    padding: 0.75rem 0.5rem;
+                }
+
+                .card-header {
+                    padding: 0.5rem;
+                }
+
+           
+                .card.bg-light h6 {
+                    font-size: 0.85rem;
+                }
+
+                .card.bg-light p {
+                    font-size: 0.7rem;
+                }
+
+                .card.bg-light .alert {
+                    font-size: 0.65rem;
+                    padding: 0.4rem;
+                }
+            }
+
+            @media (min-width: 768px) and (max-width: 1024px) {
+   
+                .container-fluid {
+                    padding-left: 15px;
+                    padding-right: 15px;
+                }
+
+         
+                .row.mb-4 .col-12 .d-flex > div:first-child h2 {
+                    font-size: 1.4rem;
+                }
+
+                .row.mb-4 .col-12 .d-flex > div:first-child p {
+                    font-size: 0.9rem;
+                }
+
+
+                .row.mb-4:not(.row.mb-4:first-child) .col-xl-3 {
+                    margin-bottom: 1rem;
+                }
+
+                .row.mb-4:not(.row.mb-4:first-child) .card .card-body {
+                    padding: 1.25rem 1rem;
+                }
+
+                .row.mb-4:not(.row.mb-4:first-child) .card .card-body h3 {
+                    font-size: 1.75rem;
+                }
+
+                .row.mb-4:not(.row.mb-4:first-child) .card .card-body small {
+                    font-size: 0.8rem;
+                }
+
+                .table-responsive {
+                    font-size: 0.85rem;
+                }
+
+                .table th {
+                    font-size: 0.75rem;
+                    padding: 0.75rem 0.5rem;
+                    white-space: nowrap;
+                }
+
+                .table td {
+                    padding: 1rem 0.5rem !important;
+                    vertical-align: middle !important;
+                }
+
+     
+                .table th:nth-child(4),
+                .table td:nth-child(4) {
+                    display: none;
+                }
+
+                .table td .d-flex {
+                    flex-direction: row;
+                    align-items: center !important;
+                }
+
+                .table td .avatar {
+                    margin-bottom: 0;
+                    margin-right: 0.75rem !important;
+                    flex-shrink: 0;
+                }
+
+                .table td h6 {
+                    font-size: 0.9rem;
+                    margin-bottom: 0.25rem;
+                }
+
+                .table td p {
+                    font-size: 0.75rem;
+                    margin-bottom: 0.5rem;
+                }
+
+                .table td .badge {
+                    font-size: 0.7rem;
+                    margin-bottom: 0.25rem;
+                }
+
+                .table td .bg-light {
+                    padding: 0.75rem;
+                    font-size: 0.7rem;
+                    max-width: 300px;
+                }
+
+                .table td .btn {
+                    font-size: 0.75rem;
+                    padding: 0.4rem 0.75rem;
+                }
+
+                .table td code {
+                    font-size: 0.7rem;
+                    display: inline-block;
+                    max-width: 120px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+
+                .card-header .d-flex {
+                    flex-direction: row;
+                    align-items: center !important;
+                }
+
+                .card-header h5 {
+                    font-size: 1.1rem;
+                }
+
+                .card-header p {
+                    font-size: 0.8rem;
+                }
+
+                .card-header .btn {
+                    font-size: 0.8rem;
+                    padding: 0.5rem 1rem;
+                }
+
+                .card.bg-light .row .col-md-6 {
+                    margin-bottom: 1.5rem;
+                }
+
+                .card.bg-light h6 {
+                    font-size: 1rem;
+                }
+
+                .card.bg-light p {
+                    font-size: 0.85rem;
+                }
+
+                .card.bg-light .btn {
+                    font-size: 0.8rem;
+                    padding: 0.4rem 0.8rem;
+                }
+
+                .card.bg-light .alert {
+                    font-size: 0.75rem;
+                    padding: 0.75rem;
+                }
+
+                .card:not(.bg-light) .card-header h5 {
+                    font-size: 1.1rem;
+                }
+
+                .card:not(.bg-light) .card-header p {
+                    font-size: 0.8rem;
+                }
+
+                .card:not(.bg-light) ol li {
+                    font-size: 0.85rem;
+                }
+
+                .card:not(.bg-light) .btn {
+                    font-size: 0.8rem;
+                    padding: 0.6rem 1rem;
+                }
+
+                .custom-control-label::before {
+                    width: 2rem;
+                    height: 1rem;
+                }
+
+                .custom-control-label::after {
+                    width: 0.9rem;
+                    height: 0.9rem;
+                }
+
+                .mb-4 {
+                    margin-bottom: 1.5rem !important;
+                }
+
+                .mb-5 {
+                    margin-bottom: 2rem !important;
+                }
+
+                .card {
+                    transition: transform 0.2s ease, box-shadow 0.2s ease;
+                }
+
+                .card:hover {
+                    transform: translateY(-1px);
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                }
+
+                .table td:first-child {
+                    min-width: 200px;
+                }
+
+                .table td:nth-child(2) {
+                    min-width: 120px;
+                }
+
+                .table td:nth-child(3) {
+                    min-width: 100px;
+                }
+
+                .table td:nth-child(5) {
+                    min-width: 80px;
+                }
+
+                .table td:nth-child(6) {
+                    min-width: 80px;
+                }
+
+                .table td:last-child {
+                    min-width: 80px;
+                }
+
+                .table td:first-child {
+                    max-width: 350px;
+                    width: 35%;
+                    text-align: center;
+                }
+
+                .table td:first-child .d-flex {
+                    flex-direction: column;
+                    align-items: center !important; 
+                }
+
+                .table td:first-child .avatar {
+                    margin-bottom: 0.5rem;
+                    margin-right: 0 !important;
+                    align-self: center; 
+                }
+
+                .table td:first-child h6 {
+                    font-size: 1rem;
+                    margin-bottom: 0.5rem;
+                    font-weight: 600;
+                    text-align: center;
+                }
+
+                .table td:first-child .badge {
+                    margin-bottom: 0.75rem;
+                    font-size: 0.75rem;
+                    text-align: center;
+                    align-items: center;
+                    justify-content: center;
+                    display: flex;
+                }
+
+                .table td:first-child p {
+                    font-size: 0.8rem;
+                    margin-bottom: 0.75rem;
+                    line-height: 1.4;
+                }
+
+                .table td:first-child .bg-light {
+                    max-width: 100%;
+                    width: 100%;
+                    padding: 0.75rem;
+                    font-size: 0.75rem;
+                    line-height: 1.3;
+                    border-radius: 0.375rem;
+                }
+
+                .table td:first-child .bg-light strong {
+                    display: block;
+                    margin-bottom: 0.5rem;
+                    color: #495057;
+                }
+
+                .table td:first-child .bg-light a {
+                    font-weight: 600;
+                }
+
+                .table td:nth-child(2) {
+                    width: 15%;
+                    text-align: center;
+                }
+
+                .table td:nth-child(3) {
+                    width: 15%;
+                    text-align: center;
+                }
+
+                .table td:nth-child(5) {
+                    width: 12%;
+                    text-align: center;
+                }
+
+                .table td:nth-child(6) {
+                    width: 12%;
+                    text-align: center;
+                }
+
+                .table td:last-child {
+                    width: 11%;
+                    text-align: center;
+                }
+
+                .table .badge {
+                    display: inline-block;
+                    white-space: nowrap;
+                    font-size: 0.75rem;
+                    padding: 0.4rem 0.6rem;
+                }
+
+                .table .btn-sm {
+                    font-size: 0.75rem;
+                    padding: 0.4rem 0.8rem;
+                    white-space: nowrap;
+                }
+
+                .table code {
+                    background-color: #f8f9fa;
+                    padding: 0.25rem 0.5rem;
+                    border-radius: 0.25rem;
+                    font-size: 0.75rem;
+                    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+                }
+
+                .table thead th {
+                    border-bottom: 2px solid #dee2e6;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                    background-color: #f8f9fa;
+                    position: sticky;
+                    top: 0;
+                    z-index: 10;
+                }
+
+                .table tbody tr {
+                    border-bottom: 1px solid #f0f0f0;
+                }
+
+                .table tbody tr:hover {
+                    background-color: #f8f9fa;
+                }
+
+                .table-responsive {
+                    border-radius: 0.5rem;
+                    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+                }
+            }
+
+            @media (max-width: 375px) {
+                .btn {
+                    min-height: 44px;
+                    min-width: 44px;
+                }
+
+                a {
+                    text-decoration: underline;
+                }
+
+                .table-responsive {
+                    -webkit-overflow-scrolling: touch;
+                }
+
+                .card:hover,
+                .btn:hover,
+                .avatar:hover {
+                    transform: none;
+                }
+
+                .btn:focus,
+                .custom-control-input:focus ~ .custom-control-label::before {
+                    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+                }
+            }
+        </style>
+
+
+</head>
+<!--body with default sidebar pinned -->
+<body class="sidebar-pinned">
+<!--sidebar Begins-->
+<aside class="admin-sidebar">
+    <div class="admin-sidebar-brand">
+        <!-- begin sidebar branding-->
+        <img class="admin-brand-logo" src="../assets/img/logo.svg" width="40" alt="atmos Logo">
+        <span class="admin-brand-content"><a href="index.html">  atmos</a></span>
+        <!-- end sidebar branding-->
+        <div class="ml-auto">
+            <!-- sidebar pin-->
+            <a href="#" class="admin-pin-sidebar btn-ghost btn btn-rounded-circle"></a>
+            <!-- sidebar close for mobile device-->
+            <a href="#" class="admin-close-sidebar"></a>
+        </div>
+            </div>
+    <div class="admin-sidebar-wrapper js-scrollbar">
+        <!-- Menu List Begins-->
+        <ul class="menu">
+            <!--list item begins-->
+            <li class="menu-item active">
+                <a href="#" class="menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Link
+                                                </span>
+                                            </span>
+                    <span class="menu-icon">
+                                                   <span class="icon-badge badge-success badge badge-pill">1</span>
+
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+
+            </li>
+            <!--list item ends-->
+
+            <!--list item begins-->
+            <li class="menu-item ">
+                <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu level 1
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                                <span class="menu-info">Contains submenu</span>
+                                            </span>
+                    <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+                <!--submenu-->
+                <ul class="sub-menu">
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+
+
+                </ul>
+            </li>
+            <!--list item ends-->
+
+            <!--list item begins-->
+            <li class="menu-item ">
+                <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu Level 2
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                                <span class="menu-info">Contains submenu</span>
+                                            </span>
+                    <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+                <!--submenu-->
+                <ul class="sub-menu">
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu Level 1.1
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                        </a>
+                        <!--submenu-->
+                        <ul class="sub-menu">
+                            <li class="menu-item">
+                                <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 2.1 </span>
+                                            </span>
+                                    <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+            <!--list item ends-->
+        </ul>
+        <!-- Menu List Ends-->
+        </div>
+
+</aside>
+<!--sidebar Ends-->
+
+
+<main class="admin-main">
+
+    <!--site header begins-->
+<header class="admin-header">
+
+    <a href="#" class="sidebar-toggle" data-toggleclass="sidebar-open" data-target="body"> </a>
+
+    <nav class=" mr-auto my-auto">
+        <ul class="nav align-items-center">
+
+            <li class="nav-item">
+                <a class="nav-link  " data-target="#siteSearchModal" data-toggle="modal" href="#">
+                    <i class=" mdi mdi-magnify mdi-24px align-middle"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <nav class=" ml-auto">
+        <ul class="nav align-items-center">
+
+            <li class="nav-item">
+                <div class="dropdown">
+                    <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-24px mdi-bell-outline"></i>
+                        <span class="notification-counter"></span>
+                    </a>
+
+                    <div class="dropdown-menu notification-container dropdown-menu-right">
+                        <div class="d-flex p-all-15 bg-white justify-content-between border-bottom ">
+                            <a href="#!" class="mdi mdi-18px mdi-settings text-muted"></a>
+                            <span class="h5 m-0">Notifications</span>
+                            <a href="#!" class="mdi mdi-18px mdi-notification-clear-all text-muted"></a>
+            </div>
+                        <div class="notification-events bg-gray-300">
+                            <div class="text-overline m-b-5">today</div>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body"> <i class="mdi mdi-circle text-success"></i> All systems operational.</div>
+            </div>
+                            </a>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body"> <i class="mdi mdi-upload-multiple "></i> File upload successful.</div>
+            </div>
+                            </a>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <i class="mdi mdi-cancel text-danger"></i> Your holiday has been denied
+            </div>
+        </div>
+                            </a>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item dropdown ">
+                <a class="nav-link dropdown-toggle" href="#"   role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    <div class="avatar avatar-sm avatar-online">
+                        <span class="avatar-title rounded-circle bg-dark">V</span>
+
+            </div>
+                </a>
+                <div class="dropdown-menu  dropdown-menu-right"   >
+                    <a class="dropdown-item" href="#">  Add Account
+                    </a>
+                    <a class="dropdown-item" href="#">  Reset Password</a>
+                    <a class="dropdown-item" href="#">  Help </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"> Logout</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </nav>
+</header>
+<!--site header ends -->    <section class="admin-content">
+        <div class="container-fluid">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h2 class="h3 mb-1 mt-3 font-weight-bold text-dark">Configurações do Facebook</h2>
+                            <p class="text-muted mb-0">Gerencie suas contas e perfis do Facebook para campanhas publicitárias</p>
+                    </div>
+                        <div class="d-flex">
+                            <button class="btn btn-outline-primary btn-sm mr-2" data-toggle="tooltip" title="Ver documentação">
+                                <i class="mdi mdi-help-circle mr-1"></i> Como usar
+                            </button>
+                            <button class="btn btn-primary btn-sm">
+                                <i class="mdi mdi-arrow-left mr-1"></i> Voltar
+                            </button>
+                        </div>
+                    </div>
+                        </div>
+                    </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-header bg-white border-bottom-0 pb-0">
+                            <div class="d-flex align-items-center">
+                                <div class="avatar avatar-md mr-3 rounded-circle" style="background: linear-gradient(135deg, #4267B2 0%, #3b5a9a 100%);">
+                                    <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;">
+                                        <i class="mdi mdi-facebook text-white" style="font-size: 24px;"></i>
+                        </div>
+                        </div>
+                                <div>
+                                    <h4 class="card-title mb-1 font-weight-bold">Integração Facebook</h4>
+                                    <p class="text-muted mb-0 small">Configurações e integrações ativas</p>
+                        </div>
+                                <div class="ml-auto">
+                                    <span class="badge badge-soft-success badge-pill">
+                                        <i class="mdi mdi-check-circle mr-1"></i> Conectado
+                                    </span>
+                                </div>
+                        </div>
+                    </div>
+
+                        <div class="card-body">
+                            <div class="row mb-4">
+                                <div class="col-xl-3 col-md-6 mb-3">
+                                    <div class="card border-0 shadow-sm" style="background: linear-gradient(135deg, #4267B2 0%, #3b5a9a 100%); color: white;">
+                                        <div class="card-body text-center py-3">
+                                            <div class="mb-2">
+                                                <i class="mdi mdi-account-multiple" style="font-size: 2rem; opacity: 0.8;"></i>
+                            </div>
+                                            <h3 class="mb-1 font-weight-bold">2</h3>
+                                            <small class="text-white-50">Perfis Conectados</small>
+                                            <div class="mt-2">
+                                                <span class="badge badge-light badge-pill">1 Ativo</span>
+                        </div>
+                            </div>
+                        </div>
+                                </div>
+                                <div class="col-xl-3 col-md-6 mb-3">
+                                    <div class="card border-0 shadow-sm bg-white">
+                                        <div class="card-body text-center py-3">
+                                            <div class="mb-2">
+                                                <i class="mdi mdi-check-circle text-success" style="font-size: 2rem;"></i>
+                                            </div>
+                                            <h3 class="mb-1 font-weight-bold text-dark">1</h3>
+                                            <small class="text-muted">Contas Ativas</small>
+                                            <div class="mt-2">
+                                                <span class="badge badge-soft-success badge-pill">Online</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-6 mb-3">
+                                    <div class="card border-0 shadow-sm bg-white">
+                                        <div class="card-body text-center py-3">
+                                            <div class="mb-2">
+                                                <i class="mdi mdi-credit-card text-info" style="font-size: 2rem;"></i>
+                                            </div>
+                                            <h3 class="mb-1 font-weight-bold text-dark">1</h3>
+                                            <small class="text-muted">Contas de Pagamento</small>
+                                            <div class="mt-2">
+                                                <span class="badge badge-soft-info badge-pill">Configurada</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-6 mb-3">
+                                    <div class="card border-0 shadow-sm bg-white">
+                                        <div class="card-body text-center py-3">
+                                            <div class="mb-2">
+                                                <i class="mdi mdi-cash-multiple text-warning" style="font-size: 2rem;"></i>
+                                            </div>
+                                            <h3 class="mb-1 font-weight-bold text-dark">R$ 0</h3>
+                                            <small class="text-muted">Gasto Hoje</small>
+                                            <div class="mt-2">
+                                                <span class="badge badge-soft-secondary badge-pill">Sem atividade</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+
+                            <div class="card border-0 bg-light mb-5">
+                                <div class="card-header bg-transparent border-0">
+                                    <div class="d-flex align-items-center">
+                                        <i class="mdi mdi-playlist-check text-primary mr-2" style="font-size: 1.5rem;"></i>
+                                        <h5 class="font-weight-bold mb-0">Guia de Configuração</h5>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <div class="d-flex align-items-start">
+                                                <div class="rounded-circle bg-success text-white d-flex align-items-center justify-content-center mr-3" 
+                                                     style="width: 32px; height: 32px; font-size: 14px; font-weight: bold; flex-shrink: 0;">1</div>
+                                                <div class="flex-grow-1">
+                                                    <h6 class="font-weight-bold mb-2">Conecte sua conta do Facebook</h6>
+                                                    <p class="text-muted small mb-3">Conecte sua conta pessoal ou business do Facebook para acessar as funcionalidades.</p>
+                                                    <div class="d-flex align-items-center flex-wrap">
+                                                        <button class="btn btn-primary btn-sm mr-2 mb-2" style="background-color: #4267B2; border-color: #4267B2;">
+                                                            <i class="mdi mdi-facebook mr-1"></i> Entrar com o Facebook
+                                                        </button>
+                                                        <a href="#" class="text-primary small mb-2">
+                                                            <i class="mdi mdi-play-circle mr-1"></i> Ver o vídeo
+                                                        </a>
+                                                    </div>
+                                                    <div class="alert alert-info mt-3" role="alert" style="font-size: 0.8rem;">
+                                                        Não consegue desconectar? <a href="#" class="alert-link">Ver como Sair</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="d-flex align-items-start">
+                                                <div class="rounded-circle bg-success text-white d-flex align-items-center justify-content-center mr-3" 
+                                                     style="width: 32px; height: 32px; font-size: 14px; font-weight: bold; flex-shrink: 0;">2</div>
+                                                <div class="flex-grow-1">
+                                                    <h6 class="font-weight-bold mb-2">Integre os perfis e contas</h6>
+                                                    <p class="text-muted small mb-3">Importe automaticamente todos os perfis e páginas associadas à sua conta.</p>
+                                                    <button class="btn btn-outline-primary btn-sm" disabled>
+                                                        <i class="mdi mdi-sync mr-1"></i> Sincronizar Dados
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="d-flex align-items-start">
+                                                <div class="rounded-circle bg-secondary text-white d-flex align-items-center justify-content-center mr-3" 
+                                                     style="width: 32px; height: 32px; font-size: 14px; font-weight: bold; flex-shrink: 0;">3</div>
+                                                <div class="flex-grow-1">
+                                                    <h6 class="font-weight-bold mb-2">Ative as contas de anúncios listadas na fila (Clicando Abaixo)</h6>
+                                                    <p class="text-muted small mb-3">Configure quais contas de anúncios serão utilizadas em suas campanhas.</p>
+                                                    <button class="btn btn-outline-secondary btn-sm scroll-to-accounts">
+                                                        <i class="mdi mdi-toggle-switch mr-1"></i> Ative as Contas
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <div class="d-flex align-items-start">
+                                                <div class="rounded-circle bg-secondary text-white d-flex align-items-center justify-content-center mr-3" 
+                                                     style="width: 32px; height: 32px; font-size: 14px; font-weight: bold; flex-shrink: 0;">4</div>
+                                                <div class="flex-grow-1">
+                                                    <h6 class="font-weight-bold mb-2">Quero capturar os gastos de ADS por produto</h6>
+                                                    <p class="text-muted small mb-3">Configure o rastreamento de gastos por produto para relatórios detalhados.</p>
+                                                    <a href="#" class="text-primary small">
+                                                        <i class="mdi mdi-play-circle mr-1"></i> Ver o vídeo
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                            </div>
+                        </div>
+                    </div>
+
+                            <div class="card border-0 shadow-sm mb-5">
+                                <div class="card-header bg-white border-bottom">
+                                    <div class="d-flex align-items-center">
+                                        <i class="mdi mdi-key-variant text-info mr-2" style="font-size: 1.5rem;"></i>
+                                        <div>
+                                            <h5 class="font-weight-bold mb-1">Conexão Avançada via Token</h5>
+                                            <p class="text-muted small mb-0">Para usuários experientes - conexão manual em 1 minuto</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-8">
+                                            <ol class="mb-3">
+                                                <li class="mb-2">
+                                                    <a href="#" class="text-primary font-weight-medium">
+                                                        Acesse o tutorial de integração completo
+                                                    </a>
+                                                </li>
+                                                <li class="mb-0">
+                                                    <a href="#" class="text-primary font-weight-medium">
+                                                        <i class="mdi mdi-application-cog mr-1"></i> 
+                                                        Link para gerar seu token no Facebook Developers
+                                                    </a>
+                                                </li>
+                                            </ol>
+                                        </div>
+                                        <div class="col-md-4 text-md-right">
+                                            <button class="btn btn-info btn-sm" title="Cadastre seu perfil e veja os perfis cadastrados.">
+                                                <i class="mdi mdi-plus-circle mr-1"></i> 
+                                                Cadastre o token gerado do Facebook aqui					
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                    </div>
+
+                            <div class="card border-0 shadow-sm mb-5">
+                                <div class="card-header bg-white border-bottom d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <i class="mdi mdi-account-group text-primary mr-2" style="font-size: 1.5rem;"></i>
+                                        <div>
+                                            <h5 class="font-weight-bold mb-1">Perfis Cadastrados</h5>
+                                            <p class="text-muted small mb-0">2 perfis encontrados</p>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-primary btn-sm" title="Integrar novas contas de anúncio de todos os perfis">
+                                        <i class="mdi mdi-sync mr-1"></i> Sincronizar Todos
+                                    </button>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="table-responsive d-none d-md-block">
+                                        <table class="table table-hover mb-0">
+                                            <thead class="bg-light">
+                                                <tr>
+                                                    <th class="border-0 text-uppercase text-muted small font-weight-bold text-center">Perfil</th>
+                                                    <th class="border-0 text-uppercase text-muted small font-weight-bold">Status</th>
+                                                    <th class="border-0 text-uppercase text-muted small font-weight-bold">Ações</th>
+                                                    <th class="border-0 text-uppercase text-muted small font-weight-bold">ID</th>
+                                                    <th class="border-0 text-uppercase text-muted small font-weight-bold">Contas</th>
+                                                    <th class="border-0 text-uppercase text-muted small font-weight-bold">Valores</th>
+                                                    <th class="border-0 text-uppercase text-muted small font-weight-bold">Remover</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="border-0" style="vertical-align: top; padding: 1.5rem 1rem;">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="avatar avatar-sm mr-3 d-flex justify-content-center align-items-center" style="background-color: #4267B2; border-radius: 50%;">
+                                                                <i class="mdi mdi-account text-white"></i>
+                                                            </div>
+                                                            <div>
+                                                                <h6 class="font-weight-bold mb-1">Ryan Unc</h6>
+                                                                <span class="badge badge-danger badge-pill mb-2">
+                                                                    <i class="mdi mdi-alert-circle mr-1"></i> Token Expirado
+                                                                </span>
+                                                                <p class="text-muted small mb-2">
+                                                                    O token de acesso deste perfil expirou e precisa ser renovado.
+                                                                </p>
+                                                                <div class="bg-light p-3 rounded small">
+                                                                    <strong>Como resolver:</strong><br>
+                                                                    1. Clique no botão vermelho para remover este perfil<br>
+                                                                    2. Reconecte usando "Entrar com Facebook" acima<br>
+                                                                    3. Se já estiver logado, faça logout primeiro<br>
+                                                                    4. Para mais detalhes, <strong>assista ao <a href="#" target="_blank" style="color: blue; text-decoration: underline;">vídeo tutorial</a></strong>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="border-0" style="vertical-align: middle;">
+                                                        <span class="badge badge-soft-danger badge-pill">
+                                                            <i class="mdi mdi-close-circle mr-1"></i> Desconectado
+                                                        </span>
+                                                    </td>
+                                                    <td class="border-0" style="vertical-align: middle;">
+                                                        <button class="btn btn-outline-primary btn-sm" disabled data-toggle="tooltip" title="Reconecte o perfil primeiro">
+                                                            <i class="mdi mdi-sync mr-1"></i> Sincronizar
+                                                        </button>
+                                                    </td>
+                                                    <td class="border-0" style="vertical-align: middle;">
+                                                        <code class="small text-muted">1220095379651977</code>
+                                                    </td>
+                                                    <td class="border-0" style="vertical-align: middle;">
+                                                        <span class="badge badge-soft-primary badge-pill">1 conta</span>
+                                                    </td>
+                                                    <td class="border-0" style="vertical-align: middle;">
+                                                        <span class="badge badge-soft-primary badge-pill">$1000</span>
+                                                    </td>
+                                                    <td class="border-0" style="vertical-align: middle;">
+                                                        <button class="btn btn-outline-danger btn-sm" data-toggle="tooltip" title="Remover perfil">
+                                                            <i class="mdi mdi-delete"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border-0" style="vertical-align: top; padding: 1.5rem 1rem;">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="avatar avatar-sm mr-3 d-flex justify-content-center align-items-center" style="background-color: #4267B2; border-radius: 50%;">
+                                                                <i class="mdi mdi-account text-white"></i>
+                                                            </div>
+                                                            <div>
+                                                                <h6 class="font-weight-bold mb-1">Ryan Unc</h6>
+                                                                <span class="badge badge-danger badge-pill mb-2">
+                                                                    <i class="mdi mdi-alert-circle mr-1"></i> Token Expirado
+                                                                </span>
+                                                                <p class="text-muted small mb-2">
+                                                                    O token de acesso deste perfil expirou e precisa ser renovado.
+                                                                </p>
+                                                                <div class="bg-light p-3 rounded small">
+                                                                    <strong>Como resolver:</strong><br>
+                                                                    1. Clique no botão vermelho para remover este perfil<br>
+                                                                    2. Reconecte usando "Conectar Facebook" acima<br>
+                                                                    3. Se já estiver logado, faça logout primeiro<br>
+                                                                    4. Para mais detalhes, <strong>assista ao <a href="#" target="_blank" style="color: blue; text-decoration: underline;">vídeo tutorial</a></strong>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="border-0" style="vertical-align: middle;">
+                                                        <span class="badge badge-soft-success badge-pill">
+                                                            <i class="mdi mdi-check-circle mr-1"></i> Conectado
+                                                        </span>
+                                                    </td>
+                                                    <td class="border-0" style="vertical-align: middle;">
+                                                        <button class="btn btn-outline-primary btn-sm" data-toggle="tooltip" title="Sincronizar as contas">
+                                                            <i class="mdi mdi-sync mr-1"></i> Sincronizar
+                                                        </button>
+                                                    </td>
+                                                    <td class="border-0" style="vertical-align: middle;">
+                                                        <code class="small text-muted">1221016477851977</code>
+                                                    </td>
+                                                    <td class="border-0" style="vertical-align: middle;">
+                                                        <span class="badge badge-soft-secondary badge-pill">0 contas</span>
+                                                    </td>
+                                                    <td class="border-0" style="vertical-align: middle;">
+                                                        <span class="badge badge-soft-primary badge-pill">$500</span>
+                                                    </td>
+                                                    <td class="border-0" style="vertical-align: middle;">
+                                                        <button class="btn btn-outline-danger btn-sm" data-toggle="tooltip" title="Remover perfil">
+                                                            <i class="mdi mdi-delete"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="d-md-none">
+                                        <div class="card border-0 border-left border-left-danger m-3 mb-4">
+                                            <div class="card-body">
+                                                <div class="d-flex align-items-start mb-3">
+                                                    <div class="avatar avatar-md mr-3 d-flex justify-content-center align-items-center" style="background-color: #4267B2; border-radius: 50%;">
+                                                        <i class="mdi mdi-account text-white" style="font-size: 1.2rem;"></i>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="font-weight-bold mb-1">Ryan Unc</h6>
+                                                        <span class="badge badge-danger badge-pill mb-2">
+                                                            <i class="mdi mdi-alert-circle mr-1"></i> Token Expirado
+                                                        </span>
+                                                    </div>
+                                                    <button class="btn btn-outline-danger btn-sm" data-toggle="tooltip" title="Remover perfil">
+                                                        <i class="mdi mdi-delete"></i>
+                                                    </button>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <div class="col-6">
+                                                        <small class="text-muted d-block">Status</small>
+                                                        <span class="badge badge-soft-danger badge-pill">
+                                                            <i class="mdi mdi-close-circle mr-1"></i> Desconectado
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <small class="text-muted d-block">Contas</small>
+                                                        <span class="badge badge-soft-primary badge-pill">1 conta</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <div class="col-6">
+                                                        <small class="text-muted d-block">ID do Perfil</small>
+                                                        <code class="small">1220095379651977</code>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <small class="text-muted d-block">Valores</small>
+                                                        <span class="badge badge-soft-primary badge-pill">$1000</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <button class="btn btn-outline-primary btn-sm btn-block" disabled>
+                                                        <i class="mdi mdi-sync mr-1"></i> Sincronizar
+                                                    </button>
+                                                </div>
+
+                                                <div class="alert alert-warning small mb-0">
+                                                    <strong>Como resolver:</strong><br>
+                                                    1. Clique no botão vermelho para remover<br>
+                                                    2. Reconecte usando "Entrar com Facebook"<br>
+                                                    3. Se logado, faça logout primeiro<br>
+                                                    4. <strong><a href="#" target="_blank" class="text-primary">Ver vídeo tutorial</a></strong>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card border-0 border-left border-left-success m-3 mb-4">
+                                            <div class="card-body">
+                                                <div class="d-flex align-items-start mb-3">
+                                                    <div class="avatar avatar-md mr-3 d-flex justify-content-center align-items-center" style="background-color: #4267B2; border-radius: 50%;">
+                                                        <i class="mdi mdi-account text-white" style="font-size: 1.2rem;"></i>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="font-weight-bold mb-1">Ryan Unc</h6>
+                                                        <span class="badge badge-success badge-pill mb-2">
+                                                            <i class="mdi mdi-check-circle mr-1"></i> Conectado
+                                                        </span>
+                                                    </div>
+                                                    <button class="btn btn-outline-danger btn-sm" data-toggle="tooltip" title="Remover perfil">
+                                                        <i class="mdi mdi-delete"></i>
+                                                    </button>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <div class="col-6">
+                                                        <small class="text-muted d-block">Status</small>
+                                                        <span class="badge badge-soft-success badge-pill">
+                                                            <i class="mdi mdi-check-circle mr-1"></i> Conectado
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <small class="text-muted d-block">Contas</small>
+                                                        <span class="badge badge-soft-secondary badge-pill">0 contas</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <div class="col-6">
+                                                        <small class="text-muted d-block">ID do Perfil</small>
+                                                        <code class="small">1221016477851977</code>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <small class="text-muted d-block">Valores</small>
+                                                        <span class="badge badge-soft-primary badge-pill">$500</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="mb-0">
+                                                    <button class="btn btn-primary btn-sm btn-block">
+                                                        <i class="mdi mdi-sync mr-1"></i> Sincronizar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card border-0 shadow-sm" id="adAccountsTable">
+                                <div class="card-header bg-white border-bottom">
+                                    <div class="d-flex align-items-center">
+                                        <i class="mdi mdi-bullhorn text-success mr-2" style="font-size: 1.5rem;"></i>
+                                        <div>
+                                            <h5 class="font-weight-bold mb-1">Contas de Anúncios</h5>
+                                            <p class="text-muted small mb-0">1 conta disponível para campanhas</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="table-responsive d-none d-md-block">
+                                        <table class="table table-hover mb-0">
+                                            <thead class="bg-light">
+                                                <tr>
+                                                    <th class="border-0 text-uppercase text-muted small font-weight-bold text-center">Conta</th>
+                                                    <th class="border-0 text-uppercase text-muted small font-weight-bold">Perfil Associado</th>
+                                                    <th class="border-0 text-uppercase text-muted small font-weight-bold">Categoria</th>
+                                                    <th class="border-0 text-uppercase text-muted small font-weight-bold">ID</th>
+                                                    <th class="border-0 text-uppercase text-muted small font-weight-bold">Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="border-0" style="padding: 1.5rem 1rem;">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="avatar avatar-sm mr-3 rounded-circle d-flex justify-content-center" style="background-color: #28a745;">
+                                                                <i class="mdi mdi-bullhorn text-white align-self-center"></i>
+                                                            </div>
+                                                            <div>
+                                                                <h6 class="font-weight-bold mb-1">Ryan Unc</h6>
+                                                                <p class="text-muted small mb-0">Conta publicitária principal</p>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="border-0" style="vertical-align: middle;">
+                                                        <div>
+                                                            <span class="font-weight-medium">Ryan Unc</span><br>
+                                                            <code class="small text-muted">1220095379651977</code>
+                                                        </div>
+                                                    </td>
+                                                    <td class="border-0" style="vertical-align: middle;">
+                                                        <span class="badge badge-soft-info badge-pill">Business</span>
+                                                    </td>
+                                                    <td class="border-0" style="vertical-align: middle;">
+                                                        <code class="small text-muted">807828814735361</code>
+                                                    </td>
+                                                    <td class="border-0" style="vertical-align: middle;">
+                                                        <div class="custom-control custom-switch">
+                                                            <input type="checkbox" class="custom-control-input" id="adAccount1" checked>
+                                                            <label class="custom-control-label" for="adAccount1">
+                                                                <span class="sr-only">Ativar conta</span>
+                                                            </label>
+                                                        </div>
+                                                        <small class="text-success d-block mt-1">
+                                                            <i class="mdi mdi-check-circle mr-1"></i> Ativa
+                                                        </small>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="border-0" style="padding: 1.5rem 1rem;">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="avatar avatar-sm mr-3 rounded-circle d-flex justify-content-center" style="background-color: #28a745;">
+                                                                <i class="mdi mdi-bullhorn text-white align-self-center"></i>
+                                                            </div>
+                                                            <div>
+                                                                <h6 class="font-weight-bold mb-1">Ryan Unc</h6>
+                                                                <p class="text-muted small mb-0">Conta publicitária principal</p>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="border-0" style="vertical-align: middle;">
+                                                        <div>
+                                                            <span class="font-weight-medium">Ryan Unc</span><br>
+                                                            <code class="small text-muted">1220095379651977</code>
+                                                        </div>
+                                                    </td>
+                                                    <td class="border-0" style="vertical-align: middle;">
+                                                        <span class="badge badge-soft-info badge-pill">Business</span>
+                                                    </td>
+                                                    <td class="border-0" style="vertical-align: middle;">
+                                                        <code class="small text-muted">807828814735361</code>
+                                                    </td>
+                                                    <td class="border-0" style="vertical-align: middle;">
+                                                        <div class="custom-control custom-switch">
+                                                            <input type="checkbox" class="custom-control-input" id="adAccount2">
+                                                            <label class="custom-control-label" for="adAccount2">
+                                                                <span class="sr-only">Desativar conta</span>
+                                                            </label>
+                                                        </div>
+                                                        <small class="text-danger d-block mt-1">
+                                                            <i class="mdi mdi-close-circle mr-1"></i> Desativada
+                                                        </small>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <!-- Mobile  -->
+                                    <div class="d-md-none">
+                                        <div class="card border-0 border-left border-left-success m-3 mb-4">
+                                            <div class="card-body">
+                                                <div class="d-flex align-items-center mb-3">
+                                                    <div class="avatar avatar-md mr-3 rounded-circle d-flex justify-content-center align-items-center" style="background-color: #28a745;">
+                                                        <i class="mdi mdi-bullhorn text-white" style="font-size: 1.2rem;"></i>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="font-weight-bold mb-1">Ryan Unc</h6>
+                                                        <p class="text-muted small mb-0">Conta publicitária principal</p>
+                                                    </div>
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" id="adAccountMobile1" checked>
+                                                        <label class="custom-control-label" for="adAccountMobile1">
+                                                            <span class="sr-only">Ativar conta</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <div class="col-6">
+                                                        <small class="text-muted d-block">Status</small>
+                                                        <small class="text-success d-block">
+                                                            <i class="mdi mdi-check-circle mr-1"></i> Ativa
+                                                        </small>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <small class="text-muted d-block">Categoria</small>
+                                                        <span class="badge badge-soft-info badge-pill small">Business</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <div class="col-12">
+                                                        <small class="text-muted d-block">Perfil Associado</small>
+                                                        <span class="font-weight-medium small">Ryan Unc</span><br>
+                                                        <code class="small text-muted">1220095379651977</code>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <small class="text-muted d-block">ID da Conta</small>
+                                                        <code class="small text-muted">807828814735361</code>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card border-0 border-left border-left-danger m-3 mb-4">
+                                            <div class="card-body">
+                                                <div class="d-flex align-items-center mb-3">
+                                                    <div class="avatar avatar-md mr-3 rounded-circle d-flex justify-content-center align-items-center" style="background-color: #28a745;">
+                                                        <i class="mdi mdi-bullhorn text-white" style="font-size: 1.2rem;"></i>
+                                                    </div>
+                                                    <div class="flex-grow-1">
+                                                        <h6 class="font-weight-bold mb-1">Ryan Unc</h6>
+                                                        <p class="text-muted small mb-0">Conta publicitária principal</p>
+                                                    </div>
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" id="adAccountMobile2">
+                                                        <label class="custom-control-label" for="adAccountMobile2">
+                                                            <span class="sr-only">Desativar conta</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <div class="col-6">
+                                                        <small class="text-muted d-block">Status</small>
+                                                        <small class="text-danger d-block">
+                                                            <i class="mdi mdi-close-circle mr-1"></i> Desativada
+                                                        </small>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <small class="text-muted d-block">Categoria</small>
+                                                        <span class="badge badge-soft-info badge-pill small">Business</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <div class="col-12">
+                                                        <small class="text-muted d-block">Perfil Associado</small>
+                                                        <span class="font-weight-medium small">Ryan Unc</span><br>
+                                                        <code class="small text-muted">1220095379651977</code>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <small class="text-muted d-block">ID da Conta</small>
+                                                        <code class="small text-muted">807828814735361</code>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+        <!-- JavaScript  -->
+                <script>
+            $(document).ready(function() {
+                $('[data-toggle="tooltip"]').tooltip();
+                
+                $('.btn:contains("Sincronizar")').on('click', function() {
+                    if (!$(this).prop('disabled')) {
+                        $(this).html('<i class="mdi mdi-loading mdi-spin mr-1"></i> Sincronizando...');
+                        
+                        setTimeout(() => {
+                            $(this).html('<i class="mdi mdi-check mr-1"></i> Sincronizado');
+                            $(this).removeClass('btn-primary').addClass('btn-success');
+                        }, 2000);
+                    }
+                });
+                
+                $('.scroll-to-accounts').on('click', function(e) {
+                    e.preventDefault();
+                    $('html, body').animate({
+                        scrollTop: $('#adAccountsTable').offset().top - 100
+                    }, 800, 'swing');
+                });
+                
+                $('.custom-control-input').on('change', function() {
+                    const isChecked = $(this).is(':checked');
+                    const switchId = $(this).attr('id');
+                    
+                    let statusText;
+                    if (switchId.includes('Mobile')) {
+                        statusText = $(this).closest('.card-body').find('.row .col-6:first-child small:last-child');
+                    } else {
+                        statusText = $(this).closest('td').find('small');
+                    }
+                    
+                    if (isChecked) {
+                        statusText.html('<i class="mdi mdi-check-circle mr-1"></i> Ativa')
+                                  .removeClass('text-danger text-muted')
+                                  .addClass('text-success');
+                    } else {
+                        statusText.html('<i class="mdi mdi-close-circle mr-1"></i> Desativada')
+                                  .removeClass('text-success text-muted')
+                                  .addClass('text-danger');
+                    }
+                    
+                    if (switchId.includes('Mobile')) {
+                        const card = $(this).closest('.card');
+                        if (isChecked) {
+                            card.removeClass('border-left-danger').addClass('border-left-success');
+                        } else {
+                            card.removeClass('border-left-success').addClass('border-left-danger');
+                        }
+                    }
+                });
+            });
+        </script>
+    </section>
+</main>
+
+
+<div class="modal modal-slide-left  fade" id="siteSearchModal" tabindex="-1" role="dialog" aria-labelledby="siteSearchModal"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body p-all-0" id="site-search">
+                <button type="button" class="close light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="form-dark bg-dark text-white p-t-60 p-b-20 bg-dots" >
+                    <h3 class="text-uppercase    text-center  fw-300 "> Search</h3>
+
+                    <div class="container-fluid">
+                        <div class="col-md-10 p-t-10 m-auto">
+                            <input type="search" placeholder="Search Something"
+                                   class=" search form-control form-control-lg">
+
+                </div>
+            </div>
+                </div>
+                <div class="">
+                    <div class="bg-dark text-muted container-fluid p-b-10 text-center text-overline">
+                        results
+                    </div>
+                    <div class="list-group list  ">
+
+
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"   src="../assets/img/users/user-3.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Eric Chen</div>
+                                <div class="text-muted">Developer</div>
+            </div>
+
+
+                </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"
+                                                                    src="../assets/img/users/user-4.jpg" alt="user-image"></div>
+            </div>
+                            <div class="">
+                                <div class="name">Sean Valdez</div>
+                                <div class="text-muted">Marketing</div>
+        </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"
+                                                                    src="../assets/img/users/user-8.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Marie Arnold</div>
+                                <div class="text-muted">Developer</div>
+        </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar-title bg-dark rounded"><i class="mdi mdi-24px mdi-file-pdf"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">SRS Document</div>
+                                <div class="text-muted">25.5 Mb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar-title bg-dark rounded"><i
+                                                class="mdi mdi-24px mdi-file-document-box"></i></div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">Design Guide.pdf</div>
+                                <div class="text-muted">9 Mb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar avatar-sm ">
+                                        <div class="avatar-title bg-primary rounded"><i
+                                                    class="mdi mdi-24px mdi-code-braces"></i></div>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">response.json</div>
+                                <div class="text-muted">15 Kb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar avatar-sm ">
+                                        <div class="avatar-title bg-info rounded"><i
+                                                    class="mdi mdi-24px mdi-file-excel"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">June Accounts.xls</div>
+                                <div class="text-muted">6 Mb</div>
+                            </div>
+
+
+                                </div>
+            </div>
+        </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="../assets/vendor/jquery/jquery.min.js"></script>
+<script src="../assets/vendor/jquery-ui/jquery-ui.min.js"></script>
+<script src="../assets/vendor/popper/popper.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/vendor/select2/js/select2.full.min.js"></script>
+<script src="../assets/vendor/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+<script src="../assets/vendor/listjs/listjs.min.js"></script>
+<script src="../assets/vendor/moment/moment.min.js"></script>
+<script src="../assets/vendor/daterangepicker/daterangepicker.js"></script>
+<script src="../assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="../assets/vendor/bootstrap-notify/bootstrap-notify.min.js"></script>
+<script src="../assets/js/atmos.min.js"></script>
+<!--page specific scripts for demo-->
+    <script>
+    </script>
+</body>
+</html>

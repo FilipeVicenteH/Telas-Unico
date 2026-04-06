@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" name="viewport">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Atmos Admin Panel- Bootstrap 4 Based Admin Panel</title>
+<link rel="icon" type="image/x-icon" href="../assets/img/logo.png"/>
+<link rel="icon" href="../assets/img/logo.png" type="image/png" sizes="16x16">
+<link rel="stylesheet" href="../assets/vendor/pace/pace.css">
+<script src="../assets/vendor/pace/pace.min.js"></script>
+<!--vendors-->
+<link rel="stylesheet" type="text/css" href="../assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
+<link rel="stylesheet" type="text/css" href="../assets/vendor/jquery-scrollbar/jquery.scrollbar.css">
+<link rel="stylesheet" href="../assets/vendor/select2/css/select2.min.css">
+<link rel="stylesheet" href="../assets/vendor/jquery-ui/jquery-ui.min.css">
+<link rel="stylesheet" href="../assets/vendor/daterangepicker/daterangepicker.css">
+<link rel="stylesheet" href="../assets/vendor/timepicker/bootstrap-timepicker.min.css">
+<link href="https://fonts.googleapis.com/css?family=Hind+Vadodara:400,500,600" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts/jost/jost.css">
+<!--Material Icons-->
+<link rel="stylesheet" type="text/css" href="../assets/fonts/materialdesignicons/materialdesignicons.min.css">
+<!--Bootstrap + atmos Admin CSS-->
+<link rel="stylesheet" type="text/css" href="../assets/css/atmos.min.css">
+<!-- Additional library for page -->
+</head>
+<!--body with default sidebar pinned -->
+<body class="sidebar-pinned">
+<!--sidebar Begins-->
+<aside class="admin-sidebar">
+    <div class="admin-sidebar-brand">
+        <!-- begin sidebar branding-->
+        <img class="admin-brand-logo" src="../assets/img/logo.svg" width="40" alt="atmos Logo">
+        <span class="admin-brand-content"><a href="index.html">  atmos</a></span>
+        <!-- end sidebar branding-->
+        <div class="ml-auto">
+            <!-- sidebar pin-->
+            <a href="#" class="admin-pin-sidebar btn-ghost btn btn-rounded-circle"></a>
+            <!-- sidebar close for mobile device-->
+            <a href="#" class="admin-close-sidebar"></a>
+        </div>
+    </div>
+    <div class="admin-sidebar-wrapper js-scrollbar">
+        <!-- Menu List Begins-->
+        <ul class="menu">
+            <!--list item begins-->
+            <li class="menu-item active">
+                <a href="#" class="menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Link
+                                                </span>
+                                            </span>
+                    <span class="menu-icon">
+                                                   <span class="icon-badge badge-success badge badge-pill">1</span>
+
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+
+            </li>
+            <!--list item ends-->
+
+            <!--list item begins-->
+            <li class="menu-item ">
+                <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu level 1
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                                <span class="menu-info">Contains submenu</span>
+                                            </span>
+                    <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+                <!--submenu-->
+                <ul class="sub-menu">
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+
+
+                </ul>
+            </li>
+            <!--list item ends-->
+
+            <!--list item begins-->
+            <li class="menu-item ">
+                <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu Level 2
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                                <span class="menu-info">Contains submenu</span>
+                                            </span>
+                    <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+                <!--submenu-->
+                <ul class="sub-menu">
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu Level 1.1
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                        </a>
+                        <!--submenu-->
+                        <ul class="sub-menu">
+                            <li class="menu-item">
+                                <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 2.1 </span>
+                                            </span>
+                                    <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+            <!--list item ends-->
+        </ul>
+        <!-- Menu List Ends-->
+    </div>
+
+</aside>
+<!--sidebar Ends-->
+
+
+<main class="admin-main">
+
+    <!--site header begins-->
+<header class="admin-header">
+
+    <a href="#" class="sidebar-toggle" data-toggleclass="sidebar-open" data-target="body"> </a>
+
+    <nav class=" mr-auto my-auto">
+        <ul class="nav align-items-center">
+
+            <li class="nav-item">
+                <a class="nav-link  " data-target="#siteSearchModal" data-toggle="modal" href="#">
+                    <i class=" mdi mdi-magnify mdi-24px align-middle"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <nav class=" ml-auto">
+        <ul class="nav align-items-center">
+
+            <li class="nav-item">
+                <div class="dropdown">
+                    <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-24px mdi-bell-outline"></i>
+                        <span class="notification-counter"></span>
+                    </a>
+
+                    <div class="dropdown-menu notification-container dropdown-menu-right">
+                        <div class="d-flex p-all-15 bg-white justify-content-between border-bottom ">
+                            <a href="#!" class="mdi mdi-18px mdi-settings text-muted"></a>
+                            <span class="h5 m-0">Notifications</span>
+                            <a href="#!" class="mdi mdi-18px mdi-notification-clear-all text-muted"></a>
+                        </div>
+                        <div class="notification-events bg-gray-300">
+                            <div class="text-overline m-b-5">today</div>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body"> <i class="mdi mdi-circle text-success"></i> All systems operational.</div>
+                                </div>
+                            </a>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body"> <i class="mdi mdi-upload-multiple "></i> File upload successful.</div>
+                                </div>
+                            </a>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <i class="mdi mdi-cancel text-danger"></i> Your holiday has been denied
+                                    </div>
+                                </div>
+                            </a>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item dropdown ">
+                <a class="nav-link dropdown-toggle" href="#"   role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    <div class="avatar avatar-sm avatar-online">
+                        <span class="avatar-title rounded-circle bg-dark">V</span>
+
+                    </div>
+                </a>
+                <div class="dropdown-menu  dropdown-menu-right"   >
+                    <a class="dropdown-item" href="#">  Add Account
+                    </a>
+                    <a class="dropdown-item" href="#">  Reset Password</a>
+                    <a class="dropdown-item" href="#">  Help </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"> Logout</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </nav>
+</header>
+<!--site header ends -->    <section class="admin-content">
+        <!-- BEGIN PlACE PAGE CONTENT HERE -->
+        <!--  container or container-fluid as per your need           -->
+
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between align-items-center p-b-15 m-b-20 mt-4">
+                <div class="d-flex align-items-center">
+                    <i class="mdi mdi-google mdi-24px text-primary m-r-10"></i>
+                    <h4 class="m-0">Integração de contas do Google Ads</h4>
+                </div>
+                <button class="btn btn-secondary">
+                    <i class="mdi mdi-arrow-left m-r-5"></i>
+                    Voltar
+                </button>
+            </div>
+
+            <div class="alert alert-info  alert-dismissible fade show" role="alert" style="background-color: #e3f2fd; border: 1px solid #e3f2fd; border-radius: 8px;">
+                <div class="d-flex align-items-start">
+                    <div class="avatar avatar-sm bg-primary rounded-circle d-flex align-items-center justify-content-center m-r-15 flex-shrink-0" style="margin-top: 2px;">
+                        <i class="mdi mdi-google text-white mdi-16px"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                        <h5 class="m-b-15 font-weight-semibold" style="color: #424770;">
+                            Bem-vindo à nova página de integração de contas Google Ads!
+                        </h5>
+                        <p class="m-0 font-size-14 line-height-1-7" style="color: #424770;">
+                            Agora você pode integrar custos de uma ou mais de suas contas do Google Ads. Basta dar um nome para a conta que deseja integrar e, na lista, clicar no botão 
+                            <strong>"Sign in with Google"</strong> para escolher ou fazer o login na conta desejada.
+                        </p>
+                    </div>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+            <!-- Card de status -->
+            <div class="row m-b-30">
+                <div class="col-xl-3 col-lg-6 col-md-6">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="d-flex align-items-center justify-content-center m-b-15">
+                                <div class="avatar avatar-md bg-primary rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="mdi mdi-account-check mdi-18px text-white"></i>
+                                </div>
+                            </div>
+                            <h6 class="card-title text-muted m-b-5 font-weight-light">Contas Conectadas</h6>
+                            <h3 class="text-dark m-0 font-weight-bold">3</h3>
+                            <small class="text-success">
+                                <i class="mdi mdi-arrow-up"></i> +1 este mês
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-6">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="d-flex align-items-center justify-content-center m-b-15">
+                                <div class="avatar avatar-md bg-warning rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="mdi mdi-account-clock mdi-18px text-white"></i>
+                                </div>
+                            </div>
+                            <h6 class="card-title text-muted m-b-5 font-weight-light">Pendentes</h6>
+                            <h3 class="text-dark m-0 font-weight-bold">1</h3>
+                            <small class="text-warning">
+                                <i class="mdi mdi-clock-outline"></i> Aguardando
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-6">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="d-flex align-items-center justify-content-center m-b-15">
+                                <div class="avatar avatar-md bg-success rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="mdi mdi-sync mdi-18px text-white"></i>
+                                </div>
+                            </div>
+                            <h6 class="card-title text-muted m-b-5 font-weight-light">Última Sincronização</h6>
+                            <h3 class="text-dark m-0 font-weight-bold">Há 2h</h3>
+                            <small class="text-success">
+                                <i class="mdi mdi-check-circle"></i> Sincronizado
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-6">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="d-flex align-items-center justify-content-center m-b-15">
+                                <div class="avatar avatar-md bg-info rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="mdi mdi-currency-usd mdi-18px text-white"></i>
+                                </div>
+                            </div>
+                            <h6 class="card-title text-muted m-b-5 font-weight-light">Total Integrado</h6>
+                            <h3 class="text-dark m-0 font-weight-bold">R$ 45.230</h3>
+                            <small class="text-success">
+                                <i class="mdi mdi-trending-up"></i> +12% vs mês anterior
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Registo -->
+            <div class="card m-b-30">
+                <div class="card-header">
+                    <h5 class="card-title text-primary">
+                        <i class="mdi mdi-plus-circle m-r-5"></i>
+                        Cadastrar nova conta
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="accountNameInput" placeholder="Como gostaria de identificar esta conta? Ex.: Conta Principal">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <!-- Botão de cadastrar -->
+                            <button class="btn btn-primary btn-block" id="cadastrarBtn">
+                                <i class="mdi mdi-account-plus m-r-5"></i>
+                                Cadastrar
+                            </button>
+                            
+                            <!-- Botões de edição (escondidos) -->
+                            <div id="editButtons" class="d-none">
+                                <button class="btn btn-success m-b-10 m-r-5" id="atualizarBtn">
+                                    <i class="mdi mdi-check m-r-5"></i>
+                                    Atualizar
+                                </button>
+                                <button class="btn btn-danger m-b-10 m-r-5" id="removerBtn">
+                                    <i class="mdi mdi-delete m-r-5"></i>
+                                    Remover
+                                </button>
+                                <button class="btn btn-secondary m-b-10" id="cancelarBtn">
+                                    <i class="mdi mdi-close m-r-5"></i>
+                                    Cancelar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção das contas-->
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title text-primary">
+                        <i class="mdi mdi-account-group m-r-5"></i>
+                        Minhas contas
+                    </h5>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover m-0">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th class="text-uppercase font-weight-bold">Nome</th>
+                                    <th class="text-uppercase font-weight-bold">Data</th>
+                                    <th class="text-uppercase font-weight-bold">Status</th>
+                                    <th class="text-uppercase font-weight-bold text-center" style="width: 350px;">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="align-middle">
+                                        <div class="d-flex align-items-center">
+                                            <i class="mdi mdi-google mdi-18px text-primary m-r-10"></i>
+                                            <span class="font-weight-medium">Principal</span>
+                                        </div>
+                                    </td>
+                                    <td class="align-middle">23/02/2024</td>
+                                    <td class="align-middle">
+                                        <span class="badge badge-danger">
+                                            <i class="mdi mdi-close-circle m-r-5"></i>
+                                            Token Expirado
+                                        </span>
+                                        <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#tutorialModal">
+                                            <i class="mdi mdi-refresh m-r-5"></i>
+                                            Renovar Token
+                                        </button>
+                                    </td>
+                                    <td class="align-middle text-center">
+                                        <button class="btn btn-sm btn-outline-secondary m-r-10">
+                                            <i class="mdi mdi-pencil m-r-5"></i>
+                                            Editar
+                                        </button>
+                                        <button class="btn btn-sm btn-primary">
+                                            <i class="mdi mdi-google m-r-5"></i>
+                                            Sign in with Google
+                                        </button>
+                                    </td>
+                                </tr>
+                                <div class="modal fade" id="tutorialModal" tabindex="-1" role="dialog" aria-labelledby="tutorialModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header bg-gradient-primary">
+                                                <h5 class="modal-title text-primary" id="tutorialModalLabel">
+                                                    <i class="mdi mdi-help-circle m-r-10"></i>
+                                                    Como Renovar seu Token do Google Ads
+                                                </h5>
+                                                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body bg-light">
+                                                <div class="alert alert-info mb-4">
+                                                    <i class="mdi mdi-information m-r-10"></i>
+                                                    Siga os passos abaixo para reconectar sua conta Google
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-7">
+                                                        <div class="card shadow-sm">
+                                                            <div class="card-body">
+                                                                <h6 class="card-title mb-3 text-primary">
+                                                                    <i class="mdi mdi-format-list-numbered m-r-5"></i>
+                                                                    Passo a Passo
+                                                                </h6>
+                                                                <ol class="list-group list-group-flush">
+                                                                    <li class="list-group-item d-flex align-items-center bg-white">
+                                                                        <span class="badge badge-primary mr-3">1</span>
+                                                                        Acesse sua conta Google em 
+                                                                        <a href="http://www.google.com" target="_blank" class="text-primary ml-2">google.com</a>
+                                                                    </li>
+                                                                    <li class="list-group-item d-flex align-items-center bg-white">
+                                                                        <span class="badge badge-primary mr-3">2</span>
+                                                                        Vá para 
+                                                                        <a href="https://myaccount.google.com/connections" target="_blank" class="text-primary ml-2">Configurações de Conexão</a>
+                                                                    </li>
+                                                                    <li class="list-group-item d-flex align-items-center bg-white">
+                                                                        <span class="badge badge-primary mr-3">3</span>
+                                                                        Localize "Único Drop" na lista de apps conectados
+                                                                    </li>
+                                                                    <li class="list-group-item d-flex align-items-center bg-white">
+                                                                        <span class="badge badge-primary mr-3">4</span>
+                                                                        Selecione "UNICO DROP"
+                                                                    </li>
+                                                                    <li class="list-group-item d-flex align-items-center bg-white">
+                                                                        <span class="badge badge-primary mr-3">5</span>
+                                                                        Clique em "Remover Acesso"
+                                                                    </li>
+                                                                    <li class="list-group-item d-flex align-items-center bg-white">
+                                                                        <span class="badge badge-primary mr-3">6</span>
+                                                                        Desconecte também no Único Drop
+                                                                    </li>
+                                                                    <li class="list-group-item d-flex align-items-center bg-white">
+                                                                        <span class="badge badge-primary mr-3">7</span>
+                                                                        Faça uma nova conexão
+                                                                    </li>
+                                                                </ol>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="col-md-5">
+                                                        <div class="card shadow-sm">
+                                                            <div class="card-body">
+                                                                <h6 class="card-title mb-3 text-primary">
+                                                                    <i class="mdi mdi-image m-r-5"></i>
+                                                                    Referência Visual
+                                                                </h6>
+                                                                <a href="Tutorial Google.png" target="_blank" class="d-block text-center">
+                                                                    <img src="../Media_Imagens/Tutorial Google.png" alt="Tutorial Google" class="img-fluid rounded shadow-sm" style="max-height: 250px;">
+                                                                    <small class="text-muted d-block mt-2">Clique para ampliar</small>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="card shadow-sm mt-4">
+                                                            <div class="card-body text-center bg-gradient-light">
+                                                                <h6 class="card-title mb-3 text-primary">
+                                                                    <i class="mdi mdi-headset m-r-5"></i>
+                                                                    Precisa de Ajuda?
+                                                                </h6>
+                                                                <p class="card-text mb-3">Entre em contato conosco pelo Chat a qualquer momento.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer bg-light">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                    <i class="mdi mdi-close m-r-5"></i>
+                                                    Fechar
+                                                </button>
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal">
+                                                    <i class="mdi mdi-check m-r-5"></i>
+                                                    Concluído
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                <tr>
+                                    <td class="align-middle">
+                                        <div class="d-flex align-items-center">
+                                            <i class="mdi mdi-google mdi-18px text-primary m-r-10"></i>
+                                            <span class="font-weight-medium">Teste</span>
+                                        </div>
+                                    </td>
+                                    <td class="align-middle">13/08/2024</td>
+                                    <td class="align-middle">
+                                        <span class="badge badge-danger">
+                                            <i class="mdi mdi-close-circle m-r-5"></i>
+                                            Desconectada
+                                        </span>
+                                    </td>
+                                    <td class="align-middle text-center">
+                                        <button class="btn btn-sm btn-outline-secondary m-r-10">
+                                            <i class="mdi mdi-pencil m-r-5"></i>
+                                            Editar
+                                        </button>
+                                        <button class="btn btn-sm btn-primary">
+                                            <i class="mdi mdi-google m-r-5"></i>
+                                            Sign in with Google
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="align-middle">
+                                        <div class="d-flex align-items-center">
+                                            <i class="mdi mdi-google mdi-18px text-primary m-r-10"></i>
+                                            <span class="font-weight-medium">Conta Google Ads</span>
+                                        </div>
+                                    </td>
+                                    <td class="align-middle">17/07/2021</td>
+                                    <td class="align-middle">
+                                        <span class="badge badge-success">
+                                            <i class="mdi mdi-check-circle m-r-5"></i>
+                                            Conectada
+                                        </span>
+                                    </td>
+                                    <td class="align-middle text-center">
+                                        <button class="btn btn-sm btn-outline-secondary atmos-btn atmos-btn-secondary m-r-5">
+                                            <i class="mdi mdi-pencil m-r-5"></i>
+                                            Editar
+                                        </button>
+                                        <button class="btn btn-sm btn-danger atmos-btn atmos-btn-danger">
+                                            <i class="mdi mdi-link-off m-r-5"></i>
+                                            Desconectar
+                                        </button>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- END PLACE PAGE CONTENT HERE -->
+    </section>
+</main>
+
+
+<div class="modal modal-slide-left  fade" id="siteSearchModal" tabindex="-1" role="dialog" aria-labelledby="siteSearchModal"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body p-all-0" id="site-search">
+                <button type="button" class="close light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="form-dark bg-dark text-white p-t-60 p-b-20 bg-dots" >
+                    <h3 class="text-uppercase    text-center  fw-300 "> Search</h3>
+
+                    <div class="container-fluid">
+                        <div class="col-md-10 p-t-10 m-auto">
+                            <input type="search" placeholder="Search Something"
+                                   class=" search form-control form-control-lg">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="bg-dark text-muted container-fluid p-b-10 text-center text-overline">
+                        results
+                    </div>
+                    <div class="list-group list  ">
+
+
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"   src="../assets/img/users/user-3.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Eric Chen</div>
+                                <div class="text-muted">Developer</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"
+                                                                    src="../assets/img/users/user-4.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Sean Valdez</div>
+                                <div class="text-muted">Marketing</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"
+                                                                    src="../assets/img/users/user-8.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Marie Arnold</div>
+                                <div class="text-muted">Developer</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar-title bg-dark rounded"><i class="mdi mdi-24px mdi-file-pdf"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">SRS Document</div>
+                                <div class="text-muted">25.5 Mb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar-title bg-dark rounded"><i
+                                                class="mdi mdi-24px mdi-file-document-box"></i></div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">Design Guide.pdf</div>
+                                <div class="text-muted">9 Mb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar avatar-sm ">
+                                        <div class="avatar-title bg-primary rounded"><i
+                                                    class="mdi mdi-24px mdi-code-braces"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">response.json</div>
+                                <div class="text-muted">15 Kb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar avatar-sm ">
+                                        <div class="avatar-title bg-info rounded"><i
+                                                    class="mdi mdi-24px mdi-file-excel"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">June Accounts.xls</div>
+                                <div class="text-muted">6 Mb</div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="../assets/vendor/jquery/jquery.min.js"></script>
+<script src="../assets/vendor/jquery-ui/jquery-ui.min.js"></script>
+<script src="../assets/vendor/popper/popper.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/vendor/select2/js/select2.full.min.js"></script>
+<script src="../assets/vendor/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+<script src="../assets/vendor/listjs/listjs.min.js"></script>
+<script src="../assets/vendor/moment/moment.min.js"></script>
+<script src="../assets/vendor/daterangepicker/daterangepicker.js"></script>
+<script src="../assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="../assets/vendor/bootstrap-notify/bootstrap-notify.min.js"></script>
+<script src="../assets/js/atmos.min.js"></script>
+<!--page specific scripts for demo-->
+<script>
+    let editingRow = null;
+    let originalName = '';
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const accountNameInput = document.getElementById('accountNameInput');
+        const cadastrarBtn = document.getElementById('cadastrarBtn');
+        const editButtons = document.getElementById('editButtons');
+        const atualizarBtn = document.getElementById('atualizarBtn');
+        const removerBtn = document.getElementById('removerBtn');
+        const cancelarBtn = document.getElementById('cancelarBtn');
+
+        function enterEditMode(row, accountName) {
+            exitEditMode();
+            
+            editingRow = row;
+            originalName = accountName;
+            
+            accountNameInput.value = accountName;
+            accountNameInput.focus();
+            
+            cadastrarBtn.classList.add('d-none');
+            editButtons.classList.remove('d-none');
+            
+            row.style.backgroundColor = '#fff3cd';
+            row.style.border = '2px solid #ffc107';
+            
+            document.querySelector('.card .card-header').scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start' 
+            });
+        }
+
+        function exitEditMode() {
+            if (editingRow) {
+                editingRow.style.backgroundColor = '';
+                editingRow.style.border = '';
+                editingRow = null;
+            }
+            
+            accountNameInput.value = '';
+            originalName = '';
+            
+            cadastrarBtn.classList.remove('d-none');
+            editButtons.classList.add('d-none');
+        }
+
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.btn') && e.target.closest('.btn').innerHTML.includes('Editar')) {
+                e.preventDefault();
+                
+                const row = e.target.closest('tr');
+                const accountNameElement = row.querySelector('.font-weight-medium');
+                const accountName = accountNameElement.textContent.trim();
+                
+                enterEditMode(row, accountName);
+            }
+        });
+
+        atualizarBtn.addEventListener('click', function() {
+            const newName = accountNameInput.value.trim();
+            
+            if (!newName) {
+                alert('Por favor, insira um nome para a conta.');
+                return;
+            }
+            
+            if (editingRow) {
+                const accountNameElement = editingRow.querySelector('.font-weight-medium');
+                accountNameElement.textContent = newName;
+                
+                showToast('Conta atualizada com sucesso!', 'success');
+                
+                exitEditMode();
+            }
+        });
+
+        removerBtn.addEventListener('click', function() {
+            if (editingRow) {
+                const accountName = editingRow.querySelector('.font-weight-medium').textContent.trim();
+                
+                if (confirm(`Tem certeza que deseja remover a conta "${accountName}"?\n\nEsta ação não pode ser desfeita.`)) {
+                    const rowToRemove = editingRow; 
+                    
+                    rowToRemove.style.opacity = '0.5';
+                    rowToRemove.style.transform = 'translateX(-100%)';
+                    rowToRemove.style.transition = 'all 0.3s ease';
+                    
+                    exitEditMode();
+                    
+                    setTimeout(() => {
+                        rowToRemove.remove();
+                        showToast('Conta removida com sucesso!', 'success');
+                    }, 300);
+                }
+            }
+        });
+
+        cancelarBtn.addEventListener('click', function() {
+            exitEditMode();
+            showToast('Edição cancelada.', 'info');
+        });
+
+        // ESC cancela edição
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && editingRow) {
+                exitEditMode();
+                showToast('Edição cancelada.', 'info');
+            }
+        });
+
+        cadastrarBtn.addEventListener('click', function() {
+            const accountName = accountNameInput.value.trim();
+            
+            if (!accountName) {
+                alert('Por favor, insira um nome para a conta.');
+                return;
+            }
+            
+            showToast('Conta cadastrada com sucesso!', 'success');
+            accountNameInput.value = '';
+        });
+
+        function showToast(message, type = 'info') {
+            const existingToast = document.getElementById('dynamicToast');
+            if (existingToast) {
+                existingToast.remove();
+            }
+            
+            const toastTypes = {
+                'success': 'bg-success',
+                'error': 'bg-danger', 
+                'warning': 'bg-warning',
+                'info': 'bg-info'
+            };
+            
+            const icons = {
+                'success': 'mdi-check-circle',
+                'error': 'mdi-alert-circle',
+                'warning': 'mdi-alert',
+                'info': 'mdi-information'
+            };
+            
+            const toast = document.createElement('div');
+            toast.id = 'dynamicToast';
+            toast.className = `alert alert-${type} d-flex align-items-center`;
+            toast.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 9999;
+                min-width: 300px;
+                animation: slideInRight 0.3s ease;
+                border: none;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            `;
+            
+            toast.innerHTML = `
+                <div class="d-flex align-items-center">
+                    <i class="mdi ${icons[type]} m-r-10"></i>
+                    <div>${message}</div>
+                </div>
+            `;
+            
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                if (toast.parentElement) {
+                    toast.style.animation = 'slideOutRight 0.3s ease';
+                    setTimeout(() => toast.remove(), 300);
+                }
+            }, 1500);
+        }
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideInRight {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            
+            @keyframes slideOutRight {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+            
+            .btn-group button {
+                font-size: 0.875rem;
+                padding: 0.375rem 0.5rem;
+            }
+            
+            .table tbody tr {
+                transition: all 0.2s ease;
+            }
+            
+            .table tbody tr:hover {
+                background-color: #f8f9fa;
+            }
+            
+            /* Responsividade para botões de edição */
+            @media (max-width: 768px) {
+                .btn-group {
+                    flex-direction: column !important;
+                }
+                
+                .btn-group button {
+                    margin-bottom: 5px;
+                    border-radius: 0.25rem !important;
+                }
+                
+                .btn-group button:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    });
+</script>
+
+<style>
+#editButtons {
+    display: none !important;
+}
+
+#editButtons:not(.d-none) {
+    display: flex !important;
+}
+
+/* Mobile  - 320px */
+@media (max-width: 320px) {
+    .d-flex.justify-content-between.align-items-center.p-b-15.m-b-20.mt-4 {
+        flex-direction: column !important;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .d-flex.justify-content-between.align-items-center.p-b-15.m-b-20.mt-4 h4 {
+        font-size: 18px !important;
+        margin: 0 !important;
+    }
+    
+    .d-flex.justify-content-between.align-items-center.p-b-15.m-b-20.mt-4 .btn {
+        width: 100% !important;
+        font-size: 12px !important;
+        padding: 8px 12px !important;
+        margin-top: 10px !important;
+    }
+
+    .alert.alert-info {
+        margin: 10px 0 !important;
+        padding: 15px !important;
+    }
+    
+    .alert.alert-info h5 {
+        font-size: 16px !important;
+        margin-bottom: 10px !important;
+    }
+    
+    .alert.alert-info p {
+        font-size: 13px !important;
+        line-height: 1.4 !important;
+    }
+
+    .row.m-b-30 .col-xl-3 {
+        margin-bottom: 15px !important;
+    }
+    
+    .card-body.text-center.p-4 {
+        padding: 20px 10px !important;
+    }
+    
+    .card-body.text-center.p-4 h6 {
+        font-size: 12px !important;
+        margin-bottom: 8px !important;
+    }
+    
+    .card-body.text-center.p-4 h3 {
+        font-size: 20px !important;
+        margin: 8px 0 !important;
+    }
+    
+    .card-body.text-center.p-4 small {
+        font-size: 11px !important;
+    }
+
+    .card.m-b-30 .row > div {
+        margin-bottom: 15px !important;
+    }
+    
+    .form-control {
+        font-size: 14px !important;
+        padding: 12px !important;
+    }
+    
+    #editButtons button {
+        width: 100% !important;
+        margin-bottom: 8px !important;
+        margin-top: 10px !important;
+        font-size: 11px !important;
+        padding: 8px 12px !important;
+    }
+
+    .table-responsive {
+        font-size: 12px !important;
+    }
+    
+    .table th, .table td {
+        padding: 8px 4px !important;
+        vertical-align: middle !important;
+    }
+    
+    .table .btn-sm {
+        font-size: 9px !important;
+        padding: 3px 6px !important;
+        margin: 1px !important;
+        min-width: 50px !important;
+    }
+    
+    .table .btn-group {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2px !important;
+    }
+    
+    .table .font-weight-medium {
+        font-size: 13px !important;
+    }
+    
+    .badge {
+        font-size: 10px !important;
+        padding: 4px 6px !important;
+    }
+}
+
+/* Mobile  - 375px */
+@media (min-width: 321px) and (max-width: 375px) {
+    .d-flex.justify-content-between.align-items-center.p-b-15.m-b-20.mt-4 {
+        flex-direction: column !important;
+        gap: 15px;
+    }
+    
+    .d-flex.justify-content-between.align-items-center.p-b-15.m-b-20.mt-4 h4 {
+        font-size: 20px !important;
+        text-align: center;
+    }
+
+    .alert.alert-info h5 {
+        font-size: 17px !important;
+    }
+    
+    .alert.alert-info p {
+        font-size: 14px !important;
+    }
+
+    .card-body.text-center.p-4 {
+        padding: 25px 15px !important;
+    }
+    
+    .card-body.text-center.p-4 h6 {
+        font-size: 13px !important;
+    }
+    
+    .card-body.text-center.p-4 h3 {
+        font-size: 22px !important;
+    }
+
+    .form-control {
+        font-size: 15px !important;
+        padding: 14px !important;
+    }
+    
+    #editButtons button {
+        width: 100% !important;
+        margin-bottom: 10px !important;
+        font-size: 14px !important;
+        padding: 12px !important;
+    }
+
+    .table-responsive {
+        font-size: 13px !important;
+    }
+    
+    .table th, .table td {
+        padding: 10px 6px !important;
+    }
+    
+    .table .btn-sm {
+        font-size: 12px !important;
+        padding: 6px 10px !important;
+        margin: 3px !important;
+    }
+}
+
+/* Tablet - 1024px */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .d-flex.justify-content-between.align-items-center.p-b-15.m-b-20.mt-4 h4 {
+        font-size: 24px !important;
+    }
+    
+    .d-flex.justify-content-between.align-items-center.p-b-15.m-b-20.mt-4 .btn {
+        font-size: 14px !important;
+        padding: 10px 20px !important;
+        height: 42px !important;
+        min-width: 100px !important;
+    }
+
+    .alert.alert-info {
+        padding: 20px !important;
+    }
+    
+    .alert.alert-info h5 {
+        font-size: 19px !important;
+    }
+    
+    .alert.alert-info p {
+        font-size: 15px !important;
+    }
+
+    .row.m-b-30 .col-xl-3 {
+        margin-bottom: 20px !important;
+    }
+    
+    .card-body.text-center.p-4 {
+        padding: 30px 20px !important;
+    }
+    
+    .card-body.text-center.p-4 h6 {
+        font-size: 14px !important;
+    }
+    
+    .card-body.text-center.p-4 h3 {
+        font-size: 26px !important;
+    }
+    
+    .avatar.avatar-md {
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+    }
+
+    .card.m-b-30 .card-body {
+        padding: 25px !important;
+    }
+    
+    .form-control {
+        font-size: 15px !important;
+        padding: 12px !important;
+        height: 44px !important;
+    }
+    
+    .btn.btn-primary.btn-block {
+        font-size: 14px !important;
+        padding: 12px 20px !important;
+        height: 44px !important;
+        min-width: 120px !important;
+    }
+    
+    #editButtons {
+        display: none !important;
+        gap: 8px !important;
+        flex-wrap: wrap !important;
+    }
+    
+    #editButtons:not(.d-none) {
+        display: flex !important;
+    }
+    
+    #editButtons button {
+        flex: 1 !important;
+        font-size: 13px !important;
+        padding: 10px 8px !important;
+        height: 40px !important;
+        min-width: 80px !important;
+    }
+
+    .table th, .table td {
+        padding: 12px 10px !important;
+    }
+    
+    .table .btn-sm {
+        font-size: 12px !important;
+        padding: 6px 10px !important;
+        margin: 0 2px !important;
+        height: 32px !important;
+        min-width: 60px !important;
+        line-height: 1.2 !important;
+    }
+    
+    .table .font-weight-medium {
+        font-size: 16px !important;
+        font-weight: 500 !important;
+    }
+    
+    .badge {
+        font-size: 11px !important;
+        padding: 4px 8px !important;
+        font-weight: 500 !important;
+        line-height: 1.2 !important;
+    }
+    
+    .table .btn.btn-sm.btn-primary {
+        font-size: 11px !important;
+        padding: 5px 8px !important;
+        height: 30px !important;
+        margin-top: 6px !important;
+        margin-left: 0 !important;
+        display: inline-block !important;
+        width: auto !important;
+        min-width: 70px !important;
+    }
+    
+    .btn {
+        transition: all 0.2s ease !important;
+        border-radius: 4px !important;
+        font-weight: 500 !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        min-height: 32px !important;
+        touch-action: manipulation !important;
+    }
+    
+    .btn-sm {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
+    .btn .mdi {
+        margin-right: 4px !important;
+    }
+    
+    .btn .mdi:last-child {
+        margin-right: 0 !important;
+    }
+    
+    .table tbody tr {
+        transition: all 0.2s ease !important;
+    }
+    
+    .table tbody tr:hover {
+        background-color: #f8f9fa !important;
+    }
+}
+
+/* Desktop  1440px */
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .container-fluid {
+        max-width: 1320px !important;
+        margin: 0 auto !important;
+    }
+
+    .d-flex.justify-content-between.align-items-center.p-b-15.m-b-20.mt-4 {
+        padding: 20px 0 !important;
+        margin-bottom: 30px !important;
+    }
+    
+    .d-flex.justify-content-between.align-items-center.p-b-15.m-b-20.mt-4 h4 {
+        font-size: 28px !important;
+    }
+    
+    .d-flex.justify-content-between.align-items-center.p-b-15.m-b-20.mt-4 .btn {
+        font-size: 16px !important;
+        padding: 12px 20px !important;
+    }
+
+    .alert.alert-info {
+        padding: 25px !important;
+        margin-bottom: 30px !important;
+    }
+    
+    .alert.alert-info h5 {
+        font-size: 20px !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .alert.alert-info p {
+        font-size: 16px !important;
+        line-height: 1.6 !important;
+    }
+
+    .row.m-b-30 {
+        margin-bottom: 40px !important;
+    }
+    
+    .card-body.text-center.p-4 {
+        padding: 35px 25px !important;
+    }
+    
+    .card-body.text-center.p-4 h6 {
+        font-size: 15px !important;
+        margin-bottom: 12px !important;
+    }
+    
+    .card-body.text-center.p-4 h3 {
+        font-size: 30px !important;
+        margin: 15px 0 !important;
+    }
+    
+    .card-body.text-center.p-4 small {
+        font-size: 14px !important;
+    }
+    
+    .avatar.avatar-md {
+        width: 3rem !important;
+        height: 3rem !important;
+    }
+
+    .card.m-b-30 {
+        margin-bottom: 40px !important;
+    }
+    
+    .card.m-b-30 .card-body {
+        padding: 30px !important;
+    }
+    
+    .card.m-b-30 .card-header h5 {
+        font-size: 18px !important;
+    }
+    
+    .form-control {
+        font-size: 16px !important;
+        padding: 16px !important;
+        height: auto !important;
+    }
+    
+    .btn.btn-primary.btn-block {
+        font-size: 15px !important;
+        padding: 12px 20px !important;
+        height: 48px !important;
+    }
+    
+    #editButtons {
+        display: none !important;
+        gap: 10px !important;
+    }
+    
+    #editButtons:not(.d-none) {
+        display: flex !important;
+    }
+    
+    #editButtons button {
+        flex: 1 !important;
+        font-size: 14px !important;
+        padding: 12px 10px !important;
+        height: 44px !important;
+        min-width: 90px !important;
+    }
+
+    .card:last-child .card-header h5 {
+        font-size: 18px !important;
+    }
+    
+    .table th {
+        font-size: 14px !important;
+        padding: 18px 15px !important;
+        font-weight: 600 !important;
+    }
+    
+    .table td {
+        padding: 20px 15px !important;
+        font-size: 15px !important;
+    }
+    
+    .table .btn-sm {
+        font-size: 13px !important;
+        padding: 8px 12px !important;
+        margin: 0 3px !important;
+        height: 36px !important;
+        min-width: 70px !important;
+    }
+    
+    .table .font-weight-medium {
+        font-size: 16px !important;
+        font-weight: 500 !important;
+    }
+    
+    .badge {
+        font-size: 12px !important;
+        padding: 6px 10px !important;
+        font-weight: 500 !important;
+    }
+    
+    .mdi-18px {
+        font-size: 20px !important;
+    }
+}
+
+/* Responsividade Geral */
+
+@media (max-width: 768px) {
+    .avatar.avatar-md {
+        width: 2rem !important;
+        height: 2rem !important;
+    }
+    
+    .avatar.avatar-sm {
+        width: 1.5rem !important;
+        height: 1.5rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .card {
+        margin-bottom: 20px !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+    }
+    
+    .card-header {
+        padding: 15px 20px !important;
+    }
+    
+    .card-body {
+        padding: 20px !important;
+    }
+}
+
+
+@media (hover: none) {
+    .table tbody tr:hover {
+        background-color: transparent !important;
+    }
+    
+    .btn:hover {
+        transform: none !important;
+    }
+    
+    .card:hover {
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+    }
+}
+
+/* Telas  pequenas */
+@media (max-width: 280px) {
+    .container-fluid {
+        padding: 10px !important;
+    }
+    
+    .alert.alert-info {
+        padding: 10px !important;
+        margin: 10px 0 !important;
+    }
+    
+    .card-body.text-center.p-4 {
+        padding: 15px 8px !important;
+    }
+    
+    .card-body.text-center.p-4 h3 {
+        font-size: 18px !important;
+    }
+    
+    .table th, .table td {
+        padding: 6px 2px !important;
+        font-size: 11px !important;
+    }
+    
+    .table .btn-sm {
+        padding: 3px 6px !important;
+        font-size: 10px !important;
+    }
+}
+
+/* Landscape celular */
+@media (max-height: 500px) and (orientation: landscape) {
+    .alert.alert-info {
+        padding: 15px !important;
+        margin: 15px 0 !important;
+    }
+    
+    .row.m-b-30 {
+        margin-bottom: 20px !important;
+    }
+    
+    .card.m-b-30 {
+        margin-bottom: 20px !important;
+    }
+    
+    .card-body.text-center.p-4 {
+        padding: 20px 15px !important;
+    }
+}
+
+@media print {
+    .alert.alert-info,
+    #editButtons,
+    .btn {
+        display: none !important;
+    }
+    
+    .table {
+        font-size: 12px !important;
+    }
+    
+    .card {
+        break-inside: avoid !important;
+        margin-bottom: 20px !important;
+    }
+}
+
+/* Tablets portrait 768-1024px */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    #editButtons {
+        display: none !important;
+        flex-direction: column !important;
+        gap: 8px !important;
+    }
+    
+    #editButtons:not(.d-none) {
+        display: flex !important;
+    }
+    
+    #editButtons button {
+        width: 100% !important;
+        margin-bottom: 0 !important;
+        height: 40px !important;
+        font-size: 14px !important;
+        padding: 10px 16px !important;
+    }
+    
+    .table .btn-sm {
+        font-size: 11px !important;
+        padding: 5px 8px !important;
+        height: 30px !important;
+        min-width: 55px !important;
+    }
+    
+    .table .btn.btn-sm.btn-primary {
+        font-size: 10px !important;
+        padding: 4px 6px !important;
+        height: 28px !important;
+        min-width: 65px !important;
+    }
+}
+</style>
+</body>
+</html>

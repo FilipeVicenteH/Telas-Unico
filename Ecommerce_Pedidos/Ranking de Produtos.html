@@ -1,0 +1,3360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" name="viewport">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Ranking de Produtos 2.0 - Atmos Admin Panel</title>
+<link rel="icon" type="image/x-icon" href="../assets/img/logo.png"/>
+<link rel="icon" href="../assets/img/logo.png" type="image/png" sizes="16x16">
+<link rel="stylesheet" href="../assets/vendor/pace/pace.css">
+<script src="../assets/vendor/pace/pace.min.js"></script>
+<!--vendors-->
+<link rel="stylesheet" type="text/css" href="../assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
+<link rel="stylesheet" type="text/css" href="../assets/vendor/jquery-scrollbar/jquery.scrollbar.css">
+<link rel="stylesheet" href="../assets/vendor/select2/css/select2.min.css">
+<link rel="stylesheet" href="../assets/vendor/jquery-ui/jquery-ui.min.css">
+<link rel="stylesheet" href="../assets/vendor/daterangepicker/daterangepicker.css">
+<link rel="stylesheet" href="../assets/vendor/timepicker/bootstrap-timepicker.min.css">
+<link href="https://fonts.googleapis.com/css?family=Hind+Vadodara:400,500,600" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts/jost/jost.css">
+<!--Material Icons-->
+<link rel="stylesheet" type="text/css" href="../assets/fonts/materialdesignicons/materialdesignicons.min.css">
+<!--Bootstrap + atmos Admin CSS-->
+<link rel="stylesheet" type="text/css" href="../assets/css/atmos.min.css">
+<!-- Additional library for page -->
+<style>
+.ranking-card {
+    transition: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    background: #fff;
+    overflow: hidden;
+}
+
+.ranking-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.table-container {
+    background: #fff;
+    border-radius: 0 0 12px 12px;
+    overflow: hidden;
+}
+
+.table-header {
+    background: linear-gradient(135deg, #f8f9fa, #ffffff);
+    padding: 16px 20px;
+    border-bottom: 1px solid #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.table-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #495057;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.ranking-card .card-header {
+    background: linear-gradient(135deg, #f8f9fa, #ffffff);
+    border-bottom: 1px solid #e9ecef;
+    padding: 20px;
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.ranking-title {
+    color: #495057;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.trophy-icon {
+    color: #ffc107;
+    margin-right: 10px;
+    font-size: 20px;
+    filter: drop-shadow(0 1px 2px rgba(255, 193, 7, 0.3));
+}
+
+.ranking-table {
+    margin: 0;
+    font-size: 13px;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+.ranking-table th {
+    background: #fafbfc;
+    color: #6c757d;
+    font-weight: 500;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    border: none;
+    border-bottom: 1px solid #e1e5e9;
+    padding: 16px 12px;
+    vertical-align: middle;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.ranking-table td {
+    padding: 16px 12px;
+    vertical-align: middle;
+    border: none;
+    border-bottom: 1px solid #f1f3f4;
+    font-size: 13px;
+    text-align: center;
+    background: #fff;
+    color: #2d3748;
+}
+
+.ranking-table tbody tr {
+    transition: all 0.2s ease;
+    background: #fff;
+}
+
+.ranking-table tbody tr:hover {
+    background-color: #f7fafc;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    transform: translateY(-1px);
+}
+
+.ranking-table tbody tr:nth-child(even) {
+    background-color: #fdfdfd;
+}
+
+.ranking-table tbody tr:nth-child(even):hover {
+    background-color: #f7fafc;
+}
+
+.rank-position {
+    background: #f8f9fa;
+    color: #6c757d;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 12px;
+    margin: 0 auto;
+    transition: all 0.2s ease;
+    border: 1px solid #e9ecef;
+}
+
+.rank-position:hover {
+    background: #e9ecef;
+    color: #495057;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Top 3 */
+.ranking-table tbody tr:nth-child(1) .rank-position {
+    background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+    color: #856404;
+    border-color: #ffeaa7;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(255, 193, 7, 0.2);
+}
+
+.ranking-table tbody tr:nth-child(2) .rank-position {
+    background: linear-gradient(135deg, #e9ecef, #f8f9fa);
+    color: #6c757d;
+    border-color: #dee2e6;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(108, 117, 125, 0.15);
+}
+
+.ranking-table tbody tr:nth-child(3) .rank-position {
+    background: linear-gradient(135deg, #f4e4bc, #e6d3a3);
+    color: #8b4513;
+    border-color: #d4a574;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(205, 127, 50, 0.2);
+}
+
+.ranking-table tbody tr:nth-child(4) .rank-position,
+.ranking-table tbody tr:nth-child(5) .rank-position,
+.ranking-table tbody tr:nth-child(6) .rank-position {
+    background: #e3f2fd;
+    color: #1976d2;
+    border-color: #bbdefb;
+    font-weight: 500;
+}
+
+.ranking-table tbody tr:nth-child(n+7) .rank-position {
+    background: #f8f9fa;
+    color: #6c757d;
+    border-color: #e9ecef;
+    font-weight: 400;
+}
+
+.ranking-table th:first-child {
+    color: #495057;
+    font-weight: 600;
+    text-align: center;
+}
+
+.ranking-table tbody tr:nth-child(1) .rank-position:hover {
+    background: linear-gradient(135deg, #ffeaa7, #ffed4e);
+    color: #856404;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(255, 193, 7, 0.3);
+}
+
+.ranking-table tbody tr:nth-child(2) .rank-position:hover {
+    background: linear-gradient(135deg, #dee2e6, #e9ecef);
+    color: #495057;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(108, 117, 125, 0.25);
+}
+
+.ranking-table tbody tr:nth-child(3) .rank-position:hover {
+    background: linear-gradient(135deg, #e6d3a3, #deb887);
+    color: #8b4513;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(205, 127, 50, 0.3);
+}
+
+.ranking-table tbody tr:nth-child(4) .rank-position:hover,
+.ranking-table tbody tr:nth-child(5) .rank-position:hover,
+.ranking-table tbody tr:nth-child(6) .rank-position:hover {
+    background: #bbdefb;
+    color: #1976d2;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(25, 118, 210, 0.2);
+}
+
+.product-image {
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+}
+
+.product-image:hover {
+    transform: translateY(-1px);
+    border-color: #667eea;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.conversion-badge {
+    background: #007bff;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: 600;
+    display: inline-block;
+    min-width: 60px;
+}
+
+.value-pending {
+    color: #dc3545;
+    font-weight: 500;
+}
+
+.value-paid {
+    color: #28a745;
+    font-weight: 500;
+}
+
+.value-total {
+    color: #495057;
+    font-weight: 600;
+}
+
+.value-profit {
+    color: #28a745;
+    font-weight: 600;
+}
+
+.card {
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.card-header {
+    padding: 15px 20px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #495057;
+    margin: 0;
+}
+
+.icon-box {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-right: 12px;
+    transition: all 0.3s ease;
+}
+
+.bg-primary-light {
+    background-color: rgba(0, 123, 255, 0.08);
+}
+
+.bg-success-light {
+    background-color: rgba(40, 167, 69, 0.08);
+}
+
+.bg-warning-light {
+    background-color: rgba(255, 193, 7, 0.08);
+}
+
+.bg-info-light {
+    background-color: rgba(23, 162, 184, 0.08);
+}
+
+.input-group-sm .form-control {
+    font-size: 12px;
+    padding: 0.25rem 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .card-header .row {
+        flex-direction: column;
+        align-items: flex-start !important;
+    }
+    
+    .card-header .col-md-6:last-child {
+        margin-top: 15px;
+        text-align: left !important;
+    }
+    
+    .icon-box {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+}
+
+.ranking-table th {
+    background: #f8f9fa;
+    color: #495057;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: none;
+    border-bottom: 1px solid #e9ecef;
+    padding: 15px 12px;
+    vertical-align: middle;
+    text-align: center;
+    white-space: nowrap;
+}
+
+#paymentChart, #productsChart, #conversionChart {
+    max-height: 150px !important;
+}
+
+#weeklyChart {
+    max-height: 300px !important;
+}
+
+.ranking-card {
+    transition: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    background: #fff;
+    overflow: hidden;
+}
+
+.ranking-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+@media (max-width: 576px) {
+    .chart-container {
+        height: 150px;
+    }
+    
+    #paymentChart, #productsChart, #conversionChart {
+        max-height: 120px !important;
+    }
+}
+
+.value-total, .value-paid, .value-pending {
+    font-weight: 400;
+    color: #4a5568;
+    line-height: 1.5;
+}
+
+.value-profit {
+    color: #38a169;
+    font-weight: 500;
+}
+
+.ranking-table td:not(.value-total):not(.value-paid):not(.value-pending):not(.value-profit) {
+    color: #718096;
+    font-weight: 400;
+}
+
+.value-total strong {
+    background: #f0f4f8;
+    color: #3182ce;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 500;
+    margin-right: 6px;
+    border: 1px solid #e2e8f0;
+    display: inline-block;
+}
+
+.value-paid strong {
+    background: #f0fff4;
+    color: #38a169;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 500;
+    margin-right: 6px;
+    border: 1px solid #e6fffa;
+    display: inline-block;
+}
+
+.value-pending strong {
+    background: #fef5e7;
+    color: #d69e2e;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 500;
+    margin-right: 6px;
+    border: 1px solid #faf089;
+    display: inline-block;
+}
+
+/* Progressão */
+.progress {
+    border-radius: 12px;
+    background-color: #f7fafc;
+    height: 6px;
+    font-size: 9px;
+    font-weight: 500;
+    overflow: hidden;
+    box-shadow: none;
+    border: 1px solid #e2e8f0;
+}
+
+.progress-bar {
+    border-radius: 12px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    transition: width 0.6s ease;
+    font-size: 9px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    min-width: 25px;
+    position: relative;
+}
+
+.conversion-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 24px;
+}
+
+.conversion-percentage {
+    background: #f8f9fa;
+    color: #495057;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 11px;
+    font-weight: 500;
+    border: 1px solid #e9ecef;
+    display: inline-flex;
+    align-items: center;
+    min-width: 60px;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.conversion-percentage:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.conversion-percentage.high {
+    background: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+.conversion-percentage.medium {
+    background: #fff3cd;
+    color: #856404;
+    border-color: #ffeaa7;
+}
+
+.conversion-percentage.low {
+    background: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+}
+
+.conversion-none {
+    color: #6c757d;
+    font-size: 12px;
+    font-weight: 400;
+    opacity: 0.7;
+}
+
+.ranking-table .progress {
+    display: none;
+}
+
+.ranking-table th:last-child {
+    color: #6c757d;
+    font-weight: 500;
+}
+
+/* Filtros */
+.filter-section {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 8px 12px;
+    border: 1px solid #e9ecef;
+}
+
+.filter-section small {
+    color: #6c757d;
+    font-weight: 500;
+}
+
+.input-date {
+    background: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    font-size: 12px;
+    transition: all 0.2s ease;
+}
+
+.input-date:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.1);
+}
+
+#filterBtn {
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 123, 255, 0.2);
+}
+
+#filterBtn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 123, 255, 0.3);
+}
+
+/* Stats */
+.stats-container {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 0 -5px;
+    border-bottom: 1px solid #f1f3f4;
+    margin-bottom: 0;
+}
+
+.stat-item {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 16px;
+    margin: 0 5px;
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--accent-color, #007bff);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-color: var(--accent-color, #007bff);
+}
+
+.stat-item:hover::before {
+    opacity: 1;
+}
+
+.stat-item.primary {
+    --accent-color: #007bff;
+}
+
+.stat-item.success {
+    --accent-color: #28a745;
+}
+
+.stat-item.warning {
+    --accent-color: #ffc107;
+}
+
+.stat-item.info {
+    --accent-color: #17a2b8;
+}
+
+.icon-box {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-right: 12px;
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover .icon-box {
+    transform: scale(1.1);
+}
+
+.stat-value {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #6c757d;
+    font-weight: 500;
+    margin-top: 2px;
+}
+
+
+.table-header {
+    background: linear-gradient(135deg, #f8f9fa, #ffffff);
+    padding: 16px 20px;
+    border-bottom: 1px solid #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.table-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #495057;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.badge-light {
+    background: #e9ecef;
+    color: #6c757d;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 11px;
+}
+
+.btn-outline-secondary {
+    border-color: #dee2e6;
+    color: #6c757d;
+    border-radius: 6px;
+    padding: 6px 12px;
+    transition: all 0.2s ease;
+}
+
+.btn-outline-secondary:hover {
+    background: #6c757d;
+    border-color: #6c757d;
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(108, 117, 125, 0.2);
+}
+
+.container-fluid.p-all-15 {
+    background: #f8f9fa;
+    min-height: 100vh;
+    padding: 20px !important;
+}
+
+.stats-container {
+    border-bottom: 1px solid #f1f3f4;
+    margin-bottom: 0;
+}
+
+/* Mobile responsividade*/
+@media (max-width: 768px) {
+    .filter-section {
+        flex-direction: column;
+        align-items: stretch !important;
+        gap: 8px;
+    }
+    
+    .filter-section .d-flex {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    .stat-item {
+        margin: 5px 0;
+        padding: 12px;
+    }
+    
+    .icon-box {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+    }
+    
+    .stat-value {
+        font-size: 14px;
+    }
+    
+    .stat-label {
+        font-size: 11px;
+    }
+    
+    .ranking-title {
+        font-size: 16px;
+    }
+    
+    .trophy-icon {
+        font-size: 18px;
+        margin-right: 8px;
+    }
+}
+
+/* (320px - 375px) */
+@media (max-width: 375px) {
+    .container-fluid.p-all-15 {
+        padding: 10px !important;
+    }
+    
+    .card-header {
+        padding: 12px 16px;
+    }
+    
+    .card-header .row {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .card-header .col-md-6 {
+        text-align: left !important;
+    }
+    
+    .ranking-title {
+        font-size: 14px;
+        margin-bottom: 4px;
+    }
+    
+    .trophy-icon {
+        font-size: 16px;
+        margin-right: 6px;
+    }
+    
+    .filter-section {
+        background: transparent;
+        border: none;
+        padding: 8px 0;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .filter-section small {
+        font-size: 11px;
+        margin-bottom: 4px;
+        display: block;
+    }
+    
+    .filter-section .d-flex {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .input-group {
+        width: 100% !important;
+        max-width: none !important;
+    }
+    
+    .input-date {
+        font-size: 11px;
+        padding: 6px 8px;
+    }
+    
+    #filterBtn {
+        width: 100%;
+        padding: 8px;
+        font-size: 11px;
+    }
+    
+    .stats-container {
+        padding: 12px 16px;
+    }
+    
+    .stat-item {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 10px;
+        margin: 0 0 8px 0;
+        border: 1px solid #e9ecef;
+    }
+    
+    .icon-box {
+        width: 32px;
+        height: 32px;
+        margin-right: 8px;
+        font-size: 14px;
+    }
+    
+    .stat-value {
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1.2;
+    }
+    
+    .stat-label {
+        font-size: 10px;
+        margin-top: 1px;
+    }
+    
+    .table-header {
+        padding: 12px 16px;
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-start !important;
+    }
+    
+    .table-title {
+        font-size: 12px;
+    }
+    
+    .table-title i {
+        font-size: 14px;
+    }
+    
+    .badge {
+        font-size: 10px;
+        padding: 4px 8px;
+    }
+    
+    .btn-export {
+        padding: 6px 10px;
+        font-size: 10px;
+    }
+    
+    .btn-export .export-text {
+        display: none;
+    }
+    
+    .table-scroll-container {
+        max-height: 400px;
+        margin: 0 -16px;
+        border-radius: 0;
+    }
+    
+    .ranking-table {
+        font-size: 10px;
+    }
+    
+    .ranking-table th {
+        padding: 8px 4px;
+        font-size: 9px;
+        letter-spacing: 0.3px;
+    }
+    
+    .ranking-table td {
+        padding: 10px 4px;
+        font-size: 10px;
+    }
+    
+
+    .ranking-table th:nth-child(6),
+    .ranking-table th:nth-child(7),
+    .ranking-table th:nth-child(8),
+    .ranking-table th:nth-child(9),
+    .ranking-table th:nth-child(11),
+    .ranking-table td:nth-child(6),
+    .ranking-table td:nth-child(7),
+    .ranking-table td:nth-child(8),
+    .ranking-table td:nth-child(9),
+    .ranking-table td:nth-child(11) {
+        display: none;
+    }
+    
+    .ranking-table th:nth-child(1) { width: 30px; }
+    .ranking-table th:nth-child(2) { width: 40px; }
+    .ranking-table th:nth-child(3) { width: 80px; }
+    .ranking-table th:nth-child(4) { width: 70px; }
+    .ranking-table th:nth-child(5) { width: 70px; }
+    .ranking-table th:nth-child(10) { width: 60px; }
+    .ranking-table th:nth-child(12) { width: 70px; }
+    
+    .rank-position {
+        width: 24px;
+        height: 24px;
+        font-size: 10px;
+        border-radius: 6px;
+    }
+    
+    .product-image {
+        width: 28px;
+        height: 28px;
+        border-radius: 6px;
+    }
+    
+    .value-total strong,
+    .value-paid strong,
+    .value-pending strong {
+        font-size: 8px;
+        padding: 2px 4px;
+        border-radius: 4px;
+    }
+    
+    .conversion-percentage {
+        padding: 2px 6px;
+        font-size: 9px;
+        border-radius: 10px;
+        min-width: 40px;
+    }
+    
+    .scroll-indicator {
+        right: 8px;
+        width: 24px;
+        height: 24px;
+        padding: 4px;
+    }
+    
+    .scroll-indicator i {
+        font-size: 12px;
+    }
+    
+    .products-counter {
+        bottom: 8px;
+        left: 8px;
+        padding: 4px 8px;
+        font-size: 9px;
+        border-radius: 12px;
+    }
+}
+
+@media (max-width: 375px) and (min-width: 321px) {
+    .container-fluid.p-all-15 {
+        padding: 10px !important;
+    }
+    
+    .card-header {
+        padding: 12px 16px;
+    }
+    
+    .card-header .row {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .ranking-title {
+        font-size: 14px;
+        margin-bottom: 4px;
+    }
+    
+    .trophy-icon {
+        font-size: 16px;
+        margin-right: 6px;
+    }
+    
+    .filter-section {
+        background: #f8f9fa;
+        border: 1px solid #e9ecef;
+        padding: 8px;
+        border-radius: 8px;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .filter-section small {
+        font-size: 10px;
+        margin-bottom: 4px;
+        display: block;
+        text-align: center;
+        color: #6c757d;
+        font-weight: 500;
+    }
+    
+    .filter-section .d-flex {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .input-group {
+        width: 100% !important;
+        max-width: 180px;
+        margin: 0 auto;
+    }
+    
+    .input-date {
+        font-size: 11px;
+        padding: 6px 8px;
+        text-align: center;
+    }
+    
+    #filterBtn {
+        width: 100%;
+        max-width: 180px;
+        margin: 0 auto;
+        padding: 8px;
+        font-size: 11px;
+        font-weight: 500;
+    }
+    
+    .btn-export .export-text {
+        display: none;
+    }
+    
+    .stats-container {
+        padding: 12px 16px;
+    }
+    
+    .stats-container .row {
+        flex-direction: column;
+    }
+    
+    .stat-item {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 10px;
+        margin: 0 0 8px 0;
+        border: 1px solid #e9ecef;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .icon-box {
+        width: 32px;
+        height: 32px;
+        margin-right: 8px;
+        font-size: 14px;
+    }
+    
+    .stat-value {
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1.2;
+    }
+    
+    .stat-label {
+        font-size: 10px;
+        margin-top: 1px;
+    }
+    
+    .table-header {
+        padding: 12px 16px;
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-start !important;
+    }
+    
+    .table-title {
+        font-size: 12px;
+    }
+    
+    .table-title i {
+        font-size: 14px;
+    }
+    
+    .badge {
+        font-size: 9px;
+        padding: 4px 8px;
+    }
+    
+    .btn-export {
+        padding: 6px 10px;
+        font-size: 10px;
+    }
+    
+    .table-scroll-container {
+        max-height: 400px;
+        margin: 0 -16px;
+        border-radius: 0;
+    }
+    
+    .ranking-table {
+        font-size: 10px;
+    }
+    
+    .ranking-table th {
+        padding: 8px 4px;
+        font-size: 9px;
+        letter-spacing: 0.3px;
+    }
+    
+    .ranking-table td {
+        padding: 10px 4px;
+        font-size: 10px;
+    }
+    
+
+    .ranking-table th:nth-child(6),
+    .ranking-table th:nth-child(7),
+    .ranking-table th:nth-child(8),
+    .ranking-table th:nth-child(9),
+    .ranking-table th:nth-child(11),
+    .ranking-table td:nth-child(6),
+    .ranking-table td:nth-child(7),
+    .ranking-table td:nth-child(8),
+    .ranking-table td:nth-child(9),
+    .ranking-table td:nth-child(11) {
+        display: none;
+    }
+    
+    .rank-position {
+        width: 24px;
+        height: 24px;
+        font-size: 10px;
+        border-radius: 6px;
+    }
+    
+    .product-image {
+        width: 28px;
+        height: 28px;
+        border-radius: 6px;
+    }
+    
+    .value-total strong,
+    .value-paid strong,
+    .value-pending strong {
+        font-size: 8px;
+        padding: 2px 5px;
+        border-radius: 4px;
+    }
+    
+    .conversion-percentage {
+        padding: 2px 6px;
+        font-size: 9px;
+        border-radius: 10px;
+        min-width: 40px;
+    }
+    
+    .scroll-indicator {
+        right: 8px;
+        width: 24px;
+        height: 24px;
+        padding: 4px;
+    }
+    
+    .scroll-indicator i {
+        font-size: 12px;
+    }
+    
+    .products-counter {
+        bottom: 8px;
+        left: 8px;
+        padding: 4px 8px;
+        font-size: 9px;
+        border-radius: 12px;
+    }
+}
+
+/*  (≤320px) */
+@media (max-width: 320px) {
+    .container-fluid.p-all-15 {
+        padding: 8px !important;
+    }
+    
+    .card-header {
+        padding: 10px 12px;
+    }
+    
+    .card-header .row {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .ranking-title {
+        font-size: 13px;
+        margin-bottom: 3px;
+    }
+    
+    .trophy-icon {
+        font-size: 15px;
+        margin-right: 5px;
+    }
+    
+    .filter-section {
+        background: #f8f9fa;
+        border: 1px solid #e9ecef;
+        padding: 6px;
+        border-radius: 6px;
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .filter-section small {
+        font-size: 9px;
+        margin-bottom: 3px;
+        display: block;
+        text-align: center;
+        color: #6c757d;
+        font-weight: 500;
+    }
+    
+    .filter-section .d-flex {
+        flex-direction: column;
+        gap: 6px;
+    }
+    
+    .input-group {
+        width: 100% !important;
+        max-width: 160px;
+        margin: 0 auto;
+    }
+    
+    .input-date {
+        font-size: 10px;
+        padding: 5px 6px;
+        text-align: center;
+    }
+    
+    #filterBtn {
+        width: 100%;
+        max-width: 160px;
+        margin: 0 auto;
+        padding: 6px;
+        font-size: 10px;
+        font-weight: 500;
+    }
+    
+    .btn-export .export-text {
+        display: none;
+    }
+    
+    .stats-container {
+        padding: 10px 12px;
+    }
+    
+    .stats-container .row {
+        flex-direction: column;
+    }
+    
+    .stat-item {
+        background: #f8f9fa;
+        border-radius: 6px;
+        padding: 8px;
+        margin: 0 0 6px 0;
+        border: 1px solid #e9ecef;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    
+    .icon-box {
+        width: 28px;
+        height: 28px;
+        margin-right: 6px;
+        font-size: 12px;
+    }
+    
+    .stat-value {
+        font-size: 11px;
+        font-weight: 600;
+        line-height: 1.1;
+    }
+    
+    .stat-label {
+        font-size: 9px;
+        margin-top: 1px;
+    }
+    
+    .table-header {
+        padding: 10px 12px;
+        flex-direction: column;
+        gap: 6px;
+        align-items: flex-start !important;
+    }
+    
+    .table-title {
+        font-size: 11px;
+    }
+    
+    .table-title i {
+        font-size: 13px;
+    }
+    
+    .badge {
+        font-size: 8px;
+        padding: 3px 6px;
+    }
+    
+    .btn-export {
+        padding: 5px 8px;
+        font-size: 9px;
+    }
+    
+    .table-scroll-container {
+        max-height: 380px;
+        margin: 0 -12px;
+        border-radius: 0;
+    }
+    
+    .ranking-table {
+        font-size: 9px;
+    }
+    
+    .ranking-table th {
+        padding: 6px 3px;
+        font-size: 8px;
+        letter-spacing: 0.2px;
+        word-wrap: break-word;
+    }
+    
+    .ranking-table td {
+        padding: 8px 3px;
+        font-size: 9px;
+    }
+    
+
+    .ranking-table th:nth-child(5),
+    .ranking-table th:nth-child(6),
+    .ranking-table th:nth-child(7),
+    .ranking-table th:nth-child(8),
+    .ranking-table th:nth-child(9),
+    .ranking-table th:nth-child(11),
+    .ranking-table td:nth-child(5),
+    .ranking-table td:nth-child(6),
+    .ranking-table td:nth-child(7),
+    .ranking-table td:nth-child(8),
+    .ranking-table td:nth-child(9),
+    .ranking-table td:nth-child(11) {
+        display: none;
+    }
+    
+    .rank-position {
+        width: 22px;
+        height: 22px;
+        font-size: 9px;
+        border-radius: 5px;
+    }
+    
+    .product-image {
+        width: 26px;
+        height: 26px;
+        border-radius: 5px;
+    }
+    
+    .value-total strong,
+    .value-paid strong,
+    .value-pending strong {
+        font-size: 7px;
+        padding: 2px 4px;
+        border-radius: 3px;
+    }
+    
+    .conversion-percentage {
+        padding: 2px 5px;
+        font-size: 8px;
+        border-radius: 8px;
+        min-width: 35px;
+    }
+    
+    .scroll-indicator {
+        right: 6px;
+        width: 22px;
+        height: 22px;
+        padding: 3px;
+    }
+    
+    .scroll-indicator i {
+        font-size: 11px;
+    }
+    
+    .products-counter {
+        bottom: 6px;
+        left: 6px;
+        padding: 3px 6px;
+        font-size: 8px;
+        border-radius: 10px;
+    }
+}
+
+/* Filtros 375px */
+@media (max-width: 375px) {
+    .card-header .col-md-6.text-right .d-flex.justify-content-end.align-items-center.filter-section {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+        gap: 4px !important;
+        padding: 8px 10px !important;
+        background: #f8f9fa !important;
+        border: 1px solid #e9ecef !important;
+        border-radius: 8px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden !important;
+        white-space: nowrap !important;
+    }
+    
+    .card-header .col-md-6.text-right .filter-section small.text-muted.mr-2 {
+        font-size: 9px !important;
+        margin: 0 !important;
+        margin-right: 3px !important;
+        white-space: nowrap !important;
+        flex-shrink: 0 !important;
+        color: #6c757d !important;
+        font-weight: 500 !important;
+    }
+    
+    .card-header .col-md-6.text-right .filter-section .input-group.input-group-sm {
+        width: 65px !important;
+        min-width: 65px !important;
+        max-width: 65px !important;
+        margin: 0 !important;
+        flex-shrink: 0 !important;
+        flex-grow: 0 !important;
+    }
+    
+    .card-header .col-md-6.text-right .filter-section .input-group .form-control.input-date {
+        font-size: 8px !important;
+        padding: 3px 2px !important;
+        text-align: center !important;
+        height: 26px !important;
+        border-radius: 4px !important;
+        background: #ffffff !important;
+        border: 1px solid #dee2e6 !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+    }
+    
+    .card-header .col-md-6.text-right .filter-section span.mx-2.text-muted {
+        font-size: 8px !important;
+        margin: 0 2px !important;
+        white-space: nowrap !important;
+        flex-shrink: 0 !important;
+        color: #6c757d !important;
+    }
+    
+    .card-header .col-md-6.text-right .filter-section button.btn.btn-primary.btn-sm.ml-2 {
+        width: 26px !important;
+        height: 26px !important;
+        min-width: 26px !important;
+        max-width: 26px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        margin-left: 3px !important;
+        flex-shrink: 0 !important;
+        flex-grow: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border-radius: 4px !important;
+        font-size: 10px !important;
+    }
+    
+    .card-header .col-md-6.text-right .filter-section button i.mdi.mdi-filter {
+        font-size: 10px !important;
+        margin: 0 !important;
+    }
+}
+
+/* 320px */
+@media (max-width: 320px) {
+    .card-header .col-md-6.text-right .d-flex.justify-content-end.align-items-center.filter-section {
+        gap: 3px !important;
+        padding: 6px 8px !important;
+    }
+    
+    .card-header .col-md-6.text-right .filter-section small.text-muted.mr-2 {
+        font-size: 8px !important;
+        margin-right: 2px !important;
+    }
+    
+    .card-header .col-md-6.text-right .filter-section .input-group.input-group-sm {
+        width: 55px !important;
+        min-width: 55px !important;
+        max-width: 55px !important;
+    }
+    
+    .card-header .col-md-6.text-right .filter-section .input-group .form-control.input-date {
+        font-size: 7px !important;
+        padding: 2px 1px !important;
+        height: 24px !important;
+    }
+    
+    .card-header .col-md-6.text-right .filter-section span.mx-2.text-muted {
+        font-size: 7px !important;
+        margin: 0 1px !important;
+    }
+    
+    .card-header .col-md-6.text-right .filter-section button.btn.btn-primary.btn-sm.ml-2 {
+        width: 24px !important;
+        height: 24px !important;
+        min-width: 24px !important;
+        max-width: 24px !important;
+        margin-left: 2px !important;
+    }
+    
+    .card-header .col-md-6.text-right .filter-section button i.mdi.mdi-filter {
+        font-size: 8px !important;
+    }
+}
+
+
+@media (max-width: 1024px) and (min-width: 769px) {
+    .stats-container {
+        padding: 16px 20px;
+        background: #ffffff;
+        border-radius: 8px;
+        margin: 0 -5px;
+        border-bottom: 1px solid #f1f3f4;
+        margin-bottom: 0;
+    }
+    
+    .stats-container .row {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -5px;
+    }
+    
+    .stats-container .col-lg-3 {
+        flex: 0 0 50%;
+        max-width: 50%;
+        margin-bottom: 12px;
+        padding: 0 5px;
+    }
+    
+    .stat-item {
+        background: #f8f9fa;
+        border-radius: 10px;
+        padding: 14px;
+        margin: 0;
+        border: 1px solid #e9ecef;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+    
+    .stat-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: var(--accent-color, #007bff);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .stat-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        border-color: var(--accent-color, #007bff);
+    }
+    
+    .stat-item:hover::before {
+        opacity: 1;
+    }
+    
+    .stat-item.primary {
+        --accent-color: #007bff;
+    }
+    
+    .stat-item.success {
+        --accent-color: #28a745;
+    }
+    
+    .stat-item.warning {
+        --accent-color: #ffc107;
+    }
+    
+    .stat-item.info {
+        --accent-color: #17a2b8;
+    }
+    
+    .icon-box {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        margin-right: 12px;
+        transition: all 0.3s ease;
+        flex-shrink: 0;
+    }
+    
+    .stat-item:hover .icon-box {
+        transform: scale(1.1);
+    }
+    
+    .stat-value {
+        font-size: 15px;
+        font-weight: 600;
+        margin: 0;
+        line-height: 1.3;
+        color: inherit;
+    }
+    
+    .stat-label {
+        font-size: 12px;
+        color: #6c757d;
+        font-weight: 500;
+        margin-top: 2px;
+        line-height: 1.2;
+    }
+    
+    .stat-item.primary .stat-value {
+        color: #007bff;
+    }
+    
+    .stat-item.success .stat-value {
+        color: #28a745;
+    }
+    
+    .stat-item.warning .stat-value {
+        color: #ffc107;
+    }
+    
+    .stat-item.info .stat-value {
+        color: #17a2b8;
+    }
+}
+
+/* quebra de linha  */
+.ranking-table td {
+    white-space: nowrap !important;
+}
+
+.value-total,
+.value-paid, 
+.value-pending,
+.value-profit {
+    white-space: nowrap !important;
+}
+
+.value-total strong,
+.value-paid strong,
+.value-pending strong {
+    white-space: nowrap !important;
+}
+
+@media (max-width: 375px) {
+    .ranking-table td {
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+    
+    .value-total,
+    .value-paid, 
+    .value-pending,
+    .value-profit {
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+    
+    .value-total strong,
+    .value-paid strong,
+    .value-pending strong {
+        white-space: nowrap !important;
+        display: inline-block !important;
+    }
+}
+
+@media (max-width: 320px) {
+    .ranking-table td {
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+    
+    .value-total,
+    .value-paid, 
+    .value-pending,
+    .value-profit {
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+    
+    .value-total strong,
+    .value-paid strong,
+    .value-pending strong {
+        white-space: nowrap !important;
+        display: inline-block !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .ranking-table td {
+        white-space: nowrap !important;
+    }
+    
+    .value-total,
+    .value-paid, 
+    .value-pending,
+    .value-profit {
+        white-space: nowrap !important;
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+    .ranking-table td {
+        white-space: nowrap !important;
+    }
+    
+    .value-total,
+    .value-paid, 
+    .value-pending,
+    .value-profit {
+        white-space: nowrap !important;
+    }
+}
+
+/* Botão de exportar */
+.btn-export {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef) !important;
+    border: 1px solid #dee2e6 !important;
+    color: #495057 !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
+}
+
+.btn-export:hover {
+    background: linear-gradient(135deg, #e9ecef, #dee2e6) !important;
+    border-color: #adb5bd !important;
+    color: #343a40 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1) !important;
+}
+
+.btn-export:focus {
+    box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.15) !important;
+}
+
+.btn-export:active {
+    background: linear-gradient(135deg, #dee2e6, #ced4da) !important;
+    transform: translateY(0) !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
+.btn-export.exporting {
+    background: linear-gradient(135deg, #fff3cd, #ffeaa7) !important;
+    border-color: #ffeaa7 !important;
+    color: #856404 !important;
+}
+
+.btn-export i {
+    color: #28a745 !important;
+    margin-right: 6px !important;
+    transition: color 0.3s ease !important;
+}
+
+.btn-export:hover i {
+    color: #1e7e34 !important;
+}
+
+.btn-export.exporting i {
+    color: #856404 !important;
+}
+
+.table-scroll-container {
+    overflow-x: auto !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: thin !important;
+    scrollbar-color: #dee2e6 #f8f9fa !important;
+}
+
+.table-scroll-container::-webkit-scrollbar {
+    height: 8px !important;
+    width: 8px !important;
+}
+
+.table-scroll-container::-webkit-scrollbar-track {
+    background: #f8f9fa !important;
+    border-radius: 4px !important;
+}
+
+.table-scroll-container::-webkit-scrollbar-thumb {
+    background: #dee2e6 !important;
+    border-radius: 4px !important;
+    transition: background 0.3s ease !important;
+}
+
+.table-scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #adb5bd !important;
+}
+
+.table-scroll-container::-webkit-scrollbar-corner {
+    background: #f8f9fa !important;
+}
+
+.ranking-table {
+    min-width: 1200px !important;
+    width: 100% !important;
+}
+
+.table-container {
+    position: relative !important;
+}
+
+.table-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 20px;
+    background: linear-gradient(to left, rgba(248,249,250,0.8), transparent);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.table-container:hover::after {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .table-scroll-container {
+        -webkit-overflow-scrolling: touch !important;
+        scroll-behavior: smooth !important;
+    }
+    
+    .ranking-table {
+        min-width: 800px !important;
+    }
+    
+    .table-scroll-container::-webkit-scrollbar {
+        height: 12px !important;
+    }
+    
+    .table-scroll-container::-webkit-scrollbar-thumb {
+        background: #6c757d !important;
+        border-radius: 6px !important;
+    }
+}
+
+@media (max-width: 375px) {
+    .table-container::before {
+        content: '← Deslize para ver mais →';
+        position: absolute;
+        bottom: -25px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 10px;
+        color: #6c757d;
+        background: rgba(248,249,250,0.9);
+        padding: 2px 8px;
+        border-radius: 12px;
+        white-space: nowrap;
+        z-index: 2;
+        animation: fadeInOut 3s ease-in-out infinite;
+    }
+}
+
+@keyframes fadeInOut {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+.product-image-container {
+    position: relative !important;
+    display: inline-block !important;
+}
+
+.product-image {
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    cursor: pointer !important;
+}
+
+.product-image:hover {
+    transform: translateY(-1px);
+    border-color: #667eea;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.product-tooltip {
+    position: absolute !important;
+    bottom: 100% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    background: rgba(33, 37, 41, 0.95) !important;
+    color: #ffffff !important;
+    padding: 8px 12px !important;
+    border-radius: 6px !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    white-space: nowrap !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: all 0.3s ease !important;
+    z-index: 1000 !important;
+    margin-bottom: 5px !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+    pointer-events: none !important;
+}
+
+.product-tooltip::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    border: 5px solid transparent !important;
+    border-top-color: rgba(33, 37, 41, 0.95) !important;
+}
+
+.product-image-container:hover .product-tooltip {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateX(-50%) translateY(-2px) !important;
+}
+
+@media (max-width: 768px) {
+    .product-tooltip {
+        font-size: 11px !important;
+        padding: 6px 10px !important;
+        margin-bottom: 3px !important;
+    }
+    
+    .product-tooltip::after {
+        border-width: 4px !important;
+    }
+}
+
+@media (max-width: 375px) {
+    .product-image {
+        width: 28px;
+        height: 28px;
+        border-radius: 6px;
+    }
+    
+    .product-tooltip {
+        font-size: 10px !important;
+        padding: 5px 8px !important;
+        margin-bottom: 2px !important;
+        max-width: 120px !important;
+        text-overflow: ellipsis !important;
+        overflow: hidden !important;
+    }
+    
+    .product-tooltip::after {
+        border-width: 3px !important;
+    }
+}
+
+@media (max-width: 320px) {
+    .product-image {
+        width: 26px;
+        height: 26px;
+        border-radius: 5px;
+    }
+    
+    .product-tooltip {
+        font-size: 9px !important;
+        padding: 4px 6px !important;
+        max-width: 100px !important;
+    }
+}
+</style>
+</head>
+<!--body with default sidebar pinned -->
+<body class="sidebar-pinned">
+<!--sidebar Begins-->
+<aside class="admin-sidebar">
+    <div class="admin-sidebar-brand">
+        <!-- begin sidebar branding-->
+        <img class="admin-brand-logo" src="../assets/img/logo.svg" width="40" alt="atmos Logo">
+        <span class="admin-brand-content"><a href="index.html">  atmos</a></span>
+        <!-- end sidebar branding-->
+        <div class="ml-auto">
+            <!-- sidebar pin-->
+            <a href="#" class="admin-pin-sidebar btn-ghost btn btn-rounded-circle"></a>
+            <!-- sidebar close for mobile device-->
+            <a href="#" class="admin-close-sidebar"></a>
+        </div>
+    </div>
+    <div class="admin-sidebar-wrapper js-scrollbar">
+        <!-- Menu List Begins-->
+        <ul class="menu">
+            <!--list item begins-->
+            <li class="menu-item active">
+                <a href="#" class="menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Ranking 2.0
+                                                </span>
+                                            </span>
+                    <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-trophy "></i>
+                                            </span>
+                </a>
+
+            </li>
+            <!--list item ends-->
+
+            <!--list item begins-->
+            <li class="menu-item ">
+                <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu level 1
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                                <span class="menu-info">Contains submenu</span>
+                                            </span>
+                    <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+                <!--submenu-->
+                <ul class="sub-menu">
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+
+
+                </ul>
+            </li>
+            <!--list item ends-->
+
+            <!--list item begins-->
+            <li class="menu-item ">
+                <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu Level 2
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                                <span class="menu-info">Contains submenu</span>
+                                            </span>
+                    <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+                <!--submenu-->
+                <ul class="sub-menu">
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu Level 1.1
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                        </a>
+                        <!--submenu-->
+                        <ul class="sub-menu">
+                            <li class="menu-item">
+                                <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 2.1 </span>
+                                            </span>
+                                    <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+            <!--list item ends-->
+        </ul>
+        <!-- Menu List Ends-->
+    </div>
+
+</aside>
+<!--sidebar Ends-->
+
+
+<main class="admin-main">
+
+    <!--site header begins-->
+<header class="admin-header">
+
+    <a href="#" class="sidebar-toggle" data-toggleclass="sidebar-open" data-target="body"> </a>
+
+    <nav class=" mr-auto my-auto">
+        <ul class="nav align-items-center">
+
+            <li class="nav-item">
+                <a class="nav-link  " data-target="#siteSearchModal" data-toggle="modal" href="#">
+                    <i class=" mdi mdi-magnify mdi-24px align-middle"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <nav class=" ml-auto">
+        <ul class="nav align-items-center">
+
+            <li class="nav-item">
+                <div class="dropdown">
+                    <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-24px mdi-bell-outline"></i>
+                        <span class="notification-counter"></span>
+                    </a>
+
+                    <div class="dropdown-menu notification-container dropdown-menu-right">
+                        <div class="d-flex p-all-15 bg-white justify-content-between border-bottom ">
+                            <a href="#!" class="mdi mdi-18px mdi-settings text-muted"></a>
+                            <span class="h5 m-0">Notifications</span>
+                            <a href="#!" class="mdi mdi-18px mdi-notification-clear-all text-muted"></a>
+                        </div>
+                        <div class="notification-events bg-gray-300">
+                            <div class="text-overline m-b-5">today</div>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body"> <i class="mdi mdi-circle text-success"></i> All systems operational.</div>
+                                </div>
+                            </a>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body"> <i class="mdi mdi-upload-multiple "></i> File upload successful.</div>
+                                </div>
+                            </a>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <i class="mdi mdi-cancel text-danger"></i> Your holiday has been denied
+                                    </div>
+                                </div>
+                            </a>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item dropdown ">
+                <a class="nav-link dropdown-toggle" href="#"   role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    <div class="avatar avatar-sm avatar-online">
+                        <span class="avatar-title rounded-circle bg-dark">V</span>
+
+                    </div>
+                </a>
+                <div class="dropdown-menu  dropdown-menu-right"   >
+                    <a class="dropdown-item" href="#">  Add Account
+                    </a>
+                    <a class="dropdown-item" href="#">  Reset Password</a>
+                    <a class="dropdown-item" href="#">  Help </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"> Logout</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </nav>
+</header>
+<!--site header ends -->    <section class="admin-content">
+        <!-- BEGIN PlACE PAGE CONTENT HERE -->
+        <div class="container-fluid p-all-15">
+            
+            <div class="row">
+                <div class="col-12">
+                    <div class="card ranking-card">
+                        <div class="card-header">
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <h6 class="ranking-title">
+                                        <i class="mdi mdi-trophy trophy-icon"></i>
+                                        Ranking de Produtos
+                                    </h6>
+                                    <small class="text-muted">Performance e vendas por produto</small>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <div class="d-flex justify-content-end align-items-center filter-section">
+                                        <small class="text-muted mr-2">Período:</small>
+                                        <div class="input-group input-group-sm">
+                                            <input type="text" class="form-control input-date" id="dataInicial" placeholder="">
+                                        </div>
+                                        <span class="mx-2 text-muted">até</span>
+                                        <div class="input-group input-group-sm">
+                                            <input type="text" class="form-control input-date" id="dataFinal" placeholder="" style="left: 1px; top: -3px;">
+                                        </div>
+                                        <button class="btn btn-primary btn-sm ml-2" id="filterBtn">
+                                            <i class="mdi mdi-filter"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Estatísticas -->
+                        <div class="card-body pb-2 stats-container">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-6 mb-3">
+                                    <div class="d-flex align-items-center stat-item primary">
+                                        <div class="icon-box bg-primary-light text-primary">
+                                            <i class="mdi mdi-currency-usd"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="stat-value text-primary">R$ 18.934,40</h6>
+                                            <small class="stat-label">Receita Total</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 mb-3">
+                                    <div class="d-flex align-items-center stat-item success">
+                                        <div class="icon-box bg-success-light text-success">
+                                            <i class="mdi mdi-check-circle"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="stat-value text-success">R$ 15.487,50</h6>
+                                            <small class="stat-label">Total Pago</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 mb-3">
+                                    <div class="d-flex align-items-center stat-item warning">
+                                        <div class="icon-box bg-warning-light text-warning">
+                                            <i class="mdi mdi-clock-outline"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="stat-value text-warning">R$ 6.563,50</h6>
+                                            <small class="stat-label">Pendente</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-6 mb-3">
+                                    <div class="d-flex align-items-center stat-item info">
+                                        <div class="icon-box bg-info-light text-info">
+                                            <i class="mdi mdi-chart-line"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="stat-value text-info">R$ 9.770,84</h6>
+                                            <small class="stat-label">Lucro Líquido</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="table-container">
+                            <div class="table-header">
+                                <h6 class="table-title">
+                                    <i class="mdi mdi-trophy text-warning mr-2"></i>
+                                    RANKING
+                                </h6>
+                                <div class="d-flex align-items-center">
+                                    <span class="badge badge-light mr-2" id="productCount">20 produtos</span>
+                                    <button class="btn btn-export btn-sm" id="exportBtn" data-toggle="tooltip" data-placement="top" title="Exportar ranking para Excel (.xls)">
+                                        <i class="mdi mdi-file-excel-outline"></i>
+                                        <span class="export-text">Exportar</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="table-scroll-container" id="tableScrollContainer">
+                                <table class="table ranking-table mb-0">
+                                    <thead class="table-fixed-header">
+                                        <tr>
+                                            <th style="width: 50px;">#</th>
+                                            <th style="width: 80px;">PRODUTO</th>
+                                            <th>TOTAL</th>
+                                            <th>PAGO</th>
+                                            <th>PENDENTE</th>
+                                            <th>ADS</th>
+                                            <th>CUSTO</th>
+                                            <th>TARIFAS</th>
+                                            <th>IMPOSTO</th>
+                                            <th>LUCRO*</th>
+                                            <th>CPA</th>
+                                            <th style="width: 120px;">% CONVERSÃO BOLETO</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="rankingTableBody">
+                                        <tr>
+                                            <td>
+                                                <div class="rank-position">1</div>
+                                            </td>
+                                            <td>
+                                                <div class="product-image-container">
+                                                    <img src="../Media_Imagens/teste.jpg" alt="Produto 1" class="product-image" style="object-position: 0% 0%;">
+                                                    <div class="product-tooltip">Smartwatch Pro Max</div>
+                                                </div>
+                                            </td>
+                                            <td class="value-total"><strong>5</strong> | 7.165,00</td>
+                                            <td class="value-paid"><strong>3</strong> | 2.155,00</td>
+                                            <td class="value-pending"><strong>2</strong> | 5.010,00</td>
+                                            <td>0,00</td>
+                                            <td>150,00</td>
+                                            <td>64,49</td>
+                                            <td>193,95</td>
+                                            <td class="value-profit">1.746,57</td>
+                                            <td>0,00</td>
+                                            <td>
+                                                <div class="conversion-display">
+                                                    <div class="conversion-percentage high">100,00%</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="rank-position">2</div>
+                                            </td>
+                                            <td>
+                                                <div class="product-image-container">
+                                                    <img src="../Media_Imagens/teste.jpg" alt="Produto 2" class="product-image" style="object-position: 25% 0%;">
+                                                    <div class="product-tooltip">Fone Bluetooth Premium</div>
+                                                </div>
+                                            </td>
+                                            <td class="value-total"><strong>3</strong> | 1.800,00</td>
+                                            <td class="value-paid"><strong>3</strong> | 1.800,00</td>
+                                            <td>0 | 0,00</td>
+                                            <td>0,00</td>
+                                            <td>0,00</td>
+                                            <td>72,00</td>
+                                            <td>162,00</td>
+                                            <td class="value-profit">1.566,00</td>
+                                            <td>0,00</td>
+                                            <td>
+                                                <div class="conversion-display">
+                                                    <span class="conversion-none">—</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="rank-position">3</div>
+                                            </td>
+                                            <td>
+                                                <div class="product-image-container">
+                                                    <img src="../Media_Imagens/teste.jpg" alt="Produto 3" class="product-image" style="object-position: 50% 0%;">
+                                                    <div class="product-tooltip">Câmera Digital 4K</div>
+                                                </div>
+                                            </td>
+                                            <td class="value-total"><strong>1</strong> | 850,00</td>
+                                            <td class="value-paid"><strong>1</strong> | 850,00</td>
+                                            <td>0 | 0,00</td>
+                                            <td>0,00</td>
+                                            <td>0,00</td>
+                                            <td>25,42</td>
+                                            <td>76,50</td>
+                                            <td class="value-profit">748,09</td>
+                                            <td>0,00</td>
+                                            <td>
+                                                <div class="conversion-display">
+                                                    <span class="conversion-none">—</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="rank-position">4</div>
+                                            </td>
+                                            <td>
+                                                <div class="product-image-container">
+                                                    <img src="../Media_Imagens/teste.jpg" alt="Produto 4" class="product-image" style="object-position: 75% 0%;">
+                                                    <div class="product-tooltip">Notebook Gamer RGB</div>
+                                                </div>
+                                            </td>
+                                            <td class="value-total"><strong>1</strong> | 700,00</td>
+                                            <td class="value-paid"><strong>1</strong> | 700,00</td>
+                                            <td>0 | 0,00</td>
+                                            <td>0,00</td>
+                                            <td>101,16</td>
+                                            <td>17,49</td>
+                                            <td>63,00</td>
+                                            <td class="value-profit">518,35</td>
+                                            <td>0,00</td>
+                                            <td>
+                                                <div class="conversion-display">
+                                                    <div class="conversion-percentage high">92,50%</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="rank-position">5</div>
+                                            </td>
+                                            <td>
+                                                <div class="product-image-container">
+                                                    <img src="../Media_Imagens/teste.jpg" alt="Produto 5" class="product-image" style="object-position: 100% 0%;">
+                                                    <div class="product-tooltip">Mouse Wireless Pro</div>
+                                                </div>
+                                            </td>
+                                            <td class="value-total"><strong>2</strong> | 500,00</td>
+                                            <td class="value-paid"><strong>2</strong> | 500,00</td>
+                                            <td>0 | 0,00</td>
+                                            <td>0,00</td>
+                                            <td>0,00</td>
+                                            <td>15,97</td>
+                                            <td>45,00</td>
+                                            <td class="value-profit">439,04</td>
+                                            <td>0,00</td>
+                                            <td>
+                                                <div class="conversion-display">
+                                                    <div class="conversion-percentage medium">75,00%</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="rank-position">6</div>
+                                            </td>
+                                            <td>
+                                                <div class="product-image-container">
+                                                    <img src="../Media_Imagens/teste.jpg" alt="Produto 6" class="product-image" style="object-position: 0% 25%;">
+                                                    <div class="product-tooltip">Teclado Mecânico RGB</div>
+                                                </div>
+                                            </td>
+                                            <td class="value-total"><strong>3</strong> | 433,70</td>
+                                            <td class="value-paid"><strong>3</strong> | 433,70</td>
+                                            <td>0 | 0,00</td>
+                                            <td>0,00</td>
+                                            <td>0,00</td>
+                                            <td>12,97</td>
+                                            <td>39,03</td>
+                                            <td class="value-profit">381,70</td>
+                                            <td>0,00</td>
+                                            <td>
+                                                <div class="conversion-display">
+                                                    <span class="conversion-none">—</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="rank-position">7</div>
+                                            </td>
+                                            <td>
+                                                <div class="product-image-container">
+                                                    <img src="../Media_Imagens/teste.jpg" alt="Produto 7" class="product-image" style="object-position: 25% 25%;">
+                                                    <div class="product-tooltip">Monitor 4K UltraWide</div>
+                                                </div>
+                                            </td>
+                                            <td class="value-total"><strong>4</strong> | 811,60</td>
+                                            <td class="value-paid"><strong>2</strong> | 415,80</td>
+                                            <td class="value-pending"><strong>2</strong> | 395,80</td>
+                                            <td>0,00</td>
+                                            <td>0,00</td>
+                                            <td>11,81</td>
+                                            <td>37,42</td>
+                                            <td class="value-profit">366,57</td>
+                                            <td>0,00</td>
+                                            <td>
+                                                <div class="conversion-display">
+                                                    <div class="conversion-percentage high">88,00%</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="rank-position">8</div>
+                                            </td>
+                                            <td>
+                                                <div class="product-image-container">
+                                                    <img src="../Media_Imagens/teste.jpg" alt="Produto 8" class="product-image" style="object-position: 50% 25%;">
+                                                    <div class="product-tooltip">Smartphone 5G Pro</div>
+                                                </div>
+                                            </td>
+                                            <td class="value-total"><strong>2</strong> | 350,00</td>
+                                            <td class="value-paid"><strong>2</strong> | 350,00</td>
+                                            <td>0 | 0,00</td>
+                                            <td>0,00</td>
+                                            <td>0,00</td>
+                                            <td>10,47</td>
+                                            <td>31,50</td>
+                                            <td class="value-profit">308,04</td>
+                                            <td>0,00</td>
+                                            <td>
+                                                <div class="conversion-display">
+                                                    <span class="conversion-none">—</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="rank-position">9</div>
+                                            </td>
+                                            <td>
+                                                <div class="product-image-container">
+                                                    <img src="../Media_Imagens/teste.jpg" alt="Produto 9" class="product-image" style="object-position: 75% 25%;">
+                                                    <div class="product-tooltip">Tablet Premium 12"</div>
+                                                </div>
+                                            </td>
+                                            <td class="value-total"><strong>5</strong> | 409,50</td>
+                                            <td class="value-paid"><strong>4</strong> | 331,60</td>
+                                            <td class="value-pending"><strong>1</strong> | 77,90</td>
+                                            <td>0,00</td>
+                                            <td>0,00</td>
+                                            <td>13,44</td>
+                                            <td>29,84</td>
+                                            <td class="value-profit">288,32</td>
+                                            <td>0,00</td>
+                                            <td>
+                                                <div class="conversion-display">
+                                                    <div class="conversion-percentage medium">65,00%</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="rank-position">10</div>
+                                            </td>
+                                            <td>
+                                                <div class="product-image-container">
+                                                    <img src="../Media_Imagens/teste.jpg" alt="Produto 10" class="product-image" style="object-position: 100% 25%;">
+                                                    <div class="product-tooltip">Caixa de Som Bluetooth</div>
+                                                </div>
+                                            </td>
+                                            <td class="value-total"><strong>2</strong> | 300,00</td>
+                                            <td class="value-paid"><strong>2</strong> | 300,00</td>
+                                            <td>0 | 0,00</td>
+                                            <td>0,00</td>
+                                            <td>0,00</td>
+                                            <td>10,49</td>
+                                            <td>27,00</td>
+                                            <td class="value-profit">262,52</td>
+                                            <td>0,00</td>
+                                            <td>
+                                                <div class="conversion-display">
+                                                    <span class="conversion-none">—</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="rank-position">11</div>
+                                            </td>
+                                            <td>
+                                                <img src="../Media_Imagens/teste.jpg" alt="Produto 11" class="product-image" style="object-position: 25% 50%;">
+                                            </td>
+                                            <td class="value-total"><strong>1</strong> | 400,00</td>
+                                            <td class="value-paid"><strong>1</strong> | 400,00</td>
+                                            <td>0 | 0,00</td>
+                                            <td>100,00</td>
+                                            <td>0,00</td>
+                                            <td>11,96</td>
+                                            <td>36,00</td>
+                                            <td class="value-profit">252,04</td>
+                                            <td>100,00</td>
+                                            <td>
+                                                <div class="conversion-display">
+                                                    <div class="conversion-percentage low">45,00%</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="rank-position">12</div>
+                                            </td>
+                                            <td>
+                                                <img src="../Media_Imagens/teste.jpg" alt="Produto 12" class="product-image" style="object-position: 75% 50%;">
+                                            </td>
+                                            <td class="value-total"><strong>2</strong> | 270,00</td>
+                                            <td class="value-paid"><strong>2</strong> | 270,00</td>
+                                            <td>0 | 0,00</td>
+                                            <td>0,00</td>
+                                            <td>0,00</td>
+                                            <td>9,09</td>
+                                            <td>24,30</td>
+                                            <td class="value-profit">236,61</td>
+                                            <td>0,00</td>
+                                            <td>
+                                                <div class="conversion-display">
+                                                    <div class="conversion-percentage medium">80,00%</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="rank-position">12</div>
+                                            </td>
+                                            <td>
+                                                <img src="../Media_Imagens/teste.jpg" alt="Produto 12" class="product-image" style="object-position: 75% 50%;">
+                                            </td>
+                                            <td class="value-total"><strong>2</strong> | 270,00</td>
+                                            <td class="value-paid"><strong>2</strong> | 270,00</td>
+                                            <td>0 | 0,00</td>
+                                            <td>0,00</td>
+                                            <td>0,00</td>
+                                            <td>9,09</td>
+                                            <td>24,30</td>
+                                            <td class="value-profit">236,61</td>
+                                            <td>0,00</td>
+                                            <td>
+                                                <div class="conversion-display">
+                                                    <div class="conversion-percentage medium">80,00%</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="rank-position">13</div>
+                                            </td>
+                                            <td>
+                                                <img src="../Media_Imagens/teste.jpg" alt="Produto 13" class="product-image" style="object-position: 0% 75%;">
+                                            </td>
+                                            <td class="value-total"><strong>1</strong> | 220,00</td>
+                                            <td class="value-paid"><strong>1</strong> | 220,00</td>
+                                            <td>0 | 0,00</td>
+                                            <td>0,00</td>
+                                            <td>0,00</td>
+                                            <td>7,48</td>
+                                            <td>19,80</td>
+                                            <td class="value-profit">192,72</td>
+                                            <td>0,00</td>
+                                            <td>
+                                                <div class="conversion-display">
+                                                    <span class="conversion-none">—</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="rank-position">14</div>
+                                            </td>
+                                            <td>
+                                                <img src="../Media_Imagens/teste.jpg" alt="Produto 14" class="product-image" style="object-position: 25% 75%;">
+                                            </td>
+                                            <td class="value-total"><strong>3</strong> | 195,00</td>
+                                            <td class="value-paid"><strong>2</strong> | 130,00</td>
+                                            <td class="value-pending"><strong>1</strong> | 65,00</td>
+                                            <td>0,00</td>
+                                            <td>0,00</td>
+                                            <td>6,58</td>
+                                            <td>17,55</td>
+                                            <td class="value-profit">105,87</td>
+                                            <td>0,00</td>
+                                            <td>
+                                                <div class="conversion-display">
+                                                    <div class="conversion-percentage low">35,00%</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="rank-position">15</div>
+                                            </td>
+                                            <td>
+                                                <img src="../Media_Imagens/teste.jpg" alt="Produto 15" class="product-image" style="object-position: 50% 75%;">
+                                            </td>
+                                            <td class="value-total"><strong>2</strong> | 180,00</td>
+                                            <td class="value-paid"><strong>2</strong> | 180,00</td>
+                                            <td>0 | 0,00</td>
+                                            <td>0,00</td>
+                                            <td>0,00</td>
+                                            <td>5,94</td>
+                                            <td>16,20</td>
+                                            <td class="value-profit">157,86</td>
+                                            <td>0,00</td>
+                                            <td>
+                                                <div class="conversion-display">
+                                                    <div class="conversion-percentage medium">70,00%</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="rank-position">16</div>
+                                            </td>
+                                            <td>
+                                                <img src="../Media_Imagens/teste.jpg" alt="Produto 16" class="product-image" style="object-position: 75% 75%;">
+                                            </td>
+                                            <td class="value-total"><strong>1</strong> | 150,00</td>
+                                            <td class="value-paid"><strong>1</strong> | 150,00</td>
+                                            <td>0 | 0,00</td>
+                                            <td>0,00</td>
+                                            <td>0,00</td>
+                                            <td>4,95</td>
+                                            <td>13,50</td>
+                                            <td class="value-profit">131,55</td>
+                                            <td>0,00</td>
+                                            <td>
+                                                <div class="conversion-display">
+                                                    <span class="conversion-none">—</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="rank-position">17</div>
+                                            </td>
+                                            <td>
+                                                <img src="../Media_Imagens/teste.jpg" alt="Produto 17" class="product-image" style="object-position: 100% 75%;">
+                                            </td>
+                                            <td class="value-total"><strong>2</strong> | 140,00</td>
+                                            <td class="value-paid"><strong>1</strong> | 70,00</td>
+                                            <td class="value-pending"><strong>1</strong> | 70,00</td>
+                                            <td>0,00</td>
+                                            <td>0,00</td>
+                                            <td>4,62</td>
+                                            <td>12,60</td>
+                                            <td class="value-profit">52,78</td>
+                                            <td>0,00</td>
+                                            <td>
+                                                <div class="conversion-display">
+                                                    <div class="conversion-percentage low">25,00%</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="rank-position">18</div>
+                                            </td>
+                                            <td>
+                                                <img src="../Media_Imagens/teste.jpg" alt="Produto 18" class="product-image" style="object-position: 0% 100%;">
+                                            </td>
+                                            <td class="value-total"><strong>1</strong> | 120,00</td>
+                                            <td class="value-paid"><strong>1</strong> | 120,00</td>
+                                            <td>0 | 0,00</td>
+                                            <td>0,00</td>
+                                            <td>0,00</td>
+                                            <td>3,96</td>
+                                            <td>10,80</td>
+                                            <td class="value-profit">105,24</td>
+                                            <td>0,00</td>
+                                            <td>
+                                                <div class="conversion-display">
+                                                    <span class="conversion-none">—</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="rank-position">19</div>
+                                            </td>
+                                            <td>
+                                                <img src="../Media_Imagens/teste.jpg" alt="Produto 19" class="product-image" style="object-position: 25% 100%;">
+                                            </td>
+                                            <td class="value-total"><strong>2</strong> | 110,00</td>
+                                            <td class="value-paid"><strong>1</strong> | 55,00</td>
+                                            <td class="value-pending"><strong>1</strong> | 55,00</td>
+                                            <td>0,00</td>
+                                            <td>0,00</td>
+                                            <td>3,63</td>
+                                            <td>9,90</td>
+                                            <td class="value-profit">41,47</td>
+                                            <td>0,00</td>
+                                            <td>
+                                                <div class="conversion-display">
+                                                    <div class="conversion-percentage medium">60,00%</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="rank-position">20</div>
+                                            </td>
+                                            <td>
+                                                <img src="../Media_Imagens/teste.jpg" alt="Produto 20" class="product-image" style="object-position: 50% 100%;">
+                                            </td>
+                                            <td class="value-total"><strong>1</strong> | 100,00</td>
+                                            <td class="value-paid"><strong>1</strong> | 100,00</td>
+                                            <td>0 | 0,00</td>
+                                            <td>0,00</td>
+                                            <td>0,00</td>
+                                            <td>3,30</td>
+                                            <td>9,00</td>
+                                            <td class="value-profit">87,70</td>
+                                            <td>0,00</td>
+                                            <td>
+                                                <div class="conversion-display">
+                                                    <span class="conversion-none">—</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END PLACE PAGE CONTENT HERE -->
+    </section>
+</main>
+
+
+<div class="modal modal-slide-left  fade" id="siteSearchModal" tabindex="-1" role="dialog" aria-labelledby="siteSearchModal"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body p-all-0" id="site-search">
+                <button type="button" class="close light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="form-dark bg-dark text-white p-t-60 p-b-20 bg-dots" >
+                    <h3 class="text-uppercase    text-center  fw-300 "> Search</h3>
+
+                    <div class="container-fluid">
+                        <div class="col-md-10 p-t-10 m-auto">
+                            <input type="search" placeholder="Search Something"
+                                   class=" search form-control form-control-lg">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="bg-dark text-muted container-fluid p-b-10 text-center text-overline">
+                        results
+                    </div>
+                    <div class="list-group list  ">
+
+
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"   src="../assets/img/users/user-3.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Eric Chen</div>
+                                <div class="text-muted">Developer</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"
+                                                                    src="../assets/img/users/user-4.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Sean Valdez</div>
+                                <div class="text-muted">Marketing</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"
+                                                                    src="../assets/img/users/user-8.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Marie Arnold</div>
+                                <div class="text-muted">Developer</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar-title bg-dark rounded"><i class="mdi mdi-24px mdi-file-pdf"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">SRS Document</div>
+                                <div class="text-muted">25.5 Mb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar-title bg-dark rounded"><i
+                                                class="mdi mdi-24px mdi-file-document-box"></i></div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">Design Guide.pdf</div>
+                                <div class="text-muted">9 Mb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar avatar-sm ">
+                                        <div class="avatar-title bg-primary rounded"><i
+                                                    class="mdi mdi-24px mdi-code-braces"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">response.json</div>
+                                <div class="text-muted">15 Kb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar avatar-sm ">
+                                        <div class="avatar-title bg-info rounded"><i
+                                                    class="mdi mdi-24px mdi-file-excel"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">June Accounts.xls</div>
+                                <div class="text-muted">6 Mb</div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="../assets/vendor/jquery/jquery.min.js"></script>
+<script src="../assets/vendor/jquery-ui/jquery-ui.min.js"></script>
+<script src="../assets/vendor/popper/popper.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/vendor/select2/js/select2.full.min.js"></script>
+<script src="../assets/vendor/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+<script src="../assets/vendor/listjs/listjs.min.js"></script>
+<script src="../assets/vendor/moment/moment.min.js"></script>
+<script src="../assets/vendor/daterangepicker/daterangepicker.js"></script>
+<script src="../assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="../assets/vendor/bootstrap-notify/bootstrap-notify.min.js"></script>
+<script src="../assets/js/atmos.min.js"></script>
+<!--page specific scripts for demo-->
+<script>
+$(document).ready(function() {
+    function formatarDataAtual() {
+        var data = new Date();
+        var dia = data.getDate().toString().padStart(2, '0');
+        var mes = (data.getMonth() + 1).toString().padStart(2, '0');
+        var ano = data.getFullYear();
+        return dia + '/' + mes + '/' + ano;
+    }
+
+    var dataAtual = formatarDataAtual();
+    $('#dataInicial, #dataFinal').attr('placeholder', dataAtual);
+
+    $('.input-date').datepicker({
+        format: 'dd/mm/yyyy',
+        autoclose: true,
+        todayHighlight: true,
+        language: 'pt-BR',
+        orientation: 'bottom auto',
+        templates: {
+            leftArrow: '<i class="mdi mdi-chevron-left"></i>',
+            rightArrow: '<i class="mdi mdi-chevron-right"></i>'
+        }
+    }).on('show', function() {
+        $('.datepicker-dropdown').addClass('shadow-sm');
+    });
+
+    $('[data-toggle="tooltip"]').tooltip();
+
+    $('<style>'+
+      '.input-date { background-color: transparent !important; height: calc(1.5em + 0.75rem + 2px); }'+
+      '.datepicker { font-family: "Jost", sans-serif; border-radius: 4px; }'+
+      '.datepicker table tr td.active { background-color: #7367f0 !important; background-image: none !important; }'+
+      '.datepicker-dropdown { margin-top: 0; padding: 10px; border-radius: 5px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }'+
+      '.datepicker table { font-size: 13px; }'+
+      '</style>').appendTo('head');
+
+    $('.btn[data-toggle="collapse"]').click(function() {
+        $(this).find('.mdi-chevron-down').toggleClass('rotate-180');
+    });
+
+    $('<style>.rotate-180 { transform: rotate(180deg); transition: transform 0.3s; }</style>').appendTo('head');
+
+    const filterBtn = document.getElementById('filterBtn');
+    
+    if (filterBtn) {
+        filterBtn.addEventListener('click', function() {
+            const startDate = $('#dataInicial').val();
+            const endDate = $('#dataFinal').val();
+            
+            if (startDate && endDate) {
+                filterBtn.innerHTML = '<i class="mdi mdi-loading mdi-spin mr-1"></i> Filtrando...';
+                filterBtn.disabled = true;
+                
+                setTimeout(() => {
+                    filterBtn.innerHTML = '<i class="mdi mdi-filter mr-1"></i> Filtrar';
+                    filterBtn.disabled = false;
+                    
+                    console.log('Filtrar dados de', startDate, 'até', endDate);
+                }, 1500);
+            } else {
+                alert('Por favor, selecione as datas inicial e final.');
+            }
+        });
+    }
+    
+    const exportBtn = document.querySelector('.btn-export');
+    if (exportBtn) {
+        exportBtn.addEventListener('click', function() {
+            exportToExcel();
+        });
+    }
+    
+    function exportToExcel() {
+        const btn = document.getElementById('exportBtn');
+        const originalHTML = btn.innerHTML;
+        
+        btn.classList.add('exporting');
+        btn.innerHTML = '<i class="mdi mdi-loading mdi-spin"></i><span class="export-text">Exportando...</span>';
+        btn.disabled = true;
+        
+        setTimeout(() => {
+            try {
+                const table = document.querySelector('.ranking-table');
+                const rows = table.querySelectorAll('tr');
+                
+                let csvData = [];
+                
+                const headers = [];
+                const headerCells = rows[0].querySelectorAll('th');
+                headerCells.forEach(cell => {
+                    headers.push(cell.textContent.trim());
+                });
+                csvData.push(headers.join('\t'));
+                
+                for (let i = 1; i < rows.length; i++) {
+                    const row = rows[i];
+                    const cells = row.querySelectorAll('td');
+                    const rowData = [];
+                    
+                    cells.forEach((cell, index) => {
+                        if (index === 0) {
+                            rowData.push(cell.textContent.trim());
+                        } else if (index === 1) {
+                            rowData.push(`Produto ${i}`);
+                        } else if (index >= 2 && index <= 10) {
+                            let cellText = cell.textContent.trim();
+                            if (cellText.includes('|')) {
+                                const parts = cellText.split('|');
+                                if (parts.length === 2) {
+                                    const quantidade = parts[0].trim();
+                                    const valor = parts[1].trim();
+                                    rowData.push(`${quantidade} | ${valor}`);
+                                } else {
+                                    rowData.push(cellText);
+                                }
+                            } else {
+                                rowData.push(cellText);
+                            }
+                        } else if (index === 11) {
+                            const conversionElement = cell.querySelector('.conversion-percentage');
+                            if (conversionElement) {
+                                rowData.push(conversionElement.textContent.trim());
+                            } else {
+                                rowData.push('—');
+                            }
+                        } else {
+                            rowData.push(cell.textContent.trim());
+                        }
+                    });
+                    
+                    csvData.push(rowData.join('\t'));
+                }
+                
+                const csvContent = csvData.join('\n');
+                const BOM = '\uFEFF';
+                const blob = new Blob([BOM + csvContent], { type: 'text/csv;charset=utf-8;' });
+                
+                const link = document.createElement('a');
+                const url = URL.createObjectURL(blob);
+                link.setAttribute('href', url);
+                
+                const hoje = new Date();
+                const dataFormatada = hoje.toLocaleDateString('pt-BR').replace(/\//g, '-');
+                link.setAttribute('download', `ranking-produtos-${dataFormatada}.xls`);
+                
+                link.style.visibility = 'hidden';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                btn.classList.remove('exporting');
+                btn.innerHTML = '<i class="mdi mdi-check"></i><span class="export-text">Exportado!</span>';
+                btn.style.background = 'linear-gradient(135deg, #28a745, #20c997)';
+                btn.style.color = '#ffffff';
+                
+                if (typeof $.notify !== 'undefined') {
+                    $.notify({
+                        title: '<strong>Exportação Concluída!</strong>',
+                        message: `Arquivo ranking-produtos-${dataFormatada}.xls baixado com sucesso.`
+                    }, {
+                        type: 'success',
+                        delay: 4000,
+                        animate: {
+                            enter: 'animated fadeInRight',
+                            exit: 'animated fadeOutRight'
+                        }
+                    });
+                }
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    btn.style.background = '';
+                    btn.style.color = '';
+                    btn.disabled = false;
+                }, 2000);
+                
+            } catch (error) {
+                console.error('Erro ao exportar:', error);
+                
+                btn.classList.remove('exporting');
+                btn.innerHTML = '<i class="mdi mdi-alert-circle"></i><span class="export-text">Erro!</span>';
+                btn.style.background = 'linear-gradient(135deg, #dc3545, #e74c3c)';
+                btn.style.color = '#ffffff';
+                
+                if (typeof $.notify !== 'undefined') {
+                    $.notify({
+                        title: '<strong>Erro na Exportação!</strong>',
+                        message: 'Houve um problema ao exportar o arquivo. Tente novamente.'
+                    }, {
+                        type: 'danger',
+                        delay: 4000,
+                        animate: {
+                            enter: 'animated fadeInRight',
+                            exit: 'animated fadeOutRight'
+                        }
+                    });
+                }
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    btn.style.background = '';
+                    btn.style.color = '';
+                    btn.disabled = false;
+                }, 2000);
+            }
+        }, 1000);
+    }
+    
+    const tableRows = document.querySelectorAll('.ranking-table tbody tr');
+    tableRows.forEach(row => {
+        row.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.01)';
+            this.style.transition = 'transform 0.2s ease';
+        });
+        
+        row.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+    });
+
+    initializeTableScroll();
+});
+
+function initializeTableScroll() {
+    const scrollContainer = document.getElementById('tableScrollContainer');
+    const scrollIndicator = document.getElementById('scrollIndicator');
+    const productsCounter = document.getElementById('productsCounter');
+    const visibleCountSpan = document.getElementById('visibleCount');
+    const totalCountSpan = document.getElementById('totalCount');
+    const tableRows = document.querySelectorAll('.ranking-table tbody tr');
+    
+    if (!scrollContainer || !scrollIndicator || !productsCounter) return;
+    
+    const totalProducts = tableRows.length;
+    totalCountSpan.textContent = totalProducts;
+    
+    function updateVisibleCount() {
+        const containerRect = scrollContainer.getBoundingClientRect();
+        const containerTop = containerRect.top;
+        const containerBottom = containerRect.bottom;
+        
+        let visibleCount = 0;
+        
+        tableRows.forEach(row => {
+            const rowRect = row.getBoundingClientRect();
+            const rowTop = rowRect.top;
+            const rowBottom = rowRect.bottom;
+            
+            const rowMiddle = rowTop + (rowBottom - rowTop) / 2;
+            if (rowMiddle >= containerTop && rowMiddle <= containerBottom) {
+                visibleCount++;
+            }
+        });
+        
+        visibleCountSpan.textContent = visibleCount;
+        
+        const isScrollable = scrollContainer.scrollHeight > scrollContainer.clientHeight;
+        const isAtBottom = scrollContainer.scrollTop + scrollContainer.clientHeight >= scrollContainer.scrollHeight - 10;
+        
+        if (isScrollable && !isAtBottom) {
+            scrollIndicator.classList.add('show');
+        } else {
+            scrollIndicator.classList.remove('show');
+        }
+        
+        if (isScrollable) {
+            productsCounter.style.display = 'block';
+        } else {
+            productsCounter.style.display = 'none';
+        }
+    }
+    
+    scrollContainer.addEventListener('scroll', function() {
+        updateVisibleCount();
+        
+        const scrollTop = this.scrollTop;
+        const rowHeight = 60;
+        const currentRowIndex = Math.floor(scrollTop / rowHeight);
+        
+        tableRows.forEach(row => row.classList.remove('scroll-highlight'));
+        
+        if (tableRows[currentRowIndex]) {
+            tableRows[currentRowIndex].classList.add('scroll-highlight');
+            
+            setTimeout(() => {
+                if (tableRows[currentRowIndex]) {
+                    tableRows[currentRowIndex].classList.remove('scroll-highlight');
+                }
+            }, 1000);
+        }
+    });
+    
+    updateVisibleCount();
+    
+    window.addEventListener('resize', updateVisibleCount);
+    
+    scrollIndicator.addEventListener('click', function() {
+        scrollContainer.scrollBy({
+            top: 200,
+            behavior: 'smooth'
+        });
+    });
+    
+    // Navegação
+    document.addEventListener('keydown', function(e) {
+        if (e.target.tagName === 'INPUT') return;
+        
+        switch(e.key) {
+            case 'ArrowDown':
+                e.preventDefault();
+                scrollContainer.scrollBy({
+                    top: 60,
+                    behavior: 'smooth'
+                });
+                break;
+            case 'ArrowUp':
+                e.preventDefault();
+                scrollContainer.scrollBy({
+                    top: -60,
+                    behavior: 'smooth'
+                });
+                break;
+            case 'Home':
+                e.preventDefault();
+                scrollContainer.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+                break;
+            case 'End':
+                e.preventDefault();
+                scrollContainer.scrollTo({
+                    top: scrollContainer.scrollHeight,
+                    behavior: 'smooth'
+                });
+                break;
+        }
+    });
+}
+</script>
+</body>
+</html>

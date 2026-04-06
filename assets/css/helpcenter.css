@@ -1,0 +1,716 @@
+:root {
+    --helpcenter-primary: #0066cc;
+    --helpcenter-primary-rgb: 0, 102, 204;
+    --helpcenter-primary-light: #0066cc1c;
+    --helpcenter-contrast: #ffffff;
+    --helpcenter-header: #000000;
+    --helpcenter-header-dark: #000000;
+    --helpcenter-background: #FFFFFF;
+    --helpcenter-title: #000000;
+    --helpcenter-text: #3c3c3c;
+    --helpcenter-light-text: #8c8c8c;
+    --helpcenter-border: #ebebeb;
+    --helpcenter-gray: #f5f5f5;
+}
+
+body {
+    background-color: var(--helpcenter-background);
+    color: var(--helpcenter-text);
+    font-family: 'Jost', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow-x: hidden;
+}
+
+.helpcenter-hero {
+    background: linear-gradient(135deg, var(--helpcenter-primary) 0%, #004499 100%);
+    color: white;
+    padding: 4rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.helpcenter-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+    background-size: 50px 50px;
+    opacity: 0.3;
+}
+
+.helpcenter-hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.helpcenter-logo {
+    height: 40px;
+    width: auto;
+    border-radius: 0.25rem;
+}
+
+.helpcenter-brand-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+}
+
+.helpcenter-subtitle {
+    font-size: 1.125rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+}
+
+.helpcenter-search-container {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.helpcenter-search-input {
+    border: none;
+    border-radius: 50px;
+    padding: 1rem 1rem 1rem 3.5rem;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    background: white;
+    transition: box-shadow 0.3s ease;
+}
+
+.helpcenter-search-input:focus {
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+.helpcenter-search-icon {
+    position: absolute;
+    left: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--helpcenter-light-text);
+    z-index: 3;
+    font-size: 1.1rem;
+}
+
+.helpcenter-categories {
+    padding: 4rem 0;
+}
+
+.helpcenter-category-card {
+    background: white;
+    border-radius: 0.5rem;
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: flex-start;
+    border: 1px solid var(--helpcenter-border);
+    position: relative;
+    overflow: hidden;
+}
+
+.helpcenter-category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--helpcenter-primary);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.helpcenter-category-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.12);
+    text-decoration: none;
+    color: inherit;
+}
+
+.helpcenter-category-card:hover::before {
+    transform: scaleY(1);
+}
+
+.helpcenter-category-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 0.5rem;
+    margin-right: 1rem;
+    flex-shrink: 0;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    object-fit: cover;
+}
+
+.helpcenter-category-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.helpcenter-category-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.helpcenter-category-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.helpcenter-category-title {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    margin-bottom: 0.375rem;
+    color: var(--helpcenter-header);
+    line-height: 1.3;
+}
+
+.helpcenter-category-description {
+    color: var(--helpcenter-light-text);
+    font-size: 0.875rem;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.helpcenter-category-arrow {
+    color: var(--helpcenter-primary);
+    font-size: 1rem;
+    margin-left: 0.75rem;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.helpcenter-category-card:hover .helpcenter-category-arrow {
+    transform: translateX(4px);
+}
+
+.helpcenter-footer {
+    background-color: var(--helpcenter-gray);
+    padding: 2rem 0;
+    margin-top: 4rem;
+    text-align: center;
+    color: var(--helpcenter-light-text);
+    border-top: 1px solid var(--helpcenter-border);
+}
+
+@media (max-width: 768px) {
+    .helpcenter-hero {
+        padding: 3rem 0;
+    }
+
+    .helpcenter-brand-title {
+        font-size: 1.5rem;
+    }
+
+    .helpcenter-categories {
+        padding: 3rem 0;
+    }
+
+    .helpcenter-category-card {
+        padding: 1rem;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .helpcenter-category-icon {
+        margin-right: 0;
+        margin-bottom: 0.75rem;
+        align-self: center;
+    }
+
+    .helpcenter-category-arrow {
+        margin-left: 0;
+        margin-top: 1rem;
+        align-self: center;
+    }
+}
+
+.helpcenter-category-card {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.helpcenter-category-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.helpcenter-category-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.helpcenter-category-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.helpcenter-category-card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.helpcenter-category-card:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.helpcenter-category-card:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.helpcenter-search-input.focused {
+    border-color: var(--helpcenter-primary);
+}
+
+.helpcenter-category-card:focus {
+    outline: 2px solid var(--helpcenter-primary);
+    outline-offset: 2px;
+}
+
+@media (max-width: 576px) {
+    .helpcenter-hero {
+        padding: 2rem 0;
+    }
+
+    .helpcenter-brand-title {
+        font-size: 1.25rem;
+    }
+
+    .helpcenter-subtitle {
+        font-size: 1rem;
+    }
+
+    .helpcenter-search-input {
+        font-size: 1rem;
+        padding: 0.875rem 0.875rem 0.875rem 3rem;
+    }
+
+    .helpcenter-category-card {
+        padding: 1rem;
+    }
+
+    .helpcenter-category-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .helpcenter-category-title {
+        font-size: 1rem;
+    }
+
+    .helpcenter-category-description {
+        font-size: 0.8125rem;
+    }
+}
+
+.helpcenter-popular {
+    padding: 4rem 0 2rem 0;
+    background-color: var(--helpcenter-background);
+}
+
+.helpcenter-popular-title {
+    text-align: center;
+    color: var(--helpcenter-header);
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.helpcenter-popular-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--helpcenter-primary);
+    border-radius: 2px;
+}
+
+.helpcenter-popular-card {
+    background: white;
+    border-radius: 0.5rem;
+    padding: 0;
+    height: 100%;
+    border: 1px solid var(--helpcenter-border);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.helpcenter-popular-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 102, 204, 0.12);
+    border-color: rgba(0, 102, 204, 0.2);
+}
+
+.helpcenter-popular-header {
+    background: linear-gradient(135deg, rgba(0, 102, 204, 0.05) 0%, rgba(0, 102, 204, 0.02) 100%);
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--helpcenter-border);
+    display: flex;
+    align-items: center;
+}
+
+.helpcenter-popular-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 0.375rem;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0, 102, 204, 0.1);
+}
+
+.helpcenter-popular-card-title {
+    color: var(--helpcenter-header-dark);
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.helpcenter-popular-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.helpcenter-popular-item {
+    border-bottom: 1px solid var(--helpcenter-border);
+}
+
+.helpcenter-popular-item:last-child {
+    border-bottom: none;
+}
+
+.helpcenter-popular-link {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    color: var(--helpcenter-text);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.helpcenter-popular-link i {
+    color: var(--helpcenter-primary);
+    font-size: 0.75rem;
+    margin-right: 0.75rem;
+    transition: transform 0.2s ease;
+}
+
+.helpcenter-popular-link span {
+    flex: 1;
+    line-height: 1.5;
+}
+
+.helpcenter-popular-link:hover {
+    background-color: rgba(0, 102, 204, 0.03);
+    color: var(--helpcenter-primary);
+    text-decoration: none;
+}
+
+.helpcenter-popular-link:hover i {
+    transform: translateX(4px);
+}
+
+@media (max-width: 768px) {
+    .helpcenter-popular {
+        padding: 3rem 0 1rem 0;
+    }
+
+    .helpcenter-popular-title {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+    }
+}
+
+.shared-helpcenter-content-tree-wrapper {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.shared-helpcenter-main-content {
+    padding: 2rem 0;
+}
+
+.shared-helpcenter-breadcrumbs {
+    margin-bottom: 2rem;
+}
+
+.shared-helpcenter-breadcrumbs-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.helpcenter-breadcrumb {
+    color: var(--helpcenter-primary);
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.2s ease;
+}
+
+.helpcenter-breadcrumb:hover {
+    color: #004499;
+    text-decoration: none;
+}
+
+.helpcenter-breadcrumb--active {
+    color: var(--helpcenter-text);
+    font-weight: 500;
+}
+
+.helpcenter-breadcrumb-spacer {
+    color: var(--helpcenter-light-text);
+    font-size: 0.75rem;
+}
+
+.shared-helpcenter-collection-details {
+    background: white;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    border: 1px solid var(--helpcenter-border);
+}
+
+.collection-item-title {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--helpcenter-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.collection-item-details {
+    flex: 1;
+}
+
+.helpcenter-back-button {
+    background: transparent;
+    color: var(--helpcenter-primary);
+    border: 1px solid var(--helpcenter-primary);
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+    margin-left: 1rem;
+    flex-shrink: 0;
+}
+
+.helpcenter-back-button:hover {
+    background: var(--helpcenter-primary);
+    color: white;
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+.helpcenter-back-button i {
+    font-size: 12px;
+}
+
+.quem-somos-content {
+    line-height: 1.6;
+    padding: 0;
+    margin: 0;
+}
+
+.quem-somos-section {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--helpcenter-border);
+}
+
+.quem-somos-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.quem-somos-section h3 {
+    color: var(--helpcenter-header);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--helpcenter-primary);
+    display: inline-block;
+}
+
+.quem-somos-section p {
+    color: var(--helpcenter-text);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.quem-somos-section ul {
+    color: var(--helpcenter-text);
+    padding-left: 1.5rem;
+}
+
+.quem-somos-section li {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .quem-somos-section {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+    }
+
+    .quem-somos-section h3 {
+        font-size: 1.125rem;
+    }
+
+    .quem-somos-section p,
+    .quem-somos-section li {
+        font-size: 0.9rem;
+    }
+}
+
+.title-text {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--helpcenter-header);
+    margin-bottom: 0.5rem;
+}
+
+.action-info-text {
+    color: var(--helpcenter-light-text);
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.articles-list {
+    margin-bottom: 2rem;
+}
+
+.articles-list:last-child {
+    margin-bottom: 0;
+}
+
+.articles-list-header {
+    margin-bottom: 1rem;
+}
+
+.articles-list-header h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--helpcenter-header);
+    margin: 0;
+}
+
+.article-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    border: 1px solid var(--helpcenter-border);
+    border-radius: 0.375rem;
+    margin-bottom: 0.75rem;
+    background: white;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+}
+
+.article-item:hover {
+    background: rgba(0, 102, 204, 0.03);
+    border-color: rgba(0, 102, 204, 0.2);
+    text-decoration: none;
+    color: inherit;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 102, 204, 0.1);
+}
+
+.article-item:last-child {
+    margin-bottom: 0;
+}
+
+.article-item-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.article-item-details-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--helpcenter-text);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.article-item i {
+    color: var(--helpcenter-primary);
+    font-size: 0.875rem;
+    margin-left: 1rem;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+}
+
+.article-item:hover i {
+    transform: translateX(4px);
+}
+
+@media (max-width: 768px) {
+    .shared-helpcenter-main-content {
+        padding: 1rem 0;
+    }
+
+    .shared-helpcenter-collection-details {
+        padding: 1.5rem;
+    }
+
+    .title-text {
+        font-size: 1.5rem;
+    }
+
+    .article-item {
+        padding: 0.875rem 1rem;
+    }
+
+    .article-item-details-title {
+        font-size: 0.875rem;
+    }
+
+    .collection-item-title {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .helpcenter-back-button {
+        margin-left: 0;
+        align-self: flex-start;
+    }
+}

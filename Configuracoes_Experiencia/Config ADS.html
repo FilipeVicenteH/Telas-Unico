@@ -1,0 +1,2907 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" name="viewport">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Atmos Admin Panel - Dashboard de Ads</title>
+<link rel="icon" type="image/x-icon" href="../assets/img/logo.png"/>
+<link rel="icon" href="../assets/img/logo.png" type="image/png" sizes="16x16">
+<link rel="stylesheet" href="../assets/vendor/pace/pace.css">
+<script src="../assets/vendor/pace/pace.min.js"></script>
+<!--vendors-->
+<link rel="stylesheet" type="text/css" href="../assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
+<link rel="stylesheet" type="text/css" href="../assets/vendor/jquery-scrollbar/jquery.scrollbar.css">
+<link rel="stylesheet" href="../assets/vendor/select2/css/select2.min.css">
+<link rel="stylesheet" href="../assets/vendor/jquery-ui/jquery-ui.min.css">
+<link rel="stylesheet" href="../assets/vendor/daterangepicker/daterangepicker.css">
+<link rel="stylesheet" href="../assets/vendor/timepicker/bootstrap-timepicker.min.css">
+<link href="https://fonts.googleapis.com/css?family=Hind+Vadodara:400,500,600" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts/jost/jost.css">
+<!--Material Icons-->
+<link rel="stylesheet" type="text/css" href="../assets/fonts/materialdesignicons/materialdesignicons.min.css">
+<!--Bootstrap Icons-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<!--Bootstrap + atmos Admin CSS-->
+<link rel="stylesheet" type="text/css" href="../assets/css/atmos.min.css">
+<!-- Bibliotecas para exportação -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+<!-- Additional library for page -->
+<style>
+    .ads-container {
+        background: white;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+        margin: 0 auto;
+    }
+    
+    .ads-title {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: #333;
+        margin-bottom: 20px;
+    }
+    
+    .controls-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+    }
+    
+    .left-controls {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 10px;
+    }
+    
+    .right-controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    
+    .update-text {
+        color: #666;
+        font-size: 14px;
+        margin-right: 10px;
+    }
+    
+    .platform-btn {
+        border: 1px solid #ddd;
+        background: white;
+        color: #666;
+        padding: 6px 12px;
+        border-radius: 4px;
+        font-size: 13px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    
+    .platform-btn:hover {
+        background: #f8f9fa;
+        color: #666;
+    }
+    
+    .configure-link {
+        color: #7367f0;
+        text-decoration: none;
+        font-size: 14px;
+        margin-left: 15px;
+    }
+    
+    .active-platforms {
+        margin-bottom: 20px;
+    }
+    
+    .active-btn {
+        padding: 6px 16px;
+        border-radius: 4px;
+        border: none;
+        font-size: 13px;
+        margin-right: 8px;
+        margin-bottom: 10px;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-facebook { background: #5b7bd5; color: white; }
+    .btn-google { background: #5d79a5; color: white; }
+    .btn-tiktok { background: #7c6fb5; color: white; }
+    .btn-taboola { background: #7c6fb5; color: white; }
+    
+    .manual-btn {
+        border: 1px solid #ddd;
+        background: white;
+        color: #666;
+        padding: 6px 12px;
+        border-radius: 4px;
+        font-size: 13px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+    
+    .manual-btn:hover {
+        background: #f8f9fa;
+    }
+    
+    .table-headers {
+        display: flex;
+        margin-bottom: 15px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .header-valor {
+        width: 150px;
+        font-weight: 600;
+        font-size: 12px;
+        color: #666;
+        letter-spacing: 0.5px;
+    }
+    
+    .header-produto {
+        flex: 1;
+        font-weight: 600;
+        font-size: 12px;
+        color: #666;
+        letter-spacing: 0.5px;
+    }
+    
+    .data-row {
+        display: flex;
+        align-items: center;
+        padding: 12px 0;
+        border-radius: 4px;
+        margin-bottom: 1px;
+    }
+    
+    .row-highlighted {
+        background-color: #fff3cd;
+        padding: 15px 20px;
+        margin-bottom: 10px;
+    }
+    
+    .row-normal {
+        padding-left: 20px;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .row-total {
+        background-color: #f8f9fa;
+        padding: 15px 20px;
+        margin-top: 10px;
+    }
+    
+    .valor-col {
+        width: 150px;
+        font-size: 14px;
+    }
+    
+    .produto-col {
+        flex: 1;
+        font-size: 14px;
+    }
+    
+    .close-btn {
+        color: #999;
+        margin-right: 10px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+    
+    .facebook-link {
+        color: #7367f0;
+        text-decoration: none;
+    }
+    
+    .facebook-link:hover {
+        text-decoration: underline;
+    }
+    
+    .eye-icon {
+        color: #999;
+        margin-left: 8px;
+        font-size: 12px;
+    }
+    
+    @media (max-width: 768px) {
+        .controls-row {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .right-controls {
+            margin-top: 15px;
+        }
+    }
+
+    .platform-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .platform-icon-sm {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .facebook-bg {
+        background-color: #3b5998;
+    }
+
+    .google-bg {
+        background-color: #4285F4;
+    }
+
+    .tiktok-bg {
+        background-color: #000000;
+    }
+
+    .taboola-bg {
+        background-color: #1c439b;
+    }
+
+    .platform-card {
+        text-decoration: none !important;
+        color: inherit !important;
+        width: 230px;
+    }
+
+    .platform-card:hover .card {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+        transition: all 0.3s ease;
+    }
+
+    .font-size-24 {
+        font-size: 24px !important;
+    }
+
+    .btn-facebook {
+        background-color: #3b5998;
+        color: white;
+    }
+
+    .btn-google {
+        background-color: #4285F4;
+        color: white;
+    }
+
+    .btn-tiktok {
+        background-color: #000000;
+        color: white;
+    }
+
+    .btn-taboola {
+        background-color: #1c439b;
+        color: white;
+    }
+
+    .platform-icon-minimal {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .font-size-18 {
+        font-size: 18px !important;
+    }
+
+    .font-size-24 {
+        font-size: 24px !important;
+    }
+    
+    .badge-soft-success {
+        color: #34c38f;
+        background-color: rgba(52, 195, 143, 0.18);
+    }
+    
+    .badge-soft-warning {
+        color: #f1b44c;
+        background-color: rgba(241, 180, 76, 0.18);
+    }
+    
+    .badge-soft-danger {
+        color: #f46a6a;
+        background-color: rgba(244, 106, 106, 0.18);
+    }
+    
+    .card.shadow-none {
+        box-shadow: none !important;
+    }
+    
+    .card.border {
+        border: 1px solid #e9e9ef !important;
+    }
+    
+    .card.border:hover {
+        border-color: #7367f0 !important;
+        transition: all 0.3s;
+    }
+    
+    .list-group-item:hover {
+        background-color: #f8f9fa;
+    }
+    
+    .table td, .table th {
+        vertical-align: middle;
+    }
+    
+    .avatar-md {
+        height: 4rem;
+        width: 4rem;
+    }
+    
+    .avatar-title {
+        align-items: center;
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .bg-soft-primary {
+        background-color: rgba(115, 103, 240, 0.18) !important;
+    }
+    
+    .nav-tabs .nav-link.active {
+        color: #7367f0;
+        border-color: #dee2e6 #dee2e6 #fff;
+    }
+    
+    .nav-tabs .nav-link:hover {
+        border-color: #e9ecef #e9ecef #dee2e6;
+    }
+    
+    .custom-switch .custom-control-input:checked ~ .custom-control-label::before {
+        background-color: #7367f0;
+        border-color: #7367f0;
+    }
+    
+    .hover-shadow {
+        transition: all 0.3s ease;
+    }
+    
+    .hover-shadow:hover {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+        transform: translateY(-2px);
+    }
+    
+    .bg-primary-gradient {
+        background: linear-gradient(135deg, #7367f0 0%, #9c88ff 100%);
+    }
+    
+    .bg-success-lighten {
+        background-color: rgba(40, 199, 111, 0.1) !important;
+    }
+    
+    .bg-primary-lighten {
+        background-color: rgba(115, 103, 240, 0.1) !important;
+    }
+    
+    .bg-info-lighten {
+        background-color: rgba(23, 162, 184, 0.1) !important;
+    }
+    
+    .bg-warning-lighten {
+        background-color: rgba(255, 193, 7, 0.1) !important;
+    }
+    
+    .avatar-lg {
+        height: 4.5rem;
+        width: 4.5rem;
+    }
+    
+    .nav-tabs .nav-link {
+        border: none !important;
+        color: #6c757d;
+        font-weight: 500;
+        border-radius: 0;
+        padding: 1rem 2rem;
+        position: relative;
+        background: transparent;
+    }
+    
+    .nav-tabs .nav-link.active {
+        color: #7367f0 !important;
+        background: transparent !important;
+        border: none !important;
+    }
+    
+    .nav-tabs .nav-link.active::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: #7367f0;
+        border-radius: 2px 2px 0 0;
+    }
+    
+    .nav-tabs .nav-link:hover {
+        color: #7367f0;
+        background: transparent;
+        border: none;
+    }
+    
+    .card {
+        border-radius: 8px;
+    }
+    
+    .shadow-sm {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+    }
+    
+    .table th {
+        border-top: none;
+        font-weight: 600;
+        padding: 1rem 0.75rem;
+    }
+    
+    .table td {
+        padding: 1rem 0.75rem;
+        vertical-align: middle;
+    }
+    
+    .btn-group .btn {
+        border: 1px solid #dee2e6;
+        background: white;
+        color: #6c757d;
+    }
+    
+    .btn-group .btn.active {
+        background: #7367f0;
+        border-color: #7367f0;
+        color: white;
+    }
+    
+    .btn-group .btn:hover:not(.active) {
+        background: #f8f9fa;
+        border-color: #7367f0;
+        color: #7367f0;
+    }
+    
+    .form-control:focus {
+        border-color: #7367f0;
+        box-shadow: 0 0 0 0.2rem rgba(115, 103, 240, 0.25);
+    }
+    
+    .pagination .page-link {
+        color: #6c757d;
+        border: 1px solid #dee2e6;
+    }
+    
+    .pagination .page-item.active .page-link {
+        background-color: #7367f0;
+        border-color: #7367f0;
+    }
+    
+    .pagination .page-link:hover {
+        color: #7367f0;
+        border-color: #7367f0;
+    }
+    
+    .dropdown-menu {
+        border-radius: 6px;
+        border: none;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        padding: 0.5rem 0;
+    }
+    
+    .dropdown-item {
+        padding: 0.5rem 1rem;
+        font-size: 14px;
+        color: #495057;
+    }
+    
+    .dropdown-item:hover {
+        background-color: #f8f9fa;
+        color: #495057;
+    }
+    
+    .bg-light {
+        background-color: #f8f9fb !important;
+    }
+    
+    @media (max-width: 768px) {
+        .container-fluid {
+            padding: 1rem !important;
+        }
+        
+        .card-body {
+            padding: 1.5rem !important;
+        }
+        
+        .nav-tabs .nav-link {
+            padding: 0.75rem 1rem;
+            font-size: 14px;
+        }
+    }
+    
+    /* Produtos expandidos */
+    .product-details-row {
+        display: none;
+        background-color: #f8f9fb;
+        border-left: 4px solid #7367f0;
+    }
+    
+    .product-details-row.show {
+        display: table-row;
+        animation: slideDown 0.3s ease-out;
+    }
+    
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .product-details-container {
+        padding: 1.5rem;
+        background: linear-gradient(135deg, #f8f9fb 0%, #ffffff 100%);
+    }
+    
+    .product-item {
+        background: white;
+        border: 1px solid #e3e6f0;
+        border-radius: 6px;
+        padding: 1rem;
+        margin-bottom: 0.75rem;
+        transition: all 0.2s ease;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+    
+    .product-item:hover {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transform: translateY(-1px);
+    }
+    
+    .product-item:last-child {
+        margin-bottom: 0;
+    }
+    
+    .product-header {
+        display: flex;
+        justify-content: between;
+        align-items: center;
+        margin-bottom: 0.5rem;
+    }
+    
+    .product-name {
+        font-weight: 600;
+        color: #495057;
+        font-size: 14px;
+        flex: 1;
+    }
+    
+    .product-value {
+        font-weight: 700;
+        color: #7367f0;
+        font-size: 15px;
+        margin-right: 1rem;
+    }
+    
+    .product-remove-btn {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        color: #6c757d;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-size: 12px;
+        transition: all 0.2s ease;
+        cursor: pointer;
+    }
+    
+    .product-remove-btn:hover {
+        background: #e74c3c;
+        border-color: #e74c3c;
+        color: white;
+        transform: scale(1.05);
+    }
+    
+    .product-meta {
+        display: flex;
+        gap: 1rem;
+        font-size: 12px;
+        color: #6c757d;
+        margin-top: 0.5rem;
+    }
+    
+    .product-meta span {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+    }
+    
+    .products-summary {
+        background: white;
+        border: 2px solid #7367f0;
+        border-radius: 6px;
+        padding: 1rem;
+        margin-top: 1rem;
+    }
+    
+    .summary-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.5rem;
+    }
+    
+    .summary-row:last-child {
+        margin-bottom: 0;
+        padding-top: 0.5rem;
+        border-top: 1px solid #e3e6f0;
+        font-weight: 700;
+        color: #7367f0;
+    }
+    
+    .summary-label {
+        color: #6c757d;
+        font-size: 13px;
+    }
+    
+    .summary-value {
+        font-weight: 600;
+        color: #495057;
+    }
+    
+    .expand-icon {
+        transition: transform 0.2s ease;
+    }
+    
+    .expand-icon.rotated {
+        transform: rotate(180deg);
+    }
+    
+    .btn-view-products {
+        background: transparent;
+        border: none;
+        padding: 0;
+        color: inherit;
+        width: 100%;
+        text-align: left;
+    }
+    
+    .btn-view-products:hover {
+        background: transparent;
+        color: inherit;
+    }
+    
+    .empty-products {
+        text-align: center;
+        padding: 2rem;
+        color: #6c757d;
+    }
+    
+    .empty-products i {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        opacity: 0.5;
+    }
+    
+    /* Responsividade */
+    
+    /* Mobile 320px */
+    @media (max-width: 320px) {
+        .container-fluid {
+            padding: 0.5rem !important;
+        }
+        
+        .card-body {
+            padding: 1rem !important;
+        }
+        
+        .col-xl-3, .col-md-6 {
+            margin-bottom: 1rem;
+        }
+        
+        .btn-group {
+            flex-direction: column;
+        }
+        
+        .btn-group .btn {
+            margin-bottom: 0.25rem;
+            border-radius: 4px !important;
+        }
+        
+        .nav-tabs .nav-link {
+            padding: 0.5rem 0.75rem;
+            font-size: 12px;
+        }
+        
+        .table-responsive {
+            font-size: 12px;
+        }
+        
+        .avatar-lg {
+            height: 2.5rem;
+            width: 2.5rem;
+        }
+        
+        .font-size-24 {
+            font-size: 18px !important;
+        }
+        
+        .card-title {
+            font-size: 1rem !important;
+        }
+    }
+    
+    /* Mobile 375px */
+    @media (min-width: 321px) and (max-width: 375px) {
+        .container-fluid {
+            padding: 0.75rem !important;
+        }
+        
+        .card-body {
+            padding: 1.25rem !important;
+        }
+        
+        .btn-group .btn {
+            font-size: 12px;
+            padding: 0.375rem 0.5rem;
+        }
+        
+        .nav-tabs .nav-link {
+            padding: 0.75rem 1rem;
+            font-size: 13px;
+        }
+        
+        .avatar-lg {
+            height: 3rem;
+            width: 3rem;
+        }
+        
+        .font-size-24 {
+            font-size: 20px !important;
+        }
+        
+        .controls-row {
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .right-controls {
+            justify-content: center;
+        }
+    }
+    
+    /* Tablet 1024px */
+    @media (min-width: 768px) and (max-width: 1024px) {
+        .container-fluid {
+            padding: 1.5rem !important;
+        }
+        
+        .card-body {
+            padding: 2rem !important;
+        }
+        
+        .col-lg-3 {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+        
+        .nav-tabs .nav-link {
+            padding: 1rem 1.5rem;
+        }
+        
+        .btn-group .btn {
+            font-size: 13px;
+        }
+        
+        .table th, .table td {
+            padding: 0.875rem 0.625rem;
+        }
+        
+        .avatar-lg {
+            height: 3.5rem;
+            width: 3.5rem;
+        }
+        
+        .chart-container {
+            height: 280px !important;
+        }
+        
+        /* Filtros table */
+        .col-md-8 .row {
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .col-md-8 .row .col-auto {
+            flex: none;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .col-md-8 .row .col-auto select {
+            min-width: 200px !important;
+            flex: 1;
+        }
+        
+        .col-md-4 {
+            margin-top: 1rem;
+            text-align: center !important;
+        }
+    }
+    
+    /* Filtros mobile */
+    @media (max-width: 767px) {
+        .px-4.py-3.bg-light.border-bottom {
+            padding: 1rem !important;
+        }
+        
+        .col-md-8, .col-md-4 {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+        
+        .col-md-8 .row {
+            flex-direction: column;
+            gap: 1rem;
+            margin: 0;
+        }
+        
+        .col-md-8 .row .col-auto {
+            flex: none;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+            padding: 0;
+        }
+        
+        .col-md-8 .row .col-auto label {
+            font-weight: 600;
+            color: #495057 !important;
+            margin-bottom: 0;
+        }
+        
+        .col-md-8 .row .col-auto select {
+            min-width: 100% !important;
+            width: 100%;
+        }
+        
+        .col-md-4 {
+            margin-top: 1.5rem;
+            text-align: center !important;
+        }
+        
+        .btn-group {
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-group .btn {
+            flex: 0 0 auto;
+        }
+    }
+    
+    /* Mobile pequeno */
+    @media (max-width: 375px) {
+        .px-4.py-3.bg-light.border-bottom {
+            padding: 0.75rem !important;
+        }
+        
+        .col-md-8 .row .col-auto {
+            gap: 0.375rem;
+        }
+        
+        .col-md-8 .row .col-auto label {
+            font-size: 13px;
+        }
+        
+        .col-md-8 .row .col-auto select {
+            font-size: 13px;
+            padding: 0.375rem 0.5rem;
+        }
+        
+        .btn-group {
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+        }
+        
+        .btn-group .btn {
+            padding: 0.5rem;
+            min-width: 44px;
+            min-height: 44px;
+        }
+    }
+    
+    /* Desktop 1440px */
+    @media (min-width: 1440px) {
+        .col-xl-3 .card-body h3 {
+            font-size: 1.75rem !important;
+        }
+        
+        .col-xl-3 .card-body p {
+            font-size: 10px !important;
+            letter-spacing: 0.3px !important;
+        }
+        
+        .col-xl-3 .card-body .badge {
+            font-size: 11px !important;
+            padding: 0.25rem 0.5rem !important;
+        }
+        
+        .col-xl-3 .card-body small {
+            font-size: 11px !important;
+        }
+        
+        .col-xl-3 .avatar-md {
+            height: 3.5rem !important;
+            width: 3.5rem !important;
+        }
+        
+        .col-xl-3 .avatar-md .font-size-20 {
+            font-size: 18px !important;
+        }
+    }
+</style>
+</head>
+<!--body with default sidebar pinned -->
+<body class="sidebar-pinned">
+<!--sidebar Begins-->
+<aside class="admin-sidebar">
+    <div class="admin-sidebar-brand">
+        <!-- begin sidebar branding-->
+        <img class="admin-brand-logo" src="../assets/img/logo.svg" width="40" alt="atmos Logo">
+        <span class="admin-brand-content"><a href="index.html">  atmos</a></span>
+        <!-- end sidebar branding-->
+        <div class="ml-auto">
+            <!-- sidebar pin-->
+            <a href="#" class="admin-pin-sidebar btn-ghost btn btn-rounded-circle"></a>
+            <!-- sidebar close for mobile device-->
+            <a href="#" class="admin-close-sidebar"></a>
+        </div>
+    </div>
+    <div class="admin-sidebar-wrapper js-scrollbar">
+        <!-- Menu List Begins-->
+        <ul class="menu">
+            <!--list item begins-->
+            <li class="menu-item active">
+                <a href="#" class="menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Link
+                                                </span>
+                                            </span>
+                    <span class="menu-icon">
+                                                   <span class="icon-badge badge-success badge badge-pill">1</span>
+
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+
+            </li>
+            <!--list item ends-->
+
+            <!--list item begins-->
+            <li class="menu-item ">
+                <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu level 1
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                                <span class="menu-info">Contains submenu</span>
+                                            </span>
+                    <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+                <!--submenu-->
+                <ul class="sub-menu">
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+
+
+                </ul>
+            </li>
+            <!--list item ends-->
+
+            <!--list item begins-->
+            <li class="menu-item ">
+                <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu Level 2
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                                <span class="menu-info">Contains submenu</span>
+                                            </span>
+                    <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+                <!--submenu-->
+                <ul class="sub-menu">
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu Level 1.1
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                        </a>
+                        <!--submenu-->
+                        <ul class="sub-menu">
+                            <li class="menu-item">
+                                <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 2.1 </span>
+                                            </span>
+                                    <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+            <!--list item ends-->
+        </ul>
+        <!-- Menu List Ends-->
+    </div>
+
+</aside>
+<!--sidebar Ends-->
+
+
+<main class="admin-main">
+
+    <!--site header begins-->
+<header class="admin-header">
+
+    <a href="#" class="sidebar-toggle" data-toggleclass="sidebar-open" data-target="body"> </a>
+
+    <nav class=" mr-auto my-auto">
+        <ul class="nav align-items-center">
+
+            <li class="nav-item">
+                <a class="nav-link  " data-target="#siteSearchModal" data-toggle="modal" href="#">
+                    <i class=" mdi mdi-magnify mdi-24px align-middle"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <nav class=" ml-auto">
+        <ul class="nav align-items-center">
+
+            <li class="nav-item">
+                <div class="dropdown">
+                    <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-24px mdi-bell-outline"></i>
+                        <span class="notification-counter"></span>
+                    </a>
+
+                    <div class="dropdown-menu notification-container dropdown-menu-right">
+                        <div class="d-flex p-all-15 bg-white justify-content-between border-bottom ">
+                            <a href="#!" class="mdi mdi-18px mdi-settings text-muted"></a>
+                            <span class="h5 m-0">Notifications</span>
+                            <a href="#!" class="mdi mdi-18px mdi-notification-clear-all text-muted"></a>
+                        </div>
+                        <div class="notification-events bg-gray-300">
+                            <div class="text-overline m-b-5">today</div>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body"> <i class="mdi mdi-circle text-success"></i> All systems operational.</div>
+                                </div>
+                            </a>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body"> <i class="mdi mdi-upload-multiple "></i> File upload successful.</div>
+                                </div>
+                            </a>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <i class="mdi mdi-cancel text-danger"></i> Your holiday has been denied
+                                    </div>
+                                </div>
+                            </a>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item dropdown ">
+                <a class="nav-link dropdown-toggle" href="#"   role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    <div class="avatar avatar-sm avatar-online">
+                        <span class="avatar-title rounded-circle bg-dark">V</span>
+
+                    </div>
+                </a>
+                <div class="dropdown-menu  dropdown-menu-right"   >
+                    <a class="dropdown-item" href="#">  Add Account
+                    </a>
+                    <a class="dropdown-item" href="#">  Reset Password</a>
+                    <a class="dropdown-item" href="#">  Help </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"> Logout</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </nav>
+</header>
+<!--site header ends -->    
+<section class="admin-content">
+        <!-- BEGIN PlACE PAGE CONTENT HERE -->
+        <div class="container-fluid p-4">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Cabeçalho Dashboard -->
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-body p-4">
+                            <div class="row align-items-center">
+                                <div class="col-auto">
+                                    <div class="avatar avatar-lg">
+                                        <div class="avatar-title bg-primary-gradient rounded-circle">
+                                            <i class="mdi mdi-bullhorn text-white font-size-24"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <h4 class="text-dark font-weight-bold mb-1">Dashboard de Anúncios</h4>
+                                    <p class="text-muted mb-0">Monitore o desempenho dos seus anúncios em tempo real</p>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="text-right">
+                                        <small class="text-muted d-block">Última atualização</small>
+                                        <span class="text-dark font-weight-medium">Hoje, 15:30</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Resumo Financeiro -->
+                    <div class="row mb-4">
+                        <div class="col-xl-3 col-md-6 mb-3">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body p-4">
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <p class="text-muted text-uppercase font-weight-medium mb-2" style="font-size: 11px; letter-spacing: 0.5px;">Total Hoje</p>
+                                            <h3 class="text-dark font-weight-bold mb-0">R$ 94,57</h3>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="avatar avatar-md">
+                                                <div class="avatar-title bg-success-lighten rounded-circle">
+                                                    <i class="mdi mdi-cash text-success font-size-20"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <span class="badge badge-soft-success px-2 py-1">
+                                            <i class="mdi mdi-arrow-up text-success mr-1"></i>12%
+                                        </span>
+                                        <small class="text-muted ml-2">vs ontem</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-xl-3 col-md-6 mb-3">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body p-4">
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <p class="text-muted text-uppercase font-weight-medium mb-2" style="font-size: 11px; letter-spacing: 0.5px;">Total do Mês</p>
+                                            <h3 class="text-dark font-weight-bold mb-0">R$ 1.547,32</h3>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="avatar avatar-md">
+                                                <div class="avatar-title bg-primary-lighten rounded-circle">
+                                                    <i class="mdi mdi-calendar text-primary font-size-20"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <span class="badge badge-soft-primary px-2 py-1">
+                                            <i class="mdi mdi-arrow-up text-primary mr-1"></i>8%
+                                        </span>
+                                        <small class="text-muted ml-2">vs mês anterior</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-xl-3 col-md-6 mb-3">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body p-4">
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <p class="text-muted text-uppercase font-weight-medium mb-2" style="font-size: 11px; letter-spacing: 0.5px;">Campanhas Ativas</p>
+                                            <h3 class="text-dark font-weight-bold mb-0">4</h3>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="avatar avatar-md">
+                                                <div class="avatar-title bg-info-lighten rounded-circle">
+                                                    <i class="mdi mdi-bullhorn text-info font-size-20"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <span class="badge badge-soft-info px-2 py-1">
+                                            <i class="mdi mdi-check text-info mr-1"></i>100%
+                                        </span>
+                                        <small class="text-muted ml-2">operacionais</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-xl-3 col-md-6 mb-3">
+                            <div class="card border-0 shadow-sm h-100">
+                                <div class="card-body p-4">
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <p class="text-muted text-uppercase font-weight-medium mb-2" style="font-size: 11px; letter-spacing: 0.5px;">Plataformas</p>
+                                            <h3 class="text-dark font-weight-bold mb-0">4</h3>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="avatar avatar-md">
+                                                <div class="avatar-title bg-warning-lighten rounded-circle">
+                                                    <i class="mdi mdi-link-variant text-warning font-size-20"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <span class="badge badge-soft-success px-2 py-1">
+                                            <i class="mdi mdi-check text-success mr-1"></i>3
+                                        </span>
+                                        <small class="text-muted ml-2">conectadas</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Plataformas de ADS -->
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-header bg-white border-bottom">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h5 class="card-title text-dark font-weight-bold mb-1">Gerenciar Plataformas</h5>
+                                    <p class="text-muted mb-0 small">Configure e monitore suas integrações de anúncios</p>
+                                </div>
+                                <div class="col-auto">
+                                    <button class="btn btn-primary btn-sm"  data-toggle="tooltip" data-placement="top" title="Adicione Gastos de ADS Manualmente">
+                                        <i class="mdi mdi-refresh mr-2"></i>Incluir Ads Manual
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-6 mb-4">
+                                    <div class="card border h-100 hover-shadow">
+                                        <div class="card-body text-center p-4">
+                                            <div class="avatar avatar-lg mx-auto mb-3">
+                                                <div class="avatar-title bg-soft-primary rounded-circle">
+                                                    <i class="mdi mdi-facebook text-primary font-size-24"></i>
+                                                </div>
+                                            </div>
+                                            <h6 class="text-dark font-weight-bold mb-2">Facebook</h6>
+                                            <p class="text-muted small mb-3">Atualizado há 2 horas</p>
+                                            <div class="mb-3">
+                                                <span class="badge badge-soft-success px-3 py-2">
+                                                    <i class="mdi mdi-check-circle mr-1"></i>Conectado
+                                                </span>
+                                            </div>
+                                            <div class="btn-group w-100">
+                                                <button class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Atualizar ADS do Facebook">Atualizar Ads</button>
+                                                <button class="btn btn-primary btn-sm flex-grow-1" data-toggle="tooltip" data-placement="top" title="Conectar com Facebook">Conectar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-3 col-md-6 mb-4">
+                                    <div class="card border h-100 hover-shadow">
+                                        <div class="card-body text-center p-4">
+                                            <div class="avatar avatar-lg mx-auto mb-3">
+                                                <div class="avatar-title bg-soft-primary rounded-circle">
+                                                    <i class="mdi mdi-google text-primary font-size-24"></i>
+                                                </div>
+                                            </div>
+                                            <h6 class="text-dark font-weight-bold mb-2">Google Ads</h6>
+                                            <p class="text-muted small mb-3">Atualizado há 1 hora</p>
+                                            <div class="mb-3">
+                                                <span class="badge badge-soft-warning px-3 py-2">
+                                                    <i class="mdi mdi-alert-circle mr-1"></i>Token Expirando
+                                                </span>
+                                            </div>
+                                            <div class="btn-group w-100">
+                                                <button class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Atualizar ADS do Google Ads">Atualizar Ads</button>
+                                                <button class="btn btn-primary btn-sm flex-grow-1" data-toggle="tooltip" data-placement="top" title="Conectar com Google Ads">Conectar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-3 col-md-6 mb-4">
+                                    <div class="card border h-100 hover-shadow">
+                                        <div class="card-body text-center p-4">
+                                            <div class="avatar avatar-lg mx-auto mb-3">
+                                                <div class="avatar-title bg-soft-primary rounded-circle">
+                                                    <img src="../Media_Imagens/TikTok.png" alt="TikTok" style="width: 32px; height: 32px; object-fit: contain;">
+                                                </div>
+                                            </div>
+                                            <h6 class="text-dark font-weight-bold mb-2">TikTok</h6>
+                                            <p class="text-muted small mb-3">Desconectado</p>
+                                            <div class="mb-3">
+                                                <span class="badge badge-soft-danger px-3 py-2">
+                                                    <i class="mdi mdi-close-circle mr-1"></i>Desconectado
+                                                </span>
+                                            </div>
+                                            <div class="btn-group w-100">
+                                                <button class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Atualizar ADS do TikTok">Atualizar Ads</button>
+                                                <button class="btn btn-primary btn-sm flex-grow-1" data-toggle="tooltip" data-placement="top" title="Conectar com TikTok">Conectar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-3 col-md-6 mb-4">
+                                    <div class="card border h-100 hover-shadow">
+                                        <div class="card-body text-center p-4">
+                                            <div class="avatar avatar-lg mx-auto mb-3">
+                                                <div class="avatar-title bg-soft-primary rounded-circle">
+                                                    <img src="../Media_Imagens/Taboola.png" alt="Taboola" style="width: 32px; height: 32px; object-fit: contain;">
+                                                </div>
+                                            </div>
+                                            <h6 class="text-dark font-weight-bold mb-2">Taboola</h6>
+                                            <p class="text-muted small mb-3">Atualizado há 3 horas</p>
+                                            <div class="mb-3">
+                                                <span class="badge badge-soft-success px-3 py-2">
+                                                    <i class="mdi mdi-check-circle mr-1"></i>Conectado
+                                                </span>
+                                            </div>
+                                            <div class="btn-group w-100">
+                                                <button class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Atualizar ADS do Taboola">Atualizar Ads</button>
+                                                <button class="btn btn-primary btn-sm flex-grow-1" data-toggle="tooltip" data-placement="top" title="Conectar com Taboola">Conectar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dados e Gráficos -->
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-header bg-white p-0 border-bottom">
+                            <ul class="nav nav-tabs nav-fill border-0">
+                                <li class="nav-item">
+                                    <a class="nav-link active px-4 py-3 border-0 font-weight-medium" data-toggle="tab" href="#tabDados">
+                                        <i class="mdi mdi-table-large mr-2"></i>Dados de Anúncios
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link px-4 py-3 border-0 font-weight-medium" data-toggle="tab" href="#tabAnalytics">
+                                        <i class="mdi mdi-chart-line mr-2"></i>Relatórios e Analytics
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="tab-content">
+                                <!-- Tabela -->
+                                <div class="tab-pane fade show active" id="tabDados">
+                                    <!-- Filtros -->
+                                    <div class="px-4 py-3 bg-light border-bottom">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-8">
+                                                <div class="row align-items-center">
+                                                    <div class="col-auto">
+                                                        <label class="form-label text-muted font-weight-medium mb-0">Período:</label>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <select class="form-control form-control-sm" style="min-width: 160px;">
+                                                            <option>Hoje</option>
+                                                            <option>Ontem</option>
+                                                            <option>Últimos 7 dias</option>
+                                                            <option>Este mês</option>
+                                                            <option>Personalizado</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <label class="form-label text-muted font-weight-medium mb-0">Plataforma:</label>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <select class="form-control form-control-sm" style="min-width: 160px;">
+                                                            <option>Todas as plataformas</option>
+                                                            <option>Facebook</option>
+                                                            <option>Google Ads</option>
+                                                            <option>TikTok</option>
+                                                            <option>Taboola</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 text-right">
+                                                <div class="btn-group">
+                                                    <button class="btn btn-light btn-sm" title="Exportar Excel" onclick="exportarExcel()">
+                                                        <i class="bi bi-file-earmark-excel-fill text-success" style="font-size: 20px;"></i>
+                                                    </button>
+                                                    <button class="btn btn-light btn-sm" title="Exportar PDF" onclick="exportarPDF()">
+                                                        <i class="mdi mdi-file-pdf text-danger" style="font-size: 20px;"></i>
+                                                    </button>
+                                                    <button class="btn btn-light btn-sm" title="Imprimir" onclick="imprimirTabela()">
+                                                        <i class="mdi mdi-printer text-primary" style="font-size: 20px;"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Tabela de Dados -->
+                                    <div class="table-responsive">
+                                        <table class="table table-hover mb-0">
+                                            <thead class="thead-light">
+                                                <tr>
+                                                    <th class="border-0 text-muted font-weight-bold text-uppercase" style="font-size: 11px;">#</th>
+                                                    <th class="border-0 text-muted font-weight-bold text-uppercase" style="font-size: 11px; letter-spacing: 0.5px;">Valor Gasto</th>
+                                                    <th class="border-0 text-muted font-weight-bold text-uppercase" style="font-size: 11px; letter-spacing: 0.5px;">Plataforma/Campanha</th>
+                                                    <th class="border-0 text-muted font-weight-bold text-uppercase text-center" style="font-size: 11px; letter-spacing: 0.5px;">Impressões</th>
+                                                    <th class="border-0 text-muted font-weight-bold text-uppercase text-center" style="font-size: 11px; letter-spacing: 0.5px;">Status</th>
+                                                    <th class="border-0 text-muted font-weight-bold text-uppercase text-center" style="font-size: 11px; letter-spacing: 0.5px;">Ações</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="bg-light">
+                                                    <td class="align-middle">
+                                                        <div class="avatar avatar-sm">
+                                                            <div class="avatar-title bg-primary rounded-circle">
+                                                                <i class="mdi mdi-calendar-today text-white font-size-14"></i>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="align-middle">
+                                                        <span class="text-dark font-weight-bold">R$ 189,14</span>
+                                                    </td>
+                                                    <td class="align-middle">
+                                                        <span class="text-dark font-weight-medium">Total do dia 09/06/2025</span>
+                                                    </td>
+                                                    <td class="align-middle text-center">
+                                                        <span class="text-dark font-weight-medium">18.450</span>
+                                                    </td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="align-middle">
+                                                        <div class="avatar avatar-sm">
+                                                            <div class="avatar-title bg-soft-primary rounded-circle">
+                                                                <i class="mdi mdi-facebook text-primary"></i>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="align-middle">
+                                                        <span class="text-dark font-weight-medium">R$ 94,57</span>
+                                                    </td>
+                                                    <td class="align-middle">
+                                                        <div>
+                                                            <span class="text-dark font-weight-medium">Facebook</span>
+                                                            <br>
+                                                            <small class="text-muted">Campanha principal</small>
+                                                        </div>
+                                                    </td>
+                                                    <td class="align-middle text-center">
+                                                        <span class="text-dark">12.305</span>
+                                                    </td>
+                                                    <td class="align-middle text-center">
+                                                        <span class="badge badge-soft-success px-3 py-2">
+                                                            <i class="mdi mdi-check-circle mr-1"></i>Ativo
+                                                        </span>
+                                                    </td>
+                                                    <td class="align-middle text-center">
+                                                        <div class="dropdown">
+                                                            <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                                                                <i class="mdi mdi-dots-vertical"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu dropdown-menu-right shadow-sm">
+                                                                <button class="dropdown-item btn-view-products px-3" type="button" data-platform="facebook">
+                                                                    <i class="mdi mdi-eye mr-2 text-primary"></i>Visualizar Produtos
+                                                                    <i class="mdi mdi-chevron-down ml-auto expand-icon"></i>
+                                                                </button>
+                                                                <div class="dropdown-divider"></div>
+                                                                <a class="dropdown-item text-danger" href="#" onclick="removerPlataforma('facebook', 'Facebook')">
+                                                                    <i class="mdi mdi-delete mr-2"></i>Remover
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <!-- Detalhes dos produtos Facebook -->
+                                                <tr class="product-details-row" id="products-facebook">
+                                                    <td colspan="6" class="p-0">
+                                                        <div class="product-details-container">
+                                                            <h6 class="text-dark font-weight-bold mb-3">
+                                                                <i class="mdi mdi-package-variant mr-2 text-primary"></i>
+                                                                Produtos Vendidos - Facebook
+                                                            </h6>
+                                                            <div id="facebook-products">
+                                                                <div class="product-item">
+                                                                    <div class="product-header">
+                                                                        <span class="product-name">Microfone Fifine Ampligame AM8</span>
+                                                                        <span class="product-value">R$ 52,30</span>
+                                                                        <button class="product-remove-btn" onclick="this.closest('.product-item').remove()">
+                                                                            <i class="mdi mdi-close mr-1"></i>Remover
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="product-item">
+                                                                    <div class="product-header">
+                                                                        <span class="product-name">Mouse Gamer RGB Redragon</span>
+                                                                        <span class="product-value">R$ 27,15</span>
+                                                                        <button class="product-remove-btn" onclick="this.closest('.product-item').remove()">
+                                                                            <i class="mdi mdi-close mr-1"></i>Remover
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="product-item">
+                                                                    <div class="product-header">
+                                                                        <span class="product-name">Fone de Ouvido Bluetooth JBL</span>
+                                                                        <span class="product-value">R$ 15,12</span>
+                                                                        <button class="product-remove-btn" onclick="this.closest('.product-item').remove()">
+                                                                            <i class="mdi mdi-close mr-1"></i>Remover
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="products-summary">
+                                                                    <div class="summary-row">
+                                                                        <span class="summary-label">Total de Produtos:</span>
+                                                                        <span class="summary-value">3</span>
+                                                                    </div>
+                                                                    <div class="summary-row">
+                                                                        <span class="summary-label">Valor Total dos Anúncios:</span>
+                                                                        <span class="summary-value">R$ 94,57</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="align-middle">
+                                                        <div class="avatar avatar-sm">
+                                                            <div class="avatar-title bg-soft-primary rounded-circle">
+                                                                <i class="mdi mdi-google text-primary"></i>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="align-middle">
+                                                        <span class="text-dark font-weight-medium">R$ 45,25</span>
+                                                    </td>
+                                                    <td class="align-middle">
+                                                        <div>
+                                                            <span class="text-dark font-weight-medium">Google Ads</span>
+                                                            <br>
+                                                            <small class="text-muted">Palavras-chave premium</small>
+                                                        </div>
+                                                    </td>
+                                                    <td class="align-middle text-center">
+                                                        <span class="text-dark">3.240</span>
+                                                    </td>
+                                                    <td class="align-middle text-center">
+                                                        <span class="badge badge-soft-success px-3 py-2">
+                                                            <i class="mdi mdi-check-circle mr-1"></i>Ativo
+                                                        </span>
+                                                    </td>
+                                                    <td class="align-middle text-center">
+                                                        <div class="dropdown">
+                                                            <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                                                                <i class="mdi mdi-dots-vertical"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu dropdown-menu-right shadow-sm">
+                                                                <button class="dropdown-item btn-view-products px-3" type="button" data-platform="google">
+                                                                    <i class="mdi mdi-eye mr-2 text-primary"></i>Visualizar Produtos
+                                                                    <i class="mdi mdi-chevron-down ml-auto expand-icon"></i>
+                                                                </button>
+                                                                <div class="dropdown-divider"></div>
+                                                                <a class="dropdown-item text-danger" href="#" onclick="removerPlataforma('google', 'Google Ads')">
+                                                                    <i class="mdi mdi-delete mr-2"></i>Remover
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <!-- Detalhes dos produtos Google -->
+                                                <tr class="product-details-row" id="products-google">
+                                                    <td colspan="6" class="p-0">
+                                                        <div class="product-details-container">
+                                                            <h6 class="text-dark font-weight-bold mb-3">
+                                                                <i class="mdi mdi-package-variant mr-2 text-primary"></i>
+                                                                Produtos Vendidos - Google Ads
+                                                            </h6>
+                                                            <div id="google-products">
+                                                                <div class="product-item">
+                                                                    <div class="product-header">
+                                                                        <span class="product-name">Teclado Mecânico RGB</span>
+                                                                        <span class="product-value">R$ 25,80</span>
+                                                                        <button class="product-remove-btn" onclick="this.closest('.product-item').remove()">
+                                                                            <i class="mdi mdi-close mr-1"></i>Remover
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="product-item">
+                                                                    <div class="product-header">
+                                                                        <span class="product-name">Webcam Full HD 1080p</span>
+                                                                        <span class="product-value">R$ 19,45</span>
+                                                                        <button class="product-remove-btn" onclick="this.closest('.product-item').remove()">
+                                                                            <i class="mdi mdi-close mr-1"></i>Remover
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="products-summary">
+                                                                    <div class="summary-row">
+                                                                        <span class="summary-label">Total de Produtos:</span>
+                                                                        <span class="summary-value">2</span>
+                                                                    </div>
+                                                                    <div class="summary-row">
+                                                                        <span class="summary-label">Valor Total dos Anúncios:</span>
+                                                                        <span class="summary-value">R$ 45,25</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="align-middle">
+                                                        <div class="avatar avatar-sm">
+                                                            <div class="avatar-title bg-soft-primary rounded-circle">
+                                                                <img src="../Media_Imagens/TikTok.png" alt="TikTok" style="width: 20px; height: 20px; object-fit: contain;">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="align-middle">
+                                                        <span class="text-dark font-weight-medium">R$ 32,18</span>
+                                                    </td>
+                                                    <td class="align-middle">
+                                                        <div>
+                                                            <span class="text-dark font-weight-medium">TikTok</span>
+                                                            <br>
+                                                            <small class="text-muted">Vídeos promocionais</small>
+                                                        </div>
+                                                    </td>
+                                                    <td class="align-middle text-center">
+                                                        <span class="text-dark">1.805</span>
+                                                    </td>
+                                                    <td class="align-middle text-center">
+                                                        <span class="badge badge-soft-warning px-3 py-2">
+                                                            <i class="mdi mdi-pause-circle mr-1"></i>Pausado
+                                                        </span>
+                                                    </td>
+                                                    <td class="align-middle text-center">
+                                                        <div class="dropdown">
+                                                            <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                                                                <i class="mdi mdi-dots-vertical"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu dropdown-menu-right shadow-sm">
+                                                                <button class="dropdown-item btn-view-products px-3" type="button" data-platform="tiktok">
+                                                                    <i class="mdi mdi-eye mr-2 text-primary"></i>Visualizar Produtos
+                                                                    <i class="mdi mdi-chevron-down ml-auto expand-icon"></i>
+                                                                </button>
+                                                                <div class="dropdown-divider"></div>
+                                                                <a class="dropdown-item text-danger" href="#" onclick="removerPlataforma('tiktok', 'TikTok')">
+                                                                    <i class="mdi mdi-delete mr-2"></i>Remover
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <!-- Detalhes dos produtos TikTok -->
+                                                <tr class="product-details-row" id="products-tiktok">
+                                                    <td colspan="6" class="p-0">
+                                                        <div class="product-details-container">
+                                                            <h6 class="text-dark font-weight-bold mb-3">
+                                                                <i class="mdi mdi-package-variant mr-2 text-primary"></i>
+                                                                Produtos Vendidos - TikTok
+                                                            </h6>
+                                                            <div id="tiktok-products">
+                                                                <div class="product-item">
+                                                                    <div class="product-header">
+                                                                        <span class="product-name">Suporte para Celular Articulado</span>
+                                                                        <span class="product-value">R$ 18,90</span>
+                                                                        <button class="product-remove-btn" onclick="this.closest('.product-item').remove()">
+                                                                            <i class="mdi mdi-close mr-1"></i>Remover
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="product-item">
+                                                                    <div class="product-header">
+                                                                        <span class="product-name">Ring Light 10 polegadas</span>
+                                                                        <span class="product-value">R$ 13,28</span>
+                                                                        <button class="product-remove-btn" onclick="this.closest('.product-item').remove()">
+                                                                            <i class="mdi mdi-close mr-1"></i>Remover
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="products-summary">
+                                                                    <div class="summary-row">
+                                                                        <span class="summary-label">Total de Produtos:</span>
+                                                                        <span class="summary-value">2</span>
+                                                                    </div>
+                                                                    <div class="summary-row">
+                                                                        <span class="summary-label">Valor Total dos Anúncios:</span>
+                                                                        <span class="summary-value">R$ 32,18</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="align-middle">
+                                                        <div class="avatar avatar-sm">
+                                                            <div class="avatar-title bg-soft-primary rounded-circle">
+                                                                <img src="../Media_Imagens/Taboola.png" alt="Taboola" style="width: 20px; height: 20px; object-fit: contain;">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="align-middle">
+                                                        <span class="text-dark font-weight-medium">R$ 17,14</span>
+                                                    </td>
+                                                    <td class="align-middle">
+                                                        <div>
+                                                            <span class="text-dark font-weight-medium">Taboola</span>
+                                                            <br>
+                                                            <small class="text-muted">Conteúdo recomendado</small>
+                                                        </div>
+                                                    </td>
+                                                    <td class="align-middle text-center">
+                                                        <span class="text-dark">1.100</span>
+                                                    </td>
+                                                    <td class="align-middle text-center">
+                                                        <span class="badge badge-soft-success px-3 py-2">
+                                                            <i class="mdi mdi-check-circle mr-1"></i>Ativo
+                                                        </span>
+                                                    </td>
+                                                    <td class="align-middle text-center">
+                                                        <div class="dropdown">
+                                                            <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
+                                                                <i class="mdi mdi-dots-vertical"></i>
+                                                            </button>
+                                                            <div class="dropdown-menu dropdown-menu-right shadow-sm">
+                                                                <button class="dropdown-item btn-view-products px-3" type="button" data-platform="taboola">
+                                                                    <i class="mdi mdi-eye mr-2 text-primary"></i>Visualizar Produtos
+                                                                    <i class="mdi mdi-chevron-down ml-auto expand-icon"></i>
+                                                                </button>
+                                                                <div class="dropdown-divider"></div>
+                                                                <a class="dropdown-item text-danger" href="#" onclick="removerPlataforma('taboola', 'Taboola')">
+                                                                    <i class="mdi mdi-delete mr-2"></i>Remover
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <!-- Detalhes dos produtos Taboola -->
+                                                <tr class="product-details-row" id="products-taboola">
+                                                    <td colspan="6" class="p-0">
+                                                        <div class="product-details-container">
+                                                            <h6 class="text-dark font-weight-bold mb-3">
+                                                                <i class="mdi mdi-package-variant mr-2 text-primary"></i>
+                                                                Produtos Vendidos - Taboola
+                                                            </h6>
+                                                            <div id="taboola-products">
+                                                                <div class="product-item">
+                                                                    <div class="product-header">
+                                                                        <span class="product-name">Cabo USB-C Premium</span>
+                                                                        <span class="product-value">R$ 9,87</span>
+                                                                        <button class="product-remove-btn" onclick="this.closest('.product-item').remove()">
+                                                                            <i class="mdi mdi-close mr-1"></i>Remover
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="product-item">
+                                                                    <div class="product-header">
+                                                                        <span class="product-name">Carregador Wireless Fast</span>
+                                                                        <span class="product-value">R$ 7,27</span>
+                                                                        <button class="product-remove-btn" onclick="this.closest('.product-item').remove()">
+                                                                            <i class="mdi mdi-close mr-1"></i>Remover
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="products-summary">
+                                                                    <div class="summary-row">
+                                                                        <span class="summary-label">Total de Produtos:</span>
+                                                                        <span class="summary-value">2</span>
+                                                                    </div>
+                                                                    <div class="summary-row">
+                                                                        <span class="summary-label">Valor Total dos Anúncios:</span>
+                                                                        <span class="summary-value">R$ 17,14</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                    <!-- Paginação -->
+                                    <div class="px-4 py-3 d-flex justify-content-between align-items-center border-top bg-white">
+                                        <div>
+                                            <small class="text-muted">Mostrando 1-5 de 5 registros</small>
+                                        </div>
+                                        <nav>
+                                            <ul class="pagination pagination-sm mb-0">
+                                                <li class="page-item disabled">
+                                                    <a class="page-link" href="#" tabindex="-1">
+                                                        <i class="mdi mdi-chevron-left"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="page-item active">
+                                                    <a class="page-link" href="#">1</a>
+                                                </li>
+                                                <li class="page-item disabled">
+                                                    <a class="page-link" href="#">
+                                                        <i class="mdi mdi-chevron-right"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                                
+                                <!-- Tabela Gráficos -->
+                                <div class="tab-pane fade p-0" id="tabAnalytics">
+                                    <div class="p-4 bg-light border-bottom">
+                                        <div class="row align-items-center">
+                                            <div class="col">
+                                                <h6 class="text-dark font-weight-bold mb-1">Análise de Performance</h6>
+                                                <p class="text-muted mb-0 small">Visualize métricas e tendências dos seus anúncios</p>
+                                            </div>
+                                            <div class="col-auto">
+                                                <select id="periodoGrafico" class="form-control form-control-sm" style="min-width: 180px;">
+                                                    <option value="7">Últimos 7 dias</option>
+                                                    <option value="15">Últimos 15 dias</option>
+                                                    <option value="30" selected>Últimos 30 dias</option>
+                                                    <option value="90">Últimos 90 dias</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="p-4">
+                                        <div class="row">
+                                            <div class="col-md-12 mb-4">
+                                                <div class="card border-0 shadow-sm">
+                                                    <div class="card-header bg-white border-bottom">
+                                                        <div class="row align-items-center">
+                                                            <div class="col">
+                                                                <h6 class="text-dark font-weight-bold mb-0">Gastos por Plataforma</h6>
+                                                            </div>
+                                                            <div class="col-auto">
+                                                                <div class="btn-group btn-group-sm">
+                                                                    <button type="button" class="btn btn-outline-primary active">Diário</button>
+                                                                    <button type="button" class="btn btn-outline-primary">Semanal</button>
+                                                                    <button type="button" class="btn btn-outline-primary">Mensal</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="chart-container" style="position: relative; height: 300px;">
+                                                            <canvas id="performanceChart"></canvas>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6 mb-4">
+                                                <div class="card border-0 shadow-sm h-100">
+                                                    <div class="card-header bg-white border-bottom">
+                                                        <h6 class="text-dark font-weight-bold mb-0">Distribuição de Gastos</h6>
+                                                    </div>
+                                                    <div class="card-body d-flex align-items-center justify-content-center">
+                                                        <div class="chart-container" style="position: relative; height: 260px; width: 100%;">
+                                                            <canvas id="expensesChart"></canvas>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 mb-4">
+                                                <div class="card border-0 shadow-sm h-100">
+                                                    <div class="card-header bg-white border-bottom">
+                                                        <h6 class="text-dark font-weight-bold mb-0">Métricas de Performance</h6>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="chart-container" style="position: relative; height: 260px;">
+                                                            <canvas id="metricsChart"></canvas>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="card border-0 shadow-sm">
+                                                    <div class="card-header bg-white border-bottom">
+                                                        <div class="row align-items-center">
+                                                            <div class="col">
+                                                                <h6 class="text-dark font-weight-bold mb-0">Comparativo Semanal</h6>
+                                                            </div>
+                                                            <div class="col-auto">
+                                                                <div class="btn-group btn-group-sm">
+                                                                    <button type="button" class="btn btn-primary active" data-metric="impressions">Impressões</button>
+                                                                    <button type="button" class="btn btn-outline-primary" data-metric="clicks">Cliques</button>
+                                                                    <button type="button" class="btn btn-outline-primary" data-metric="conversions">Conversões</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-hover">
+                                                                <thead class="thead-light">
+                                                                    <tr>
+                                                                        <th class="border-0 text-muted font-weight-bold text-uppercase" style="font-size: 11px;">Plataforma</th>
+                                                                        <th class="border-0 text-center text-muted font-weight-bold text-uppercase" style="font-size: 11px;">Esta Semana</th>
+                                                                        <th class="border-0 text-center text-muted font-weight-bold text-uppercase" style="font-size: 11px;">Semana Anterior</th>
+                                                                        <th class="border-0 text-center text-muted font-weight-bold text-uppercase" style="font-size: 11px;">Variação</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody id="statsTable">
+                                                                    <!-- JavaScript -->
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END PLACE PAGE CONTENT HERE -->
+    </section>
+</main>
+
+
+<div class="modal modal-slide-left  fade" id="siteSearchModal" tabindex="-1" role="dialog" aria-labelledby="siteSearchModal"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body p-all-0" id="site-search">
+                <button type="button" class="close light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="form-dark bg-dark text-white p-t-60 p-b-20 bg-dots" >
+                    <h3 class="text-uppercase    text-center  fw-300 "> Search</h3>
+
+                    <div class="container-fluid">
+                        <div class="col-md-10 p-t-10 m-auto">
+                            <input type="search" placeholder="Search Something"
+                                   class=" search form-control form-control-lg">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="bg-dark text-muted container-fluid p-b-10 text-center text-overline">
+                        results
+                    </div>
+                    <div class="list-group list  ">
+
+
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"   src="../assets/img/users/user-3.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Eric Chen</div>
+                                <div class="text-muted">Developer</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"
+                                                                    src="../assets/img/users/user-4.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Sean Valdez</div>
+                                <div class="text-muted">Marketing</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"
+                                                                    src="../assets/img/users/user-8.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Marie Arnold</div>
+                                <div class="text-muted">Developer</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar-title bg-dark rounded"><i class="mdi mdi-24px mdi-file-pdf"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">SRS Document</div>
+                                <div class="text-muted">25.5 Mb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar avatar-sm ">
+                                        <div class="avatar-title bg-primary rounded"><i
+                                                    class="mdi mdi-24px mdi-code-braces"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">response.json</div>
+                                <div class="text-muted">15 Kb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar avatar-sm ">
+                                        <div class="avatar-title bg-info rounded"><i
+                                                    class="mdi mdi-24px mdi-file-excel"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">June Accounts.xls</div>
+                                <div class="text-muted">6 Mb</div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="../assets/vendor/jquery/jquery.min.js"></script>
+<script src="../assets/vendor/jquery-ui/jquery-ui.min.js"></script>
+<script src="../assets/vendor/popper/popper.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/vendor/select2/js/select2.full.min.js"></script>
+<script src="../assets/vendor/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+<script src="../assets/vendor/listjs/listjs.min.js"></script>
+<script src="../assets/vendor/moment/moment.min.js"></script>
+<script src="../assets/vendor/daterangepicker/daterangepicker.js"></script>
+<script src="../assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="../assets/vendor/bootstrap-notify/bootstrap-notify.min.js"></script>
+<script src="../assets/js/atmos.min.js"></script>
+<!--page specific scripts for demo-->
+<script>
+$(document).ready(function() {
+    function formatarDataAtual() {
+        var data = new Date();
+        var dia = data.getDate().toString().padStart(2, '0');
+        var mes = (data.getMonth() + 1).toString().padStart(2, '0');
+        var ano = data.getFullYear();
+        return dia + '/' + mes + '/' + ano;
+    }
+    
+    var dataAtual = formatarDataAtual();
+    $('#dataInicial, #dataFinal').attr('placeholder', dataAtual);
+    
+    $('.input-date').datepicker({
+        format: 'dd/mm/yyyy',
+        autoclose: true,
+        todayHighlight: true,
+        language: 'pt-BR',
+        orientation: 'bottom auto',
+        templates: {
+            leftArrow: '<i class="mdi mdi-chevron-left"></i>',
+            rightArrow: '<i class="mdi mdi-chevron-right"></i>'
+        }
+    }).on('show', function() {
+        $('.datepicker-dropdown').addClass('shadow-sm');
+    });
+
+    $('[data-toggle="tooltip"]').tooltip();
+
+    $('.close-btn').on('click', function() {
+        $(this).closest('.data-row').fadeOut(300, function() {
+            $(this).remove();
+        });
+    });
+    
+    $('.platform-btn').on('click', function(e) {
+        e.preventDefault();
+        $(this).append('<i class="mdi mdi-loading mdi-spin ml-1"></i>');
+        var btn = $(this);
+        setTimeout(function() {
+            btn.find('.mdi-loading').remove();
+            $.notify({
+                title: "Dados atualizados",
+                message: "Os dados da plataforma foram atualizados com sucesso",
+                icon: 'mdi mdi-check'
+            }, {
+                type: "success",
+                placement: {
+                    from: "top",
+                    align: "right"
+                },
+                time: 1000
+            });
+        }, 1500);
+    });
+    
+    $('.manual-btn').on('click', function() {
+        alert("Funcionalidade para incluir ads manual será implementada aqui");
+    });
+    
+    function ajustarResponsividade() {
+        if (window.innerWidth <= 767.98) {
+            $('.controls-row').addClass('flex-column');
+            $('.right-controls').addClass('mt-3');
+        } else {
+            $('.controls-row').removeClass('flex-column');
+            $('.right-controls').removeClass('mt-3');
+        }
+    }
+    
+    ajustarResponsividade();
+    $(window).resize(function() {
+        ajustarResponsividade();
+    });
+
+    /* Dados dos produtos */
+    const platformProducts = {
+        facebook: [
+            {
+                name: "Microfone Fifine Ampligame AM8",
+                value: 52.30
+            },
+            {
+                name: "Mouse Gamer RGB Redragon",
+                value: 27.15
+            },
+            {
+                name: "Fone de Ouvido Bluetooth JBL",
+                value: 15.12
+            }
+        ],
+        google: [
+            {
+                name: "Teclado Mecânico RGB",
+                value: 25.80
+            },
+            {
+                name: "Webcam Full HD 1080p",
+                value: 19.45
+            }
+        ],
+        tiktok: [
+            {
+                name: "Suporte para Celular Articulado",
+                value: 18.90
+            },
+            {
+                name: "Ring Light 10 polegadas",
+                value: 13.28
+            }
+        ],
+        taboola: [
+            {
+                name: "Cabo USB-C Premium",
+                value: 9.87
+            },
+            {
+                name: "Carregador Wireless Fast",
+                value: 7.27
+            }
+        ]
+    };
+
+    /* Expandir produtos */
+    $(document).on('click', '.btn-view-products', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const platform = $(this).data('platform');
+        const detailsRow = $(`#products-${platform}`);
+        const expandIcon = $(this).find('.expand-icon');
+        
+        if (detailsRow.hasClass('show')) {
+            detailsRow.removeClass('show');
+            expandIcon.removeClass('rotated');
+            $(this).find('.mdi-eye').removeClass('mdi-eye-off').addClass('mdi-eye');
+        } else {
+            $('.product-details-row.show').removeClass('show');
+            $('.expand-icon.rotated').removeClass('rotated');
+            $('.btn-view-products .mdi-eye-off').removeClass('mdi-eye-off').addClass('mdi-eye');
+            
+            detailsRow.addClass('show');
+            expandIcon.addClass('rotated');
+            $(this).find('.mdi-eye').removeClass('mdi-eye').addClass('mdi-eye-off');
+        }
+        
+        $(this).closest('.dropdown').find('.dropdown-toggle').dropdown('toggle');
+    });
+});
+</script>
+
+<!-- Chart.js  -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+<script>
+/* Dados dos gráficos */
+const adsData = {
+    dailyData: {
+        labels: ['01/06', '02/06', '03/06', '04/06', '05/06', '06/06', '07/06', '08/06', '09/06'],
+        datasets: [
+            {
+                label: 'Facebook',
+                data: [42.25, 38.59, 49.36, 47.12, 51.28, 55.43, 60.15, 58.75, 94.57],
+                borderColor: '#3b5998',
+                backgroundColor: 'rgba(59, 89, 152, 0.1)',
+                tension: 0.4,
+                fill: true
+            },
+            {
+                label: 'Google',
+                data: [35.18, 32.47, 38.65, 36.92, 40.15, 42.35, 38.25, 41.60, 45.25],
+                borderColor: '#4285F4',
+                backgroundColor: 'rgba(66, 133, 244, 0.1)',
+                tension: 0.4,
+                fill: true
+            },
+            {
+                label: 'TikTok',
+                data: [25.12, 22.35, 28.45, 24.89, 32.15, 30.22, 27.45, 35.75, 32.18],
+                borderColor: '#000000',
+                backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                tension: 0.4,
+                fill: true
+            },
+            {
+                label: 'Taboola',
+                data: [15.35, 18.25, 16.78, 19.35, 15.85, 18.65, 17.35, 16.45, 17.14],
+                borderColor: '#1c439b',
+                backgroundColor: 'rgba(28, 67, 155, 0.1)',
+                tension: 0.4,
+                fill: true
+            }
+        ]
+    },
+    
+    expensesData: {
+        labels: ['Facebook', 'Google', 'TikTok', 'Taboola'],
+        datasets: [{
+            data: [94.57, 45.25, 32.18, 17.14],
+            backgroundColor: ['#3b5998', '#4285F4', '#000000', '#1c439b'],
+            borderWidth: 0
+        }]
+    },
+    
+    metricsData: {
+        labels: ['Facebook', 'Google', 'TikTok', 'Taboola'],
+        datasets: [
+            {
+                label: 'CTR (%)',
+                data: [2.85, 3.24, 1.92, 1.45],
+                backgroundColor: 'rgba(115, 103, 240, 0.8)'
+            },
+            {
+                label: 'Conversão (%)',
+                data: [1.25, 1.65, 0.85, 0.65],
+                backgroundColor: 'rgba(40, 199, 111, 0.8)'
+            }
+        ]
+    },
+    
+    statsData: {
+        impressions: [
+            { platform: 'Facebook', current: 12305, previous: 10245, variation: '+20.1%' },
+            { platform: 'Google', current: 3240, previous: 2980, variation: '+8.7%' },
+            { platform: 'TikTok', current: 1805, previous: 2105, variation: '-14.3%' },
+            { platform: 'Taboola', current: 1100, previous: 950, variation: '+15.8%' }
+        ],
+        clicks: [
+            { platform: 'Facebook', current: 350, previous: 285, variation: '+22.8%' },
+            { platform: 'Google', current: 105, previous: 92, variation: '+14.1%' },
+            { platform: 'TikTok', current: 35, previous: 42, variation: '-16.7%' },
+            { platform: 'Taboola', current: 16, previous: 14, variation: '+14.3%' }
+        ],
+        conversions: [
+            { platform: 'Facebook', current: 45, previous: 35, variation: '+28.6%' },
+            { platform: 'Google', current: 18, previous: 15, variation: '+20.0%' },
+            { platform: 'TikTok', current: 7, previous: 9, variation: '-22.2%' },
+            { platform: 'Taboola', current: 3, previous: 2, variation: '+50.0%' }
+        ]
+    }
+};
+
+/*  gráficos */
+document.addEventListener('DOMContentLoaded', function() {
+    const initCharts = function() {
+        /* Gráfico de linha */
+        const perfCtx = document.getElementById('performanceChart').getContext('2d');
+        const performanceChart = new Chart(perfCtx, {
+            type: 'line',
+            data: adsData.dailyData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    mode: 'index',
+                    intersect: false
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': R$ ' + context.raw.toFixed(2);
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return 'R$ ' + value;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        
+        /* Gráfico de pizza */
+        const expCtx = document.getElementById('expensesChart').getContext('2d');
+        const expensesChart = new Chart(expCtx, {
+            type: 'doughnut',
+            data: adsData.expensesData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '65%',
+                plugins: {
+                    legend: {
+                        position: 'right',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const value = context.raw;
+                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                const percentage = ((value / total) * 100).toFixed(1);
+                                return context.label + ': R$ ' + value.toFixed(2) + ' (' + percentage + '%)';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        
+        /* Gráfico de barras */
+        const metricsCtx = document.getElementById('metricsChart').getContext('2d');
+        const metricsChart = new Chart(metricsCtx, {
+            type: 'bar',
+            data: adsData.metricsData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        
+        updateStatsTable('impressions');
+        
+        /* Botões de métricas */
+        document.querySelectorAll('[data-metric]').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('[data-metric]').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                updateStatsTable(this.getAttribute('data-metric'));
+            });
+        });
+        
+        /* Período do gráfico */
+        document.getElementById('periodoGrafico').addEventListener('change', function() {
+            const days = parseInt(this.value);
+            const newData = {...adsData.dailyData};
+            
+            newData.labels = newData.labels.slice(-days);
+            newData.datasets.forEach(dataset => {
+                dataset.data = dataset.data.slice(-days);
+            });
+            
+            performanceChart.data = newData;
+            performanceChart.update();
+        });
+    };
+    
+    /* Adicionar na  tabela */
+    function updateStatsTable(metric) {
+        const tableBody = document.getElementById('statsTable');
+        tableBody.innerHTML = '';
+        
+        adsData.statsData[metric].forEach(row => {
+            const tr = document.createElement('tr');
+            
+            const tdPlatform = document.createElement('td');
+            const platformIcon = getPlatformIcon(row.platform);
+            let iconHtml;
+            
+            if (row.platform === 'Taboola') {
+                iconHtml = `<img src="../Media_Imagens/Taboola.png" alt="Taboola" style="width: 16px; height: 16px; object-fit: contain;" class="mr-2">`;
+            } else if (row.platform === 'TikTok') {
+                iconHtml = `<img src="../Media_Imagens/TikTok.png" alt="TikTok" style="width: 16px; height: 16px; object-fit: contain;" class="mr-2">`;
+            } else {
+                iconHtml = `<i class="mdi mdi-${platformIcon} text-primary mr-2"></i>`;
+            }
+            
+            tdPlatform.innerHTML = `<div class="d-flex align-items-center">
+                ${iconHtml}
+                ${row.platform}
+            </div>`;
+            
+            const tdCurrent = document.createElement('td');
+            tdCurrent.className = 'text-center';
+            tdCurrent.textContent = formatMetricValue(row.current, metric);
+            
+            const tdPrevious = document.createElement('td');
+            tdPrevious.className = 'text-center';
+            tdPrevious.textContent = formatMetricValue(row.previous, metric);
+            
+            const tdVariation = document.createElement('td');
+            tdVariation.className = 'text-center';
+            const isPositive = row.variation.startsWith('+');
+            tdVariation.innerHTML = `<span class="text-${isPositive ? 'success' : 'danger'}">
+                <i class="mdi mdi-arrow-${isPositive ? 'up' : 'down'}-bold mr-1"></i>
+                ${row.variation}
+            </span>`;
+            
+            tr.appendChild(tdPlatform);
+            tr.appendChild(tdCurrent);
+            tr.appendChild(tdPrevious);
+            tr.appendChild(tdVariation);
+            tableBody.appendChild(tr);
+        });
+    }
+    
+    function getPlatformIcon(platform) {
+        switch(platform) {
+            case 'Facebook': return 'facebook';
+            case 'Google': return 'google';
+            case 'TikTok': return 'tiktok-image';
+            case 'Taboola': return 'taboola-image';
+            default: return 'link-variant';
+        }
+    }
+    
+    function formatMetricValue(value, metric) {
+        switch(metric) {
+            case 'impressions': return value.toLocaleString();
+            case 'clicks': return value.toLocaleString();
+            case 'conversions': return value.toLocaleString();
+            default: return value;
+        }
+    }
+    
+    /* Inicializar*/
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        if (e.target.getAttribute('href') === '#tabAnalytics') {
+            initCharts();
+        }
+    });
+    
+    if (document.querySelector('.nav-link.active').getAttribute('href') === '#tabAnalytics') {
+        initCharts();
+    }
+});
+</script>
+
+<script>
+/* Remover Os valores da Plataforma */
+function removerPlataforma(platformId, platformName) {
+    if (confirm(`Tem certeza que deseja remover os valores da Plataforma ${platformName}? Esta ação não pode ser desfeita.`)) {
+        const platformRow = $(`.btn-view-products[data-platform="${platformId}"]`).closest('tr');
+        const detailsRow = $(`#products-${platformId}`);
+        
+        platformRow.fadeOut(400, function() {
+            $(this).remove();
+        });
+        
+        detailsRow.fadeOut(400, function() {
+            $(this).remove();
+        });
+        
+        if (typeof $.notify !== 'undefined') {
+            $.notify({
+                title: "Os valores",
+                message: `da Plataforma ${platformName} foi removida com sucesso`,
+                icon: 'mdi mdi-check'
+            }, {
+                type: "success",
+                placement: {
+                    from: "top",
+                    align: "right"
+                },
+                time: 3000
+            });
+        } else {
+            alert(`Os valores da Plataforma ${platformName} removida com sucesso!`);
+        }
+    }
+}
+</script>
+
+<script>
+/* Exportações */
+function exportarExcel() {
+    try {
+        const dados = coletarDadosTabela();
+        const wb = XLSX.utils.book_new();
+        const ws = XLSX.utils.aoa_to_sheet([
+            ['#', 'Valor Gasto', 'Plataforma/Campanha', 'Impressões', 'Status'],
+            ...dados
+        ]);
+        
+        XLSX.utils.book_append_sheet(wb, ws, 'Dashboard Anúncios');
+        
+        const dataAtual = new Date().toLocaleDateString('pt-BR').replace(/\//g, '-');
+        const nomeArquivo = `dashboard-anuncios-${dataAtual}.xlsx`;
+        
+        XLSX.writeFile(wb, nomeArquivo);
+        mostrarNotificacao('Excel exportado com sucesso!', 'success');
+        
+    } catch (error) {
+        console.error('Erro ao exportar Excel:', error);
+        mostrarNotificacao('Erro ao exportar Excel. Tente novamente.', 'danger');
+    }
+}
+
+function exportarPDF() {
+    try {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        
+        doc.setFont('helvetica');
+        doc.setFontSize(18);
+        doc.text('Dashboard de Anúncios', 20, 20);
+        
+        const dataAtual = new Date().toLocaleDateString('pt-BR');
+        doc.setFontSize(12);
+        doc.text(`Gerado em: ${dataAtual}`, 20, 30);
+        
+        const dados = coletarDadosTabela();
+        const colunas = ['#', 'Valor Gasto', 'Plataforma/Campanha', 'Impressões', 'Status'];
+        
+        doc.autoTable({
+            head: [colunas],
+            body: dados,
+            startY: 40,
+            styles: {
+                fontSize: 10,
+                cellPadding: 3
+            },
+            headStyles: {
+                fillColor: [115, 103, 240],
+                textColor: 255
+            },
+            alternateRowStyles: {
+                fillColor: [248, 249, 250]
+            }
+        });
+        
+        const dataArquivo = new Date().toLocaleDateString('pt-BR').replace(/\//g, '-');
+        const nomeArquivo = `dashboard-anuncios-${dataArquivo}.pdf`;
+        
+        doc.save(nomeArquivo);
+        mostrarNotificacao('PDF exportado com sucesso!', 'success');
+        
+    } catch (error) {
+        console.error('Erro ao exportar PDF:', error);
+        mostrarNotificacao('Erro ao exportar PDF. Tente novamente.', 'danger');
+    }
+}
+
+function imprimirTabela() {
+    try {
+        const janelaImpressao = window.open('', '_blank');
+        const dados = coletarDadosTabela();
+        
+        const htmlImpressao = `
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>Dashboard de Anúncios - Impressão</title>
+                <style>
+                    body { 
+                        font-family: Arial, sans-serif; 
+                        margin: 20px;
+                        color: #333;
+                    }
+                    .header {
+                        text-align: center;
+                        margin-bottom: 30px;
+                        border-bottom: 2px solid #7367f0;
+                        padding-bottom: 15px;
+                    }
+                    .header h1 {
+                        color: #7367f0;
+                        margin: 0;
+                        font-size: 24px;
+                    }
+                    .header p {
+                        margin: 5px 0 0 0;
+                        color: #666;
+                    }
+                    table { 
+                        width: 100%; 
+                        border-collapse: collapse; 
+                        margin-top: 20px;
+                    }
+                    th, td { 
+                        border: 1px solid #ddd; 
+                        padding: 12px 8px; 
+                        text-align: left;
+                    }
+                    th { 
+                        background-color: #7367f0; 
+                        color: white;
+                        font-weight: bold;
+                    }
+                    tr:nth-child(even) { 
+                        background-color: #f8f9fa; 
+                    }
+                    tr:hover {
+                        background-color: #e9ecef;
+                    }
+                    .valor {
+                        font-weight: bold;
+                        color: #28a745;
+                    }
+                    .status-ativo {
+                        color: #28a745;
+                        font-weight: bold;
+                    }
+                    .status-pausado {
+                        color: #ffc107;
+                        font-weight: bold;
+                    }
+                    @media print {
+                        body { margin: 0; }
+                        .header { page-break-inside: avoid; }
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="header">
+                    <h1>Dashboard de Anúncios</h1>
+                    <p>Relatório gerado em ${new Date().toLocaleDateString('pt-BR')} às ${new Date().toLocaleTimeString('pt-BR')}</p>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Valor Gasto</th>
+                            <th>Plataforma/Campanha</th>
+                            <th>Impressões</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${dados.map(linha => `
+                            <tr>
+                                <td>${linha[0]}</td>
+                                <td class="valor">${linha[1]}</td>
+                                <td>${linha[2]}</td>
+                                <td>${linha[3]}</td>
+                                <td class="status-${linha[4].toLowerCase().includes('ativo') ? 'ativo' : 'pausado'}">${linha[4]}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            </body>
+            </html>
+        `;
+        
+        janelaImpressao.document.write(htmlImpressao);
+        janelaImpressao.document.close();
+        
+        janelaImpressao.onload = function() {
+            janelaImpressao.print();
+            janelaImpressao.close();
+        };
+        
+        mostrarNotificacao('Preparando impressão...', 'info');
+        
+    } catch (error) {
+        console.error('Erro ao imprimir:', error);
+        mostrarNotificacao('Erro ao preparar impressão. Tente novamente.', 'danger');
+    }
+}
+
+/* Pegar dados da tabela */
+function coletarDadosTabela() {
+    const dados = [];
+    const tabela = document.querySelector('.table tbody');
+    
+    if (!tabela) return dados;
+    
+    const linhas = tabela.querySelectorAll('tr:not(.product-details-row)');
+    
+    linhas.forEach((linha, index) => {
+        if (linha.classList.contains('bg-light')) return;
+        
+        const colunas = linha.querySelectorAll('td');
+        if (colunas.length >= 5) {
+            const plataforma = colunas[2].textContent.trim().replace(/\s+/g, ' ');
+            const valor = colunas[1].textContent.trim();
+            const impressoes = colunas[3].textContent.trim();
+            const status = colunas[4].textContent.trim();
+            
+            dados.push([
+                index + 1,
+                valor,
+                plataforma,
+                impressoes,
+                status
+            ]);
+        }
+    });
+    
+    return dados;
+}
+
+/* Mostrar notificações */
+function mostrarNotificacao(mensagem, tipo) {
+    if (typeof $.notify !== 'undefined') {
+        const icone = tipo === 'success' ? 'mdi-check' : 
+                     tipo === 'danger' ? 'mdi-alert' : 'mdi-information';
+        
+        $.notify({
+            title: tipo === 'success' ? 'Sucesso!' : 
+                   tipo === 'danger' ? 'Erro!' : 'Informação',
+            message: mensagem,
+            icon: `mdi ${icone}`
+        }, {
+            type: tipo,
+            placement: {
+                from: "top",
+                align: "right"
+            },
+            time: 3000
+        });
+    } else {
+        alert(mensagem);
+    }
+}
+</script>
+</body>
+</html>

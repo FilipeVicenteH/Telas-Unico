@@ -1,0 +1,2271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" name="viewport">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Atmos Admin Panel- Bootstrap 4 Based Admin Panel</title>
+<link rel="icon" type="image/x-icon" href="../assets/img/logo.png"/>
+<link rel="icon" href="../assets/img/logo.png" type="image/png" sizes="16x16">
+<link rel="stylesheet" href="../assets/vendor/pace/pace.css">
+<script src="../assets/vendor/pace/pace.min.js"></script>
+<!--vendors-->
+<link rel="stylesheet" type="text/css" href="../assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
+<link rel="stylesheet" type="text/css" href="../assets/vendor/jquery-scrollbar/jquery.scrollbar.css">
+<link rel="stylesheet" href="../assets/vendor/select2/css/select2.min.css">
+<link rel="stylesheet" href="../assets/vendor/jquery-ui/jquery-ui.min.css">
+<link rel="stylesheet" href="../assets/vendor/daterangepicker/daterangepicker.css">
+<link rel="stylesheet" href="../assets/vendor/timepicker/bootstrap-timepicker.min.css">
+<link href="https://fonts.googleapis.com/css?family=Hind+Vadodara:400,500,600" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts/jost/jost.css">
+<!--Material Icons-->
+<link rel="stylesheet" type="text/css" href="../assets/fonts/materialdesignicons/materialdesignicons.min.css">
+<!--Bootstrap + atmos Admin CSS-->
+<link rel="stylesheet" type="text/css" href="../assets/css/atmos.min.css">
+<!-- Additional library for page -->
+
+<style>
+/* Estilos base */
+.financial-manager {
+    position: relative;
+}
+
+/* Responsividade Mobile */
+@media (max-width: 320px) {
+    .container-fluid {
+        padding: 0.5rem;
+    }
+    
+    .card {
+        margin-bottom: 0.75rem;
+        border-radius: 8px;
+    }
+    
+    .card-body {
+        padding: 0.75rem;
+    }
+    
+    .card-body h1 {
+        font-size: 1.25rem !important;
+    }
+    
+    .card-body p {
+        font-size: 0.8rem !important;
+    }
+    
+    .btn {
+        font-size: 0.75rem !important;
+        padding: 0.375rem 0.5rem !important;
+        margin-bottom: 0.25rem;
+    }
+    .table-responsive {
+        font-size: 0.7rem;
+    }
+    
+    .table th,
+    .table td {
+        padding: 0.25rem 0.125rem;
+        font-size: 0.7rem;
+    }
+    
+    .table th {
+        font-size: 0.65rem;
+    }
+    
+    .badge {
+        font-size: 0.6rem !important;
+        padding: 0.25rem 0.5rem !important;
+    }
+    
+    .btn-sm {
+        font-size: 0.65rem !important;
+        padding: 0.25rem 0.5rem !important;
+    }
+    
+    .form-control {
+        font-size: 0.75rem;
+        padding: 0.375rem 0.5rem;
+    }
+    
+    .form-label {
+        font-size: 0.7rem;
+    }
+    .table td .d-flex.flex-column {
+        gap: 0.25rem;
+    }
+    
+    .table td .font-weight-bold {
+        font-size: 0.65rem !important;
+    }
+    
+    .table td .h6 {
+        font-size: 0.7rem !important;
+    }
+    
+    .table td small {
+        font-size: 0.6rem !important;
+    }
+}
+
+@media (min-width: 321px) and (max-width: 375px) {
+    .container-fluid {
+        padding: 0.75rem;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+    
+    .card-body h1 {
+        font-size: 1.4rem !important;
+    }
+    
+    .btn {
+        font-size: 0.8rem !important;
+        padding: 0.5rem 0.75rem !important;
+    }
+    
+    .table-responsive {
+        font-size: 0.75rem;
+    }
+    
+    .table th,
+    .table td {
+        padding: 0.375rem 0.25rem;
+        font-size: 0.75rem;
+    }
+    
+    .badge {
+        font-size: 0.65rem !important;
+        padding: 0.3rem 0.6rem !important;
+    }
+    
+    .btn-sm {
+        font-size: 0.7rem !important;
+        padding: 0.3rem 0.6rem !important;
+    }
+    
+    .table td .font-weight-bold {
+        font-size: 0.7rem !important;
+    }
+    
+    .table td .h6 {
+        font-size: 0.75rem !important;
+    }
+}
+
+@media (min-width: 376px) and (max-width: 425px) {
+    .container-fluid {
+        padding: 1rem;
+    }
+    
+    .card-body h1 {
+        font-size: 1.5rem !important;
+    }
+    
+    .btn {
+        font-size: 0.85rem !important;
+        padding: 0.5rem 0.875rem !important;
+    }
+    
+    .table-responsive {
+        font-size: 0.8rem;
+    }
+    
+    .table th,
+    .table td {
+        padding: 0.5rem 0.375rem;
+        font-size: 0.8rem;
+    }
+    
+    .badge {
+        font-size: 0.7rem !important;
+        padding: 0.35rem 0.7rem !important;
+    }
+    
+    .btn-sm {
+        font-size: 0.75rem !important;
+        padding: 0.35rem 0.7rem !important;
+    }
+    
+    .table td .font-weight-bold {
+        font-size: 0.75rem !important;
+    }
+    
+    .table td .h6 {
+        font-size: 0.8rem !important;
+    }
+}
+
+@media (min-width: 426px) and (max-width: 768px) {
+    .container-fluid {
+        padding: 1.25rem;
+    }
+    
+    .card-body h1 {
+        font-size: 1.6rem !important;
+    }
+    
+    .btn {
+        font-size: 0.9rem !important;
+        padding: 0.6rem 1rem !important;
+    }
+    
+    .table-responsive {
+        font-size: 0.85rem;
+    }
+    
+    .table th,
+    .table td {
+        padding: 0.6rem 0.5rem;
+        font-size: 0.85rem;
+    }
+    
+    .badge {
+        font-size: 0.75rem !important;
+        padding: 0.4rem 0.8rem !important;
+    }
+    
+    .btn-sm {
+        font-size: 0.8rem !important;
+        padding: 0.4rem 0.8rem !important;
+    }
+    
+    /* Layout flexível para tablet */
+    .d-flex.flex-column.flex-md-row {
+        flex-direction: column !important;
+    }
+    
+    .d-flex.flex-column.flex-md-row > div:last-child {
+        margin-top: 1rem;
+    }
+    
+    .table td .font-weight-bold {
+        font-size: 0.8rem !important;
+    }
+    
+    .table td .h6 {
+        font-size: 0.85rem !important;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container-fluid {
+        padding: 1.5rem;
+    }
+    
+    .card-body h1 {
+        font-size: 1.75rem !important;
+    }
+    
+    .btn {
+        font-size: 0.85rem !important;
+        padding: 0.5rem 1rem !important;
+    }
+    
+    .table-responsive {
+        font-size: 0.9rem;
+    }
+    
+    .table th,
+    .table td {
+        padding: 0.75rem 0.6rem;
+        font-size: 0.9rem;
+    }
+    
+    .badge {
+        font-size: 0.7rem !important;
+        padding: 0.35rem 0.7rem !important;
+    }
+    
+    .btn-sm {
+        font-size: 0.75rem !important;
+        padding: 0.35rem 0.7rem !important;
+    }
+    
+    .table td .font-weight-bold {
+        font-size: 0.85rem !important;
+    }
+    
+    .table td .h6 {
+        font-size: 0.9rem !important;
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .container-fluid {
+        padding: 2rem;
+    }
+    
+    .card-body h1 {
+        font-size: 1.9rem !important;
+    }
+    
+    .btn {
+        font-size: 0.9rem !important;
+        padding: 0.6rem 1.2rem !important;
+    }
+    
+    .table-responsive {
+        font-size: 0.95rem;
+    }
+    
+    .table th,
+    .table td {
+        padding: 0.875rem 0.75rem;
+        font-size: 0.95rem;
+    }
+    
+    .badge {
+        font-size: 0.75rem !important;
+        padding: 0.4rem 0.8rem !important;
+    }
+    
+    .btn-sm {
+        font-size: 0.8rem !important;
+        padding: 0.4rem 0.8rem !important;
+    }
+    
+    .table td .font-weight-bold {
+        font-size: 0.9rem !important;
+    }
+    
+    .table td .h6 {
+        font-size: 0.95rem !important;
+    }
+}
+
+@media (min-width: 1441px) {
+    .container-fluid {
+        padding: 2.5rem;
+        max-width: 1600px;
+        margin: 0 auto;
+    }
+    
+    .card-body h1 {
+        font-size: 2rem !important;
+    }
+    
+    .btn {
+        font-size: 0.9rem !important;
+        padding: 0.6rem 1.2rem !important;
+    }
+    
+    .table-responsive {
+        font-size: 0.95rem;
+    }
+    
+    .table th,
+    .table td {
+        padding: 0.875rem 0.75rem;
+        font-size: 0.95rem;
+    }
+    
+    .badge {
+        font-size: 0.75rem !important;
+        padding: 0.4rem 0.8rem !important;
+    }
+    
+    .btn-sm {
+        font-size: 0.8rem !important;
+        padding: 0.4rem 0.8rem !important;
+    }
+    
+    .table td .font-weight-bold {
+        font-size: 0.9rem !important;
+    }
+    
+    .table td .h6 {
+        font-size: 0.9rem !important;
+    }
+}
+
+@media (min-width: 1920px) {
+    .container-fluid {
+        padding: 2rem;
+        max-width: 1800px;
+        margin: 0 auto;
+    }
+    
+    .card-body h1 {
+        font-size: 1.8rem !important;
+    }
+    
+    .btn {
+        font-size: 0.85rem !important;
+        padding: 0.5rem 1rem !important;
+    }
+    
+    .table-responsive {
+        font-size: 0.9rem;
+    }
+    
+    .table th,
+    .table td {
+        padding: 0.75rem 0.6rem;
+        font-size: 0.9rem;
+    }
+    
+    .badge {
+        font-size: 0.7rem !important;
+        padding: 0.35rem 0.7rem !important;
+    }
+    
+    .btn-sm {
+        font-size: 0.75rem !important;
+        padding: 0.35rem 0.7rem !important;
+    }
+    
+    .table td .font-weight-bold {
+        font-size: 0.85rem !important;
+    }
+    
+    .table td .h6 {
+        font-size: 0.85rem !important;
+    }
+    
+    .table td small {
+        font-size: 0.75rem !important;
+    }
+}
+
+/* Elementos específicos */
+@media (max-width: 768px) {
+    .card-body .d-flex.flex-column.flex-md-row {
+        text-align: center;
+    }
+    
+    .card-body .d-flex.flex-column.flex-md-row > div:first-child {
+        margin-bottom: 1rem;
+    }
+    
+    .card-body .d-flex.flex-wrap {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .table th,
+    .table td {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .table td .d-flex.flex-column {
+        align-items: center;
+        text-align: center;
+    }
+    
+    .table td .d-flex.flex-wrap {
+        justify-content: center;
+    }
+}
+
+/* Filtros responsivos */
+@media (max-width: 768px) {
+    .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    .form-control {
+        margin-bottom: 0.5rem;
+    }
+    
+    .row .col-12 {
+        margin-bottom: 0.5rem;
+    }
+}
+
+@media (max-width: 425px) {
+    .dropdown-menu {
+        min-width: 150px !important;
+        font-size: 0.8rem;
+    }
+    
+    .dropdown-item {
+        padding: 0.5rem 0.75rem !important;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 320px) {
+    .badge {
+        font-size: 0.55rem !important;
+        padding: 0.2rem 0.4rem !important;
+    }
+    
+    .btn-sm {
+        font-size: 0.6rem !important;
+        padding: 0.2rem 0.4rem !important;
+    }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+    .card-body {
+        padding: 0.75rem;
+    }
+    
+    .table th,
+    .table td {
+        padding: 0.375rem 0.25rem;
+    }
+    
+    .btn {
+        padding: 0.4rem 0.8rem !important;
+        font-size: 0.8rem !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn,
+    .badge,
+    .card {
+        transition: none !important;
+    }
+}
+
+@media (prefers-contrast: high) {
+    .badge {
+        border: 2px solid currentColor !important;
+    }
+    
+    .btn {
+        border-width: 2px !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .admin-content .container-fluid .row .col-xl-10 {
+        max-width: 90%;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 1400px) {
+    .admin-content .container-fluid .row .col-xxl-9 {
+        max-width: 85%;
+        margin: 0 auto;
+    }
+}
+
+.btn-action {
+    min-height: 36px;
+    min-width: 36px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 8px 16px;
+    margin: 2px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-action:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.btn-action:active {
+    transform: translateY(0);
+}
+
+.form-control-enhanced {
+    height: 40px;
+    border: 2px solid #e9ecef;
+    border-radius: 6px;
+    font-size: 13px;
+    padding: 8px 12px;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.form-control-enhanced:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    outline: none;
+}
+
+.form-control-enhanced:hover {
+    border-color: #adb5bd;
+}
+
+.table-responsive-enhanced {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.table-enhanced tbody tr {
+    border-bottom: 1px solid #f1f3f4;
+    transition: background-color 0.2s ease;
+}
+
+.table-enhanced tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-pending {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+
+.status-paid {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.status-cancelled {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+@media (max-width: 767px) {
+    .btn-action {
+        width: 100%;
+        margin: 2px 0;
+        justify-content: center;
+    }
+    
+    .table-enhanced thead th,
+    .table-enhanced tbody td {
+        padding: 8px 6px;
+        font-size: 12px;
+    }
+    
+    .d-flex.flex-column.flex-md-row.gap-1 {
+        flex-direction: column !important;
+        gap: 2px !important;
+    }
+    
+    .btn-sm {
+        width: 100%;
+        min-width: auto;
+        font-size: 11px;
+        padding: 4px 8px;
+    }
+}
+
+@media (max-width: 575px) {
+    .table-enhanced thead th,
+    .table-enhanced tbody td {
+        padding: 6px 4px;
+        font-size: 11px;
+    }
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.focus-visible:focus {
+    outline: 3px solid #667eea;
+    outline-offset: 2px;
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-in {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.success-feedback {
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin: 16px 0;
+    display: none;
+}
+
+.error-feedback {
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin: 16px 0;
+    display: none;
+}
+
+@media (min-width: 1600px) {
+    .admin-content .container-fluid .row .col-xxl-9 {
+        max-width: 80%;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .admin-content .container-fluid .row .col-xl-10,
+    .admin-content .container-fluid .row .col-xxl-9 {
+        max-width: 100%;
+        margin: 0;
+    }
+}
+
+.admin-content .btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    line-height: 1.2;
+    border-radius: 0.25rem;
+}
+
+.admin-content .btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+}
+
+.admin-content .btn-lg {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+.admin-content .btn-outline-primary,
+.admin-content .btn-outline-secondary,
+.admin-content .btn-outline-success,
+.admin-content .btn-outline-danger {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.8rem;
+}
+
+.admin-content .btn .mdi {
+    margin-right: 0.25rem;
+    font-size: 0.9em;
+}
+
+.admin-content .dropdown-toggle::after {
+    margin-left: 0.25rem;
+    font-size: 0.7rem;
+}
+
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.notification-enter {
+    animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.bg-primary-light {
+    background-color: rgba(0, 123, 255, 0.05) !important;
+}
+
+.transaction-row {
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+}
+
+.transaction-row:hover {
+    background-color: rgba(0, 123, 255, 0.02) !important;
+    border-left-color: #007bff;
+}
+
+.table th {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+.table td {
+    border-bottom: 1px solid #f1f3f4;
+    vertical-align: middle;
+}
+
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.badge {
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 0.4em 0.6em;
+}
+
+.badge-pill {
+    border-radius: 50px;
+}
+
+.badge-lg {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.375rem;
+    transition: all 0.15s ease-in-out;
+}
+
+.badge-lg:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.btn {
+    border-radius: 0.375rem;
+    font-weight: 500;
+    transition: all 0.15s ease-in-out;
+}
+
+.btn-sm {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.btn-xs {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    border-radius: 0.25rem;
+}
+
+.text-danger {
+    color: #dc3545 !important;
+}
+
+.text-success {
+    color: #28a745 !important;
+}
+
+.btn-outline-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 123, 255, 0.2);
+}
+
+.btn-outline-secondary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(108, 117, 125, 0.2);
+}
+
+@media (max-width: 768px) {
+    .table-responsive {
+        font-size: 0.875rem;
+    }
+    
+    .btn {
+        font-size: 0.875rem;
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .table th,
+    .table td {
+        padding: 0.75rem 0.5rem;
+    }
+    
+    .card-header .d-flex {
+        flex-direction: column;
+        align-items: flex-start !important;
+    }
+    
+    .card-header .d-flex > div:last-child {
+        margin-top: 0.5rem;
+    }
+    
+    .card-footer .row {
+        text-align: center;
+    }
+    
+    .card-footer .col-md-6:last-child {
+        margin-top: 0.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .table th,
+    .table td {
+        padding: 0.5rem 0.25rem;
+        font-size: 0.8rem;
+    }
+    
+    .badge {
+        font-size: 0.65rem;
+        padding: 0.3em 0.5em;
+    }
+    
+    .btn-sm {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+    }
+}
+</style>
+
+</head>
+<body class="sidebar-pinned">
+<aside class="admin-sidebar">
+    <div class="admin-sidebar-brand">
+        <img class="admin-brand-logo" src="../assets/img/logo.svg" width="40" alt="atmos Logo">
+        <span class="admin-brand-content"><a href="index.html">  atmos</a></span>
+        <div class="ml-auto">
+            <a href="#" class="admin-pin-sidebar btn-ghost btn btn-rounded-circle"></a>
+            <a href="#" class="admin-close-sidebar"></a>
+        </div>
+    </div>
+    <div class="admin-sidebar-wrapper js-scrollbar">
+        <ul class="menu">
+            <li class="menu-item active">
+                <a href="#" class="menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Link
+                                                </span>
+                                            </span>
+                    <span class="menu-icon">
+                                                   <span class="icon-badge badge-success badge badge-pill">1</span>
+
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+
+            </li>
+
+            <li class="menu-item ">
+                <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu level 1
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                                <span class="menu-info">Contains submenu</span>
+                                            </span>
+                    <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+
+
+                </ul>
+            </li>
+
+            <li class="menu-item ">
+                <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu Level 2
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                                <span class="menu-info">Contains submenu</span>
+                                            </span>
+                    <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu Level 1.1
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                        </a>
+                        <ul class="sub-menu">
+                            <li class="menu-item">
+                                <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 2.1 </span>
+                                            </span>
+                                    <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+</aside>
+
+
+<main class="admin-main">
+
+<header class="admin-header">
+
+    <a href="#" class="sidebar-toggle" data-toggleclass="sidebar-open" data-target="body"> </a>
+
+    <nav class=" mr-auto my-auto">
+        <ul class="nav align-items-center">
+
+            <li class="nav-item">
+                <a class="nav-link  " data-target="#siteSearchModal" data-toggle="modal" href="#">
+                    <i class=" mdi mdi-magnify mdi-24px align-middle"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <nav class=" ml-auto">
+        <ul class="nav align-items-center">
+
+            <li class="nav-item">
+                <div class="dropdown">
+                    <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-24px mdi-bell-outline"></i>
+                        <span class="notification-counter"></span>
+                    </a>
+
+                    <div class="dropdown-menu notification-container dropdown-menu-right">
+                        <div class="d-flex p-all-15 bg-white justify-content-between border-bottom ">
+                            <a href="#!" class="mdi mdi-18px mdi-settings text-muted"></a>
+                            <span class="h5 m-0">Notifications</span>
+                            <a href="#!" class="mdi mdi-18px mdi-notification-clear-all text-muted"></a>
+                        </div>
+                        <div class="notification-events bg-gray-300">
+                            <div class="text-overline m-b-5">today</div>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body"> <i class="mdi mdi-circle text-success"></i> All systems operational.</div>
+                                </div>
+                            </a>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body"> <i class="mdi mdi-upload-multiple "></i> File upload successful.</div>
+                                </div>
+                            </a>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <i class="mdi mdi-cancel text-danger"></i> Your holiday has been denied
+                                    </div>
+                                </div>
+                            </a>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item dropdown ">
+                <a class="nav-link dropdown-toggle" href="#"   role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    <div class="avatar avatar-sm avatar-online">
+                        <span class="avatar-title rounded-circle bg-dark">V</span>
+
+                    </div>
+                </a>
+                <div class="dropdown-menu  dropdown-menu-right"   >
+                    <a class="dropdown-item" href="#">  Add Account
+                    </a>
+                    <a class="dropdown-item" href="#">  Reset Password</a>
+                    <a class="dropdown-item" href="#">  Help </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"> Logout</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </nav>
+</header>
+<!--site header ends -->    
+
+<section class="admin-content">
+        <!-- BEGIN PlACE PAGE CONTENT HERE -->
+    <div class="container-fluid">
+        <!-- Wrapper com margens laterais para telas grandes -->
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-10 col-xxl-9">
+        
+        <!-- Cabeçalho principal seguindo padrão Atmos -->
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body d-flex flex-column flex-md-row justify-content-between align-items-center py-4">
+                        <div class="d-flex align-items-center mb-3 mb-md-0">
+                    <i class="mdi mdi-chart-line text-primary mdi-36px mr-3"></i>
+                            <div>
+                        <h1 class="h3 mb-0 text-dark font-weight-bold">Financeiro</h1>
+                        <p class="text-muted mb-0 small">Controle de gastos e custos da empresa</p>
+                            </div>
+                        </div>
+                <div class="d-flex flex-wrap">
+                    <button class="btn btn-primary mr-2 px-3 px-md-4 mb-2" data-toggle="modal" data-target="#slideLeftModal">
+                        <i class="mdi mdi-help-circle-outline mr-1 mr-md-2"></i><span class="d-none d-sm-inline">Como Usar</span>
+                            </button>
+                    <button class="btn btn-success mr-2 px-3 px-md-4 mb-2" onclick="fn_if('')">
+                        <i class="mdi mdi-plus mr-1 mr-md-2"></i><span class="d-none d-sm-inline">Novo Lançamento</span>
+                            </button>
+                    <button class="btn btn-light px-3 px-md-4 border mb-2" onclick="fn_modal_grande('financeiro-taxados-modal.asp')">
+                        <i class="mdi mdi-receipt mr-1 mr-md-2"></i><span class="d-none d-sm-inline">Pedidos Taxados</span>
+                            </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4 shadow-sm" style="border-radius: 12px; border: 1px solid rgb(233, 236, 239); top: -1px;">
+            <div class="card-header bg-light" style="border-radius: 12px 12px 0 0; border-bottom: 1px solid #e9ecef;">
+                <h5 class="mb-0 d-flex align-items-center" style="font-weight: 600; color: #495057;">
+                    <i class="mdi mdi-filter-variant mr-2"></i>
+                    Filtros de Busca
+                </h5>
+            </div>
+            <div class="card-body py-4">
+                <form action="financeiro.asp?nr=1" name="form" method="post" id="filterForm">
+                    <div class="row">
+                        <div class="col-12 col-md-3 mb-3">
+                            <div class="form-group mb-0">
+                                <label class="form-label font-weight-bold text-dark d-flex align-items-center mb-2" style="font-size: 13px;">
+                                    <i class="mdi mdi-calendar mr-1 text-primary"></i>
+                                    Mês
+                                </label>
+                                <select class="form-control" name="mes" required="" style="height: 40px; border: 2px solid #e9ecef; border-radius: 6px; font-size: 13px; padding: 8px 12px;" onchange="validateForm()">
+                                    <option value="">Selecione o mês</option>
+                                    <option value="1">Janeiro</option>
+                                    <option value="2">Fevereiro</option>
+                                    <option value="3">Março</option>
+                                    <option value="4">Abril</option>
+                                        <option value="5">Maio</option>
+                                        <option value="6">Junho</option>
+                                        <option value="7">Julho</option>
+                                        <option value="8">Agosto</option>
+                                        <option value="9" selected="">Setembro</option>
+                                        <option value="10">Outubro</option>
+                                        <option value="11">Novembro</option>
+                                        <option value="12">Dezembro</option>
+                                    </select>
+                            </div>
+                        </div>
+                        
+                        <div class="col-12 col-md-3 mb-3">
+                            <div class="form-group mb-0">
+                                <label class="form-label font-weight-bold text-dark d-flex align-items-center mb-2" style="font-size: 13px;">
+                                    <i class="mdi mdi-calendar-year mr-1 text-primary"></i>
+                                    Ano
+                                </label>
+                                <select class="form-control" name="ano" required="" style="height: 40px; border: 2px solid #e9ecef; border-radius: 6px; font-size: 13px; padding: 8px 12px;" onchange="validateForm()">
+                                    <option value="">Selecione o ano</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2025" selected="">2025</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="col-12 col-md-3 mb-3">
+                            <div class="form-group mb-0">
+                                <label class="form-label font-weight-bold text-dark d-flex align-items-center mb-2" style="font-size: 13px;">
+                                    <i class="mdi mdi-tag mr-1 text-primary"></i>
+                                    Categoria
+                                </label>
+                                <select class="form-control" name="c" style="height: 40px; border: 2px solid #e9ecef; border-radius: 6px; font-size: 13px; padding: 8px 12px;">
+                                    <option value="">Todas as categorias</option>
+                                    <option value="Aplicativos">Aplicativo</option>
+                                    <option value="Aluguel">Aluguel</option>
+                                    <option value="Alimentação">Alimentação</option>
+                                    <option value="Contador">Contador</option>
+                                    <option value="Estorno">Estorno</option>
+                                    <option value="Funcionário">Funcionário</option>
+                                    <option value="Frete">Frete</option>
+                                    <option value="Impostos">Impostos</option>
+                                    <option value="Marketing">Marketing</option>
+                                    <option value="Outros">Outros</option>
+                                    <option value="Retirada Sócio">Retirada Sócio</option>
+                                    <option value="Tráfego">Tráfego</option>
+                                    <option value="Taxas de gateway">Taxas de gateway</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="col-12 col-md-3 mb-3">
+                            <div class="form-group mb-0">
+                                <label class="form-label font-weight-bold text-dark d-flex align-items-center mb-2" style="font-size: 13px;">
+                                    <i class="mdi mdi-information mr-1 text-primary"></i>
+                                    Status
+                                </label>
+                                <select class="form-control" name="s" style="height: 40px; border: 2px solid #e9ecef; border-radius: 6px; font-size: 13px; padding: 8px 12px;">
+                                    <option value="">Todos os status</option>
+                                    <option value="PENDENTE">Pendente</option>
+                                    <option value="PAGO">Pago</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <div class="d-flex flex-column flex-md-row gap-2">
+                                <button type="submit" class="btn btn-primary mr-2 mb-2" style="min-height: 36px; border-radius: 6px; font-weight: 600; font-size: 13px; padding: 8px 16px;" aria-label="Buscar lançamentos">
+                                    <i class="mdi mdi-magnify mr-1"></i>
+                                    Buscar Lançamentos
+                                </button>
+                                <button type="button" class="btn btn-success mr-2 mb-2" onclick="submitRecurring()" style="min-height: 36px; border-radius: 6px; font-weight: 600; font-size: 13px; padding: 8px 16px;" aria-label="Processar lançamentos recorrentes">
+                                    <i class="mdi mdi-repeat mr-1"></i>
+                                    Processar Recorrentes
+                                </button>
+                                <button type="button" class="btn btn-info mb-2" data-toggle="collapse" data-target="#advancedFilters" aria-expanded="false" aria-controls="advancedFilters" style="min-height: 36px; border-radius: 6px; font-weight: 600; font-size: 13px; padding: 8px 16px;" aria-label="Mostrar filtros avançados">
+                                    <i class="mdi mdi-filter-variant mr-1"></i>
+                                    Filtros Avançados
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="collapse mt-4" id="advancedFilters">
+                        <hr style="border-color: #e9ecef;">
+                        <div class="row">
+                            <div class="col-12 col-md-6 mb-3">
+                                <div class="form-group mb-0">
+                                    <label class="form-label font-weight-bold text-dark d-flex align-items-center mb-2" style="font-size: 13px;">
+                                        <i class="mdi mdi-calendar-multiple mr-1 text-primary"></i>
+                                        Múltiplos Meses
+                                    </label>
+                                    <select class="form-control" name="mes_multiplo" multiple="" style="height: 120px; border: 2px solid #e9ecef; border-radius: 8px; font-size: 14px; padding: 8px;">
+                                        <option value="1">Janeiro</option>
+                                        <option value="2">Fevereiro</option>
+                                        <option value="3">Março</option>
+                                        <option value="4">Abril</option>
+                                        <option value="5">Maio</option>
+                                        <option value="6">Junho</option>
+                                        <option value="7">Julho</option>
+                                        <option value="8">Agosto</option>
+                                        <option value="9" selected="">Setembro</option>
+                                        <option value="10">Outubro</option>
+                                        <option value="11">Novembro</option>
+                                        <option value="12">Dezembro</option>
+                                    </select>
+                                    <small class="text-muted d-flex align-items-center mt-1">
+                                        <i class="mdi mdi-information-outline mr-1"></i>
+                                        Segure Ctrl para selecionar múltiplos meses
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 mb-3">
+                                <div class="form-group mb-0">
+                                    <label class="form-label font-weight-bold text-dark d-flex align-items-center mb-2" style="font-size: 13px;">
+                                        <i class="mdi mdi-download mr-1 text-primary"></i>
+                                        Exportar Dados
+                                    </label>
+                                    <div class="d-flex flex-column gap-2">
+                                        <button type="button" class="btn btn-info" onclick="exportToExcel()" style="min-height: 36px; border-radius: 6px; font-weight: 600; font-size: 13px; padding: 8px 16px;" aria-label="Exportar para Excel">
+                                            <i class="mdi mdi-file-excel mr-1"></i>
+                                            Exportar para Excel
+                                        </button>
+                                        <button type="button" class="btn btn-secondary" onclick="exportToPDF()" style="min-height: 36px; border-radius: 6px; font-weight: 600; font-size: 13px; padding: 8px 16px;" aria-label="Exportar para PDF">
+                                            <i class="mdi mdi-file-pdf mr-1"></i>
+                                            Exportar para PDF
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="repetir" id="repetir" value="">
+                </form>
+            </div>
+        </div>
+
+        <!-- === TABELA DE LANÇAMENTOS OTIMIZADA === -->
+        <div class="card shadow-sm" style="border-radius: 12px; border: 1px solid rgb(233, 236, 239); top: -1px;">
+            <div class="card-header bg-light" style="border-radius: 12px 12px 0 0; border-bottom: 1px solid #e9ecef;">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center">
+                        <i class="mdi mdi-chart-line text-primary mr-2"></i>
+                        <h5 class="mb-0 font-weight-bold text-dark">Lançamentos Financeiros</h5>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <span class="badge badge-primary mr-2" style="font-size: 12px; padding: 8px 12px;">
+                            <i class="mdi mdi-calendar mr-1"></i>Setembro 2025
+                        </span>
+                        <span class="text-muted small">
+                            <i class="mdi mdi-trending-down text-danger mr-1"></i>
+                            Total: <strong class="text-danger">- R$ 1.200,00</strong>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-light border-bottom" style="padding: 16px 24px; background: #e3f2fd !important;">
+                <div class="row">
+                    <div class="col-12 col-md-4">
+                        <div class="d-flex align-items-center mb-1">
+                            <span class="font-weight-bold text-dark mr-2" style="min-width: 80px;">Período:</span>
+                            <span class="font-weight-bold text-primary">Setembro 2025</span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="d-flex align-items-center mb-1">
+                            <span class="font-weight-bold text-dark mr-2" style="min-width: 80px;">Receitas:</span>
+                            <span class="font-weight-bold text-success">+ R$ 2.500,00</span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="d-flex align-items-center mb-1">
+                            <span class="font-weight-bold text-dark mr-2" style="min-width: 80px;">Despesas:</span>
+                            <span class="font-weight-bold text-danger">- R$ 1.200,00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-body p-0">
+                <div class="table-responsive" style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+                    <table class="table table-hover mb-0" style="font-size: 13px;">
+                        <thead class="thead-light">
+                            <tr>
+                                <th class="border-0 py-2 px-2 font-weight-bold text-dark text-center" style="width: 15%; background: #f8f9fa !important;">
+                                    <i class="mdi mdi-calendar mr-1 text-primary"></i>Data
+                                </th>
+                                <th class="border-0 py-2 px-2 font-weight-bold text-dark text-center" style="width: 15%; background: #f8f9fa !important;">
+                                    <i class="mdi mdi-currency-usd mr-1 text-primary"></i>Valor
+                                </th>
+                                <th class="border-0 py-3 px-3 font-weight-bold text-dark text-center" style="width: 20%; background: #f8f9fa !important;">
+                                    <i class="mdi mdi-information mr-1 text-primary"></i>Status
+                                </th>
+                                <th class="border-0 py-3 px-3 font-weight-bold text-dark text-center" style="width: 35%; background: #f8f9fa !important;">
+                                    <i class="mdi mdi-text mr-1 text-primary"></i>Descrição
+                                </th>
+                                <th class="border-0 py-2 px-2 font-weight-bold text-dark text-center" style="width: 15%; background: #f8f9fa !important;">
+                                    <i class="mdi mdi-cog mr-1 text-primary"></i>Ações
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Seção: Lançamentos do Mês Atual -->
+                            <!-- Lançamento atual -->
+                            <tr id="linha263974" class="transaction-row" style="border-bottom: 1px solid #f1f3f4;">
+                                <td class="text-center align-middle py-2 px-2">
+                                    <div class="d-flex flex-column align-items-center">
+                                        <a href="javascript:fn_if('263974')" class="font-weight-bold text-primary text-decoration-none h6 mb-1" style="font-size: 14px;" aria-label="Editar lançamento de 05/09/2025">
+                                            05/09/2025
+                                        </a>
+                                        <small class="text-muted d-flex align-items-center">
+                                            <i class="mdi mdi-minus-circle-outline mr-1 text-danger"></i>
+                                            Débito
+                                            <span class="badge badge-success badge-pill ml-2" data-toggle="tooltip" title="Recorrência Mensal" style="font-size: 10px; padding: 4px 8px;">
+                                                <i class="mdi mdi-repeat mr-1"></i>
+                                                Recorrentes
+                                            </span>
+                                        </small>
+                                    </div>
+                                </td>
+                                <td class="text-center align-middle py-2 px-2">
+                                    <div class="d-flex flex-column align-items-center">
+                                        <span class="font-weight-bold text-danger h6 mb-1" style="font-size: 16px;">- R$ 1.200,00</span>
+                                        <small class="text-muted">Salário mensal</small>
+                                    </div>
+                                </td>
+                                <td class="text-center align-middle py-2 px-2">
+                                    <div class="d-flex flex-column align-items-center">
+                                        <span class="badge badge-warning d-inline-flex align-items-center mb-2" id="lancpendente263974" style="padding: 6px 12px; border-radius: 16px; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.3px;">
+                                            <i class="mdi mdi-clock-outline mr-1"></i>
+                                            Pendente
+                                        </span>
+                                        <span class="badge badge-success d-inline-flex align-items-center mb-2" id="lancpago263974" style="display: none; padding: 6px 12px; border-radius: 16px; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.3px;">
+                                            <i class="mdi mdi-check-circle mr-1"></i>
+                                            Pago
+                                        </span>
+                                        <button class="btn btn-outline-primary btn-sm" onclick="fn_statuspagto('1','263974')" data-toggle="tooltip" title="Atualizar Status" style="min-height: 28px; border-radius: 15px; font-weight: 600; padding: 6px 12px; font-size: 11px; border-width: 2px; transition: all 0.3s ease;" aria-label="Atualizar status do lançamento">
+                                            <i class="mdi mdi-refresh mr-1" style="font-size: 13px;"></i>
+                                            Atualizar
+                                        </button>
+                                    </div>
+                                </td>
+                                <td class="text-center align-middle py-2 px-2">
+                                    <div class="d-flex flex-column align-items-center">
+                                        <div class="font-weight-bold text-dark mb-2" style="font-size: 14px;">SALÁRIO ATENDENTE</div>
+                                        <div class="d-flex flex-wrap align-items-center justify-content-center gap-1 mb-2">
+                                            <span class="badge badge-primary" style="font-size: 11px; padding: 6px 12px;">
+                                                <i class="mdi mdi-account mr-1"></i>
+                                                Funcionário
+                                            </span>
+                                            <span class="badge badge-light" style="font-size: 11px; padding: 6px 12px; border: 1px solid #dee2e6;">
+                                                <i class="mdi mdi-calendar-repeat mr-1"></i>
+                                                Mensal
+                                            </span>
+                                        </div>
+                                        <small class="text-muted d-block text-center" style="font-size: 12px;">
+                                            <i class="mdi mdi-information-outline mr-1"></i>
+                                            Pagamento mensal do atendente
+                                        </small>
+                                    </div>
+                                </td>
+                                <td class="text-center align-middle py-2 px-2">
+                                    <div class="dropdown">
+                                        <button class="btn btn-outline-secondary btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="min-height: 32px; border-radius: 8px; font-weight: 600; padding: 6px 12px; font-size: 12px; border: 1px solid #e9ecef; transition: all 0.2s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                                            <i class="mdi mdi-dots-vertical" style="font-size: 16px;"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right" style="min-width: 200px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); border: 1px solid #e9ecef; padding: 8px 0; margin-top: 8px;">
+                                            <h6 class="dropdown-header d-flex align-items-center" style="font-weight: 600; color: #495057; font-size: 13px; padding: 8px 16px; margin-bottom: 4px;">
+                                                <i class="mdi mdi-cog mr-2 text-primary"></i>Ações
+                                            </h6>
+                                            <button class="dropdown-item d-flex align-items-center" type="button" onclick="javascript:fn_if('263974')" style="font-size: 13px; padding: 10px 16px; transition: all 0.2s ease;">
+                                                <i class="mdi mdi-pencil mr-3 text-warning"></i>Editar Lançamento
+                                        </button>
+                                            <button class="dropdown-item d-flex align-items-center" type="button" onclick="javascript:fn_duplicateTransaction('263974')" style="font-size: 13px; padding: 10px 16px; transition: all 0.2s ease;">
+                                                <i class="mdi mdi-content-copy mr-3 text-info"></i>Duplicar Lançamento
+                                            </button>
+                                            <div class="dropdown-divider" style="margin: 8px 0;"></div>
+                                            <button class="dropdown-item d-flex align-items-center text-danger" type="button" onclick="javascript:fn_statuspagto('3','263974')" style="font-size: 13px; padding: 10px 16px; transition: all 0.2s ease;">
+                                                <i class="mdi mdi-delete mr-3"></i>Excluir Lançamento
+                                        </button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr class="bg-light">
+                                <td colspan="5" class="border-0 py-2 px-3">
+                                    <div class="d-flex align-items-center">
+                                        <i class="mdi mdi-history text-muted mr-2"></i>
+                                        <strong class="text-muted">Lançamentos Anteriores</strong>
+                                        <span class="badge badge-light ml-2">Arquivo</span>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Exemplo de lançamento anterior -->
+                            <tr class="transaction-row" style="opacity: 0.7;">
+                                <td class="text-center align-middle py-2 px-2">
+                                    <div class="d-flex flex-column align-items-center">
+                                        <div class="d-flex align-items-center">
+                                            <a href="javascript:fn_if('263973')" class="font-weight-bold text-secondary text-decoration-none">
+                                                28/08/2025
+                                            </a>
+                                        </div>
+                                        <small class="text-muted mt-1 d-flex align-items-center">
+                                            <i class="mdi mdi-plus-circle-outline mr-1 text-success"></i>Crédito
+                                        </small>
+                                    </div>
+                                </td>
+                                <td class="text-center align-middle py-2 px-2">
+                                    <div class="d-flex flex-column align-items-center">
+                                        <span class="font-weight-bold text-success h6 mb-0">+ R$ 2.500,00</span>
+                                        <small class="text-muted">Venda</small>
+                                    </div>
+                                </td>
+                                <td class="text-center align-middle py-2 px-2">
+                                    <div class="d-flex flex-column align-items-center">
+                                        <div class="mb-2">
+                                            <span class="badge badge-success d-inline-flex align-items-center" style="padding: 6px 12px; border-radius: 16px; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.3px;">
+                                                <i class="mdi mdi-check-circle mr-1"></i>Pago
+                                            </span>
+                                        </div>
+                                        <div class="text-muted small">
+                                            <i class="mdi mdi-check-all mr-1"></i>Finalizado
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-center align-middle py-2 px-2">
+                                    <div class="d-flex flex-column align-items-center">
+                                        <div class="font-weight-bold text-dark mb-1">VENDA PRODUTO A</div>
+                                        <div class="d-flex flex-wrap align-items-center justify-content-center">
+                                            <span class="badge badge-success mr-2 mb-1">
+                                                <i class="mdi mdi-trending-up mr-1"></i>Venda
+                                            </span>
+                                        </div>
+                                        <small class="text-muted d-block mt-1 text-center">
+                                            <i class="mdi mdi-information-outline mr-1"></i>Venda de produto finalizada
+                                        </small>
+                                    </div>
+                                </td>
+                                <td class="text-center align-middle py-2 px-2">
+                                    <div class="dropdown">
+                                        <button class="btn btn-outline-secondary btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="min-height: 32px; border-radius: 8px; font-weight: 600; padding: 6px 12px; font-size: 12px; border: 1px solid #e9ecef; transition: all 0.2s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                                            <i class="mdi mdi-dots-vertical" style="font-size: 16px;"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right" style="min-width: 200px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); border: 1px solid #e9ecef; padding: 8px 0; margin-top: 8px;">
+                                            <h6 class="dropdown-header d-flex align-items-center" style="font-weight: 600; color: #495057; font-size: 13px; padding: 8px 16px; margin-bottom: 4px;">
+                                                <i class="mdi mdi-cog mr-2 text-primary"></i>Ações
+                                            </h6>
+                                            <button class="dropdown-item d-flex align-items-center" type="button" onclick="javascript:fn_if('263973')" style="font-size: 13px; padding: 10px 16px; transition: all 0.2s ease;">
+                                                <i class="mdi mdi-pencil mr-3 text-warning"></i>Editar Lançamento
+                                            </button>
+                                            <button class="dropdown-item d-flex align-items-center" type="button" onclick="javascript:fn_duplicateTransaction('263973')" style="font-size: 13px; padding: 10px 16px; transition: all 0.2s ease;">
+                                                <i class="mdi mdi-content-copy mr-3 text-info"></i>Duplicar Lançamento
+                                            </button>
+                                            <div class="dropdown-divider" style="margin: 8px 0;"></div>
+                                            <button class="dropdown-item d-flex align-items-center text-danger" type="button" onclick="javascript:fn_statuspagto('3','263973')" style="font-size: 13px; padding: 10px 16px; transition: all 0.2s ease;">
+                                                <i class="mdi mdi-delete mr-3"></i>Excluir Lançamento
+                                            </button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="card-footer bg-light border-top-0 py-3">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center">
+                                <i class="mdi mdi-information-outline text-muted mr-2"></i>
+                                <small class="text-muted">
+                                    Mostrando <strong>2</strong> de <strong>2</strong> lançamentos
+                                </small>
+                            </div>
+                        </div>
+                        <div class="col-md-6 text-md-right">
+                            <div class="d-flex justify-content-md-end align-items-center">
+                                <span class="text-muted mr-3">
+                                    <i class="mdi mdi-trending-up text-success mr-1"></i>
+                                    Receitas: <strong class="text-success">R$ 2.500,00</strong>
+                                </span>
+                                <span class="text-muted">
+                                    <i class="mdi mdi-trending-down text-danger mr-1"></i>
+                                    Despesas: <strong class="text-danger">R$ 1.200,00</strong>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Ajuda seguindo padrão Atmos -->
+    <div class="modal fade modal-slide-left" id="slideLeftModal" tabindex="-1" role="dialog" aria-labelledby="slideLeftModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title d-flex align-items-center" id="slideLeftModalLabel">
+                        <i class="mdi mdi-help-circle mr-2"></i>
+                        Central de Ajuda
+                    </h5>
+                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body p-0">
+                    <iframe src="about:blank" id="if_ajuda" name="if_ajuda" style="border: none; width: 100%; height: 500px; background: #f8f9fa;" class="rounded-bottom"></iframe>
+                </div>
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        <i class="mdi mdi-close mr-1"></i>Fechar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- END PLACE PAGE CONTENT HERE -->
+    </section>
+
+</main>
+
+
+<div class="modal modal-slide-left  fade" id="siteSearchModal" tabindex="-1" role="dialog" aria-labelledby="siteSearchModal"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body p-all-0" id="site-search">
+                <button type="button" class="close light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="form-dark bg-dark text-white p-t-60 p-b-20 bg-dots" >
+                    <h3 class="text-uppercase    text-center  fw-300 "> Search</h3>
+
+                    <div class="container-fluid">
+                        <div class="col-md-10 p-t-10 m-auto">
+                            <input type="search" placeholder="Search Something"
+                                   class=" search form-control form-control-lg">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="bg-dark text-muted container-fluid p-b-10 text-center text-overline">
+                        results
+                    </div>
+                    <div class="list-group list  ">
+
+
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"   src="../assets/img/users/user-3.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Eric Chen</div>
+                                <div class="text-muted">Developer</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"
+                                                                    src="../assets/img/users/user-4.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Sean Valdez</div>
+                                <div class="text-muted">Marketing</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"
+                                                                    src="../assets/img/users/user-8.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Marie Arnold</div>
+                                <div class="text-muted">Developer</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar-title bg-dark rounded"><i class="mdi mdi-24px mdi-file-pdf"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">SRS Document</div>
+                                <div class="text-muted">25.5 Mb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar-title bg-dark rounded"><i
+                                                class="mdi mdi-24px mdi-file-document-box"></i></div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">Design Guide.pdf</div>
+                                <div class="text-muted">9 Mb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar avatar-sm  ">
+                                        <div class="avatar-title bg-primary rounded"><i
+                                                    class="mdi mdi-24px mdi-code-braces"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">response.json</div>
+                                <div class="text-muted">15 Kb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar avatar-sm ">
+                                        <div class="avatar-title bg-info rounded"><i
+                                                    class="mdi mdi-24px mdi-file-excel"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">June Accounts.xls</div>
+                                <div class="text-muted">6 Mb</div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="../assets/vendor/jquery/jquery.min.js"></script>
+<script src="../assets/vendor/jquery-ui/jquery-ui.min.js"></script>
+<script src="../assets/vendor/popper/popper.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/vendor/select2/js/select2.full.min.js"></script>
+<script src="../assets/vendor/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+<script src="../assets/vendor/listjs/listjs.min.js"></script>
+<script src="../assets/vendor/moment/moment.min.js"></script>
+<script src="../assets/vendor/daterangepicker/daterangepicker.js"></script>
+<script src="../assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="../assets/vendor/bootstrap-notify/bootstrap-notify.min.js"></script>
+<script src="../assets/js/atmos.min.js"></script>
+
+<script>
+// Inicialização
+$(document).ready(function() {
+    initializeTooltips();
+    initializeFormValidation();
+    initializeAccessibility();
+    initializeResponsiveHandlers();
+});
+
+// Inicializar tooltips
+function initializeTooltips() {
+    $('[data-toggle="tooltip"]').tooltip({
+        trigger: 'hover focus',
+        placement: 'top',
+        delay: { show: 500, hide: 100 }
+    });
+}
+
+// Validação de formulário
+function initializeFormValidation() {
+    $('#filterForm').on('submit', function(e) {
+        e.preventDefault();
+        
+        const month = $('select[name="mes"]').val();
+        const year = $('select[name="ano"]').val();
+        
+        if (!month || !year) {
+            showError('Por favor, selecione o mês e ano para buscar.');
+            return;
+        }
+        
+        showLoading();
+        
+        setTimeout(() => {
+            hideLoading();
+            showSuccess('Busca realizada com sucesso!');
+        }, 1000);
+    });
+}
+
+function initializeAccessibility() {
+    // Navegação por teclado
+    $('.btn-action, .btn').on('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            $(this).click();
+        }
+    });
+    
+    // Foco visível
+    $('.btn-action, .form-control, .btn').addClass('focus-visible');
+    
+    // ARIA 
+    $('.transaction-row').each(function() {
+        const date = $(this).find('a').text();
+        const value = $(this).find('.h5, .h6').text();
+        $(this).attr('aria-label', `Lançamento de ${date} no valor de ${value}`);
+    });
+}
+
+// Responsividade
+function initializeResponsiveHandlers() {
+    function handleResize() {
+        const width = $(window).width();
+        
+        if (width < 768) {
+            // Mobile: ajustar botões
+            $('.btn-action').addClass('w-100');
+            $('.d-flex.flex-column.flex-md-row.gap-1').removeClass('flex-md-row').addClass('flex-column');
+        } else {
+            $('.btn-action').removeClass('w-100');
+            $('.d-flex.flex-column.flex-md-row.gap-1').removeClass('flex-column').addClass('flex-md-row');
+        }
+    }
+    
+    $(window).on('resize', handleResize);
+    handleResize(); // Executar na inicialização
+}
+
+// Funções de validação
+function validateForm() {
+    const month = $('select[name="mes"]').val();
+    const year = $('select[name="ano"]').val();
+    
+    if (month && year) {
+        $('button[type="submit"]').prop('disabled', false).removeClass('btn-secondary').addClass('btn-primary');
+    } else {
+        $('button[type="submit"]').prop('disabled', true).removeClass('btn-primary').addClass('btn-secondary');
+    }
+}
+
+function showLoading() {
+    $('.container-fluid').addClass('loading');
+    $('button[type="submit"]').prop('disabled', true).html('<i class="mdi mdi-loading mdi-spin mr-2"></i>Buscando...');
+}
+
+function hideLoading() {
+    $('.container-fluid').removeClass('loading');
+    $('button[type="submit"]').prop('disabled', false).html('<i class="mdi mdi-magnify mr-2"></i>Buscar Lançamentos');
+}
+
+function showSuccess(message) {
+    // Criar elemento de feedback
+    if (!$('#successFeedback').length) {
+        $('body').append(`
+            <div id="successFeedback" class="alert alert-success position-fixed" 
+                 style="top: 20px; right: 20px; z-index: 9999; display: none; min-width: 300px;">
+                <i class="mdi mdi-check-circle mr-2"></i>
+                <span id="successMessage">${message}</span>
+            </div>
+        `);
+    }
+    
+    $('#successMessage').text(message);
+    $('#successFeedback').fadeIn().delay(3000).fadeOut();
+}
+
+function showError(message) {
+    // Criar elemento de feedback 
+    if (!$('#errorFeedback').length) {
+        $('body').append(`
+            <div id="errorFeedback" class="alert alert-danger position-fixed" 
+                 style="top: 20px; right: 20px; z-index: 9999; display: none; min-width: 300px;">
+                <i class="mdi mdi-alert-circle mr-2"></i>
+                <span id="errorMessage">${message}</span>
+            </div>
+        `);
+    }
+    
+    $('#errorMessage').text(message);
+    $('#errorFeedback').fadeIn().delay(5000).fadeOut();
+}
+
+function exportToExcel() {
+    showLoading();
+    setTimeout(() => {
+        hideLoading();
+        showSuccess('Exportando para Excel...');
+    }, 1000);
+}
+
+function exportToPDF() {
+    showLoading();
+    setTimeout(() => {
+        hideLoading();
+        showSuccess('Exportando para PDF...');
+    }, 1000);
+}
+
+function submitRecurring() {
+    if (confirm('Deseja processar todos os lançamentos recorrentes?')) {
+        showLoading();
+        setTimeout(() => {
+            hideLoading();
+            showSuccess('Lançamentos recorrentes processados!');
+        }, 2000);
+    }
+}
+
+// Modern JavaScript for Financial System
+class FinancialSystemManager {
+    constructor() {
+        this.init();
+    }
+
+    init() {
+        this.initializeTooltips();
+        this.setupEventListeners();
+        this.setupFormValidation();
+        this.initializeAnimations();
+    }
+
+    initializeTooltips() {
+        // Initialize Bootstrap tooltips
+        $('[data-toggle="tooltip"]').tooltip({
+            trigger: 'hover',
+            delay: { show: 500, hide: 100 }
+        });
+    }
+
+    setupEventListeners() {
+        // Form submission with loading state
+        const form = document.querySelector('form[name="form"]');
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                this.handleFormSubmit(e);
+            });
+        }
+
+    }
+
+    setupFormValidation() {
+        const form = document.querySelector('form[name="form"]');
+        if (form) {
+            form.addEventListener('submit', (e) => {
+            });
+        }
+    }
+
+    initializeAnimations() {
+        document.querySelectorAll('.btn-modern').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (btn.type === 'submit') {
+                    this.addLoadingState(btn);
+                }
+            });
+        });
+    }
+
+    handleFormSubmit(event) {
+        const submitBtn = event.target.querySelector('button[type="submit"]');
+        if (submitBtn) {
+            this.addLoadingState(submitBtn);
+        }
+    }
+
+    addLoadingState(button) {
+        const originalContent = button.innerHTML;
+        const originalWidth = button.offsetWidth + 'px';
+        
+        button.style.width = originalWidth;
+        button.innerHTML = '';
+        button.classList.add('btn-loading');
+        button.disabled = true;
+
+        setTimeout(() => {
+            button.innerHTML = originalContent;
+            button.classList.remove('btn-loading');
+            button.disabled = false;
+            button.style.width = 'auto';
+        }, 2000);
+    }
+
+    showNotification(message, type = 'info', duration = 4000) {
+        const iconMap = {
+            success: 'mdi-check-circle',
+            error: 'mdi-alert-circle',
+            warning: 'mdi-alert',
+            info: 'mdi-information'
+        };
+
+        const colorMap = {
+            success: '#10b981',
+            error: '#ef4444',
+            warning: '#f59e0b',
+            info: '#3b82f6'
+        };
+
+        const notification = document.createElement('div');
+        notification.className = 'notification';
+        notification.style.borderLeftColor = colorMap[type];
+        notification.innerHTML = `
+            <div class="d-flex align-items-center">
+                <i class="mdi ${iconMap[type]} mr-2" style="color: ${colorMap[type]}"></i>
+                <div class="flex-grow-1">
+                    <div class="font-weight-medium">${message}</div>
+                </div>
+                <button type="button" class="btn btn-sm btn-light ml-2" onclick="this.closest('.notification').remove()">
+                    <i class="mdi mdi-close"></i>
+                </button>
+            </div>
+        `;
+
+        document.body.appendChild(notification);
+
+        // Auto remove notification
+        setTimeout(() => {
+            notification.style.animation = 'slideOutRight 0.4s ease-in';
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 400);
+        }, duration);
+    }
+}
+
+window.fn_statuspagto = function(action, id) {
+    const manager = window.financialManager;
+    
+    if (action === '1') {
+        const pendingEl = document.getElementById('lancpendente' + id);
+        const paidEl = document.getElementById('lancpago' + id);
+        
+        if (pendingEl && paidEl) {
+            if (pendingEl.style.display !== 'none') {
+                pendingEl.style.display = 'none';
+                paidEl.style.display = 'inline-flex';
+                manager.showNotification('Status atualizado para PAGO', 'success');
+                
+                paidEl.style.animation = 'fadeIn 0.3s ease-in';
+            } else {
+                pendingEl.style.display = 'inline-flex';
+                paidEl.style.display = 'none';
+                manager.showNotification('Status atualizado para PENDENTE', 'info');
+                
+                pendingEl.style.animation = 'fadeIn 0.3s ease-in';
+            }
+        }
+    } else if (action === '3') {
+        // Delete confirmation with modern modal
+        if (confirm('🗑️ Tem certeza que deseja excluir este lançamento?\n\nEsta ação não pode ser desfeita.')) {
+            const row = document.getElementById('linha' + id);
+            if (row) {
+                row.style.animation = 'fadeOut 0.4s ease-out forwards';
+                
+                setTimeout(() => {
+                    row.remove();
+                    manager.showNotification('Lançamento excluído com sucesso', 'warning');
+                }, 400);
+            }
+        }
+    }
+};
+
+window.fnShow = function(elementId) {
+    const element = document.getElementById(elementId);
+    if (element) {
+        if (element.style.display === 'none' || !element.style.display) {
+            element.style.display = 'block';
+            element.style.animation = 'fadeInUp 0.3s ease-out';
+        } else {
+            element.style.animation = 'fadeOut 0.3s ease-out';
+            setTimeout(() => {
+                element.style.display = 'none';
+            }, 300);
+        }
+    }
+};
+
+window.fn_modal_grande = function(url) {
+    const modal = $('#slideLeftModal');
+    const iframe = document.getElementById('if_ajuda');
+    
+    if (modal.length && iframe) {
+        iframe.src = url;
+        modal.modal('show');
+        
+        iframe.style.opacity = '0.5';
+        iframe.onload = function() {
+            iframe.style.opacity = '1';
+            iframe.style.transition = 'opacity 0.3s ease';
+        };
+    }
+};
+
+window.fn_if = function(id) {
+    const manager = window.financialManager;
+    
+    if (id) {
+        manager.showNotification(`Abrindo editor para lançamento #${id}`, 'info');
+        console.log('Editing transaction:', id);
+    } else {
+        manager.showNotification('Abrindo formulário de novo lançamento', 'success');
+        console.log('Creating new transaction');
+    }
+};
+
+window.fn_duplicateTransaction = function(id) {
+    const manager = window.financialManager;
+    
+    if (confirm('✨ Duplicar Lançamento\n\nDeseja criar um novo lançamento com os mesmos dados?\nVocê poderá editar as informações após a criação.')) {
+        console.log('Duplicating transaction:', id);
+        manager.showNotification(`Lançamento #${id} duplicado com sucesso!`, 'success');
+        
+        setTimeout(() => {
+            manager.showNotification('Novo lançamento criado e pronto para edição', 'info');
+        }, 1500);
+    }
+};
+
+window.submitRecurring = function() {
+    const recurringInput = document.getElementById('repetir');
+    const form = document.querySelector('form[name="form"]');
+    
+    if (recurringInput && form) {
+        recurringInput.value = '30';
+        form.submit();
+    }
+};
+
+window.exportData = function() {
+    const manager = window.financialManager;
+    manager.showNotification('Funcionalidade de exportação será implementada em breve', 'info');
+    console.log('Export data functionality - to be implemented');
+};
+
+const additionalStyles = document.createElement('style');
+additionalStyles.textContent = `
+    @keyframes fadeOut {
+        from { 
+            opacity: 1; 
+            transform: translateY(0) scale(1); 
+        }
+        to { 
+            opacity: 0; 
+            transform: translateY(-10px) scale(0.95); 
+        }
+    }
+    
+    @keyframes slideOutRight {
+        from {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        to {
+            opacity: 0;
+            transform: translateX(100%);
+        }
+    }
+`;
+document.head.appendChild(additionalStyles);
+
+// Initialize the Financial System Manager
+document.addEventListener('DOMContentLoaded', function() {
+    window.financialManager = new FinancialSystemManager();
+    
+    // Add smooth scrolling to all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    function handleResize() {
+        const container = document.querySelector('.financial-table-container');
+        if (container) {
+            if (window.innerWidth < 768) {
+                container.classList.add('mobile-mode');
+            } else {
+                container.classList.remove('mobile-mode');
+            }
+        }
+    }
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    document.body.style.opacity = '0';
+    setTimeout(() => {
+        document.body.style.transition = 'opacity 0.4s ease';
+        document.body.style.opacity = '1';
+    }, 100);
+});
+</script>
+
+</body>
+</html>

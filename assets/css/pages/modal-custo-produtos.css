@@ -1,0 +1,117 @@
+
+/* ===== PRODUTO NOME (RESPONSIVO) ===== */
+.produto-nome-span {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 800px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ===== TABLE ===== */
+.history-table th, 
+.history-table td {
+  white-space: nowrap;
+  font-size: 0.9rem;
+  padding: 0.8rem 0.5rem;
+}
+
+.history-table th {
+  font-size: 0.72rem;
+  letter-spacing: 0.4px;
+}
+
+.history-table .small {
+  font-size: 0.8rem;
+}
+
+.history-row {
+  transition: background-color 0.2s var(--transition-ease);
+}
+
+.history-row:hover {
+  background-color: rgba(245, 247, 250, 0.5);
+}
+
+.history-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ===== MODAL ESPECÍFICO ===== */
+.total-value-container {
+  display: inline-block;
+  min-width: 85px;
+  text-align: center;
+}
+
+.quantity-badge {
+  display: inline-block;
+}
+
+.periodo-date-line {
+  font-size: 0.8rem;
+}
+
+.action-buttons .btn {
+  opacity: 1;
+  width: 26px;
+  height: 26px;
+  transition: transform 0.15s var(--transition-ease);
+}
+
+.action-buttons .btn:hover {
+  transform: scale(1.08);
+}
+
+.badge-icon {
+  transition: transform 0.15s var(--transition-ease);
+}
+
+.history-row:hover .badge-icon {
+  transform: scale(1.05);
+}
+
+/* ===== RESPONSIVIDADE ESPECÍFICA ===== */
+@media (max-width: 1680px) {
+  .produto-nome-span { max-width: 600px; }
+}
+
+@media (max-width: 1440px) {
+  .produto-nome-span { max-width: 500px; }
+  .history-table th[style*="width"] { width: auto !important; }
+  .periodo-dates { max-width: 150px; }
+}
+
+@media (max-width: 1024px) {
+  .produto-nome-span { max-width: 350px; }
+  .modal-header .modal-icon-wrapper { width: 42px; height: 42px; }
+  .modal-header .modal-icon-wrapper i { font-size: 20px; }
+  .total-value-container { min-width: 75px; }
+  .periodo-dates { max-width: 130px; }
+}
+
+@media (max-width: 767px) {
+  .produto-nome-span { max-width: 250px; }
+  .modal-xl { max-width: 100%; margin: 0.5rem; }
+  .modal-header { padding: 0.75rem 1rem; }
+  .modal-body .p-4, .card-body.p-4 { padding: 1rem !important; }
+  .history-table th, .history-table td { padding: 0.5rem 0.3rem; }
+}
+
+@media (max-width: 375px) {
+  .produto-nome-span { max-width: 180px; }
+  .modal-header .modal-icon-wrapper { width: 36px; height: 36px; }
+  .modal-body .p-4, .card-body.p-4 { padding: 0.75rem !important; }
+  .total-value-container { min-width: 60px; }
+}
+
+@media (max-width: 320px) {
+  .produto-nome-span { max-width: 150px; }
+  .modal-header .modal-icon-wrapper { width: 32px; height: 32px; }
+  .modal-body .p-4, .card-body.p-4 { padding: 0.5rem !important; }
+  .total-value-container { min-width: 55px; }
+  .action-buttons .btn { width: 22px; height: 22px; }
+} 

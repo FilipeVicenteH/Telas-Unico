@@ -1,0 +1,1927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" name="viewport">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Atmos Admin Panel- Bootstrap 4 Based Admin Panel</title>
+<link rel="icon" type="image/x-icon" href="../assets/img/logo.png"/>
+<link rel="icon" href="../assets/img/logo.png" type="image/png" sizes="16x16">
+<link rel="stylesheet" href="../assets/vendor/pace/pace.css">
+<script src="../assets/vendor/pace/pace.min.js"></script>
+<!--vendors-->
+<link rel="stylesheet" type="text/css" href="../assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
+<link rel="stylesheet" type="text/css" href="../assets/vendor/jquery-scrollbar/jquery.scrollbar.css">
+<link rel="stylesheet" href="../assets/vendor/select2/css/select2.min.css">
+<link rel="stylesheet" href="../assets/vendor/jquery-ui/jquery-ui.min.css">
+<link rel="stylesheet" href="../assets/vendor/daterangepicker/daterangepicker.css">
+<link rel="stylesheet" href="../assets/vendor/timepicker/bootstrap-timepicker.min.css">
+<link href="https://fonts.googleapis.com/css?family=Hind+Vadodara:400,500,600" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts/jost/jost.css">
+<!--Material Icons-->
+<link rel="stylesheet" type="text/css" href="../assets/fonts/materialdesignicons/materialdesignicons.min.css">
+<!--Bootstrap + atmos Admin CSS-->
+<link rel="stylesheet" type="text/css" href="../assets/css/atmos.min.css">
+<!-- Additional library for page -->
+
+<style>
+.card {
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card-body {
+    padding: 1rem;
+}
+
+.btn {
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.15s ease-in-out;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* mobile */
+@media (max-width: 320px) {
+    .card {
+        margin-bottom: 0.75rem;
+        border-radius: 8px;
+    }
+    
+    .card-body {
+        padding: 0.75rem;
+    }
+    
+    .card-body h1 {
+        font-size: 1.25rem !important;
+    }
+    
+    .btn {
+        font-size: 0.75rem !important;
+        padding: 0.375rem 0.5rem !important;
+        margin-bottom: 0.25rem;
+    }
+}
+
+@media (min-width: 321px) and (max-width: 375px) {
+    .card-body {
+        padding: 1rem;
+    }
+    
+    .card-body h1 {
+        font-size: 1.4rem !important;
+    }
+    
+    .btn {
+        font-size: 0.8rem !important;
+        padding: 0.5rem 0.75rem !important;
+    }
+}
+
+@media (min-width: 376px) and (max-width: 425px) {
+    .card-body h1 {
+        font-size: 1.5rem !important;
+    }
+    
+    .btn {
+        font-size: 0.85rem !important;
+        padding: 0.5rem 0.875rem !important;
+    }
+}
+
+@media (min-width: 426px) and (max-width: 768px) {
+    .card-body h1 {
+        font-size: 1.6rem !important;
+    }
+    
+    .btn {
+        font-size: 0.9rem !important;
+        padding: 0.6rem 1rem !important;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .card-body h1 {
+        font-size: 1.75rem !important;
+    }
+    
+    .btn {
+        font-size: 0.85rem !important;
+        padding: 0.5rem 1rem !important;
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .card-body h1 {
+        font-size: 1.9rem !important;
+    }
+    
+    .btn {
+        font-size: 0.9rem !important;
+        padding: 0.6rem 1.2rem !important;
+    }
+}
+
+@media (min-width: 1441px) and (max-width: 1919px) {
+    .card-body h1 {
+        font-size: 2rem !important;
+    }
+    
+    .btn {
+        font-size: 0.9rem !important;
+        padding: 0.6rem 1.2rem !important;
+    }
+}
+
+@media (min-width: 1920px) {
+    .card-body h1 {
+        font-size: 1.8rem !important;
+    }
+    
+    .btn {
+        font-size: 0.85rem !important;
+        padding: 0.5rem 1rem !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn {
+        transition: none !important;
+    }
+}
+
+@media (prefers-contrast: high) {
+    .btn {
+        border-width: 2px !important;
+    }
+}
+
+/* Status badge  */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1;
+    border-radius: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.status-disconnected {
+    background-color: #fee2e2;
+    color: #dc2626;
+    border-color: #fecaca;
+}
+
+.status-disconnected::before {
+    content: '';
+    display: inline-block;
+    width: 0.375rem;
+    height: 0.375rem;
+    border-radius: 50%;
+    background-color: #dc2626;
+    margin-right: 0.375rem;
+    animation: pulse 2s infinite;
+}
+
+.status-connected {
+    background-color: #dcfce7;
+    color: #16a34a;
+    border-color: #bbf7d0;
+}
+
+.status-connected::before {
+    content: '';
+    display: inline-block;
+    width: 0.375rem;
+    height: 0.375rem;
+    border-radius: 50%;
+    background-color: #16a34a;
+    margin-right: 0.375rem;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/*  Modal WhatsApp */
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #687ae8 0%, #5a6fd8 100%);
+}
+
+.bg-primary-light {
+    background-color: rgba(104, 122, 232, 0.1);
+}
+
+.bg-info-light {
+    background-color: rgba(25, 181, 254, 0.1);
+}
+
+.bg-warning-light {
+    background-color: rgba(247, 188, 6, 0.1);
+}
+
+.bg-success-light {
+    background-color: rgba(12, 153, 0, 0.1);
+}
+
+.bg-danger-light {
+    background-color: rgba(242, 84, 91, 0.1);
+}
+
+.bg-secondary-light {
+    background-color: rgba(149, 170, 201, 0.1);
+}
+
+.qr-container {
+    min-height: 400px;
+    border: 2px dashed #dee2e6;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.qr-container:hover {
+    border-color: #687ae8;
+    background-color: #f8f9ff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(104, 122, 232, 0.15);
+}
+
+.qr-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.qr-loading-overlay {
+    z-index: 10;
+    backdrop-filter: blur(2px);
+}
+
+.timeline-sm .timeline-item {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.timeline-sm .timeline-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 1.25rem;
+    top: 2.5rem;
+    width: 2px;
+    height: calc(100% + 0.5rem);
+    background: linear-gradient(to bottom, #e9ecef, transparent);
+}
+
+.timeline-sm .timeline-marker {
+    margin-right: 1rem;
+    z-index: 2;
+    position: relative;
+}
+
+.timeline-sm .timeline-content {
+    flex: 1;
+}
+
+.timeline-sm .timeline-content h6 {
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+.timeline-sm .timeline-content p {
+    font-size: 0.8rem;
+}
+
+.faq-item {
+    border-bottom: 1px solid #f1f3f4;
+    padding-bottom: 0.75rem;
+    transition: all 0.2s ease;
+}
+
+.faq-item:hover {
+    background-color: rgba(104, 122, 232, 0.05);
+    border-radius: 8px;
+    padding: 0.75rem;
+    margin: 0 -0.75rem;
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.gap-2 > * + * {
+    margin-left: 0.5rem;
+}
+
+.min-vh-75 {
+    min-height: 75vh;
+}
+
+.transition-all {
+    transition: all 0.3s ease;
+}
+
+/*  hover cards */
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.accordion .card-header button {
+    transition: all 0.3s ease;
+    border: none;
+    background: none;
+    text-decoration: none;
+}
+
+.accordion .card-header button:hover {
+    background-color: rgba(104, 122, 232, 0.05);
+    text-decoration: none;
+}
+
+.accordion .card-header button:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.accordion .card-header button[aria-expanded="true"] .mdi-chevron-down {
+    transform: rotate(180deg);
+}
+
+.accordion .card-header button[aria-expanded="true"] {
+    background-color: rgba(104, 122, 232, 0.08);
+}
+
+.accordion .card-header button .mdi-chevron-down.rotating {
+    animation: rotateChevron 0.3s ease-in-out;
+}
+
+@keyframes rotateChevron {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(180deg); }
+}
+
+#faqAccordion .card {
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+#faqAccordion .card:hover {
+    border-color: rgba(104, 122, 232, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#faqAccordion .card-header {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+#faqAccordion .collapse {
+    border-top: 1px solid #e9ecef;
+}
+
+#faqAccordion .card-body {
+    background-color: #fafbfc;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.timeline-item {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.timeline-item:nth-child(1) { animation-delay: 0.1s; }
+.timeline-item:nth-child(2) { animation-delay: 0.2s; }
+.timeline-item:nth-child(3) { animation-delay: 0.3s; }
+.timeline-item:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(104, 122, 232, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(104, 122, 232, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(104, 122, 232, 0);
+    }
+}
+
+.pulse-animation {
+    animation: pulse 2s infinite;
+}
+
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn .mdi-loading {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.accordion .card-header button .mdi-chevron-down {
+    transition: transform 0.3s ease;
+}
+
+.accordion .card-header button[aria-expanded="true"] .mdi-chevron-down {
+    transform: rotate(180deg);
+}
+
+.timeline-content .card {
+    transition: all 0.3s ease;
+}
+
+.timeline-content .card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.faq-section {
+    background: linear-gradient(135deg, #f8f9ff 0%, #f1f3f4 100%);
+}
+
+.faq-compact {
+    max-width: 100%;
+}
+
+.faq-main {
+    margin-bottom: 16px;
+}
+
+.faq-item-compact {
+    background: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+}
+
+.faq-item-compact:hover {
+    border-color: #687ae8;
+    box-shadow: 0 4px 12px rgba(104, 122, 232, 0.15);
+    transform: translateY(-1px);
+}
+
+.faq-item-compact[aria-expanded="true"] {
+    border-color: #687ae8;
+    background: #f8f9ff;
+}
+
+.faq-icon-compact {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.faq-icon-compact i {
+    font-size: 16px;
+    color: #687ae8;
+}
+
+.faq-item-compact:nth-child(1) .faq-icon-compact { background: rgba(104, 122, 232, 0.1); }
+.faq-item-compact:nth-child(2) .faq-icon-compact { background: rgba(25, 181, 254, 0.1); }
+.faq-item-compact:nth-child(3) .faq-icon-compact { background: rgba(247, 188, 6, 0.1); }
+.faq-item-compact:nth-child(4) .faq-icon-compact { background: rgba(242, 84, 91, 0.1); }
+.faq-item-compact:nth-child(5) .faq-icon-compact { background: rgba(12, 153, 0, 0.1); }
+.faq-item-compact:nth-child(6) .faq-icon-compact { background: rgba(149, 170, 201, 0.1); }
+.faq-item-compact:nth-child(7) .faq-icon-compact { background: rgba(104, 122, 232, 0.1); }
+.faq-item-compact:nth-child(8) .faq-icon-compact { background: rgba(247, 188, 6, 0.1); }
+
+.faq-item-compact:nth-child(1) .faq-icon-compact i { color: #687ae8; }
+.faq-item-compact:nth-child(2) .faq-icon-compact i { color: #19b5fe; }
+.faq-item-compact:nth-child(3) .faq-icon-compact i { color: #f7bc06; }
+.faq-item-compact:nth-child(4) .faq-icon-compact i { color: #f2545b; }
+.faq-item-compact:nth-child(5) .faq-icon-compact i { color: #0c9; }
+.faq-item-compact:nth-child(6) .faq-icon-compact i { color: #95aac9; }
+.faq-item-compact:nth-child(7) .faq-icon-compact i { color: #687ae8; }
+.faq-item-compact:nth-child(8) .faq-icon-compact i { color: #f7bc06; }
+
+.faq-text-compact {
+    flex: 1;
+    margin-right: 12px;
+}
+
+.faq-text-compact h6 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.faq-arrow-compact {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.faq-arrow-compact i {
+    font-size: 16px;
+    color: #6c757d;
+    transition: all 0.3s ease;
+}
+
+.faq-item-compact[aria-expanded="true"] .faq-arrow-compact i {
+    transform: rotate(180deg);
+    color: #687ae8;
+}
+
+.faq-answer-compact {
+    background: #fafbfc;
+    border-top: 1px solid #e9ecef;
+}
+
+.faq-content-compact {
+    padding: 12px 16px 16px 60px;
+}
+
+.faq-content-compact p {
+    font-size: 13px;
+    color: #495057;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.faq-more {
+    text-align: center;
+    margin-top: 16px;
+}
+
+.faq-more .btn {
+    border-radius: 20px;
+    padding: 8px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.faq-more .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(104, 122, 232, 0.3);
+}
+
+.faq-additional {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #e9ecef;
+}
+
+.faq-additional .faq-item-compact {
+    margin-bottom: 6px;
+}
+
+.faq-additional .faq-item-compact:last-child {
+    margin-bottom: 0;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.faq-card {
+    animation: slideInUp 0.6s ease forwards;
+}
+
+.faq-card:nth-child(1) { animation-delay: 0.1s; }
+.faq-card:nth-child(2) { animation-delay: 0.2s; }
+.faq-card:nth-child(3) { animation-delay: 0.3s; }
+.faq-card:nth-child(4) { animation-delay: 0.4s; }
+.faq-card:nth-child(5) { animation-delay: 0.5s; }
+.faq-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Responsividade do Modal */
+@media (max-width: 991.98px) {
+    .modal-xl {
+        max-width: 95%;
+    }
+    
+    .qr-container {
+        min-height: 300px;
+    }
+    
+    #qrcode {
+        width: 100% !important;
+        height: 400px !important;
+    }
+    
+    .min-vh-75 {
+        min-height: auto;
+    }
+    
+    .timeline-sm .timeline-item:not(:last-child)::after {
+        display: none;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .modal-xl {
+        max-width: 100%;
+        margin: 0.5rem;
+    }
+    
+    .qr-container {
+        min-height: 250px;
+    }
+    
+    #qrcode {
+        height: 300px !important;
+    }
+    
+    .modal-header .avatar-lg {
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+    }
+    
+    .modal-header .avatar-lg .mdi-32px {
+        font-size: 1.5rem !important;
+    }
+    
+    .timeline-sm .timeline-marker {
+        margin-right: 0.75rem;
+    }
+    
+    .timeline-sm .timeline-content .card-body {
+        padding: 0.75rem !important;
+    }
+    
+    .faq-item {
+        padding: 0.5rem !important;
+        margin: 0 -0.5rem !important;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .modal-body .row {
+        flex-direction: column;
+    }
+    
+    .modal-body .col-lg-6 {
+        width: 100%;
+    }
+    
+    .qr-container {
+        min-height: 200px;
+    }
+    
+    #qrcode {
+        height: 250px !important;
+    }
+    
+    .timeline-sm .timeline-item {
+        margin-bottom: 1rem;
+    }
+    
+    .timeline-sm .timeline-content h6 {
+        font-size: 0.85rem;
+    }
+    
+    .timeline-sm .timeline-content p {
+        font-size: 0.75rem;
+    }
+    
+    .faq-item-compact {
+        margin-bottom: 6px;
+        padding: 10px 12px;
+    }
+    
+    .faq-icon-compact {
+        width: 28px !important;
+        height: 28px !important;
+        margin-right: 10px;
+    }
+    
+    .faq-icon-compact i {
+        font-size: 14px !important;
+    }
+    
+    .faq-text-compact h6 {
+        font-size: 13px;
+    }
+    
+    .faq-content-compact {
+        padding: 10px 12px 12px 50px;
+    }
+    
+    .faq-content-compact p {
+        font-size: 12px;
+    }
+    
+    .faq-more .btn {
+        padding: 6px 16px;
+        font-size: 12px;
+    }
+}
+</style>
+</head>
+<!--body with default sidebar pinned -->
+<body class="sidebar-pinned">
+<!--sidebar Begins-->
+<aside class="admin-sidebar">
+    <div class="admin-sidebar-brand">
+        <!-- begin sidebar branding-->
+        <img class="admin-brand-logo" src="../assets/img/logo.svg" width="40" alt="atmos Logo">
+        <span class="admin-brand-content"><a href="index.html">  atmos</a></span>
+        <!-- end sidebar branding-->
+        <div class="ml-auto">
+            <!-- sidebar pin-->
+            <a href="#" class="admin-pin-sidebar btn-ghost btn btn-rounded-circle"></a>
+            <!-- sidebar close for mobile device-->
+            <a href="#" class="admin-close-sidebar"></a>
+        </div>
+    </div>
+    <div class="admin-sidebar-wrapper js-scrollbar">
+        <!-- Menu List Begins-->
+        <ul class="menu">
+            <!--list item begins-->
+            <li class="menu-item active">
+                <a href="#" class="menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Link
+                                                </span>
+                                            </span>
+                    <span class="menu-icon">
+                                                   <span class="icon-badge badge-success badge badge-pill">1</span>
+
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+
+            </li>
+            <!--list item ends-->
+
+            <!--list item begins-->
+            <li class="menu-item ">
+                <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu level 1
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                                <span class="menu-info">Contains submenu</span>
+                                            </span>
+                    <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+                <!--submenu-->
+                <ul class="sub-menu">
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+
+
+                </ul>
+            </li>
+            <!--list item ends-->
+
+            <!--list item begins-->
+            <li class="menu-item ">
+                <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu Level 2
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                                <span class="menu-info">Contains submenu</span>
+                                            </span>
+                    <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+                <!--submenu-->
+                <ul class="sub-menu">
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu Level 1.1
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                        </a>
+                        <!--submenu-->
+                        <ul class="sub-menu">
+                            <li class="menu-item">
+                                <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 2.1 </span>
+                                            </span>
+                                    <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+            <!--list item ends-->
+        </ul>
+        <!-- Menu List Ends-->
+    </div>
+
+</aside>
+<!--sidebar Ends-->
+
+
+<main class="admin-main">
+
+    <!--site header begins-->
+<header class="admin-header">
+
+    <a href="#" class="sidebar-toggle" data-toggleclass="sidebar-open" data-target="body"> </a>
+
+    <nav class=" mr-auto my-auto">
+        <ul class="nav align-items-center">
+
+            <li class="nav-item">
+                <a class="nav-link  " data-target="#siteSearchModal" data-toggle="modal" href="#">
+                    <i class=" mdi mdi-magnify mdi-24px align-middle"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <nav class=" ml-auto">
+        <ul class="nav align-items-center">
+
+            <li class="nav-item">
+                <div class="dropdown">
+                    <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-24px mdi-bell-outline"></i>
+                        <span class="notification-counter"></span>
+                    </a>
+
+                    <div class="dropdown-menu notification-container dropdown-menu-right">
+                        <div class="d-flex p-all-15 bg-white justify-content-between border-bottom ">
+                            <a href="#!" class="mdi mdi-18px mdi-settings text-muted"></a>
+                            <span class="h5 m-0">Notifications</span>
+                            <a href="#!" class="mdi mdi-18px mdi-notification-clear-all text-muted"></a>
+                        </div>
+                        <div class="notification-events bg-gray-300">
+                            <div class="text-overline m-b-5">today</div>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body"> <i class="mdi mdi-circle text-success"></i> All systems operational.</div>
+                                </div>
+                            </a>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body"> <i class="mdi mdi-upload-multiple "></i> File upload successful.</div>
+                                </div>
+                            </a>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <i class="mdi mdi-cancel text-danger"></i> Your holiday has been denied
+                                    </div>
+                                </div>
+                            </a>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item dropdown ">
+                <a class="nav-link dropdown-toggle" href="#"   role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    <div class="avatar avatar-sm avatar-online">
+                        <span class="avatar-title rounded-circle bg-dark">V</span>
+
+                    </div>
+                </a>
+                <div class="dropdown-menu  dropdown-menu-right"   >
+                    <a class="dropdown-item" href="#">  Add Account
+                    </a>
+                    <a class="dropdown-item" href="#">  Reset Password</a>
+                    <a class="dropdown-item" href="#">  Help </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"> Logout</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </nav>
+</header>
+<!--site header ends -->    <section class="admin-content">
+        <!-- BEGIN PlACE PAGE CONTENT HERE -->
+        <!--  container or container-fluid as per your need           -->
+        <div class="container-fluid">
+            <!-- Wrapper com margens laterais para telas grandes -->
+            <div class="row justify-content-center">
+                <div class="col-12 col-xl-10 col-xxl-9">
+            
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body d-flex flex-column flex-md-row justify-content-between align-items-center py-4">
+                    <div class="d-flex align-items-center mb-3 mb-md-0">
+                        <i class="mdi mdi-whatsapp text-primary mdi-36px mr-3"></i>
+                        <div>
+                            <h1 class="h3 mb-0 text-dark font-weight-bold">WhatsApp</h1>
+                            <p class="text-muted mb-0 small">Automação e gestão de mensagens</p>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-wrap">
+                        <button class="btn btn-primary mr-2 px-3 px-md-4 mb-2" data-toggle="modal" data-target="#whatsappConnectModal">
+                            <i class="mdi mdi-robot mr-1 mr-md-2"></i>
+                            <span class="d-none d-sm-inline">Conectar</span>
+                        </button>
+                        <button class="btn btn-success mr-2 px-3 px-md-4 mb-2" onclick="location='whatsapp-automacao.asp'">
+                            <i class="mdi mdi-arrow-decision-outline mr-1 mr-md-2"></i>
+                            <span class="d-none d-sm-inline">Automações</span>
+                        </button>
+                        <button class="btn btn-light px-3 px-md-4 border mb-2" onclick="fn_modal_grande('whatsapp-modal-envios.asp?tab=Ultimos')">
+                            <i class="mdi mdi-send mr-1 mr-md-2"></i>
+                            <span class="d-none d-sm-inline">Ver Envios</span>
+                        </button>
+                        <button class="btn btn-primary ml-2 mr-2 px-3 px-md-4 mb-2" data-toggle="modal" data-target="#slideLeftModal" style="background: #687ae8 !important; border-color: #687ae8 !important; color: #fff !important; background-image: none !important;">
+                            <i class="mdi mdi-help-circle-outline mr-1 mr-md-2"></i>
+                            <span class="d-none d-sm-inline">Como Usar</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Status da Conexão -->
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0 d-flex align-items-center" style="font-weight: 600; color: #495057;">
+                        <i class="mdi mdi-information-outline mr-2"></i>
+                        Status da Conexão
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <div class="d-flex align-items-center">
+                                <div class="avatar avatar-sm mr-3">
+                                    <div class="avatar-title rounded-circle bg-success">
+                                        <i class="mdi mdi-whatsapp mdi-24px text-white"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="mb-1 font-weight-bold text-dark">WhatsApp Business</h6>
+                                    <p class="text-muted mb-0 small">(84) 9702-7381</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-md-right">
+                                <span class="status-badge status-connected">Conectado</span>
+                                <span class="status-badge status-disconnected">Desconectado</span>
+                            <div class="mt-2 d-flex align-items-center justify-content-end">
+                                <label class="cstm-switch mb-0" data-toggle="tooltip" data-placement="top" title="Ligar/Desligar Automação">
+                                    <input type="checkbox" name="statusAut" id="statusAut" value="A" checked="checked" onclick="javascript:fnAutomacaoStatus('I')" class="cstm-switch-input">
+                                    <span class="cstm-switch-indicator bg-success size-sm"></span>
+                                </label>
+                                <span class="small text-muted ml-2" id="textoStatus" style="font-size: 0.75rem;">Automação Ativa</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cards de Estatísticas -->
+            <div class="row mb-4">
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body text-center">
+                            <div class="avatar avatar-sm mx-auto mb-3">
+                                <div class="avatar-title rounded-circle bg-primary">
+                                    <i class="mdi mdi-arrow-decision-outline mdi-24px text-white"></i>
+                                </div>
+                            </div>
+                            <h3 class="mb-1 text-dark font-weight-bold">17</h3>
+                            <p class="text-muted mb-0 small">Automações Ativas</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body text-center">
+                            <div class="avatar avatar-sm mx-auto mb-3">
+                                <div class="avatar-title rounded-circle bg-info">
+                                    <i class="mdi mdi-send mdi-24px text-white"></i>
+                                </div>
+                            </div>
+                            <h3 class="mb-1 text-dark font-weight-bold">0</h3>
+                            <p class="text-muted mb-0 small">Envios Hoje</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body text-center">
+                            <div class="avatar avatar-sm mx-auto mb-3">
+                                <div class="avatar-title rounded-circle bg-warning">
+                                    <i class="mdi mdi-clock-outline mdi-24px text-white"></i>
+                                </div>
+                            </div>
+                            <h3 class="mb-1 text-dark font-weight-bold">24h</h3>
+                            <p class="text-muted mb-0 small">Horário Ativo</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body text-center">
+                            <div class="avatar avatar-sm mx-auto mb-3">
+                                <div class="avatar-title rounded-circle bg-danger">
+                                    <i class="mdi mdi-account-off mdi-24px text-white"></i>
+                                </div>
+                            </div>
+                            <h3 class="mb-1 text-dark font-weight-bold">27</h3>
+                            <p class="text-muted mb-0 small">Bloqueados</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ações Rápidas -->
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0 d-flex align-items-center" style="font-weight: 600; color: #495057;">
+                        <i class="mdi mdi-lightning-bolt mr-2"></i>
+                        Ações Rápidas
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-3 mb-3">
+                            <button type="button" class="btn btn-outline-primary btn-block py-3" onclick="location='whatsapp-automacao.asp'" data-toggle="tooltip" data-placement="top" title="Configurar automações">
+                                <i class="mdi mdi-arrow-decision-outline mdi-24px d-block mb-2"></i>
+                                <span class="font-weight-bold">Automações</span>
+                                <small class="d-block text-muted">Configurar fluxos</small>
+                            </button>
+                        </div>
+                        <div class="col-md-6 col-lg-3 mb-3">
+                            <button type="button" class="btn btn-outline-info btn-block py-3" onclick="fn_modal_grande('whatsapp-modal-envios.asp?tab=Ultimos')" data-toggle="tooltip" data-placement="top" title="Ver mensagens enviadas">
+                                <i class="mdi mdi-send mdi-24px d-block mb-2"></i>
+                                <span class="font-weight-bold">Ver Envios</span>
+                                <small class="d-block text-muted">Mensagens enviadas</small>
+                            </button>
+                        </div>
+                        <div class="col-md-6 col-lg-3 mb-3">
+                            <button type="button" class="btn btn-outline-warning btn-block py-3" onclick="fn_modal_grande('whatsapp-cfg-automacao.asp');" data-toggle="tooltip" data-placement="top" title="Configurar horário de funcionamento">
+                                <i class="mdi mdi-clock-outline mdi-24px d-block mb-2"></i>
+                                <span class="font-weight-bold">Horário</span>
+                                <small class="d-block text-muted">Configurar horário</small>
+                            </button>
+                        </div>
+                        <div class="col-md-6 col-lg-3 mb-3">
+                            <button type="button" class="btn btn-outline-danger btn-block py-3" onclick="location='bloqueados.asp'" data-toggle="tooltip" data-placement="top" title="Ver contatos bloqueados">
+                                <i class="mdi mdi-account-off mdi-24px d-block mb-2"></i>
+                                <span class="font-weight-bold">Bloqueados</span>
+                                <small class="d-block text-muted">Contatos bloqueados</small>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+                </div>
+            </div>
+        </div>
+        <!-- END PLACE PAGE CONTENT HERE -->
+    </section>
+</main>
+
+<!-- Modal de Conexão WhatsApp -->
+<div class="modal fade" id="whatsappConnectModal" tabindex="-1" role="dialog" aria-labelledby="whatsappConnectModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content border-0 shadow-lg">
+            <div class="modal-header bg-gradient-primary text-white border-0 position-relative overflow-hidden">
+                <div class="position-absolute w-100 h-100" style="top: 0; left: 0; background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);"></div>
+                <div class="d-flex align-items-center position-relative">
+                    <div class="avatar avatar-lg mr-3 shadow-sm">
+                        <div class="avatar-title rounded-circle bg-white">
+                            <i class="mdi mdi-whatsapp mdi-32px text-success"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="modal-title mb-1 font-weight-bold" id="whatsappConnectModalLabel">
+                            Conectar WhatsApp
+                        </h4>
+                        <p class="mb-0 small opacity-90">Siga o tutorial passo a passo para conectar sua conta</p>
+                    </div>
+                </div>
+                <button type="button" class="close text-white position-relative" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body p-0">
+                <div class="row no-gutters min-vh-75">
+                    <!-- Coluna do QR Code -->
+                    <div class="col-lg-6">
+                        <div class="p-4 h-100 d-flex flex-column bg-white">
+                            <div class="text-center mb-4">
+                                <div class="d-inline-flex align-items-center justify-content-center bg-primary-light rounded-circle mb-3" style="width: 60px; height: 60px;">
+                                    <i class="mdi mdi-qrcode mdi-24px text-primary"></i>
+                                </div>
+                                <h5 class="font-weight-bold text-dark mb-2">QR Code de Conexão</h5>
+                                <p class="text-muted small mb-0">Escaneie o código com seu WhatsApp para conectar</p>
+                            </div>
+                            
+                            <div class="qr-container bg-light rounded-lg p-4 mb-4 flex-grow-1 d-flex align-items-center justify-content-center position-relative" style="min-height: 400px;">
+                                <div class="qr-wrapper position-relative w-100 h-100">
+                                    <iframe id="qrcode" 
+                                            src="../udwaweb/novo.asp?id=81998&amp;socket=udwad13.unico.app.br"
+                                            class="border-0 rounded shadow-sm"
+                                            style="width: 100%; height: 100%; min-height: 400px;">
+                                    </iframe>
+                                    
+                                    <!-- Overlay de loading -->
+                                    <div class="qr-loading-overlay position-absolute w-100 h-100 d-flex align-items-center justify-content-center bg-white rounded shadow-sm" style="top: 0; left: 0;">
+                                        <div class="text-center">
+                                            <div class="spinner-border text-primary mb-3" role="status" style="width: 3rem; height: 3rem;">
+                                                <span class="sr-only">Carregando...</span>
+                                            </div>
+                                            <p class="text-muted mb-0 font-weight-medium">Carregando QR Code...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex flex-wrap gap-2 justify-content-center">
+                                <button class="btn btn-outline-primary btn-sm px-3" onclick="refreshQRCode()">
+                                    <i class="mdi mdi-refresh mr-1"></i>
+                                    Atualizar QR
+                                </button>
+                                <button class="btn btn-outline-secondary btn-sm px-3" onclick="copyQRUrl()">
+                                    <i class="mdi mdi-content-copy mr-1"></i>
+                                    Copiar Link
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Instruções -->
+                    <div class="col-lg-6 bg-light">
+                        <div class="p-4 h-100 d-flex flex-column">
+                            <div class="mb-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="d-inline-flex align-items-center justify-content-center bg-info-light rounded-circle mr-3" style="width: 50px; height: 50px;">
+                                        <i class="mdi mdi-school mdi-20px text-info"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-weight-bold text-dark mb-1">Tutorial de Conexão</h5>
+                                        <p class="text-muted small mb-0">Siga os passos abaixo para conectar</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline timeline-sm">
+                                    <div class="timeline-item">
+                                        <div class="timeline-wrapper">
+                                            <div class="timeline-marker">
+                                                <div class="avatar avatar-sm">
+                                                    <div class="avatar-title rounded-circle bg-primary text-white font-weight-bold">
+                                                        1
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="timeline-content">
+                                                <div class="card border-0 shadow-sm">
+                                                    <div class="card-body p-3">
+                                                        <h6 class="font-weight-bold text-dark mb-2 d-flex align-items-center">
+                                                            <i class="mdi mdi-phone text-primary mr-2"></i>
+                                                            Abra o WhatsApp
+                                                        </h6>
+                                                <p class="text-muted small mb-0">No seu celular, abra o aplicativo WhatsApp</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="timeline-item">
+                                        <div class="timeline-wrapper">
+                                            <div class="timeline-marker">
+                                                <div class="avatar avatar-sm">
+                                                    <div class="avatar-title rounded-circle bg-info text-white font-weight-bold">
+                                                        2
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="timeline-content">
+                                                <div class="card border-0 shadow-sm">
+                                                    <div class="card-body p-3">
+                                                        <h6 class="font-weight-bold text-dark mb-2 d-flex align-items-center">
+                                                            <i class="mdi mdi-cogs text-info mr-2"></i>
+                                                            Acesse Configurações
+                                                        </h6>
+                                                <p class="text-muted small mb-0">Toque em "WhatsApp Web" ou "Aparelhos Conectados"</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="timeline-item">
+                                        <div class="timeline-wrapper">
+                                            <div class="timeline-marker">
+                                                <div class="avatar avatar-sm">
+                                                    <div class="avatar-title rounded-circle bg-warning text-white font-weight-bold">
+                                                        3
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="timeline-content">
+                                                <div class="card border-0 shadow-sm">
+                                                    <div class="card-body p-3">
+                                                        <h6 class="font-weight-bold text-dark mb-2 d-flex align-items-center">
+                                                            <i class="mdi mdi-qrcode text-warning mr-2"></i>
+                                                            Escaneie o QR Code
+                                                        </h6>
+                                                <p class="text-muted small mb-0">Aponte a câmera para o código na tela</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="timeline-item">
+                                        <div class="timeline-wrapper">
+                                            <div class="timeline-marker">
+                                                <div class="avatar avatar-sm">
+                                                    <div class="avatar-title rounded-circle bg-success text-white font-weight-bold">
+                                                        4
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="timeline-content">
+                                                <div class="card border-0 shadow-sm">
+                                                    <div class="card-body p-3">
+                                                        <h6 class="font-weight-bold text-dark mb-2 d-flex align-items-center">
+                                                            <i class="mdi mdi-check text-success mr-2"></i>
+                                                            Pronto!
+                                                        </h6>
+                                                <p class="text-muted small mb-0">Sua conta estará conectada automaticamente</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Links úteis -->
+                            <div class="text-center mt-4">
+                                <a href="https://www.youtube.com/playlist?list=PLhX9w1ufR0FC9DpyEk75l3zThwPtVawCj" 
+                                   target="_blank" 
+                                   class="btn btn-outline-primary btn-sm mr-2 px-3">
+                                    <i class="mdi mdi-play-circle mr-1"></i>
+                                    Vídeo Tutorial
+                                </a>
+                                <a href="ajuda_listar.asp?v=Whatsapp" 
+                                   target="_blank" 
+                                   class="btn btn-outline-secondary btn-sm px-3">
+                                    <i class="mdi mdi-help-circle mr-1"></i>
+                                    Mais Ajuda
+                                </a>
+                                    </div>
+                                            </div>
+                                            </div>
+                </div>
+            </div>
+
+            <!-- Seção FAQ -->
+            <div class="faq-section border-top">
+                <div class="p-4">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="text-center mb-4">
+                                <div class="d-inline-flex align-items-center justify-content-center bg-warning-light rounded-circle mb-3 faq-icon" style="width: 60px; height: 60px;">
+                                    <i class="mdi mdi-help-circle-outline mdi-24px text-warning"></i>
+                                </div>
+                                <h5 class="font-weight-bold text-dark mb-2">Dúvidas Frequentes</h5>
+                                <p class="text-muted small mb-0">Encontre respostas para as perguntas mais comuns</p>
+                            </div>
+                            
+                            <div class="faq-compact">
+                                <div class="faq-main">
+                                    <div class="faq-item-compact" data-toggle="collapse" data-target="#faq1" aria-expanded="false" aria-controls="faq1">
+                                        <div class="faq-icon-compact">
+                                            <i class="mdi mdi-swap-horizontal"></i>
+                                        </div>
+                                        <div class="faq-text-compact">
+                                            <h6>Troca de WhatsApp</h6>
+                                        </div>
+                                        <div class="faq-arrow-compact">
+                                            <i class="mdi mdi-chevron-down"></i>
+                                        </div>
+                                    </div>
+                                    <div id="faq1" class="collapse faq-answer-compact">
+                                        <div class="faq-content-compact">
+                                            <p>Basta ler o QR Code com o WhatsApp desejado para fazer a troca do número.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="faq-item-compact" data-toggle="collapse" data-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                                        <div class="faq-icon-compact">
+                                            <i class="mdi mdi-clock-outline"></i>
+                                        </div>
+                                        <div class="faq-text-compact">
+                                            <h6>Horário de funcionamento</h6>
+                                        </div>
+                                        <div class="faq-arrow-compact">
+                                            <i class="mdi mdi-chevron-down"></i>
+                                        </div>
+                                    </div>
+                                    <div id="faq2" class="collapse faq-answer-compact">
+                                        <div class="faq-content-compact">
+                                            <p>Mensagens são enviadas apenas no horário da loja. Fora do horário, são enviadas no próximo dia. Você pode configurar para 24hs.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="faq-item-compact" data-toggle="collapse" data-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                                        <div class="faq-icon-compact">
+                                            <i class="mdi mdi-alert-circle"></i>
+                                        </div>
+                                        <div class="faq-text-compact">
+                                            <h6>Falha no envio</h6>
+                                        </div>
+                                        <div class="faq-arrow-compact">
+                                            <i class="mdi mdi-chevron-down"></i>
+                                        </div>
+                                    </div>
+                                    <div id="faq3" class="collapse faq-answer-compact">
+                                        <div class="faq-content-compact">
+                                            <p>Pode ocorrer por: 1) Desconexão do WhatsApp Web - faça login novamente. 2) Saldo insuficiente - recarregue sua conta.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="faq-item-compact" data-toggle="collapse" data-target="#faq4" aria-expanded="false" aria-controls="faq4">
+                                        <div class="faq-icon-compact">
+                                            <i class="mdi mdi-alert-circle"></i>
+                                        </div>
+                                        <div class="faq-text-compact">
+                                            <h6>Risco de bloqueio</h6>
+                                        </div>
+                                        <div class="faq-arrow-compact">
+                                            <i class="mdi mdi-chevron-down"></i>
+                                        </div>
+                                    </div>
+                                    <div id="faq4" class="collapse faq-answer-compact">
+                                        <div class="faq-content-compact">
+                                            <p>Sim, pode ocorrer se detectar comportamento de spam ou muitos feedbacks negativos. Você aceita estes termos ao usar a automação.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="faq-more">
+                                    <button class="btn btn-outline-primary btn-sm" type="button" data-toggle="collapse" data-target="#faqAdditional" aria-expanded="false" aria-controls="faqAdditional">
+                                        <i class="mdi mdi-plus mr-1"></i>
+                                        Ver mais dúvidas
+                                    </button>
+                                </div>
+
+                                <div id="faqAdditional" class="collapse faq-additional">
+                                    <div class="faq-item-compact" data-toggle="collapse" data-target="#faq5" aria-expanded="false" aria-controls="faq5">
+                                        <div class="faq-icon-compact">
+                                            <i class="mdi mdi-power"></i>
+                                        </div>
+                                        <div class="faq-text-compact">
+                                            <h6>Ligando automação</h6>
+                                        </div>
+                                        <div class="faq-arrow-compact">
+                                            <i class="mdi mdi-chevron-down"></i>
+                                        </div>
+                                    </div>
+                                    <div id="faq5" class="collapse faq-answer-compact">
+                                        <div class="faq-content-compact">
+                                            <p>Serão considerados apenas novos pedidos gerados após ligar a automação.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="faq-item-compact" data-toggle="collapse" data-target="#faq6" aria-expanded="false" aria-controls="faq6">
+                                        <div class="faq-icon-compact">
+                                            <i class="mdi mdi-power-off"></i>
+                                        </div>
+                                        <div class="faq-text-compact">
+                                            <h6>Desligando automação</h6>
+                                        </div>
+                                        <div class="faq-arrow-compact">
+                                            <i class="mdi mdi-chevron-down"></i>
+                                        </div>
+                                    </div>
+                                    <div id="faq6" class="collapse faq-answer-compact">
+                                        <div class="faq-content-compact">
+                                            <p>Ao desligar, todas as mensagens agendadas e em fila serão removidas. Ao ligar novamente, apenas novos pedidos serão considerados.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="faq-item-compact" data-toggle="collapse" data-target="#faq7" aria-expanded="false" aria-controls="faq7">
+                                        <div class="faq-icon-compact">
+                                            <i class="mdi mdi-account-multiple"></i>
+                                        </div>
+                                        <div class="faq-text-compact">
+                                            <h6>Múltiplas contas</h6>
+                                        </div>
+                                        <div class="faq-arrow-compact">
+                                            <i class="mdi mdi-chevron-down"></i>
+                                        </div>
+                                    </div>
+                                    <div id="faq7" class="collapse faq-answer-compact">
+                                        <div class="faq-content-compact">
+                                            <p>Sim, você pode usar o mesmo número de WhatsApp em quantas contas do Unico Drop desejar.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="faq-item-compact" data-toggle="collapse" data-target="#faq8" aria-expanded="false" aria-controls="faq8">
+                                        <div class="faq-icon-compact">
+                                            <i class="mdi mdi-fire"></i>
+                                        </div>
+                                        <div class="faq-text-compact">
+                                            <h6>Esquentar o chip</h6>
+                                        </div>
+                                        <div class="faq-arrow-compact">
+                                            <i class="mdi mdi-chevron-down"></i>
+                                        </div>
+                                    </div>
+                                    <div id="faq8" class="collapse faq-answer-compact">
+                                        <div class="faq-content-compact">
+                                            <p>Dicas: Não envie mensagens de chip novo, cadastre-se em grupos, interaja com pessoas, faça ligações, seja cordial e use conta normal.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Aviso importante -->
+                            <div class="alert alert-info border-0 mt-4" style="background-color: rgba(25, 181, 254, 0.1);">
+                                <div class="d-flex align-items-start">
+                                    <i class="mdi mdi-information-outline text-info mr-2 mt-1"></i>
+                                    <div>
+                                        <small class="text-muted mb-0">
+                                            <strong>Importante:</strong> Algumas questões podem ocasionar o não envio de uma mensagem, isso pode ocorrer com qualquer sistema pois depende de vários fatores, como: configuração, a versão, internet, integração e outros.
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer do Modal -->
+            <div class="modal-footer bg-light border-0">
+                <div class="d-flex justify-content-between w-100 align-items-center">
+                    <div class="d-flex align-items-center">
+                        <div class="avatar avatar-sm mr-2">
+                            <div class="avatar-title rounded-circle bg-success">
+                                <i class="mdi mdi-shield-check text-white"></i>
+                            </div>
+                        </div>
+                        <small class="text-muted font-weight-medium">Conexão segura e criptografada</small>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                            <i class="mdi mdi-close mr-1"></i>
+                            Fechar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal-slide-left  fade" id="siteSearchModal" tabindex="-1" role="dialog" aria-labelledby="siteSearchModal"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body p-all-0" id="site-search">
+                <button type="button" class="close light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="form-dark bg-dark text-white p-t-60 p-b-20 bg-dots" >
+                    <h3 class="text-uppercase    text-center  fw-300 "> Search</h3>
+
+                    <div class="container-fluid">
+                        <div class="col-md-10 p-t-10 m-auto">
+                            <input type="search" placeholder="Search Something"
+                                   class=" search form-control form-control-lg">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="bg-dark text-muted container-fluid p-b-10 text-center text-overline">
+                        results
+                    </div>
+                    <div class="list-group list  ">
+
+
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"   src="../assets/img/users/user-3.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Eric Chen</div>
+                                <div class="text-muted">Developer</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"
+                                                                    src="../assets/img/users/user-4.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Sean Valdez</div>
+                                <div class="text-muted">Marketing</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"
+                                                                    src="../assets/img/users/user-8.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Marie Arnold</div>
+                                <div class="text-muted">Developer</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar-title bg-dark rounded"><i class="mdi mdi-24px mdi-file-pdf"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">SRS Document</div>
+                                <div class="text-muted">25.5 Mb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar-title bg-dark rounded"><i
+                                                class="mdi mdi-24px mdi-file-document-box"></i></div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">Design Guide.pdf</div>
+                                <div class="text-muted">9 Mb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar avatar-sm  ">
+                                        <div class="avatar-title bg-primary rounded"><i
+                                                    class="mdi mdi-24px mdi-code-braces"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">response.json</div>
+                                <div class="text-muted">15 Kb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar avatar-sm ">
+                                        <div class="avatar-title bg-info rounded"><i
+                                                    class="mdi mdi-24px mdi-file-excel"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">June Accounts.xls</div>
+                                <div class="text-muted">6 Mb</div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="../assets/vendor/jquery/jquery.min.js"></script>
+<script src="../assets/vendor/jquery-ui/jquery-ui.min.js"></script>
+<script src="../assets/vendor/popper/popper.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/vendor/select2/js/select2.full.min.js"></script>
+<script src="../assets/vendor/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+<script src="../assets/vendor/listjs/listjs.min.js"></script>
+<script src="../assets/vendor/moment/moment.min.js"></script>
+<script src="../assets/vendor/daterangepicker/daterangepicker.js"></script>
+<script src="../assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="../assets/vendor/bootstrap-notify/bootstrap-notify.min.js"></script>
+<script src="../assets/js/atmos.min.js"></script>
+
+<script>
+function refreshQRCode() {
+    const iframe = document.getElementById('qrcode');
+    const overlay = document.querySelector('.qr-loading-overlay');
+    const refreshBtn = event.target;
+    
+    refreshBtn.disabled = true;
+    refreshBtn.innerHTML = '<i class="mdi mdi-loading mdi-spin mr-1"></i>Atualizando...';
+    overlay.style.display = 'flex';
+    
+    const baseUrl = '../udwaweb/novo.asp?id=81998&socket=udwad13.unico.app.br';
+    iframe.src = baseUrl + '&t=' + Date.now();
+    
+    setTimeout(() => {
+        overlay.style.display = 'none';
+        refreshBtn.disabled = false;
+        refreshBtn.innerHTML = '<i class="mdi mdi-refresh mr-1"></i>Atualizar QR';
+        
+        $.notify({
+            message: 'QR Code atualizado com sucesso!'
+        }, {
+            type: 'success',
+            placement: {
+                from: 'top',
+                align: 'right'
+            }
+        });
+    }, 3000);
+}
+
+function copyQRUrl() {
+    const url = '../udwaweb/novo.asp?id=81998&socket=udwad13.unico.app.br';
+    const copyBtn = event.target;
+    
+    const originalText = copyBtn.innerHTML;
+    copyBtn.innerHTML = '<i class="mdi mdi-check mr-1"></i>Copiado!';
+    copyBtn.classList.add('btn-success');
+    copyBtn.classList.remove('btn-outline-secondary');
+    
+    navigator.clipboard.writeText(url).then(() => {
+        $.notify({
+            message: 'Link copiado para a área de transferência!'
+        }, {
+            type: 'success',
+            placement: {
+                from: 'top',
+                align: 'right'
+            }
+        });
+        
+        setTimeout(() => {
+            copyBtn.innerHTML = originalText;
+            copyBtn.classList.remove('btn-success');
+            copyBtn.classList.add('btn-outline-secondary');
+        }, 2000);
+    }).catch(() => {
+        const textArea = document.createElement('textarea');
+        textArea.value = url;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        
+        $.notify({
+            message: 'Link copiado para a área de transferência!'
+        }, {
+            type: 'success',
+            placement: {
+                from: 'top',
+                align: 'right'
+            }
+        });
+        
+        setTimeout(() => {
+            copyBtn.innerHTML = originalText;
+            copyBtn.classList.remove('btn-success');
+            copyBtn.classList.add('btn-outline-secondary');
+        }, 2000);
+    });
+}
+
+
+// Esconder overlay de loading quando o iframe carregar
+document.addEventListener('DOMContentLoaded', function() {
+    const iframe = document.getElementById('qrcode');
+    const overlay = document.querySelector('.qr-loading-overlay');
+    
+    if (iframe && overlay) {
+        iframe.addEventListener('load', function() {
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 1000);
+        });
+    }
+    
+    $('#whatsappConnectModal').on('shown.bs.modal', function() {
+        $('.timeline-item').each(function(index) {
+            $(this).css('opacity', '0').delay(index * 200).animate({
+                opacity: 1
+            }, 500);
+        });
+        
+        $('.qr-container').addClass('pulse-animation');
+        
+        $('.faq-item-compact').each(function(index) {
+            $(this).css('opacity', '0').delay(index * 50).animate({
+                opacity: 1
+            }, 400);
+        });
+    });
+    
+    $('#whatsappConnectModal').on('hidden.bs.modal', function() {
+        $('.timeline-item').css('opacity', '1');
+        $('.qr-container').removeClass('pulse-animation');
+        $('.faq-item-compact').css('opacity', '1');
+    });
+    
+    $('[data-toggle="tooltip"]').tooltip();
+    
+    $('.faq-item-compact').hover(
+        function() {
+            $(this).addClass('shadow-sm');
+        },
+        function() {
+            $(this).removeClass('shadow-sm');
+        }
+    );
+    
+    $('.faq-item-compact').on('click', function() {
+        const target = $(this).data('target');
+        const isExpanded = $(this).attr('aria-expanded') === 'true';
+        
+        $(this).attr('aria-expanded', !isExpanded);
+        
+        const arrow = $(this).find('.faq-arrow-compact i');
+        if (isExpanded) {
+            arrow.removeClass('rotating');
+        } else {
+            arrow.addClass('rotating');
+        }
+    });
+    
+    $('.faq-item-compact').each(function(index) {
+        $(this).css('opacity', '0').delay(index * 50).animate({
+            opacity: 1
+        }, 400);
+    });
+    
+    $('.faq-more .btn').on('click', function() {
+        const isExpanded = $(this).attr('aria-expanded') === 'true';
+        if (isExpanded) {
+            $(this).html('<i class="mdi mdi-plus mr-1"></i>Ver mais dúvidas');
+        } else {
+            $(this).html('<i class="mdi mdi-minus mr-1"></i>Ver menos dúvidas');
+        }
+    });
+});
+
+function fnAutomacaoStatus(status) {
+    const checkbox = document.getElementById('statusAut');
+    const textoStatus = document.getElementById('textoStatus');
+    
+    if (status === 'I') {
+        checkbox.checked = false;
+        textoStatus.textContent = 'Automação Inativa';
+        textoStatus.className = 'small text-muted ml-2';
+    } else {
+        checkbox.checked = true;
+        textoStatus.textContent = 'Automação Ativa';
+        textoStatus.className = 'small text-success ml-2';
+    }
+}
+
+function fn_modal_grande(url) {
+    console.log('Abrindo modal grande:', url);
+}
+</script>
+
+</body>
+</html>
+</html>

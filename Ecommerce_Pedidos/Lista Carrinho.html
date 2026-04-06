@@ -1,0 +1,2336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" name="viewport">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Atmos Admin Panel- Bootstrap 4 Based Admin Panel</title>
+<link rel="icon" type="image/x-icon" href="../assets/img/logo.png"/>
+<link rel="icon" href="../assets/img/logo.png" type="image/png" sizes="16x16">
+<link rel="stylesheet" href="../assets/vendor/pace/pace.css">
+<script src="../assets/vendor/pace/pace.min.js"></script>
+<!--vendors-->
+<link rel="stylesheet" type="text/css" href="../assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
+<link rel="stylesheet" type="text/css" href="../assets/vendor/jquery-scrollbar/jquery.scrollbar.css">
+<link rel="stylesheet" href="../assets/vendor/select2/css/select2.min.css">
+<link rel="stylesheet" href="../assets/vendor/jquery-ui/jquery-ui.min.css">
+<link rel="stylesheet" href="../assets/vendor/daterangepicker/daterangepicker.css">
+<link rel="stylesheet" href="../assets/vendor/timepicker/bootstrap-timepicker.min.css">
+<link href="https://fonts.googleapis.com/css?family=Hind+Vadodara:400,500,600" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts/jost/jost.css">
+<!--Material Icons-->
+<link rel="stylesheet" type="text/css" href="../assets/fonts/materialdesignicons/materialdesignicons.min.css">
+<!--Bootstrap + atmos Admin CSS-->
+<link rel="stylesheet" type="text/css" href="../assets/css/atmos.min.css">
+<!-- Additional library for page -->
+
+<style>
+    /* Sistema Etiquetas */
+    .tag-container {
+        min-height: 200px;
+        border: 1px solid #e3e6f0;
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        background: #fff;
+        transition: all 0.2s ease-in-out;
+        max-height: 400px;
+        overflow-y: auto;
+        position: relative;
+        box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+    }
+    
+    .tag-container.has-tags {
+        border-color: #4e73df;
+        background: #fff;
+        box-shadow: 0 0.15rem 1.75rem 0 rgba(78, 115, 223, 0.15);
+    }
+    
+    .tag-item {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        margin: 0.25rem;
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+        gap: 0.5rem;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        position: relative;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        border: 1px solid transparent;
+        line-height: 1.2;
+    }
+    
+    .tag-item:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    }
+    
+    .tag-remove {
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 0.75rem;
+        color: inherit;
+        transition: all 0.2s ease-in-out;
+        margin-left: 0.5rem;
+        opacity: 0.8;
+    }
+    
+    .tag-remove:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    
+    .color-picker-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+    }
+    
+    .color-option {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        border: 3px solid transparent;
+        position: relative;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    }
+    
+    .color-option:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
+    }
+    
+    .color-option.selected {
+        transform: scale(1.1);
+        box-shadow: 0 0.375rem 0.75rem rgba(0, 0, 0, 0.2);
+        border-color: #fff !important;
+        border-width: 4px !important;
+        position: relative;
+    }
+    
+    /* Indicador de seleção */
+    .color-option.selected::after {
+        content: '✓';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #fff;
+        color: #333;
+        font-size: 11px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        width: 16px;
+        height: 16px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        z-index: 2;
+    }
+    
+    /* Efeito */
+    .color-option.selected {
+        animation: colorGlow 2s ease-in-out infinite;
+    }
+    
+    @keyframes colorGlow {
+        0%, 100% {
+            box-shadow: 0 0.375rem 0.75rem rgba(0, 0, 0, 0.2);
+        }
+        50% {
+            box-shadow: 0 0.375rem 0.75rem rgba(0, 0, 0, 0.2), 0 0 0 4px rgba(255, 255, 255, 0.3);
+        }
+    }
+    
+    /* Cores das etiquetas */
+    .tag-blue { 
+        background: #4e73df; 
+        color: white; 
+        border-color: #4e73df;
+    }
+    .tag-green { 
+        background: #1cc88a; 
+        color: white; 
+        border-color: #1cc88a;
+    }
+    .tag-red { 
+        background: #e74a3b; 
+        color: white; 
+        border-color: #e74a3b;
+    }
+    .tag-orange { 
+        background: #f6c23e; 
+        color: white; 
+        border-color: #f6c23e;
+    }
+    .tag-purple { 
+        background: #6f42c1; 
+        color: white; 
+        border-color: #6f42c1;
+    }
+    .tag-teal { 
+        background: #36b9cc; 
+        color: white; 
+        border-color: #36b9cc;
+    }
+    .tag-indigo { 
+        background: #5a5c69; 
+        color: white; 
+        border-color: #5a5c69;
+    }
+    .tag-pink { 
+        background: #e83e8c; 
+        color: white; 
+        border-color: #e83e8c;
+    }
+    
+    .empty-state {
+        text-align: center;
+        color: #858796;
+        padding: 2rem 1rem;
+    }
+    
+    .empty-state i {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        opacity: 0.4;
+        color: #d1d3e2;
+    }
+    
+    .empty-state h6 {
+        color: #5a5c69;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+    
+    .empty-state p {
+        color: #858796;
+        font-size: 0.875rem;
+        margin: 0;
+    }
+    
+    /* Animações */
+    .tag-item {
+        animation: fadeInUp 0.3s ease-out;
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* etiquetas na tabela */
+    .tags-display {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25rem;
+        align-items: center;
+    }
+    
+    .tags-display .tag-item {
+        margin: 0;
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+    }
+    
+    .tags-display .tag-remove {
+        width: 16px;
+        height: 16px;
+        font-size: 0.625rem;
+        margin-left: 0.25rem;
+    }
+    
+    /* cores */
+    .modal-content {
+        border: none;
+        border-radius: 0.75rem;
+        box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+    }
+    
+    .modal-header {
+        border-bottom: 1px solid #e3e6f0;
+        background: #f8f9fc;
+        border-radius: 0.75rem 0.75rem 0 0;
+    }
+    
+    .modal-footer {
+        border-top: 1px solid #e3e6f0;
+        background: #f8f9fc;
+        border-radius: 0 0 0.75rem 0.75rem;
+    }
+    
+    /* etiquetas */
+    .form-control:focus {
+        border-color: #bac8f3;
+        box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25);
+    }
+    
+    /* botões */
+    .btn-primary {
+        background-color: #4e73df;
+        border-color: #4e73df;
+    }
+    
+    .btn-primary:hover {
+        background-color: #2e59d9;
+        border-color: #2653d4;
+    }
+    
+    .btn-success {
+        background-color: #1cc88a;
+        border-color: #1cc88a;
+    }
+    
+    .btn-success:hover {
+        background-color: #17a673;
+        border-color: #169b6b;
+    }
+    
+    .btn-outline-primary {
+        color: #4e73df;
+        border-color: #4e73df;
+    }
+    
+    .btn-outline-primary:hover {
+        background-color: #4e73df;
+        border-color: #4e73df;
+    }
+    
+    /* SweetAlert2 */
+    .swal2-toast-atmos {
+        border-radius: 0.75rem !important;
+        box-shadow: 0 0.5rem 2rem rgba(62, 70, 118, 0.12) !important;
+        border: 1px solid rgba(104, 122, 232, 0.1) !important;
+        font-family: 'Hind Vadodara', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+        background: linear-gradient(135deg, #f4f7fc 0%, #ffffff 100%) !important;
+        color: #3e4676 !important;
+        padding: 1rem 1.25rem !important;
+        min-width: 320px !important;
+        backdrop-filter: blur(10px) !important;
+        border-left: 4px solid #687ae8 !important;
+    }
+    
+    .swal2-toast-atmos.swal2-toast-success {
+        border-left-color: #28c76f !important;
+        background: linear-gradient(135deg, #f4f7fc 0%, #f0f9f4 100%) !important;
+    }
+    
+    .swal2-toast-atmos.swal2-toast-warning {
+        border-left-color: #f7bc06 !important;
+        background: linear-gradient(135deg, #f4f7fc 0%, #fefbf0 100%) !important;
+    }
+    
+    .swal2-toast-atmos.swal2-toast-error {
+        border-left-color: #f2545b !important;
+        background: linear-gradient(135deg, #f4f7fc 0%, #fef0f0 100%) !important;
+    }
+    
+    .swal2-toast-atmos.swal2-toast-info {
+        border-left-color: #19b5fe !important;
+        background: linear-gradient(135deg, #f4f7fc 0%, #f0f9fc 100%) !important;
+    }
+    
+    .swal2-toast-title-atmos {
+        font-family: 'Hind Vadodara', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+        font-size: 0.9rem !important;
+        font-weight: 600 !important;
+        color: #3e4676 !important;
+        margin: 0 !important;
+        line-height: 1.4 !important;
+        letter-spacing: 0.025em !important;
+    }
+    
+    .swal2-toast-atmos .swal2-timer-progress-bar {
+        background: linear-gradient(90deg, #687ae8 0%, #9e95f5 100%) !important;
+        border-radius: 0 0 0.75rem 0.75rem !important;
+        height: 3px !important;
+        margin: 0 -1.25rem -1rem -1.25rem !important;
+    }
+    
+    .swal2-toast-atmos .swal2-icon {
+        border: none !important;
+        margin: 0 0.75rem 0 0 !important;
+        width: 1.75rem !important;
+        height: 1.75rem !important;
+        position: relative !important;
+    }
+    
+    .swal2-toast-atmos .swal2-icon::before {
+        content: '' !important;
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: 1.75rem !important;
+        height: 1.75rem !important;
+        border-radius: 50% !important;
+        background: currentColor !important;
+        opacity: 0.1 !important;
+    }
+    
+    .swal2-toast-atmos .swal2-icon.swal2-success {
+        color: #28c76f !important;
+    }
+    
+    .swal2-toast-atmos .swal2-icon.swal2-warning {
+        color: #f7bc06 !important;
+    }
+    
+    .swal2-toast-atmos .swal2-icon.swal2-error {
+        color: #f2545b !important;
+    }
+    
+    .swal2-toast-atmos .swal2-icon.swal2-info {
+        color: #19b5fe !important;
+    }
+    
+    .swal2-toast-atmos .swal2-html-container {
+        font-family: 'Hind Vadodara', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+        margin: 0.25rem 0 0 0 !important;
+        font-size: 0.875rem !important;
+        color: #6c757d !important;
+        line-height: 1.5 !important;
+    }
+    
+    /* SweetAlert2 */
+    .swal2-modal-atmos {
+        border-radius: 0.75rem !important;
+        box-shadow: 0 1rem 3rem rgba(62, 70, 118, 0.15) !important;
+        border: 1px solid rgba(104, 122, 232, 0.1) !important;
+        font-family: 'Hind Vadodara', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+        background: linear-gradient(135deg, #ffffff 0%, #f4f7fc 100%) !important;
+        overflow: hidden !important;
+    }
+    
+    .swal2-modal-atmos::before {
+        content: '' !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 4px !important;
+        background: linear-gradient(90deg, #687ae8 0%, #9e95f5 100%) !important;
+    }
+    
+    .swal2-modal-atmos .swal2-title {
+        font-family: 'Hind Vadodara', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+        color: #3e4676 !important;
+        font-weight: 600 !important;
+        font-size: 1.25rem !important;
+        margin-bottom: 0.75rem !important;
+        line-height: 1.3 !important;
+    }
+    
+    .swal2-modal-atmos .swal2-html-container {
+        font-family: 'Hind Vadodara', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+        color: #6c757d !important;
+        font-size: 0.9rem !important;
+        line-height: 1.5 !important;
+        margin: 1rem 0 !important;
+    }
+    
+    .swal2-modal-atmos .swal2-confirm {
+        background: linear-gradient(135deg, #687ae8 0%, #9e95f5 100%) !important;
+        border: none !important;
+        border-radius: 0.375rem !important;
+        font-family: 'Hind Vadodara', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+        font-weight: 500 !important;
+        padding: 0.5rem 1.5rem !important;
+        font-size: 0.875rem !important;
+        text-transform: none !important;
+        letter-spacing: 0.25px !important;
+        transition: all 0.2s ease-in-out !important;
+        box-shadow: 0 0.125rem 0.5rem rgba(104, 122, 232, 0.25) !important;
+    }
+    
+    .swal2-modal-atmos .swal2-confirm:hover {
+        background: linear-gradient(135deg, #5a6fd8 0%, #8a82e8 100%) !important;
+        transform: translateY(-1px) !important;
+        box-shadow: 0 0.25rem 0.75rem rgba(104, 122, 232, 0.35) !important;
+    }
+    
+    .swal2-modal-atmos .swal2-cancel {
+        background: linear-gradient(135deg, #95aac9 0%, #b8c5d9 100%) !important;
+        border: none !important;
+        border-radius: 0.375rem !important;
+        font-family: 'Hind Vadodara', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+        font-weight: 500 !important;
+        padding: 0.5rem 1.5rem !important;
+        font-size: 0.875rem !important;
+        text-transform: none !important;
+        letter-spacing: 0.25px !important;
+        transition: all 0.2s ease-in-out !important;
+        box-shadow: 0 0.125rem 0.5rem rgba(149, 170, 201, 0.25) !important;
+    }
+    
+    .swal2-modal-atmos .swal2-cancel:hover {
+        background: linear-gradient(135deg, #8a9bb8 0%, #a8b7cc 100%) !important;
+        transform: translateY(-1px) !important;
+        box-shadow: 0 0.25rem 0.75rem rgba(149, 170, 201, 0.35) !important;
+    }
+    
+    .swal2-modal-atmos .swal2-danger {
+        background: linear-gradient(135deg, #f2545b 0%, #ff6b73 100%) !important;
+        border: none !important;
+        border-radius: 0.375rem !important;
+        font-family: 'Hind Vadodara', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+        font-weight: 500 !important;
+        padding: 0.5rem 1.5rem !important;
+        font-size: 0.875rem !important;
+        text-transform: none !important;
+        letter-spacing: 0.25px !important;
+        transition: all 0.2s ease-in-out !important;
+        box-shadow: 0 0.125rem 0.5rem rgba(242, 84, 91, 0.25) !important;
+    }
+    
+    .swal2-modal-atmos .swal2-danger:hover {
+        background: linear-gradient(135deg, #e04a52 0%, #f55a62 100%) !important;
+        transform: translateY(-1px) !important;
+        box-shadow: 0 0.25rem 0.75rem rgba(242, 84, 91, 0.35) !important;
+    }
+    
+    /* Animações */
+    .swal2-toast-atmos {
+        animation: slideInRight 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+    }
+    
+    @keyframes slideInRight {
+        from {
+            opacity: 0;
+            transform: translateX(100%) scale(0.8);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+        }
+    }
+    
+    /* loading */
+    .swal2-modal-atmos .swal2-loading {
+        border: 3px solid #e3e6f0 !important;
+        border-top: 3px solid #4e73df !important;
+        border-radius: 50% !important;
+        width: 3rem !important;
+        height: 3rem !important;
+        animation: spin 1s linear infinite !important;
+    }
+    
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    
+    /* inputs */
+    .swal2-modal-atmos .swal2-input {
+        border: 2px solid #e3e6f0 !important;
+        border-radius: 0.5rem !important;
+        padding: 0.75rem 1rem !important;
+        font-size: 0.9rem !important;
+        transition: all 0.3s ease !important;
+        background: #fff !important;
+    }
+    
+    .swal2-modal-atmos .swal2-input:focus {
+        border-color: #4e73df !important;
+        box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25) !important;
+        outline: none !important;
+    }
+    
+    /* validação */
+    .swal2-modal-atmos .swal2-validation-message {
+        color: #e74a3b !important;
+        font-size: 0.875rem !important;
+        font-weight: 500 !important;
+        margin-top: 0.5rem !important;
+    }
+</style>
+</head>
+<!--body with default sidebar pinned -->
+<body class="sidebar-pinned">
+<!--sidebar Begins-->
+<aside class="admin-sidebar">
+    <div class="admin-sidebar-brand">
+        <!-- begin sidebar branding-->
+        <img class="admin-brand-logo" src="../assets/img/logo.svg" width="40" alt="atmos Logo">
+        <span class="admin-brand-content"><a href="index.html">  atmos</a></span>
+        <!-- end sidebar branding-->
+        <div class="ml-auto">
+            <!-- sidebar pin-->
+            <a href="#" class="admin-pin-sidebar btn-ghost btn btn-rounded-circle"></a>
+            <!-- sidebar close for mobile device-->
+            <a href="#" class="admin-close-sidebar"></a>
+        </div>
+    </div>
+    <div class="admin-sidebar-wrapper js-scrollbar">
+        <!-- Menu List Begins-->
+        <ul class="menu">
+            <!--list item begins-->
+            <li class="menu-item active">
+                <a href="#" class="menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Link
+                                                </span>
+                                            </span>
+                    <span class="menu-icon">
+                                                   <span class="icon-badge badge-success badge badge-pill">1</span>
+
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+
+            </li>
+            <!--list item ends-->
+
+            <!--list item begins-->
+            <li class="menu-item ">
+                <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu level 1
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                                <span class="menu-info">Contains submenu</span>
+                                            </span>
+                    <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+                <!--submenu-->
+                <ul class="sub-menu">
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+
+
+                </ul>
+            </li>
+            <!--list item ends-->
+
+            <!--list item begins-->
+            <li class="menu-item ">
+                <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu Level 2
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                                <span class="menu-info">Contains submenu</span>
+                                            </span>
+                    <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+                <!--submenu-->
+                <ul class="sub-menu">
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu Level 1.1
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                        </a>
+                        <!--submenu-->
+                        <ul class="sub-menu">
+                            <li class="menu-item">
+                                <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 2.1 </span>
+                                            </span>
+                                    <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+            <!--list item ends-->
+        </ul>
+        <!-- Menu List Ends-->
+    </div>
+
+</aside>
+<!--sidebar Ends-->
+
+
+<main class="admin-main">
+
+    <!--site header begins-->
+<header class="admin-header">
+
+    <a href="#" class="sidebar-toggle" data-toggleclass="sidebar-open" data-target="body"> </a>
+
+    <nav class=" mr-auto my-auto">
+        <ul class="nav align-items-center">
+
+            <li class="nav-item">
+                <a class="nav-link  " data-target="#siteSearchModal" data-toggle="modal" href="#">
+                    <i class=" mdi mdi-magnify mdi-24px align-middle"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <nav class=" ml-auto">
+        <ul class="nav align-items-center">
+
+            <li class="nav-item">
+                <div class="dropdown">
+                    <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-24px mdi-bell-outline"></i>
+                        <span class="notification-counter"></span>
+                    </a>
+
+                    <div class="dropdown-menu notification-container dropdown-menu-right">
+                        <div class="d-flex p-all-15 bg-white justify-content-between border-bottom ">
+                            <a href="#!" class="mdi mdi-18px mdi-settings text-muted"></a>
+                            <span class="h5 m-0">Notifications</span>
+                            <a href="#!" class="mdi mdi-18px mdi-notification-clear-all text-muted"></a>
+                        </div>
+                        <div class="notification-events bg-gray-300">
+                            <div class="text-overline m-b-5">today</div>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body"> <i class="mdi mdi-circle text-success"></i> All systems operational.</div>
+                                </div>
+                            </a>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body"> <i class="mdi mdi-upload-multiple "></i> File upload successful.</div>
+                                </div>
+                            </a>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <i class="mdi mdi-cancel text-danger"></i> Your holiday has been denied
+                                    </div>
+                                </div>
+                            </a>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item dropdown ">
+                <a class="nav-link dropdown-toggle" href="#"   role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    <div class="avatar avatar-sm avatar-online">
+                        <span class="avatar-title rounded-circle bg-dark">V</span>
+
+                    </div>
+                </a>
+                <div class="dropdown-menu  dropdown-menu-right"   >
+                    <a class="dropdown-item" href="#">  Add Account
+                    </a>
+                    <a class="dropdown-item" href="#">  Reset Password</a>
+                    <a class="dropdown-item" href="#">  Help </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"> Logout</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </nav>
+</header>
+<!--site header ends -->    <section class="admin-content">
+        <!-- BEGIN PlACE PAGE CONTENT HERE -->
+        <!--  container or container-fluid as per your need           -->
+        <div class="container-fluid pt-5">
+            <div class="row justify-content-center">
+                <div class="col-12 col-xl-10">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+                                <h4 class="card-title text-dark font-weight-bold">Carrinhos<i class="mdi mdi-help-circle-outline text-muted"></i></h4>
+                                <div class="d-flex flex-wrap">
+                                    <button class="btn btn-primary mr-2 px-3 mb-2"><i class="mdi mdi-plus mr-1"></i> Criar Pedido</button>
+                                    <button class="btn btn-info mr-2 px-3 mb-2"><i class="mdi mdi-file-export mr-1"></i> Exportar Carrinhos</button>
+                                    <button class="btn btn-success mr-2 px-3 mb-2"><i class="mdi mdi-email-outline mr-1"></i> Lista E-mails</button>
+                                    <button class="btn btn-light border px-3 mb-2"><i class="mdi mdi-sync mr-1"></i> Integrar Carrinhos</button>
+                                </div>
+                            </div>
+
+                            <div class="search-container mb-4">
+                                <div class="row g-2 mb-3">
+                                    <div class="col-md">
+                                        <div class="form-group mb-0">
+                                            <div class="input-group input-group-seamless">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-light border-right-0"><i class="mdi mdi-pound text-primary"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control border-left-0 pl-0" placeholder="Pedidos">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md">
+                                        <div class="form-group mb-0">
+                                            <div class="input-group input-group-seamless">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-light border-right-0"><i class="mdi mdi-account text-primary"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control border-left-0 pl-0" placeholder="Cliente">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md">
+                                        <div class="form-group mb-0">
+                                            <div class="input-group input-group-seamless">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-light border-right-0"><i class="mdi mdi-package-variant text-primary"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control border-left-0 pl-0" placeholder="Produto">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md">
+                                        <div class="form-group mb-0">
+                                            <div class="input-group input-group-seamless">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-light border-right-0"><i class="mdi mdi-phone text-primary"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control border-left-0 pl-0" placeholder="Telefone">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md">
+                                        <div class="form-group mb-0">
+                                            <div class="input-group input-group-seamless">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-light border-right-0"><i class="mdi mdi-email text-primary"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control border-left-0 pl-0" placeholder="E-mail">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md">
+                                        <div class="form-group mb-0">
+                                            <div class="input-group input-group-seamless">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-light border-right-0"><i class="mdi mdi-card-text text-primary"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control border-left-0 pl-0" placeholder="CPF">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Data -->
+                                    <div class="col-md">
+                                        <div class="form-group mb-0">
+                                            <div class="input-group input-group-seamless">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-light border-right-0"><i class="mdi mdi-calendar text-primary"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control input-date border-left-0 pl-0" id="dataInicial" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md">
+                                        <div class="form-group mb-0">
+                                            <div class="input-group input-group-seamless">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-light border-right-0"><i class="mdi mdi-calendar-check text-primary"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control input-date border-left-0 pl-0" id="dataFinal" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row mt-2">
+                                    <div class="col-md-10">
+                                        <div class="d-flex flex-wrap">
+                                            <div class="mr-2 mb-2">
+                                                <select class="form-control custom-select">
+                                                    <option>Entrega...</option>
+                                                    <option>Não Entregue</option>
+                                                    <option>Entregue</option>
+                                                </select>
+                                            </div>
+                                            <div class="mr-2 mb-2">
+                                                <select class="form-control custom-select">
+                                                    <option>Pagamento...</option>
+                                                    <option>Cartão</option>
+                                                    <option>Boleto</option>
+                                                    <option>PIX</option>
+                                                </select>
+                                            </div>
+                                            <div class="mr-2 mb-2">
+                                                <select class="form-control custom-select">
+                                                    <option>Status...</option>
+                                                    <option>Pago</option>
+                                                    <option>Pendente</option>
+                                                    <option>Reembolso</option>
+                                                    <option>Reembolso parcial</option>
+                                                    <option>Cancelado</option>
+                                                    <option>Pagamento rejeitado</option>
+                                                    <option>Em mediação</option>
+                                                    <option>Charged back</option>
+                                                    <option>Processando</option>
+                                                </select>
+                                            </div>
+                                            <button class="btn btn-outline-primary btn-sm mr-2 mb-2" data-toggle="collapse" href="#filtrosAvancados" aria-expanded="false" aria-controls="filtrosAvancados">
+                                                <i class="mdi mdi-filter-variant mr-1"></i>
+                                                Mais filtros
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 text-right">
+                                        <button class="btn btn-primary" style="min-width: 100px; box-shadow: 0 2px 4px rgba(115, 103, 240, 0.2);">
+                                            <i class="mdi mdi-magnify mr-1"></i> Buscar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Filtros Avançados -->
+                            <div id="filtrosAvancados" class="collapse mt-2 mb-4">
+                                <div class="card shadow-sm border">
+                                    <div class="card-header bg-light py-2">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="font-weight-medium">Filtros adicionais</span>
+                                            <button type="button" class="btn btn-sm btn-light" data-toggle="collapse" href="#filtrosAvancados">
+                                                <i class="mdi mdi-close"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-body py-2">
+                                        <div class="row">
+                                            <div class="col-md-3 col-sm-6 mb-2">
+                                                <div class="form-group mb-0">
+                                                    <select class="form-control custom-select">
+                                                        <option>Pedido</option>
+                                                        <option>Carrinho</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-6 mb-2">
+                                                <div class="form-group mb-0">
+                                                    <select class="form-control custom-select">
+                                                        <option>Etiqueta...</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-6 mb-2">
+                                                <div class="form-group mb-0">
+                                                    <select class="form-control custom-select">
+                                                        <option>Cupom...</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 col-sm-6 mb-2">
+                                                <div class="form-group mb-0">
+                                                    <div class="input-group input-group-seamless">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text bg-light border-right-0"><i class="mdi mdi-link-variant text-primary"></i></span>
+                                                        </div>
+                                                        <input type="text" class="form-control border-left-0 pl-0" placeholder="Utm">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th style="width: 10%;" class="border-0 text-center">PEDIDO</th>
+                                            <th style="width: 15%;" class="border-0 text-center">DATA</th>
+                                            <th style="width: 15%;" class="border-0 text-center">CLIENTE</th>
+                                            <th style="width: 10%;" class="border-0 text-center">PRODUTO</th>
+                                            <th style="width: 10%;" class="border-0 text-center">PAGAMENTO</th>
+                                            <th style="width: 10%;" class="border-0 text-center">STATUS</th>
+                                            <th style="width: 10%;" class="border-0 text-center">ETIQUETA</th>
+                                            <th style="width: 10%;" class="border-0 text-center">TOTAL</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!--    Carrinho com 5 produtos -->
+                                        <tr>
+                                            <td class="text-primary font-weight-bold align-middle text-center">659888</td>
+                                            <td class="text-muted align-middle text-center">Ontem às 00:00</td>
+                                            <td class="align-middle text-center">
+                                                <div class="d-flex align-items-center justify-content-center">
+                                                    <span class="font-weight-medium overflow-hidden">Ryan Serato</span>
+                                                    <i class="mdi mdi-whatsapp text-success ml-2"></i>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <div class="avatar-group">
+                                                    <div class="avatar avatar-sm">
+                                                        <img src="../Media_Imagens/teste.jpg" alt="Produto 1" class="avatar-img rounded-circle">
+                                                    </div>
+                                                    <div class="avatar avatar-sm">
+                                                        <img src="../Media_Imagens/teste.jpg" alt="Produto 2" class="avatar-img rounded-circle">
+                                                    </div>
+                                                    <div class="avatar avatar-sm">
+                                                        <img src="../Media_Imagens/teste.jpg" alt="Produto 3" class="avatar-img rounded-circle">
+                                                    </div>
+                                                    <div class="avatar avatar-sm">
+                                                        <span class="avatar-title rounded-circle bg-primary">+2</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <div class="d-flex align-items-center justify-content-center">
+                                                    <div class="avatar avatar-sm">
+                                                        <img src="../Media_Imagens/cart3.png" alt="PIX" style="width: 2.2rem; height: 2.2rem;">
+                                                    </div>
+                                                    <span class="ml-2 text-muted small d-none d-md-inline"></span>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle text-center"><span class="badge badge-soft-secondary">Carrinho Abandonado</span></td>
+                                            <td class="align-middle text-center">
+                                                <div class="d-flex align-items-center justify-content-center">
+                                                    <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#etiquetasModal" data-carrinho-id="659888" onclick="openEtiquetasModal(659888)">
+                                                        <i class="mdi mdi-tag"></i>
+                                                        <span class="ml-1">Etiquetas</span>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                            <td class="font-weight-bold align-middle text-center">R$ 150,00</td>
+                                        </tr>
+
+                                        <!-- Carrinho com 2 produtos -->
+                                        <tr>
+                                            <td class="text-primary font-weight-bold align-middle text-center">8923</td>
+                                            <td class="text-muted align-middle text-center">há 2 dias</td>
+                                            <td class="align-middle text-center">
+                                                <div class="d-flex align-items-center justify-content-center">
+                                                    <span class="font-weight-medium overflow-hidden">Maria Silva</span>
+                                                    <i class="mdi mdi-whatsapp text-success ml-2"></i>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <div class="avatar-group">
+                                                    <div class="avatar avatar-sm">
+                                                        <img src="../Media_Imagens/teste.jpg" alt="Produto 1" class="avatar-img rounded-circle">
+                                                    </div>
+                                                    <div class="avatar avatar-sm">
+                                                        <img src="../Media_Imagens/teste.jpg" alt="Produto 2" class="avatar-img rounded-circle">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <div class="d-flex align-items-center justify-content-center">
+                                                    <div class="avatar avatar-sm">
+                                                        <img src="../Media_Imagens/cart3.png" alt="Cartão" style="width: 2.2rem; height: 2.2rem;">
+                                                    </div>
+                                                    <span class="ml-2 text-muted small d-none d-md-inline"></span>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle text-center"><span class="badge badge-soft-secondary">Carrinho Abandonado</span></td>
+                                            <td class="align-middle text-center">
+                                                <div class="d-flex align-items-center justify-content-center">
+                                                    <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#etiquetasModal" data-carrinho-id="8923" onclick="openEtiquetasModal(8923)">
+                                                        <i class="mdi mdi-tag"></i>
+                                                        <span class="ml-1">Etiquetas</span>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                            <td class="font-weight-bold align-middle text-center">
+                                                <div class="d-flex flex-column align-items-center">
+                                                    <span>R$ 89,90</span>
+                                                    <small class="text-muted">2 produtos</small>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Carrinho com 1 produto -->
+                                        <tr>
+                                            <td class="text-primary font-weight-bold align-middle text-center">8924</td>
+                                            <td class="text-muted align-middle text-center">há 1 dia</td>
+                                            <td class="align-middle text-center">
+                                                <div class="d-flex align-items-center justify-content-center">
+                                                    <span class="font-weight-medium overflow-hidden">João Santos</span>
+                                                    <i class="mdi mdi-whatsapp text-success ml-2"></i>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <div class="avatar-group">
+                                                    <div class="avatar avatar-sm">
+                                                        <img src="../Media_Imagens/teste.jpg" alt="Produto 1" class="avatar-img rounded-circle">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <div class="d-flex align-items-center justify-content-center">
+                                                    <div class="avatar avatar-sm">
+                                                        <img src="../Media_Imagens/cart3.png" alt="Cartão" style="width: 2.2rem; height: 2.2rem;">
+                                                    </div>
+                                                    <span class="ml-2 text-muted small d-none d-md-inline"></span>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle text-center"><span class="badge badge-soft-secondary">Carrinho Abandonado</span></td>
+                                            <td class="align-middle text-center">
+                                                <div class="d-flex align-items-center justify-content-center">
+                                                    <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#etiquetasModal" data-carrinho-id="8924" onclick="openEtiquetasModal(8924)">
+                                                        <i class="mdi mdi-tag"></i>
+                                                        <span class="ml-1">Etiquetas</span>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                            <td class="font-weight-bold align-middle text-center">
+                                                <div class="d-flex flex-column align-items-center">
+                                                    <span>R$ 45,00</span>
+                                                    <small class="text-muted">1 produto</small>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Carrinho com 4 produtos -->
+                                        <tr>
+                                            <td class="text-primary font-weight-bold align-middle text-center">8925</td>
+                                            <td class="text-muted align-middle text-center">há 3 horas</td>
+                                            <td class="align-middle text-center">
+                                                <div class="d-flex align-items-center justify-content-center">
+                                                    <span class="font-weight-medium overflow-hidden">Ana Costa</span>
+                                                    <i class="mdi mdi-whatsapp text-success ml-2"></i>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <div class="avatar-group">
+                                                    <div class="avatar avatar-sm">
+                                                        <img src="../Media_Imagens/teste.jpg" alt="Produto 1" class="avatar-img rounded-circle">
+                                                    </div>
+                                                    <div class="avatar avatar-sm">
+                                                        <img src="../Media_Imagens/teste.jpg" alt="Produto 2" class="avatar-img rounded-circle">
+                                                    </div>
+                                                    <div class="avatar avatar-sm">
+                                                        <img src="../Media_Imagens/teste.jpg" alt="Produto 3" class="avatar-img rounded-circle">
+                                                    </div>
+                                                    <div class="avatar avatar-sm">
+                                                        <img src="../Media_Imagens/teste.jpg" alt="Produto 4" class="avatar-img rounded-circle">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <div class="d-flex align-items-center justify-content-center">
+                                                    <div class="avatar avatar-sm">
+                                                        <img src="../Media_Imagens/cart3.png" alt="Cartão" style="width: 2.2rem; height: 2.2rem;">
+                                                    </div>
+                                                    <span class="ml-2 text-muted small d-none d-md-inline"></span>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle text-center"><span class="badge badge-soft-secondary">Carrinho Abandonado</span></td>
+                                            <td class="align-middle text-center">
+                                                <div class="d-flex align-items-center justify-content-center">
+                                                    <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#etiquetasModal" data-carrinho-id="8925" onclick="openEtiquetasModal(8925)">
+                                                        <i class="mdi mdi-tag"></i>
+                                                        <span class="ml-1">Etiquetas</span>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                            <td class="font-weight-bold align-middle text-center">
+                                                <div class="d-flex flex-column align-items-center">
+                                                    <span>R$ 199,80</span>
+                                                    <small class="text-muted">4 produtos</small>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <!-- Paginação -->
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <div>
+                                    <p class="text-muted mb-0">Mostrando 1 a 4 de 97 resultados</p>
+                                </div>
+                                <nav>
+                                    <ul class="pagination mb-0">
+                                        <li class="page-item">
+                                            <a class="page-link" href="#"><i class="mdi mdi-chevron-left"></i></a>
+                                        </li>
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">10</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#"><i class="mdi mdi-chevron-right"></i></a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END PLACE PAGE CONTENT HERE -->
+    </section>
+</main>
+
+
+<!-- Modal de Etiquetas -->
+<div class="modal fade" id="etiquetasModal" tabindex="-1" aria-labelledby="etiquetasModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="etiquetasModalLabel">
+                    <i class="mdi mdi-tag-multiple"></i>
+                    Sistema de Etiquetas - Carrinho #<span id="carrinhoId">12345</span>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-header bg-light">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h6 class="mb-0 font-weight-bold">
+                                        <i class="mdi mdi-plus-circle me-2 text-primary"></i>
+                                        Adicionar Etiqueta
+                                    </h6>
+                                    <span class="badge badge-primary badge-pill" id="tagCount">0</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group mb-0">
+                                    <div class="input-group input-group-lg">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text bg-white border-right-0">
+                                                <i class="mdi mdi-tag text-muted"></i>
+                                            </span>
+                                        </div>
+                                        <input type="text" class="form-control border-left-0" id="tagInput" 
+                                               placeholder="Digite o nome da etiqueta e pressione Enter..." 
+                                               maxlength="50">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary px-4" type="button" onclick="window.addTag()" id="addTagBtn">
+                                                <i class="mdi mdi-plus me-1"></i>
+                                                Adicionar
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <small class="form-text text-muted">
+                                        <i class="mdi mdi-information me-1"></i>
+                                        Máximo 50 caracteres • Clique duplo nas etiquetas para trocar cor
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card border-0 shadow-sm mt-4">
+                            <div class="card-header bg-light">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h6 class="mb-0 font-weight-bold">
+                                        <i class="mdi mdi-tag-multiple me-2 text-success"></i>
+                                        Etiquetas Ativas
+                                    </h6>
+                                    <div class="btn-group btn-group-sm">
+                                        <button type="button" class="btn btn-outline-primary" onclick="exportTags()" title="Exportar etiquetas">
+                                            <i class="mdi mdi-download"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-primary" onclick="importTags()" title="Importar etiquetas">
+                                            <i class="mdi mdi-upload"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-outline-danger" onclick="clearAllTags()" title="Limpar todas">
+                                            <i class="mdi mdi-delete-sweep"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div id="tagContainer" class="tag-container">
+                                    <div class="empty-state text-center py-5">
+                                        <i class="mdi mdi-tag-outline text-muted" style="font-size: 3rem;"></i>
+                                        <h6 class="text-muted mt-3">Nenhuma etiqueta adicionada</h6>
+                                        <p class="text-muted mb-0">Comece adicionando etiquetas para organizar seu carrinho</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-header bg-light">
+                                <h6 class="mb-0 font-weight-bold">
+                                    <i class="mdi mdi-palette me-2 text-warning"></i>
+                                    Cor Padrão
+                                </h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="color-picker-grid">
+                                    <div class="color-option" style="background: #4e73df;" onclick="window.setDefaultColor('blue')" title="Azul"></div>
+                                    <div class="color-option" style="background: #1cc88a;" onclick="window.setDefaultColor('green')" title="Verde"></div>
+                                    <div class="color-option" style="background: #e74a3b;" onclick="window.setDefaultColor('red')" title="Vermelho"></div>
+                                    <div class="color-option" style="background: #f6c23e;" onclick="window.setDefaultColor('orange')" title="Laranja"></div>
+                                    <div class="color-option" style="background: #6f42c1;" onclick="window.setDefaultColor('purple')" title="Roxo"></div>
+                                    <div class="color-option" style="background: #36b9cc;" onclick="window.setDefaultColor('teal')" title="Verde-água"></div>
+                                    <div class="color-option" style="background: #5a5c69;" onclick="window.setDefaultColor('indigo')" title="Índigo"></div>
+                                    <div class="color-option" style="background: #e83e8c;" onclick="window.setDefaultColor('pink')" title="Rosa"></div>
+                                </div>
+                                <small class="form-text text-muted mt-2">
+                                    <i class="mdi mdi-information me-1"></i>
+                                    Clique para definir a cor padrão para novas etiquetas
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer bg-light">
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">
+                    <i class="mdi mdi-close me-2"></i>
+                    Cancelar
+                </button>
+                <button type="button" class="btn btn-success" onclick="window.saveTags()">
+                    <i class="mdi mdi-content-save me-2"></i>
+                    Salvar Etiquetas
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de seleção de cor -->
+<div class="modal fade" id="colorModal" tabindex="-1" aria-labelledby="colorModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="colorModalLabel">
+                    <i class="mdi mdi-palette me-2"></i>
+                    Escolher cor da etiqueta
+                </h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <p class="mb-3">Escolha uma nova cor para: <strong id="currentTagName"></strong></p>
+                <div class="d-flex gap-2 flex-wrap justify-content-center">
+                    <div class="color-option" style="background: #4e73df;" onclick="window.changeTagColor('blue')" title="Azul"></div>
+                    <div class="color-option" style="background: #1cc88a;" onclick="window.changeTagColor('green')" title="Verde"></div>
+                    <div class="color-option" style="background: #e74a3b;" onclick="window.changeTagColor('red')" title="Vermelho"></div>
+                    <div class="color-option" style="background: #f6c23e;" onclick="window.changeTagColor('orange')" title="Laranja"></div>
+                    <div class="color-option" style="background: #6f42c1;" onclick="window.changeTagColor('purple')" title="Roxo"></div>
+                    <div class="color-option" style="background: #36b9cc;" onclick="window.changeTagColor('teal')" title="Verde-água"></div>
+                    <div class="color-option" style="background: #5a5c69;" onclick="window.changeTagColor('indigo')" title="Índigo"></div>
+                    <div class="color-option" style="background: #e83e8c;" onclick="window.changeTagColor('pink')" title="Rosa"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal modal-slide-left  fade" id="siteSearchModal" tabindex="-1" role="dialog" aria-labelledby="siteSearchModal"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body p-all-0" id="site-search">
+                <button type="button" class="close light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="form-dark bg-dark text-white p-t-60 p-b-20 bg-dots" >
+                    <h3 class="text-uppercase    text-center  fw-300 "> Search</h3>
+
+                    <div class="container-fluid">
+                        <div class="col-md-10 p-t-10 m-auto">
+                            <input type="search" placeholder="Search Something"
+                                   class=" search form-control form-control-lg">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="bg-dark text-muted container-fluid p-b-10 text-center text-overline">
+                        results
+                    </div>
+                    <div class="list-group list  ">
+
+
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"   src="../assets/img/users/user-3.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Eric Chen</div>
+                                <div class="text-muted">Developer</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"
+                                                                    src="../assets/img/users/user-4.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Sean Valdez</div>
+                                <div class="text-muted">Marketing</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"
+                                                                    src="../assets/img/users/user-8.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Marie Arnold</div>
+                                <div class="text-muted">Developer</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar-title bg-dark rounded"><i class="mdi mdi-24px mdi-file-pdf"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">SRS Document</div>
+                                <div class="text-muted">25.5 Mb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar-title bg-dark rounded"><i
+                                                class="mdi mdi-24px mdi-file-document-box"></i></div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">Design Guide.pdf</div>
+                                <div class="text-muted">9 Mb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar avatar-sm ">
+                                        <div class="avatar-title bg-primary rounded"><i
+                                                    class="mdi mdi-24px mdi-code-braces"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">response.json</div>
+                                <div class="text-muted">15 Kb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar avatar-sm ">
+                                        <div class="avatar-title bg-info rounded"><i
+                                                    class="mdi mdi-24px mdi-file-excel"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">June Accounts.xls</div>
+                                <div class="text-muted">6 Mb</div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="../assets/vendor/jquery/jquery.min.js"></script>
+<script src="../assets/vendor/jquery-ui/jquery-ui.min.js"></script>
+<script src="../assets/vendor/popper/popper.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/vendor/select2/js/select2.full.min.js"></script>
+<script src="../assets/vendor/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+<script src="../assets/vendor/listjs/listjs.min.js"></script>
+<script src="../assets/vendor/moment/moment.min.js"></script>
+<script src="../assets/vendor/daterangepicker/daterangepicker.js"></script>
+<script src="../assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="../assets/vendor/bootstrap-notify/bootstrap-notify.min.js"></script>
+<script src="../assets/js/atmos.min.js"></script>
+
+<!-- SweetAlert2 Alertas -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!--page specific scripts for demo-->
+<script>
+$(document).ready(function() {
+    // Data atual
+    function formatarDataAtual() {
+        var data = new Date();
+        var dia = data.getDate().toString().padStart(2, '0');
+        var mes = (data.getMonth() + 1).toString().padStart(2, '0');
+        var ano = data.getFullYear();
+        return dia + '/' + mes + '/' + ano;
+    }
+    
+    // placeholder
+    var dataAtual = formatarDataAtual();
+    $('#dataInicial, #dataFinal').attr('placeholder', dataAtual);
+    
+    //calendario
+    $('.input-date').datepicker({
+        format: 'dd/mm/yyyy',
+        autoclose: true,
+        todayHighlight: true,
+        language: 'pt-BR',
+        orientation: 'bottom auto',
+        templates: {
+            leftArrow: '<i class="mdi mdi-chevron-left"></i>',
+            rightArrow: '<i class="mdi mdi-chevron-right"></i>'
+        }
+    }).on('show', function() {
+        $('.datepicker-dropdown').addClass('shadow-sm');
+    });
+
+    $('[data-toggle="tooltip"]').tooltip();
+
+    // Style
+    $('<style>'+
+      '.input-date { background-color: transparent !important; height: calc(1.5em + 0.75rem + 2px); }'+
+      '.datepicker { font-family: "Jost", sans-serif; border-radius: 4px; }'+
+      '.datepicker table tr td.active { background-color: #7367f0 !important; background-image: none !important; }'+
+      '.datepicker-dropdown { margin-top: 0; padding: 10px; border-radius: 5px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }'+
+      '.datepicker table { font-size: 13px; }'+
+      '.btn-primary { transition: transform 0.2s ease, box-shadow 0.2s ease; }'+
+      '.btn-primary:hover { box-shadow: 0 4px 8px rgba(115, 103, 240, 0.3) !important; }'+
+      '.btn-primary:active { transform: translateY(1px); }'+
+      '.btn-outline-primary { transition: all 0.2s ease; }'+
+      '.btn-outline-primary:hover { background-color: rgba(115, 103, 240, 0.1); }'+
+      '.card { transition: box-shadow 0.3s ease; }'+
+      '.card:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.08) !important; }'+
+      '.mb-mobile { margin-bottom: 10px !important; }'+
+      /* search */
+      '@media (max-width: 767.98px) {'+
+      '  .search-container .row.g-2 { display: flex; flex-wrap: wrap; margin-left: -5px; margin-right: -5px; }'+
+      '  .search-container .row.g-2 .col-md { flex: 0 0 100%; max-width: 100%; padding-left: 5px; padding-right: 5px; }'+
+      '  .search-container .form-group { margin-bottom: 8px; }'+
+      '  .search-container .form-control { height: 38px; }'+
+      '  .search-container .input-group-text { padding: 0.375rem 0.75rem; }'+
+      '  .search-container .d-flex.flex-wrap { flex-wrap: wrap; }'+
+      '  .search-container .d-flex.flex-wrap .mr-2 { flex: 0 0 calc(50% - 6px); max-width: calc(50% - 6px); margin-right: 4px !important; margin-bottom: 8px !important; }'+
+      '  .search-container .d-flex.flex-wrap select.custom-select { width: 100%; height: 38px; font-size: 0.9rem; }'+
+      '  .search-container .d-flex.flex-wrap .btn-outline-primary { width: 100%; }'+
+      '  .search-container .col-md-2 { text-align: center !important; margin-top: 15px; }'+
+      '  .search-container .col-md-2 .btn { width: 100%; min-height: 38px; }'+
+      '  .search-container .col-md-10 { margin-bottom: 0; }'+
+      '  .form-control, select.form-control:not([size]):not([multiple]) { font-size: 16px; }' + /* Evita zoom automático em iOS */
+      '  input.form-control { -webkit-appearance: none; border-radius: 4px; }' + /* Melhora aparência em dispositivos Apple */
+      '  .search-container input[type="date"].form-control { height: 38px; line-height: 1.5; }'+
+      '  .search-container .row.g-2 > div { margin-bottom: 10px; }'+
+      '  .search-container label { font-size: 0.9rem; }' +
+      '  .mobile-select { font-size: 16px; height: 42px; background-position: right 8px center; }' +
+      '  .mobile-btn { min-height: 42px; font-size: 16px; touch-action: manipulation; }' +
+      '}'+
+      '@media (max-width: 991.98px) and (min-width: 768px) {'+
+      '  .search-container .row.g-2 { display: flex; flex-wrap: wrap; margin-left: -5px; margin-right: -5px; }'+
+      '  .search-container .row.g-2 .col-md { flex: 0 0 33.33%; max-width: 33.33%; padding-left: 5px; padding-right: 5px; margin-bottom: 10px; }'+
+      '  .search-container .row.g-2 .form-group { margin-bottom: 0; }'+
+      '  .search-container .d-flex.flex-wrap .mr-2 { margin-right: 8px !important; margin-bottom: 8px !important; min-width: 120px; }'+
+      '  .search-container .col-md-10 { flex: 0 0 75%; max-width: 75%; }'+
+      '  .search-container .col-md-2 { flex: 0 0 25%; max-width: 25%; margin-top: 0; }'+
+      '  .search-container .col-md-2 .btn { min-width: 100%; }'+
+      '}'+
+      /* tabela  */
+      '@media (max-width: 767.98px) {'+
+      '  .table-responsive { overflow-x: auto; }'+
+      '  .table { min-width: 650px; }'+
+      '  .table .align-middle { vertical-align: middle !important; }'+
+      '  .pagination { display: flex; justify-content: center; }'+
+      '  .pagination .page-item { margin-bottom: 5px; }'+
+      '  .pagination .page-link { padding: 0.25rem 0.5rem; font-size: 0.875rem; }'+
+      '}'+
+      /* celular */
+      '@media (max-width: 767.98px) {'+
+      '  .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; }'+
+      '  .table thead th { font-size: 0.85rem; padding: 0.5rem; }'+
+      '  .table tbody td { font-size: 0.85rem; padding: 0.5rem; }'+
+      '  .table .avatar { width: 30px; height: 30px; }'+
+      '  .table .badge { font-size: 0.7rem; padding: 0.2rem 0.5rem; }'+
+      '  .pagination { justify-content: center; flex-wrap: wrap; }'+
+      '  .pagination .page-item .page-link { padding: 0.3rem 0.6rem; font-size: 0.85rem; }'+
+      '}'+
+      '@media (max-width: 767.98px) {'+
+      '  #advancedFilters .row .col-md-3 { flex: 0 0 100%; max-width: 100%; margin-bottom: 10px; }'+
+      '  #advancedFilters .card-body { padding: 15px; }'+
+      '  #advancedFilters .d-flex.justify-content-end { justify-content: center !important; margin-top: 10px; }'+
+      '  #advancedFilters .btn { width: 100%; max-width: 200px; }'+
+      '  .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; }'+
+      '  .table thead th { font-size: 0.85rem; padding: 0.5rem; }'+
+      '  .table tbody td { font-size: 0.85rem; padding: 0.5rem; }'+
+      '  .table .avatar { width: 30px; height: 30px; }'+
+      '  .table .badge { font-size: 0.7rem; padding: 0.2rem 0.5rem; }'+
+      '  .pagination { justify-content: center; flex-wrap: wrap; }'+
+      '  .pagination .page-item .page-link { padding: 0.3rem 0.6rem; font-size: 0.85rem; }'+
+      '}'+
+      /* Celulares pequenos */
+      '@media (max-width: 359.98px) {'+
+      '  .search-container h5 { font-size: 1rem; }'+
+      '  .search-container .form-control { font-size: 0.9rem; height: 38px; }'+
+      '  .search-container .btn { font-size: 0.9rem; }'+
+      '  .table thead th { font-size: 0.75rem; padding: 0.4rem 0.3rem; }'+
+      '  .table tbody td { font-size: 0.75rem; padding: 0.4rem 0.3rem; white-space: nowrap; }'+
+      '  .table .d-flex.align-items-center .ml-2 { margin-left: 0.3rem !important; }'+
+      '  .pagination .page-item .page-link { padding: 0.25rem 0.4rem; font-size: 0.75rem; }'+
+      '}'+
+      /* tablets */
+      '@media (max-width: 1440px) and (min-width: 768px) {'+
+      '  .search-container .row.g-2 { display: flex; flex-wrap: wrap; margin-left: -5px; margin-right: -5px; }'+
+      '  .search-container .row.g-2 .col-md { flex: 0 0 33.33%; max-width: 33.33%; padding-left: 5px; padding-right: 5px; margin-bottom: 10px; }'+
+      '  .search-container .row.g-2 .form-group { margin-bottom: 0; }'+
+      '  .search-container .d-flex.flex-wrap .mr-2 { margin-right: 8px !important; margin-bottom: 8px !important; min-width: 120px; }'+
+      '  .search-container .col-md-10 { flex: 0 0 75%; max-width: 75%; }'+
+      '  .search-container .col-md-2 { flex: 0 0 25%; max-width: 25%; margin-top: 0; }'+
+      '  .search-container .col-md-2 .btn { min-width: 100%; }'+
+      '}'+
+      '</style>').appendTo('head');
+    
+    // filtros
+    $('button[data-toggle="collapse"]').on('click', function() {
+        var $icon = $(this).find('.mdi-filter-variant');
+        if ($icon.length) {
+            if ($($(this).attr('href')).hasClass('show')) {
+                $icon.removeClass('mdi-filter-variant').addClass('mdi-filter');
+            } else {
+                $icon.removeClass('mdi-filter').addClass('mdi-filter-variant');
+            }
+        }
+    });
+    
+    // search
+    function ajustarResponsividade() {
+        if (window.innerWidth <= 767.98) {
+            $('.search-container .row.g-2 .col-md').addClass('mb-mobile');
+            $('.search-container .col-md-2').addClass('text-center').removeClass('text-right');
+            $('.search-container .row.g-2').addClass('responsive-row');
+        } else {
+            // Remover telas maiores
+            $('.search-container .row.g-2 .col-md').removeClass('mb-mobile');
+            $('.search-container .col-md-2').removeClass('text-center').addClass('text-right');
+            $('.search-container .row.g-2').removeClass('responsive-row');
+        }
+    }
+    
+    ajustarResponsividade();
+    $(window).resize(function() {
+        ajustarResponsividade();
+    });
+
+    if (window.innerWidth <= 767) {
+        $('.search-container select.form-control').addClass('mobile-select');
+        $('.search-container .btn').addClass('mobile-btn');
+    }
+    
+    $(window).resize(function() {
+        if (window.innerWidth <= 767) {
+            $('.search-container select.form-control').addClass('mobile-select');
+            $('.search-container .btn').addClass('mobile-btn');
+        } else {
+            $('.search-container select.form-control').removeClass('mobile-select');
+            $('.search-container .btn').removeClass('mobile-btn');
+        }
+    });
+    
+    // Sistema de Etiquetas 
+    window.tags = [];
+    window.defaultColor = 'blue';
+    window.currentEditingTag = null;
+    window.currentCarrinhoId = null;
+    
+    // Inicializar cor 
+    $(document).ready(function() {
+        $('.color-option').removeClass('selected');
+        $('.color-option[onclick*="blue"]').addClass('selected');
+    });
+    
+    window.colorClasses = {
+        blue: 'tag-blue',
+        green: 'tag-green', 
+        red: 'tag-red',
+        orange: 'tag-orange',
+        purple: 'tag-purple',
+        teal: 'tag-teal',
+        indigo: 'tag-indigo',
+        pink: 'tag-pink'
+    };
+    
+    // Sistema de Etiquetas
+    window.openEtiquetasModal = function(carrinhoId) {
+        console.log('Abrindo modal para carrinho:', carrinhoId);
+        window.currentCarrinhoId = carrinhoId;
+        
+        // Verificar modal 
+        const modal = $('#etiquetasModal');
+        console.log('Modal encontrado:', modal.length > 0);
+        
+        if (modal.length === 0) {
+            console.error('Modal não encontrado!');
+            return;
+        }
+        
+        // Atualizar o ID do carrinho
+        $('#carrinhoId').text(carrinhoId);
+        
+        // Carregar etiquetas existentes
+        window.loadTagsForCarrinho(carrinhoId);
+        
+        // Abrir o modal
+        try {
+            modal.modal('show');
+            console.log('Modal aberto com sucesso');
+        } catch (error) {
+            console.error('Erro ao abrir modal:', error);
+            modal.show();
+            modal.addClass('show');
+            $('body').addClass('modal-open');
+        }
+    };
+    
+    // Eventos  Modal
+    $('#etiquetasModal').on('shown.bs.modal', function() {
+        $('#tagInput').focus();
+        console.log('Modal de etiquetas aberto');
+    });
+    
+    $('#tagInput').on('keypress', function(e) {
+        console.log('Tecla pressionada:', e.key);
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            console.log('Enter pressionado, chamando addTag');
+            window.addTag();
+        }
+    });
+    
+    $('#tagInput').on('input', function() {
+        console.log('Input detectado, valor:', $(this).val());
+        const button = $(this).next().find('button');
+        if ($(this).val().trim()) {
+            button.addClass('pulse-animation');
+        } else {
+            button.removeClass('pulse-animation');
+        }
+    });
+    
+    window.setDefaultColor = function(color) {
+        window.defaultColor = color;
+        
+        $('.color-option').removeClass('selected');
+        
+        $(event.target).addClass('selected');
+        
+        showFeedback(`Cor padrão alterada para ${window.getColorName(color)}`, 'info');
+    };
+    
+    window.getColorValue = function(colorName) {
+        const colors = {
+            blue: '#4e73df',
+            green: '#1cc88a', 
+            red: '#e74a3b',
+            orange: '#f6c23e',
+            purple: '#6f42c1',
+            teal: '#36b9cc',
+            indigo: '#5a5c69',
+            pink: '#e83e8c'
+        };
+        return colors[colorName];
+    };
+    
+    window.getColorName = function(colorKey) {
+        const names = {
+            blue: 'Azul',
+            green: 'Verde', 
+            red: 'Vermelho',
+            orange: 'Laranja',
+            purple: 'Roxo',
+            teal: 'Verde-água',
+            indigo: 'Índigo',
+            pink: 'Rosa'
+        };
+        return names[colorKey];
+    };
+    
+    window.addTag = function() {
+        console.log('Função addTag chamada');
+        const input = $('#tagInput');
+        console.log('Input encontrado:', input.length > 0);
+        
+        if (input.length === 0) {
+            console.error('Campo de input não encontrado!');
+            showFeedback('Erro: Campo de input não encontrado', 'danger');
+            return;
+        }
+        
+        const tagText = input.val().trim();
+        console.log('Texto da etiqueta:', tagText);
+        
+        if (!tagText) {
+            showFeedback('Por favor, digite uma etiqueta válida', 'warning');
+            return;
+        }
+        
+        if (window.tags.some(tag => tag.text === tagText)) {
+            showFeedback('Esta etiqueta já foi adicionada', 'warning');
+            input.focus();
+            return;
+        }
+        
+        if (window.tags.length >= 15) {
+            showFeedback('Máximo de 15 etiquetas permitidas', 'warning');
+            return;
+        }
+        
+        const newTag = {
+            text: tagText,
+            color: window.defaultColor,
+            id: Date.now()
+        };
+        
+        console.log('Nova etiqueta:', newTag);
+        window.tags.push(newTag);
+        
+        input.val('');
+        input.focus();
+        window.updateTagDisplay();
+        showFeedback(`Etiqueta "${tagText}" adicionada!`, 'success');
+    };
+    
+    window.removeTag = function(id) {
+        const tagIndex = window.tags.findIndex(tag => tag.id === id);
+        if (tagIndex !== -1) {
+            const removedTag = window.tags[tagIndex];
+            window.tags.splice(tagIndex, 1);
+            updateTagDisplay();
+            showFeedback(`Etiqueta "${removedTag.text}" removida`, 'info');
+        }
+    };
+    
+    window.openColorPicker = function(id, tagText) {
+        window.currentEditingTag = id;
+        $('#currentTagName').text(tagText);
+        
+        $('#colorModal').modal('show');
+    };
+    
+    window.changeTagColor = function(newColor) {
+        if (window.currentEditingTag) {
+            const tagIndex = window.tags.findIndex(tag => tag.id === window.currentEditingTag);
+            if (tagIndex !== -1) {
+                const oldColor = window.getColorName(window.tags[tagIndex].color);
+                window.tags[tagIndex].color = newColor;
+                updateTagDisplay();
+                showFeedback(`Cor alterada de ${oldColor} para ${window.getColorName(newColor)}`, 'success');
+            }
+        }
+        
+        $('#colorModal').modal('hide');
+        window.currentEditingTag = null;
+    };
+    
+    window.updateTagDisplay = function() {
+        const container = $('#tagContainer');
+        const tagCount = $('#tagCount');
+        
+        tagCount.text(window.tags.length);
+        
+        if (window.tags.length === 0) {
+            container.removeClass('has-tags');
+            container.html(`
+                <div class="empty-state text-center py-5">
+                    <i class="mdi mdi-tag-outline text-muted" style="font-size: 3rem;"></i>
+                    <h6 class="text-muted mt-3">Nenhuma etiqueta adicionada</h6>
+                    <p class="text-muted mb-0">Comece adicionando etiquetas para organizar seu carrinho</p>
+                </div>
+            `);
+        } else {
+            container.addClass('has-tags');
+            container.html(window.tags.map(tag => `
+                <span class="tag-item ${window.colorClasses[tag.color]}" 
+                      ondblclick="window.openColorPicker(${tag.id}, '${tag.text}')"
+                      oncontextmenu="window.showTagContextMenu(event, ${tag.id}, '${tag.text}')"
+                      title="Clique duplo para trocar cor • Clique direito para mais opções">
+                    <i class="mdi mdi-tag"></i>
+                    ${tag.text}
+                    <button class="tag-remove" onclick="window.removeTag(${tag.id})" title="Remover etiqueta">
+                        <i class="mdi mdi-close"></i>
+                    </button>
+                </span>
+            `).join(''));
+        }
+    };
+    
+    window.clearAllTags = function() {
+        if (window.tags.length === 0) {
+            showFeedback('Não há etiquetas para remover', 'info');
+            return;
+        }
+        
+        Swal.fire({
+            title: 'Remover todas as etiquetas?',
+            text: `Esta ação irá remover ${window.tags.length} etiqueta(s) permanentemente.`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#e74a3b',
+            cancelButtonColor: '#858796',
+            confirmButtonText: 'Sim, remover todas',
+            cancelButtonText: 'Cancelar',
+            reverseButtons: true,
+            customClass: {
+                popup: 'swal2-modal-atmos',
+                confirmButton: 'swal2-danger',
+                cancelButton: 'swal2-cancel'
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.tags = [];
+                window.updateTagDisplay();
+                showFeedback('Todas as etiquetas foram removidas', 'success');
+            }
+        });
+    };
+    
+    window.saveTags = function() {
+        if (window.tags.length === 0) {
+            showFeedback('Adicione pelo menos uma etiqueta antes de salvar', 'warning');
+            return;
+        }
+        
+        const saveButton = $(event.target);
+        const originalContent = saveButton.html();
+        saveButton.html('<i class="mdi mdi-loading mdi-spin me-2"></i>Salvando...');
+        saveButton.prop('disabled', true);
+        
+        // loading SweetAlert2
+        Swal.fire({
+            title: 'Salvando etiquetas...',
+            html: 'Aguarde enquanto salvamos suas etiquetas',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            showConfirmButton: false,
+            customClass: {
+                popup: 'swal2-modal-atmos'
+            },
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
+        
+        setTimeout(() => {
+            saveButton.html(originalContent);
+            saveButton.prop('disabled', false);
+            
+            window.saveTagsForCarrinho(window.currentCarrinhoId, window.tags);
+            window.updateTagsDisplayInTable(window.currentCarrinhoId, window.tags);
+            
+            // Fechar loading  sucesso
+            Swal.fire({
+                icon: 'success',
+                title: 'Etiquetas salvas!',
+                text: `${window.tags.length} etiqueta(s) foram salvas com sucesso para o carrinho #${window.currentCarrinhoId}`,
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#1cc88a',
+                timer: 2000,
+                timerProgressBar: true,
+                customClass: {
+                    popup: 'swal2-modal-atmos',
+                    confirmButton: 'swal2-confirm'
+                }
+            });
+            
+            setTimeout(() => {
+                $('#etiquetasModal').modal('hide');
+            }, 1000);
+            
+            console.log('Etiquetas salvas:', window.tags);
+        }, 1500);
+    };
+    
+    function showFeedback(message, type = 'success') {
+        // Configurações SweetAlert2 
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 4000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        });
+        
+        // Configurações por tipo
+        let icon, title;
+        switch(type) {
+            case 'success':
+                icon = 'success';
+                title = 'Sucesso';
+                break;
+            case 'warning':
+                icon = 'warning';
+                title = 'Atenção';
+                break;
+            case 'error':
+            case 'danger':
+                icon = 'error';
+                title = 'Erro';
+                break;
+            case 'info':
+                icon = 'info';
+                title = 'Informação';
+                break;
+            default:
+                icon = 'success';
+                title = 'Sucesso';
+        }
+        
+        Toast.fire({
+            icon: icon,
+            title: message,
+            customClass: {
+                popup: 'swal2-toast-atmos',
+                title: 'swal2-toast-title-atmos'
+            }
+        });
+    }
+    
+    window.loadTagsForCarrinho = function(carrinhoId) {
+        const savedTags = localStorage.getItem(`tags_carrinho_${carrinhoId}`);
+        if (savedTags) {
+            window.tags = JSON.parse(savedTags);
+            window.updateTagDisplay();
+        } else {
+            window.tags = [];
+            window.updateTagDisplay();
+        }
+    };
+    
+    window.saveTagsForCarrinho = function(carrinhoId, tagsData) {
+        localStorage.setItem(`tags_carrinho_${carrinhoId}`, JSON.stringify(tagsData));
+    };
+    
+    window.updateTagsDisplayInTable = function(carrinhoId, tagsData) {
+        const cell = $(`[data-carrinho-id="${carrinhoId}"]`).closest('td');
+        
+        if (tagsData.length === 0) {
+            cell.html(`
+                <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#etiquetasModal" data-carrinho-id="${carrinhoId}">
+                    <i class="mdi mdi-tag"></i>
+                    <span class="ml-1">Etiquetas</span>
+                </button>
+            `);
+        } else {
+            const tagsHtml = tagsData.map(tag => `
+                <span class="tag-item ${window.colorClasses[tag.color]}" title="${tag.text}">
+                    <i class="mdi mdi-tag"></i>
+                    ${tag.text}
+                    <button class="tag-remove" onclick="window.removeTagFromTable(${carrinhoId}, ${tag.id})" title="Remover etiqueta">
+                        <i class="mdi mdi-close"></i>
+                    </button>
+                </span>
+                `).join('');
+            
+            cell.html(`
+                <div class="tags-display">
+                    ${tagsHtml}
+                    <button type="button" class="btn btn-sm btn-outline-primary ml-2" data-toggle="modal" data-target="#etiquetasModal" data-carrinho-id="${carrinhoId}">
+                        <i class="mdi mdi-plus"></i>
+                    </button>
+                </div>
+            `);
+        }
+    };
+    
+    window.removeTagFromTable = function(carrinhoId, tagId) {
+        const savedTags = localStorage.getItem(`tags_carrinho_${carrinhoId}`);
+        if (savedTags) {
+            let tagsData = JSON.parse(savedTags);
+            const tagIndex = tagsData.findIndex(tag => tag.id === tagId);
+            if (tagIndex !== -1) {
+                tagsData.splice(tagIndex, 1);
+                window.saveTagsForCarrinho(carrinhoId, tagsData);
+                window.updateTagsDisplayInTable(carrinhoId, tagsData);
+                showFeedback('Etiqueta removida', 'info');
+            }
+        }
+    };
+    
+    window.exportTags = function() {
+        if (window.tags.length === 0) {
+            showFeedback('Não há etiquetas para exportar', 'warning');
+            return;
+        }
+        
+        // Mostrar loading
+        Swal.fire({
+            title: 'Exportando etiquetas...',
+            html: 'Preparando arquivo para download',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            showConfirmButton: false,
+            customClass: {
+                popup: 'swal2-modal-atmos'
+            },
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
+        
+        setTimeout(() => {
+            const exportData = {
+                etiquetas: window.tags,
+                total: window.tags.length,
+                dataExportacao: new Date().toLocaleString('pt-BR'),
+                corPadrao: window.defaultColor
+            };
+            
+            const dataStr = JSON.stringify(exportData, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(dataBlob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `etiquetas_carrinho_${Date.now()}.json`;
+            link.click();
+            
+            URL.revokeObjectURL(url);
+            
+            // Fechar loading sucesso
+            Swal.fire({
+                icon: 'success',
+                title: 'Exportação concluída!',
+                text: `Arquivo com ${window.tags.length} etiqueta(s) foi baixado com sucesso.`,
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#1cc88a',
+                timer: 3000,
+                timerProgressBar: true,
+                customClass: {
+                    popup: 'swal2-modal-atmos',
+                    confirmButton: 'swal2-confirm'
+                }
+            });
+        }, 1000);
+    };
+    
+    window.importTags = function() {
+        Swal.fire({
+            title: 'Importar etiquetas',
+            text: 'Selecione um arquivo JSON para importar suas etiquetas',
+            icon: 'info',
+            input: 'file',
+            inputAttributes: {
+                accept: '.json',
+                'aria-label': 'Arquivo JSON para importar'
+            },
+            showCancelButton: true,
+            confirmButtonText: 'Importar',
+            cancelButtonText: 'Cancelar',
+            confirmButtonColor: '#1cc88a',
+            cancelButtonColor: '#858796',
+            showLoaderOnConfirm: true,
+            customClass: {
+                popup: 'swal2-modal-atmos',
+                confirmButton: 'swal2-confirm',
+                cancelButton: 'swal2-cancel'
+            },
+            preConfirm: (file) => {
+                if (!file) {
+                    Swal.showValidationMessage('Por favor, selecione um arquivo');
+                    return false;
+                }
+                
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        try {
+                            const data = JSON.parse(e.target.result);
+                            if (data.etiquetas && Array.isArray(data.etiquetas)) {
+                                resolve(data);
+                            } else {
+                                reject('Arquivo inválido: formato não reconhecido');
+                            }
+                        } catch (error) {
+                            reject('Erro ao ler arquivo: formato inválido');
+                        }
+                    };
+                    reader.onerror = () => reject('Erro ao ler arquivo');
+                    reader.readAsText(file);
+                });
+            },
+            allowOutsideClick: () => !Swal.isLoading()
+        }).then((result) => {
+            if (result.isConfirmed && result.value) {
+                const data = result.value;
+                window.tags = data.etiquetas;
+                if (data.corPadrao) {
+                    window.setDefaultColor(data.corPadrao);
+                }
+                window.updateTagDisplay();
+                
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Importação concluída!',
+                    text: `${data.etiquetas.length} etiqueta(s) foram importadas com sucesso.`,
+                    confirmButtonText: 'OK',
+                    confirmButtonColor: '#1cc88a',
+                    timer: 3000,
+                    timerProgressBar: true,
+                    customClass: {
+                        popup: 'swal2-modal-atmos',
+                        confirmButton: 'swal2-confirm'
+                    }
+                });
+            }
+        }).catch((error) => {
+            Swal.fire({
+                icon: 'error',
+                title: 'Erro na importação',
+                text: error,
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#e74a3b',
+                customClass: {
+                    popup: 'swal2-modal-atmos',
+                    confirmButton: 'swal2-danger'
+                }
+            });
+        });
+    };
+    
+    window.showTagContextMenu = function(e, id, tagText) {
+        e.preventDefault();
+        
+        $('.context-menu').remove();
+        
+        const menu = $(`
+            <div class="context-menu position-absolute bg-white border rounded shadow-lg p-2" 
+                 style="left: ${e.pageX}px; top: ${e.pageY}px; z-index: 9999; min-width: 150px;">
+                <button class="btn btn-sm btn-light w-100 text-start mb-1" onclick="window.openColorPicker(${id}, '${tagText}')">
+                    <i class="mdi mdi-palette me-2"></i>Trocar cor
+                </button>
+                <button class="btn btn-sm btn-light w-100 text-start mb-1" onclick="window.duplicateTag(${id})">
+                    <i class="mdi mdi-content-copy me-2"></i>Duplicar
+                </button>
+                <button class="btn btn-sm btn-danger w-100 text-start" onclick="window.removeTag(${id})">
+                    <i class="mdi mdi-delete me-2"></i>Remover
+                </button>
+            </div>
+        `);
+        
+        $('body').append(menu);
+        
+        setTimeout(() => {
+            $(document).one('click', function() {
+                menu.remove();
+            });
+        }, 100);
+    };
+    
+    window.duplicateTag = function(id) {
+        const tagToDuplicate = window.tags.find(tag => tag.id === id);
+        if (tagToDuplicate) {
+            const newTag = {
+                text: tagToDuplicate.text + ' (cópia)',
+                color: tagToDuplicate.color,
+                id: Date.now()
+            };
+            window.tags.push(newTag);
+            window.updateTagDisplay();
+            showFeedback(`Etiqueta "${tagToDuplicate.text}" duplicada!`, 'success');
+        }
+    };
+    
+    $(document).ready(function() {
+        updateTagDisplay();
+        
+        console.log('Sistema de etiquetas carregado');
+        console.log('Bootstrap disponível:', typeof $ !== 'undefined' && typeof $.fn.modal !== 'undefined');
+        
+        // Inicializar  etiquetas
+        window.updateTagDisplay();
+    });
+});
+</script>
+</body>
+</html>

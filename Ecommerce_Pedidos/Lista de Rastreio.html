@@ -1,0 +1,2233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" name="viewport">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Atmos Admin Panel- Bootstrap 4 Based Admin Panel</title>
+<link rel="icon" type="image/x-icon" href="../assets/img/logo.png"/>
+<link rel="icon" href="../assets/img/logo.png" type="image/png" sizes="16x16">
+<link rel="stylesheet" href="../assets/vendor/pace/pace.css">
+<script src="../assets/vendor/pace/pace.min.js"></script>
+<!--vendors-->
+<link rel="stylesheet" type="text/css" href="../assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
+<link rel="stylesheet" type="text/css" href="../assets/vendor/jquery-scrollbar/jquery.scrollbar.css">
+<link rel="stylesheet" href="../assets/vendor/select2/css/select2.min.css">
+<link rel="stylesheet" href="../assets/vendor/jquery-ui/jquery-ui.min.css">
+<link rel="stylesheet" href="../assets/vendor/daterangepicker/daterangepicker.css">
+<link rel="stylesheet" href="../assets/vendor/timepicker/bootstrap-timepicker.min.css">
+<link href="https://fonts.googleapis.com/css?family=Hind+Vadodara:400,500,600" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts/jost/jost.css">
+<!--Material Icons-->
+<link rel="stylesheet" type="text/css" href="../assets/fonts/materialdesignicons/materialdesignicons.min.css">
+<!--Bootstrap + atmos Admin CSS-->
+<link rel="stylesheet" type="text/css" href="../assets/css/atmos.min.css">
+<!-- Additional library for page -->
+
+<!-- CSS para melhorar a responsividade dos cards -->
+<style>
+  /* Responsividade */
+  @media (max-width: 1818.98px) {
+    .status-card .card-body {
+      padding: 0.75rem !important;
+    }
+    
+    .status-card .icon-box {
+      width: 36px !important;
+      height: 36px !important;
+      min-width: 36px !important;
+      min-height: 36px !important;
+      margin-right: 0.5rem !important;
+    }
+    
+    .status-card .icon-box i {
+      font-size: 1.2rem !important;
+    }
+    
+    .status-card .text-uppercase {
+      font-size: 0.65rem !important;
+    }
+    
+    .status-card .h4 {
+      font-size: 1.15rem !important;
+    }
+  }
+  
+  @media (max-width: 1680px) {
+    .status-card .card-body {
+      padding: 0.7rem !important;
+    }
+    
+    .status-card .icon-box {
+      width: 35px !important;
+      height: 35px !important;
+      min-width: 35px !important;
+      min-height: 35px !important;
+    }
+    
+    .status-card .text-uppercase {
+      font-size: 0.62rem !important;
+    }
+    
+    .status-card .h4 {
+      font-size: 1.1rem !important;
+    }
+    
+    .metric-card .card-body {
+      padding: 0.75rem !important;
+    }
+    
+    .metric-card .icon-box {
+      width: 40px !important;
+      height: 40px !important;
+    }
+    
+    .metric-card .icon-box i {
+      font-size: 1.3rem !important;
+    }
+    
+    .metric-card .h3 {
+      font-size: 1.4rem !important;
+    }
+    
+    .metric-card .text-uppercase {
+      font-size: 0.65rem !important;
+    }
+  }
+  
+  @media (max-width: 1440px) {
+    .status-card .card-body {
+      padding: 0.68rem !important;
+    }
+    
+    .status-card .icon-box {
+      width: 32px !important;
+      height: 32px !important;
+      min-width: 32px !important;
+      min-height: 32px !important;
+      margin-right: 0.45rem !important;
+    }
+    
+    .status-card .icon-box i {
+      font-size: 1.1rem !important;
+    }
+    
+    .status-card .text-uppercase {
+      font-size: 0.6rem !important;
+      letter-spacing: 0.35px !important;
+    }
+    
+    .status-card .h4 {
+      font-size: 1.05rem !important;
+    }
+    
+    .metric-card .card-body {
+      padding: 0.7rem !important;
+    }
+    
+    .metric-card .icon-box {
+      width: 38px !important;
+      height: 38px !important;
+    }
+    
+    .metric-card .icon-box i {
+      font-size: 1.25rem !important;
+    }
+    
+    .metric-card .h3 {
+      font-size: 1.3rem !important;
+    }
+    
+    .metric-card .text-uppercase {
+      font-size: 0.62rem !important;
+      letter-spacing: 0.4px !important;
+    }
+    
+    .btn-group-sm > .btn {
+      padding: 0.2rem 0.4rem !important;
+      font-size: 0.75rem !important;
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .status-card .card-body {
+      padding: 0.65rem !important;
+    }
+    
+    .status-container{
+      flex: 0 0 100% !important;
+      max-width: 100% !important;
+    }
+    
+    .status-card .icon-box {
+      width: 30px !important;
+      height: 30px !important;
+      min-width: 30px !important;
+      min-height: 30px !important;
+      margin-right: 0.4rem !important;
+    }
+    
+    .status-card .icon-box i {
+      font-size: 1rem !important;
+    }
+    
+    .status-card .text-uppercase {
+      font-size: 0.58rem !important;
+      letter-spacing: 0.3px !important;
+      margin-bottom: 0.15rem !important;
+    }
+    
+    .status-card .h4 {
+      font-size: 1rem !important;
+    }
+    
+    .metric-card .card-body {
+      padding: 0.4rem !important;
+      min-width: 0 !important;
+      width: 33.33% !important;
+      float: left !important;
+      display: flex !important;
+      flex-direction: row !important;
+      justify-content: space-between !important;
+    }
+    
+    .metric-card .icon-box {
+      width: 35px !important;
+      height: 35px !important;
+      margin-bottom: 0.25rem !important;
+    }
+    
+    .metric-card .icon-box i {
+      font-size: 1.2rem !important;
+    }
+    
+    .metric-card .h3 {
+      font-size: 1.25rem !important;
+    }
+    
+    .metric-card .text-uppercase {
+      font-size: 0.58rem !important;
+      letter-spacing: 0.3px !important;
+    }
+    
+    .card-header .btn-group-sm > .btn {
+      padding: 0.15rem 0.35rem !important;
+      font-size: 0.7rem !important;
+    }
+    
+    .progress {
+      height: 5px !important;
+    }
+    
+    .metricas-container{
+      flex: 0 0 100% !important;
+      max-width: 100% !important;
+      margin-bottom: 1rem !important;
+    }
+
+    .metric-card {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      text-align: center !important;
+    }
+  }
+  
+  @media (max-width: 575.98px) {
+    .status-card .card-body {
+      padding: 0.5rem !important;
+    }
+    
+    .status-card .icon-box {
+      width: 28px !important;
+      height: 28px !important;
+      min-width: 28px !important;
+      min-height: 28px !important;
+      margin-right: 0.35rem !important;
+    }
+    
+    .status-card .icon-box i {
+      font-size: 0.9rem !important;
+    }
+    
+    .status-card .text-uppercase {
+      font-size: 0.55rem !important;
+      margin-bottom: 0.1rem !important;
+      letter-spacing: 0.2px !important;
+    }
+    
+    .status-card .h4 {
+      font-size: 0.9rem !important;
+    }
+    
+    .metric-card .card-body {
+      padding: 0.5rem !important;
+    }
+    
+    .metric-card .icon-box {
+      width: 32px !important;
+      height: 32px !important;
+      margin-bottom: 0.2rem !important;
+    }
+    
+    .metric-card .icon-box i {
+      font-size: 1.1rem !important;
+    }
+    
+    .metric-card .h3 {
+      font-size: 1.1rem !important;
+      margin-bottom: 0.1rem !important;
+    }
+    
+    .metric-card .text-uppercase {
+      font-size: 0.55rem !important;
+      letter-spacing: 0.2px !important;
+    }
+    
+    .card-header.pt-4 {
+      padding-top: 1rem !important;
+    }
+    
+    .card-header h5 {
+      font-size: 1rem !important;
+    }
+    
+    .card-header p.small {
+      font-size: 0.7rem !important;
+    }
+    
+    .card-header .btn-group-sm > .btn {
+      padding: 0.12rem 0.3rem !important;
+      font-size: 0.65rem !important;
+    }
+    
+    .mt-4.pt-2 h6 {
+      font-size: 0.8rem !important;
+    }
+    
+    .mt-4.pt-2 .badge {
+      font-size: 0.65rem !important;
+      padding: 0.15rem 0.4rem !important;
+    }
+    
+    .progress {
+      height: 4px !important;
+    }
+    
+    .mt-4.pt-2 .small {
+      font-size: 0.65rem !important;
+    }
+  }
+  
+  @media (max-width: 375px) {
+    .status-card .card-body {
+      padding: 0.4rem !important;
+    }
+    
+    .status-card .icon-box {
+      width: 26px !important;
+      height: 26px !important;
+      min-width: 26px !important;
+      min-height: 26px !important;
+      margin-right: 0.3rem !important;
+    }
+    
+    .status-card .icon-box i {
+      font-size: 0.85rem !important;
+    }
+    
+    .status-card .text-uppercase {
+      font-size: 0.52rem !important;
+      margin-bottom: 0.08rem !important;
+      letter-spacing: 0.15px !important;
+    }
+    
+    .status-card .h4 {
+      font-size: 0.85rem !important;
+    }
+    
+    .metric-card .card-body {
+      padding: 0.45rem !important;
+    }
+    
+    .metric-card .icon-box {
+      width: 30px !important;
+      height: 30px !important;
+      margin-bottom: 0.15rem !important;
+    }
+    
+    .metric-card .icon-box i {
+      font-size: 1rem !important;
+    }
+    
+    .metric-card .h3 {
+      font-size: 1rem !important;
+      margin-bottom: 0.08rem !important;
+    }
+    
+    .metric-card .text-uppercase {
+      font-size: 0.52rem !important;
+      letter-spacing: 0.15px !important;
+    }
+    
+    .card-header .btn-group-sm > .btn {
+      padding: 0.1rem 0.25rem !important;
+      font-size: 0.62rem !important;
+    }
+  }
+  
+  @media (max-width: 320px) {
+    .status-card .card-body {
+      padding: 0.35rem !important;
+    }
+    
+    .status-card .icon-box {
+      width: 24px !important;
+      height: 24px !important;
+      min-width: 24px !important;
+      min-height: 24px !important;
+      margin-right: 0.25rem !important;
+    }
+    
+    .status-card .icon-box i {
+      font-size: 0.8rem !important;
+    }
+    
+    .status-card .text-uppercase {
+      font-size: 0.5rem !important;
+      margin-bottom: 0.05rem !important;
+      letter-spacing: 0.1px !important;
+    }
+    
+    .status-card .h4 {
+      font-size: 0.8rem !important;
+    }
+    
+    .metric-card .card-body {
+      padding: 0.4rem !important;
+    }
+    
+    .metric-card .icon-box {
+      width: 28px !important;
+      height: 28px !important;
+      margin-bottom: 0.1rem !important;
+    }
+    
+    .metric-card .icon-box i {
+      font-size: 0.9rem !important;
+    }
+    
+    .metric-card .h3 {
+      font-size: 0.9rem !important;
+      margin-bottom: 0.05rem !important;
+    }
+    
+    .metric-card .text-uppercase {
+      font-size: 0.5rem !important;
+      letter-spacing: 0.1px !important;
+    }
+    
+    .card-header.pt-4 {
+      padding-top: 0.8rem !important;
+    }
+    
+    .card-header h5 {
+      font-size: 0.9rem !important;
+    }
+    
+    .card-header p.small {
+      font-size: 0.65rem !important;
+    }
+    
+    .card-header .btn-group-sm > .btn {
+      padding: 0.08rem 0.2rem !important;
+      font-size: 0.6rem !important;
+    }
+    
+    .mt-4.pt-2 {
+      margin-top: 0.75rem !important;
+      padding-top: 0.25rem !important;
+    }
+    
+    .mt-4.pt-2 h6 {
+      font-size: 0.75rem !important;
+    }
+    
+    .mt-4.pt-2 .badge {
+      font-size: 0.6rem !important;
+      padding: 0.1rem 0.35rem !important;
+    }
+  }
+  
+  /* Textos longos quebrem o layout */
+  .text-truncate {
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .status-card .d-flex > div.flex-grow-1 {
+    min-width: 0;
+    overflow: hidden;
+  }
+  
+  .status-card {
+    overflow: hidden;
+  }
+  
+  .status-card .card-body > div {
+    max-width: 100%;
+  }
+  
+  .metric-card .d-flex.flex-column {
+    min-width: 0;
+    width: 100%;
+  }
+  
+  .metric-card .text-uppercase {
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  @media (max-width: 767.98px) {
+    .col-lg-4.col-md-8.col-12 .card {
+      margin-bottom: 1rem !important;
+    }
+    
+    .col-lg-4.col-md-8.col-12 .card-header {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+    }
+    
+    .col-lg-4.col-md-8.col-12 .card-header .btn-group {
+      margin-top: 0.5rem !important;
+      align-self: flex-start !important;
+    }
+    
+    .metric-card {
+      margin-bottom: 0.5rem !important;
+    }
+    
+    .col-md-4.col-sm-4.col-4 {
+      padding-left: 0.25rem !important;
+      padding-right: 0.25rem !important;
+    }
+    
+    .row.g-3 {
+      margin-left: -0.25rem !important;
+      margin-right: -0.25rem !important;
+    }
+  }
+  
+  @media (max-width: 575.98px) {
+    .col-lg-4.col-md-8.col-12 .py-4 {
+      padding-top: 0.75rem !important;
+      padding-bottom: 0.75rem !important;
+    }
+    
+    .metric-card .d-flex.flex-column {
+      align-items: center !important;
+    }
+    
+    .mt-4.pt-2 {
+      margin-top: 0.75rem !important;
+      padding-top: 0.15rem !important;
+    }
+    
+    .mt-4.pt-2 .d-flex.justify-content-between {
+      flex-wrap: wrap !important;
+    }
+  }
+  
+  @media (max-width: 359.98px) {
+    .mt-4.pt-2 .d-flex.justify-content-between {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+    }
+    
+    .mt-4.pt-2 .badge {
+      margin-top: 0.15rem !important;
+      align-self: flex-start !important;
+    }
+    
+    .progress {
+      margin-top: 0.5rem !important;
+      margin-bottom: 0.5rem !important;
+    }
+  }
+  
+  .metric-card .icon-box {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+    transition: all 0.3s ease !important;
+  }
+  
+  @media (max-width: 767.98px) {
+    .metric-card .icon-box i {
+      transform: scale(0.95) !important;
+    }
+  }
+  
+  @media (max-width: 359.98px) {
+    .metric-card .icon-box {
+      margin-bottom: 0.1rem !important;
+    }
+    
+    .metric-card .icon-box i {
+      transform: scale(0.9) !important;
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .metric-card .card-body {
+      padding: 1rem !important;
+    }
+    
+    .row.g-3 {
+      margin-top: 0.25rem !important;
+    }
+    
+    .metric-card .icon-box {
+      width: 48px !important;
+      height: 48px !important;
+      margin-bottom: 0.5rem !important;
+    }
+    
+    .metric-card .icon-box i {
+      font-size: 1.5rem !important;
+    }
+    
+    .metric-card .h3 {
+      font-size: 1.5rem !important;
+      margin-bottom: 0.25rem !important;
+    }
+    
+    .metric-card .small {
+      font-size: 0.8rem !important;
+    }
+    
+    .mt-4.pt-2 {
+      margin-top: 0.5rem !important;
+    }
+  }
+</style>
+</head>
+<!--body with default sidebar pinned -->
+<body class="sidebar-pinned">
+<!--sidebar Begins-->
+<aside class="admin-sidebar">
+    <div class="admin-sidebar-brand">
+        <!-- begin sidebar branding-->
+        <img class="admin-brand-logo" src="../assets/img/logo.svg" width="40" alt="atmos Logo">
+        <span class="admin-brand-content"><a href="index.html">  atmos</a></span>
+        <!-- end sidebar branding-->
+        <div class="ml-auto">
+            <!-- sidebar pin-->
+            <a href="#" class="admin-pin-sidebar btn-ghost btn btn-rounded-circle"></a>
+            <!-- sidebar close for mobile device-->
+            <a href="#" class="admin-close-sidebar"></a>
+        </div>
+    </div>
+    <div class="admin-sidebar-wrapper js-scrollbar">
+        <!-- Menu List Begins-->
+        <ul class="menu">
+            <!--list item begins-->
+            <li class="menu-item active">
+                <a href="#" class="menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Link
+                                                </span>
+                                            </span>
+                    <span class="menu-icon">
+                                                   <span class="icon-badge badge-success badge badge-pill">1</span>
+
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+
+            </li>
+            <!--list item ends-->
+
+            <!--list item begins-->
+            <li class="menu-item ">
+                <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu level 1
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                                <span class="menu-info">Contains submenu</span>
+                                            </span>
+                    <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+                <!--submenu-->
+                <ul class="sub-menu">
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+
+
+                </ul>
+            </li>
+            <!--list item ends-->
+
+            <!--list item begins-->
+            <li class="menu-item ">
+                <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu Level 2
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                                <span class="menu-info">Contains submenu</span>
+                                            </span>
+                    <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+                <!--submenu-->
+                <ul class="sub-menu">
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu Level 1.1
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                        </a>
+                        <!--submenu-->
+                        <ul class="sub-menu">
+                            <li class="menu-item">
+                                <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 2.1 </span>
+                                            </span>
+                                    <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+            <!--list item ends-->
+        </ul>
+        <!-- Menu List Ends-->
+    </div>
+
+</aside>
+<!--sidebar Ends-->
+
+
+<main class="admin-main">
+
+    <!--site header begins-->
+<header class="admin-header">
+
+    <a href="#" class="sidebar-toggle" data-toggleclass="sidebar-open" data-target="body"> </a>
+
+    <nav class=" mr-auto my-auto">
+        <ul class="nav align-items-center">
+
+            <li class="nav-item">
+                <a class="nav-link  " data-target="#siteSearchModal" data-toggle="modal" href="#">
+                    <i class=" mdi mdi-magnify mdi-24px align-middle"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <nav class=" ml-auto">
+        <ul class="nav align-items-center">
+
+            <li class="nav-item">
+                <div class="dropdown">
+                    <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-24px mdi-bell-outline"></i>
+                        <span class="notification-counter"></span>
+                    </a>
+
+                    <div class="dropdown-menu notification-container dropdown-menu-right">
+                        <div class="d-flex p-all-15 bg-white justify-content-between border-bottom ">
+                            <a href="#!" class="mdi mdi-18px mdi-settings text-muted"></a>
+                            <span class="h5 m-0">Notifications</span>
+                            <a href="#!" class="mdi mdi-18px mdi-notification-clear-all text-muted"></a>
+                        </div>
+                        <div class="notification-events bg-gray-300">
+                            <div class="text-overline m-b-5">today</div>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body"> <i class="mdi mdi-circle text-success"></i> All systems operational.</div>
+                                </div>
+                            </a>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body"> <i class="mdi mdi-upload-multiple "></i> File upload successful.</div>
+                                </div>
+                            </a>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <i class="mdi mdi-cancel text-danger"></i> Your holiday has been denied
+                                    </div>
+                                </div>
+                            </a>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item dropdown ">
+                <a class="nav-link dropdown-toggle" href="#"   role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    <div class="avatar avatar-sm avatar-online">
+                        <span class="avatar-title rounded-circle bg-dark">V</span>
+
+                    </div>
+                </a>
+                <div class="dropdown-menu  dropdown-menu-right"   >
+                    <a class="dropdown-item" href="#">  Add Account
+                    </a>
+                    <a class="dropdown-item" href="#">  Reset Password</a>
+                    <a class="dropdown-item" href="#">  Help </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"> Logout</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </nav>
+</header>
+<!--site header ends -->    <section class="admin-content">
+        <!-- BEGIN PlACE PAGE CONTENT HERE -->
+        <div class="container-fluid pt-5 pb-3 px-4">
+            <!-- Dashboard de Rastreio -->
+            <div class="row justify-content-center">
+                <div class="col-12 col-xl-10">
+                    <!-- Painel principal -->
+                    <div class="mb-4">
+                        <div class="d-flex align-items-center justify-content-between mb-1">
+                            </div>
+                    </div>
+                    
+                    <!-- Cards de métricas -->
+            <div class="row mb-4">
+                <!-- Status dos pedidos -->
+                        <div class="col-lg-8 col-md-8 col-12 mb-4 mb-lg-0 status-container">
+                            <div class="card border-0 shadow-sm mb-4">
+                                <div class="card-header bg-white border-0 pt-4 pb-0">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h5 class="font-weight-bold text-dark mb-0">Status dos Pedidos</h5>
+                                            <p class="text-muted small mb-0">Visão geral de todos os status</p>
+                                </div>
+                                        <div class="d-flex align-items-center">
+                                            <div class="dropdown">
+                            </div>
+                        </div>
+                                </div>
+                            </div>
+                                <div class="card-body pt-2 pb-3">
+                                    <div class="row g-3">
+                                        <!-- Cards de Status - Linha Principal -->
+                                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 mb-3">
+                                            <a href="#" class="text-decoration-none">
+                                                <div class="card border-0 bg-white h-100 status-card" style="box-shadow: 0 0 0.5rem 0 rgba(91, 192, 222, 0.15); transition: transform 0.2s ease, box-shadow 0.2s ease; cursor: pointer;">
+                                                    <div class="card-body p-3">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="icon-box rounded-circle mr-3 d-flex align-items-center justify-content-center" style="background-color: rgba(91, 192, 222, 0.1); width: 42px; height: 42px; flex-shrink: 0;">
+                                                                <i class="mdi mdi-tag-outline" style="color: #5BC0DE; font-size: 1.5rem;"></i>
+                                                            </div>
+                                                            <div>
+                                                                <div class="text-uppercase small mb-1 font-weight-bold text-truncate" style="color: #5BC0DE; letter-spacing: 0.5px;">TAXADO</div>
+                                                                <div class="font-weight-bold h4 mb-0 text-truncate" style="color: #5BC0DE;">23</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        
+                                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 mb-3">
+                                            <a href="#" class="text-decoration-none">
+                                            <div class="card border-0 bg-white h-100 status-card" style="box-shadow: 0 0 0.5rem 0 rgba(217, 83, 79, 0.15); transition: transform 0.2s ease, box-shadow 0.2s ease;">
+                                                <div class="card-body p-3">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="icon-box rounded-circle mr-3 d-flex align-items-center justify-content-center" style="background-color: rgba(217, 83, 79, 0.1); width: 42px; height: 42px; flex-shrink: 0;">
+                                                            <i class="mdi mdi-alert-circle-outline " style="color: #D9534F; font-size: 1.5rem;"></i>
+                                                        </div>
+                                                        <div>
+                                                            <div class="text-uppercase small mb-1 font-weight-bold  text-truncate" style="color: #D9534F; letter-spacing: 0.5px;">ATENÇÃO</div>
+                                                            <div class="font-weight-bold h4 mb-0  text-truncate" style="color: #D9534F;">38</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        </div>
+                    
+                                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 mb-3">
+                                            <a href="#" class="text-decoration-none">
+                                            <div class="card border-0 bg-white h-100 status-card" style="box-shadow: 0 0 0.5rem 0 rgba(255, 112, 67, 0.15); transition: transform 0.2s ease, box-shadow 0.2s ease;">
+                                                <div class="card-body p-3">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="icon-box rounded-circle mr-3 d-flex align-items-center justify-content-center" style="background-color: rgba(255, 112, 67, 0.1); width: 42px; height: 42px; flex-shrink: 0;">
+                                                            <i class="mdi mdi-package-variant" style="color: #FF7043; font-size: 1.5rem;"></i>
+                                </div>
+                                                        <div>
+                                                            <div class="text-uppercase small mb-1 font-weight-bold  text-truncate" style="color: #FF7043; letter-spacing: 0.5px;">FALHA_ENTREGA</div>
+                                                            <div class="font-weight-bold h4 mb-0  text-truncate" style="color: #FF7043;">12</div>
+                            </div>
+                        </div>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
+                                        
+                                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 mb-3">
+                                            <a href="#" class="text-decoration-none">
+                                            <div class="card border-0 bg-white h-100 status-card" style="box-shadow: 0 0 0.5rem 0 rgba(231, 76, 60, 0.15); transition: transform 0.2s ease, box-shadow 0.2s ease;">
+                                                <div class="card-body p-3">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="icon-box rounded-circle mr-3 d-flex align-items-center justify-content-center" style="background-color: rgba(231, 76, 60, 0.1); width: 42px; height: 42px; flex-shrink: 0;">
+                                                            <i class="mdi mdi-arrow-left-bold-box-outline" style="color: #E74C3C; font-size: 1.5rem;"></i>
+                                </div>
+                                                        <div>
+                                                            <div class="text-uppercase small mb-1 font-weight-bold  text-truncate" style="color: #E74C3C; letter-spacing: 0.5px;">RETIRADA</div>
+                                                            <div class="font-weight-bold h4 mb-0  text-truncate" style="color: #E74C3C;">22</div>
+                            </div>
+                        </div>
+                                                </div>
+                                            </div>
+                                            </a>
+                                        </div>
+                                        
+                                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 mb-3">
+                                            <a href="#" class="text-decoration-none">
+                                            <div class="card border-0 bg-white h-100 status-card" style="box-shadow: 0 0 0.5rem 0 rgba(240, 173, 78, 0.15); transition: transform 0.2s ease, box-shadow 0.2s ease;">
+                                                <div class="card-body p-3">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="icon-box rounded-circle mr-3 d-flex align-items-center justify-content-center" style="background-color: rgba(240, 173, 78, 0.1); width: 42px; height: 42px; flex-shrink: 0;">
+                                                            <i class="mdi mdi-clock-alert-outline" style="color: #F0AD4E; font-size: 1.5rem;"></i>
+                                                        </div>
+                                                        <div>
+                                                            <div class="text-uppercase small mb-1 font-weight-bold  text-truncate" style="color: #F0AD4E; letter-spacing: 0.5px;">ATRASADO</div>
+                                                            <div class="font-weight-bold h4 mb-0  text-truncate" style="color: #F0AD4E;">30</div>
+                                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+                    
+                                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 mb-3">
+                                            <a href="#" class="text-decoration-none">
+                                            <div class="card border-0 bg-white h-100 status-card" style="box-shadow: 0 0 0.5rem 0 rgba(236, 64, 122, 0.15); transition: transform 0.2s ease, box-shadow 0.2s ease;">
+                                                <div class="card-body p-3">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="icon-box rounded-circle mr-3 d-flex align-items-center justify-content-center" style="background-color: rgba(236, 64, 122, 0.1); width: 42px; height: 42px; flex-shrink: 0;">
+                                                            <i class="mdi mdi-close-box-outline" style="color: #EC407A; font-size: 1.5rem;"></i>
+                                                        </div>
+                                                        <div>
+                                                            <div class="text-uppercase small mb-1 font-weight-bold  text-truncate" style="color: #EC407A; letter-spacing: 0.5px;">DEVOLVIDO</div>
+                                                            <div class="font-weight-bold h4 mb-0  text-truncate" style="color: #EC407A;">43</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        </div>
+                                        
+                                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 mb-3">
+                                            <a href="#" class="text-decoration-none">
+                                            <div class="card border-0 bg-white h-100 status-card" style="box-shadow: 0 0 0.5rem 0 rgba(121, 134, 203, 0.15); transition: transform 0.2s ease, box-shadow 0.2s ease;">
+                                                <div class="card-body p-2 p-sm-3">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="icon-box rounded-circle mr-2 mr-sm-3 d-flex align-items-center justify-content-center" style="background-color: rgba(121, 134, 203, 0.1); width: 38px; height: 38px; min-width: 38px; min-height: 38px; flex-shrink: 0;">
+                                                            <i class="mdi mdi-truck" style="color: #7986CB; font-size: 1.3rem;"></i>
+                                                        </div>
+                                                        <div class="flex-grow-1 min-width-0">
+                                                            <div class="text-uppercase small mb-1 font-weight-bold text-truncate" style="color: #7986CB; letter-spacing: 0.5px; font-size: calc(0.65rem + 0.1vw);">TRÂNSITO</div>
+                                                            <div class="font-weight-bold h4 mb-0 text-truncate" style="color: #7986CB; font-size: calc(1.2rem + 0.1vw);">2897</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        </div>
+                                        
+                                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 mb-3">
+                                            <a href="#" class="text-decoration-none">
+                                            <div class="card border-0 bg-white h-100 status-card" style="box-shadow: 0 0 0.5rem 0 rgba(63, 81, 181, 0.15); transition: transform 0.2s ease, box-shadow 0.2s ease;">
+                                                <div class="card-body p-2 p-sm-3">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="icon-box rounded-circle mr-2 mr-sm-3 d-flex align-items-center justify-content-center" style="background-color: rgba(63, 81, 181, 0.1); width: 38px; height: 38px; min-width: 38px; min-height: 38px; flex-shrink: 0;">
+                                                            <i class="mdi mdi-truck-fast" style="color: #3F51B5; font-size: 1.3rem;"></i>
+                                                        </div>
+                                                        <div class="flex-grow-1 min-width-0">
+                                                            <div class="text-uppercase small mb-1 font-weight-bold text-truncate" style="color: #3F51B5; letter-spacing: 0.5px; font-size: calc(0.65rem + 0.1vw);">SAIU_ENTREGA</div>
+                                                            <div class="font-weight-bold h4 mb-0 text-truncate" style="color: #3F51B5; font-size: calc(1.2rem + 0.1vw);">3</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        </div>
+                                        
+                                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 mb-3">
+                                            <a href="#" class="text-decoration-none">
+                                            <div class="card border-0 bg-white h-100 status-card" style="box-shadow: 0 0 0.5rem 0 rgba(92, 184, 92, 0.15); transition: transform 0.2s ease, box-shadow 0.2s ease;">
+                                                <div class="card-body p-2 p-sm-3">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="icon-box rounded-circle mr-2 mr-sm-3 d-flex align-items-center justify-content-center" style="background-color: rgba(92, 184, 92, 0.1); width: 38px; height: 38px; min-width: 38px; min-height: 38px; flex-shrink: 0;">
+                                                            <i class="mdi mdi-check-circle-outline" style="color: #5CB85C; font-size: 1.3rem;"></i>
+                                                        </div>
+                                                        <div class="flex-grow-1 min-width-0">
+                                                            <div class="text-uppercase small mb-1 font-weight-bold text-truncate" style="color: #5CB85C; letter-spacing: 0.5px; font-size: calc(0.65rem + 0.1vw);">ENTREGUE</div>
+                                                            <div class="font-weight-bold h4 mb-0 text-truncate" style="color: #5CB85C; font-size: calc(1.2rem + 0.1vw);">1678</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Métricas de entrega -->
+                        <div class="col-lg-4 col-md-8 col-12 mb-4 mb-lg-0 metricas-container" style="height: 95%;">
+                    <div class="card border-0 shadow-sm h-100">
+                                <div class="card-header bg-white border-0 pt-4 pb-0 d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h5 class="font-weight-bold text-dark mb-0">Métricas de Entrega</h5>
+                                        <p class="text-muted small mb-0">Tempo médio de processamento</p>
+                                    </div>
+                                <div class="btn-group btn-group-sm">
+                                        <button class="btn btn-primary active" data-period="30">30 dias</button>
+                                        <button class="btn btn-outline-primary" data-period="90">90 dias</button>
+                                        <button class="btn btn-outline-primary" data-period="365">1 ano</button>
+                                </div>
+                            </div>
+                                <div class="card-body py-4">
+                            <div class="row g-3">
+                                        <div class="col-lg-4 col-md-12 col-sm-12 col-12 mb-lg-0 mb-3">
+                                            <div class="metric-card card bg-gradient-light border-0 h-100" style="transition: all 0.2s ease;">
+                                        <div class="card-body p-3 text-center">
+                                                    <div class="d-flex flex-column align-items-center">
+                                                        <div class="icon-box rounded-circle mb-2" style="background-color: rgba(115, 103, 240, 0.1); width: 45px; height: 45px; display: flex; align-items: center; justify-content: center;">
+                                                            <i class="mdi mdi-calendar-clock" style="color: #7367f0; font-size: 1.4rem;"></i>
+                                        </div>
+                                                        <div class="h3 font-weight-bold mb-0 text-primary" id="diasAposCompra">22</div>
+                                                        <div class="small text-muted" style="font-size: calc(0.65rem + 0.1vw); letter-spacing: 0.5px;">Dias após compra</div>
+                                    </div>
+                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-12 col-sm-12 col-12 mb-lg-0 mb-3">
+                                            <div class="metric-card card bg-gradient-light border-0 h-100" style="transition: all 0.2s ease;">
+                                        <div class="card-body p-3 text-center">
+                                                    <div class="d-flex flex-column align-items-center">
+                                                        <div class="icon-box rounded-circle mb-2" style="background-color: rgba(115, 103, 240, 0.1); width: 45px; height: 45px; display: flex; align-items: center; justify-content: center;">
+                                                            <i class="mdi mdi-package-variant" style="color: #7367f0; font-size: 1.4rem;"></i>
+                                        </div>
+                                                        <div class="h3 font-weight-bold mb-0 text-primary" id="diasAposPostagem">18</div>
+                                                        <div class="small text-muted" style="font-size: calc(0.65rem + 0.1vw); letter-spacing: 0.5px;">Dias após postagem</div>
+                                    </div>
+                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-12 col-sm-12 col-12">
+                                            <div class="metric-card card bg-gradient-light border-0 h-100" style="transition: all 0.2s ease;">
+                                        <div class="card-body p-3 text-center">
+                                                    <div class="d-flex flex-column align-items-center">
+                                                        <div class="icon-box rounded-circle mb-2" style="background-color: rgba(115, 103, 240, 0.1); width: 45px; height: 45px; display: flex; align-items: center; justify-content: center;">
+                                                            <i class="mdi mdi-calendar-week" style="color: #7367f0; font-size: 1.4rem;"></i>
+                                        </div>
+                                                        <div class="h3 font-weight-bold mb-0 text-primary" id="semanasCompra">3.1</div>
+                                                        <div class="small text-muted" style="font-size: calc(0.65rem + 0.1vw); letter-spacing: 0.5px;">Semanas da compra</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                    
+                                    <div class="mt-4 pt-2">
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <h6 class="font-weight-bold text-dark mb-0">Comparação com Período Anterior</h6>
+                                            <span class="badge badge-soft-success px-2 py-1">+12.5%</span>
+                </div>
+                                        <div class="progress rounded-pill" style="height: 6px; box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);">
+                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 65%; border-radius: 10px;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+                                        <div class="d-flex justify-content-between mt-2">
+                                            <span class="small text-muted">Período Atual</span>
+                                            <span class="small text-muted">Meta</span>
+        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filtro Rastreio -->
+        <div class="row justify-content-center mt-4">
+                <div class="col-12 col-xl-10">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            
+                            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+                            <h4 class="card-title d-flex align-items-center mb-0">
+                                <span class="text-primary font-weight-bold">Rastreio</span>
+                                <i class="mdi mdi-help-circle-outline text-muted ml-2" data-toggle="tooltip" data-placement="top" title="Informações sobre rastreamento"></i>
+                            </h4>
+                            <div class="d-flex flex-wrap align-items-center">
+                                <button class="btn btn-outline-primary mr-2 mb-2" type="button">
+                                    <i class="mdi mdi-calendar-alert mr-1"></i> Dias de Atraso
+                                </button>
+                                <div class="dropdown mr-2 mb-2">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownExportar" data-toggle="dropdown" aria-expanded="false">
+                                        <i class="mdi mdi-export mr-1"></i> Exportar
+                                    </button>
+                                    <div class="dropdown-menu shadow-sm" aria-labelledby="dropdownExportar">
+                                        <div class="px-3 py-2 text-muted small">Opções de exportação</div>
+                                        <a class="dropdown-item d-flex align-items-center" href="#">
+                                            <i class="mdi mdi-file-excel-outline text-success mr-2"></i> Exportar Planilha
+                                        </a>
+                                        <a class="dropdown-item d-flex align-items-center" href="#">
+                                            <i class="mdi mdi-email-outline text-info mr-2"></i> Lista de E-mails
+                                        </a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item d-flex align-items-center" href="#">
+                                            <i class="mdi mdi-database-import text-primary mr-2"></i> Importar Rastreios
+                                        </a>
+                                    </div>
+                                </div>
+                                <button class="btn btn-outline-secondary mb-2" type="button">
+                                    <i class="mdi mdi-sync mr-1"></i> Plugin de Rastreio
+                                </button>
+                                </div>
+                            </div>
+
+                            <div class="search-container mb-4">
+                                <div class="row g-2 mb-3">
+                                    <div class="col-md">
+                                        <div class="form-group mb-0">
+                                            <div class="input-group input-group-seamless">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-light border-right-0"><i class="mdi mdi-pound text-primary"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control border-left-0 pl-0" placeholder="Pedidos">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md">
+                                        <div class="form-group mb-0">
+                                            <div class="input-group input-group-seamless">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-light border-right-0"><i class="mdi mdi-account text-primary"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control border-left-0 pl-0" placeholder="Cliente">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md">
+                                        <div class="form-group mb-0">
+                                            <div class="input-group input-group-seamless">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-light border-right-0"><i class="mdi mdi-truck text-primary"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control border-left-0 pl-0" placeholder="Rastreio">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md">
+                                        <div class="form-group mb-0">
+                                            <div class="input-group input-group-seamless">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-light border-right-0"><i class="mdi mdi-tag-multiple text-primary"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control border-left-0 pl-0" placeholder="Produto">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md">
+                                        <div class="form-group mb-0">
+                                            <div class="input-group input-group-seamless">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-light border-right-0"><i class="mdi mdi-map-marker-outline text-primary"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control border-left-0 pl-0" placeholder="Movimentação">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Data -->
+                                    <div class="col-md">
+                                        <div class="form-group mb-0">
+                                            <div class="input-group input-group-seamless">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-light border-right-0"><i class="mdi mdi-calendar text-primary"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control input-date border-left-0 pl-0" id="dataInicial" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md">
+                                        <div class="form-group mb-0">
+                                            <div class="input-group input-group-seamless">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-light border-right-0"><i class="mdi mdi-calendar-check text-primary"></i></span>
+                                                </div>
+                                                <input type="text" class="form-control input-date border-left-0 pl-0" id="dataFinal" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row mt-2">
+                                    <div class="col-md-10">
+                                        <div class="d-flex flex-wrap">
+                                            <div class="mr-2 mb-2">
+                                                <select class="form-control custom-select">
+                                                    <option>Entrega...</option>
+                                                    <option>Não Entregue</option>
+                                                    <option>Entregue</option>
+                                                </select>
+                                            </div>
+                                            <div class="mr-2 mb-2">
+                                                <select class="form-control custom-select">
+                                                    <option>Status...</option>
+                                                    <option>Taxado</option>
+                                                    <option>Entregue</option>
+                                                </select>
+                                            </div>
+                                            <div class="mr-2 mb-2">
+                                                <select class="form-control custom-select">
+                                                    <option>Ordernar por...</option>
+                                                    <option>Atualização</option>
+                                                    <option>Postagem</option>
+                                                    <option>Pedido</option>
+                                                    <option>Entrega</option>
+                                                </select>
+                                            </div>
+                                            <button class="btn btn-outline-primary btn-sm mr-2 mb-2" data-toggle="collapse" href="#filtrosAvancados" aria-expanded="false" aria-controls="filtrosAvancados">
+                                                <i class="mdi mdi-filter-variant mr-1"></i>
+                                                Mais filtros
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 text-right">
+                                        <button class="btn btn-primary" style="min-width: 100px; box-shadow: 0 2px 4px rgba(115, 103, 240, 0.2);">
+                                            <i class="mdi mdi-magnify mr-1"></i> Buscar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Filtros Avançados -->
+                            <div id="filtrosAvancados" class="collapse mt-2 mb-4">
+                                <div class="card shadow-sm border">
+                                    <div class="card-header bg-light py-2">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="font-weight-medium">Filtros adicionais</span>
+                                            <button type="button" class="btn btn-sm btn-light" data-toggle="collapse" href="#filtrosAvancados">
+                                                <i class="mdi mdi-close"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="card-body py-2">
+                                        <div class="row">
+                                        <div class="col-md-6 col-sm-6 mb-2">
+                                                <div class="form-group mb-0">
+                                                    <select class="form-control custom-select">
+                                                        <option>Filtrar...</option>
+                                                        <option>Pedido Taxado</option>
+                                                        <option>Taxado sem pagamento confirmado</option>
+                                                        <option>Taxado sem mensagem enviada</option>
+                                                        <option>Código de rastreio mudou</option>
+                                                        <option>Despacho postal</option>
+                                                        <option>Envio cancelado</option>
+                                                        <option>Entregue com atraso</option>
+                                                        <option>Não Recebidos BR</option>
+                                                        <option>Rastreio em 2 pedidos</option>
+                                                        <option>Recebidos BR</option>
+                                                        <option>Sem código de rastreio</option>
+                                                        <option>Sem informação no Correios</option>
+                                                        <option>Pedido Postado</option>
+                                                        <option>Pedido Atenção</option>
+                                                        <option>Importação não autorizada (situação anterior)</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th style="width: 10%;" class="border-0 text-center">PEDIDO</th>
+                                            <th style="width: 10%;" class="border-0 text-center">POSTAGEM</th>
+                                            <th style="width: 10%;" class="border-0 text-center">ENTREGA</th>
+                                            <th style="width: 15%;" class="border-0 text-center">RASTREIO</th>
+                                            <th style="width: 15%;" class="border-0 text-center">CLIENTE</th>
+                                            <th style="width: 15%;" class="border-0 text-center">CRM</th>
+                                            <th style="width: 25%;" class="border-0 text-center">STATUS</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <!-- Pedido Entregue -->
+                                    <tr class="border-bottom">
+                                        <td class="text-primary font-weight-bold align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <span>659888</span>
+                                                <small class="text-muted mt-1">
+                                                    <i class="mdi mdi-calendar-outline mr-1"></i>28/04/25
+                                                </small>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <span class="badge badge-pill badge-danger px-2 mb-1" data-toggle="tooltip" data-placement="top" title="Dias entre o pedido e a Postagem">1</span>
+                                                <small class="text-muted">29/04/25</small>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <div class="d-flex mb-1">
+                                                    <span class="badge badge-pill badge-success mr-1" data-toggle="tooltip" data-placement="top" title="Dias corridos até a Entrega">1</span>
+                                                    <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="top" title="Dias úteis até a Entrega">1</span>
+                                                </div>
+                                                <small class="text-muted">29/04/25</small>
+                                            </div>
+                                        </td>
+                                        <td class="text-primary font-weight-bold align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <span>ND589566226BR</span>
+                                                <div class="btn-group mt-1">
+                                                    <button class="btn btn-sm btn-light p-0 mr-2" data-toggle="tooltip" title="Copiar código">
+                                                        <img src="../Media_Imagens/copyblack.png" alt="Copiar" style="width: 1rem; height: 1rem;">
+                                                    </button>
+                                                    <button class="btn btn-sm btn-light p-0 mr-2" data-toggle="tooltip" title="Rastrear">
+                                                        <img src="../Media_Imagens/truck.png" alt="Rastrear" style="width: 1rem; height: 1rem;">
+                                                    </button>
+                                                    <button class="btn btn-sm btn-light p-0" data-toggle="tooltip" title="Atualizar">
+                                                        <img src="../Media_Imagens/refresh.png" id="refreshIcon" onmouseover="this.src='refresh.gif'; setTimeout(() => this.src='refresh.png', 2000);" style="width: 1rem; height: 1rem;">
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <div class="d-flex align-items-center justify-content-center">
+                                                <span class="font-weight-medium text-truncate" style="max-width: 120px;">Ryan Serato</span>
+                                                <button class="btn btn-sm btn-light p-0 ml-2" data-toggle="tooltip" title="Contatar via WhatsApp">
+                                                    <i class="mdi mdi-whatsapp text-success"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="badge badge-soft-dark px-3 py-2">
+                                                Estornado
+                                            </span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <span class="badge badge-soft-success px-3 py-2">
+                                                    Objeto entregue ao destinatário
+                                                </span>
+                                                <small class="text-muted mt-1">19/05/2025 12:11:58</small>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    
+                                    <!-- Pedido Taxado -->
+                                    <tr class="border-bottom">
+                                        <td class="text-primary font-weight-bold align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <span>659888</span>
+                                                <small class="text-muted mt-1">
+                                                    <i class="mdi mdi-calendar-outline mr-1"></i>28/04/25
+                                                </small>
+                                            </div>
+                                            </td>
+                                        <td class="align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <span class="badge badge-pill badge-danger px-2 mb-1" data-toggle="tooltip" data-placement="top" title="Dias entre o pedido e a Postagem">1</span>
+                                                <small class="text-muted">29/04/25</small>
+                                            </div>
+                                            </td>
+                                        <td class="align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <div class="d-flex mb-1">
+                                                    <span class="badge badge-pill badge-success mr-1" data-toggle="tooltip" data-placement="top" title="Dias corridos até a Entrega">1</span>
+                                                    <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="top" title="Dias úteis até a Entrega">1</span>
+                                                </div>
+                                                <small class="text-muted">29/04/25</small>
+                                            </div>
+                                            </td>
+                                        <td class="text-primary font-weight-bold align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <span>ND589566226BR</span>
+                                                <div class="btn-group mt-1">
+                                                    <button class="btn btn-sm btn-light p-0 mr-2" data-toggle="tooltip" title="Copiar código">
+                                                        <img src="../Media_Imagens/copyblack.png" alt="Copiar" style="width: 1rem; height: 1rem;">
+                                                    </button>
+                                                    <button class="btn btn-sm btn-light p-0 mr-2" data-toggle="tooltip" title="Rastrear">
+                                                        <img src="../Media_Imagens/truck.png" alt="Rastrear" style="width: 1rem; height: 1rem;">
+                                                    </button>
+                                                    <button class="btn btn-sm btn-light p-0" data-toggle="tooltip" title="Atualizar">
+                                                        <img src="../Media_Imagens/refresh.png" id="refreshIcon" onmouseover="this.src='refresh.gif'; setTimeout(() => this.src='refresh.png', 2000);" style="width: 1rem; height: 1rem;">
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <div class="d-flex align-items-center justify-content-center">
+                                                <span class="font-weight-medium text-truncate" style="max-width: 120px;">Ryan Serato</span>
+                                                <button class="btn btn-sm btn-light p-0 ml-2" data-toggle="tooltip" title="Contatar via WhatsApp">
+                                                    <i class="mdi mdi-whatsapp text-success"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="badge badge-soft-secondary px-3 py-2">
+                                                Pagamento
+                                            </span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <span class="badge badge-soft-info px-3 py-2">
+                                                    Importação autorizada pela autoridade competente - aguardando pagamento
+                                                </span>
+                                                <small class="text-muted mt-1">20/05/2025 17:10:24</small>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Pedido Transito -->
+                                    <tr class="border-bottom">
+                                        <td class="text-primary font-weight-bold align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <span>659888</span>
+                                                <small class="text-muted mt-1">
+                                                    <i class="mdi mdi-calendar-outline mr-1"></i>28/04/25
+                                                </small>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <span class="badge badge-pill badge-danger px-2 mb-1" data-toggle="tooltip" data-placement="top" title="Dias entre o pedido e a Postagem">1</span>
+                                                <small class="text-muted">29/04/25</small>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <div class="d-flex mb-1">
+                                                    <span class="badge badge-pill badge-success mr-1" data-toggle="tooltip" data-placement="top" title="Dias corridos até a Entrega">1</span>
+                                                    <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="top" title="Dias úteis até a Entrega">1</span>
+                                                </div>
+                                                <small class="text-muted">29/04/25</small>
+                                            </div>
+                                        </td>
+                                        <td class="text-primary font-weight-bold align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <span>ND589566226BR</span>
+                                                <div class="btn-group mt-1">
+                                                    <button class="btn btn-sm btn-light p-0 mr-2" data-toggle="tooltip" title="Copiar código">
+                                                        <img src="../Media_Imagens/copyblack.png" alt="Copiar" style="width: 1rem; height: 1rem;">
+                                                    </button>
+                                                    <button class="btn btn-sm btn-light p-0 mr-2" data-toggle="tooltip" title="Rastrear">
+                                                        <img src="../Media_Imagens/truck.png" alt="Rastrear" style="width: 1rem; height: 1rem;">
+                                                    </button>
+                                                    <button class="btn btn-sm btn-light p-0" data-toggle="tooltip" title="Atualizar">
+                                                        <img src="../Media_Imagens/refresh.png" id="refreshIcon" onmouseover="this.src='refresh.gif'; setTimeout(() => this.src='refresh.png', 2000);" style="width: 1rem; height: 1rem;">
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <div class="d-flex align-items-center justify-content-center">
+                                                <span class="font-weight-medium text-truncate" style="max-width: 120px;">Ryan Serato</span>
+                                                <button class="btn btn-sm btn-light p-0 ml-2" data-toggle="tooltip" title="Contatar via WhatsApp">
+                                                    <i class="mdi mdi-whatsapp text-success"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <span class="badge badge-soft-secondary px-3 py-2">
+                                                    Objeto em transferência - por favor aguarde
+                                                </span>
+                                                <small class="text-muted mt-1">21/05/2025 17:47:05</small>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Pedido Atrasado -->
+                                    <tr class="border-bottom">
+                                        <td class="text-primary font-weight-bold align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <span>659888</span>
+                                                <small class="text-muted mt-1">
+                                                    <i class="mdi mdi-calendar-outline mr-1"></i>28/04/25
+                                                </small>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <span class="badge badge-pill badge-danger px-2 mb-1" data-toggle="tooltip" data-placement="top" title="Dias entre o pedido e a Postagem">1</span>
+                                                <small class="text-muted">29/04/25</small>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <div class="d-flex mb-1">
+                                                    <span class="badge badge-pill badge-success mr-1" data-toggle="tooltip" data-placement="top" title="Dias corridos até a Entrega">1</span>
+                                                    <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="top" title="Dias úteis até a Entrega">1</span>
+                                                </div>
+                                                <small class="text-muted">29/04/25</small>
+                                            </div>
+                                        </td>
+                                        <td class="text-primary font-weight-bold align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <span>ND589566226BR</span>
+                                                <div class="btn-group mt-1">
+                                                    <button class="btn btn-sm btn-light p-0 mr-2" data-toggle="tooltip" title="Copiar código">
+                                                        <img src="../Media_Imagens/copyblack.png" alt="Copiar" style="width: 1rem; height: 1rem;">
+                                                    </button>
+                                                    <button class="btn btn-sm btn-light p-0 mr-2" data-toggle="tooltip" title="Rastrear">
+                                                        <img src="../Media_Imagens/truck.png" alt="Rastrear" style="width: 1rem; height: 1rem;">
+                                                    </button>
+                                                    <button class="btn btn-sm btn-light p-0" data-toggle="tooltip" title="Atualizar">
+                                                        <img src="../Media_Imagens/refresh.png" id="refreshIcon" onmouseover="this.src='refresh.gif'; setTimeout(() => this.src='refresh.png', 2000);" style="width: 1rem; height: 1rem;">
+                                                    </button>
+                                                </div>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <div class="d-flex align-items-center justify-content-center">
+                                                <span class="font-weight-medium text-truncate" style="max-width: 120px;">Ryan Serato</span>
+                                                <button class="btn btn-sm btn-light p-0 ml-2" data-toggle="tooltip" title="Contatar via WhatsApp">
+                                                    <i class="mdi mdi-whatsapp text-success"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <span class="badge badge-soft-warning px-3 py-2">
+                                                    Pedido cancelado
+                                                 </span>
+                                                <small class="text-muted mt-1">24/01/2025 15:12:37</small>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Pedido Sem Informação -->
+                                    <tr class="border-bottom">
+                                        <td class="text-primary font-weight-bold align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <span>659888</span>
+                                                <small class="text-muted mt-1">
+                                                    <i class="mdi mdi-calendar-outline mr-1"></i>28/04/25
+                                                </small>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <span class="badge badge-pill badge-danger px-2 mb-1" data-toggle="tooltip" data-placement="top" title="Dias entre o pedido e a Postagem">1</span>
+                                                <small class="text-muted">29/04/25</small>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <div class="d-flex mb-1">
+                                                    <span class="badge badge-pill badge-success mr-1" data-toggle="tooltip" data-placement="top" title="Dias corridos até a Entrega">1</span>
+                                                    <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="top" title="Dias úteis até a Entrega">1</span>
+                                                </div>
+                                                <small class="text-muted">29/04/25</small>
+                                            </div>
+                                        </td>
+                                        <td class="text-primary font-weight-bold align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <span>ND589566226BR</span>
+                                                <div class="btn-group mt-1">
+                                                    <button class="btn btn-sm btn-light p-0 mr-2" data-toggle="tooltip" title="Copiar código">
+                                                        <img src="../Media_Imagens/copyblack.png" alt="Copiar" style="width: 1rem; height: 1rem;">
+                                                    </button>
+                                                    <button class="btn btn-sm btn-light p-0 mr-2" data-toggle="tooltip" title="Rastrear">
+                                                        <img src="../Media_Imagens/truck.png" alt="Rastrear" style="width: 1rem; height: 1rem;">
+                                                    </button>
+                                                    <button class="btn btn-sm btn-light p-0" data-toggle="tooltip" title="Atualizar">
+                                                        <img src="../Media_Imagens/refresh.png" id="refreshIcon" onmouseover="this.src='refresh.gif'; setTimeout(() => this.src='refresh.png', 2000);" style="width: 1rem; height: 1rem;">
+                                                    </button>
+                                                </div>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <div class="d-flex align-items-center justify-content-center">
+                                                <span class="font-weight-medium text-truncate" style="max-width: 120px;">Ryan Serato</span>
+                                                <button class="btn btn-sm btn-light p-0 ml-2" data-toggle="tooltip" title="Contatar via WhatsApp">
+                                                    <i class="mdi mdi-whatsapp text-success"></i>
+                                                </button>
+                                                    </div>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <span class="badge badge-soft-primary px-3 py-2">
+                                                    Sem informações
+                                                 </span>
+                                                <small class="text-muted mt-1"></small>
+                                                </div>
+                                            </td>
+                                    </tr>
+
+                                    <!-- Pedido Saiu para Entrega -->
+                                    <tr class="border-bottom">
+                                        <td class="text-primary font-weight-bold align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <span>659888</span>
+                                                <small class="text-muted mt-1">
+                                                    <i class="mdi mdi-calendar-outline mr-1"></i>28/04/25
+                                                </small>
+                                                    </div>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <span class="badge badge-pill badge-danger px-2 mb-1" data-toggle="tooltip" data-placement="top" title="Dias entre o pedido e a Postagem">1</span>
+                                                <small class="text-muted">29/04/25</small>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <div class="d-flex mb-1">
+                                                    <span class="badge badge-pill badge-success mr-1" data-toggle="tooltip" data-placement="top" title="Dias corridos até a Entrega">1</span>
+                                                    <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="top" title="Dias úteis até a Entrega">1</span>
+                                                </div>
+                                                <small class="text-muted">29/04/25</small>
+                                            </div>
+                                        </td>
+                                        <td class="text-primary font-weight-bold align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <span>ND589566226BR</span>
+                                                <div class="btn-group mt-1">
+                                                    <button class="btn btn-sm btn-light p-0 mr-2" data-toggle="tooltip" title="Copiar código">
+                                                        <img src="../Media_Imagens/copyblack.png" alt="Copiar" style="width: 1rem; height: 1rem;">
+                                                    </button>
+                                                    <button class="btn btn-sm btn-light p-0 mr-2" data-toggle="tooltip" title="Rastrear">
+                                                        <img src="../Media_Imagens/truck.png" alt="Rastrear" style="width: 1rem; height: 1rem;">
+                                                    </button>
+                                                    <button class="btn btn-sm btn-light p-0" data-toggle="tooltip" title="Atualizar">
+                                                        <img src="../Media_Imagens/refresh.png" id="refreshIcon" onmouseover="this.src='refresh.gif'; setTimeout(() => this.src='refresh.png', 2000);" style="width: 1rem; height: 1rem;">
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <div class="d-flex align-items-center justify-content-center">
+                                                <span class="font-weight-medium text-truncate" style="max-width: 120px;">Ryan Serato</span>
+                                                <button class="btn btn-sm btn-light p-0 ml-2" data-toggle="tooltip" title="Contatar via WhatsApp">
+                                                    <i class="mdi mdi-whatsapp text-success"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="badge badge-soft-secondary px-3 py-2">
+                                               Alteração de cor/tamanho
+                                            </span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <span class="badge badge-soft-dark px-3 py-2">
+                                                    Objeto saiu para entrega ao destinatário
+                                                 </span>
+                                                <small class="text-muted mt-1">24/01/2025 13:02:39</small>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                    <!-- Pedido Atenção -->
+                                    <tr class="border-bottom">
+                                        <td class="text-primary font-weight-bold align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <span>659888</span>
+                                                <small class="text-muted mt-1">
+                                                    <i class="mdi mdi-calendar-outline mr-1"></i>28/04/25
+                                                </small>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <span class="badge badge-pill badge-danger px-2 mb-1" data-toggle="tooltip" data-placement="top" title="Dias entre o pedido e a Postagem">1</span>
+                                                <small class="text-muted">29/04/25</small>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <div class="d-flex mb-1">
+                                                    <span class="badge badge-pill badge-success mr-1" data-toggle="tooltip" data-placement="top" title="Dias corridos até a Entrega">1</span>
+                                                    <span class="badge badge-pill badge-info" data-toggle="tooltip" data-placement="top" title="Dias úteis até a Entrega">1</span>
+                                                </div>
+                                                <small class="text-muted">29/04/25</small>
+                                            </div>
+                                        </td>
+                                        <td class="text-primary font-weight-bold align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <span>ND589566226BR</span>
+                                                <div class="btn-group mt-1">
+                                                    <button class="btn btn-sm btn-light p-0 mr-2" data-toggle="tooltip" title="Copiar código">
+                                                        <img src="../Media_Imagens/copyblack.png" alt="Copiar" style="width: 1rem; height: 1rem;">
+                                                    </button>
+                                                    <button class="btn btn-sm btn-light p-0 mr-2" data-toggle="tooltip" title="Rastrear">
+                                                        <img src="../Media_Imagens/truck.png" alt="Rastrear" style="width: 1rem; height: 1rem;">
+                                                    </button>
+                                                    <button class="btn btn-sm btn-light p-0" data-toggle="tooltip" title="Atualizar">
+                                                        <img src="../Media_Imagens/refresh.png" id="refreshIcon" onmouseover="this.src='refresh.gif'; setTimeout(() => this.src='refresh.png', 2000);" style="width: 1rem; height: 1rem;">
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <div class="d-flex align-items-center justify-content-center">
+                                                <span class="font-weight-medium text-truncate" style="max-width: 120px;">Ryan Serato</span>
+                                                <button class="btn btn-sm btn-light p-0 ml-2" data-toggle="tooltip" title="Contatar via WhatsApp">
+                                                    <i class="mdi mdi-whatsapp text-success"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="badge badge-soft-warning px-3 py-2">
+                                                Reenviar Pedido
+                                            </span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <span class="badge badge-soft-danger px-3 py-2">
+                                                    Pacote devolvido ao centro de triagem
+                                                 </span>
+                                                <small class="text-muted mt-1">25/02/2025 13:02:18</small>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <!-- Paginação -->
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <div>
+                                    <p class="text-muted mb-0">Mostrando 1 a 2 de 97 resultados</p>
+                                </div>
+                                <nav>
+                                    <ul class="pagination mb-0">
+                                        <li class="page-item">
+                                            <a class="page-link" href="#"><i class="mdi mdi-chevron-left"></i></a>
+                                        </li>
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">10</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#"><i class="mdi mdi-chevron-right"></i></a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END PLACE PAGE CONTENT HERE -->
+    </section>
+</main>
+
+
+<div class="modal modal-slide-left  fade" id="siteSearchModal" tabindex="-1" role="dialog" aria-labelledby="siteSearchModal"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body p-all-0" id="site-search">
+                <button type="button" class="close light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="form-dark bg-dark text-white p-t-60 p-b-20 bg-dots" >
+                    <h3 class="text-uppercase    text-center  fw-300 "> Search</h3>
+
+                    <div class="container-fluid">
+                        <div class="col-md-10 p-t-10 m-auto">
+                            <input type="search" placeholder="Search Something"
+                                   class=" search form-control form-control-lg">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="bg-dark text-muted container-fluid p-b-10 text-center text-overline">
+                        results
+                    </div>
+                    <div class="list-group list  ">
+
+
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"   src="../assets/img/users/user-3.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Eric Chen</div>
+                                <div class="text-muted">Developer</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"
+                                                                    src="../assets/img/users/user-4.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Sean Valdez</div>
+                                <div class="text-muted">Marketing</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"
+                                                                    src="../assets/img/users/user-8.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Marie Arnold</div>
+                                <div class="text-muted">Developer</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar-title bg-dark rounded"><i class="mdi mdi-24px mdi-file-pdf"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">SRS Document</div>
+                                <div class="text-muted">25.5 Mb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar-title bg-dark rounded"><i
+                                                class="mdi mdi-24px mdi-file-document-box"></i></div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">Design Guide.pdf</div>
+                                <div class="text-muted">9 Mb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar avatar-sm ">
+                                        <div class="avatar-title bg-primary rounded"><i
+                                                    class="mdi mdi-24px mdi-code-braces"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">response.json</div>
+                                <div class="text-muted">15 Kb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar avatar-sm ">
+                                        <div class="avatar-title bg-info rounded"><i
+                                                    class="mdi mdi-24px mdi-file-excel"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">June Accounts.xls</div>
+                                <div class="text-muted">6 Mb</div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="../assets/vendor/jquery/jquery.min.js"></script>
+<script src="../assets/vendor/jquery-ui/jquery-ui.min.js"></script>
+<script src="../assets/vendor/popper/popper.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/vendor/select2/js/select2.full.min.js"></script>
+<script src="../assets/vendor/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+<script src="../assets/vendor/listjs/listjs.min.js"></script>
+<script src="../assets/vendor/moment/moment.min.js"></script>
+<script src="../assets/vendor/daterangepicker/daterangepicker.js"></script>
+<script src="../assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="../assets/vendor/bootstrap-notify/bootstrap-notify.min.js"></script>
+<script src="../assets/js/atmos.min.js"></script>
+<!--page specific scripts for demo-->
+<script>
+$(document).ready(function() {
+    // Formata a data atual
+    function formatarDataAtual() {
+        var data = new Date();
+        var dia = data.getDate().toString().padStart(2, '0');
+        var mes = (data.getMonth() + 1).toString().padStart(2, '0');
+        var ano = data.getFullYear();
+        return dia + '/' + mes + '/' + ano;
+    }
+    
+    var dataAtual = formatarDataAtual();
+    $('#dataInicial, #dataFinal').attr('placeholder', dataAtual);
+    
+    $('.input-date').datepicker({
+        format: 'dd/mm/yyyy',
+        autoclose: true,
+        todayHighlight: true,
+        language: 'pt-BR',
+        orientation: 'bottom auto',
+        templates: {
+            leftArrow: '<i class="mdi mdi-chevron-left"></i>',
+            rightArrow: '<i class="mdi mdi-chevron-right"></i>'
+        }
+    }).on('show', function() {
+        $('.datepicker-dropdown').addClass('shadow-sm');
+    });
+
+    $('[data-toggle="tooltip"]').tooltip();
+
+    $('<style>'+
+      '.input-date { background-color: transparent !important; height: calc(1.5em + 0.75rem + 2px); }'+
+      '.datepicker { font-family: "Jost", sans-serif; border-radius: 4px; }'+
+      '.datepicker table tr td.active { background-color: #7367f0 !important; background-image: none !important; }'+
+      '.datepicker-dropdown { margin-top: 0; padding: 10px; border-radius: 5px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }'+
+      '.datepicker table { font-size: 13px; }'+
+      '.btn-primary { transition: transform 0.2s ease, box-shadow 0.2s ease; }'+
+      '.btn-primary:hover { box-shadow: 0 4px 8px rgba(115, 103, 240, 0.3) !important; }'+
+      '.btn-primary:active { transform: translateY(1px); }'+
+      '.btn-outline-primary { transition: all 0.2s ease; }'+
+      '.btn-outline-primary:hover { background-color: rgba(115, 103, 240, 0.1); }'+
+      '.card { transition: box-shadow 0.3s ease; }'+
+      '.card:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.08) !important; }'+
+      '.mb-mobile { margin-bottom: 10px !important; }'+
+      '@media (max-width: 767.98px) {'+
+      '  .search-container .row.g-2 { display: flex; flex-wrap: wrap; margin-left: -5px; margin-right: -5px; }'+
+      '  .search-container .row.g-2 .col-md { flex: 0 0 100%; max-width: 100%; padding-left: 5px; padding-right: 5px; }'+
+      '  .search-container .form-group { margin-bottom: 8px; }'+
+      '  .search-container .form-control { height: 38px; }'+
+      '  .search-container .input-group-text { padding: 0.375rem 0.75rem; }'+
+      '  .search-container .d-flex.flex-wrap { flex-wrap: wrap; }'+
+      '  .search-container .d-flex.flex-wrap .mr-2 { flex: 0 0 calc(50% - 6px); max-width: calc(50% - 6px); margin-right: 4px !important; margin-bottom: 8px !important; }'+
+      '  .search-container .d-flex.flex-wrap select.custom-select { width: 100%; height: 38px; font-size: 0.9rem; }'+
+      '  .search-container .d-flex.flex-wrap .btn-outline-primary { width: 100%; }'+
+      '  .search-container .col-md-2 { text-align: center !important; margin-top: 15px; }'+
+      '  .search-container .col-md-2 .btn { width: 100%; min-height: 38px; }'+
+      '  .search-container .col-md-10 { margin-bottom: 0; }'+
+      '  .form-control, select.form-control:not([size]):not([multiple]) { font-size: 16px; }'+
+      '  input.form-control { -webkit-appearance: none; border-radius: 4px; }'+
+      '  .search-container input[type="date"].form-control { height: 38px; line-height: 1.5; }'+
+      '  .search-container .row.g-2 > div { margin-bottom: 10px; }'+
+      '  .search-container label { font-size: 0.9rem; }' +
+      '  .mobile-select { font-size: 16px; height: 42px; background-position: right 8px center; }'+
+      '  .mobile-btn { min-height: 42px; font-size: 16px; touch-action: manipulation; }' +
+      '}'+
+      '@media (max-width: 991.98px) and (min-width: 768px) {'+
+      '  .search-container .row.g-2 { display: flex; flex-wrap: wrap; margin-left: -5px; margin-right: -5px; }'+
+      '  .search-container .row.g-2 .col-md { flex: 0 0 33.33%; max-width: 33.33%; padding-left: 5px; padding-right: 5px; margin-bottom: 10px; }'+
+      '  .search-container .row.g-2 .form-group { margin-bottom: 0; }'+
+      '  .search-container .d-flex.flex-wrap .mr-2 { margin-right: 8px !important; margin-bottom: 8px !important; min-width: 120px; }'+
+      '  .search-container .col-md-10 { flex: 0 0 75%; max-width: 75%; }'+
+      '  .search-container .col-md-2 { flex: 0 0 25%; max-width: 25%; margin-top: 0; }'+
+      '  .search-container .col-md-2 .btn { min-width: 100%; }'+
+      '}'+
+      '@media (max-width: 767.98px) {'+
+      '  .table-responsive { overflow-x: auto; }'+
+      '  .table { min-width: 650px; }'+
+      '  .table .align-middle { vertical-align: middle !important; }'+
+      '  .pagination { display: flex; justify-content: center; }'+
+      '  .pagination .page-item { margin-bottom: 5px; }'+
+      '  .pagination .page-link { padding: 0.25rem 0.5rem; font-size: 0.875rem; }'+
+      '}'+
+      '@media (max-width: 767.98px) {'+
+      '  .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; }'+
+      '  .table thead th { font-size: 0.85rem; padding: 0.5rem; }'+
+      '  .table tbody td { font-size: 0.85rem; padding: 0.5rem; }'+
+      '  .table .avatar { width: 30px; height: 30px; }'+
+      '  .table .badge { font-size: 0.7rem; padding: 0.2rem 0.5rem; }'+
+      '  .pagination { justify-content: center; flex-wrap: wrap; }'+
+      '  .pagination .page-item .page-link { padding: 0.3rem 0.6rem; font-size: 0.85rem; }'+
+      '}'+
+      '@media (max-width: 767.98px) {'+
+      '  #advancedFilters .row .col-md-3 { flex: 0 0 100%; max-width: 100%; margin-bottom: 10px; }'+
+      '  #advancedFilters .card-body { padding: 15px; }'+
+      '  #advancedFilters .d-flex.justify-content-end { justify-content: center !important; margin-top: 10px; }'+
+      '  #advancedFilters .btn { width: 100%; max-width: 200px; }'+
+      '  .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; }'+
+      '  .table thead th { font-size: 0.85rem; padding: 0.5rem; }'+
+      '  .table tbody td { font-size: 0.85rem; padding: 0.5rem; }'+
+      '  .table .avatar { width: 30px; height: 30px; }'+
+      '  .table .badge { font-size: 0.7rem; padding: 0.2rem 0.5rem; }'+
+      '  .pagination { justify-content: center; flex-wrap: wrap; }'+
+      '  .pagination .page-item .page-link { padding: 0.3rem 0.6rem; font-size: 0.85rem; }'+
+      '}'+
+      '@media (max-width: 359.98px) {'+
+      '  .search-container h5 { font-size: 1rem; }'+
+      '  .search-container .form-control { font-size: 0.9rem; height: 38px; }'+
+      '  .search-container .btn { font-size: 0.9rem; }'+
+      '  .table thead th { font-size: 0.75rem; padding: 0.4rem 0.3rem; }'+
+      '  .table tbody td { font-size: 0.75rem; padding: 0.4rem 0.3rem; white-space: nowrap; }'+
+      '  .table .d-flex.align-items-center .ml-2 { margin-left: 0.3rem !important; }'+
+      '  .pagination .page-item .page-link { padding: 0.25rem 0.4rem; font-size: 0.75rem; }'+
+      '}'+
+      '@media (max-width: 1440px) and (min-width: 768px) {'+
+      '  .search-container .row.g-2 { display: flex; flex-wrap: wrap; margin-left: -5px; margin-right: -5px; }'+
+      '  .search-container .row.g-2 .col-md { flex: 0 0 33.33%; max-width: 33.33%; padding-left: 5px; padding-right: 5px; margin-bottom: 10px; }'+
+      '  .search-container .row.g-2 .form-group { margin-bottom: 0; }'+
+      '  .search-container .d-flex.flex-wrap .mr-2 { margin-right: 8px !important; margin-bottom: 8px !important; min-width: 120px; }'+
+      '  .search-container .col-md-10 { flex: 0 0 75%; max-width: 75%; }'+
+      '  .search-container .col-md-2 { flex: 0 0 25%; max-width: 25%; margin-top: 0; }'+
+      '  .search-container .col-md-2 .btn { min-width: 100%; }'+
+      '}'+
+      '</style>').appendTo('head');
+    
+    $('button[data-toggle="collapse"]').on('click', function() {
+        var $icon = $(this).find('.mdi-filter-variant');
+        if ($icon.length) {
+            if ($($(this).attr('href')).hasClass('show')) {
+                $icon.removeClass('mdi-filter-variant').addClass('mdi-filter');
+            } else {
+                $icon.removeClass('mdi-filter').addClass('mdi-filter-variant');
+            }
+        }
+    });
+    
+    function ajustarResponsividade() {
+        if (window.innerWidth <= 767.98) {
+            $('.search-container .row.g-2 .col-md').addClass('mb-mobile');
+            $('.search-container .col-md-2').addClass('text-center').removeClass('text-right');
+            $('.search-container .row.g-2').addClass('responsive-row');
+        } else {
+            $('.search-container .row.g-2 .col-md').removeClass('mb-mobile');
+            $('.search-container .col-md-2').removeClass('text-center').addClass('text-right');
+            $('.search-container .row.g-2').removeClass('responsive-row');
+        }
+    }
+    
+    ajustarResponsividade();
+    $(window).resize(function() {
+        ajustarResponsividade();
+    });
+
+    if (window.innerWidth <= 767) {
+        $('.search-container select.form-control').addClass('mobile-select');
+        $('.search-container .btn').addClass('mobile-btn');
+    }
+    
+    $(window).resize(function() {
+        if (window.innerWidth <= 767) {
+            $('.search-container select.form-control').addClass('mobile-select');
+            $('.search-container .btn').addClass('mobile-btn');
+        } else {
+            $('.search-container select.form-control').removeClass('mobile-select');
+            $('.search-container .btn').removeClass('mobile-btn');
+        }
+    });
+
+    $('.btn-group .btn').on('click', function() {
+        $('.btn-group .btn').removeClass('active').addClass('btn-outline-primary').removeClass('btn-primary');
+        $(this).addClass('active').removeClass('btn-outline-primary').addClass('btn-primary');
+        var period = $(this).data('period');
+        
+        function animateValue(element, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                element.text(end % 1 === 0 ? value : value.toFixed(1));
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                } else {
+                    element.text(end % 1 === 0 ? end : end.toFixed(1));
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+        
+        const diasCompraAtual = parseFloat($('#diasAposCompra').text());
+        const diasPostagemAtual = parseFloat($('#diasAposPostagem').text());
+        const semanasCompraAtual = parseFloat($('#semanasCompra').text());
+        
+        let diasCompraNovo, diasPostagemNovo, semanasCompraNovo, comparacaoValor, progressoValor;
+        
+        if (period === 30) {
+            diasCompraNovo = 22;
+            diasPostagemNovo = 18;
+            semanasCompraNovo = 3.1;
+            comparacaoValor = '+12.5%';
+            progressoValor = 65;
+        } else if (period === 90) {
+            diasCompraNovo = 48;
+            diasPostagemNovo = 35;
+            semanasCompraNovo = 6.8;
+            comparacaoValor = '+8.3%';
+            progressoValor = 78;
+        } else if (period === 365) {
+            diasCompraNovo = 120;
+            diasPostagemNovo = 95;
+            semanasCompraNovo = 17.2;
+            comparacaoValor = '+15.7%';
+            progressoValor = 92;
+        }
+        
+        animateValue($('#diasAposCompra'), diasCompraAtual, diasCompraNovo, 800);
+        animateValue($('#diasAposPostagem'), diasPostagemAtual, diasPostagemNovo, 800);
+        animateValue($('#semanasCompra'), semanasCompraAtual, semanasCompraNovo, 800);
+        
+        $('.card-body .mt-4.pt-2 .d-flex.justify-content-between.align-items-center .badge-soft-success').fadeOut(200, function() {
+            $(this).text(comparacaoValor).fadeIn(200);
+        });
+        
+        $('.progress-bar').css('transition', 'width 0.8s ease');
+        $('.progress-bar').css('width', progressoValor + '%');
+        
+        $('#diasAposCompra, #diasAposPostagem, #semanasCompra').parent().addClass('pulse-animation');
+        setTimeout(function() {
+            $('#diasAposCompra, #diasAposPostagem, #semanasCompra').parent().removeClass('pulse-animation');
+        }, 1000);
+    });
+
+    $('<style>'+
+      '@keyframes pulse {'+
+      '  0% { transform: scale(1); }'+
+      '  50% { transform: scale(1.05); }'+
+      '  100% { transform: scale(1); }'+
+      '}'+
+      '.pulse-animation {'+
+      '  animation: pulse 0.8s ease;'+
+      '}'+
+      '.bg-gradient-light {'+
+      '  background: linear-gradient(to right, #f8f9fa, #ffffff);'+
+      '  transition: all 0.3s ease;'+
+      '}'+
+      '.bg-gradient-light:hover {'+
+      '  box-shadow: 0 4px 15px rgba(115, 103, 240, 0.1);'+
+      '  transform: translateY(-2px);'+
+      '}'+
+      '.icon-box {'+
+      '  transition: all 0.3s ease;'+
+      '}'+
+      '.card:hover .icon-box {'+
+      '  transform: rotate(10deg);'+
+      '}'+
+      '.metric-card {'+
+      '  transition: all 0.3s ease;'+
+      '}'+
+      '.metric-card:hover {'+
+      '  transform: translateY(-3px);'+
+      '  box-shadow: 0 5px 15px rgba(115, 103, 240, 0.15);'+
+      '}'+
+      '.badge-soft-success {'+
+      '  background-color: rgba(92, 184, 92, 0.18);'+
+      '  color: #5CB85C;'+
+      '}'+
+      '.badge-soft-primary {'+
+      '  background-color: rgba(115, 103, 240, 0.18);'+
+      '  color: #7367f0;'+
+      '}'+
+      '</style>').appendTo('head');
+});
+</script>
+</body>
+</html>

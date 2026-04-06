@@ -1,0 +1,1796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" name="viewport">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Atmos Admin Panel- Bootstrap 4 Based Admin Panel</title>
+<link rel="icon" type="image/x-icon" href="../assets/img/logo.png"/>
+<link rel="icon" href="../assets/img/logo.png" type="image/png" sizes="16x16">
+<link rel="stylesheet" href="../assets/vendor/pace/pace.css">
+<script src="../assets/vendor/pace/pace.min.js"></script>
+<!--vendors-->
+<link rel="stylesheet" type="text/css" href="../assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
+<link rel="stylesheet" type="text/css" href="../assets/vendor/jquery-scrollbar/jquery.scrollbar.css">
+<link rel="stylesheet" href="../assets/vendor/select2/css/select2.min.css">
+<link rel="stylesheet" href="../assets/vendor/jquery-ui/jquery-ui.min.css">
+<link rel="stylesheet" href="../assets/vendor/daterangepicker/daterangepicker.css">
+<link rel="stylesheet" href="../assets/vendor/timepicker/bootstrap-timepicker.min.css">
+<link href="https://fonts.googleapis.com/css?family=Hind+Vadodara:400,500,600" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts/jost/jost.css">
+<!--Material Icons-->
+<link rel="stylesheet" type="text/css" href="../assets/fonts/materialdesignicons/materialdesignicons.min.css">
+<!--Bootstrap + atmos Admin CSS-->
+<link rel="stylesheet" type="text/css" href="../assets/css/atmos.min.css">
+<!-- Additional library for page -->
+<style>
+    .bg-primary-light {
+        background-color: rgba(108, 99, 255, 0.1) !important;
+    }
+    .bg-warning-light {
+        background-color: rgba(255, 193, 7, 0.1) !important;
+    }
+    .bg-danger-light {
+        background-color: rgba(220, 53, 69, 0.1) !important;
+    }
+    .bg-success-light {
+        background-color: rgba(40, 167, 69, 0.1) !important;
+    }
+    .bg-info-light {
+        background-color: rgba(23, 162, 184, 0.1) !important;
+    }
+    
+    /* Botões*/
+    .btn-outline-primary.btn-sm {
+        transition: all 0.2s ease;
+        white-space: nowrap;
+    }
+    
+    .btn-outline-primary.btn-sm:hover {
+        background-color: #6c63ff;
+        border-color: #6c63ff;
+        color: white;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 4px rgba(108, 99, 255, 0.2);
+    }
+    
+    /* Cards */
+    .card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+    }
+    
+    .bg-primary-light:hover, .bg-warning-light:hover, .bg-danger-light:hover, 
+    .bg-success-light:hover, .bg-info-light:hover {
+        transform: translateY(-1px);
+        transition: all 0.2s ease;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .card-body .bg-light {
+        transition: all 0.2s ease;
+    }
+    
+    .card-body .bg-light:hover {
+        background-color: #f8f9fa !important;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    
+    /* interface */
+    .badge {
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+    
+    .progress {
+        background-color: rgba(0,0,0,0.05);
+        box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    }
+    
+    .border-top {
+        border-color: rgba(0,0,0,0.08) !important;
+    }
+    
+    .rounded-circle {
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .text-overline {
+        font-family: 'Jost', sans-serif;
+        font-weight: 700;
+        letter-spacing: 1.2px;
+    }
+    
+    /* Botões de status */
+    .btn.bg-light {
+        background-color: #f8f9fa !important;
+        border: 1px solid #e9ecef !important;
+        transition: all 0.2s ease;
+    }
+    
+    .btn.bg-light:hover {
+        background-color: #ffffff !important;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        border-color: #dee2e6 !important;
+    }
+    
+    .btn.bg-light:focus {
+        box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.25);
+        outline: none;
+    }
+    
+    .btn.bg-light:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .card-body .bg-light.rounded {
+        transition: all 0.2s ease;
+        cursor: pointer;
+    }
+    
+    .card-body .bg-light.rounded:hover {
+        background-color: #ffffff !important;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .card-body img {
+        transition: all 0.2s ease;
+    }
+    
+    .card-body .bg-light.rounded:hover img {
+        transform: scale(1.05);
+    }
+    
+    .badge-pill {
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    
+    /* Mobile pequeno */
+    @media (max-width: 320px) {
+        .container-fluid {
+            padding-left: 10px !important;
+            padding-right: 10px !important;
+        }
+        
+        .card-body {
+            padding: 15px !important;
+        }
+        
+        .btn {
+            font-size: 11px !important;
+        }
+        
+        .table-responsive {
+            font-size: 11px !important;
+        }
+        
+        .d-flex.flex-wrap .btn {
+            margin-bottom: 8px !important;
+            margin-left: 0 !important;
+            margin-right: 8px !important;
+        }
+        
+        .d-flex.flex-wrap .btn:last-child {
+            margin-right: 0 !important;
+        }
+        
+        h1.h4 {
+            font-size: 18px !important;
+        }
+    }
+    
+    /* Mobile médio */
+    @media (min-width: 321px) and (max-width: 375px) {
+        .container-fluid {
+            padding-left: 12px !important;
+            padding-right: 12px !important;
+        }
+        
+        .card-body {
+            padding: 18px !important;
+        }
+        
+        .d-flex.flex-wrap .btn {
+            margin-bottom: 6px !important;
+            margin-left: 0 !important;
+            margin-right: 8px !important;
+        }
+        
+        .d-flex.flex-wrap .btn:last-child {
+            margin-right: 0 !important;
+        }
+        
+        .table td, .table th {
+            padding: 0.5rem !important;
+        }
+    }
+    
+    /* Tablet */
+    @media (min-width: 1024px) and (max-width: 1199px) {
+        .container-fluid {
+            max-width: 100% !important;
+            padding-left: 15px !important;
+            padding-right: 15px !important;
+        }
+        
+        .card-body {
+            padding: 1.25rem !important;
+        }
+        
+        .col-lg-4 {
+            flex: 0 0 50% !important;
+            max-width: 50% !important;
+        }
+        
+        .col-lg-3 {
+            flex: 0 0 50% !important;
+            max-width: 50% !important;
+        }
+        
+        .btn.btn-outline-primary.btn-sm {
+            font-size: 11px !important;
+            padding: 6px 12px !important;
+        }
+        
+        .badge.rounded-pill {
+            font-size: 10px !important;
+            padding: 6px 12px !important;
+        }
+        
+        .card-header h6 {
+            font-size: 15px !important;
+        }
+        
+        .card-header .badge {
+            font-size: 11px !important;
+        }
+    }
+    
+    /* Desktop grande */
+    @media (min-width: 1440px) {
+        .container-fluid {
+            max-width: 1400px !important;
+            margin: 0 auto !important;
+        }
+        
+        .card {
+            margin-bottom: 2rem !important;
+        }
+        
+        .card-body {
+            padding: 2rem !important;
+        }
+        
+        .table td, .table th {
+            padding: 1rem !important;
+        }
+    }
+    
+    /* Mobile geral */
+    @media (max-width: 767px) {
+        .badge.rounded-pill {
+            font-size: 10px !important;
+            padding: 4px 8px !important;
+        }
+        
+        .table-responsive code {
+            font-size: 10px !important;
+        }
+        
+        .card-header .badge {
+            display: none !important;
+        }
+        
+        .card-header h6 {
+            font-size: 14px !important;
+        }
+    }
+    
+    @media (max-width: 575px) {
+        .d-flex.justify-content-between {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+        }
+        
+        .order-2 {
+            order: 3 !important;
+            margin-top: 1rem !important;
+            width: 100% !important;
+        }
+        
+        .order-1 {
+            order: 1 !important;
+            margin-bottom: 0.5rem !important;
+        }
+    }
+    
+    /* Desktop extra */
+    @media (min-width: 1680px) {
+        #metric-cards.row {
+            margin-bottom: 0.5rem !important;
+        }
+        #metric-cards .card {
+            margin-bottom: 0 !important;
+        }
+        #metric-cards .col-lg-3 {
+             margin-bottom: 0.5rem !important;
+        }
+        #metric-cards .card-body {
+            padding-top: 0.75rem !important;
+            padding-bottom: 0.5rem !important;
+            padding-left: 1.25rem !important;
+            padding-right: 0.75rem !important;
+        }
+        #metric-cards .card-body h3 {
+            margin-bottom: 0.25rem !important;
+        }
+        #metric-cards .progress {
+            height: 2px !important;
+        }
+        #metric-cards .card-body .d-flex.mb-2 {
+             margin-bottom: 0.5rem !important;
+        }
+    }
+</style>
+</head>
+<!--body with default sidebar pinned -->
+<body class="sidebar-pinned">
+<!--sidebar Begins-->
+<aside class="admin-sidebar">
+    <div class="admin-sidebar-brand">
+        <!-- begin sidebar branding-->
+        <img class="admin-brand-logo" src="../assets/img/logo.svg" width="40" alt="atmos Logo">
+        <span class="admin-brand-content"><a href="index.html">  atmos</a></span>
+        <!-- end sidebar branding-->
+        <div class="ml-auto">
+            <!-- sidebar pin-->
+            <a href="#" class="admin-pin-sidebar btn-ghost btn btn-rounded-circle"></a>
+            <!-- sidebar close for mobile device-->
+            <a href="#" class="admin-close-sidebar"></a>
+        </div>
+    </div>
+    <div class="admin-sidebar-wrapper js-scrollbar">
+        <!-- Menu List Begins-->
+        <ul class="menu">
+            <!--list item begins-->
+            <li class="menu-item active">
+                <a href="#" class="menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Link
+                                                </span>
+                                            </span>
+                    <span class="menu-icon">
+                                                   <span class="icon-badge badge-success badge badge-pill">1</span>
+
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+
+            </li>
+            <!--list item ends-->
+
+            <!--list item begins-->
+            <li class="menu-item ">
+                <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu level 1
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                                <span class="menu-info">Contains submenu</span>
+                                            </span>
+                    <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+                <!--submenu-->
+                <ul class="sub-menu">
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+
+
+                </ul>
+            </li>
+            <!--list item ends-->
+
+            <!--list item begins-->
+            <li class="menu-item ">
+                <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu Level 2
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                                <span class="menu-info">Contains submenu</span>
+                                            </span>
+                    <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+                <!--submenu-->
+                <ul class="sub-menu">
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu Level 1.1
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                        </a>
+                        <!--submenu-->
+                        <ul class="sub-menu">
+                            <li class="menu-item">
+                                <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 2.1 </span>
+                                            </span>
+                                    <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+            <!--list item ends-->
+        </ul>
+        <!-- Menu List Ends-->
+    </div>
+
+</aside>
+<!--sidebar Ends-->
+
+
+<main class="admin-main">
+
+    <!--site header begins-->
+<header class="admin-header">
+
+    <a href="#" class="sidebar-toggle" data-toggleclass="sidebar-open" data-target="body"> </a>
+
+    <nav class=" mr-auto my-auto">
+        <ul class="nav align-items-center">
+
+            <li class="nav-item">
+                <a class="nav-link  " data-target="#siteSearchModal" data-toggle="modal" href="#">
+                    <i class=" mdi mdi-magnify mdi-24px align-middle"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <nav class=" ml-auto">
+        <ul class="nav align-items-center">
+
+            <li class="nav-item">
+                <div class="dropdown">
+                    <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-24px mdi-bell-outline"></i>
+                        <span class="notification-counter"></span>
+                    </a>
+
+                    <div class="dropdown-menu notification-container dropdown-menu-right">
+                        <div class="d-flex p-all-15 bg-white justify-content-between border-bottom ">
+                            <a href="#!" class="mdi mdi-18px mdi-settings text-muted"></a>
+                            <span class="h5 m-0">Notifications</span>
+                            <a href="#!" class="mdi mdi-18px mdi-notification-clear-all text-muted"></a>
+                        </div>
+                        <div class="notification-events bg-gray-300">
+                            <div class="text-overline m-b-5">today</div>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body"> <i class="mdi mdi-circle text-success"></i> All systems operational.</div>
+                                </div>
+                            </a>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body"> <i class="mdi mdi-upload-multiple "></i> File upload successful.</div>
+                                </div>
+                            </a>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <i class="mdi mdi-cancel text-danger"></i> Your holiday has been denied
+                                    </div>
+                                </div>
+                            </a>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item dropdown ">
+                <a class="nav-link dropdown-toggle" href="#"   role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    <div class="avatar avatar-sm avatar-online">
+                        <span class="avatar-title rounded-circle bg-dark">V</span>
+
+                    </div>
+                </a>
+                <div class="dropdown-menu  dropdown-menu-right"   >
+                    <a class="dropdown-item" href="#">  Add Account
+                    </a>
+                    <a class="dropdown-item" href="#">  Reset Password</a>
+                    <a class="dropdown-item" href="#">  Help </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"> Logout</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </nav>
+</header>
+<!--site header ends -->    <section class="admin-content">
+        <!-- BEGIN PlACE PAGE CONTENT HERE -->
+        <!-- Dashboard de Rastreio -->
+        <div class="container-fluid p-4">
+            <!-- Header -->
+            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+                <h1 class="h4 mb-0 text-dark order-1">Dashboard de Rastreio</h1>
+                <div class="d-flex align-items-center flex-wrap order-2">
+                    <button class="btn btn-primary btn-sm mr-2 mb-2 mb-md-0">30 dias</button>
+                    <button class="btn btn-outline-secondary btn-sm mr-2 mb-2 mb-md-0">60 dias</button>
+                    <button class="btn btn-outline-secondary btn-sm mr-2 mb-2 mb-md-0">90 dias</button>
+                    <button class="btn btn-outline-secondary btn-sm mr-2 mb-2 mb-md-0">1 ano</button>
+                    <button class="btn btn-primary btn-sm mr-2 mb-2 mb-md-0">
+                        <i class="mdi mdi-calendar mr-1"></i><span class="d-none d-sm-inline">Dias de atraso</span><span class="d-sm-none">Atraso</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- métricas -->
+            <div id="metric-cards" class="row mb-4">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-3">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <span class="text-uppercase text-muted" style="font-size: 11px; font-weight: 600; letter-spacing: 0.5px;">PEDIDOS</span>
+                                <div class="bg-primary-light rounded-circle d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+                                    <i class="mdi mdi-cube-outline text-primary" style="font-size: 16px;"></i>
+                                </div>
+                            </div>
+                            <h3 class="mb-2 font-weight-bold text-dark" style="font-size: 28px; line-height: 1;">1970</h3>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted" style="font-size: 12px;">
+                                    <span class="text-dark font-weight-bold">Total geral</span><br>
+                                    <span class="text-primary font-weight-bold">Todos os status</span>
+                                </small>
+                            </div>
+                        </div>
+                        <div class="card-footer p-0 border-0">
+                            <div class="progress" style="height: 3px; border-radius: 0;">
+                                <div class="progress-bar bg-primary" style="width: 100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-3">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <span class="text-uppercase text-muted" style="font-size: 11px; font-weight: 600; letter-spacing: 0.5px;">TAXADO</span>
+                                <div class="bg-warning-light rounded-circle d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+                                    <i class="mdi mdi-receipt text-warning" style="font-size: 16px;"></i>
+                                </div>
+                            </div>
+                            <h3 class="mb-2 font-weight-bold text-dark" style="font-size: 28px; line-height: 1;">16,82%</h3>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted" style="font-size: 12px;">
+                                    <span class="text-dark font-weight-bold">Taxa atual</span><br>
+                                    <span class="text-warning font-weight-bold">331 pedidos</span>
+                                </small>
+                            </div>
+                        </div>
+                        <div class="card-footer p-0 border-0">
+                            <div class="progress" style="height: 3px; border-radius: 0;">
+                                <div class="progress-bar bg-warning" style="width: 16.82%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-3">
+                    <div class="card h-100 border-0 shadow-sm position-relative">
+                        <div class="card-body p-3">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <span class="text-uppercase text-muted" style="font-size: 11px; font-weight: 600; letter-spacing: 0.5px;">ATENÇÃO</span>
+                                <div class="bg-danger-light rounded-circle d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+                                    <i class="mdi mdi-alert-circle-outline text-danger" style="font-size: 16px;"></i>
+                                </div>
+                            </div>
+                            <h3 class="mb-2 font-weight-bold text-dark" style="font-size: 28px; line-height: 1;">56</h3>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted" style="font-size: 12px;">
+                                    <span class="text-dark font-weight-bold">Requer ação</span><br>
+                                    <span class="text-danger font-weight-bold">2,84% do total</span>
+                                </small>
+                                <button class="btn btn-outline-primary btn-sm px-2 py-1 d-none d-md-block" style="font-size: 10px; border-radius: 8px; font-weight: 600;">
+                                    <i class="mdi mdi-alert-circle-outline mr-1" style="font-size: 12px;"></i>
+                                    Falhas comuns
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-footer p-0 border-0">
+                            <div class="progress" style="height: 3px; border-radius: 0;">
+                                <div class="progress-bar bg-danger" style="width: 25%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body p-3">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <span class="text-uppercase text-muted" style="font-size: 11px; font-weight: 600; letter-spacing: 0.5px;">ENTREGUE</span>
+                                <div class="bg-success-light rounded-circle d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+                                    <i class="mdi mdi-check-circle-outline text-success" style="font-size: 16px;"></i>
+                                </div>
+                            </div>
+                            <h3 class="mb-2 font-weight-bold text-dark" style="font-size: 28px; line-height: 1;">1411</h3>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted" style="font-size: 12px;">
+                                    <span class="text-dark font-weight-bold">Taxa sucesso</span><br>
+                                    <span class="text-success font-weight-bold">71,6% do total</span>
+                                </small>
+                                <div class="text-right">
+                                    <div class="bg-success-light px-2 py-1 rounded" style="display: inline-block;">
+                                        <small class="text-success font-weight-bold" style="font-size: 11px;">
+                                            <i class="mdi mdi-clock-outline mr-1"></i>14 dias
+                                        </small>
+                                    </div>
+                                    <div class="mt-1">
+                                        <small class="text-muted" style="font-size: 10px;">Prazo médio</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer p-0 border-0">
+                            <div class="progress" style="height: 3px; border-radius: 0;">
+                                <div class="progress-bar bg-success" style="width: 71%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gráficos -->
+            <div class="row mb-4">
+                <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-header border-0 bg-white pb-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h6 class="card-title font-weight-bold mb-0" style="font-size: 16px;">Entrega</h6>
+                                <div class="badge badge-primary px-3 py-2" style="font-size: 12px;">
+                                    <span class="text-white font-weight-bold">Distribuição</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body pt-0">
+                            <div class="mb-4">
+                                <div class="position-relative mx-auto" style="height: 200px; max-width: 200px;">
+                                    <canvas id="entregaChart"></canvas>
+                                    <div class="position-absolute" style="top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                                        <div class="text-center">
+                                            <h3 class="mb-1 font-weight-bold text-dark" style="font-size: 32px; line-height: 1;">1970</h3>
+                                            <div class="text-overline text-muted" style="font-size: 10px; font-weight: 700; letter-spacing: 1px;">TOTAL PEDIDOS</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-center mt-3">
+                                    <div class="d-flex align-items-center mr-4">
+                                        <div class="bg-success rounded-circle mr-2" style="width: 12px; height: 12px;"></div>
+                                        <span class="font-weight-bold text-dark" style="font-size: 13px;">71,6%</span>
+                                        <small class="text-muted ml-1" style="font-size: 12px;">Entregue</small>
+                                </div>
+                                    <div class="d-flex align-items-center">
+                                        <div class="bg-primary rounded-circle mr-2" style="width: 12px; height: 12px;"></div>
+                                        <span class="font-weight-bold text-dark" style="font-size: 13px;">28,4%</span>
+                                        <small class="text-muted ml-1" style="font-size: 12px;">Em trânsito</small>
+                            </div>
+                        </div>
+                    </div>
+
+                            <div class="border-top pt-3">
+                                <div class="row no-gutters text-center">
+                                    <div class="col-4">
+                                        <div class="p-2">
+                                            <div class="text-success font-weight-bold" style="font-size: 20px;">1411</div>
+                                            <small class="text-muted d-block" style="font-size: 11px; font-weight: 600;">Entregues</small>
+                </div>
+            </div>
+                                    <div class="col-4 border-left border-right" style="border-color: rgba(0,0,0,0.08) !important;">
+                                        <div class="p-2">
+                                            <div class="text-primary font-weight-bold" style="font-size: 20px;">559</div>
+                                            <small class="text-muted d-block" style="font-size: 11px; font-weight: 600;">Em trânsito</small>
+        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="p-2">
+                                            <div class="text-warning font-weight-bold" style="font-size: 20px;">95,2%</div>
+                                            <small class="text-muted d-block" style="font-size: 11px; font-weight: 600;">Taxa sucesso</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-header border-0 bg-white pb-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h6 class="card-title font-weight-bold mb-0" style="font-size: 16px;">Status dos Pedidos</h6>
+                                <div class="badge badge-light px-3 py-2" style="font-size: 12px; border: 1px solid #e9ecef;">
+                                    <span class="text-muted font-weight-bold">1970 total</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body pt-0">
+                            <div class="mb-4">
+                                <h6 class="text-overline text-muted mb-3" style="font-size: 12px; font-weight: 700; letter-spacing: 1px;">STATUS GERAIS</h6>
+                                
+                                <div class="d-flex justify-content-between align-items-center mb-3 p-3 bg-light rounded">
+                                    <div class="d-flex align-items-center">
+                                        <div class="bg-info rounded-circle d-flex align-items-center justify-content-center mr-3" style="width: 28px; height: 28px;">
+                                            <i class="mdi mdi-package-variant text-white" style="font-size: 14px;"></i>
+                                        </div>
+                                        <div class="font-weight-bold text-dark" style="font-size: 15px;">Postado</div>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="font-weight-bold text-dark" style="font-size: 18px; line-height: 1.2;">99,95%</div>
+                                        <small class="text-muted" style="font-size: 12px;">1969 de 1970</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between align-items-center mb-3 p-3 bg-light rounded border-left border-success" style="border-width: 3px !important;">
+                                    <div class="d-flex align-items-center">
+                                        <div class="bg-success rounded-circle d-flex align-items-center justify-content-center mr-3" style="width: 28px; height: 28px;">
+                                            <i class="mdi mdi-check text-white" style="font-size: 14px;"></i>
+                                        </div>
+                                        <div class="font-weight-bold text-dark" style="font-size: 15px;">Entregue</div>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="font-weight-bold text-success" style="font-size: 18px; line-height: 1.2;">71,62%</div>
+                                        <small class="text-muted" style="font-size: 12px;">1411 de 1970</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between align-items-center mb-3 p-3 bg-light rounded">
+                                    <div class="d-flex align-items-center">
+                                        <div class="bg-warning rounded-circle d-flex align-items-center justify-content-center mr-3" style="width: 28px; height: 28px;">
+                                            <i class="mdi mdi-arrow-left text-white" style="font-size: 14px;"></i>
+                                        </div>
+                                        <div class="font-weight-bold text-dark" style="font-size: 15px;">Devolvido</div>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="font-weight-bold text-dark" style="font-size: 18px; line-height: 1.2;">8,53%</div>
+                                        <small class="text-muted" style="font-size: 12px;">168 de 1970</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center mr-3" style="width: 24px; height: 24px;">
+                                    <i class="mdi mdi-truck-outline text-white" style="font-size: 12px;"></i>
+                                </div>
+                                <h6 class="text-overline text-muted mb-0 mr-3" style="font-size: 12px; font-weight: 700; letter-spacing: 1px;">EM TRÂNSITO</h6>
+                                <div class="flex-grow-1 border-top"></div>
+                                <span class="text-primary font-weight-bold ml-3" style="font-size: 13px;">559 pedidos</span>
+                            </div>
+                            
+                            <div class="status-transit">
+                                <div class="d-flex justify-content-between align-items-center mb-2 p-3 bg-light rounded" style="min-height: 50px;">
+                                    <div class="d-flex align-items-center">
+                                        <span class="bg-primary rounded-circle mr-3" style="width: 10px; height: 10px;"></span>
+                                        <span class="text-dark font-weight-bold" style="font-size: 14px;">Trânsito</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="font-weight-bold text-dark" style="font-size: 15px; line-height: 1.2;">49,19%</div>
+                                        <small class="text-muted" style="font-size: 11px;">275 de 559</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between align-items-center mb-2 p-3 bg-light rounded" style="min-height: 50px;">
+                                    <div class="d-flex align-items-center">
+                                        <span class="bg-info rounded-circle mr-3" style="width: 10px; height: 10px;"></span>
+                                        <span class="text-dark font-weight-bold" style="font-size: 14px;">Retirada</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="font-weight-bold text-dark" style="font-size: 15px; line-height: 1.2;">0,18%</div>
+                                        <small class="text-muted" style="font-size: 11px;">1 de 559</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between align-items-center mb-2 p-3 bg-light rounded" style="min-height: 50px;">
+                                    <div class="d-flex align-items-center">
+                                        <span class="bg-warning rounded-circle mr-3" style="width: 10px; height: 10px;"></span>
+                                        <span class="text-dark font-weight-bold" style="font-size: 14px;">Atenção</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="font-weight-bold text-dark" style="font-size: 15px; line-height: 1.2;">10,02%</div>
+                                        <small class="text-muted" style="font-size: 11px;">56 de 559</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between align-items-center mb-2 p-3 bg-light rounded" style="min-height: 50px;">
+                                    <div class="d-flex align-items-center">
+                                        <span class="bg-secondary rounded-circle mr-3" style="width: 10px; height: 10px;"></span>
+                                        <span class="text-dark font-weight-bold" style="font-size: 14px;">Taxado</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="font-weight-bold text-dark" style="font-size: 15px; line-height: 1.2;">0,36%</div>
+                                        <small class="text-muted" style="font-size: 11px;">2 de 559</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between align-items-center mb-2 p-3 bg-light rounded" style="min-height: 50px;">
+                                    <div class="d-flex align-items-center">
+                                        <span class="bg-danger rounded-circle mr-3" style="width: 10px; height: 10px;"></span>
+                                        <span class="text-dark font-weight-bold" style="font-size: 14px;">Atrasado</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="font-weight-bold text-dark" style="font-size: 15px; line-height: 1.2;">8,77%</div>
+                                        <small class="text-muted" style="font-size: 11px;">49 de 559</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between align-items-center mb-2 p-3 bg-light rounded" style="min-height: 50px;">
+                                    <div class="d-flex align-items-center">
+                                        <span class="bg-danger rounded-circle mr-3" style="width: 10px; height: 10px;"></span>
+                                        <span class="text-dark font-weight-bold" style="font-size: 14px;">Falha Entrega</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="font-weight-bold text-dark" style="font-size: 15px; line-height: 1.2;">0,72%</div>
+                                        <small class="text-muted" style="font-size: 11px;">4 de 559</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between align-items-center p-3 bg-light rounded" style="min-height: 50px;">
+                                    <div class="d-flex align-items-center">
+                                        <span class="bg-success rounded-circle mr-3" style="width: 10px; height: 10px;"></span>
+                                        <span class="text-dark font-weight-bold" style="font-size: 14px;">Saiu Entrega</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="font-weight-bold text-dark" style="font-size: 15px; line-height: 1.2;">0,36%</div>
+                                        <small class="text-muted" style="font-size: 11px;">2 de 559</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-4 col-lg-12 col-md-6 col-sm-12 col-12 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-header border-0 bg-white pb-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h6 class="card-title font-weight-bold mb-0" style="font-size: 16px;">Ver pedidos por status</h6>
+                                <div class="badge badge-info px-3 py-2" style="font-size: 12px;">
+                                    <span class="text-white font-weight-bold">Categorias</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body pt-0">
+                            <div class="row no-gutters">
+                                <div class="col-6 pr-1 mb-2">
+                                    <button class="btn w-100 text-left p-3 bg-light border-left border-danger" style="border-width: 3px !important; min-height: 70px; border-radius: 6px;">
+                                        <div class="d-flex align-items-center mb-1">
+                                            <i class="mdi mdi-alert-circle text-danger mr-2" style="font-size: 16px;"></i>
+                                            <span class="text-danger font-weight-bold" style="font-size: 13px;">ATENÇÃO</span>
+                                        </div>
+                                        <small class="text-muted d-block" style="font-size: 11px;">Requer ação imediata</small>
+                                    </button>
+                                </div>
+                                <div class="col-6 pl-1 mb-2">
+                                    <button class="btn w-100 text-left p-3 bg-light border-left border-primary" style="border-width: 3px !important; min-height: 70px; border-radius: 6px;">
+                                        <div class="d-flex align-items-center mb-1">
+                                            <i class="mdi mdi-clock-outline text-primary mr-2" style="font-size: 16px;"></i>
+                                            <span class="text-primary font-weight-bold" style="font-size: 13px;">ENVIO PENDENTE</span>
+                                        </div>
+                                        <small class="text-muted d-block" style="font-size: 11px;">Aguardando envio</small>
+                                    </button>
+                                </div>
+                                <div class="col-6 pr-1 mb-2">
+                                    <button class="btn w-100 text-left p-3 bg-light border-0" style="min-height: 70px; border-radius: 6px;">
+                                        <div class="d-flex align-items-center mb-1">
+                                            <i class="mdi mdi-package-down text-muted mr-2" style="font-size: 16px;"></i>
+                                            <span class="text-muted font-weight-bold" style="font-size: 13px;">RETIRADA</span>
+                                        </div>
+                                        <small class="text-muted d-block" style="font-size: 11px;">Para retirada</small>
+                                    </button>
+                                </div>
+                                <div class="col-6 pl-1 mb-2">
+                                    <button class="btn w-100 text-left p-3 bg-light border-0 position-relative" style="min-height: 70px; border-radius: 6px;">
+                                        <div class="d-flex align-items-center mb-1">
+                                            <i class="mdi mdi-truck-outline text-muted mr-2" style="font-size: 16px;"></i>
+                                            <span class="text-muted font-weight-bold" style="font-size: 13px;">SEM MOVIMENTO</span>
+                                        </div>
+                                        <small class="text-muted d-block" style="font-size: 11px;">Sem atualizações</small>
+                                        <span class="badge badge-success badge-pill position-absolute" style="top: 8px; right: 8px; font-size: 10px;">20</span>
+                                    </button>
+                                </div>
+                                <div class="col-6 pr-1 mb-2">
+                                    <button class="btn w-100 text-left p-3 bg-light border-0" style="min-height: 70px; border-radius: 6px;">
+                                        <div class="d-flex align-items-center mb-1">
+                                            <i class="mdi mdi-receipt text-muted mr-2" style="font-size: 16px;"></i>
+                                            <span class="text-muted font-weight-bold" style="font-size: 13px;">TAXADO</span>
+                                        </div>
+                                        <small class="text-muted d-block" style="font-size: 11px;">Taxa pendente</small>
+                                    </button>
+                                </div>
+                                <div class="col-6 pl-1 mb-2">
+                                    <button class="btn w-100 text-left p-3 bg-light border-0" style="min-height: 70px; border-radius: 6px;">
+                                        <div class="d-flex align-items-center mb-1">
+                                            <i class="mdi mdi-truck-fast text-muted mr-2" style="font-size: 16px;"></i>
+                                            <span class="text-muted font-weight-bold" style="font-size: 13px;">TRÂNSITO</span>
+                                        </div>
+                                        <small class="text-muted d-block" style="font-size: 11px;">Em movimento</small>
+                                    </button>
+                                </div>
+                                <div class="col-6 pr-1 mb-2">
+                                    <button class="btn w-100 text-left p-3 bg-light border-0" style="min-height: 70px; border-radius: 6px;">
+                                        <div class="d-flex align-items-center mb-1">
+                                            <i class="mdi mdi-close-circle text-muted mr-2" style="font-size: 16px;"></i>
+                                            <span class="text-muted font-weight-bold" style="font-size: 13px;">FALHA ENTREGA</span>
+                                        </div>
+                                        <small class="text-muted d-block" style="font-size: 11px;">Tentativa falhada</small>
+                                    </button>
+                                </div>
+                                <div class="col-6 pl-1 mb-2">
+                                    <button class="btn w-100 text-left p-3 bg-light border-0" style="min-height: 70px; border-radius: 6px;">
+                                        <div class="d-flex align-items-center mb-1">
+                                            <i class="mdi mdi-stop-circle text-muted mr-2" style="font-size: 16px;"></i>
+                                            <span class="text-muted font-weight-bold" style="font-size: 13px;">ENCERRADO</span>
+                                        </div>
+                                        <small class="text-muted d-block" style="font-size: 11px;">Processo finalizado</small>
+                                    </button>
+                                </div>
+                                <div class="col-6 pr-1 mb-2">
+                                    <button class="btn w-100 text-left p-3 bg-light border-0" style="min-height: 70px; border-radius: 6px;">
+                                        <div class="d-flex align-items-center mb-1">
+                                            <i class="mdi mdi-arrow-left-circle text-muted mr-2" style="font-size: 16px;"></i>
+                                            <span class="text-muted font-weight-bold" style="font-size: 13px;">DEVOLVIDO</span>
+                                        </div>
+                                        <small class="text-muted d-block" style="font-size: 11px;">Retornado</small>
+                                    </button>
+                                </div>
+                                <div class="col-6 pl-1 mb-2">
+                                    <button class="btn w-100 text-left p-3 bg-light border-0" style="min-height: 70px; border-radius: 6px;">
+                                        <div class="d-flex align-items-center mb-1">
+                                            <i class="mdi mdi-truck-delivery text-muted mr-2" style="font-size: 16px;"></i>
+                                            <span class="text-muted font-weight-bold" style="font-size: 13px;">SAIU P/ ENTREGA</span>
+                                        </div>
+                                        <small class="text-muted d-block" style="font-size: 11px;">Em rota de entrega</small>
+                                    </button>
+                                </div>
+                                <div class="col-6 pr-1 mb-2">
+                                    <button class="btn w-100 text-left p-3 bg-light border-0" style="min-height: 70px; border-radius: 6px;">
+                                        <div class="d-flex align-items-center mb-1">
+                                            <i class="mdi mdi-clock-alert text-muted mr-2" style="font-size: 16px;"></i>
+                                            <span class="text-muted font-weight-bold" style="font-size: 13px;">ATRASADO</span>
+                                        </div>
+                                        <small class="text-muted d-block" style="font-size: 11px;">Fora do prazo</small>
+                                    </button>
+                                </div>
+                                <div class="col-6 pl-1 mb-2">
+                                    <button class="btn w-100 text-left p-3 bg-light border-left border-success position-relative" style="border-width: 3px !important; min-height: 70px; border-radius: 6px;">
+                                        <div class="d-flex align-items-center mb-1">
+                                            <i class="mdi mdi-check-circle text-success mr-2" style="font-size: 16px;"></i>
+                                            <span class="text-success font-weight-bold" style="font-size: 13px;">ENTREGUE</span>
+                                        </div>
+                                        <small class="text-muted d-block" style="font-size: 11px;">Entrega concluída</small>
+                                        <span class="badge badge-success badge-pill position-absolute" style="top: 8px; right: 8px; font-size: 10px;">2</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rankings -->
+            <div class="row mb-4">
+                <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12 col-12 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-header border-0 bg-white pb-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h6 class="card-title font-weight-bold mb-0" style="font-size: 16px;">
+                                    <i class="mdi mdi-truck-fast mr-2 text-primary"></i>Prazo médio por transportadoras
+                                </h6>
+                                <div class="badge badge-primary px-3 py-2" style="font-size: 12px;">
+                                    <span class="text-white font-weight-bold">Top 5</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body pt-0">
+                            <div class="d-flex justify-content-between align-items-center p-3 mb-3 bg-light rounded border-left border-success" style="border-width: 4px !important;">
+                                <div class="d-flex align-items-center">
+                                    <div class="mr-3">
+                                        <img src="../Media_Imagens/Anjun.png" alt="Anjun" class="rounded" style="width: 40px; height: 40px; object-fit: contain; background: white; padding: 4px;">
+                                    </div>
+                                <div>
+                                        <div class="font-weight-bold text-dark" style="font-size: 14px;">Anjun Express</div>
+                                        <small class="text-success" style="font-size: 11px;">Melhor performance</small>
+                                </div>
+                            </div>
+                                <div class="text-right">
+                                    <div class="font-weight-bold text-success" style="font-size: 18px;">8 dias</div>
+                                    <small class="text-muted" style="font-size: 11px;">Prazo médio</small>
+                        </div>
+                    </div>
+
+                            <div class="d-flex justify-content-between align-items-center p-3 mb-3 bg-light rounded border-left border-primary" style="border-width: 3px !important;">
+                                <div class="d-flex align-items-center">
+                                    <div class="mr-3">
+                                        <img src="../Media_Imagens/YunExpress.png" alt="YunExpress" class="rounded" style="width: 40px; height: 40px; object-fit: contain; background: white; padding: 4px;">
+                </div>
+                                    <div>
+                                        <div class="font-weight-bold text-dark" style="font-size: 14px;">YunExpress</div>
+                                        <small class="text-primary" style="font-size: 11px;">Boa performance</small>
+            </div>
+        </div>
+                                <div class="text-right">
+                                    <div class="font-weight-bold text-dark" style="font-size: 18px;">12 dias</div>
+                                    <small class="text-muted" style="font-size: 11px;">Prazo médio</small>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center p-3 mb-3 bg-light rounded border-left border-info" style="border-width: 3px !important;">
+                                <div class="d-flex align-items-center">
+                                    <div class="mr-3">
+                                        <img src="../Media_Imagens/Sunyou.png" alt="Sunyou" class="rounded" style="width: 40px; height: 40px; object-fit: contain; background: white; padding: 4px;">
+                                    </div>
+                                    <div>
+                                        <div class="font-weight-bold text-dark" style="font-size: 14px;">Sunyou</div>
+                                        <small class="text-info" style="font-size: 11px;">Performance média</small>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="font-weight-bold text-dark" style="font-size: 18px;">15 dias</div>
+                                    <small class="text-muted" style="font-size: 11px;">Prazo médio</small>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center p-3 mb-3 bg-light rounded border-left border-warning" style="border-width: 3px !important;">
+                                <div class="d-flex align-items-center">
+                                    <div class="mr-3">
+                                        <img src="../Media_Imagens/Yanwen.png" alt="Yanwen" class="rounded" style="width: 40px; height: 40px; object-fit: contain; background: white; padding: 4px;">
+                                    </div>
+                                    <div>
+                                        <div class="font-weight-bold text-dark" style="font-size: 14px;">Yanwen</div>
+                                        <small class="text-warning" style="font-size: 11px;">Performance regular</small>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="font-weight-bold text-dark" style="font-size: 18px;">18 dias</div>
+                                    <small class="text-muted" style="font-size: 11px;">Prazo médio</small>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center p-3 mb-2 bg-light rounded border-left border-danger" style="border-width: 3px !important;">
+                                <div class="d-flex align-items-center">
+                                    <div class="mr-3">
+                                        <img src="../Media_Imagens/360lion.png" alt="360Lion" class="rounded" style="width: 40px; height: 40px; object-fit: contain; background: white; padding: 4px;">
+                                    </div>
+                                    <div>
+                                        <div class="font-weight-bold text-dark" style="font-size: 14px;">360Lion</div>
+                                        <small class="text-danger" style="font-size: 11px;">Precisa melhorar</small>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="font-weight-bold text-dark" style="font-size: 18px;">24 dias</div>
+                                    <small class="text-muted" style="font-size: 11px;">Prazo médio</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-xl-4 col-md-12 col-sm-12 col-12 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-header border-0 bg-white pb-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h6 class="card-title font-weight-bold mb-0" style="font-size: 16px;">
+                                    <i class="mdi mdi-speedometer mr-2 text-success"></i>Prazo médio dos estados rápidos
+                                </h6>
+                                <div class="badge badge-success px-3 py-2" style="font-size: 12px;">
+                                    <span class="text-white font-weight-bold">Top 10</span>
+                                </div>
+                            </div>
+                            <div class="mt-2">
+                                <small class="text-muted" style="font-size: 12px;">Melhores performances de entrega por estado</small>
+                            </div>
+                        </div>
+                        <div class="card-body pt-0">
+                            <div class="d-flex justify-content-between align-items-center p-2 mb-2 bg-light rounded border-left border-success" style="border-width: 3px !important;">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-success rounded-circle d-flex align-items-center justify-content-center mr-3" style="width: 24px; height: 24px;">
+                                        <span class="text-white font-weight-bold" style="font-size: 12px;">1</span>
+                                    </div>
+                                    <div class="font-weight-bold text-dark" style="font-size: 14px;">Maranhão (MA)</div>
+                                </div>
+                                <div class="font-weight-bold text-success" style="font-size: 16px;">11 dias</div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between align-items-center p-2 mb-2 bg-light rounded border-left border-primary" style="border-width: 3px !important;">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center mr-3" style="width: 24px; height: 24px;">
+                                        <span class="text-white font-weight-bold" style="font-size: 12px;">2</span>
+                                    </div>
+                                    <div class="font-weight-bold text-dark" style="font-size: 14px;">Rio de Janeiro (RJ)</div>
+                                </div>
+                                <div class="font-weight-bold text-primary" style="font-size: 16px;">11 dias</div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between align-items-center p-2 mb-2 bg-light rounded border-left border-info" style="border-width: 3px !important;">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-info rounded-circle d-flex align-items-center justify-content-center mr-3" style="width: 24px; height: 24px;">
+                                        <span class="text-white font-weight-bold" style="font-size: 12px;">3</span>
+                                    </div>
+                                    <div class="font-weight-bold text-dark" style="font-size: 14px;">Alagoas (AL)</div>
+                                </div>
+                                <div class="font-weight-bold text-info" style="font-size: 16px;">12 dias</div>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center p-2 mb-2 bg-light rounded">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center mr-3" style="width: 24px; height: 24px;">
+                                        <span class="text-white font-weight-bold" style="font-size: 12px;">4</span>
+                                    </div>
+                                    <div class="font-weight-bold text-dark" style="font-size: 14px;">Pernambuco (PE)</div>
+                                </div>
+                                <div class="font-weight-bold text-dark" style="font-size: 16px;">12 dias</div>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center p-2 mb-2 bg-light rounded">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center mr-3" style="width: 24px; height: 24px;">
+                                        <span class="text-white font-weight-bold" style="font-size: 12px;">5</span>
+                                    </div>
+                                    <div class="font-weight-bold text-dark" style="font-size: 14px;">Ceará (CE)</div>
+                                </div>
+                                <div class="font-weight-bold text-dark" style="font-size: 16px;">13 dias</div>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center p-2 mb-2 bg-light rounded">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center mr-3" style="width: 24px; height: 24px;">
+                                        <span class="text-white font-weight-bold" style="font-size: 12px;">6</span>
+                                    </div>
+                                    <div class="font-weight-bold text-dark" style="font-size: 14px;">Bahia (BA)</div>
+                                </div>
+                                <div class="font-weight-bold text-dark" style="font-size: 16px;">13 dias</div>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center p-2 mb-2 bg-light rounded">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center mr-3" style="width: 24px; height: 24px;">
+                                        <span class="text-white font-weight-bold" style="font-size: 12px;">7</span>
+                                    </div>
+                                    <div class="font-weight-bold text-dark" style="font-size: 14px;">Sergipe (SE)</div>
+                                </div>
+                                <div class="font-weight-bold text-dark" style="font-size: 16px;">14 dias</div>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center p-2 mb-2 bg-light rounded">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center mr-3" style="width: 24px; height: 24px;">
+                                        <span class="text-white font-weight-bold" style="font-size: 12px;">8</span>
+                                    </div>
+                                    <div class="font-weight-bold text-dark" style="font-size: 14px;">Paraíba (PB)</div>
+                                </div>
+                                <div class="font-weight-bold text-dark" style="font-size: 16px;">14 dias</div>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center p-2 mb-2 bg-light rounded">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center mr-3" style="width: 24px; height: 24px;">
+                                        <span class="text-white font-weight-bold" style="font-size: 12px;">9</span>
+                                    </div>
+                                    <div class="font-weight-bold text-dark" style="font-size: 14px;">Rio Grande do Norte (RN)</div>
+                                </div>
+                                <div class="font-weight-bold text-dark" style="font-size: 16px;">15 dias</div>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center p-2 mb-2 bg-light rounded">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center mr-3" style="width: 24px; height: 24px;">
+                                        <span class="text-white font-weight-bold" style="font-size: 12px;">10</span>
+                                    </div>
+                                    <div class="font-weight-bold text-dark" style="font-size: 14px;">Piauí (PI)</div>
+                                </div>
+                                <div class="font-weight-bold text-dark" style="font-size: 16px;">15 dias</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-12 col-sm-12 col-12 mb-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-header border-0 bg-white pb-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h6 class="card-title font-weight-bold mb-0" style="font-size: 16px;">
+                                    <i class="mdi mdi-clock-alert mr-2 text-warning"></i>Prazo médio dos estados lentos
+                                </h6>
+                                <div class="badge badge-warning px-3 py-2" style="font-size: 12px;">
+                                    <span class="text-white font-weight-bold">Top 10</span>
+                                </div>
+                            </div>
+                            <div class="mt-2">
+                                <small class="text-muted" style="font-size: 12px;">Estados com maiores prazos de entrega</small>
+                            </div>
+                        </div>
+                        <div class="card-body pt-0">
+                            <div class="d-flex justify-content-between align-items-center p-2 mb-2 bg-light rounded border-left border-danger" style="border-width: 3px !important;">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-danger rounded-circle d-flex align-items-center justify-content-center mr-3" style="width: 24px; height: 24px;">
+                                        <span class="text-white font-weight-bold" style="font-size: 12px;">1</span>
+                                    </div>
+                                    <div class="font-weight-bold text-dark" style="font-size: 14px;">Mato Grosso (MT)</div>
+                                </div>
+                                <div class="font-weight-bold text-danger" style="font-size: 16px;">28 dias</div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between align-items-center p-2 mb-2 bg-light rounded border-left border-warning" style="border-width: 3px !important;">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-warning rounded-circle d-flex align-items-center justify-content-center mr-3" style="width: 24px; height: 24px;">
+                                        <span class="text-white font-weight-bold" style="font-size: 12px;">2</span>
+                                    </div>
+                                    <div class="font-weight-bold text-dark" style="font-size: 14px;">Rondônia (RO)</div>
+                                </div>
+                                <div class="font-weight-bold text-warning" style="font-size: 16px;">26 dias</div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between align-items-center p-2 mb-2 bg-light rounded border-left border-info" style="border-width: 3px !important;">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-info rounded-circle d-flex align-items-center justify-content-center mr-3" style="width: 24px; height: 24px;">
+                                        <span class="text-white font-weight-bold" style="font-size: 12px;">3</span>
+                                    </div>
+                                    <div class="font-weight-bold text-dark" style="font-size: 14px;">Acre (AC)</div>
+                                </div>
+                                <div class="font-weight-bold text-info" style="font-size: 16px;">25 dias</div>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center p-2 mb-2 bg-light rounded">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center mr-3" style="width: 24px; height: 24px;">
+                                        <span class="text-white font-weight-bold" style="font-size: 12px;">4</span>
+                                    </div>
+                                    <div class="font-weight-bold text-dark" style="font-size: 14px;">Amazonas (AM)</div>
+                                </div>
+                                <div class="font-weight-bold text-dark" style="font-size: 16px;">24 dias</div>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center p-2 mb-2 bg-light rounded">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center mr-3" style="width: 24px; height: 24px;">
+                                        <span class="text-white font-weight-bold" style="font-size: 12px;">5</span>
+                                    </div>
+                                    <div class="font-weight-bold text-dark" style="font-size: 14px;">Roraima (RR)</div>
+                                </div>
+                                <div class="font-weight-bold text-dark" style="font-size: 16px;">23 dias</div>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center p-2 mb-2 bg-light rounded">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center mr-3" style="width: 24px; height: 24px;">
+                                        <span class="text-white font-weight-bold" style="font-size: 12px;">6</span>
+                                    </div>
+                                    <div class="font-weight-bold text-dark" style="font-size: 14px;">Amapá (AP)</div>
+                                </div>
+                                <div class="font-weight-bold text-dark" style="font-size: 16px;">22 dias</div>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center p-2 mb-2 bg-light rounded">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center mr-3" style="width: 24px; height: 24px;">
+                                        <span class="text-white font-weight-bold" style="font-size: 12px;">7</span>
+                                    </div>
+                                    <div class="font-weight-bold text-dark" style="font-size: 14px;">Pará (PA)</div>
+                                </div>
+                                <div class="font-weight-bold text-dark" style="font-size: 16px;">21 dias</div>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center p-2 mb-2 bg-light rounded">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center mr-3" style="width: 24px; height: 24px;">
+                                        <span class="text-white font-weight-bold" style="font-size: 12px;">8</span>
+                                    </div>
+                                    <div class="font-weight-bold text-dark" style="font-size: 14px;">Tocantins (TO)</div>
+                                </div>
+                                <div class="font-weight-bold text-dark" style="font-size: 16px;">20 dias</div>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center p-2 mb-2 bg-light rounded">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center mr-3" style="width: 24px; height: 24px;">
+                                        <span class="text-white font-weight-bold" style="font-size: 12px;">9</span>
+                                    </div>
+                                    <div class="font-weight-bold text-dark" style="font-size: 14px;">Goiás (GO)</div>
+                                </div>
+                                <div class="font-weight-bold text-dark" style="font-size: 16px;">19 dias</div>
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center p-2 mb-2 bg-light rounded">
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-secondary rounded-circle d-flex align-items-center justify-content-center mr-3" style="width: 24px; height: 24px;">
+                                        <span class="text-white font-weight-bold" style="font-size: 12px;">10</span>
+                                    </div>
+                                    <div class="font-weight-bold text-dark" style="font-size: 14px;">Mato Grosso do Sul (MS)</div>
+                                </div>
+                                <div class="font-weight-bold text-dark" style="font-size: 16px;">18 dias</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabela de atualizações -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-header border-0 bg-white pb-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="card-title font-weight-bold mb-1" style="font-size: 16px;">
+                                        <i class="mdi mdi-clock-outline mr-2 text-primary"></i>Últimas atualizações
+                                    </h6>
+                                    <small class="text-muted" style="font-size: 12px;">Movimentações atualizados em até 24h</small>
+                                </div>
+                                <div class="badge badge-light border px-3 py-2 d-flex align-items-center" style="font-size: 12px; background: rgba(108, 99, 255, 0.05); border-color: rgba(108, 99, 255, 0.2) !important;">
+                                    <i class="mdi mdi-refresh mr-2 text-primary" style="font-size: 14px;"></i>
+                                    <span class="text-primary font-weight-medium">Atualizado em até 24h</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body pt-0">
+                            <div class="table-responsive">
+                                <table class="table table-borderless mb-0">
+                                    <thead>
+                                        <tr style="border-bottom: 2px solid #f8f9fa;">
+                                            <th class="text-overline text-muted font-weight-bold border-0 pb-3" style="font-size: 11px; letter-spacing: 0.8px;">DATA</th>
+                                            <th class="text-overline text-muted font-weight-bold border-0 pb-3" style="font-size: 11px; letter-spacing: 0.8px;">STATUS</th>
+                                            <th class="text-overline text-muted font-weight-bold border-0 pb-3" style="font-size: 11px; letter-spacing: 0.8px;">PEDIDO</th>
+                                            <th class="text-overline text-muted font-weight-bold border-0 pb-3" style="font-size: 11px; letter-spacing: 0.8px;">CÓDIGO RASTREIO</th>
+                                            <th class="text-overline text-muted font-weight-bold border-0 pb-3" style="font-size: 11px; letter-spacing: 0.8px;">ORIGEM</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-0" style="border-bottom: 1px solid #f8f9fa !important;">
+                                            <td class="border-0 py-3" style="font-size: 13px; color: #6c757d;">26/06/2025</td>
+                                            <td class="border-0 py-3">
+                                                <span class="badge rounded-pill px-3 py-2" style="background: rgba(108, 99, 255, 0.1); color: #6c63ff; font-size: 11px; font-weight: 600;">
+                                                    <i class="mdi mdi-truck-outline mr-1" style="font-size: 10px;"></i>Trânsito
+                                                </span>
+                                            </td>
+                                            <td class="border-0 py-3">
+                                                <span class="font-weight-bold text-dark" style="font-size: 14px;">#31947</span>
+                                            </td>
+                                            <td class="border-0 py-3">
+                                                <code class="bg-light text-dark px-2 py-1 rounded" style="font-size: 12px; font-weight: 500;">NM831368485BR</code>
+                                            </td>
+                                            <td class="border-0 py-3" style="font-size: 13px; color: #6c757d;">23/05/2025</td>
+                                        </tr>
+                                        <tr class="border-0" style="border-bottom: 1px solid #f8f9fa !important;">
+                                            <td class="border-0 py-3" style="font-size: 13px; color: #6c757d;">26/06/2025</td>
+                                            <td class="border-0 py-3">
+                                                <span class="badge rounded-pill px-3 py-2" style="background: rgba(40, 167, 69, 0.1); color: #28a745; font-size: 11px; font-weight: 600;">
+                                                    <i class="mdi mdi-truck-delivery mr-1" style="font-size: 10px;"></i>Saiu Entrega
+                                                </span>
+                                            </td>
+                                            <td class="border-0 py-3">
+                                                <span class="font-weight-bold text-dark" style="font-size: 14px;">#31294</span>
+                                            </td>
+                                            <td class="border-0 py-3">
+                                                <code class="bg-light text-dark px-2 py-1 rounded" style="font-size: 12px; font-weight: 500;">NM827848826BR</code>
+                                            </td>
+                                            <td class="border-0 py-3" style="font-size: 13px; color: #6c757d;">17/05/2025</td>
+                                        </tr>
+                                        <tr class="border-0" style="border-bottom: 1px solid #f8f9fa !important;">
+                                            <td class="border-0 py-3" style="font-size: 13px; color: #6c757d;">26/06/2025</td>
+                                            <td class="border-0 py-3">
+                                                <span class="badge rounded-pill px-3 py-2" style="background: rgba(23, 162, 184, 0.1); color: #17a2b8; font-size: 11px; font-weight: 600;">
+                                                    <i class="mdi mdi-package-down mr-1" style="font-size: 10px;"></i>Retirada
+                                                </span>
+                                            </td>
+                                            <td class="border-0 py-3">
+                                                <span class="font-weight-bold text-dark" style="font-size: 14px;">#34814</span>
+                                            </td>
+                                            <td class="border-0 py-3">
+                                                <code class="bg-light text-dark px-2 py-1 rounded" style="font-size: 12px; font-weight: 500;">NM847396365BR</code>
+                                            </td>
+                                            <td class="border-0 py-3" style="font-size: 13px; color: #6c757d;">13/06/2025</td>
+                                        </tr>
+                                        <tr class="border-0" style="border-bottom: 1px solid #f8f9fa !important;">
+                                            <td class="border-0 py-3" style="font-size: 13px; color: #6c757d;">26/06/2025</td>
+                                            <td class="border-0 py-3">
+                                                <span class="badge rounded-pill px-3 py-2" style="background: rgba(255, 193, 7, 0.1); color: #ffc107; font-size: 11px; font-weight: 600;">
+                                                    <i class="mdi mdi-alert-circle mr-1" style="font-size: 10px;"></i>Atenção
+                                                </span>
+                                            </td>
+                                            <td class="border-0 py-3">
+                                                <span class="font-weight-bold text-dark" style="font-size: 14px;">#35054</span>
+                                            </td>
+                                            <td class="border-0 py-3">
+                                                <code class="bg-light text-dark px-2 py-1 rounded" style="font-size: 12px; font-weight: 500;">362104995769Z</code>
+                                            </td>
+                                            <td class="border-0 py-3" style="font-size: 13px; color: #6c757d;">15/06/2025</td>
+                                        </tr>
+                                        <tr class="border-0" style="border-bottom: 1px solid #f8f9fa !important;">
+                                            <td class="border-0 py-3" style="font-size: 13px; color: #6c757d;">26/06/2025</td>
+                                            <td class="border-0 py-3">
+                                                <span class="badge rounded-pill px-3 py-2" style="background: rgba(108, 117, 125, 0.1); color: #6c757d; font-size: 11px; font-weight: 600;">
+                                                    <i class="mdi mdi-receipt mr-1" style="font-size: 10px;"></i>Taxado
+                                                </span>
+                                            </td>
+                                            <td class="border-0 py-3">
+                                                <span class="font-weight-bold text-dark" style="font-size: 14px;">#35175</span>
+                                            </td>
+                                            <td class="border-0 py-3">
+                                                <code class="bg-light text-dark px-2 py-1 rounded" style="font-size: 12px; font-weight: 500;">NM854490128BR</code>
+                                            </td>
+                                            <td class="border-0 py-3" style="font-size: 13px; color: #6c757d;">16/06/2025</td>
+                                        </tr>
+                                        <tr class="border-0" style="border-bottom: 1px solid #f8f9fa !important;">
+                                            <td class="border-0 py-3" style="font-size: 13px; color: #6c757d;">26/06/2025</td>
+                                            <td class="border-0 py-3">
+                                                <span class="badge rounded-pill px-3 py-2" style="background: rgba(220, 53, 69, 0.1); color: #dc3545; font-size: 11px; font-weight: 600;">
+                                                    <i class="mdi mdi-clock-alert mr-1" style="font-size: 10px;"></i>Atrasado
+                                                </span>
+                                            </td>
+                                            <td class="border-0 py-3">
+                                                <span class="font-weight-bold text-dark" style="font-size: 14px;">#35238</span>
+                                            </td>
+                                            <td class="border-0 py-3">
+                                                <code class="bg-light text-dark px-2 py-1 rounded" style="font-size: 12px; font-weight: 500;">NM854973478BR</code>
+                                            </td>
+                                            <td class="border-0 py-3" style="font-size: 13px; color: #6c757d;">16/06/2025</td>
+                                        </tr>
+                                        <tr class="border-0" style="border-bottom: 1px solid #f8f9fa !important;">
+                                            <td class="border-0 py-3" style="font-size: 13px; color: #6c757d;">26/06/2025</td>
+                                            <td class="border-0 py-3">
+                                                <span class="badge rounded-pill px-3 py-2" style="background: rgba(220, 53, 69, 0.1); color: #dc3545; font-size: 11px; font-weight: 600;">
+                                                    <i class="mdi mdi-close-circle mr-1" style="font-size: 10px;"></i>Falha Entrega
+                                                </span>
+                                            </td>
+                                            <td class="border-0 py-3">
+                                                <span class="font-weight-bold text-dark" style="font-size: 14px;">#35254</span>
+                                            </td>
+                                            <td class="border-0 py-3">
+                                                <code class="bg-light text-dark px-2 py-1 rounded" style="font-size: 12px; font-weight: 500;">NM854973338BR</code>
+                                            </td>
+                                            <td class="border-0 py-3" style="font-size: 13px; color: #6c757d;">16/06/2025</td>
+                                        </tr>
+                                        <tr class="border-0" style="border-bottom: 1px solid #f8f9fa !important;">
+                                            <td class="border-0 py-3" style="font-size: 13px; color: #6c757d;">26/06/2025</td>
+                                            <td class="border-0 py-3">
+                                                <span class="badge rounded-pill px-3 py-2" style="background: rgba(23, 162, 184, 0.1); color: #17a2b8; font-size: 11px; font-weight: 600;">
+                                                    <i class="mdi mdi-package-variant mr-1" style="font-size: 10px;"></i>Postado
+                                                </span>
+                                            </td>
+                                            <td class="border-0 py-3">
+                                                <span class="font-weight-bold text-dark" style="font-size: 14px;">#35487</span>
+                                            </td>
+                                            <td class="border-0 py-3">
+                                                <code class="bg-light text-dark px-2 py-1 rounded" style="font-size: 12px; font-weight: 500;">NM856234789BR</code>
+                                            </td>
+                                            <td class="border-0 py-3" style="font-size: 13px; color: #6c757d;">18/06/2025</td>
+                                        </tr>
+                                        <tr class="border-0" style="border-bottom: 1px solid #f8f9fa !important;">
+                                            <td class="border-0 py-3" style="font-size: 13px; color: #6c757d;">26/06/2025</td>
+                                            <td class="border-0 py-3">
+                                                <span class="badge rounded-pill px-3 py-2" style="background: rgba(40, 167, 69, 0.1); color: #28a745; font-size: 11px; font-weight: 600;">
+                                                    <i class="mdi mdi-check-circle mr-1" style="font-size: 10px;"></i>Entregue
+                                                </span>
+                                            </td>
+                                            <td class="border-0 py-3">
+                                                <span class="font-weight-bold text-dark" style="font-size: 14px;">#35521</span>
+                                            </td>
+                                            <td class="border-0 py-3">
+                                                <code class="bg-light text-dark px-2 py-1 rounded" style="font-size: 12px; font-weight: 500;">NM856789234BR</code>
+                                            </td>
+                                            <td class="border-0 py-3" style="font-size: 13px; color: #6c757d;">19/06/2025</td>
+                                        </tr>
+                                        <tr class="border-0">
+                                            <td class="border-0 py-3" style="font-size: 13px; color: #6c757d;">26/06/2025</td>
+                                            <td class="border-0 py-3">
+                                                <span class="badge rounded-pill px-3 py-2" style="background: rgba(255, 193, 7, 0.1); color: #ffc107; font-size: 11px; font-weight: 600;">
+                                                    <i class="mdi mdi-arrow-left-circle mr-1" style="font-size: 10px;"></i>Devolvido
+                                                </span>
+                                            </td>
+                                            <td class="border-0 py-3">
+                                                <span class="font-weight-bold text-dark" style="font-size: 14px;">#35603</span>
+                                            </td>
+                                            <td class="border-0 py-3">
+                                                <code class="bg-light text-dark px-2 py-1 rounded" style="font-size: 12px; font-weight: 500;">NM857123456BR</code>
+                                            </td>
+                                            <td class="border-0 py-3" style="font-size: 13px; color: #6c757d;">19/06/2025</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card-footer border-0 bg-white pt-0">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted" style="font-size: 12px;">
+                                    <i class="mdi mdi-information mr-1"></i>
+                                    Exibindo as 10 atualizações mais recentes
+                                </small>
+                                <button class="btn btn-outline-primary btn-sm px-3" style="font-size: 12px;">
+                                    <i class="mdi mdi-eye mr-1"></i>Ver todas
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- END PLACE PAGE CONTENT HERE -->
+    </section>
+</main>
+
+
+<div class="modal modal-slide-left  fade" id="siteSearchModal" tabindex="-1" role="dialog" aria-labelledby="siteSearchModal"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body p-all-0" id="site-search">
+                <button type="button" class="close light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="form-dark bg-dark text-white p-t-60 p-b-20 bg-dots" >
+                    <h3 class="text-uppercase    text-center  fw-300 "> Search</h3>
+
+                    <div class="container-fluid">
+                        <div class="col-md-10 p-t-10 m-auto">
+                            <input type="search" placeholder="Search Something"
+                                   class=" search form-control form-control-lg">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="bg-dark text-muted container-fluid p-b-10 text-center text-overline">
+                        results
+                    </div>
+                    <div class="list-group list  ">
+
+
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"   src="../assets/img/users/user-3.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Eric Chen</div>
+                                <div class="text-muted">Developer</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"
+                                                                    src="../assets/img/users/user-4.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Sean Valdez</div>
+                                <div class="text-muted">Marketing</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"
+                                                                    src="../assets/img/users/user-8.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Marie Arnold</div>
+                                <div class="text-muted">Developer</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar-title bg-dark rounded"><i class="mdi mdi-24px mdi-file-pdf"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">SRS Document</div>
+                                <div class="text-muted">25.5 Mb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar avatar-sm ">
+                                        <div class="avatar-title bg-primary rounded"><i
+                                                    class="mdi mdi-24px mdi-code-braces"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">response.json</div>
+                                <div class="text-muted">15 Kb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar avatar-sm ">
+                                        <div class="avatar-title bg-info rounded"><i
+                                                    class="mdi mdi-24px mdi-file-excel"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">June Accounts.xls</div>
+                                <div class="text-muted">6 Mb</div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="../assets/vendor/jquery/jquery.min.js"></script>
+<script src="../assets/vendor/jquery-ui/jquery-ui.min.js"></script>
+<script src="../assets/vendor/popper/popper.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/vendor/select2/js/select2.full.min.js"></script>
+<script src="../assets/vendor/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+<script src="../assets/vendor/listjs/listjs.min.js"></script>
+<script src="../assets/vendor/moment/moment.min.js"></script>
+<script src="../assets/vendor/daterangepicker/daterangepicker.js"></script>
+<script src="../assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="../assets/vendor/bootstrap-notify/bootstrap-notify.min.js"></script>
+<script src="../assets/js/atmos.min.js"></script>
+<!--page specific scripts for demo-->
+            <!-- Scripts -->
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+            // Gráfico 
+            const ctx = document.getElementById('entregaChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Entregue', 'Em Trânsito'],
+                    datasets: [{
+                        data: [1411, 559],
+                        backgroundColor: [
+                            '#28a745',
+                            '#6c63ff'
+                        ],
+                        borderWidth: 3,
+                        borderColor: '#ffffff',
+                        cutout: '75%',
+                        spacing: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            enabled: true,
+                            backgroundColor: 'rgba(0,0,0,0.8)',
+                            titleColor: '#fff',
+                            bodyColor: '#fff',
+                            borderColor: '#ddd',
+                            borderWidth: 1,
+                            cornerRadius: 8,
+                            displayColors: true,
+                            callbacks: {
+                                label: function(context) {
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = ((context.parsed * 100) / total).toFixed(1);
+                                    return context.label + ': ' + context.parsed + ' (' + percentage + '%)';
+                                }
+                            }
+                        }
+                    },
+                    layout: {
+                        padding: 10
+                    },
+                    elements: {
+                        arc: {
+                            borderRadius: 4
+                        }
+                    }
+                }
+            });
+
+            // botões de período
+            document.querySelectorAll('.btn-outline-secondary, .btn-primary').forEach(btn => {
+                if (!btn.querySelector('.mdi-calendar')) {
+                    btn.addEventListener('click', function() {
+                        document.querySelectorAll('.btn-outline-secondary, .btn-primary').forEach(b => {
+                            if (!b.querySelector('.mdi-calendar')) {
+                                b.classList.remove('btn-primary');
+                                b.classList.add('btn-outline-secondary');
+                            }
+                        });
+                        this.classList.remove('btn-outline-secondary');
+                        this.classList.add('btn-primary');
+                    });
+                }
+            });
+
+</script>
+</body>
+</html>

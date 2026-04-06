@@ -1,0 +1,1538 @@
+<section class="in-page">
+
+
+    <!-- Título + picker inline (com compatibilidade) -->
+    <h2 class="lis-titleline">
+        Funil de
+        <span class="lis-inlinepicker-wrap in-parentbar" id="in-parentbar">
+            <button id="lis-canal-btn" class="lis-inlinepicker" type="button" aria-haspopup="menu" aria-expanded="false"
+                aria-controls="lis-canal-menu" data-value="whatsapp">
+                <span id="lis-canal-label">WhatsApp</span>
+                <svg class="lis-chev" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                        d="M6.8 9.2a1 1 0 0 1 1.4 0L12 13l3.8-3.8a1 1 0 1 1 1.4 1.4l-4.5 4.5a1 1 0 0 1-1.4 0L6.8 10.6a1 1 0 0 1 0-1.4Z">
+                    </path>
+                </svg>
+            </button>
+
+            <!-- Itens do menu recebem in-parentbtn + data-parent + aria-pressed -->
+            <div id="lis-canal-menu" class="lis-inlinemenu" role="menu">
+                <button class="lis-inlinemenu-item in-parentbtn is-current" role="menuitemradio" aria-checked="true"
+                    aria-pressed="true" data-parent="whatsapp" data-value="whatsapp">WhatsApp</button>
+
+                <button class="lis-inlinemenu-item in-parentbtn" role="menuitemradio" aria-checked="false"
+                    aria-pressed="false" data-parent="email" data-value="email">E-mail</button>
+
+                <button class="lis-inlinemenu-item in-parentbtn" role="menuitemradio" aria-checked="false"
+                    aria-pressed="false" data-parent="sms" data-value="sms">SMS</button>
+            </div>
+        </span>
+
+
+
+
+        <div class="in-actions" style="float:right">
+            <button type="button" id="btn-funil" class="in-ghost">🗺️ Visualizar funil</button>
+
+            <!-- Botão + dropdown -->
+            <div class="lis-newcontact">
+                <button id="lis-new-btn" class="lis-btn-split" type="button" aria-expanded="false"
+                    aria-controls="lis-new-menu">
+                    <span class="lis-btn-main">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill="currentColor"
+                                d="M12 5.25a.75.75 0 0 1 .75.75v5.25H18a.75.75 0 0 1 0 1.5h-5.25V18a.75.75 0 0 1-1.5 0v-5.25H6a.75.75 0 0 1 0-1.5h5.25V6a.75.75 0 0 1 .75-.75Z">
+                            </path>
+                        </svg>
+
+                        Nova mensagem</span>
+                    <span class="lis-btn-caret">▾</span>
+                </button>
+
+                <div id="lis-new-menu" class="lis-menu" role="menu" aria-label="Criar/Importar">
+                    <div class="lis-group">Criar</div>
+                    <a class="lis-item" role="menuitem" href="#">
+                        <!-- ícone lista -->
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill="currentColor"
+                                d="M20.52 3.48A11.9 11.9 0 0 0 12.05 0C5.6 0 .36 5.23.36 11.67a11.6 11.6 0 0 0 1.58 5.9L0 24l6.62-1.92a11.9 11.9 0 0 0 5.43 1.32c6.44 0 11.68-5.23 11.68-11.67 0-3.12-1.22-6.05-3.22-8.25ZM12.06 21.3c-1.77 0-3.5-.47-5.02-1.35l-.36-.21-3.92 1.14 1.12-3.83-.24-.39a9.6 9.6 0 0 1-1.47-5.19c0-5.3 4.31-9.61 9.62-9.61 2.56 0 4.96.99 6.77 2.8a9.47 9.47 0 0 1 2.85 6.8c0 5.3-4.31 9.64-9.64 9.64Zm5.52-7.17c-.3-.15-1.77-.86-2.05-.96-.28-.1-.49-.15-.7.15-.2.3-.8.95-.98 1.15-.18.2-.36.23-.66.08-.3-.15-1.25-.46-2.39-1.46-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.47.13-.62.14-.14.3-.36.46-.54.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.54-.08-.15-.7-1.68-.96-2.3-.25-.6-.5-.52-.7-.53h-.6c-.2 0-.54.08-.83.38-.3.3-1.1 1.08-1.1 2.63 0 1.55 1.13 3.05 1.3 3.25.15.2 2.23 3.4 5.4 4.77.76.33 1.36.52 1.82.66.77.25 1.47.21 2.02.13.62-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.08-.12-.28-.2-.58-.35Z">
+                            </path>
+                        </svg>
+
+                        <span>Whatsapp</span>
+                    </a>
+
+                    <a class="lis-item" role="menuitem" href="#">
+                        <!-- ícone troféu -->
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill="currentColor"
+                                d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 2L12 12 4 6h16ZM4 18V8l8 6 8-6v10H4Z">
+                            </path>
+                        </svg>
+
+                        <span>E-mail</span>
+                    </a>
+
+                    <a class="lis-item" role="menuitem" href="#">
+                        <!-- ícone troféu -->
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill="currentColor"
+                                d="M17 1H7a3 3 0 0 0-3 3v16l5-4h8a3 3 0 0 0 3-3V4a3 3 0 0 0-3-3Zm1 12a1 1 0 0 1-1 1H8.2L6 15.6V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v9ZM8 7h8v2H8V7Zm0 3h6v2H8v-2Z">
+                            </path>
+                        </svg>
+
+                        <span>SMS</span>
+                    </a>
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </h2>
+
+
+
+    <!-- Filtros -->
+
+
+
+
+    <div class="lis-tabs in-chipset" id="in-chipset" role="tablist" aria-label="Filtros">
+        <div class="lis-tab in-chip is-active" data-category="todos">Todos</div>
+        <div class="lis-tab in-chip" data-category="carrinho">Carrinho</div>
+        <div class="lis-tab in-chip" data-category="pix">Pix</div>
+        <div class="lis-tab in-chip" data-category="boleto">Boleto</div>
+        <div class="lis-tab in-chip" data-category="cartao">Cartão Recusado</div>
+        <div class="lis-tab in-chip" data-category="posvendas">Pós Vendas</div>
+        <div class="lis-tab in-chip" data-category="rastreio">Rastreio</div>
+
+
+    </div>
+
+    <div class="in-inline">
+
+        <label for="switch-texto" style="cursor:pointer">
+            <div id="in-only-active" class="in-switch" role="switch" aria-checked="false"
+                title="Ver somente regras ativas"><input type="radio" id="switch-texto" style="display:none; "></div>
+            <span class="in-muted" style="margin-left:5px; ">ver somente regras ativas (12)</span>
+        </label>
+    </div>
+
+    <!-- Cards (TODAS CATEGORIAS x 3 CANAIS) -->
+    <div class="in-cards is-all" id="in-cards">
+
+        <!-- =================== CARRINHO (3 mensagens: 1m, 60m, 24h) =================== -->
+        <!-- WhatsApp -->
+        <article class="in-card" data-parent="whatsapp" data-category="carrinho" data-sub="carrinho">
+            <header class="in-card-head">
+                <div>
+                    <div class="in-card-title">Carrinho — WhatsApp</div>
+                    <div class="in-sub">Recuperação por WhatsApp.</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:center"><span class="in-badge" data-counter="">2
+                        ativos</span><button class="in-btn" data-toggle-all="" style="border:0px;">
+                        <div class="in-switch in-switch-sm" aria-checked="false"></div>
+                    </button></div>
+            </header>
+            <div class="in-table">
+                <div class="in-th">Mensagem</div>
+                <div class="in-th">Tempo de envio</div>
+                <div class="in-th">Número WhatsApp</div>
+                <div class="in-th">Status</div>
+
+                <div class="in-row" data-row="" data-message="Reserva confirmada">
+                    <div class="in-td">Reserva confirmada</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%">
+                            <select class="in-select">
+                                <option>1 minuto</option>
+                                <option selected="">5 minutos</option>
+                                <option>60 minutos</option>
+                                <option>24 horas</option>
+                            </select>
+                            <input class="in-num" type="number" min="1" max="9" step="1" value="1">
+                        </div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>Selecione</option>
+                            <option>+55 11 99999-0001</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm is-on"></div>
+                    </div>
+                </div>
+
+                <div class="in-row" data-row="" data-message="Itens aguardando" style="">
+                    <div class="in-td">Itens aguardando</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%">
+                            <select class="in-select">
+                                <option>1 minuto</option>
+                                <option selected="">60 minutos</option>
+                                <option>24 horas</option>
+                            </select>
+                            <input class="in-num" type="number" min="1" max="9" step="1" value="2">
+                        </div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>Selecione</option>
+                            <option>+55 11 99999-0002</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm"></div>
+                    </div>
+                </div>
+
+                <div class="in-row" data-row="" data-message="Última chamada">
+                    <div class="in-td">Última chamada</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%">
+                            <select class="in-select">
+                                <option>1 minuto</option>
+                                <option>60 minutos</option>
+                                <option selected="">24 horas</option>
+                            </select>
+                            <input class="in-num" type="number" min="1" max="9" step="1" value="3">
+                        </div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>Selecione</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm is-on"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="in-empty" hidden="">Nenhuma regra ativa nesta visão.</div>
+        </article>
+
+        <!-- E-mail -->
+        <article class="in-card" data-parent="email" data-category="carrinho" data-sub="carrinho" hidden="">
+            <header class="in-card-head">
+                <div>
+                    <div class="in-card-title">Carrinho — E-mail</div>
+                    <div class="in-sub">Recuperação por E-mail.</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:center"><span class="in-badge" data-counter="">2
+                        ativos</span><button class="in-btn" data-toggle-all="" style="border:0px;">
+                        <div class="in-switch in-switch-sm" aria-checked="false"></div>
+                    </button></div>
+            </header>
+            <div class="in-table">
+                <div class="in-th">Mensagem</div>
+                <div class="in-th">Tempo de envio</div>
+                <div class="in-th">Remetente</div>
+                <div class="in-th">Status</div>
+
+                <div class="in-row" data-row="" data-message="Recuperação A">
+                    <div class="in-td">Recuperação A</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%">
+                            <select class="in-select">
+                                <option selected="">1 minuto</option>
+                                <option>60 minutos</option>
+                                <option>24 horas</option>
+                            </select>
+                            <input class="in-num" type="number" min="1" max="9" step="1" value="1">
+                        </div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>no-reply@loja.com</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm is-on"></div>
+                    </div>
+                </div>
+
+                <div class="in-row" data-row="" data-message="Recuperação B">
+                    <div class="in-td">Recuperação B</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%">
+                            <select class="in-select">
+                                <option>1 minuto</option>
+                                <option selected="">60 minutos</option>
+                                <option>24 horas</option>
+                            </select>
+                            <input class="in-num" type="number" min="1" max="9" step="1" value="2">
+                        </div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>no-reply@loja.com</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm is-on"></div>
+                    </div>
+                </div>
+
+                <div class="in-row" data-row="" data-message="Última chance">
+                    <div class="in-td">Última chance</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%">
+                            <select class="in-select">
+                                <option>1 minuto</option>
+                                <option>60 minutos</option>
+                                <option selected="">24 horas</option>
+                            </select>
+                            <input class="in-num" type="number" min="1" max="9" step="1" value="3">
+                        </div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>no-reply@loja.com</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="in-empty" hidden="">Nenhuma regra ativa nesta visão.</div>
+        </article>
+
+        <!-- SMS -->
+        <article class="in-card" data-parent="sms" data-category="carrinho" data-sub="carrinho" hidden="">
+            <header class="in-card-head">
+                <div>
+                    <div class="in-card-title">Carrinho — SMS</div>
+                    <div class="in-sub">Recuperação por SMS.</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:center"><span class="in-badge" data-counter="">1
+                        ativos</span><button class="in-btn" data-toggle-all="" style="border:0px;">
+                        <div class="in-switch in-switch-sm" aria-checked="false"></div>
+                    </button></div>
+            </header>
+            <div class="in-table">
+                <div class="in-th">Mensagem</div>
+                <div class="in-th">Tempo de envio</div>
+                <div class="in-th">Remetente</div>
+                <div class="in-th">Status</div>
+
+                <div class="in-row" data-row="" data-message="SMS 1">
+                    <div class="in-td">SMS 1</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%">
+                            <select class="in-select">
+                                <option selected="">1 minuto</option>
+                                <option>60 minutos</option>
+                                <option>24 horas</option>
+                            </select>
+                            <input class="in-num" type="number" min="1" max="9" step="1" value="1">
+                        </div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>SeuNome</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm"></div>
+                    </div>
+                </div>
+
+                <div class="in-row" data-row="" data-message="SMS 2">
+                    <div class="in-td">SMS 2</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%">
+                            <select class="in-select">
+                                <option>1 minuto</option>
+                                <option selected="">60 minutos</option>
+                                <option>24 horas</option>
+                            </select>
+                            <input class="in-num" type="number" min="1" max="9" step="1" value="2">
+                        </div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>SeuNome</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm is-on"></div>
+                    </div>
+                </div>
+
+                <div class="in-row" data-row="" data-message="SMS 3">
+                    <div class="in-td">SMS 3</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%">
+                            <select class="in-select">
+                                <option>1 minuto</option>
+                                <option>60 minutos</option>
+                                <option selected="">24 horas</option>
+                            </select>
+                            <input class="in-num" type="number" min="1" max="9" step="1" value="3">
+                        </div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>SeuNome</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="in-empty" hidden="">Nenhuma regra ativa nesta visão.</div>
+        </article>
+
+        <!-- =================== PIX =================== -->
+        <!-- Pendente: 1m, 5m | Vencido: 60m -->
+        <!-- WhatsApp -->
+        <article class="in-card" data-parent="whatsapp" data-category="pix" data-sub="pix_pendente">
+            <header class="in-card-head">
+                <div>
+                    <div class="in-card-title">Pix pendente — WhatsApp</div>
+                    <div class="in-sub">Lembretes de Pix.</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:center"><span class="in-badge" data-counter="">1
+                        ativos</span><button class="in-btn" data-toggle-all="" style="border:0px;">
+                        <div class="in-switch in-switch-sm" aria-checked="false"></div>
+                    </button></div>
+            </header>
+            <div class="in-table">
+                <div class="in-th">Mensagem</div>
+                <div class="in-th">Tempo de envio</div>
+                <div class="in-th">Número WhatsApp</div>
+                <div class="in-th">Status</div>
+
+                <div class="in-row" data-row="" data-message="Pix pendente — lembrete">
+                    <div class="in-td">Pix pendente — lembrete</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%">
+                            <select class="in-select">
+                                <option selected="">1 minuto</option>
+                                <option>5 minutos</option>
+                                <option>60 minutos</option>
+                            </select>
+                            <input class="in-num" type="number" min="1" max="9" step="1" value="1">
+                        </div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>Selecione</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm is-on"></div>
+                    </div>
+                </div>
+
+                <div class="in-row" data-row="" data-message="Pix pendente — reforço" style="">
+                    <div class="in-td">Pix pendente — reforço</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%">
+                            <select class="in-select">
+                                <option>1 minuto</option>
+                                <option selected="">5 minutos</option>
+                                <option>60 minutos</option>
+                            </select>
+                            <input class="in-num" type="number" min="1" max="9" step="1" value="2">
+                        </div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>Selecione</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="in-empty" hidden="">Nenhuma regra ativa nesta visão.</div>
+        </article>
+
+        <article class="in-card" data-parent="whatsapp" data-category="pix" data-sub="pix_vencido">
+            <header class="in-card-head">
+                <div>
+                    <div class="in-card-title">Pix vencido — WhatsApp</div>
+                    <div class="in-sub">Cobrança após vencimento.</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:center"><span class="in-badge" data-counter="">1
+                        ativos</span><button class="in-btn" data-toggle-all="" style="border:0px;">
+                        <div class="in-switch in-switch-sm" aria-checked="false"></div>
+                    </button></div>
+            </header>
+            <div class="in-table">
+                <div class="in-th">Mensagem</div>
+                <div class="in-th">Tempo de envio</div>
+                <div class="in-th">Número WhatsApp</div>
+                <div class="in-th">Status</div>
+
+                <div class="in-row" data-row="" data-message="Pix vencido — atualização">
+                    <div class="in-td">Pix vencido — atualização</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%">
+                            <select class="in-select">
+                                <option>1 minuto</option>
+                                <option>5 minutos</option>
+                                <option selected="">60 minutos</option>
+                            </select>
+                            <input class="in-num" type="number" min="1" max="9" step="1" value="1">
+                        </div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>Selecione</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm is-on"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="in-empty" hidden="">Nenhuma regra ativa nesta visão.</div>
+        </article>
+
+        <!-- E-mail -->
+        <article class="in-card" data-parent="email" data-category="pix" data-sub="pix_pendente" hidden="">
+            <header class="in-card-head">
+                <div>
+                    <div class="in-card-title">Pix pendente — E-mail</div>
+                    <div class="in-sub">Lembretes de Pix.</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:center"><span class="in-badge" data-counter="">1
+                        ativos</span><button class="in-btn" data-toggle-all="" style="border:0px;">
+                        <div class="in-switch in-switch-sm" aria-checked="false"></div>
+                    </button></div>
+            </header>
+            <div class="in-table">
+                <div class="in-th">Mensagem</div>
+                <div class="in-th">Tempo de envio</div>
+                <div class="in-th">Remetente</div>
+                <div class="in-th">Status</div>
+
+                <div class="in-row" data-row="" data-message="Pix pendente — lembrete">
+                    <div class="in-td">Pix pendente — lembrete</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%">
+                            <select class="in-select">
+                                <option selected="">1 minuto</option>
+                                <option>5 minutos</option>
+                                <option>60 minutos</option>
+                            </select>
+                            <input class="in-num" type="number" min="1" max="9" step="1" value="1">
+                        </div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>no-reply@loja.com</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm"></div>
+                    </div>
+                </div>
+
+                <div class="in-row" data-row="" data-message="Pix pendente — reforço">
+                    <div class="in-td">Pix pendente — reforço</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%">
+                            <select class="in-select">
+                                <option>1 minuto</option>
+                                <option selected="">5 minutos</option>
+                                <option>60 minutos</option>
+                            </select>
+                            <input class="in-num" type="number" min="1" max="9" step="1" value="2">
+                        </div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>no-reply@loja.com</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm is-on"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="in-empty" hidden="">Nenhuma regra ativa nesta visão.</div>
+        </article>
+
+        <article class="in-card" data-parent="email" data-category="pix" data-sub="pix_vencido" hidden="">
+            <header class="in-card-head">
+                <div>
+                    <div class="in-card-title">Pix vencido — E-mail</div>
+                    <div class="in-sub">Cobrança após vencimento.</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:center"><span class="in-badge" data-counter="">0
+                        ativos</span><button class="in-btn" data-toggle-all="" style="border:0px;">
+                        <div class="in-switch in-switch-sm" aria-checked="false"></div>
+                    </button></div>
+            </header>
+            <div class="in-table">
+                <div class="in-th">Mensagem</div>
+                <div class="in-th">Tempo de envio</div>
+                <div class="in-th">Remetente</div>
+                <div class="in-th">Status</div>
+
+                <div class="in-row" data-row="" data-message="Pix vencido — atualização">
+                    <div class="in-td">Pix vencido — atualização</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%">
+                            <select class="in-select">
+                                <option>1 minuto</option>
+                                <option>5 minutos</option>
+                                <option selected="">60 minutos</option>
+                            </select>
+                            <input class="in-num" type="number" min="1" max="9" step="1" value="1">
+                        </div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>no-reply@loja.com</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="in-empty" hidden="">Nenhuma regra ativa nesta visão.</div>
+        </article>
+
+        <!-- SMS -->
+        <article class="in-card" data-parent="sms" data-category="pix" data-sub="pix_pendente" hidden="">
+            <header class="in-card-head">
+                <div>
+                    <div class="in-card-title">Pix pendente — SMS</div>
+                    <div class="in-sub">Lembretes de Pix.</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:center"><span class="in-badge" data-counter="">1
+                        ativos</span><button class="in-btn" data-toggle-all="" style="border:0px;">
+                        <div class="in-switch in-switch-sm" aria-checked="false"></div>
+                    </button></div>
+            </header>
+            <div class="in-table">
+                <div class="in-th">Mensagem</div>
+                <div class="in-th">Tempo de envio</div>
+                <div class="in-th">Remetente</div>
+                <div class="in-th">Status</div>
+
+                <div class="in-row" data-row="" data-message="Pix pendente — lembrete">
+                    <div class="in-td">Pix pendente — lembrete</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%">
+                            <select class="in-select">
+                                <option selected="">1 minuto</option>
+                                <option>5 minutos</option>
+                                <option>60 minutos</option>
+                            </select>
+                            <input class="in-num" type="number" min="1" max="9" step="1" value="1">
+                        </div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>SeuNome</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm is-on"></div>
+                    </div>
+                </div>
+
+                <div class="in-row" data-row="" data-message="Pix pendente — reforço">
+                    <div class="in-td">Pix pendente — reforço</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%">
+                            <select class="in-select">
+                                <option>1 minuto</option>
+                                <option selected="">5 minutos</option>
+                                <option>60 minutos</option>
+                            </select>
+                            <input class="in-num" type="number" min="1" max="9" step="1" value="2">
+                        </div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>SeuNome</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="in-empty" hidden="">Nenhuma regra ativa nesta visão.</div>
+        </article>
+
+        <article class="in-card" data-parent="sms" data-category="pix" data-sub="pix_vencido" hidden="">
+            <header class="in-card-head">
+                <div>
+                    <div class="in-card-title">Pix vencido — SMS</div>
+                    <div class="in-sub">Cobrança após vencimento.</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:center"><span class="in-badge" data-counter="">1
+                        ativos</span><button class="in-btn" data-toggle-all="" style="border:0px;">
+                        <div class="in-switch in-switch-sm" aria-checked="false"></div>
+                    </button></div>
+            </header>
+            <div class="in-table">
+                <div class="in-th">Mensagem</div>
+                <div class="in-th">Tempo de envio</div>
+                <div class="in-th">Remetente</div>
+                <div class="in-th">Status</div>
+
+                <div class="in-row" data-row="" data-message="Pix vencido — atualização">
+                    <div class="in-td">Pix vencido — atualização</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%">
+                            <select class="in-select">
+                                <option>1 minuto</option>
+                                <option>5 minutos</option>
+                                <option selected="">60 minutos</option>
+                            </select>
+                            <input class="in-num" type="number" min="1" max="9" step="1" value="1">
+                        </div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>SeuNome</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm is-on"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="in-empty" hidden="">Nenhuma regra ativa nesta visão.</div>
+        </article>
+
+        <!-- =================== BOLETO =================== -->
+        <!-- pendente 1m | vencendo 1m | vencido 4 dias 09:00 -->
+        <!-- WhatsApp -->
+        <article class="in-card" data-parent="whatsapp" data-category="boleto" data-sub="boleto_pendente">
+            <header class="in-card-head">
+                <div>
+                    <div class="in-card-title">Boleto pendente — WhatsApp</div>
+                    <div class="in-sub">Lembretes de boleto.</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:center"><span class="in-badge" data-counter="">1
+                        ativos</span><button class="in-btn" data-toggle-all="" style="border:0px;">
+                        <div class="in-switch in-switch-sm" aria-checked="false"></div>
+                    </button></div>
+            </header>
+            <div class="in-table">
+                <div class="in-th">Mensagem</div>
+                <div class="in-th">Tempo de envio</div>
+                <div class="in-th">Número WhatsApp</div>
+                <div class="in-th">Status</div>
+                <div class="in-row" data-row="" data-message="Boleto pendente — lembrete">
+                    <div class="in-td">Boleto pendente — lembrete</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%"><select class="in-select">
+                                <option selected="">1 minuto</option>
+                                <option>5 minutos</option>
+                                <option>60 minutos</option>
+                                <option>24 horas</option>
+                            </select><input class="in-num" type="number" min="1" max="9" step="1" value="1"></div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>Selecione</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm is-on"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="in-empty" hidden="">Nenhuma regra ativa nesta visão.</div>
+        </article>
+
+        <article class="in-card" data-parent="whatsapp" data-category="boleto" data-sub="boleto_vencendo" style="">
+            <header class="in-card-head">
+                <div>
+                    <div class="in-card-title">Boleto vencendo — WhatsApp</div>
+                    <div class="in-sub">Aviso de vencimento.</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:center"><span class="in-badge" data-counter="">0
+                        ativos</span><button class="in-btn" data-toggle-all="" style="border:0px;">
+                        <div class="in-switch in-switch-sm" aria-checked="false"></div>
+                    </button></div>
+            </header>
+            <div class="in-table">
+                <div class="in-th">Mensagem</div>
+                <div class="in-th">Tempo de envio</div>
+                <div class="in-th">Número WhatsApp</div>
+                <div class="in-th">Status</div>
+                <div class="in-row" data-row="" data-message="Boleto vencendo — lembrete" style="">
+                    <div class="in-td">Boleto vencendo — lembrete</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%"><select class="in-select">
+                                <option selected="">1 minuto</option>
+                                <option>5 minutos</option>
+                                <option>60 minutos</option>
+                            </select><input class="in-num" type="number" min="1" max="9" step="1" value="1"></div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>Selecione</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="in-empty" hidden="">Nenhuma regra ativa nesta visão.</div>
+        </article>
+
+        <article class="in-card" data-parent="whatsapp" data-category="boleto" data-sub="boleto_vencido">
+            <header class="in-card-head">
+                <div>
+                    <div class="in-card-title">Boleto vencido — WhatsApp</div>
+                    <div class="in-sub">Cobrança pós vencimento.</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:center"><span class="in-badge" data-counter="">1
+                        ativos</span><button class="in-btn" data-toggle-all="" style="border:0px;">
+                        <div class="in-switch in-switch-sm" aria-checked="false"></div>
+                    </button></div>
+            </header>
+            <div class="in-table">
+                <div class="in-th">Mensagem</div>
+                <div class="in-th">Tempo de envio</div>
+                <div class="in-th">Número WhatsApp</div>
+                <div class="in-th">Status</div>
+                <div class="in-row" data-row="" data-message="Boleto vencido — aviso">
+                    <div class="in-td">Boleto vencido — aviso</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%"><select class="in-select">
+                                <option>1 minuto</option>
+                                <option>5 minutos</option>
+                                <option>60 minutos</option>
+                                <option selected="">4 dias 09:00</option>
+                            </select><input class="in-num" type="number" min="1" max="9" step="1" value="1"></div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>Selecione</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm is-on"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="in-empty" hidden="">Nenhuma regra ativa nesta visão.</div>
+        </article>
+
+        <!-- E-mail -->
+        <article class="in-card" data-parent="email" data-category="boleto" data-sub="boleto_pendente" hidden="">
+            <header class="in-card-head">
+                <div>
+                    <div class="in-card-title">Boleto pendente — E-mail</div>
+                    <div class="in-sub">Lembretes de boleto.</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:center"><span class="in-badge" data-counter="">0
+                        ativos</span><button class="in-btn" data-toggle-all="" style="border:0px;">
+                        <div class="in-switch in-switch-sm" aria-checked="false"></div>
+                    </button></div>
+            </header>
+            <div class="in-table">
+                <div class="in-th">Mensagem</div>
+                <div class="in-th">Tempo de envio</div>
+                <div class="in-th">Remetente</div>
+                <div class="in-th">Status</div>
+                <div class="in-row" data-row="" data-message="Boleto pendente — lembrete">
+                    <div class="in-td">Boleto pendente — lembrete</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%"><select class="in-select">
+                                <option selected="">1 minuto</option>
+                                <option>5 minutos</option>
+                                <option>60 minutos</option>
+                                <option>24 horas</option>
+                            </select><input class="in-num" type="number" min="1" max="9" step="1" value="1"></div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>no-reply@loja.com</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="in-empty" hidden="">Nenhuma regra ativa nesta visão.</div>
+        </article>
+
+        <article class="in-card" data-parent="email" data-category="boleto" data-sub="boleto_vencendo" hidden="">
+            <header class="in-card-head">
+                <div>
+                    <div class="in-card-title">Boleto vencendo — E-mail</div>
+                    <div class="in-sub">Aviso de vencimento.</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:center"><span class="in-badge" data-counter="">1
+                        ativos</span><button class="in-btn" data-toggle-all="" style="border:0px;">
+                        <div class="in-switch in-switch-sm" aria-checked="false"></div>
+                    </button></div>
+            </header>
+            <div class="in-table">
+                <div class="in-th">Mensagem</div>
+                <div class="in-th">Tempo de envio</div>
+                <div class="in-th">Remetente</div>
+                <div class="in-th">Status</div>
+                <div class="in-row" data-row="" data-message="Boleto vencendo — lembrete">
+                    <div class="in-td">Boleto vencendo — lembrete</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%"><select class="in-select">
+                                <option selected="">1 minuto</option>
+                                <option>5 minutos</option>
+                                <option>60 minutos</option>
+                            </select><input class="in-num" type="number" min="1" max="9" step="1" value="1"></div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>no-reply@loja.com</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm is-on"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="in-empty" hidden="">Nenhuma regra ativa nesta visão.</div>
+        </article>
+
+        <article class="in-card" data-parent="email" data-category="boleto" data-sub="boleto_vencido" hidden="">
+            <header class="in-card-head">
+                <div>
+                    <div class="in-card-title">Boleto vencido — E-mail</div>
+                    <div class="in-sub">Cobrança pós vencimento.</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:center"><span class="in-badge" data-counter="">0
+                        ativos</span><button class="in-btn" data-toggle-all="" style="border:0px;">
+                        <div class="in-switch in-switch-sm" aria-checked="false"></div>
+                    </button></div>
+            </header>
+            <div class="in-table">
+                <div class="in-th">Mensagem</div>
+                <div class="in-th">Tempo de envio</div>
+                <div class="in-th">Remetente</div>
+                <div class="in-th">Status</div>
+                <div class="in-row" data-row="" data-message="Boleto vencido — aviso">
+                    <div class="in-td">Boleto vencido — aviso</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%"><select class="in-select">
+                                <option>1 minuto</option>
+                                <option>5 minutos</option>
+                                <option>60 minutos</option>
+                                <option selected="">4 dias 09:00</option>
+                            </select><input class="in-num" type="number" min="1" max="9" step="1" value="1"></div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>no-reply@loja.com</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="in-empty" hidden="">Nenhuma regra ativa nesta visão.</div>
+        </article>
+
+        <!-- SMS -->
+        <article class="in-card" data-parent="sms" data-category="boleto" data-sub="boleto_pendente" hidden="">
+            <header class="in-card-head">
+                <div>
+                    <div class="in-card-title">Boleto pendente — SMS</div>
+                    <div class="in-sub">Lembretes de boleto.</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:center"><span class="in-badge" data-counter="">0
+                        ativos</span><button class="in-btn" data-toggle-all="" style="border:0px;">
+                        <div class="in-switch in-switch-sm" aria-checked="false"></div>
+                    </button></div>
+            </header>
+            <div class="in-table">
+                <div class="in-th">Mensagem</div>
+                <div class="in-th">Tempo de envio</div>
+                <div class="in-th">Remetente</div>
+                <div class="in-th">Status</div>
+                <div class="in-row" data-row="" data-message="Boleto pendente — lembrete">
+                    <div class="in-td">Boleto pendente — lembrete</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%"><select class="in-select">
+                                <option selected="">1 minuto</option>
+                                <option>5 minutos</option>
+                                <option>60 minutos</option>
+                                <option>24 horas</option>
+                            </select><input class="in-num" type="number" min="1" max="9" step="1" value="1"></div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>SeuNome</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="in-empty" hidden="">Nenhuma regra ativa nesta visão.</div>
+        </article>
+
+        <article class="in-card" data-parent="sms" data-category="boleto" data-sub="boleto_vencendo" hidden="">
+            <header class="in-card-head">
+                <div>
+                    <div class="in-card-title">Boleto vencendo — SMS</div>
+                    <div class="in-sub">Aviso de vencimento.</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:center"><span class="in-badge" data-counter="">1
+                        ativos</span><button class="in-btn" data-toggle-all="" style="border:0px;">
+                        <div class="in-switch in-switch-sm" aria-checked="false"></div>
+                    </button></div>
+            </header>
+            <div class="in-table">
+                <div class="in-th">Mensagem</div>
+                <div class="in-th">Tempo de envio</div>
+                <div class="in-th">Remetente</div>
+                <div class="in-th">Status</div>
+                <div class="in-row" data-row="" data-message="Boleto vencendo — lembrete">
+                    <div class="in-td">Boleto vencendo — lembrete</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%"><select class="in-select">
+                                <option selected="">1 minuto</option>
+                                <option>5 minutos</option>
+                                <option>60 minutos</option>
+                            </select><input class="in-num" type="number" min="1" max="9" step="1" value="1"></div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>SeuNome</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm is-on"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="in-empty" hidden="">Nenhuma regra ativa nesta visão.</div>
+        </article>
+
+        <article class="in-card" data-parent="sms" data-category="boleto" data-sub="boleto_vencido" hidden="">
+            <header class="in-card-head">
+                <div>
+                    <div class="in-card-title">Boleto vencido — SMS</div>
+                    <div class="in-sub">Cobrança pós vencimento.</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:center"><span class="in-badge" data-counter="">0
+                        ativos</span><button class="in-btn" data-toggle-all="" style="border:0px;">
+                        <div class="in-switch in-switch-sm" aria-checked="false"></div>
+                    </button></div>
+            </header>
+            <div class="in-table">
+                <div class="in-th">Mensagem</div>
+                <div class="in-th">Tempo de envio</div>
+                <div class="in-th">Remetente</div>
+                <div class="in-th">Status</div>
+                <div class="in-row" data-row="" data-message="Boleto vencido — aviso">
+                    <div class="in-td">Boleto vencido — aviso</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%"><select class="in-select">
+                                <option>1 minuto</option>
+                                <option>5 minutos</option>
+                                <option>60 minutos</option>
+                                <option selected="">4 dias 09:00</option>
+                            </select><input class="in-num" type="number" min="1" max="9" step="1" value="1"></div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>SeuNome</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="in-empty" hidden="">Nenhuma regra ativa nesta visão.</div>
+        </article>
+
+        <!-- =================== CARTÃO RECUSADO (1m) =================== -->
+        <!-- WhatsApp -->
+        <article class="in-card" data-parent="whatsapp" data-category="cartao" data-sub="cartao_recusado">
+            <header class="in-card-head">
+                <div>
+                    <div class="in-card-title">Cartão recusado — WhatsApp</div>
+                    <div class="in-sub">Tentativa de nova cobrança.</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:center"><span class="in-badge" data-counter="">1
+                        ativos</span><button class="in-btn" data-toggle-all="" style="border:0px;">
+                        <div class="in-switch in-switch-sm" aria-checked="false"></div>
+                    </button></div>
+            </header>
+            <div class="in-table">
+                <div class="in-th">Mensagem</div>
+                <div class="in-th">Tempo de envio</div>
+                <div class="in-th">Número WhatsApp</div>
+                <div class="in-th">Status</div>
+                <div class="in-row" data-row="" data-message="Cartão recusado — tentar novamente">
+                    <div class="in-td">Cartão recusado — tentar novamente</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%"><select class="in-select">
+                                <option selected="">1 minuto</option>
+                                <option>5 minutos</option>
+                                <option>60 minutos</option>
+                            </select><input class="in-num" type="number" min="1" max="9" step="1" value="1"></div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>Selecione</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm is-on"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="in-empty" hidden="">Nenhuma regra ativa nesta visão.</div>
+        </article>
+
+        <!-- E-mail -->
+        <article class="in-card" data-parent="email" data-category="cartao" data-sub="cartao_recusado" hidden="">
+            <header class="in-card-head">
+                <div>
+                    <div class="in-card-title">Cartão recusado — E-mail</div>
+                    <div class="in-sub">Tentativa de nova cobrança.</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:center"><span class="in-badge" data-counter="">0
+                        ativos</span><button class="in-btn" data-toggle-all="" style="border:0px;">
+                        <div class="in-switch in-switch-sm" aria-checked="false"></div>
+                    </button></div>
+            </header>
+            <div class="in-table">
+                <div class="in-th">Mensagem</div>
+                <div class="in-th">Tempo de envio</div>
+                <div class="in-th">Remetente</div>
+                <div class="in-th">Status</div>
+                <div class="in-row" data-row="" data-message="Cartão recusado — tentar novamente">
+                    <div class="in-td">Cartão recusado — tentar novamente</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%"><select class="in-select">
+                                <option selected="">1 minuto</option>
+                                <option>5 minutos</option>
+                                <option>60 minutos</option>
+                            </select><input class="in-num" type="number" min="1" max="9" step="1" value="1"></div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>no-reply@loja.com</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="in-empty" hidden="">Nenhuma regra ativa nesta visão.</div>
+        </article>
+
+        <!-- SMS -->
+        <article class="in-card" data-parent="sms" data-category="cartao" data-sub="cartao_recusado" hidden="">
+            <header class="in-card-head">
+                <div>
+                    <div class="in-card-title">Cartão recusado — SMS</div>
+                    <div class="in-sub">Tentativa de nova cobrança.</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:center"><span class="in-badge" data-counter="">1
+                        ativos</span><button class="in-btn" data-toggle-all="" style="border:0px;">
+                        <div class="in-switch in-switch-sm" aria-checked="false"></div>
+                    </button></div>
+            </header>
+            <div class="in-table">
+                <div class="in-th">Mensagem</div>
+                <div class="in-th">Tempo de envio</div>
+                <div class="in-th">Remetente</div>
+                <div class="in-th">Status</div>
+                <div class="in-row" data-row="" data-message="Cartão recusado — tentar novamente">
+                    <div class="in-td">Cartão recusado — tentar novamente</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%"><select class="in-select">
+                                <option selected="">1 minuto</option>
+                                <option>5 minutos</option>
+                                <option>60 minutos</option>
+                            </select><input class="in-num" type="number" min="1" max="9" step="1" value="1"></div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>SeuNome</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm is-on"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="in-empty" hidden="">Nenhuma regra ativa nesta visão.</div>
+        </article>
+
+        <!-- =================== PÓS VENDAS (1m) =================== -->
+        <!-- WhatsApp -->
+        <article class="in-card" data-parent="whatsapp" data-category="posvendas" data-sub="pos_vendas" style="">
+            <header class="in-card-head">
+                <div>
+                    <div class="in-card-title">Pós Vendas — WhatsApp</div>
+                    <div class="in-sub">Follow-up.</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:center"><span class="in-badge" data-counter="">0
+                        ativos</span><button class="in-btn" data-toggle-all="" style="border:0px;">
+                        <div class="in-switch in-switch-sm" aria-checked="false"></div>
+                    </button></div>
+            </header>
+            <div class="in-table">
+                <div class="in-th">Mensagem</div>
+                <div class="in-th">Tempo de envio</div>
+                <div class="in-th">Número WhatsApp</div>
+                <div class="in-th">Status</div>
+                <div class="in-row" data-row="" data-message="Pós-vendas — agradecimento" style="">
+                    <div class="in-td">Pós-vendas — agradecimento</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%"><select class="in-select">
+                                <option selected="">1 minuto</option>
+                                <option>5 minutos</option>
+                                <option>60 minutos</option>
+                            </select><input class="in-num" type="number" min="1" max="9" step="1" value="1"></div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>Selecione</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="in-empty" hidden="">Nenhuma regra ativa nesta visão.</div>
+        </article>
+
+        <!-- E-mail -->
+        <article class="in-card" data-parent="email" data-category="posvendas" data-sub="pos_vendas" hidden="">
+            <header class="in-card-head">
+                <div>
+                    <div class="in-card-title">Pós Vendas — E-mail</div>
+                    <div class="in-sub">Follow-up.</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:center"><span class="in-badge" data-counter="">1
+                        ativos</span><button class="in-btn" data-toggle-all="" style="border:0px;">
+                        <div class="in-switch in-switch-sm" aria-checked="false"></div>
+                    </button></div>
+            </header>
+            <div class="in-table">
+                <div class="in-th">Mensagem</div>
+                <div class="in-th">Tempo de envio</div>
+                <div class="in-th">Remetente</div>
+                <div class="in-th">Status</div>
+                <div class="in-row" data-row="" data-message="Pós-vendas — agradecimento">
+                    <div class="in-td">Pós-vendas — agradecimento</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%"><select class="in-select">
+                                <option selected="">1 minuto</option>
+                                <option>5 minutos</option>
+                                <option>60 minutos</option>
+                            </select><input class="in-num" type="number" min="1" max="9" step="1" value="1"></div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>no-reply@loja.com</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm is-on"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="in-empty" hidden="">Nenhuma regra ativa nesta visão.</div>
+        </article>
+
+        <!-- SMS -->
+        <article class="in-card" data-parent="sms" data-category="posvendas" data-sub="pos_vendas" hidden="">
+            <header class="in-card-head">
+                <div>
+                    <div class="in-card-title">Pós Vendas — SMS</div>
+                    <div class="in-sub">Follow-up.</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:center"><span class="in-badge" data-counter="">0
+                        ativos</span><button class="in-btn" data-toggle-all="" style="border:0px;">
+                        <div class="in-switch in-switch-sm" aria-checked="false"></div>
+                    </button></div>
+            </header>
+            <div class="in-table">
+                <div class="in-th">Mensagem</div>
+                <div class="in-th">Tempo de envio</div>
+                <div class="in-th">Remetente</div>
+                <div class="in-th">Status</div>
+                <div class="in-row" data-row="" data-message="Pós-vendas — agradecimento">
+                    <div class="in-td">Pós-vendas — agradecimento</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%"><select class="in-select">
+                                <option selected="">1 minuto</option>
+                                <option>5 minutos</option>
+                                <option>60 minutos</option>
+                            </select><input class="in-num" type="number" min="1" max="9" step="1" value="1"></div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>SeuNome</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="in-empty" hidden="">Nenhuma regra ativa nesta visão.</div>
+        </article>
+
+        <!-- =================== RASTREIO (5 subcats, 1m) =================== -->
+        <!-- WhatsApp -->
+        <!-- Postado -->
+        <article class="in-card" data-parent="whatsapp" data-category="rastreio" data-sub="postado">
+            <header class="in-card-head">
+                <div>
+                    <div class="in-card-title">Postado — WhatsApp</div>
+                    <div class="in-sub">Atualizações de rastreio.</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:center"><span class="in-badge" data-counter="">1
+                        ativos</span><button class="in-btn" data-toggle-all="" style="border:0px;">
+                        <div class="in-switch in-switch-sm" aria-checked="false"></div>
+                    </button></div>
+            </header>
+            <div class="in-table">
+                <div class="in-th">Mensagem</div>
+                <div class="in-th">Tempo de envio</div>
+                <div class="in-th">Número WhatsApp</div>
+                <div class="in-th">Status</div>
+                <div class="in-row" data-row="" data-message="Postado — atualização">
+                    <div class="in-td">Postado — atualização</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%"><select class="in-select">
+                                <option selected="">1 minuto</option>
+                                <option>5 minutos</option>
+                            </select><input class="in-num" type="number" min="1" max="9" step="1" value="1"></div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>Selecione</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm is-on"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="in-empty" hidden="">Nenhuma regra ativa nesta visão.</div>
+        </article>
+        <!-- Taxado -->
+        <article class="in-card" data-parent="whatsapp" data-category="rastreio" data-sub="taxado" style="">
+            <header class="in-card-head">
+                <div>
+                    <div class="in-card-title">Taxado — WhatsApp</div>
+                    <div class="in-sub">Atualizações de rastreio.</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:center"><span class="in-badge" data-counter="">0
+                        ativos</span><button class="in-btn" data-toggle-all="" style="border:0px;">
+                        <div class="in-switch in-switch-sm" aria-checked="false"></div>
+                    </button></div>
+            </header>
+            <div class="in-table">
+                <div class="in-th">Mensagem</div>
+                <div class="in-th">Tempo de envio</div>
+                <div class="in-th">Número WhatsApp</div>
+                <div class="in-th">Status</div>
+                <div class="in-row" data-row="" data-message="Taxado — atualização" style="">
+                    <div class="in-td">Taxado — atualização</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%"><select class="in-select">
+                                <option selected="">1 minuto</option>
+                                <option>5 minutos</option>
+                            </select><input class="in-num" type="number" min="1" max="9" step="1" value="1"></div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>Selecione</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="in-empty" hidden="">Nenhuma regra ativa nesta visão.</div>
+        </article>
+        <!-- Retirada -->
+        <article class="in-card" data-parent="whatsapp" data-category="rastreio" data-sub="retirada" style="">
+            <header class="in-card-head">
+                <div>
+                    <div class="in-card-title">Retirada — WhatsApp</div>
+                    <div class="in-sub">Atualizações de rastreio.</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:center"><span class="in-badge" data-counter="">0
+                        ativos</span><button class="in-btn" data-toggle-all="" style="border:0px;">
+                        <div class="in-switch in-switch-sm" aria-checked="false"></div>
+                    </button></div>
+            </header>
+            <div class="in-table">
+                <div class="in-th">Mensagem</div>
+                <div class="in-th">Tempo de envio</div>
+                <div class="in-th">Número WhatsApp</div>
+                <div class="in-th">Status</div>
+                <div class="in-row" data-row="" data-message="Retirada — atualização" style="">
+                    <div class="in-td">Retirada — atualização</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%"><select class="in-select">
+                                <option selected="">1 minuto</option>
+                                <option>5 minutos</option>
+                            </select><input class="in-num" type="number" min="1" max="9" step="1" value="1"></div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>Selecione</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="in-empty" hidden="">Nenhuma regra ativa nesta visão.</div>
+        </article>
+        <!-- Saiu para Entrega -->
+        <article class="in-card" data-parent="whatsapp" data-category="rastreio" data-sub="saiu_entrega">
+            <header class="in-card-head">
+                <div>
+                    <div class="in-card-title">Saiu para entrega — WhatsApp</div>
+                    <div class="in-sub">Atualizações de rastreio.</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:center"><span class="in-badge" data-counter="">1
+                        ativos</span><button class="in-btn" data-toggle-all="" style="border:0px;">
+                        <div class="in-switch in-switch-sm" aria-checked="false"></div>
+                    </button></div>
+            </header>
+            <div class="in-table">
+                <div class="in-th">Mensagem</div>
+                <div class="in-th">Tempo de envio</div>
+                <div class="in-th">Número WhatsApp</div>
+                <div class="in-th">Status</div>
+                <div class="in-row" data-row="" data-message="Saiu para entrega — atualização">
+                    <div class="in-td">Saiu para entrega — atualização</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%"><select class="in-select">
+                                <option selected="">1 minuto</option>
+                                <option>5 minutos</option>
+                            </select><input class="in-num" type="number" min="1" max="9" step="1" value="1"></div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>Selecione</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm is-on"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="in-empty" hidden="">Nenhuma regra ativa nesta visão.</div>
+        </article>
+        <!-- Entregue -->
+        <article class="in-card" data-parent="whatsapp" data-category="rastreio" data-sub="entregue" style="">
+            <header class="in-card-head">
+                <div>
+                    <div class="in-card-title">Entregue — WhatsApp</div>
+                    <div class="in-sub">Atualizações de rastreio.</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:center"><span class="in-badge" data-counter="">0
+                        ativos</span><button class="in-btn" data-toggle-all="" style="border:0px;">
+                        <div class="in-switch in-switch-sm" aria-checked="false"></div>
+                    </button></div>
+            </header>
+            <div class="in-table">
+                <div class="in-th">Mensagem</div>
+                <div class="in-th">Tempo de envio</div>
+                <div class="in-th">Número WhatsApp</div>
+                <div class="in-th">Status</div>
+                <div class="in-row" data-row="" data-message="Entregue — atualização" style="">
+                    <div class="in-td">Entregue — atualização</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%"><select class="in-select">
+                                <option selected="">1 minuto</option>
+                                <option>5 minutos</option>
+                            </select><input class="in-num" type="number" min="1" max="9" step="1" value="1"></div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>Selecione</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="in-empty" hidden="">Nenhuma regra ativa nesta visão.</div>
+        </article>
+
+        <!-- E-mail (rastreio) — mesmas 5 subcategorias, 1 min -->
+        <!-- Para encurtar, deixo duas como exemplo ligadas (pode copiar o padrão acima para as outras se quiser ver todas ao mesmo tempo) -->
+        <article class="in-card" data-parent="email" data-category="rastreio" data-sub="postado" hidden="">
+            <header class="in-card-head">
+                <div>
+                    <div class="in-card-title">Postado — E-mail</div>
+                    <div class="in-sub">Atualizações de rastreio.</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:center"><span class="in-badge" data-counter="">1
+                        ativos</span><button class="in-btn" data-toggle-all="" style="border:0px;">
+                        <div class="in-switch in-switch-sm" aria-checked="false"></div>
+                    </button></div>
+            </header>
+            <div class="in-table">
+                <div class="in-th">Mensagem</div>
+                <div class="in-th">Tempo de envio</div>
+                <div class="in-th">Remetente</div>
+                <div class="in-th">Status</div>
+                <div class="in-row" data-row="" data-message="Postado — atualização">
+                    <div class="in-td">Postado — atualização</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%"><select class="in-select">
+                                <option selected="">1 minuto</option>
+                                <option>5 minutos</option>
+                            </select><input class="in-num" type="number" min="1" max="9" step="1" value="1"></div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>no-reply@loja.com</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm is-on"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="in-empty" hidden="">Nenhuma regra ativa nesta visão.</div>
+        </article>
+
+        <article class="in-card" data-parent="email" data-category="rastreio" data-sub="saiu_entrega" hidden="">
+            <header class="in-card-head">
+                <div>
+                    <div class="in-card-title">Saiu para entrega — E-mail</div>
+                    <div class="in-sub">Atualizações de rastreio.</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:center"><span class="in-badge" data-counter="">0
+                        ativos</span><button class="in-btn" data-toggle-all="" style="border:0px;">
+                        <div class="in-switch in-switch-sm" aria-checked="false"></div>
+                    </button></div>
+            </header>
+            <div class="in-table">
+                <div class="in-th">Mensagem</div>
+                <div class="in-th">Tempo de envio</div>
+                <div class="in-th">Remetente</div>
+                <div class="in-th">Status</div>
+                <div class="in-row" data-row="" data-message="Saiu para entrega — atualização">
+                    <div class="in-td">Saiu para entrega — atualização</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%"><select class="in-select">
+                                <option selected="">1 minuto</option>
+                                <option>5 minutos</option>
+                            </select><input class="in-num" type="number" min="1" max="9" step="1" value="1"></div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>no-reply@loja.com</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="in-empty" hidden="">Nenhuma regra ativa nesta visão.</div>
+        </article>
+
+        <!-- SMS (rastreio) — deixo um exemplo -->
+        <article class="in-card" data-parent="sms" data-category="rastreio" data-sub="postado" hidden="">
+            <header class="in-card-head">
+                <div>
+                    <div class="in-card-title">Postado — SMS</div>
+                    <div class="in-sub">Atualizações de rastreio.</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:center"><span class="in-badge" data-counter="">1
+                        ativos</span><button class="in-btn" data-toggle-all="" style="border:0px;">
+                        <div class="in-switch in-switch-sm" aria-checked="false"></div>
+                    </button></div>
+            </header>
+            <div class="in-table">
+                <div class="in-th">Mensagem</div>
+                <div class="in-th">Tempo de envio</div>
+                <div class="in-th">Remetente</div>
+                <div class="in-th">Status</div>
+                <div class="in-row" data-row="" data-message="Postado — atualização">
+                    <div class="in-td">Postado — atualização</div>
+                    <div class="in-td">
+                        <div style="display:flex;gap:8px;width:100%"><select class="in-select">
+                                <option selected="">1 minuto</option>
+                                <option>5 minutos</option>
+                            </select><input class="in-num" type="number" min="1" max="9" step="1" value="1"></div>
+                    </div>
+                    <div class="in-td"><select class="in-select">
+                            <option>SeuNome</option>
+                        </select></div>
+                    <div class="in-td">
+                        <div class="in-switch in-switch-sm is-on"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="in-empty" hidden="">Nenhuma regra ativa nesta visão.</div>
+        </article>
+
+    </div>
+</section>

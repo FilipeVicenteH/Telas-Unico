@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio UI • Atmos Custom Screens</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #0b0f19;
+            --bg-card: rgba(17, 24, 39, 0.7);
+            --bg-card-hover: rgba(31, 41, 55, 0.85);
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent: #6366f1;
+            --accent-hover: #4f46e5;
+            --border-color: rgba(255,255,255,0.05);
+            --glow: 0 0 40px rgba(99, 102, 241, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.1), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(168, 85, 247, 0.1), transparent 25%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        /* Navbar */
+        header {
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(11, 15, 25, 0.8);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 6rem 1rem 4rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--accent);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #fff, #a5b4fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Container & Categories */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 5% 5rem;
+        }
+
+        .category-section {
+            margin-bottom: 4rem;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(8px);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom right, rgba(255,255,255,0.05), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            background: var(--bg-card-hover);
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: var(--glow);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .card-icon {
+            transform: scale(1.1);
+            background: var(--accent);
+            color: white;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            flex-grow: 1;
+        }
+
+        .card-footer {
+            margin-top: 1.5rem;
+            display: flex;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .card-footer svg {
+            width: 16px;
+            height: 16px;
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .card-footer svg {
+            transform: translateX(4px);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent);"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+            UI <span>Portfolio</span>
+        </div>
+        <a href="https://github.com/" target="_blank" style="color: var(--text-secondary); text-decoration: none; display: flex; align-items: center; gap: 8px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            GitHub
+        </a>
+    </header>
+
+    <div class="hero">
+        <div class="badge">Desenvolvido com Atmos Theme</div>
+        <h1>Construindo Experiências Digitais Premium</h1>
+        <p>Explore a coleção completa de telas, dashboards e componentes de interface criados e customizados com alto padrão de design e usabilidade.</p>
+    </div>
+
+    <div class="container">
+
+        <!-- Dashboards Principais -->
+        <div class="category-section">
+            <h2 class="category-title">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+                Dashboards Analíticos
+            </h2>
+            <div class="grid">
+                <a href="Dashboards/Dashboard Rastreio.html" target="_blank" class="card">
+                    <div class="card-icon">📍</div>
+                    <h3 class="card-title">Dashboard Rastreio</h3>
+                    <p class="card-desc">Visão macro de entregas, status de pacotes e volumetria visual em gráficos elegantes.</p>
+                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </a>
+                <a href="Dashboards/Dashboard Google Atualizado.html" target="_blank" class="card">
+                    <div class="card-icon">📊</div>
+                    <h3 class="card-title">Dashboard Google</h3>
+                    <p class="card-desc">Métricas de performance, tráfego e análise de conversões detalhadas.</p>
+                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </a>
+                <a href="Dashboards/Dashboard Facebook.html" target="_blank" class="card">
+                    <div class="card-icon">👥</div>
+                    <h3 class="card-title">Dashboard Facebook</h3>
+                    <p class="card-desc">Resultados de campanhas, engajamento e CAC centralizados em um único HUB.</p>
+                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </a>
+                <a href="Dashboards/Dashboard WhatsApp.html" target="_blank" class="card">
+                    <div class="card-icon">💬</div>
+                    <h3 class="card-title">Dashboard WhatsApp</h3>
+                    <p class="card-desc">Controle de disparos, taxas de abertura e eficiência de mensageria ativa.</p>
+                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </a>
+                <a href="Dashboards/Financeiro Dashboard.html" target="_blank" class="card">
+                    <div class="card-icon">💰</div>
+                    <h3 class="card-title">Dashboard Financeiro</h3>
+                    <p class="card-desc">Resumo de receitas, despesas e fluxo de caixa com visualizações avançadas.</p>
+                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Módulo WhatsApp e Automação -->
+        <div class="category-section">
+            <h2 class="category-title">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                Automação & Mensageria
+            </h2>
+            <div class="grid">
+                <a href="Telas Verificar/Automação de WhatsApp Com QR Code.html" target="_blank" class="card">
+                    <div class="card-icon">📱</div>
+                    <h3 class="card-title">WhatsApp Com QR Code</h3>
+                    <p class="card-desc">Fluxo de conexão e integração de sessão com QR Code dinâmico.</p>
+                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </a>
+                <a href="Telas Verificar/Automação de WhatsApp Sem QR Code.html" target="_blank" class="card">
+                    <div class="card-icon">🔗</div>
+                    <h3 class="card-title">WhatsApp Sem QR Code</h3>
+                    <p class="card-desc">Alternativa de conexão fluida sem verificação de tela.</p>
+                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </a>
+                <a href="Automacao_Mensageria/WhatsApp Envios.html" target="_blank" class="card">
+                    <div class="card-icon">🚀</div>
+                    <h3 class="card-title">WhatsApp Envios</h3>
+                    <p class="card-desc">Tela focada em envio em massa e segmentação de contatos.</p>
+                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </a>
+                <a href="Automacao_Mensageria/Mensagem SMS.html" target="_blank" class="card">
+                    <div class="card-icon">📨</div>
+                    <h3 class="card-title">Mensagem SMS</h3>
+                    <p class="card-desc">Interface para parametrização e disparo de campanhas por SMS.</p>
+                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </a>
+                <a href="Automacao_Mensageria/Mensagem E-mail.html" target="_blank" class="card">
+                    <div class="card-icon">📧</div>
+                    <h3 class="card-title">Mensagem E-mail</h3>
+                    <p class="card-desc">Editor e configurações de automação via E-mail corporativo.</p>
+                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Módulo Lojas / Produtos -->
+        <div class="category-section">
+            <h2 class="category-title">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                E-commerce & Pedidos
+            </h2>
+            <div class="grid">
+                <a href="Ecommerce_Pedidos/Lista de PEDIDOS.html" target="_blank" class="card">
+                    <div class="card-icon">📦</div>
+                    <h3 class="card-title">Lista de Pedidos</h3>
+                    <p class="card-desc">Listagem extensa com filtros avançados, ações em massa e status colorizados.</p>
+                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </a>
+                <a href="Ecommerce_Pedidos/Lista de Produtos.html" target="_blank" class="card">
+                    <div class="card-icon">🏷️</div>
+                    <h3 class="card-title">Lista de Produtos</h3>
+                    <p class="card-desc">Inventário interativo com thumbnail e detalhes de estoque/preço.</p>
+                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </a>
+                <a href="Ecommerce_Pedidos/Ranking de Produtos.html" target="_blank" class="card">
+                    <div class="card-icon">🏆</div>
+                    <h3 class="card-title">Ranking de Produtos</h3>
+                    <p class="card-desc">Classificação de produtos mais vendidos com gamificação e destaques visuais.</p>
+                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </a>
+                <a href="Ecommerce_Pedidos/Lista Carrinho.html" target="_blank" class="card">
+                    <div class="card-icon">🛒</div>
+                    <h3 class="card-title">Lista de Carrinhos Aband.</h3>
+                    <p class="card-desc">Acompanhamento de carrinhos não finalizados para retargeting.</p>
+                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </a>
+                <a href="Ecommerce_Pedidos/Lista de Rastreio.html" target="_blank" class="card">
+                    <div class="card-icon">🚚</div>
+                    <h3 class="card-title">Lista de Rastreio</h3>
+                    <p class="card-desc">Acompanhamento logístico detalhado linha a linha.</p>
+                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </a>
+                <a href="Ecommerce_Pedidos/Modal Custo Produtos Atualizado.html" target="_blank" class="card">
+                    <div class="card-icon">💸</div>
+                    <h3 class="card-title">Modal Custo Produtos</h3>
+                    <p class="card-desc">Design limpo de interface pop-up para atribuição de despesas.</p>
+                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Módulo Outros / Config -->
+        <div class="category-section">
+            <h2 class="category-title">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                Configurações & Experiência
+            </h2>
+            <div class="grid">
+                <a href="Telas Verificar/inicio Com Onboard Botão.html" target="_blank" class="card">
+                    <div class="card-icon">✨</div>
+                    <h3 class="card-title">Início c/ Onboarding</h3>
+                    <p class="card-desc">Jornada guiada de boas-vindas para novos usuários com call-to-actions.</p>
+                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </a>
+                <a href="Configuracoes_Experiencia/LandingAuditoria - Grande - 2.html" target="_blank" class="card">
+                    <div class="card-icon">🔍</div>
+                    <h3 class="card-title">Landing Auditoria</h3>
+                    <p class="card-desc">Landing page rica para atração de leads focada em auditoria de processos.</p>
+                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </a>
+                <a href="Configuracoes_Experiencia/Config ADS.html" target="_blank" class="card">
+                    <div class="card-icon">⚙️</div>
+                    <h3 class="card-title">Config ADS</h3>
+                    <p class="card-desc">Parametrização completa com gráficos preditivos de campanhas.</p>
+                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </a>
+                <a href="Configuracoes_Experiencia/Financeiro -Calendario.html" target="_blank" class="card">
+                    <div class="card-icon">📅</div>
+                    <h3 class="card-title">Calendário Financeiro</h3>
+                    <p class="card-desc">Visão de agenda em grid por mês com marcações financeiras diárias.</p>
+                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </a>
+                <a href="Configuracoes_Experiencia/Taxas e Tarifas.html" target="_blank" class="card">
+                    <div class="card-icon">📈</div>
+                    <h3 class="card-title">Taxas e Tarifas</h3>
+                    <p class="card-desc">Transparência em pricing, exibição em blocos de fácil absorção.</p>
+                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </a>
+                <a href="Configuracoes_Experiencia/Central de Ajuda.html" target="_blank" class="card">
+                    <div class="card-icon">💡</div>
+                    <h3 class="card-title">Central de Ajuda</h3>
+                    <p class="card-desc">Portal de conhecimento com UX com busca inteligente.</p>
+                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
+

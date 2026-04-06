@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" name="viewport">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Atmos Admin Panel- Bootstrap 4 Based Admin Panel</title>
+<link rel="icon" type="image/x-icon" href="../assets/img/logo.png"/>
+<link rel="icon" href="../assets/img/logo.png" type="image/png" sizes="16x16">
+<link rel="stylesheet" href="../assets/vendor/pace/pace.css">
+<script src="../assets/vendor/pace/pace.min.js"></script>
+<!--vendors-->
+<link rel="stylesheet" type="text/css" href="../assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
+<link rel="stylesheet" type="text/css" href="../assets/vendor/jquery-scrollbar/jquery.scrollbar.css">
+<link rel="stylesheet" href="../assets/vendor/select2/css/select2.min.css">
+<link rel="stylesheet" href="../assets/vendor/jquery-ui/jquery-ui.min.css">
+<link rel="stylesheet" href="../assets/vendor/daterangepicker/daterangepicker.css">
+<link rel="stylesheet" href="../assets/vendor/timepicker/bootstrap-timepicker.min.css">
+<link href="https://fonts.googleapis.com/css?family=Hind+Vadodara:400,500,600" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts/jost/jost.css">
+<!--Material Icons-->
+<link rel="stylesheet" type="text/css" href="../assets/fonts/materialdesignicons/materialdesignicons.min.css">
+<!--Bootstrap + atmos Admin CSS-->
+<link rel="stylesheet" type="text/css" href="../assets/css/atmos.min.css">
+<!-- Additional library for page -->
+</head>
+<!--body with default sidebar pinned -->
+<body class="sidebar-pinned">
+<!--sidebar Begins-->
+<aside class="admin-sidebar">
+    <div class="admin-sidebar-brand">
+        <!-- begin sidebar branding-->
+        <img class="admin-brand-logo" src="../assets/img/logo.svg" width="40" alt="atmos Logo">
+        <span class="admin-brand-content"><a href="index.html">  atmos</a></span>
+        <!-- end sidebar branding-->
+        <div class="ml-auto">
+            <!-- sidebar pin-->
+            <a href="#" class="admin-pin-sidebar btn-ghost btn btn-rounded-circle"></a>
+            <!-- sidebar close for mobile device-->
+            <a href="#" class="admin-close-sidebar"></a>
+        </div>
+    </div>
+    <div class="admin-sidebar-wrapper js-scrollbar">
+        <!-- Menu List Begins-->
+        <ul class="menu">
+            <!--list item begins-->
+            <li class="menu-item active">
+                <a href="#" class="menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Link
+                                                </span>
+                                            </span>
+                    <span class="menu-icon">
+                                                   <span class="icon-badge badge-success badge badge-pill">1</span>
+
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+
+            </li>
+            <!--list item ends-->
+
+            <!--list item begins-->
+            <li class="menu-item ">
+                <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu level 1
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                                <span class="menu-info">Contains submenu</span>
+                                            </span>
+                    <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+                <!--submenu-->
+                <ul class="sub-menu">
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+
+
+                </ul>
+            </li>
+            <!--list item ends-->
+
+            <!--list item begins-->
+            <li class="menu-item ">
+                <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu Level 2
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                                <span class="menu-info">Contains submenu</span>
+                                            </span>
+                    <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                </a>
+                <!--submenu-->
+                <ul class="sub-menu">
+                    <li class="menu-item">
+                        <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 1.1</span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                        </a>
+
+                    </li>
+                    <li class="menu-item">
+                        <a href="#" class="open-dropdown menu-link">
+                        <span class="menu-label">
+                                                 <span class="menu-name">Menu Level 1.1
+                                                    <span class="menu-arrow"></span>
+                                                </span>
+                                            </span>
+                            <span class="menu-icon">
+                                                <i class="icon-placeholder mdi mdi-link-variant "></i>
+                                            </span>
+                        </a>
+                        <!--submenu-->
+                        <ul class="sub-menu">
+                            <li class="menu-item">
+                                <a href="#" class=" menu-link">
+                                            <span class="menu-label">
+                                                <span class="menu-name">Menu Level 2.1 </span>
+                                            </span>
+                                    <span class="menu-icon">
+                                                <i class="icon-placeholder  ">
+                                                    L
+                                                </i>
+                                            </span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+            <!--list item ends-->
+        </ul>
+        <!-- Menu List Ends-->
+    </div>
+
+</aside>
+<!--sidebar Ends-->
+
+
+<main class="admin-main">
+
+    <!--site header begins-->
+<header class="admin-header">
+
+    <a href="#" class="sidebar-toggle" data-toggleclass="sidebar-open" data-target="body"> </a>
+
+    <nav class=" mr-auto my-auto">
+        <ul class="nav align-items-center">
+
+            <li class="nav-item">
+                <a class="nav-link  " data-target="#siteSearchModal" data-toggle="modal" href="#">
+                    <i class=" mdi mdi-magnify mdi-24px align-middle"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <nav class=" ml-auto">
+        <ul class="nav align-items-center">
+
+            <li class="nav-item">
+                <div class="dropdown">
+                    <a href="#" class="nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-24px mdi-bell-outline"></i>
+                        <span class="notification-counter"></span>
+                    </a>
+
+                    <div class="dropdown-menu notification-container dropdown-menu-right">
+                        <div class="d-flex p-all-15 bg-white justify-content-between border-bottom ">
+                            <a href="#!" class="mdi mdi-18px mdi-settings text-muted"></a>
+                            <span class="h5 m-0">Notifications</span>
+                            <a href="#!" class="mdi mdi-18px mdi-notification-clear-all text-muted"></a>
+                        </div>
+                        <div class="notification-events bg-gray-300">
+                            <div class="text-overline m-b-5">today</div>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body"> <i class="mdi mdi-circle text-success"></i> All systems operational.</div>
+                                </div>
+                            </a>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body"> <i class="mdi mdi-upload-multiple "></i> File upload successful.</div>
+                                </div>
+                            </a>
+                            <a href="#" class="d-block m-b-10">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <i class="mdi mdi-cancel text-danger"></i> Your holiday has been denied
+                                    </div>
+                                </div>
+                            </a>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item dropdown ">
+                <a class="nav-link dropdown-toggle" href="#"   role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    <div class="avatar avatar-sm avatar-online">
+                        <span class="avatar-title rounded-circle bg-dark">V</span>
+
+                    </div>
+                </a>
+                <div class="dropdown-menu  dropdown-menu-right"   >
+                    <a class="dropdown-item" href="#">  Add Account
+                    </a>
+                    <a class="dropdown-item" href="#">  Reset Password</a>
+                    <a class="dropdown-item" href="#">  Help </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"> Logout</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </nav>
+</header>
+<!--site header ends -->    <section class="admin-content">
+        <!-- BEGIN PlACE PAGE CONTENT HERE -->
+        <!--  container or container-fluid as per your need           -->
+        <div class="container-fluid py-5">
+            <div class="row justify-content-center">
+                <div class="col-12 col-xl-10">
+                    <!-- Card principal -->
+                    <div class="card border-0 shadow-sm rounded-lg overflow-hidden">
+                        <div class="card-body p-4">
+                            <!-- Cabeçalho com título e botões -->
+                            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+                                <div class="d-flex align-items-center">
+                                    <h4 class="card-title text-dark font-weight-bold mb-0">Produtos</h4>
+                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Ajuda sobre produtos">
+                                        <i class="mdi mdi-help-circle-outline text-muted ml-2" style="font-size: 1.2rem;"></i>
+                                    </a>
+                                </div>
+                                <div class="d-flex flex-wrap">
+                                    <button class="btn btn-primary mr-2 px-3 mb-2 d-flex align-items-center shadow-sm">
+                                        <i class="mdi mdi-package-variant mr-2"></i> Produtos Aliexpress
+                                    </button>
+                                    <button class="btn btn-info mr-2 px-3 mb-2 d-flex align-items-center shadow-sm">
+                                        <i class="mdi mdi-store mr-2"></i> Custos Shopify
+                                    </button>
+                                    <button class="btn btn-success mr-2 px-3 mb-2 d-flex align-items-center shadow-sm">
+                                        <i class="mdi mdi-currency-usd mr-2"></i> Cotação do Dólar
+                                    </button>
+                                    <button class="btn btn-light border px-3 mb-2 d-flex align-items-center">
+                                        <i class="mdi mdi-sync mr-2"></i> Sincronizar
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="search-container mb-4 bg-light p-3 rounded-lg">
+                                <div class="row g-2 mb-3">
+                                    <div class="col-md">
+                                        <div class="form-group mb-0">
+                                            <div class="input-group input-group-seamless shadow-sm">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text bg-white border-right-0">
+                                                        <i class="mdi mdi-magnify text-primary"></i>
+                                                    </span>
+                                                </div>
+                                                <input type="text" class="form-control border-left-0 pl-0" placeholder="ID Produto ou Nome">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md">
+                                        <div class="form-group mb-0">
+                                            <div class="input-group shadow-sm">
+                                                <select class="form-control custom-select border" id="plataforma">
+                                                    <option selected>Plataforma...</option>
+                                                    <option>Shopify</option>
+                                                    <option>Yampi</option>
+                                                    <option>Cartpanda</option>
+                                                    <option>Woocommerce</option>
+                                                    <option>NuvemShop</option>
+                                                    <option>LPQV</option>
+                                                    <option>Braip</option>
+                                                    <option>Kiwify</option>
+                                                    <option>Kirvano</option>
+                                                    <option>Hotmart</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md">
+                                        <div class="form-group mb-0">
+                                            <div class="input-group shadow-sm">
+                                                <select class="form-control custom-select border" id="filtro">
+                                                    <option selected>Filtrar...</option>
+                                                    <option>Mostrar produtos com venda e sem preço de custo</option>
+                                                    <option>Produtos com custo em BRL</option>
+                                                    <option>Produtos com custo em USD</option>
+                                                    <option>Produtos com tag</option>
+                                                    <option>Produtos sem tag</option>
+                                                    <option>Produtos sem ID Aliexpress</option>
+                                                    <option>Marcado como favorito</option>
+                                                    <option>Cadastro recente</option>
+                                                    <option>Produto não relacionado Plataforma X Checkout</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md">
+                                        <button class="btn btn-primary btn-block shadow-sm d-flex align-items-center justify-content-center">
+                                            <i class="mdi mdi-magnify mr-2"></i> Buscar
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="row mt-3">
+                                    <div class="col-12">
+                                        <button class="btn btn-sm btn-outline-secondary d-flex align-items-center"
+                                        data-toggle="tooltip" data-placement="top" title="Selecione os produtos e edite o custo em massa">
+                                            <i class="mdi mdi-pencil-outline mr-1"></i> Editar custo em massa
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                                                        
+                            <div class="table-responsive">
+                                <table class="table table-borderless table-hover">
+                                    <thead class="bg-light">
+                                        <tr>
+                                            <th style="width: 3%;" class="border-0 text-center">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="selectAll">
+                                                    <label class="custom-control-label" for="selectAll"></label>
+                                                </div>
+                                                <script>
+                                                    document.addEventListener('DOMContentLoaded', function() {
+                                                        document.getElementById('selectAll').addEventListener('change', function() {
+                                                            var checkboxes = document.querySelectorAll('.custom-control-input');
+                                                            checkboxes.forEach(function(checkbox) {
+                                                                if (checkbox.id !== 'selectAll') {
+                                                                    checkbox.checked = document.getElementById('selectAll').checked;
+                                                                }
+                                                            });
+                                                        });
+                                                    });
+                                                </script>
+                                            </th>
+                                            <th style="width: 7%;" class="border-0 text-center">PRODUTO</th>
+                                            <th style="width: 30%;" class="border-0">NOME</th>
+                                            <th style="width: 20%;" class="border-0 text-center">ADS</th>
+                                            <th style="width: 20%;" class="border-0 text-center">CUSTO FORNECEDOR</th>
+                                            <th style="width: 20%;" class="border-0 text-center">ALIEXPRESS</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Produto #01 -->
+                                        <tr class="border-top border-bottom-0">
+                                            <td class="align-middle text-center py-3">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="produto1">
+                                                    <label class="custom-control-label" for="produto1"></label>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle text-center py-3">
+                                                <div class="product-image-wrapper d-flex justify-content-center">
+                                                    <img src="../Media_Imagens/teste.jpg" alt="Luminária" class="product-thumbnail rounded-circle shadow-sm border" 
+                                                         style="width: 60px; height: 60px; object-fit: cover; transition: all 0.3s ease;">
+                                                </div>
+                                            </td>
+                                            <td class="align-middle py-3">
+                                                <div class="product-info p-2">
+                                                    <a href="#" class="product-title text-primary font-weight-medium mb-2 d-block text-truncate">
+                                                        Luminária Planetária - Luz do Universo - Compre 1 Leve 2 (base inclusa)
+                                                    </a>
+                                                    <div class="product-meta d-flex align-items-center flex-wrap">
+                                                        <span class="product-id badge badge-light mr-2 mb-1">
+                                                            <a href="#" class="copy-id-btn" data-toggle="tooltip" data-placement="top" title="Copiar ID">
+                                                                <i class="mdi mdi-content-copy text-muted mr-1" style="font-size: 0.8rem;"></i>
+                                                            </a>
+                                                            <span class="text-muted">ID</span> 872075011709
+                                                        </span>
+                                                        <span class="product-date badge badge-light mr-2 mb-1">
+                                                            <i class="mdi mdi-calendar-clock text-primary mr-1"></i>
+                                                            Shopify 01/08/2024
+                                                        </span>
+                                                        <div class="action-buttons d-flex align-items-center mb-1">
+                                                            <button type="button" class="btn btn-icon btn-sm btn-light rounded-circle favorite-btn mr-1" 
+                                                                    data-toggle="tooltip" data-placement="top" title="Adicionar aos favoritos" data-favorited="false">
+                                                                <i class="mdi mdi-star-outline text-warning"></i>
+                                                            </button>
+                                                            <button type="button" class="btn btn-icon btn-sm btn-light rounded-circle mr-1" 
+                                                                    data-toggle="tooltip" data-placement="top" title="Atualizar produto">
+                                                                <i class="mdi mdi-refresh text-primary"></i>
+                                                            </button>
+                                                            <a href="#" class="btn btn-sm btn-outline-secondary rounded-pill px-3" 
+                                                               data-toggle="tooltip" data-placement="top" title="Editar detalhes do produto">
+                                                                <i class="mdi mdi-pencil-outline mr-1"></i>
+                                                                <span>Editar</span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-tags mt-2">
+                                                        <span class="badge badge-soft-dark badge-pill">TAG PD60</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle text-center py-3">
+                                                <div class="d-flex flex-column align-items-center justify-content-center">
+                                                    <div class="d-flex align-items-center mb-2">
+                                                        <i class="mdi mdi-calendar-outline text-muted mr-1"></i>
+                                                        <span class="text-muted small">27/05/2025</span>
+                                                    </div>
+                                                    <h6 class="font-weight-bold text-primary mb-2">R$ 61,78</h6>
+                                                    <button class="btn btn-sm btn-outline-primary py-1 px-3 d-flex align-items-center"   
+                                                    data-toggle="tooltip" data-placement="top" title="Clique para ver as campanhas."
+                                                    style="transition: all 0.3s ease;">
+                                                        <i class="mdi mdi-chart-line mr-1"></i>Ads
+                                                    </button>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle text-center py-3">
+                                                <div class="d-flex flex-column align-items-center justify-content-center">
+                                                    <div class="d-flex align-items-center mb-2">
+                                                        <i class="mdi mdi-currency-usd text-muted mr-1"></i>
+                                                        <span class="text-muted small">15/02/2025</span>
+                                                    </div>
+                                                    <h6 class="font-weight-bold text-success mb-2">R$ 76,00</h6>
+                                                    <button class="btn btn-sm btn-outline-success py-1 px-3 d-flex align-items-center"
+                                                    data-toggle="tooltip" data-placement="top" title="Clique para atualizar o preço de custo do produto.">
+                                                        <i class="mdi mdi-store mr-1"></i>Custo
+                                                    </button>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle text-center py-3">
+                                                <div class="d-flex flex-column align-items-center justify-content-center">
+                                                    <div class="alert alert-danger py-1 px-2 mb-2" style="font-size: 0.8rem;">
+                                                        <i class="mdi mdi-alert-circle mr-1"></i>
+                                                        <span>Sem Identificação</span>
+                                                    </div>
+                                                    <button class="btn btn-sm btn-outline-danger py-1 px-3 d-flex align-items-center">
+                                                        <i class="mdi mdi-pencil mr-1"></i>Editar
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Produto #02 -->
+                                        <tr class="border-top border-bottom-0">
+                                            <td class="align-middle text-center py-3">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="produto2">
+                                                    <label class="custom-control-label" for="produto2"></label>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle text-center py-3">
+                                                <div class="product-image-wrapper d-flex justify-content-center">
+                                                    <img src="../Media_Imagens/teste.jpg" alt="Spray de Espuma" class="product-thumbnail rounded-circle shadow-sm border" 
+                                                         style="width: 60px; height: 60px; object-fit: cover; transition: all 0.3s ease;">
+                                                </div>
+                                            </td>
+                                            <td class="align-middle py-3">
+                                                <div class="product-info p-2">
+                                                    <a href="#" class="product-title text-primary font-weight-medium mb-2 d-block text-truncate">
+                                                        Spray de Espuma Mágica pra Limpeza Profunda - Foam Cleaner™ + BRINDE EXCLUSIVO
+                                                    </a>
+                                                    <div class="product-meta d-flex align-items-center flex-wrap">
+                                                        <span class="product-id badge badge-light mr-2 mb-1">
+                                                            <a href="#" class="copy-id-btn" data-toggle="tooltip" data-placement="top" title="Copiar ID">
+                                                                <i class="mdi mdi-content-copy text-muted mr-1" style="font-size: 0.8rem;"></i>
+                                                            </a>
+                                                            <span class="text-muted">ID</span> 872075011709
+                                                        </span>
+                                                        <span class="product-date badge badge-light mr-2 mb-1">
+                                                            <i class="mdi mdi-calendar-clock text-primary mr-1"></i>
+                                                            Shopify 01/08/2024
+                                                        </span>
+                                                        <div class="action-buttons d-flex align-items-center mb-1">
+                                                            <button type="button" class="btn btn-icon btn-sm btn-light-secondary rounded-circle favorite-btn mr-1 active" 
+                                                                    data-toggle="tooltip" data-placement="top" title="Remover dos favoritos" data-favorited="true">
+                                                                <i class="mdi mdi-star text-warning"></i>
+                                                            </button>
+                                                            <button type="button" class="btn btn-icon btn-sm btn-light rounded-circle mr-1" 
+                                                                    data-toggle="tooltip" data-placement="top" title="Atualizar produto">
+                                                                <i class="mdi mdi-refresh text-primary"></i>
+                                                            </button>
+                                                            <a href="#" class="btn btn-sm btn-outline-secondary rounded-pill px-3" 
+                                                               data-toggle="tooltip" data-placement="top" title="Editar nome ou imagem do produto">
+                                                                <i class="mdi mdi-pencil-outline mr-1"></i>
+                                                                <span>Editar</span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle text-center py-3">
+                                                <div class="d-flex flex-column align-items-center justify-content-center">
+                                                    <div class="d-flex align-items-center mb-2">
+                                                        <i class="mdi mdi-calendar-outline text-muted mr-1"></i>
+                                                        <span class="text-muted small">27/05/2025</span>
+                                                    </div>
+                                                    <h6 class="font-weight-bold text-primary mb-2">R$ 61,78</h6>
+                                                    <button class="btn btn-sm btn-outline-primary py-1 px-3 d-flex align-items-center"   
+                                                    data-toggle="tooltip" data-placement="top" title="Clique para ver as campanhas."
+                                                    style="transition: all 0.3s ease;">
+                                                        <i class="mdi mdi-chart-line mr-1"></i>Ads
+                                                    </button>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle text-center py-3">
+                                                <div class="d-flex flex-column align-items-center justify-content-center">
+                                                    <div class="d-flex align-items-center mb-2">
+                                                        <i class="mdi mdi-currency-usd text-muted mr-1"></i>
+                                                        <span class="text-muted small">15/02/2025</span>
+                                                    </div>
+                                                    <h6 class="font-weight-bold text-success mb-2">R$ 76,00</h6>
+                                                    <button class="btn btn-sm btn-outline-success py-1 px-3 d-flex align-items-center"
+                                                    data-toggle="tooltip" data-placement="top" title="Clique para atualizar o preço de custo do produto.">
+                                                        <i class="mdi mdi-store mr-1"></i>Custo
+                                                    </button>
+                                                </div>
+                                            </td>
+                                            <td class="align-middle text-center py-3">
+                                                <div class="d-flex flex-column align-items-center justify-content-center">
+                                                    <div class="alert alert-success py-1 px-2 mb-2" style="font-size: 0.8rem;">
+                                                        <i class="mdi mdi-check-circle mr-1"></i>
+                                                        <span>Identificado</span>
+                                                    </div>
+                                                    <div class="d-flex align-items-center justify-content-center gap-2">
+                                                        <button class="btn btn-sm btn-danger py-1 px-3 d-flex align-items-center mr-1">
+                                                            <i class="mdi mdi-pencil mr-1 d-none d-md-inline"></i>Editar
+                                                        </button>
+                                                        <button class="btn btn-sm btn-outline-danger py-1 px-3 d-flex align-items-center">
+                                                            Desfazer
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <!-- Paginação -->
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <div class="text-muted small">
+                                    Mostrando 1-2 de 28 produtos
+                                </div>
+                                <nav aria-label="Navegação de página">
+                                    <ul class="pagination pagination-sm mb-0">
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                                                <i class="mdi mdi-chevron-left"></i>
+                                            </a>
+                                        </li>
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#">
+                                                <i class="mdi mdi-chevron-right"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END PLACE PAGE CONTENT HERE -->
+    </section>
+</main>
+
+
+<div class="modal modal-slide-left  fade" id="siteSearchModal" tabindex="-1" role="dialog" aria-labelledby="siteSearchModal"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body p-all-0" id="site-search">
+                <button type="button" class="close light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="form-dark bg-dark text-white p-t-60 p-b-20 bg-dots" >
+                    <h3 class="text-uppercase    text-center  fw-300 "> Search</h3>
+
+                    <div class="container-fluid">
+                        <div class="col-md-10 p-t-10 m-auto">
+                            <input type="search" placeholder="Search Something"
+                                   class=" search form-control form-control-lg">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="bg-dark text-muted container-fluid p-b-10 text-center text-overline">
+                        results
+                    </div>
+                    <div class="list-group list  ">
+
+
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"   src="../assets/img/users/user-3.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Eric Chen</div>
+                                <div class="text-muted">Developer</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"
+                                                                    src="../assets/img/users/user-4.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Sean Valdez</div>
+                                <div class="text-muted">Marketing</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm "><img class="avatar-img rounded-circle"
+                                                                    src="../assets/img/users/user-8.jpg" alt="user-image"></div>
+                            </div>
+                            <div class="">
+                                <div class="name">Marie Arnold</div>
+                                <div class="text-muted">Developer</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar-title bg-dark rounded"><i class="mdi mdi-24px mdi-file-pdf"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">SRS Document</div>
+                                <div class="text-muted">25.5 Mb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar-title bg-dark rounded"><i
+                                                class="mdi mdi-24px mdi-file-document-box"></i></div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">Design Guide.pdf</div>
+                                <div class="text-muted">9 Mb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar avatar-sm ">
+                                        <div class="avatar-title bg-primary rounded"><i
+                                                    class="mdi mdi-24px mdi-code-braces"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">response.json</div>
+                                <div class="text-muted">15 Kb</div>
+                            </div>
+
+
+                        </div>
+                        <div class="list-group-item d-flex  align-items-center">
+                            <div class="m-r-20">
+                                <div class="avatar avatar-sm ">
+                                    <div class="avatar avatar-sm ">
+                                        <div class="avatar-title bg-info rounded"><i
+                                                    class="mdi mdi-24px mdi-file-excel"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="name">June Accounts.xls</div>
+                                <div class="text-muted">6 Mb</div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="../assets/vendor/jquery/jquery.min.js"></script>
+<script src="../assets/vendor/jquery-ui/jquery-ui.min.js"></script>
+<script src="../assets/vendor/popper/popper.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/vendor/select2/js/select2.full.min.js"></script>
+<script src="../assets/vendor/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+<script src="../assets/vendor/listjs/listjs.min.js"></script>
+<script src="../assets/vendor/moment/moment.min.js"></script>
+<script src="../assets/vendor/daterangepicker/daterangepicker.js"></script>
+<script src="../assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="../assets/vendor/bootstrap-notify/bootstrap-notify.min.js"></script>
+<script src="../assets/js/atmos.min.js"></script>
+<!--page specific scripts for demo-->
+<script>
+$(document).ready(function() {
+    // Data atual
+    function formatarDataAtual() {
+        var data = new Date();
+        var dia = data.getDate().toString().padStart(2, '0');
+        var mes = (data.getMonth() + 1).toString().padStart(2, '0');
+        var ano = data.getFullYear();
+        return dia + '/' + mes + '/' + ano;
+    }
+    
+    // Define a data atual
+    var dataAtual = formatarDataAtual();
+    $('#dataInicial, #dataFinal').attr('placeholder', dataAtual);
+    
+    //calendario
+    $('.input-date').datepicker({
+        format: 'dd/mm/yyyy',
+        autoclose: true,
+        todayHighlight: true,
+        language: 'pt-BR',
+        orientation: 'bottom auto',
+        templates: {
+            leftArrow: '<i class="mdi mdi-chevron-left"></i>',
+            rightArrow: '<i class="mdi mdi-chevron-right"></i>'
+        }
+    }).on('show', function() {
+        $('.datepicker-dropdown').addClass('shadow-sm');
+    });
+
+    $('[data-toggle="tooltip"]').tooltip();
+
+    // Responsividade
+    $('<style>'+
+      // Data
+      '.input-date { background-color: transparent !important; height: calc(1.5em + 0.75rem + 2px); }'+
+      '.datepicker { font-family: "Jost", sans-serif; border-radius: 4px; }'+
+      '.datepicker table tr td.active { background-color: #7367f0 !important; background-image: none !important; }'+
+      '.datepicker-dropdown { margin-top: 0; padding: 10px; border-radius: 5px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }'+
+      '.datepicker table { font-size: 13px; }'+
+      
+      // Botões e cards
+      '.btn-primary { transition: transform 0.2s ease, box-shadow 0.2s ease; }'+
+      '.btn-primary:hover { box-shadow: 0 4px 8px rgba(115, 103, 240, 0.3) !important; }'+
+      '.btn-primary:active { transform: translateY(1px); }'+
+      '.btn-outline-primary { transition: all 0.2s ease; }'+
+      '.btn-outline-primary:hover { background-color: rgba(115, 103, 240, 0.1); }'+
+      '.card { transition: box-shadow 0.3s ease; }'+
+      '.card:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.08) !important; }'+
+      '.mb-mobile { margin-bottom: 10px !important; }'+
+      
+      // produtos
+      '.badge-soft-primary { background-color: rgba(115, 103, 240, 0.18); color: #7367f0; }'+
+      '.badge-soft-info { background-color: rgba(0, 207, 232, 0.18); color: #00cfe8; }'+
+      '.badge-secondary { background-color: #82868b; color: #fff; }'+
+      '.product-image { transition: transform 0.3s ease; }'+
+      '.product-image:hover { transform: scale(1.05); }'+
+      '.table td { vertical-align: middle; }'+
+      '.btn-edit { background-color: #ff6700 !important; border-color: #ff6700 !important; }'+
+      '.btn-edit:hover { background-color: #e55d00 !important; border-color: #e55d00 !important; box-shadow: 0 2px 4px rgba(255, 103, 0, 0.4) !important; }'+
+      
+      // mobile
+      '@media (max-width: 767.98px) {'+
+      '  .search-container .row.g-2 { display: flex; flex-wrap: wrap; margin-left: -5px; margin-right: -5px; }'+
+      '  .search-container .row.g-2 .col-md { flex: 0 0 100%; max-width: 100%; padding-left: 5px; padding-right: 5px; }'+
+      '  .search-container .form-group { margin-bottom: 8px; }'+
+      '  .search-container .form-control { height: 38px; }'+
+      '  .search-container .input-group-text { padding: 0.375rem 0.75rem; }'+
+      '  .search-container .d-flex.flex-wrap { flex-wrap: wrap; }'+
+      '  .search-container .d-flex.flex-wrap .mr-2 { flex: 0 0 calc(50% - 6px); max-width: calc(50% - 6px); margin-right: 4px !important; margin-bottom: 8px !important; }'+
+      '  .search-container .d-flex.flex-wrap select.custom-select { width: 100%; height: 38px; font-size: 0.9rem; }'+
+      '  .search-container .d-flex.flex-wrap .btn-outline-primary { width: 100%; }'+
+      '  .search-container .col-md-2 { text-align: center !important; margin-top: 15px; }'+
+      '  .search-container .col-md-2 .btn { width: 100%; min-height: 38px; }'+
+      '  .search-container .col-md-10 { margin-bottom: 0; }'+
+      '  .form-control, select.form-control:not([size]):not([multiple]) { font-size: 16px; }'+
+      '  input.form-control { -webkit-appearance: none; border-radius: 4px; }'+
+      '  .search-container input[type="date"].form-control { height: 38px; line-height: 1.5; }'+
+      '  .search-container .row.g-2 > div { margin-bottom: 10px; }'+
+      '  .search-container label { font-size: 0.9rem; }' +
+      '  .mobile-select { font-size: 16px; height: 42px; background-position: right 8px center; }'+
+      '  .mobile-btn { min-height: 42px; font-size: 16px; touch-action: manipulation; }'+
+      '}'+
+      
+      // Tablets
+      '@media (max-width: 991.98px) and (min-width: 768px) {'+
+      '  .search-container .row.g-2 { display: flex; flex-wrap: wrap; margin-left: -5px; margin-right: -5px; }'+
+      '  .search-container .row.g-2 .col-md { flex: 0 0 33.33%; max-width: 33.33%; padding-left: 5px; padding-right: 5px; margin-bottom: 10px; }'+
+      '  .search-container .row.g-2 .form-group { margin-bottom: 0; }'+
+      '  .search-container .d-flex.flex-wrap .mr-2 { margin-right: 8px !important; margin-bottom: 8px !important; min-width: 120px; }'+
+      '  .search-container .col-md-10 { flex: 0 0 75%; max-width: 75%; }'+
+      '  .search-container .col-md-2 { flex: 0 0 25%; max-width: 25%; margin-top: 0; }'+
+      '  .search-container .col-md-2 .btn { min-width: 100%; }'+
+      '}'+
+      /* tabela*/
+      '@media (max-width: 767.98px) {'+
+      '  .table-responsive { overflow-x: auto; }'+
+      '  .table { min-width: 650px; }'+
+      '  .table .align-middle { vertical-align: middle !important; }'+
+      '  .pagination { display: flex; justify-content: center; }'+
+      '  .pagination .page-item { margin-bottom: 5px; }'+
+      '  .pagination .page-link { padding: 0.25rem 0.5rem; font-size: 0.875rem; }'+
+      '}'+
+      /* celular */
+      '@media (max-width: 767.98px) {'+
+      '  .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; }'+
+      '  .table thead th { font-size: 0.85rem; padding: 0.5rem; }'+
+      '  .table tbody td { font-size: 0.85rem; padding: 0.5rem; }'+
+      '  .table .avatar { width: 30px; height: 30px; }'+
+      '  .table .badge { font-size: 0.7rem; padding: 0.2rem 0.5rem; }'+
+      '  .pagination { justify-content: center; flex-wrap: wrap; }'+
+      '  .pagination .page-item .page-link { padding: 0.3rem 0.6rem; font-size: 0.85rem; }'+
+      '}'+
+      /* telas pequenas */
+      '@media (max-width: 767.98px) {'+
+      '  #advancedFilters .row .col-md-3 { flex: 0 0 100%; max-width: 100%; margin-bottom: 10px; }'+
+      '  #advancedFilters .card-body { padding: 15px; }'+
+      '  #advancedFilters .d-flex.justify-content-end { justify-content: center !important; margin-top: 10px; }'+
+      '  #advancedFilters .btn { width: 100%; max-width: 200px; }'+
+      '  .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; }'+
+      '  .table thead th { font-size: 0.85rem; padding: 0.5rem; }'+
+      '  .table tbody td { font-size: 0.85rem; padding: 0.5rem; }'+
+      '  .table .avatar { width: 30px; height: 30px; }'+
+      '  .table .badge { font-size: 0.7rem; padding: 0.2rem 0.5rem; }'+
+      '  .pagination { justify-content: center; flex-wrap: wrap; }'+
+      '  .pagination .page-item .page-link { padding: 0.3rem 0.6rem; font-size: 0.85rem; }'+
+      '}'+
+      /* celulares */
+      '@media (max-width: 359.98px) {'+
+      '  .search-container h5 { font-size: 1rem; }'+
+      '  .search-container .form-control { font-size: 0.9rem; height: 38px; }'+
+      '  .search-container .btn { font-size: 0.9rem; }'+
+      '  .table thead th { font-size: 0.75rem; padding: 0.4rem 0.3rem; }'+
+      '  .table tbody td { font-size: 0.75rem; padding: 0.4rem 0.3rem; white-space: nowrap; }'+
+      '  .table .d-flex.align-items-center .ml-2 { margin-left: 0.3rem !important; }'+
+      '  .pagination .page-item .page-link { padding: 0.25rem 0.4rem; font-size: 0.75rem; }'+
+      '}'+
+      /* tablets */
+      '@media (max-width: 1440px) and (min-width: 768px) {'+
+      '  .search-container .row.g-2 { display: flex; flex-wrap: wrap; margin-left: -5px; margin-right: -5px; }'+
+      '  .search-container .row.g-2 .col-md { flex: 0 0 33.33%; max-width: 33.33%; padding-left: 5px; padding-right: 5px; margin-bottom: 10px; }'+
+      '  .search-container .row.g-2 .form-group { margin-bottom: 0; }'+
+      '  .search-container .d-flex.flex-wrap .mr-2 { margin-right: 8px !important; margin-bottom: 8px !important; min-width: 120px; }'+
+      '  .search-container .col-md-10 { flex: 0 0 75%; max-width: 75%; }'+
+      '  .search-container .col-md-2 { flex: 0 0 25%; max-width: 25%; margin-top: 0; }'+
+      '  .search-container .col-md-2 .btn { min-width: 100%; }'+
+      '}'+
+      '.btn-icon { width: 28px; height: 28px; padding: 0; display: inline-flex; align-items: center; justify-content: center; transition: all 0.2s; }'+
+      '.btn-icon:hover { background-color: #f8f9fa; transform: translateY(-2px); box-shadow: 0 3px 5px rgba(0,0,0,0.1); }'+
+      '.btn-icon:active { transform: translateY(0); }'+
+      '.btn-icon i { font-size: 14px; }'+
+      '.favorite-btn .mdi-star { color: #ff9f43 !important; }'+
+      '.favorite-btn.active { background-color: rgba(255, 159, 67, 0.1); }'+
+      '.btn-warning { background-color: #ff9f43 !important; border-color: #ff9f43 !important; }'+
+      '.btn-light-secondary { background-color: rgba(130, 134, 139, 0.1); }'+
+      
+      // Telas Menores
+      '@media (max-width: 320px) {'+
+      '  .search-container .row.g-2 .col-md { flex: 0 0 100%; max-width: 100%; }'+
+      '  .search-container .form-control { font-size: 0.8rem; height: 36px; }'+
+      '  .search-container .btn { font-size: 0.8rem; }'+
+      '  .table thead th { font-size: 0.7rem; padding: 0.3rem 0.2rem; }'+
+      '  .table tbody td { font-size: 0.7rem; padding: 0.3rem 0.2rem; white-space: nowrap; }'+
+      '  .pagination .page-item .page-link { padding: 0.2rem 0.3rem; font-size: 0.7rem; }'+
+      '}'+
+      /* 375px */
+      '@media (max-width: 375px) {'+
+      '  .search-container .row.g-2 .col-md { flex: 0 0 100%; max-width: 100%; }'+
+      '  .search-container .form-control { font-size: 0.85rem; height: 38px; }'+
+      '  .search-container .btn { font-size: 0.85rem; }'+
+      '  .table thead th { font-size: 0.75rem; padding: 0.4rem 0.3rem; }'+
+      '  .table tbody td { font-size: 0.75rem; padding: 0.4rem 0.3rem; white-space: nowrap; }'+
+      '  .pagination .page-item .page-link { padding: 0.25rem 0.4rem; font-size: 0.75rem; }'+
+      '}'+
+      /* 1024px */
+      '@media (max-width: 1024px) {'+
+      '  .search-container .row.g-2 .col-md { flex: 0 0 50%; max-width: 50%; }'+
+      '  .search-container .form-control { font-size: 0.9rem; height: 40px; }'+
+      '  .search-container .btn { font-size: 0.9rem; }'+
+      '  .table thead th { font-size: 0.8rem; padding: 0.5rem 0.4rem; }'+
+      '  .table tbody td { font-size: 0.8rem; padding: 0.5rem 0.4rem; }'+
+      '  .pagination .page-item .page-link { padding: 0.3rem 0.5rem; font-size: 0.8rem; }'+
+      '}'+
+      /*  1440px */
+      '@media (max-width: 1440px) {'+
+      '  .search-container .row.g-2 .col-md { flex: 0 0 33.33%; max-width: 33.33%; }'+
+      '  .search-container .form-control { font-size: 0.95rem; height: 42px; }'+
+      '  .search-container .btn { font-size: 0.95rem; }'+
+      '  .table thead th { font-size: 0.85rem; padding: 0.6rem 0.5rem; }'+
+      '  .table tbody td { font-size: 0.85rem; padding: 0.6rem 0.5rem; }'+
+      '  .pagination .page-item .page-link { padding: 0.4rem 0.6rem; font-size: 0.85rem; }'+
+      '}'+
+      /* 1680px */
+      '@media (max-width: 1680px) {'+
+      '  .search-container .row.g-2 .col-md { flex: 0 0 25%; max-width: 25%; }'+
+      '  .search-container .form-control { font-size: 1rem; height: 44px; }'+
+      '  .search-container .btn { font-size: 1rem; }'+
+      '  .table thead th { font-size: 0.9rem; padding: 0.7rem 0.6rem; }'+
+      '  .table tbody td { font-size: 0.9rem; padding: 0.7rem 0.6rem; }'+
+      '  .pagination .page-item .page-link { padding: 0.5rem 0.7rem; font-size: 0.9rem; }'+
+      '}'+
+      
+      /* ícones  */
+      '@media (max-width: 576px) {'+
+      '  .btn-sm .mdi, button.btn-sm .mdi, .btn-sm i.mdi, button.btn-sm i.mdi { font-size: 10px !important; }'+
+      '  .responsive-icon { font-size: 10px !important; }'+
+      '}'+
+      
+      '@media (max-width: 375px) {'+
+      '  .btn-sm .mdi, button.btn-sm .mdi, .btn-sm i.mdi, button.btn-sm i.mdi { display: none !important; }'+
+      '  .responsive-icon { display: none !important; }'+
+      '  button.btn-outline-danger, button.btn-success { padding-left: 8px !important; padding-right: 8px !important; font-size: 11px !important; }'+
+      '}'+
+      
+    
+      '.responsive-icon { transition: all 0.3s ease; }'+
+      '@media (max-width: 576px) {'+
+      '  .hide-on-small { font-size: 10px !important; }'+
+      '}'+
+      '@media (max-width: 375px) {'+
+      '  .hide-on-small { display: none !important; }'+
+      '}'+
+      '</style>').appendTo('head');
+    
+    $(window).on('resize', function() {
+        if (window.innerWidth <= 375) {
+            $('.responsive-icon').hide();
+        } else if (window.innerWidth <= 576) {
+            $('.responsive-icon').show().css('font-size', '10px');
+        } else {
+            $('.responsive-icon').show().css('font-size', '');
+        }
+    }).trigger('resize');
+    
+    $('button[data-toggle="collapse"]').on('click', function() {
+        var $icon = $(this).find('.mdi-filter-variant');
+        if ($icon.length) {
+            if ($($(this).attr('href')).hasClass('show')) {
+                $icon.removeClass('mdi-filter-variant').addClass('mdi-filter');
+            } else {
+                $icon.removeClass('mdi-filter').addClass('mdi-filter-variant');
+            }
+        }
+    });
+    
+    function ajustarResponsividade() {
+        if (window.innerWidth <= 767.98) {
+            $('.search-container .row.g-2 .col-md').addClass('mb-mobile');
+            $('.search-container .col-md-2').addClass('text-center').removeClass('text-right');
+            $('.search-container .row.g-2').addClass('responsive-row');
+        } else {
+            $('.search-container .row.g-2 .col-md').removeClass('mb-mobile');
+            $('.search-container .col-md-2').removeClass('text-center').addClass('text-right');
+            $('.search-container .row.g-2').removeClass('responsive-row');
+        }
+    }
+    
+    ajustarResponsividade();
+    $(window).resize(function() {
+        ajustarResponsividade();
+    });
+
+    // Mobile
+    if (window.innerWidth <= 767) {
+        $('.search-container select.form-control').addClass('mobile-select');
+        $('.search-container .btn').addClass('mobile-btn');
+    }
+    
+    $(window).resize(function() {
+        if (window.innerWidth <= 767) {
+            $('.search-container select.form-control').addClass('mobile-select');
+            $('.search-container .btn').addClass('mobile-btn');
+        } else {
+            $('.search-container select.form-control').removeClass('mobile-select');
+            $('.search-container .btn').removeClass('mobile-btn');
+        }
+    });
+
+    // Marcar/desmarcar favoritos
+    $('.favorite-btn').on('click', function() {
+        var $icon = $(this).find('i');
+        
+        if ($icon.hasClass('mdi-star-outline')) {
+            // Adicionar aos favoritos
+            $icon.removeClass('mdi-star-outline').addClass('mdi-star');
+            $(this).attr('title', 'Remover dos favoritos').tooltip('dispose').tooltip();
+            $(this).attr('data-favorited', 'true');
+            
+            $(this).removeClass('btn-light').addClass('btn-light-secondary active');
+            
+            $.notify({
+                icon: 'mdi mdi-star',
+                message: 'Produto adicionado aos favoritos'
+            },{
+                type: 'success',
+                allow_dismiss: true,
+                placement: {
+                    from: 'top',
+                    align: 'right'
+                },
+                animate: {
+                    enter: 'animated fadeInDown',
+                    exit: 'animated fadeOutUp'
+                },
+                delay: 1500
+            });
+            
+            // backend
+            
+        } else {
+            // Remover dos favoritos
+            $icon.removeClass('mdi-star').addClass('mdi-star-outline');
+            $(this).attr('title', 'Adicionar aos favoritos').tooltip('dispose').tooltip();
+            $(this).attr('data-favorited', 'false');
+            
+            $(this).removeClass('btn-light-secondary active').addClass('btn-light');
+            
+            $.notify({
+                icon: 'mdi mdi-star-outline ',
+                message: 'Produto removido dos favoritos'
+            },{
+                type: 'info',
+                allow_dismiss: true,
+                placement: {
+                    from: 'top',
+                    align: 'right'
+                },
+                animate: {
+                    enter: 'animated fadeInDown',
+                    exit: 'animated fadeOutUp'
+                },
+                delay: 1500
+            });
+            
+            // backend
+        }
+    });
+
+    // botões de favoritos
+    $('.favorite-btn').each(function() {
+        if($(this).data('favorited') === true) {
+            $(this).removeClass('btn-light').addClass('btn-light-secondary active');
+        }
+    });
+
+    // tooltips
+    $('[data-toggle="tooltip"]').tooltip({
+        trigger: 'hover',
+        container: 'body',
+        animation: true,
+        delay: {show: 300, hide: 100}
+    });
+});
+</script>
+</body>
+</html>
