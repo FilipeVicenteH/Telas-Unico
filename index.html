@@ -1,432 +1,395 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="dark scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio UI • Atmos Custom Screens</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-base: #0b0f19;
-            --bg-card: rgba(17, 24, 39, 0.7);
-            --bg-card-hover: rgba(31, 41, 55, 0.85);
-            --text-primary: #f3f4f6;
-            --text-secondary: #9ca3af;
-            --accent: #6366f1;
-            --accent-hover: #4f46e5;
-            --border-color: rgba(255,255,255,0.05);
-            --glow: 0 0 40px rgba(99, 102, 241, 0.15);
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UnicoDrop — Case Study UI/UX Redesign & Frontend</title>
+  <meta name="description" content="Estudo de caso completo do Redesign Visual de Interface e Design System da plataforma UnicoDrop por Filipe Vicente Hidalgo.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['Fira Code', 'monospace'],
+          },
+          colors: {
+            brand: {
+              dark: '#080B11',
+              card: '#0F1623',
+              border: 'rgba(255, 255, 255, 0.08)',
+              teal: '#14B8A6',
+              violet: '#8B5CF6',
+              text: '#94A3B8',
+              light: '#F8FAFC'
+            }
+          }
         }
+      }
+    }
+  </script>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Outfit', sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-base);
-            color: var(--text-primary);
-            line-height: 1.6;
-            background-image: 
-                radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.1), transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(168, 85, 247, 0.1), transparent 25%);
-            background-attachment: fixed;
-            min-height: 100vh;
-        }
-
-        /* Navbar */
-        header {
-            padding: 2rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border-color);
-            background: rgba(11, 15, 25, 0.8);
-            backdrop-filter: blur(12px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .logo span {
-            color: var(--accent);
-        }
-
-        .hero {
-            text-align: center;
-            padding: 6rem 1rem 4rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .badge {
-            background: rgba(99, 102, 241, 0.1);
-            color: var(--accent);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            border: 1px solid rgba(99, 102, 241, 0.2);
-            display: inline-block;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(to right, #fff, #a5b4fc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-        }
-
-        /* Container & Categories */
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 5% 5rem;
-        }
-
-        .category-section {
-            margin-bottom: 4rem;
-            animation: fadeIn 0.8s ease-in-out;
-        }
-
-        .category-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 1.5rem;
-        }
-
-        /* Cards */
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 1.5rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(8px);
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom right, rgba(255,255,255,0.05), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            background: var(--bg-card-hover);
-            border-color: rgba(99, 102, 241, 0.4);
-            box-shadow: var(--glow);
-        }
-
-        .card:hover::before {
-            opacity: 1;
-        }
-
-        .card-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: rgba(99, 102, 241, 0.1);
-            color: var(--accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover .card-icon {
-            transform: scale(1.1);
-            background: var(--accent);
-            color: white;
-        }
-
-        .card-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .card-desc {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            flex-grow: 1;
-        }
-
-        .card-footer {
-            margin-top: 1.5rem;
-            display: flex;
-            align-items: center;
-            font-size: 0.85rem;
-            color: var(--accent);
-            font-weight: 500;
-        }
-
-        .card-footer svg {
-            width: 16px;
-            height: 16px;
-            margin-left: 0.5rem;
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover .card-footer svg {
-            transform: translateX(4px);
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .grid { grid-template-columns: 1fr; }
-        }
-    </style>
+  <style>
+    body {
+      background-color: #080B11;
+      color: #E2E8F0;
+      font-family: 'Inter', sans-serif;
+    }
+    .glass-card {
+      background: rgba(15, 22, 35, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+    .glass-card:hover {
+      border-color: rgba(20, 184, 166, 0.3);
+      box-shadow: 0 10px 30px -10px rgba(20, 184, 166, 0.15);
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #2DD4BF 0%, #38BDF8 50%, #8B5CF6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
 </head>
-<body>
+<body class="antialiased selection:bg-teal-500/20 selection:text-teal-300">
 
-    <header>
-        <div class="logo">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent);"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-            UI <span>Portfolio</span>
+  <!-- Navbar -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-teal-500 to-violet-600 flex items-center justify-center font-heading font-extrabold text-white text-xl shadow-lg shadow-teal-500/20">
+          U
         </div>
-        <a href="https://github.com/" target="_blank" style="color: var(--text-secondary); text-decoration: none; display: flex; align-items: center; gap: 8px;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-            GitHub
-        </a>
-    </header>
+        <div>
+          <span class="font-heading font-bold text-white tracking-tight block text-base">UnicoDrop</span>
+          <span class="text-xs text-teal-400 font-mono">UI/UX Case Study</span>
+        </div>
+      </a>
 
-    <div class="hero">
-        <div class="badge">Desenvolvido com Atmos Theme</div>
-        <h1>Construindo Experiências Digitais Premium</h1>
-        <p>Explore a coleção completa de telas, dashboards e componentes de interface criados e customizados com alto padrão de design e usabilidade.</p>
+      <nav class="hidden md:flex items-center gap-8 text-xs font-mono text-slate-400">
+        <a href="#overview" class="hover:text-teal-400 transition-colors">01. Visão Geral</a>
+        <a href="#problem" class="hover:text-teal-400 transition-colors">02. Diagnóstico UX</a>
+        <a href="#design-system" class="hover:text-teal-400 transition-colors">03. Design System</a>
+        <a href="#showcase" class="hover:text-teal-400 transition-colors">04. Telas Criadas</a>
+        <a href="#impact" class="hover:text-teal-400 transition-colors">05. Resultados</a>
+      </nav>
+
+      <a href="https://filipevicenteh.vercel.app" target="_blank" class="px-4 py-2 rounded-lg bg-teal-500/10 border border-teal-500/30 text-teal-300 hover:bg-teal-500/20 text-xs font-mono font-medium transition-all flex items-center gap-2">
+        <span>← Voltar ao Portfólio</span>
+      </a>
     </div>
+  </header>
 
-    <div class="container">
+  <main class="pt-32 pb-24 px-6 max-w-7xl mx-auto space-y-32">
 
-        <!-- Dashboards Principais -->
-        <div class="category-section">
-            <h2 class="category-title">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
-                Dashboards Analíticos
-            </h2>
-            <div class="grid">
-                <a href="Dashboards/Dashboard Rastreio.html" target="_blank" class="card">
-                    <div class="card-icon">📍</div>
-                    <h3 class="card-title">Dashboard Rastreio</h3>
-                    <p class="card-desc">Visão macro de entregas, status de pacotes e volumetria visual em gráficos elegantes.</p>
-                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </a>
-                <a href="Dashboards/Dashboard Google Atualizado.html" target="_blank" class="card">
-                    <div class="card-icon">📊</div>
-                    <h3 class="card-title">Dashboard Google</h3>
-                    <p class="card-desc">Métricas de performance, tráfego e análise de conversões detalhadas.</p>
-                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </a>
-                <a href="Dashboards/Dashboard Facebook.html" target="_blank" class="card">
-                    <div class="card-icon">👥</div>
-                    <h3 class="card-title">Dashboard Facebook</h3>
-                    <p class="card-desc">Resultados de campanhas, engajamento e CAC centralizados em um único HUB.</p>
-                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </a>
-                <a href="Dashboards/Dashboard WhatsApp.html" target="_blank" class="card">
-                    <div class="card-icon">💬</div>
-                    <h3 class="card-title">Dashboard WhatsApp</h3>
-                    <p class="card-desc">Controle de disparos, taxas de abertura e eficiência de mensageria ativa.</p>
-                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </a>
-                <a href="Dashboards/Financeiro Dashboard.html" target="_blank" class="card">
-                    <div class="card-icon">💰</div>
-                    <h3 class="card-title">Dashboard Financeiro</h3>
-                    <p class="card-desc">Resumo de receitas, despesas e fluxo de caixa com visualizações avançadas.</p>
-                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </a>
-            </div>
+    <!-- HERO SECTION -->
+    <section id="overview" class="space-y-12 text-center md:text-left">
+      <div class="max-w-3xl space-y-6">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 text-xs font-mono">
+          <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+          CASE STUDY • REFORMULAÇÃO VISUAL & FRONTEND SAAS
         </div>
 
-        <!-- Módulo WhatsApp e Automação -->
-        <div class="category-section">
-            <h2 class="category-title">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-                Automação & Mensageria
-            </h2>
-            <div class="grid">
-                <a href="Telas Verificar/Automação de WhatsApp Com QR Code.html" target="_blank" class="card">
-                    <div class="card-icon">📱</div>
-                    <h3 class="card-title">WhatsApp Com QR Code</h3>
-                    <p class="card-desc">Fluxo de conexão e integração de sessão com QR Code dinâmico.</p>
-                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </a>
-                <a href="Telas Verificar/Automação de WhatsApp Sem QR Code.html" target="_blank" class="card">
-                    <div class="card-icon">🔗</div>
-                    <h3 class="card-title">WhatsApp Sem QR Code</h3>
-                    <p class="card-desc">Alternativa de conexão fluida sem verificação de tela.</p>
-                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </a>
-                <a href="Automacao_Mensageria/WhatsApp Envios.html" target="_blank" class="card">
-                    <div class="card-icon">🚀</div>
-                    <h3 class="card-title">WhatsApp Envios</h3>
-                    <p class="card-desc">Tela focada em envio em massa e segmentação de contatos.</p>
-                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </a>
-                <a href="Automacao_Mensageria/Mensagem SMS.html" target="_blank" class="card">
-                    <div class="card-icon">📨</div>
-                    <h3 class="card-title">Mensagem SMS</h3>
-                    <p class="card-desc">Interface para parametrização e disparo de campanhas por SMS.</p>
-                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </a>
-                <a href="Automacao_Mensageria/Mensagem E-mail.html" target="_blank" class="card">
-                    <div class="card-icon">📧</div>
-                    <h3 class="card-title">Mensagem E-mail</h3>
-                    <p class="card-desc">Editor e configurações de automação via E-mail corporativo.</p>
-                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </a>
-            </div>
+        <h1 class="font-heading text-4xl md:text-6xl font-extrabold text-white leading-tight tracking-tight">
+          Redesign Visual & UI/UX da Plataforma <span class="gradient-text">UnicoDrop</span>
+        </h1>
+
+        <p class="text-slate-400 text-base md:text-lg leading-relaxed font-normal">
+          Um estudo de caso sobre como transformamos uma aplicação legada de e-commerce e logística em um sistema SaaS moderno, veloz e focado na clareza visual dos dados operacionais dos lojistas.
+        </p>
+      </div>
+
+      <!-- Metadata Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 p-6 glass-card rounded-2xl">
+        <div>
+          <span class="block text-xs font-mono text-slate-500 mb-1">PAPEL</span>
+          <span class="text-sm font-semibold text-white">Lead UI/UX & Frontend</span>
+        </div>
+        <div>
+          <span class="block text-xs font-mono text-slate-500 mb-1">TECNOLOGIAS</span>
+          <span class="text-sm font-semibold text-white">Figma, React, Tailwind</span>
+        </div>
+        <div>
+          <span class="block text-xs font-mono text-slate-500 mb-1">ESCOPO</span>
+          <span class="text-sm font-semibold text-white">Redesign de 10+ Módulos</span>
+        </div>
+        <div>
+          <span class="block text-xs font-mono text-slate-500 mb-1">STATUS</span>
+          <span class="text-sm font-semibold text-teal-400">Deploy Ativo / Produção</span>
+        </div>
+      </div>
+
+      <!-- Hero Main Frame Mockup -->
+      <div class="glass-card rounded-2xl overflow-hidden shadow-2xl border border-white/10 group">
+        <div class="bg-slate-900/90 px-4 py-3 border-b border-white/10 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
+            <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
+            <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+            <span class="text-xs font-mono text-slate-500 ml-2 hidden sm:inline">unicodrop.com.br / dashboard-principal</span>
+          </div>
+          <span class="text-xs font-mono text-teal-400 bg-teal-500/10 px-2.5 py-1 rounded">
+            ✨ Visão Geral do Sistema Redesenhado
+          </span>
         </div>
 
-        <!-- Módulo Lojas / Produtos -->
-        <div class="category-section">
-            <h2 class="category-title">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-                E-commerce & Pedidos
-            </h2>
-            <div class="grid">
-                <a href="Ecommerce_Pedidos/Lista de PEDIDOS.html" target="_blank" class="card">
-                    <div class="card-icon">📦</div>
-                    <h3 class="card-title">Lista de Pedidos</h3>
-                    <p class="card-desc">Listagem extensa com filtros avançados, ações em massa e status colorizados.</p>
-                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </a>
-                <a href="Ecommerce_Pedidos/Lista de Produtos.html" target="_blank" class="card">
-                    <div class="card-icon">🏷️</div>
-                    <h3 class="card-title">Lista de Produtos</h3>
-                    <p class="card-desc">Inventário interativo com thumbnail e detalhes de estoque/preço.</p>
-                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </a>
-                <a href="Ecommerce_Pedidos/Ranking de Produtos.html" target="_blank" class="card">
-                    <div class="card-icon">🏆</div>
-                    <h3 class="card-title">Ranking de Produtos</h3>
-                    <p class="card-desc">Classificação de produtos mais vendidos com gamificação e destaques visuais.</p>
-                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </a>
-                <a href="Ecommerce_Pedidos/Lista Carrinho.html" target="_blank" class="card">
-                    <div class="card-icon">🛒</div>
-                    <h3 class="card-title">Lista de Carrinhos Aband.</h3>
-                    <p class="card-desc">Acompanhamento de carrinhos não finalizados para retargeting.</p>
-                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </a>
-                <a href="Ecommerce_Pedidos/Lista de Rastreio.html" target="_blank" class="card">
-                    <div class="card-icon">🚚</div>
-                    <h3 class="card-title">Lista de Rastreio</h3>
-                    <p class="card-desc">Acompanhamento logístico detalhado linha a linha.</p>
-                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </a>
-                <a href="Ecommerce_Pedidos/Modal Custo Produtos Atualizado.html" target="_blank" class="card">
-                    <div class="card-icon">💸</div>
-                    <h3 class="card-title">Modal Custo Produtos</h3>
-                    <p class="card-desc">Design limpo de interface pop-up para atribuição de despesas.</p>
-                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </a>
-            </div>
+        <div class="relative overflow-hidden bg-slate-950">
+          <img src="assets/case_study_previews/ranking_produtos.jpg" alt="Dashboard Principal UnicoDrop Redesign" class="w-full h-auto object-top group-hover:scale-[1.01] transition-transform duration-700">
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 02: O PROBLEMA & DIAGNÓSTICO -->
+    <section id="problem" class="space-y-12">
+      <div class="space-y-4">
+        <span class="text-teal-400 font-mono text-xs tracking-wider uppercase">02. DIAGNÓSTICO UX</span>
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-white">Desafios Encontrados no Sistema Antigo</h2>
+        <p class="text-slate-400 max-w-2xl text-sm leading-relaxed">
+          Antes do redesign, a plataforma enfrentava queixas recorrentes de lojistas relacionadas à poluição visual e dificuldade em tomar decisões rápidas.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="glass-card p-8 rounded-2xl space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 flex items-center justify-center font-mono font-bold text-lg">
+            01
+          </div>
+          <h3 class="font-heading font-semibold text-white text-lg">Excesso de Ruído Visual</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Métricas críticas como faturamento total, custo de produto e lucro líquido estavam misturadas em tabelas densas sem hierarquia de fonte e cor.
+          </p>
         </div>
 
-        <!-- Módulo Outros / Config -->
-        <div class="category-section">
-            <h2 class="category-title">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-                Configurações & Experiência
-            </h2>
-            <div class="grid">
-                <a href="Telas Verificar/inicio Com Onboard Botão.html" target="_blank" class="card">
-                    <div class="card-icon">✨</div>
-                    <h3 class="card-title">Início c/ Onboarding</h3>
-                    <p class="card-desc">Jornada guiada de boas-vindas para novos usuários com call-to-actions.</p>
-                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </a>
-                <a href="Configuracoes_Experiencia/LandingAuditoria - Grande - 2.html" target="_blank" class="card">
-                    <div class="card-icon">🔍</div>
-                    <h3 class="card-title">Landing Auditoria</h3>
-                    <p class="card-desc">Landing page rica para atração de leads focada em auditoria de processos.</p>
-                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </a>
-                <a href="Configuracoes_Experiencia/Config ADS.html" target="_blank" class="card">
-                    <div class="card-icon">⚙️</div>
-                    <h3 class="card-title">Config ADS</h3>
-                    <p class="card-desc">Parametrização completa com gráficos preditivos de campanhas.</p>
-                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </a>
-                <a href="Configuracoes_Experiencia/Financeiro -Calendario.html" target="_blank" class="card">
-                    <div class="card-icon">📅</div>
-                    <h3 class="card-title">Calendário Financeiro</h3>
-                    <p class="card-desc">Visão de agenda em grid por mês com marcações financeiras diárias.</p>
-                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </a>
-                <a href="Configuracoes_Experiencia/Taxas e Tarifas.html" target="_blank" class="card">
-                    <div class="card-icon">📈</div>
-                    <h3 class="card-title">Taxas e Tarifas</h3>
-                    <p class="card-desc">Transparência em pricing, exibição em blocos de fácil absorção.</p>
-                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </a>
-                <a href="Configuracoes_Experiencia/Central de Ajuda.html" target="_blank" class="card">
-                    <div class="card-icon">💡</div>
-                    <h3 class="card-title">Central de Ajuda</h3>
-                    <p class="card-desc">Portal de conhecimento com UX com busca inteligente.</p>
-                    <div class="card-footer">Ver Tela <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                </a>
-            </div>
+        <div class="glass-card p-8 rounded-2xl space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center font-mono font-bold text-lg">
+            02
+          </div>
+          <h3 class="font-heading font-semibold text-white text-lg">Falta de Padrão Mobile</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            O layout quebrava em telas menores, forçando o usuário a utilizar rolagens horizontais desconfortáveis para visualizar códigos de rastreamento.
+          </p>
         </div>
 
+        <div class="glass-card p-8 rounded-2xl space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-teal-500/10 border border-teal-500/20 text-teal-400 flex items-center justify-center font-mono font-bold text-lg">
+            03
+          </div>
+          <h3 class="font-heading font-semibold text-white text-lg">Complexidade em Ações</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            Tarefas simples como ajustar valores de custo ou filtrar pedidos por data exigiam múltiplos cliques em modais mal posicionados.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 03: DESIGN SYSTEM -->
+    <section id="design-system" class="space-y-12">
+      <div class="space-y-4">
+        <span class="text-teal-400 font-mono text-xs tracking-wider uppercase">03. UI FOUNDATIONS</span>
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-white">Construindo um Design System Escalável</h2>
+        <p class="text-slate-400 max-w-2xl text-sm leading-relaxed">
+          Para garantir consistência visual entre todas as telas, desenvolvemos um conjunto de regras, padrões tipográficos e tokens de cores no Figma.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Palette Tokens -->
+        <div class="glass-card p-8 rounded-2xl space-y-6">
+          <h3 class="font-heading font-semibold text-white text-base">Paleta de Cores SaaS (Dark Enterprise)</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="p-4 rounded-xl bg-[#080B11] border border-white/10 space-y-2">
+              <div class="w-full h-8 rounded-lg bg-[#080B11] border border-white/20"></div>
+              <span class="block text-xs font-mono text-white font-medium">Dark Background</span>
+              <span class="block text-[10px] font-mono text-slate-500">#080B11</span>
+            </div>
+
+            <div class="p-4 rounded-xl bg-[#0F1623] border border-white/10 space-y-2">
+              <div class="w-full h-8 rounded-lg bg-[#0F1623] border border-white/20"></div>
+              <span class="block text-xs font-mono text-white font-medium">Card Surface</span>
+              <span class="block text-[10px] font-mono text-slate-500">#0F1623</span>
+            </div>
+
+            <div class="p-4 rounded-xl bg-[#0F1623] border border-white/10 space-y-2">
+              <div class="w-full h-8 rounded-lg bg-[#14B8A6]"></div>
+              <span class="block text-xs font-mono text-teal-400 font-medium">Teal Accent</span>
+              <span class="block text-[10px] font-mono text-slate-500">#14B8A6</span>
+            </div>
+
+            <div class="p-4 rounded-xl bg-[#0F1623] border border-white/10 space-y-2">
+              <div class="w-full h-8 rounded-lg bg-[#8B5CF6]"></div>
+              <span class="block text-xs font-mono text-violet-400 font-medium">Violet Accent</span>
+              <span class="block text-[10px] font-mono text-slate-500">#8B5CF6</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Typography -->
+        <div class="glass-card p-8 rounded-2xl space-y-6">
+          <h3 class="font-heading font-semibold text-white text-base">Hierarquia Tipográfica</h3>
+          <div class="space-y-4">
+            <div class="pb-3 border-b border-white/10">
+              <span class="font-heading text-xl font-bold text-white">Plus Jakarta Sans — Headings</span>
+              <p class="text-xs text-slate-400 mt-1">Utilizado para títulos principas, KPIs e navegação.</p>
+            </div>
+            <div>
+              <span class="font-sans text-base font-normal text-slate-200">Inter — Body & Data Density</span>
+              <p class="text-xs text-slate-400 mt-1">Utilizado para tabelas de pedidos, relatórios e textos de suporte.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 04: SHOWCASE DE TELAS CRIADAS -->
+    <section id="showcase" class="space-y-12">
+      <div class="space-y-4">
+        <span class="text-teal-400 font-mono text-xs tracking-wider uppercase">04. RESULTADO VISUAL</span>
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-white">Telas & Módulos Criados para a UnicoDrop</h2>
+        <p class="text-slate-400 max-w-2xl text-sm leading-relaxed">
+          Navegue abaixo pelas páginas desenvolvidas no projeto. Clique no botão de cada tela para abri-la e testar a interface ao vivo.
+        </p>
+      </div>
+
+      <div class="space-y-16">
+
+        <!-- ITEM 1: RANKING DE PRODUTOS -->
+        <div class="glass-card rounded-2xl overflow-hidden border border-white/10 grid lg:grid-cols-12 gap-0">
+          <div class="lg:col-span-7 bg-slate-950 p-4 flex items-center justify-center border-b lg:border-b-0 lg:border-r border-white/10">
+            <img src="assets/case_study_previews/ranking_produtos.jpg" alt="Ranking de Produtos" class="w-full h-auto rounded-xl shadow-lg object-cover">
+          </div>
+          <div class="lg:col-span-5 p-8 flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+              <span class="px-2.5 py-1 rounded bg-teal-500/10 text-teal-400 font-mono text-xs">MÓDULO E-COMMERCE</span>
+              <h3 class="font-heading text-2xl font-bold text-white">Ranking de Produtos & Performance</h3>
+              <p class="text-slate-400 text-xs leading-relaxed">
+                Desenvolvimento de painel consolidado com cards de Receita Total, Total Pago, Pendente e Lucro Líquido, acompanhado de tabela interativa ordenando produtos por volume de vendas e taxa de conversão.
+              </p>
+            </div>
+
+            <a href="Ecommerce_Pedidos/Ranking de Produtos.html" target="_blank" class="w-full py-3 rounded-xl bg-teal-500 text-slate-950 hover:bg-teal-400 font-mono text-xs font-bold transition-all flex items-center justify-center gap-2 shadow-lg shadow-teal-500/20">
+              <span>Abrir Esta Tela Ao Vivo ↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- ITEM 2: LISTA DE RASTREIO -->
+        <div class="glass-card rounded-2xl overflow-hidden border border-white/10 grid lg:grid-cols-12 gap-0">
+          <div class="lg:col-span-7 bg-slate-950 p-4 flex items-center justify-center border-b lg:border-b-0 lg:border-r border-white/10">
+            <img src="assets/case_study_previews/lista_rastreio.jpg" alt="Lista de Rastreio" class="w-full h-auto rounded-xl shadow-lg object-cover">
+          </div>
+          <div class="lg:col-span-5 p-8 flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+              <span class="px-2.5 py-1 rounded bg-violet-500/10 text-violet-400 font-mono text-xs">LOGÍSTICA & RASTREAMENTO</span>
+              <h3 class="font-heading text-2xl font-bold text-white">Central de Rastreio de Pedidos</h3>
+              <p class="text-slate-400 text-xs leading-relaxed">
+                Interface com busca universal por código de rastreamento, filtros de transportadoras (Anjun, 360lion, Sunyou, YunExpress) e cópia rápida em 1 clique com feedback visual.
+              </p>
+            </div>
+
+            <a href="Ecommerce_Pedidos/Lista de Rastreio.html" target="_blank" class="w-full py-3 rounded-xl bg-violet-500 text-white hover:bg-violet-400 font-mono text-xs font-bold transition-all flex items-center justify-center gap-2 shadow-lg shadow-violet-500/20">
+              <span>Abrir Esta Tela Ao Vivo ↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- ITEM 3: FINANCEIRO DASHBOARD -->
+        <div class="glass-card rounded-2xl overflow-hidden border border-white/10 grid lg:grid-cols-12 gap-0">
+          <div class="lg:col-span-7 bg-slate-950 p-4 flex items-center justify-center border-b lg:border-b-0 lg:border-r border-white/10">
+            <img src="assets/case_study_previews/financeiro_dashboard.jpg" alt="Financeiro Dashboard" class="w-full h-auto rounded-xl shadow-lg object-cover">
+          </div>
+          <div class="lg:col-span-5 p-8 flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+              <span class="px-2.5 py-1 rounded bg-amber-500/10 text-amber-400 font-mono text-xs">DASHBOARD EXECUTIVO</span>
+              <h3 class="font-heading text-2xl font-bold text-white">Dashboard Financeiro & DRE</h3>
+              <p class="text-slate-400 text-xs leading-relaxed">
+                Módulo com visão consolidada de entradas, saídas, margem bruta de operação e gráficos demonstrativos da evolução financeira diária e mensal.
+              </p>
+            </div>
+
+            <a href="Dashboards/Financeiro Dashboard.html" target="_blank" class="w-full py-3 rounded-xl bg-amber-500 text-slate-950 hover:bg-amber-400 font-mono text-xs font-bold transition-all flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20">
+              <span>Abrir Esta Tela Ao Vivo ↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- ITEM 4: MENSAGEM WHATSAPP -->
+        <div class="glass-card rounded-2xl overflow-hidden border border-white/10 grid lg:grid-cols-12 gap-0">
+          <div class="lg:col-span-7 bg-slate-950 p-4 flex items-center justify-center border-b lg:border-b-0 lg:border-r border-white/10">
+            <img src="assets/case_study_previews/mensagem_whatsapp.jpg" alt="Mensagem WhatsApp" class="w-full h-auto rounded-xl shadow-lg object-cover">
+          </div>
+          <div class="lg:col-span-5 p-8 flex flex-col justify-between space-y-6">
+            <div class="space-y-4">
+              <span class="px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 font-mono text-xs">AUTOMAÇÃO & MENSAGERIA</span>
+              <h3 class="font-heading text-2xl font-bold text-white">Automação de WhatsApp com QR Code</h3>
+              <p class="text-slate-400 text-xs leading-relaxed">
+                Painel de integração de disparo de mensagens automáticas de confirmação de pedido, código de rastreamento e recuperação de boletos/PIX.
+              </p>
+            </div>
+
+            <a href="Automacao_Mensageria/Mensagem WhatsApp.html" target="_blank" class="w-full py-3 rounded-xl bg-emerald-500 text-slate-950 hover:bg-emerald-400 font-mono text-xs font-bold transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20">
+              <span>Abrir Esta Tela Ao Vivo ↗</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 05: RESULTADOS E APRENDIZADOS -->
+    <section id="impact" class="space-y-12">
+      <div class="space-y-4">
+        <span class="text-teal-400 font-mono text-xs tracking-wider uppercase">05. IMPACTO DO PROJETO</span>
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-white">Resultados Obtidos Pós-Redesign</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="glass-card p-8 rounded-2xl space-y-2">
+          <span class="font-heading text-4xl font-extrabold text-teal-400 block">+100%</span>
+          <span class="text-sm font-semibold text-white block">Clareza Visual</span>
+          <p class="text-slate-400 text-xs leading-relaxed">Eliminação de elementos desnecessários e foco na hierarquia dos números operacionais.</p>
+        </div>
+
+        <div class="glass-card p-8 rounded-2xl space-y-2">
+          <span class="font-heading text-4xl font-extrabold text-violet-400 block">-40%</span>
+          <span class="text-sm font-semibold text-white block">Tempo de Busca</span>
+          <p class="text-slate-400 text-xs leading-relaxed">Localização imediata de códigos de rastreio e relatórios com os novos filtros.</p>
+        </div>
+
+        <div class="glass-card p-8 rounded-2xl space-y-2">
+          <span class="font-heading text-4xl font-extrabold text-amber-400 block">Moderno</span>
+          <span class="text-sm font-semibold text-white block">Design System Figma</span>
+          <p class="text-slate-400 text-xs leading-relaxed">Facilidade de manutenção em código com componentes reutilizáveis em React/Tailwind.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/10 bg-slate-950 py-12 px-6">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div>
+        <p class="text-sm text-white font-heading font-semibold">Filipe Vicente Hidalgo</p>
+        <p class="text-xs text-slate-500">Desenvolvedor Front-End & Specialist em Suporte N1/N2</p>
+      </div>
+
+      <div class="flex items-center gap-6 font-mono text-xs text-slate-400">
+        <a href="https://filipevicenteh.vercel.app" target="_blank" class="hover:text-teal-400 transition-colors">Portfólio Principal</a>
+        <a href="https://github.com/FilipeVicenteH/Telas-Unico" target="_blank" class="hover:text-teal-400 transition-colors">Repositório GitHub</a>
+        <a href="https://wa.me/5511966152956" target="_blank" class="hover:text-teal-400 transition-colors">WhatsApp</a>
+      </div>
     </div>
+  </footer>
 
 </body>
 </html>
-
