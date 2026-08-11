@@ -6,10 +6,10 @@
   <title>UnicoDrop — Case Study UI/UX Redesign (30 Telas)</title>
   <meta name="description" content="Apresentação completa das 30 telas e módulos de interface criadas para o Redesign da Plataforma UnicoDrop por Filipe Vicente Hidalgo.">
   
-  <!-- Google Fonts -->
+  <!-- Google Fonts: Raleway, Anton, Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=Raleway:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -19,18 +19,21 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            heading: ['Plus Jakarta Sans', 'sans-serif'],
+            sans: ['Raleway', 'sans-serif'],
+            heading: ['Raleway', 'sans-serif'],
+            display: ['Anton', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
             mono: ['Fira Code', 'monospace'],
           },
           colors: {
-            brand: {
-              dark: '#080B11',
-              card: '#0F1623',
-              border: 'rgba(255, 255, 255, 0.08)',
-              teal: '#14B8A6',
-              violet: '#8B5CF6',
-              text: '#94A3B8',
+            studio: {
+              blue: '#358eef',
+              blueHover: '#2576cf',
+              darkBg: '#080C14',
+              cardBg: '#0F1626',
+              headerBg: '#358eef',
+              border: '#1E2B45',
+              muted: '#8492A6',
               light: '#F8FAFC'
             }
           }
@@ -41,156 +44,194 @@
 
   <style>
     body {
-      background-color: #080B11;
+      background-color: #080C14;
       color: #E2E8F0;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Raleway', sans-serif;
     }
-    .glass-card {
-      background: rgba(15, 22, 35, 0.75);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+    .studio-card {
+      background: #0F1626;
+      border: 1px solid #1E2B45;
+      border-radius: 4px;
+      transition: all 0.3s ease;
     }
-    .glass-card:hover {
-      border-color: rgba(20, 184, 166, 0.35);
-      box-shadow: 0 12px 32px -10px rgba(20, 184, 166, 0.18);
+    .studio-card:hover {
+      border-color: #358eef;
+      box-shadow: 0 12px 36px -10px rgba(53, 142, 239, 0.25);
     }
-    .gradient-text {
-      background: linear-gradient(135deg, #2DD4BF 0%, #38BDF8 50%, #8B5CF6 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .highlight-box {
+      background-color: #358eef;
+      color: #ffffff;
+      padding: 0px 8px;
+      border-radius: 2px;
+      display: inline-block;
+    }
+    .filter-btn {
+      background-color: #0F1626;
+      color: #8492A6;
+      border: 1px solid #1E2B45;
+      border-radius: 3px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: all 0.2s ease;
+    }
+    .filter-btn:hover {
+      color: #ffffff;
+      border-color: #358eef;
     }
     .filter-btn.active {
-      background-color: #14B8A6;
-      color: #080B11;
-      font-weight: 700;
+      background-color: #358eef;
+      color: #ffffff;
+      border-color: #358eef;
     }
   </style>
 </head>
-<body class="antialiased selection:bg-teal-500/20 selection:text-teal-300">
+<body class="antialiased selection:bg-blue-600/30 selection:text-blue-200">
 
-  <!-- Navbar -->
-  <header class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-white/10">
+  <!-- Navbar (Studio 86 Style Header Bar) -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-[#358eef] shadow-lg border-b border-blue-400/30">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
       <a href="#" class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-teal-500 to-violet-600 flex items-center justify-center font-heading font-extrabold text-white text-xl shadow-lg shadow-teal-500/20">
-          U
+        <div class="w-10 h-10 bg-black text-white flex items-center justify-center font-display text-2xl font-normal tracking-wide shadow-md">
+          86
         </div>
         <div>
-          <span class="font-heading font-bold text-white tracking-tight block text-base">UnicoDrop</span>
-          <span class="text-xs text-teal-400 font-mono">UI/UX Case Study (30 Telas)</span>
+          <span class="font-heading font-bold text-white uppercase tracking-wider block text-base leading-none">UnicoDrop</span>
+          <span class="text-[10px] text-blue-100 font-mono tracking-widest uppercase mt-0.5 block">UI/UX Showcase (30 Telas)</span>
         </div>
       </a>
 
-      <nav class="hidden md:flex items-center gap-8 text-xs font-mono text-slate-400">
-        <a href="#overview" class="hover:text-teal-400 transition-colors">01. Visão Geral</a>
-        <a href="#problem" class="hover:text-teal-400 transition-colors">02. Diagnóstico UX</a>
-        <a href="#design-system" class="hover:text-teal-400 transition-colors">03. Design System</a>
-        <a href="#gallery" class="hover:text-teal-400 transition-colors">04. Galeria de Telas (30)</a>
-        <a href="#impact" class="hover:text-teal-400 transition-colors">05. Resultados</a>
+      <!-- Navigation Menu -->
+      <nav class="hidden lg:flex items-center gap-8 text-white">
+        <a href="#overview" class="group text-center">
+          <span class="block text-xs font-bold uppercase tracking-wider group-hover:underline">Home</span>
+          <span class="block text-[9px] text-blue-100/80 font-normal">visão geral</span>
+        </a>
+        <a href="#problem" class="group text-center">
+          <span class="block text-xs font-bold uppercase tracking-wider group-hover:underline">Diagnosis</span>
+          <span class="block text-[9px] text-blue-100/80 font-normal">desafios ux</span>
+        </a>
+        <a href="#design-system" class="group text-center">
+          <span class="block text-xs font-bold uppercase tracking-wider group-hover:underline">Design System</span>
+          <span class="block text-[9px] text-blue-100/80 font-normal">ui foundations</span>
+        </a>
+        <a href="#gallery" class="group text-center">
+          <span class="block text-xs font-bold uppercase tracking-wider group-hover:underline">Portfolio</span>
+          <span class="block text-[9px] text-blue-100/80 font-normal">30 interfaces</span>
+        </a>
+        <a href="#impact" class="group text-center">
+          <span class="block text-xs font-bold uppercase tracking-wider group-hover:underline">Results</span>
+          <span class="block text-[9px] text-blue-100/80 font-normal">impacto saas</span>
+        </a>
       </nav>
 
-      <a href="https://filipevicenteh.vercel.app" target="_blank" class="px-4 py-2 rounded-lg bg-teal-500/10 border border-teal-500/30 text-teal-300 hover:bg-teal-500/20 text-xs font-mono font-medium transition-all flex items-center gap-2">
+      <!-- Return Button -->
+      <a href="https://filipevicenteh.vercel.app" target="_blank" class="px-4 py-2 bg-black hover:bg-slate-900 text-white rounded-sm text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-2 shadow-md">
         <span>← Voltar ao Portfólio</span>
       </a>
     </div>
   </header>
 
-  <main class="pt-32 pb-24 px-6 max-w-7xl mx-auto space-y-32">
+  <main class="pt-32 pb-24 px-6 max-w-7xl mx-auto space-y-28">
 
-    <!-- HERO SECTION -->
-    <section id="overview" class="space-y-12 text-center md:text-left">
-      <div class="max-w-3xl space-y-6">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 text-xs font-mono">
-          <span class="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
-          CASE STUDY • REFORMULAÇÃO DE 30 TELAS SAAS
+    <!-- HERO SECTION (Studio 86 Minimal Style) -->
+    <section id="overview" class="space-y-12 text-left">
+      <div class="max-w-4xl space-y-6">
+        <div class="inline-block">
+          <span class="bg-[#358eef] text-white px-3.5 py-1 text-xs font-bold tracking-widest uppercase rounded-xs">
+            CASE STUDY • REFORMULAÇÃO DE 30 TELAS SAAS
+          </span>
         </div>
 
-        <h1 class="font-heading text-4xl md:text-6xl font-extrabold text-white leading-tight tracking-tight">
-          Redesign Visual & UI/UX da Plataforma <span class="gradient-text">UnicoDrop</span>
+        <h1 class="font-heading text-4xl md:text-6xl font-light text-white leading-tight tracking-tight">
+          Redesign Visual & UI/UX da Plataforma <span class="highlight-box font-medium">UnicoDrop</span>
         </h1>
 
-        <p class="text-slate-400 text-base md:text-lg leading-relaxed font-normal">
-          Apresentação completa das <strong class="text-white">30 telas e módulos de interface</strong> criados para despoluir, organizar e modernizar a experiência de uso dos lojistas e administradores do UnicoDrop.
+        <p class="text-slate-300 text-base md:text-lg leading-relaxed font-light max-w-3xl">
+          Apresentação completa das <strong class="text-white font-semibold">30 telas e módulos de interface</strong> criados para despoluir, organizar e modernizar a experiência de uso dos lojistas e administradores do UnicoDrop.
         </p>
       </div>
 
       <!-- Metadata Grid -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 p-6 glass-card rounded-2xl">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 p-6 studio-card">
         <div>
-          <span class="block text-xs font-mono text-slate-500 mb-1">PAPEL</span>
+          <span class="block text-xs font-bold uppercase tracking-wider text-[#358eef] mb-1">PAPEL</span>
           <span class="text-sm font-semibold text-white">Lead UI/UX & Frontend</span>
         </div>
         <div>
-          <span class="block text-xs font-mono text-slate-500 mb-1">TECNOLOGIAS</span>
-          <span class="text-sm font-semibold text-white">Figma, React, Tailwind</span>
+          <span class="block text-xs font-bold uppercase tracking-wider text-[#358eef] mb-1">TECNOLOGIAS</span>
+          <span class="text-sm font-semibold text-white">Figma, React, Tailwind CSS</span>
         </div>
         <div>
-          <span class="block text-xs font-mono text-slate-500 mb-1">TOTAL DE TELAS</span>
-          <span class="text-sm font-semibold text-teal-400">30 Interfaces Codadas</span>
+          <span class="block text-xs font-bold uppercase tracking-wider text-[#358eef] mb-1">TOTAL DE TELAS</span>
+          <span class="text-sm font-bold text-white">30 Interfaces Codadas</span>
         </div>
         <div>
-          <span class="block text-xs font-mono text-slate-500 mb-1">STATUS</span>
-          <span class="text-sm font-semibold text-teal-400">Deploy Ativo / Produção</span>
+          <span class="block text-xs font-bold uppercase tracking-wider text-[#358eef] mb-1">STATUS</span>
+          <span class="text-sm font-bold text-emerald-400">Deploy Ativo / Produção</span>
         </div>
       </div>
 
       <!-- Hero Main Frame Mockup -->
-      <div class="glass-card rounded-2xl overflow-hidden shadow-2xl border border-white/10 group">
-        <div class="bg-slate-900/90 px-4 py-3 border-b border-white/10 flex items-center justify-between">
+      <div class="studio-card overflow-hidden group">
+        <div class="bg-[#080C14] px-4 py-3 border-b border-[#1E2B45] flex items-center justify-between">
           <div class="flex items-center gap-2">
             <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
             <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
             <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
-            <span class="text-xs font-mono text-slate-500 ml-2 hidden sm:inline">unicodrop.com.br / ecommerce / ranking-de-produtos</span>
+            <span class="text-xs font-mono text-slate-400 ml-2 hidden sm:inline">unicodrop.com.br / ecommerce / ranking-de-produtos</span>
           </div>
-          <span class="text-xs font-mono text-teal-400 bg-teal-500/10 px-2.5 py-1 rounded">
+          <span class="text-xs font-bold text-white bg-[#358eef] px-3 py-1 uppercase tracking-wider rounded-xs">
             ✨ Visão Geral do Sistema Redesenhado
           </span>
         </div>
 
-        <div class="relative overflow-hidden bg-slate-950">
+        <div class="relative overflow-hidden bg-black">
           <img src="assets/case_study_previews/Ranking_de_Produtos.jpg" alt="Dashboard Principal UnicoDrop Redesign" class="w-full h-auto object-top group-hover:scale-[1.01] transition-transform duration-700">
         </div>
       </div>
     </section>
 
     <!-- SECTION 02: DIAGNÓSTICO UX -->
-    <section id="problem" class="space-y-12">
-      <div class="space-y-4">
-        <span class="text-teal-400 font-mono text-xs tracking-wider uppercase">02. DIAGNÓSTICO UX</span>
-        <h2 class="font-heading text-3xl md:text-4xl font-bold text-white">Desafios Encontrados no Sistema Legado</h2>
-        <p class="text-slate-400 max-w-2xl text-sm leading-relaxed">
+    <section id="problem" class="space-y-10">
+      <div class="space-y-3">
+        <span class="text-[#358eef] font-bold text-xs tracking-widest uppercase block">02. DIAGNÓSTICO UX</span>
+        <h2 class="font-heading text-3xl md:text-4xl font-light text-white">Desafios Encontrados no Sistema Legado</h2>
+        <div class="w-16 h-1 bg-[#358eef] mt-2"></div>
+        <p class="text-slate-300 max-w-2xl text-sm leading-relaxed pt-2 font-light">
           As 30 telas foram redesenhadas para resolver a fragmentação de dados operacionais, legibilidade comprometida e ruído de cores.
         </p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-6">
-        <div class="glass-card p-8 rounded-2xl space-y-4">
-          <div class="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 flex items-center justify-center font-mono font-bold text-lg">
+        <div class="studio-card p-8 space-y-4">
+          <div class="w-12 h-12 bg-[#358eef] text-white flex items-center justify-center font-bold text-lg rounded-xs">
             01
           </div>
           <h3 class="font-heading font-semibold text-white text-lg">Excesso de Ruído Visual</h3>
-          <p class="text-slate-400 text-xs leading-relaxed">
+          <p class="text-slate-300 text-xs leading-relaxed font-body">
             Falta de padronização nas tabelas de vendas, faturamento e taxas, tornando a leitura rápida de KPIs um processo lento.
           </p>
         </div>
 
-        <div class="glass-card p-8 rounded-2xl space-y-4">
-          <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center font-mono font-bold text-lg">
+        <div class="studio-card p-8 space-y-4">
+          <div class="w-12 h-12 bg-[#358eef] text-white flex items-center justify-center font-bold text-lg rounded-xs">
             02
           </div>
           <h3 class="font-heading font-semibold text-white text-lg">Desconexão de Módulos</h3>
-          <p class="text-slate-400 text-xs leading-relaxed">
+          <p class="text-slate-300 text-xs leading-relaxed font-body">
             Painéis de marketing (Facebook/Google Ads), mensageria de WhatsApp e relatórios de rastreamento possuíam estruturas visuais dispares.
           </p>
         </div>
 
-        <div class="glass-card p-8 rounded-2xl space-y-4">
-          <div class="w-12 h-12 rounded-xl bg-teal-500/10 border border-teal-500/20 text-teal-400 flex items-center justify-center font-mono font-bold text-lg">
+        <div class="studio-card p-8 space-y-4">
+          <div class="w-12 h-12 bg-[#358eef] text-white flex items-center justify-center font-bold text-lg rounded-xs">
             03
           </div>
           <h3 class="font-heading font-semibold text-white text-lg">Navegação Pesada</h3>
-          <p class="text-slate-400 text-xs leading-relaxed">
+          <p class="text-slate-300 text-xs leading-relaxed font-body">
             Dificuldade de alternar entre a gestão de pedidos, parametrização de frete e envio de mensagens para clientes.
           </p>
         </div>
@@ -198,57 +239,58 @@
     </section>
 
     <!-- SECTION 03: DESIGN SYSTEM -->
-    <section id="design-system" class="space-y-12">
-      <div class="space-y-4">
-        <span class="text-teal-400 font-mono text-xs tracking-wider uppercase">03. UI FOUNDATIONS</span>
-        <h2 class="font-heading text-3xl md:text-4xl font-bold text-white">Design System & Padrões Atômicos</h2>
-        <p class="text-slate-400 max-w-2xl text-sm leading-relaxed">
-          Definição da paleta de cores SaaS em tom Dark Enterprise (`#080B11`), cartões elevados com bordas suaves e tipografia técnica legível.
+    <section id="design-system" class="space-y-10">
+      <div class="space-y-3">
+        <span class="text-[#358eef] font-bold text-xs tracking-widest uppercase block">03. UI FOUNDATIONS</span>
+        <h2 class="font-heading text-3xl md:text-4xl font-light text-white">Design System & Padrões Atômicos</h2>
+        <div class="w-16 h-1 bg-[#358eef] mt-2"></div>
+        <p class="text-slate-300 max-w-2xl text-sm leading-relaxed pt-2 font-light">
+          Definição da paleta de cores Studio 86 Blue (`#358eef`), cartões elevados com bordas nítidas e tipografia limpa.
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 gap-8">
         <!-- Palette Tokens -->
-        <div class="glass-card p-8 rounded-2xl space-y-6">
-          <h3 class="font-heading font-semibold text-white text-base">Paleta de Cores SaaS (Dark Enterprise)</h3>
+        <div class="studio-card p-8 space-y-6">
+          <h3 class="font-heading font-semibold text-white text-base uppercase tracking-wider">Paleta de Cores (Studio 86 Blue Theme)</h3>
           <div class="grid grid-cols-2 gap-4">
-            <div class="p-4 rounded-xl bg-[#080B11] border border-white/10 space-y-2">
-              <div class="w-full h-8 rounded-lg bg-[#080B11] border border-white/20"></div>
-              <span class="block text-xs font-mono text-white font-medium">Dark Background</span>
-              <span class="block text-[10px] font-mono text-slate-500">#080B11</span>
+            <div class="p-4 rounded-xs bg-[#080C14] border border-[#1E2B45] space-y-2">
+              <div class="w-full h-8 bg-[#080C14] border border-white/20"></div>
+              <span class="block text-xs font-bold text-white uppercase">Dark Background</span>
+              <span class="block text-[10px] font-mono text-slate-400">#080C14</span>
             </div>
 
-            <div class="p-4 rounded-xl bg-[#0F1623] border border-white/10 space-y-2">
-              <div class="w-full h-8 rounded-lg bg-[#0F1623] border border-white/20"></div>
-              <span class="block text-xs font-mono text-white font-medium">Card Surface</span>
-              <span class="block text-[10px] font-mono text-slate-500">#0F1623</span>
+            <div class="p-4 rounded-xs bg-[#0F1626] border border-[#1E2B45] space-y-2">
+              <div class="w-full h-8 bg-[#0F1626] border border-white/20"></div>
+              <span class="block text-xs font-bold text-white uppercase">Card Surface</span>
+              <span class="block text-[10px] font-mono text-slate-400">#0F1626</span>
             </div>
 
-            <div class="p-4 rounded-xl bg-[#0F1623] border border-white/10 space-y-2">
-              <div class="w-full h-8 rounded-lg bg-[#14B8A6]"></div>
-              <span class="block text-xs font-mono text-teal-400 font-medium">Teal Accent</span>
-              <span class="block text-[10px] font-mono text-slate-500">#14B8A6</span>
+            <div class="p-4 rounded-xs bg-[#0F1626] border border-[#1E2B45] space-y-2">
+              <div class="w-full h-8 bg-[#358eef]"></div>
+              <span class="block text-xs font-bold text-[#358eef] uppercase">Studio Blue Primary</span>
+              <span class="block text-[10px] font-mono text-slate-400">#358eef</span>
             </div>
 
-            <div class="p-4 rounded-xl bg-[#0F1623] border border-white/10 space-y-2">
-              <div class="w-full h-8 rounded-lg bg-[#8B5CF6]"></div>
-              <span class="block text-xs font-mono text-violet-400 font-medium">Violet Accent</span>
-              <span class="block text-[10px] font-mono text-slate-500">#8B5CF6</span>
+            <div class="p-4 rounded-xs bg-[#0F1626] border border-[#1E2B45] space-y-2">
+              <div class="w-full h-8 bg-[#000000]"></div>
+              <span class="block text-xs font-bold text-white uppercase">Pure Contrast Black</span>
+              <span class="block text-[10px] font-mono text-slate-400">#000000</span>
             </div>
           </div>
         </div>
 
         <!-- Typography -->
-        <div class="glass-card p-8 rounded-2xl space-y-6">
-          <h3 class="font-heading font-semibold text-white text-base">Hierarquia Tipográfica</h3>
+        <div class="studio-card p-8 space-y-6">
+          <h3 class="font-heading font-semibold text-white text-base uppercase tracking-wider">Hierarquia Tipográfica</h3>
           <div class="space-y-4">
-            <div class="pb-3 border-b border-white/10">
-              <span class="font-heading text-xl font-bold text-white">Plus Jakarta Sans — Headings</span>
-              <p class="text-xs text-slate-400 mt-1">Utilizado para títulos principais, KPIs e navegação.</p>
+            <div class="pb-3 border-b border-[#1E2B45]">
+              <span class="font-heading text-xl font-bold text-white">Raleway — Headings & Titles</span>
+              <p class="text-xs text-slate-300 mt-1 font-light">Utilizado para títulos principais, cabeçalhos e destaques de seção.</p>
             </div>
             <div>
-              <span class="font-sans text-base font-normal text-slate-200">Inter — Body & Data Density</span>
-              <p class="text-xs text-slate-400 mt-1">Utilizado para tabelas de pedidos, relatórios e textos de suporte.</p>
+              <span class="font-body text-base font-normal text-slate-200">Inter — Body & Data Density</span>
+              <p class="text-xs text-slate-300 mt-1 font-light">Utilizado para tabelas de pedidos, relatórios e textos de suporte.</p>
             </div>
           </div>
         </div>
@@ -256,29 +298,30 @@
     </section>
 
     <!-- SECTION 04: GALERIA DE TODAS AS 30 TELAS -->
-    <section id="gallery" class="space-y-12">
+    <section id="gallery" class="space-y-10">
       <div class="space-y-4">
-        <span class="text-teal-400 font-mono text-xs tracking-wider uppercase">04. GALERIA COMPLETA</span>
-        <h2 class="font-heading text-3xl md:text-4xl font-bold text-white">Todas as 30 Interfaces Codadas</h2>
-        <p class="text-slate-400 max-w-2xl text-sm leading-relaxed">
-          Filtre por categoria abaixo e clique no botão de cada tela para testar e interagir ao vivo com a página original no navegador.
+        <span class="text-[#358eef] font-bold text-xs tracking-widest uppercase block">04. GALERIA COMPLETA</span>
+        <h2 class="font-heading text-3xl md:text-4xl font-light text-white">Todas as 30 Interfaces Codadas</h2>
+        <div class="w-16 h-1 bg-[#358eef] mt-1"></div>
+        <p class="text-slate-300 max-w-2xl text-sm leading-relaxed font-light">
+          Filtre por categoria abaixo e clique no botão de cada tela para abrir a versão interativa ao vivo no navegador.
         </p>
 
-        <!-- Category Filters -->
-        <div class="flex flex-wrap gap-2 pt-4">
-          <button onclick="filterCategory('all')" id="btn-all" class="filter-btn active px-4 py-2 rounded-xl text-xs font-mono border border-white/10 transition-all">
+        <!-- Category Filters (Studio 86 Style) -->
+        <div class="flex flex-wrap gap-2.5 pt-4">
+          <button onclick="filterCategory('all')" id="btn-all" class="filter-btn active px-4 py-2.5 text-xs">
             Todas as Telas (30)
           </button>
-          <button onclick="filterCategory('ecommerce')" id="btn-ecommerce" class="filter-btn px-4 py-2 rounded-xl text-xs font-mono text-slate-400 hover:text-white bg-slate-900 border border-white/10 transition-all">
+          <button onclick="filterCategory('ecommerce')" id="btn-ecommerce" class="filter-btn px-4 py-2.5 text-xs">
             E-Commerce & Pedidos (7)
           </button>
-          <button onclick="filterCategory('dashboards')" id="btn-dashboards" class="filter-btn px-4 py-2 rounded-xl text-xs font-mono text-slate-400 hover:text-white bg-slate-900 border border-white/10 transition-all">
+          <button onclick="filterCategory('dashboards')" id="btn-dashboards" class="filter-btn px-4 py-2.5 text-xs">
             Dashboards & Métricas (6)
           </button>
-          <button onclick="filterCategory('mensageria')" id="btn-mensageria" class="filter-btn px-4 py-2 rounded-xl text-xs font-mono text-slate-400 hover:text-white bg-slate-900 border border-white/10 transition-all">
+          <button onclick="filterCategory('mensageria')" id="btn-mensageria" class="filter-btn px-4 py-2.5 text-xs">
             Automação Mensageria (6)
           </button>
-          <button onclick="filterCategory('configuracoes')" id="btn-configuracoes" class="filter-btn px-4 py-2 rounded-xl text-xs font-mono text-slate-400 hover:text-white bg-slate-900 border border-white/10 transition-all">
+          <button onclick="filterCategory('configuracoes')" id="btn-configuracoes" class="filter-btn px-4 py-2.5 text-xs">
             Configurações & Onboarding (11)
           </button>
         </div>
@@ -288,426 +331,426 @@
       <div id="screens-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
         <!-- ECOMMERCE (7) -->
-        <div class="screen-card ecommerce glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group">
-          <div class="relative overflow-hidden bg-slate-950 aspect-video border-b border-white/10">
+        <div class="screen-card ecommerce studio-card overflow-hidden flex flex-col justify-between group">
+          <div class="relative overflow-hidden bg-black aspect-video border-b border-[#1E2B45]">
             <img src="assets/case_study_previews/Ranking_de_Produtos.jpg" alt="Ranking de Produtos" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-            <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-teal-500/20 text-teal-300 font-mono text-[10px]">E-Commerce</span>
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-xs bg-[#358eef] text-white font-bold uppercase text-[10px] tracking-wider">E-Commerce</span>
           </div>
           <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div>
               <h3 class="font-heading font-bold text-white text-base">Ranking de Produtos</h3>
-              <p class="text-slate-400 text-xs mt-1">Classificação por volume de vendas, faturamento e margem de lucro.</p>
+              <p class="text-slate-400 text-xs mt-1 font-body">Classificação por volume de vendas, faturamento e margem de lucro.</p>
             </div>
-            <a href="Ecommerce_Pedidos/Ranking de Produtos.html" target="_blank" class="w-full py-2.5 rounded-lg bg-teal-500/10 hover:bg-teal-500 text-teal-400 hover:text-slate-950 border border-teal-500/30 text-xs font-mono font-bold transition-all text-center block">Abrir Tela Ao Vivo ↗</a>
+            <a href="Ecommerce_Pedidos/Ranking de Produtos.html" target="_blank" class="w-full py-2.5 bg-[#358eef] hover:bg-[#2576cf] text-white text-xs font-bold uppercase tracking-wider transition-all text-center block rounded-xs shadow-md">Abrir Tela Ao Vivo ↗</a>
           </div>
         </div>
 
-        <div class="screen-card ecommerce glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group">
-          <div class="relative overflow-hidden bg-slate-950 aspect-video border-b border-white/10">
+        <div class="screen-card ecommerce studio-card overflow-hidden flex flex-col justify-between group">
+          <div class="relative overflow-hidden bg-black aspect-video border-b border-[#1E2B45]">
             <img src="assets/case_study_previews/Lista_de_Rastreio.jpg" alt="Lista de Rastreio" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-            <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-teal-500/20 text-teal-300 font-mono text-[10px]">E-Commerce</span>
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-xs bg-[#358eef] text-white font-bold uppercase text-[10px] tracking-wider">E-Commerce</span>
           </div>
           <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div>
               <h3 class="font-heading font-bold text-white text-base">Lista de Rastreio</h3>
-              <p class="text-slate-400 text-xs mt-1">Busca e filtros de códigos de rastreamento por transportadora.</p>
+              <p class="text-slate-400 text-xs mt-1 font-body">Busca e filtros de códigos de rastreamento por transportadora.</p>
             </div>
-            <a href="Ecommerce_Pedidos/Lista de Rastreio.html" target="_blank" class="w-full py-2.5 rounded-lg bg-teal-500/10 hover:bg-teal-500 text-teal-400 hover:text-slate-950 border border-teal-500/30 text-xs font-mono font-bold transition-all text-center block">Abrir Tela Ao Vivo ↗</a>
+            <a href="Ecommerce_Pedidos/Lista de Rastreio.html" target="_blank" class="w-full py-2.5 bg-[#358eef] hover:bg-[#2576cf] text-white text-xs font-bold uppercase tracking-wider transition-all text-center block rounded-xs shadow-md">Abrir Tela Ao Vivo ↗</a>
           </div>
         </div>
 
-        <div class="screen-card ecommerce glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group">
-          <div class="relative overflow-hidden bg-slate-950 aspect-video border-b border-white/10">
+        <div class="screen-card ecommerce studio-card overflow-hidden flex flex-col justify-between group">
+          <div class="relative overflow-hidden bg-black aspect-video border-b border-[#1E2B45]">
             <img src="assets/case_study_previews/Lista_de_PEDIDOS.jpg" alt="Lista de PEDIDOS" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-            <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-teal-500/20 text-teal-300 font-mono text-[10px]">E-Commerce</span>
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-xs bg-[#358eef] text-white font-bold uppercase text-[10px] tracking-wider">E-Commerce</span>
           </div>
           <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div>
               <h3 class="font-heading font-bold text-white text-base">Lista de Pedidos</h3>
-              <p class="text-slate-400 text-xs mt-1">Painel geral de pedidos realizados, status de pagamento e envio.</p>
+              <p class="text-slate-400 text-xs mt-1 font-body">Painel geral de pedidos realizados, status de pagamento e envio.</p>
             </div>
-            <a href="Ecommerce_Pedidos/Lista de PEDIDOS.html" target="_blank" class="w-full py-2.5 rounded-lg bg-teal-500/10 hover:bg-teal-500 text-teal-400 hover:text-slate-950 border border-teal-500/30 text-xs font-mono font-bold transition-all text-center block">Abrir Tela Ao Vivo ↗</a>
+            <a href="Ecommerce_Pedidos/Lista de PEDIDOS.html" target="_blank" class="w-full py-2.5 bg-[#358eef] hover:bg-[#2576cf] text-white text-xs font-bold uppercase tracking-wider transition-all text-center block rounded-xs shadow-md">Abrir Tela Ao Vivo ↗</a>
           </div>
         </div>
 
-        <div class="screen-card ecommerce glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group">
-          <div class="relative overflow-hidden bg-slate-950 aspect-video border-b border-white/10">
+        <div class="screen-card ecommerce studio-card overflow-hidden flex flex-col justify-between group">
+          <div class="relative overflow-hidden bg-black aspect-video border-b border-[#1E2B45]">
             <img src="assets/case_study_previews/Lista_Carrinho.jpg" alt="Lista Carrinho" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-            <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-teal-500/20 text-teal-300 font-mono text-[10px]">E-Commerce</span>
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-xs bg-[#358eef] text-white font-bold uppercase text-[10px] tracking-wider">E-Commerce</span>
           </div>
           <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div>
               <h3 class="font-heading font-bold text-white text-base">Lista de Carrinho & Abandonos</h3>
-              <p class="text-slate-400 text-xs mt-1">Métricas de carrinhos abandonados para estratégia de recuperação.</p>
+              <p class="text-slate-400 text-xs mt-1 font-body">Métricas de carrinhos abandonados para estratégia de recuperação.</p>
             </div>
-            <a href="Ecommerce_Pedidos/Lista Carrinho.html" target="_blank" class="w-full py-2.5 rounded-lg bg-teal-500/10 hover:bg-teal-500 text-teal-400 hover:text-slate-950 border border-teal-500/30 text-xs font-mono font-bold transition-all text-center block">Abrir Tela Ao Vivo ↗</a>
+            <a href="Ecommerce_Pedidos/Lista Carrinho.html" target="_blank" class="w-full py-2.5 bg-[#358eef] hover:bg-[#2576cf] text-white text-xs font-bold uppercase tracking-wider transition-all text-center block rounded-xs shadow-md">Abrir Tela Ao Vivo ↗</a>
           </div>
         </div>
 
-        <div class="screen-card ecommerce glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group">
-          <div class="relative overflow-hidden bg-slate-950 aspect-video border-b border-white/10">
+        <div class="screen-card ecommerce studio-card overflow-hidden flex flex-col justify-between group">
+          <div class="relative overflow-hidden bg-black aspect-video border-b border-[#1E2B45]">
             <img src="assets/case_study_previews/Lista_de_Produtos.jpg" alt="Lista de Produtos" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-            <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-teal-500/20 text-teal-300 font-mono text-[10px]">E-Commerce</span>
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-xs bg-[#358eef] text-white font-bold uppercase text-[10px] tracking-wider">E-Commerce</span>
           </div>
           <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div>
               <h3 class="font-heading font-bold text-white text-base">Catálogo de Produtos</h3>
-              <p class="text-slate-400 text-xs mt-1">Gestão de itens sincronizados com lojas virtuais (Shopify/Nuvemshop).</p>
+              <p class="text-slate-400 text-xs mt-1 font-body">Gestão de itens sincronizados com lojas virtuais (Shopify/Nuvemshop).</p>
             </div>
-            <a href="Ecommerce_Pedidos/Lista de Produtos.html" target="_blank" class="w-full py-2.5 rounded-lg bg-teal-500/10 hover:bg-teal-500 text-teal-400 hover:text-slate-950 border border-teal-500/30 text-xs font-mono font-bold transition-all text-center block">Abrir Tela Ao Vivo ↗</a>
+            <a href="Ecommerce_Pedidos/Lista de Produtos.html" target="_blank" class="w-full py-2.5 bg-[#358eef] hover:bg-[#2576cf] text-white text-xs font-bold uppercase tracking-wider transition-all text-center block rounded-xs shadow-md">Abrir Tela Ao Vivo ↗</a>
           </div>
         </div>
 
-        <div class="screen-card ecommerce glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group">
-          <div class="relative overflow-hidden bg-slate-950 aspect-video border-b border-white/10">
+        <div class="screen-card ecommerce studio-card overflow-hidden flex flex-col justify-between group">
+          <div class="relative overflow-hidden bg-black aspect-video border-b border-[#1E2B45]">
             <img src="assets/case_study_previews/Modal_Custo_Produtos_Atualizado.jpg" alt="Modal Custo Produtos" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-            <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-teal-500/20 text-teal-300 font-mono text-[10px]">E-Commerce</span>
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-xs bg-[#358eef] text-white font-bold uppercase text-[10px] tracking-wider">E-Commerce</span>
           </div>
           <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div>
               <h3 class="font-heading font-bold text-white text-base">Modal de Custo de Produtos</h3>
-              <p class="text-slate-400 text-xs mt-1">Interface pop-up para ajuste de valores de fornecedor e frete.</p>
+              <p class="text-slate-400 text-xs mt-1 font-body">Interface pop-up para ajuste de valores de fornecedor e frete.</p>
             </div>
-            <a href="Ecommerce_Pedidos/Modal Custo Produtos Atualizado.html" target="_blank" class="w-full py-2.5 rounded-lg bg-teal-500/10 hover:bg-teal-500 text-teal-400 hover:text-slate-950 border border-teal-500/30 text-xs font-mono font-bold transition-all text-center block">Abrir Tela Ao Vivo ↗</a>
+            <a href="Ecommerce_Pedidos/Modal Custo Produtos Atualizado.html" target="_blank" class="w-full py-2.5 bg-[#358eef] hover:bg-[#2576cf] text-white text-xs font-bold uppercase tracking-wider transition-all text-center block rounded-xs shadow-md">Abrir Tela Ao Vivo ↗</a>
           </div>
         </div>
 
-        <div class="screen-card ecommerce glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group">
-          <div class="relative overflow-hidden bg-slate-950 aspect-video border-b border-white/10">
+        <div class="screen-card ecommerce studio-card overflow-hidden flex flex-col justify-between group">
+          <div class="relative overflow-hidden bg-black aspect-video border-b border-[#1E2B45]">
             <img src="assets/case_study_previews/Ranking_de_Produtos.jpg" alt="DashBoard Completo" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-            <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-teal-500/20 text-teal-300 font-mono text-[10px]">E-Commerce</span>
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-xs bg-[#358eef] text-white font-bold uppercase text-[10px] tracking-wider">E-Commerce</span>
           </div>
           <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div>
               <h3 class="font-heading font-bold text-white text-base">Dashboard Completo</h3>
-              <p class="text-slate-400 text-xs mt-1">Visão geral executiva com faturamento, lucro e gráficos agregados.</p>
+              <p class="text-slate-400 text-xs mt-1 font-body">Visão geral executiva com faturamento, lucro e gráficos agregados.</p>
             </div>
-            <a href="Ecommerce_Pedidos/DashBoard Completo.html" target="_blank" class="w-full py-2.5 rounded-lg bg-teal-500/10 hover:bg-teal-500 text-teal-400 hover:text-slate-950 border border-teal-500/30 text-xs font-mono font-bold transition-all text-center block">Abrir Tela Ao Vivo ↗</a>
+            <a href="Ecommerce_Pedidos/DashBoard Completo.html" target="_blank" class="w-full py-2.5 bg-[#358eef] hover:bg-[#2576cf] text-white text-xs font-bold uppercase tracking-wider transition-all text-center block rounded-xs shadow-md">Abrir Tela Ao Vivo ↗</a>
           </div>
         </div>
 
         <!-- DASHBOARDS (6) -->
-        <div class="screen-card dashboards glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group">
-          <div class="relative overflow-hidden bg-slate-950 aspect-video border-b border-white/10">
+        <div class="screen-card dashboards studio-card overflow-hidden flex flex-col justify-between group">
+          <div class="relative overflow-hidden bg-black aspect-video border-b border-[#1E2B45]">
             <img src="assets/case_study_previews/Financeiro_Lista.jpg" alt="Financeiro Dashboard" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-            <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-mono text-[10px]">Dashboards</span>
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-xs bg-[#358eef] text-white font-bold uppercase text-[10px] tracking-wider">Dashboards</span>
           </div>
           <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div>
               <h3 class="font-heading font-bold text-white text-base">Dashboard Financeiro & DRE</h3>
-              <p class="text-slate-400 text-xs mt-1">Controle de receitas (+R$ 2.500), despesas (-R$ 1.200) e status de lançamentos.</p>
+              <p class="text-slate-400 text-xs mt-1 font-body">Controle de receitas (+R$ 2.500), despesas (-R$ 1.200) e status de lançamentos.</p>
             </div>
-            <a href="Configuracoes_Experiencia/Financeiro Lista.html" target="_blank" class="w-full py-2.5 rounded-lg bg-amber-500/10 hover:bg-amber-500 text-amber-400 hover:text-slate-950 border border-amber-500/30 text-xs font-mono font-bold transition-all text-center block">Abrir Tela Ao Vivo ↗</a>
+            <a href="Configuracoes_Experiencia/Financeiro Lista.html" target="_blank" class="w-full py-2.5 bg-[#358eef] hover:bg-[#2576cf] text-white text-xs font-bold uppercase tracking-wider transition-all text-center block rounded-xs shadow-md">Abrir Tela Ao Vivo ↗</a>
           </div>
         </div>
 
-        <div class="screen-card dashboards glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group">
-          <div class="relative overflow-hidden bg-slate-950 aspect-video border-b border-white/10">
+        <div class="screen-card dashboards studio-card overflow-hidden flex flex-col justify-between group">
+          <div class="relative overflow-hidden bg-black aspect-video border-b border-[#1E2B45]">
             <img src="assets/case_study_previews/Dashboard_Facebook.jpg" alt="Dashboard Facebook" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-            <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-mono text-[10px]">Dashboards</span>
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-xs bg-[#358eef] text-white font-bold uppercase text-[10px] tracking-wider">Dashboards</span>
           </div>
           <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div>
               <h3 class="font-heading font-bold text-white text-base">Dashboard Facebook Ads</h3>
-              <p class="text-slate-400 text-xs mt-1">Integração de contas de anúncios, perfis conectados e rastreio de gastos por produto.</p>
+              <p class="text-slate-400 text-xs mt-1 font-body">Integração de contas de anúncios, perfis conectados e rastreio de gastos por produto.</p>
             </div>
-            <a href="Dashboards/Dashboard Facebook.html" target="_blank" class="w-full py-2.5 rounded-lg bg-amber-500/10 hover:bg-amber-500 text-amber-400 hover:text-slate-950 border border-amber-500/30 text-xs font-mono font-bold transition-all text-center block">Abrir Tela Ao Vivo ↗</a>
+            <a href="Dashboards/Dashboard Facebook.html" target="_blank" class="w-full py-2.5 bg-[#358eef] hover:bg-[#2576cf] text-white text-xs font-bold uppercase tracking-wider transition-all text-center block rounded-xs shadow-md">Abrir Tela Ao Vivo ↗</a>
           </div>
         </div>
 
-        <div class="screen-card dashboards glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group">
-          <div class="relative overflow-hidden bg-slate-950 aspect-video border-b border-white/10">
+        <div class="screen-card dashboards studio-card overflow-hidden flex flex-col justify-between group">
+          <div class="relative overflow-hidden bg-black aspect-video border-b border-[#1E2B45]">
             <img src="assets/case_study_previews/Dashboard_Google_Atualizado.jpg" alt="Dashboard Google" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-            <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-mono text-[10px]">Dashboards</span>
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-xs bg-[#358eef] text-white font-bold uppercase text-[10px] tracking-wider">Dashboards</span>
           </div>
           <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div>
               <h3 class="font-heading font-bold text-white text-base">Dashboard Google Ads</h3>
-              <p class="text-slate-400 text-xs mt-1">Relatório de tráfego pago Google, campanhas de pesquisa e conversão.</p>
+              <p class="text-slate-400 text-xs mt-1 font-body">Relatório de tráfego pago Google, campanhas de pesquisa e conversão.</p>
             </div>
-            <a href="Dashboards/Dashboard Google Atualizado.html" target="_blank" class="w-full py-2.5 rounded-lg bg-amber-500/10 hover:bg-amber-500 text-amber-400 hover:text-slate-950 border border-amber-500/30 text-xs font-mono font-bold transition-all text-center block">Abrir Tela Ao Vivo ↗</a>
+            <a href="Dashboards/Dashboard Google Atualizado.html" target="_blank" class="w-full py-2.5 bg-[#358eef] hover:bg-[#2576cf] text-white text-xs font-bold uppercase tracking-wider transition-all text-center block rounded-xs shadow-md">Abrir Tela Ao Vivo ↗</a>
           </div>
         </div>
 
-        <div class="screen-card dashboards glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group">
-          <div class="relative overflow-hidden bg-slate-950 aspect-video border-b border-white/10">
+        <div class="screen-card dashboards studio-card overflow-hidden flex flex-col justify-between group">
+          <div class="relative overflow-hidden bg-black aspect-video border-b border-[#1E2B45]">
             <img src="assets/case_study_previews/Dashboard_Rastreio.jpg" alt="Dashboard Rastreio" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-            <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-mono text-[10px]">Dashboards</span>
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-xs bg-[#358eef] text-white font-bold uppercase text-[10px] tracking-wider">Dashboards</span>
           </div>
           <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div>
               <h3 class="font-heading font-bold text-white text-base">Dashboard Logística & Rastreio</h3>
-              <p class="text-slate-400 text-xs mt-1">Métricas de tempo de entrega, status de envio e encomendas paradas.</p>
+              <p class="text-slate-400 text-xs mt-1 font-body">Métricas de tempo de entrega, status de envio e encomendas paradas.</p>
             </div>
-            <a href="Dashboards/Dashboard Rastreio.html" target="_blank" class="w-full py-2.5 rounded-lg bg-amber-500/10 hover:bg-amber-500 text-amber-400 hover:text-slate-950 border border-amber-500/30 text-xs font-mono font-bold transition-all text-center block">Abrir Tela Ao Vivo ↗</a>
+            <a href="Dashboards/Dashboard Rastreio.html" target="_blank" class="w-full py-2.5 bg-[#358eef] hover:bg-[#2576cf] text-white text-xs font-bold uppercase tracking-wider transition-all text-center block rounded-xs shadow-md">Abrir Tela Ao Vivo ↗</a>
           </div>
         </div>
 
-        <div class="screen-card dashboards glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group">
-          <div class="relative overflow-hidden bg-slate-950 aspect-video border-b border-white/10">
+        <div class="screen-card dashboards studio-card overflow-hidden flex flex-col justify-between group">
+          <div class="relative overflow-hidden bg-black aspect-video border-b border-[#1E2B45]">
             <img src="assets/case_study_previews/Dashboard_WhatsApp.jpg" alt="Dashboard WhatsApp" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-            <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-mono text-[10px]">Dashboards</span>
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-xs bg-[#358eef] text-white font-bold uppercase text-[10px] tracking-wider">Dashboards</span>
           </div>
           <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div>
               <h3 class="font-heading font-bold text-white text-base">Dashboard Atendimento WhatsApp</h3>
-              <p class="text-slate-400 text-xs mt-1">Indicadores de mensagens disparadas, taxa de resposta e conversão de boletos.</p>
+              <p class="text-slate-400 text-xs mt-1 font-body">Indicadores de mensagens disparadas, taxa de resposta e conversão de boletos.</p>
             </div>
-            <a href="Dashboards/Dashboard WhatsApp.html" target="_blank" class="w-full py-2.5 rounded-lg bg-amber-500/10 hover:bg-amber-500 text-amber-400 hover:text-slate-950 border border-amber-500/30 text-xs font-mono font-bold transition-all text-center block">Abrir Tela Ao Vivo ↗</a>
+            <a href="Dashboards/Dashboard WhatsApp.html" target="_blank" class="w-full py-2.5 bg-[#358eef] hover:bg-[#2576cf] text-white text-xs font-bold uppercase tracking-wider transition-all text-center block rounded-xs shadow-md">Abrir Tela Ao Vivo ↗</a>
           </div>
         </div>
 
-        <div class="screen-card dashboards glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group">
-          <div class="relative overflow-hidden bg-slate-950 aspect-video border-b border-white/10">
+        <div class="screen-card dashboards studio-card overflow-hidden flex flex-col justify-between group">
+          <div class="relative overflow-hidden bg-black aspect-video border-b border-[#1E2B45]">
             <img src="assets/case_study_previews/Financeiro__Calendario.jpg" alt="Financeiro Calendario" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-            <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-mono text-[10px]">Dashboards</span>
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-xs bg-[#358eef] text-white font-bold uppercase text-[10px] tracking-wider">Dashboards</span>
           </div>
           <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div>
               <h3 class="font-heading font-bold text-white text-base">Calendário Financeiro</h3>
-              <p class="text-slate-400 text-xs mt-1">Visão em formato calendário de vencimentos de contas e projeção de entradas.</p>
+              <p class="text-slate-400 text-xs mt-1 font-body">Visão em formato calendário de vencimentos de contas e projeção de entradas.</p>
             </div>
-            <a href="Configuracoes_Experiencia/Financeiro -Calendario.html" target="_blank" class="w-full py-2.5 rounded-lg bg-amber-500/10 hover:bg-amber-500 text-amber-400 hover:text-slate-950 border border-amber-500/30 text-xs font-mono font-bold transition-all text-center block">Abrir Tela Ao Vivo ↗</a>
+            <a href="Configuracoes_Experiencia/Financeiro -Calendario.html" target="_blank" class="w-full py-2.5 bg-[#358eef] hover:bg-[#2576cf] text-white text-xs font-bold uppercase tracking-wider transition-all text-center block rounded-xs shadow-md">Abrir Tela Ao Vivo ↗</a>
           </div>
         </div>
 
         <!-- MENSAGERIA (6) -->
-        <div class="screen-card mensageria glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group">
-          <div class="relative overflow-hidden bg-slate-950 aspect-video border-b border-white/10">
+        <div class="screen-card mensageria studio-card overflow-hidden flex flex-col justify-between group">
+          <div class="relative overflow-hidden bg-black aspect-video border-b border-[#1E2B45]">
             <img src="assets/case_study_previews/Automa__o_de_WhatsApp_Com_QR_Code.jpg" alt="WhatsApp QR Code" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-            <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-mono text-[10px]">Mensageria</span>
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-xs bg-[#358eef] text-white font-bold uppercase text-[10px] tracking-wider">Mensageria</span>
           </div>
           <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div>
               <h3 class="font-heading font-bold text-white text-base">WhatsApp com QR Code</h3>
-              <p class="text-slate-400 text-xs mt-1">Painel de conexão via QR Code para integração de WhatsApp Web na plataforma.</p>
+              <p class="text-slate-400 text-xs mt-1 font-body">Painel de conexão via QR Code para integração de WhatsApp Web na plataforma.</p>
             </div>
-            <a href="Automacao_Mensageria/Automação de WhatsApp Com QR Code.html" target="_blank" class="w-full py-2.5 rounded-lg bg-emerald-500/10 hover:bg-emerald-500 text-emerald-400 hover:text-slate-950 border border-emerald-500/30 text-xs font-mono font-bold transition-all text-center block">Abrir Tela Ao Vivo ↗</a>
+            <a href="Automacao_Mensageria/Automação de WhatsApp Com QR Code.html" target="_blank" class="w-full py-2.5 bg-[#358eef] hover:bg-[#2576cf] text-white text-xs font-bold uppercase tracking-wider transition-all text-center block rounded-xs shadow-md">Abrir Tela Ao Vivo ↗</a>
           </div>
         </div>
 
-        <div class="screen-card mensageria glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group">
-          <div class="relative overflow-hidden bg-slate-950 aspect-video border-b border-white/10">
+        <div class="screen-card mensageria studio-card overflow-hidden flex flex-col justify-between group">
+          <div class="relative overflow-hidden bg-black aspect-video border-b border-[#1E2B45]">
             <img src="assets/case_study_previews/Automa__o_de_WhatsApp_Sem_QR_Code.jpg" alt="WhatsApp Sem QR Code" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-            <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-mono text-[10px]">Mensageria</span>
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-xs bg-[#358eef] text-white font-bold uppercase text-[10px] tracking-wider">Mensageria</span>
           </div>
           <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div>
               <h3 class="font-heading font-bold text-white text-base">WhatsApp Configuração API</h3>
-              <p class="text-slate-400 text-xs mt-1">Configuração de token e instâncias de mensageria para automações.</p>
+              <p class="text-slate-400 text-xs mt-1 font-body">Configuração de token e instâncias de mensageria para automações.</p>
             </div>
-            <a href="Automacao_Mensageria/Automação de WhatsApp Sem QR Code.html" target="_blank" class="w-full py-2.5 rounded-lg bg-emerald-500/10 hover:bg-emerald-500 text-emerald-400 hover:text-slate-950 border border-emerald-500/30 text-xs font-mono font-bold transition-all text-center block">Abrir Tela Ao Vivo ↗</a>
+            <a href="Automacao_Mensageria/Automação de WhatsApp Sem QR Code.html" target="_blank" class="w-full py-2.5 bg-[#358eef] hover:bg-[#2576cf] text-white text-xs font-bold uppercase tracking-wider transition-all text-center block rounded-xs shadow-md">Abrir Tela Ao Vivo ↗</a>
           </div>
         </div>
 
-        <div class="screen-card mensageria glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group">
-          <div class="relative overflow-hidden bg-slate-950 aspect-video border-b border-white/10">
+        <div class="screen-card mensageria studio-card overflow-hidden flex flex-col justify-between group">
+          <div class="relative overflow-hidden bg-black aspect-video border-b border-[#1E2B45]">
             <img src="assets/case_study_previews/Mensagem_E_mail.jpg" alt="Mensagem E-mail" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-            <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-mono text-[10px]">Mensageria</span>
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-xs bg-[#358eef] text-white font-bold uppercase text-[10px] tracking-wider">Mensageria</span>
           </div>
           <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div>
               <h3 class="font-heading font-bold text-white text-base">Modelos de E-mail Automático</h3>
-              <p class="text-slate-400 text-xs mt-1">Editor de templates HTML para confirmação de compra e rastreio.</p>
+              <p class="text-slate-400 text-xs mt-1 font-body">Editor de templates HTML para confirmação de compra e rastreio.</p>
             </div>
-            <a href="Automacao_Mensageria/Mensagem E-mail.html" target="_blank" class="w-full py-2.5 rounded-lg bg-emerald-500/10 hover:bg-emerald-500 text-emerald-400 hover:text-slate-950 border border-emerald-500/30 text-xs font-mono font-bold transition-all text-center block">Abrir Tela Ao Vivo ↗</a>
+            <a href="Automacao_Mensageria/Mensagem E-mail.html" target="_blank" class="w-full py-2.5 bg-[#358eef] hover:bg-[#2576cf] text-white text-xs font-bold uppercase tracking-wider transition-all text-center block rounded-xs shadow-md">Abrir Tela Ao Vivo ↗</a>
           </div>
         </div>
 
-        <div class="screen-card mensageria glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group">
-          <div class="relative overflow-hidden bg-slate-950 aspect-video border-b border-white/10">
+        <div class="screen-card mensageria studio-card overflow-hidden flex flex-col justify-between group">
+          <div class="relative overflow-hidden bg-black aspect-video border-b border-[#1E2B45]">
             <img src="assets/case_study_previews/Mensagem_SMS.jpg" alt="Mensagem SMS" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-            <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-mono text-[10px]">Mensageria</span>
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-xs bg-[#358eef] text-white font-bold uppercase text-[10px] tracking-wider">Mensageria</span>
           </div>
           <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div>
               <h3 class="font-heading font-bold text-white text-base">Notificações por SMS</h3>
-              <p class="text-slate-400 text-xs mt-1">Parametrização de mensagens SMS de aviso de entrega e boleto.</p>
+              <p class="text-slate-400 text-xs mt-1 font-body">Parametrização de mensagens SMS de aviso de entrega e boleto.</p>
             </div>
-            <a href="Automacao_Mensageria/Mensagem SMS.html" target="_blank" class="w-full py-2.5 rounded-lg bg-emerald-500/10 hover:bg-emerald-500 text-emerald-400 hover:text-slate-950 border border-emerald-500/30 text-xs font-mono font-bold transition-all text-center block">Abrir Tela Ao Vivo ↗</a>
+            <a href="Automacao_Mensageria/Mensagem SMS.html" target="_blank" class="w-full py-2.5 bg-[#358eef] hover:bg-[#2576cf] text-white text-xs font-bold uppercase tracking-wider transition-all text-center block rounded-xs shadow-md">Abrir Tela Ao Vivo ↗</a>
           </div>
         </div>
 
-        <div class="screen-card mensageria glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group">
-          <div class="relative overflow-hidden bg-slate-950 aspect-video border-b border-white/10">
+        <div class="screen-card mensageria studio-card overflow-hidden flex flex-col justify-between group">
+          <div class="relative overflow-hidden bg-black aspect-video border-b border-[#1E2B45]">
             <img src="assets/case_study_previews/Mensagem_WhatsApp.jpg" alt="Mensagem WhatsApp" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-            <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-mono text-[10px]">Mensageria</span>
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-xs bg-[#358eef] text-white font-bold uppercase text-[10px] tracking-wider">Mensageria</span>
           </div>
           <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div>
               <h3 class="font-heading font-bold text-white text-base">Templates de WhatsApp</h3>
-              <p class="text-slate-400 text-xs mt-1">Criação de mensagens personalizadas com variáveis de nome e pedido.</p>
+              <p class="text-slate-400 text-xs mt-1 font-body">Criação de mensagens personalizadas com variáveis de nome e pedido.</p>
             </div>
-            <a href="Automacao_Mensageria/Mensagem WhatsApp.html" target="_blank" class="w-full py-2.5 rounded-lg bg-emerald-500/10 hover:bg-emerald-500 text-emerald-400 hover:text-slate-950 border border-emerald-500/30 text-xs font-mono font-bold transition-all text-center block">Abrir Tela Ao Vivo ↗</a>
+            <a href="Automacao_Mensageria/Mensagem WhatsApp.html" target="_blank" class="w-full py-2.5 bg-[#358eef] hover:bg-[#2576cf] text-white text-xs font-bold uppercase tracking-wider transition-all text-center block rounded-xs shadow-md">Abrir Tela Ao Vivo ↗</a>
           </div>
         </div>
 
-        <div class="screen-card mensageria glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group">
-          <div class="relative overflow-hidden bg-slate-950 aspect-video border-b border-white/10">
+        <div class="screen-card mensageria studio-card overflow-hidden flex flex-col justify-between group">
+          <div class="relative overflow-hidden bg-black aspect-video border-b border-[#1E2B45]">
             <img src="assets/case_study_previews/WhatsApp_Envios.jpg" alt="WhatsApp Envios" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-            <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-mono text-[10px]">Mensageria</span>
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-xs bg-[#358eef] text-white font-bold uppercase text-[10px] tracking-wider">Mensageria</span>
           </div>
           <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div>
               <h3 class="font-heading font-bold text-white text-base">Fila de Disparos WhatsApp</h3>
-              <p class="text-slate-400 text-xs mt-1">Monitoramento em tempo real da entrega e leitura de mensagens.</p>
+              <p class="text-slate-400 text-xs mt-1 font-body">Monitoramento em tempo real da entrega e leitura de mensagens.</p>
             </div>
-            <a href="Automacao_Mensageria/WhatsApp Envios.html" target="_blank" class="w-full py-2.5 rounded-lg bg-emerald-500/10 hover:bg-emerald-500 text-emerald-400 hover:text-slate-950 border border-emerald-500/30 text-xs font-mono font-bold transition-all text-center block">Abrir Tela Ao Vivo ↗</a>
+            <a href="Automacao_Mensageria/WhatsApp Envios.html" target="_blank" class="w-full py-2.5 bg-[#358eef] hover:bg-[#2576cf] text-white text-xs font-bold uppercase tracking-wider transition-all text-center block rounded-xs shadow-md">Abrir Tela Ao Vivo ↗</a>
           </div>
         </div>
 
         <!-- CONFIGURAÇÕES (11) -->
-        <div class="screen-card configuracoes glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group">
-          <div class="relative overflow-hidden bg-slate-950 aspect-video border-b border-white/10">
+        <div class="screen-card configuracoes studio-card overflow-hidden flex flex-col justify-between group">
+          <div class="relative overflow-hidden bg-black aspect-video border-b border-[#1E2B45]">
             <img src="assets/case_study_previews/Central_de_Ajuda.jpg" alt="Central de Ajuda" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-            <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-violet-500/20 text-violet-300 font-mono text-[10px]">Configurações</span>
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-xs bg-[#358eef] text-white font-bold uppercase text-[10px] tracking-wider">Configurações</span>
           </div>
           <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div>
               <h3 class="font-heading font-bold text-white text-base">Central de Ajuda & FAQ</h3>
-              <p class="text-slate-400 text-xs mt-1">Portal de conhecimento e tutoriais de uso da plataforma UnicoDrop.</p>
+              <p class="text-slate-400 text-xs mt-1 font-body">Portal de conhecimento e tutoriais de uso da plataforma UnicoDrop.</p>
             </div>
-            <a href="Configuracoes_Experiencia/Central de Ajuda.html" target="_blank" class="w-full py-2.5 rounded-lg bg-violet-500/10 hover:bg-violet-500 text-violet-400 hover:text-white border border-violet-500/30 text-xs font-mono font-bold transition-all text-center block">Abrir Tela Ao Vivo ↗</a>
+            <a href="Configuracoes_Experiencia/Central de Ajuda.html" target="_blank" class="w-full py-2.5 bg-[#358eef] hover:bg-[#2576cf] text-white text-xs font-bold uppercase tracking-wider transition-all text-center block rounded-xs shadow-md">Abrir Tela Ao Vivo ↗</a>
           </div>
         </div>
 
-        <div class="screen-card configuracoes glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group">
-          <div class="relative overflow-hidden bg-slate-950 aspect-video border-b border-white/10">
+        <div class="screen-card configuracoes studio-card overflow-hidden flex flex-col justify-between group">
+          <div class="relative overflow-hidden bg-black aspect-video border-b border-[#1E2B45]">
             <img src="assets/case_study_previews/Central_de_Ajuda_Sem_Logo.jpg" alt="Central de Ajuda Sem Logo" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-            <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-violet-500/20 text-violet-300 font-mono text-[10px]">Configurações</span>
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-xs bg-[#358eef] text-white font-bold uppercase text-[10px] tracking-wider">Configurações</span>
           </div>
           <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div>
               <h3 class="font-heading font-bold text-white text-base">Central de Ajuda (White-label)</h3>
-              <p class="text-slate-400 text-xs mt-1">Versão customizada da base de conhecimento para parceiros.</p>
+              <p class="text-slate-400 text-xs mt-1 font-body">Versão customizada da base de conhecimento para parceiros.</p>
             </div>
-            <a href="Configuracoes_Experiencia/Central de Ajuda Sem Logo.html" target="_blank" class="w-full py-2.5 rounded-lg bg-violet-500/10 hover:bg-violet-500 text-violet-400 hover:text-white border border-violet-500/30 text-xs font-mono font-bold transition-all text-center block">Abrir Tela Ao Vivo ↗</a>
+            <a href="Configuracoes_Experiencia/Central de Ajuda Sem Logo.html" target="_blank" class="w-full py-2.5 bg-[#358eef] hover:bg-[#2576cf] text-white text-xs font-bold uppercase tracking-wider transition-all text-center block rounded-xs shadow-md">Abrir Tela Ao Vivo ↗</a>
           </div>
         </div>
 
-        <div class="screen-card configuracoes glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group">
-          <div class="relative overflow-hidden bg-slate-950 aspect-video border-b border-white/10">
+        <div class="screen-card configuracoes studio-card overflow-hidden flex flex-col justify-between group">
+          <div class="relative overflow-hidden bg-black aspect-video border-b border-[#1E2B45]">
             <img src="assets/case_study_previews/Config_ADS.jpg" alt="Config ADS" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-            <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-violet-500/20 text-violet-300 font-mono text-[10px]">Configurações</span>
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-xs bg-[#358eef] text-white font-bold uppercase text-[10px] tracking-wider">Configurações</span>
           </div>
           <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div>
               <h3 class="font-heading font-bold text-white text-base">Configurações de Anúncios</h3>
-              <p class="text-slate-400 text-xs mt-1">Painel de vinculação de Pixels e integrações com ad networks.</p>
+              <p class="text-slate-400 text-xs mt-1 font-body">Painel de vinculação de Pixels e integrações com ad networks.</p>
             </div>
-            <a href="Configuracoes_Experiencia/Config ADS.html" target="_blank" class="w-full py-2.5 rounded-lg bg-violet-500/10 hover:bg-violet-500 text-violet-400 hover:text-white border border-violet-500/30 text-xs font-mono font-bold transition-all text-center block">Abrir Tela Ao Vivo ↗</a>
+            <a href="Configuracoes_Experiencia/Config ADS.html" target="_blank" class="w-full py-2.5 bg-[#358eef] hover:bg-[#2576cf] text-white text-xs font-bold uppercase tracking-wider transition-all text-center block rounded-xs shadow-md">Abrir Tela Ao Vivo ↗</a>
           </div>
         </div>
 
-        <div class="screen-card configuracoes glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group">
-          <div class="relative overflow-hidden bg-slate-950 aspect-video border-b border-white/10">
+        <div class="screen-card configuracoes studio-card overflow-hidden flex flex-col justify-between group">
+          <div class="relative overflow-hidden bg-black aspect-video border-b border-[#1E2B45]">
             <img src="assets/case_study_previews/Config_ADS_SEM_Gr_fico.jpg" alt="Config ADS Sem Grafico" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-            <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-violet-500/20 text-violet-300 font-mono text-[10px]">Configurações</span>
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-xs bg-[#358eef] text-white font-bold uppercase text-[10px] tracking-wider">Configurações</span>
           </div>
           <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div>
               <h3 class="font-heading font-bold text-white text-base">Config ADS (Modo Simplificado)</h3>
-              <p class="text-slate-400 text-xs mt-1">Interface compacta de gerenciamento de Pixels e contas.</p>
+              <p class="text-slate-400 text-xs mt-1 font-body">Interface compacta de gerenciamento de Pixels e contas.</p>
             </div>
-            <a href="Configuracoes_Experiencia/Config ADS SEM Gráfico.html" target="_blank" class="w-full py-2.5 rounded-lg bg-violet-500/10 hover:bg-violet-500 text-violet-400 hover:text-white border border-violet-500/30 text-xs font-mono font-bold transition-all text-center block">Abrir Tela Ao Vivo ↗</a>
+            <a href="Configuracoes_Experiencia/Config ADS SEM Gráfico.html" target="_blank" class="w-full py-2.5 bg-[#358eef] hover:bg-[#2576cf] text-white text-xs font-bold uppercase tracking-wider transition-all text-center block rounded-xs shadow-md">Abrir Tela Ao Vivo ↗</a>
           </div>
         </div>
 
-        <div class="screen-card configuracoes glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group">
-          <div class="relative overflow-hidden bg-slate-950 aspect-video border-b border-white/10">
+        <div class="screen-card configuracoes studio-card overflow-hidden flex flex-col justify-between group">
+          <div class="relative overflow-hidden bg-black aspect-video border-b border-[#1E2B45]">
             <img src="assets/case_study_previews/LandingAuditoria___Grande___2.jpg" alt="Landing Auditoria" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-            <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-violet-500/20 text-violet-300 font-mono text-[10px]">Configurações</span>
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-xs bg-[#358eef] text-white font-bold uppercase text-[10px] tracking-wider">Configurações</span>
           </div>
           <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div>
               <h3 class="font-heading font-bold text-white text-base">Landing de Auditoria</h3>
-              <p class="text-slate-400 text-xs mt-1">Página interativa de diagnóstico operacional para e-commerces.</p>
+              <p class="text-slate-400 text-xs mt-1 font-body">Página interativa de diagnóstico operacional para e-commerces.</p>
             </div>
-            <a href="Configuracoes_Experiencia/LandingAuditoria - Grande - 2.html" target="_blank" class="w-full py-2.5 rounded-lg bg-violet-500/10 hover:bg-violet-500 text-violet-400 hover:text-white border border-violet-500/30 text-xs font-mono font-bold transition-all text-center block">Abrir Tela Ao Vivo ↗</a>
+            <a href="Configuracoes_Experiencia/LandingAuditoria - Grande - 2.html" target="_blank" class="w-full py-2.5 bg-[#358eef] hover:bg-[#2576cf] text-white text-xs font-bold uppercase tracking-wider transition-all text-center block rounded-xs shadow-md">Abrir Tela Ao Vivo ↗</a>
           </div>
         </div>
 
-        <div class="screen-card configuracoes glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group">
-          <div class="relative overflow-hidden bg-slate-950 aspect-video border-b border-white/10">
+        <div class="screen-card configuracoes studio-card overflow-hidden flex flex-col justify-between group">
+          <div class="relative overflow-hidden bg-black aspect-video border-b border-[#1E2B45]">
             <img src="assets/case_study_previews/Taxas_e_Tarifas.jpg" alt="Taxas e Tarifas" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-            <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-violet-500/20 text-violet-300 font-mono text-[10px]">Configurações</span>
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-xs bg-[#358eef] text-white font-bold uppercase text-[10px] tracking-wider">Configurações</span>
           </div>
           <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div>
               <h3 class="font-heading font-bold text-white text-base">Taxas & Tarifas</h3>
-              <p class="text-slate-400 text-xs mt-1">Tabela transparente de custos por transação, checkout e frete.</p>
+              <p class="text-slate-400 text-xs mt-1 font-body">Tabela transparente de custos por transação, checkout e frete.</p>
             </div>
-            <a href="Configuracoes_Experiencia/Taxas e Tarifas.html" target="_blank" class="w-full py-2.5 rounded-lg bg-violet-500/10 hover:bg-violet-500 text-violet-400 hover:text-white border border-violet-500/30 text-xs font-mono font-bold transition-all text-center block">Abrir Tela Ao Vivo ↗</a>
+            <a href="Configuracoes_Experiencia/Taxas e Tarifas.html" target="_blank" class="w-full py-2.5 bg-[#358eef] hover:bg-[#2576cf] text-white text-xs font-bold uppercase tracking-wider transition-all text-center block rounded-xs shadow-md">Abrir Tela Ao Vivo ↗</a>
           </div>
         </div>
 
-        <div class="screen-card configuracoes glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group">
-          <div class="relative overflow-hidden bg-slate-950 aspect-video border-b border-white/10">
+        <div class="screen-card configuracoes studio-card overflow-hidden flex flex-col justify-between group">
+          <div class="relative overflow-hidden bg-black aspect-video border-b border-[#1E2B45]">
             <img src="assets/case_study_previews/inicio_Com_Onboard_Bot_o.jpg" alt="Inicio Onboard Botao" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-            <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-violet-500/20 text-violet-300 font-mono text-[10px]">Configurações</span>
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-xs bg-[#358eef] text-white font-bold uppercase text-[10px] tracking-wider">Configurações</span>
           </div>
           <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div>
               <h3 class="font-heading font-bold text-white text-base">Onboarding Guiado Lojista</h3>
-              <p class="text-slate-400 text-xs mt-1">Passo a passo inicial para configuração da loja e primeira integração.</p>
+              <p class="text-slate-400 text-xs mt-1 font-body">Passo a passo inicial para configuração da loja e primeira integração.</p>
             </div>
-            <a href="Configuracoes_Experiencia/inicio Com Onboard Botão.html" target="_blank" class="w-full py-2.5 rounded-lg bg-violet-500/10 hover:bg-violet-500 text-violet-400 hover:text-white border border-violet-500/30 text-xs font-mono font-bold transition-all text-center block">Abrir Tela Ao Vivo ↗</a>
+            <a href="Configuracoes_Experiencia/inicio Com Onboard Botão.html" target="_blank" class="w-full py-2.5 bg-[#358eef] hover:bg-[#2576cf] text-white text-xs font-bold uppercase tracking-wider transition-all text-center block rounded-xs shadow-md">Abrir Tela Ao Vivo ↗</a>
           </div>
         </div>
 
-        <div class="screen-card configuracoes glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group">
-          <div class="relative overflow-hidden bg-slate-950 aspect-video border-b border-white/10">
+        <div class="screen-card configuracoes studio-card overflow-hidden flex flex-col justify-between group">
+          <div class="relative overflow-hidden bg-black aspect-video border-b border-[#1E2B45]">
             <img src="assets/case_study_previews/inicio_com_Rolagem.jpg" alt="Inicio com Rolagem" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-            <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-violet-500/20 text-violet-300 font-mono text-[10px]">Configurações</span>
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-xs bg-[#358eef] text-white font-bold uppercase text-[10px] tracking-wider">Configurações</span>
           </div>
           <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div>
               <h3 class="font-heading font-bold text-white text-base">Home Dashboard (Com Rolagem)</h3>
-              <p class="text-slate-400 text-xs mt-1">Tela inicial completa exibindo lista de notificações e feed de atualizações.</p>
+              <p class="text-slate-400 text-xs mt-1 font-body">Tela inicial completa exibindo lista de notificações e feed de atualizações.</p>
             </div>
-            <a href="Configuracoes_Experiencia/inicio com Rolagem.html" target="_blank" class="w-full py-2.5 rounded-lg bg-violet-500/10 hover:bg-violet-500 text-violet-400 hover:text-white border border-violet-500/30 text-xs font-mono font-bold transition-all text-center block">Abrir Tela Ao Vivo ↗</a>
+            <a href="Configuracoes_Experiencia/inicio com Rolagem.html" target="_blank" class="w-full py-2.5 bg-[#358eef] hover:bg-[#2576cf] text-white text-xs font-bold uppercase tracking-wider transition-all text-center block rounded-xs shadow-md">Abrir Tela Ao Vivo ↗</a>
           </div>
         </div>
 
-        <div class="screen-card configuracoes glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group">
-          <div class="relative overflow-hidden bg-slate-950 aspect-video border-b border-white/10">
+        <div class="screen-card configuracoes studio-card overflow-hidden flex flex-col justify-between group">
+          <div class="relative overflow-hidden bg-black aspect-video border-b border-[#1E2B45]">
             <img src="assets/case_study_previews/inicio.jpg" alt="Inicio" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-            <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-violet-500/20 text-violet-300 font-mono text-[10px]">Configurações</span>
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-xs bg-[#358eef] text-white font-bold uppercase text-[10px] tracking-wider">Configurações</span>
           </div>
           <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div>
               <h3 class="font-heading font-bold text-white text-base">Tela Inicial Básica</h3>
-              <p class="text-slate-400 text-xs mt-1">Boas-vindas ao sistema com atalhos para os principais relatórios.</p>
+              <p class="text-slate-400 text-xs mt-1 font-body">Boas-vindas ao sistema com atalhos para os principais relatórios.</p>
             </div>
-            <a href="Configuracoes_Experiencia/inicio.html" target="_blank" class="w-full py-2.5 rounded-lg bg-violet-500/10 hover:bg-violet-500 text-violet-400 hover:text-white border border-violet-500/30 text-xs font-mono font-bold transition-all text-center block">Abrir Tela Ao Vivo ↗</a>
+            <a href="Configuracoes_Experiencia/inicio.html" target="_blank" class="w-full py-2.5 bg-[#358eef] hover:bg-[#2576cf] text-white text-xs font-bold uppercase tracking-wider transition-all text-center block rounded-xs shadow-md">Abrir Tela Ao Vivo ↗</a>
           </div>
         </div>
 
-        <div class="screen-card configuracoes glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group">
-          <div class="relative overflow-hidden bg-slate-950 aspect-video border-b border-white/10">
+        <div class="screen-card configuracoes studio-card overflow-hidden flex flex-col justify-between group">
+          <div class="relative overflow-hidden bg-black aspect-video border-b border-[#1E2B45]">
             <img src="assets/case_study_previews/plugin_de_rastreio.jpg" alt="Plugin de Rastreio" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-            <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-violet-500/20 text-violet-300 font-mono text-[10px]">Configurações</span>
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-xs bg-[#358eef] text-white font-bold uppercase text-[10px] tracking-wider">Configurações</span>
           </div>
           <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div>
               <h3 class="font-heading font-bold text-white text-base">Plugin de Rastreio Embed</h3>
-              <p class="text-slate-400 text-xs mt-1">Configuração de widget de rastreamento incorporável na loja do cliente.</p>
+              <p class="text-slate-400 text-xs mt-1 font-body">Configuração de widget de rastreamento incorporável na loja do cliente.</p>
             </div>
-            <a href="Configuracoes_Experiencia/plugin de rastreio.html" target="_blank" class="w-full py-2.5 rounded-lg bg-violet-500/10 hover:bg-violet-500 text-violet-400 hover:text-white border border-violet-500/30 text-xs font-mono font-bold transition-all text-center block">Abrir Tela Ao Vivo ↗</a>
+            <a href="Configuracoes_Experiencia/plugin de rastreio.html" target="_blank" class="w-full py-2.5 bg-[#358eef] hover:bg-[#2576cf] text-white text-xs font-bold uppercase tracking-wider transition-all text-center block rounded-xs shadow-md">Abrir Tela Ao Vivo ↗</a>
           </div>
         </div>
 
-        <div class="screen-card configuracoes glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group">
-          <div class="relative overflow-hidden bg-slate-950 aspect-video border-b border-white/10">
+        <div class="screen-card configuracoes studio-card overflow-hidden flex flex-col justify-between group">
+          <div class="relative overflow-hidden bg-black aspect-video border-b border-[#1E2B45]">
             <img src="assets/case_study_previews/Arquivos_regras.jpg" alt="Arquivos Regras" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
-            <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-violet-500/20 text-violet-300 font-mono text-[10px]">Configurações</span>
+            <span class="absolute top-2 left-2 px-2.5 py-0.5 rounded-xs bg-[#358eef] text-white font-bold uppercase text-[10px] tracking-wider">Configurações</span>
           </div>
           <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
             <div>
               <h3 class="font-heading font-bold text-white text-base">Central de Regras & Parâmetros</h3>
-              <p class="text-slate-400 text-xs mt-1">Documentação e termos operacionais de integração da API.</p>
+              <p class="text-slate-400 text-xs mt-1 font-body">Documentação e termos operacionais de integração da API.</p>
             </div>
-            <a href="assets/Arquivos regras.html" target="_blank" class="w-full py-2.5 rounded-lg bg-violet-500/10 hover:bg-violet-500 text-violet-400 hover:text-white border border-violet-500/30 text-xs font-mono font-bold transition-all text-center block">Abrir Tela Ao Vivo ↗</a>
+            <a href="assets/Arquivos regras.html" target="_blank" class="w-full py-2.5 bg-[#358eef] hover:bg-[#2576cf] text-white text-xs font-bold uppercase tracking-wider transition-all text-center block rounded-xs shadow-md">Abrir Tela Ao Vivo ↗</a>
           </div>
         </div>
 
@@ -715,47 +758,48 @@
     </section>
 
     <!-- SECTION 05: RESULTADOS E APRENDIZADOS -->
-    <section id="impact" class="space-y-12">
-      <div class="space-y-4">
-        <span class="text-teal-400 font-mono text-xs tracking-wider uppercase">05. IMPACTO DO PROJETO</span>
-        <h2 class="font-heading text-3xl md:text-4xl font-bold text-white">Resultados Obtidos Pós-Redesign</h2>
+    <section id="impact" class="space-y-10">
+      <div class="space-y-3">
+        <span class="text-[#358eef] font-bold text-xs tracking-widest uppercase block">05. IMPACTO DO PROJETO</span>
+        <h2 class="font-heading text-3xl md:text-4xl font-light text-white">Resultados Obtidos Pós-Redesign</h2>
+        <div class="w-16 h-1 bg-[#358eef] mt-1"></div>
       </div>
 
       <div class="grid md:grid-cols-3 gap-6">
-        <div class="glass-card p-8 rounded-2xl space-y-2">
-          <span class="font-heading text-4xl font-extrabold text-teal-400 block">30 Telas</span>
-          <span class="text-sm font-semibold text-white block">Sistemas & Módulos</span>
-          <p class="text-slate-400 text-xs leading-relaxed">Reformulação completa cobrindo e-commerce, logística, mensageria e finanças.</p>
+        <div class="studio-card p-8 space-y-2">
+          <span class="font-heading text-4xl font-bold text-[#358eef] block">30 Telas</span>
+          <span class="text-sm font-bold uppercase tracking-wider text-white block">Sistemas & Módulos</span>
+          <p class="text-slate-300 text-xs leading-relaxed font-body">Reformulação completa cobrindo e-commerce, logística, mensageria e finanças.</p>
         </div>
 
-        <div class="glass-card p-8 rounded-2xl space-y-2">
-          <span class="font-heading text-4xl font-extrabold text-violet-400 block">-40%</span>
-          <span class="text-sm font-semibold text-white block">Tempo de Busca</span>
-          <p class="text-slate-400 text-xs leading-relaxed">Localização imediata de códigos de rastreio e relatórios com os novos filtros.</p>
+        <div class="studio-card p-8 space-y-2">
+          <span class="font-heading text-4xl font-bold text-[#358eef] block">-40%</span>
+          <span class="text-sm font-bold uppercase tracking-wider text-white block">Tempo de Busca</span>
+          <p class="text-slate-300 text-xs leading-relaxed font-body">Localização imediata de códigos de rastreio e relatórios com os novos filtros.</p>
         </div>
 
-        <div class="glass-card p-8 rounded-2xl space-y-2">
-          <span class="font-heading text-4xl font-extrabold text-amber-400 block">Moderno</span>
-          <span class="text-sm font-semibold text-white block">Design System Figma</span>
-          <p class="text-slate-400 text-xs leading-relaxed">Facilidade de manutenção em código com componentes reutilizáveis em React/Tailwind.</p>
+        <div class="studio-card p-8 space-y-2">
+          <span class="font-heading text-4xl font-bold text-[#358eef] block">Moderno</span>
+          <span class="text-sm font-bold uppercase tracking-wider text-white block">Design System Figma</span>
+          <p class="text-slate-300 text-xs leading-relaxed font-body">Facilidade de manutenção em código com componentes reutilizáveis em React/Tailwind.</p>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- FOOTER -->
-  <footer class="border-t border-white/10 bg-slate-950 py-12 px-6">
+  <!-- FOOTER (Studio 86 Style) -->
+  <footer class="border-t border-[#1E2B45] bg-black py-12 px-6">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
       <div>
-        <p class="text-sm text-white font-heading font-semibold">Filipe Vicente Hidalgo</p>
-        <p class="text-xs text-slate-500">Desenvolvedor Front-End & Specialist em Suporte N1/N2</p>
+        <p class="text-sm text-white font-heading font-bold uppercase tracking-wider">Filipe Vicente Hidalgo</p>
+        <p class="text-xs text-slate-400 font-light">Desenvolvedor Front-End & Specialist em Suporte N1/N2</p>
       </div>
 
-      <div class="flex items-center gap-6 font-mono text-xs text-slate-400">
-        <a href="https://filipevicenteh.vercel.app" target="_blank" class="hover:text-teal-400 transition-colors">Portfólio Principal</a>
-        <a href="https://github.com/FilipeVicenteH/Telas-Unico" target="_blank" class="hover:text-teal-400 transition-colors">Repositório GitHub</a>
-        <a href="https://wa.me/5511966152956" target="_blank" class="hover:text-teal-400 transition-colors">WhatsApp</a>
+      <div class="flex items-center gap-6 text-xs text-slate-300 font-bold uppercase tracking-wider">
+        <a href="https://filipevicenteh.vercel.app" target="_blank" class="hover:text-[#358eef] transition-colors">Portfólio Principal</a>
+        <a href="https://github.com/FilipeVicenteH/Telas-Unico" target="_blank" class="hover:text-[#358eef] transition-colors">Repositório GitHub</a>
+        <a href="https://wa.me/5511966152956" target="_blank" class="hover:text-[#358eef] transition-colors">WhatsApp</a>
       </div>
     </div>
   </footer>
@@ -766,7 +810,7 @@
       const cards = document.querySelectorAll('.screen-card');
       const btns = document.querySelectorAll('.filter-btn');
 
-      btns.forEach(b => b.classList.remove('active', 'bg-teal-500', 'text-slate-950'));
+      btns.forEach(b => b.classList.remove('active'));
       const activeBtn = document.getElementById('btn-' + cat);
       if(activeBtn) activeBtn.classList.add('active');
 
